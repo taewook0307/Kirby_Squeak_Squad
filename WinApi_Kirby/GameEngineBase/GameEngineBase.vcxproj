@@ -127,7 +127,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="GameEngineBase.cpp" />
     <ClCompile Include="GameEngineDebug.cpp">
       <SubType>
       </SubType>
