@@ -6,16 +6,15 @@ void TestStart(HINSTANCE _Inst)
     GameEngineWindow::MainWindow.Open("MainWindow", _Inst);
 }
 
-void TestEnd()
-{
-
-}
-
 void TestUpdate()
 {
 
 }
 
+void TestEnd()
+{
+
+}
 
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     _In_opt_ HINSTANCE hPrevInstance,

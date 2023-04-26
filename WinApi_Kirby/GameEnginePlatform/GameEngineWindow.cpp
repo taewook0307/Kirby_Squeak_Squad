@@ -125,7 +125,6 @@ void GameEngineWindow::MessageLoop(HINSTANCE _Inst, void(*_Start)(HINSTANCE), vo
         _End();
     }
 
-
     // (int)msg.wParam;
 
     return;
