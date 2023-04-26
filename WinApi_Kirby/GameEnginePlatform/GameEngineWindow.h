@@ -32,4 +32,3 @@ private:
 	void InitInstance();
 	void MyRegisterClass();
 };
-
