@@ -1,5 +1,7 @@
 #pragma once
 
+#include <Windows.h>
+
 class GameEngineCore
 {
 public:
@@ -18,4 +20,3 @@ protected:
 private:
 
 };
-
