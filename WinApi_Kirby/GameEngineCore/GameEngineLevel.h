@@ -1,6 +1,11 @@
 #pragma once
+#include "GameEngineObject.h"
 
-class GameEngineLevel
+// 설명 : 화면혹은 장면을 표현
+// 타이틀 장면
+// 플레이 장면
+// 엔딩 장면
+class GameEngineLevel : public GameEngineObject
 {
 public:
 	// constrcuter destructer

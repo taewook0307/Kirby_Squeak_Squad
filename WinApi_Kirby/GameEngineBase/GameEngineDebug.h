@@ -24,4 +24,6 @@ private:
 
 };
 
-#define MsgBoxAssert(Text) MessageBoxA(nullptr, Text, "Error", MB_OK); assert(false);
+#define MsgBoxAssert(Text) \
+std::string Value = Text; \
+MessageBoxA(nullptr, Value.c_str(), "Error", MB_OK); assert(false);
