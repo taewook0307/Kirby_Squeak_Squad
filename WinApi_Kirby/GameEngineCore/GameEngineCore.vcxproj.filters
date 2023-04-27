@@ -5,10 +5,16 @@
     <ClInclude Include="GameEngineActor.h">
       <Filter>Object</Filter>
     </ClInclude>
+    <ClInclude Include="GameEngineLevel.h">
+      <Filter>Object</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameEngineCore.cpp" />
     <ClCompile Include="GameEngineActor.cpp">
+      <Filter>Object</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngineLevel.cpp">
       <Filter>Object</Filter>
     </ClCompile>
   </ItemGroup>
