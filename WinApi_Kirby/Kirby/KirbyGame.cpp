@@ -7,5 +7,4 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	_In_ int       nCmdShow)
 {
 	GameEngineCore::EngineStart("Kirby", hInstance);
-	return 0;
 }
