@@ -38,14 +38,16 @@ public:
 
 		AllLevel.insert(std::make_pair(Upper, NewLevel));
 
-		//std::pair<std::map<std::string, class GameEngineLevel*>::iterator, bool> Pair 
-		//	= AllLevel.insert(std::make_pair(_Title, nullptr));
+		/*
+		std::pair<std::map<std::string, class GameEngineLevel*>::iterator, bool> Pair 
+			= AllLevel.insert(std::make_pair(_Title, nullptr));
 
-		//if (false == Pair.second)
-		//{
-		//	MsgBoxAssert("이미 존재하는 이름의 레벨을 또 만들려고 했습니다" + _Title);
-		//	return;
-		//}
+		if (false == Pair.second)
+		{
+			MsgBoxAssert("이미 존재하는 이름의 레벨을 또 만들려고 했습니다" + _Title);
+			return;
+		}
+		*/
 	}
 
 
