@@ -1,5 +1,3 @@
-#include <iostream>
-#include <list>
 #include <GameEngineCore/GameEngineCore.h>
 #include <KirbyContents/TitleLevel.h>
 
