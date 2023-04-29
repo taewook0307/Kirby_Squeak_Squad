@@ -49,9 +49,7 @@ public:
 
 protected:
 
-
 private:
 	bool IsUpdateValue = true;
 	bool IsDeathValue = false;
 };
-

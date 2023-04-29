@@ -1,9 +1,16 @@
 #pragma once
+#include "GameEngineObject.h"
+
 #include <GameEngineBase/GameEngineDebug.h>
 #include <GameEngineBase/GameEngineString.h>
 #include <Windows.h>
 #include <string>
 #include <map>
+
+class CoreProcess : public GameEngineObject
+{
+
+};
 
 // 설명 :
 class GameEngineLevel;
@@ -20,7 +27,11 @@ public:
 	GameEngineCore& operator=(const GameEngineCore& _Other) = delete;
 	GameEngineCore& operator=(GameEngineCore&& _Other) noexcept = delete;
 
-	static void EngineStart(const std::string& _Title, HINSTANCE _Inst);
+	template <typename CoreProcessType>
+	static void EngineStart(const std::string& _Title, HINSTANCE _Inst)
+	{
+		EngineStart(_Title, _Inst, new CoreProcessType());
+	}
 
 	template<typename LevelType>
 	static void CreateLevel(const std::string& _Name)
@@ -36,6 +47,8 @@ public:
 
 		GameEngineLevel* NewLevel = new LevelType();
 
+		LevelInit(NewLevel);
+
 		AllLevel.insert(std::make_pair(Upper, NewLevel));
 
 		/*
@@ -50,15 +63,35 @@ public:
 		*/
 	}
 
+	static void ChangeLevel(const std::string& _Name)
+	{
+		std::string Upper = GameEngineString::ToUpperReturn(_Name);
+
+		std::map<std::string, GameEngineLevel*>::iterator FindIter = AllLevel.find(Upper);
+
+		if (AllLevel.end() == FindIter)
+		{
+			MsgBoxAssert(Upper + "의 이름을 가진 GameEngineLevel은 존재하지 않습니다.");
+			return;
+		}
+
+		NextLevel = FindIter->second;
+	}
 
 protected:
 
 private:
 	static std::string WindowTitle;
+	static CoreProcess* Process;
+
+	static void LevelInit(GameEngineLevel* _Level);
 
 	static void CoreStart(HINSTANCE _Inst);
 	static void CoreUpdate();
 	static void CoreEnd();
+	static void EngineStart(const std::string& _Title, HINSTANCE _Inst, CoreProcess* _Ptr);
 
+	static GameEngineLevel* CurLevel;
+	static GameEngineLevel* NextLevel;
 	static std::map<std::string, GameEngineLevel*> AllLevel;
 };

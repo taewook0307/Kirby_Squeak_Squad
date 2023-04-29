@@ -1,6 +1,6 @@
 ﻿#include "GameEngineWindow.h"
+
 #include <GameEngineBase/GameEngineDebug.h>
-#include <iostream>
 
 HINSTANCE GameEngineWindow::Instance = nullptr;
 GameEngineWindow GameEngineWindow::MainWindow;
@@ -42,9 +42,10 @@ void GameEngineWindow::InitInstance()
         return;
     }
 
+    Hdc = GetDC(hWnd);
+
     ShowWindow(hWnd, SW_SHOW);
     UpdateWindow(hWnd);
-
 }
 
 LRESULT CALLBACK GameEngineWindow::WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)

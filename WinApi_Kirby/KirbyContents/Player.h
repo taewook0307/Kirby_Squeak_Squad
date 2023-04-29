@@ -1,6 +1,8 @@
 #pragma once
 
-class Player
+#include <GameEngineCore/GameEngineActor.h>
+
+class Player : public GameEngineActor
 {
 public:
 	// constrcuter destructer
@@ -16,6 +18,11 @@ public:
 protected:
 
 private:
+	void Start() override;
 
+	void Update() override;
+
+	void Render() override;
+
+	void Release() override;
 };
-

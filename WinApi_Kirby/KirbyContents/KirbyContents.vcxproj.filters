@@ -17,6 +17,7 @@
     <ClInclude Include="EndingLevel.h">
       <Filter>Level</Filter>
     </ClInclude>
+    <ClInclude Include="KirbyCore.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Player.cpp" />
@@ -35,6 +36,7 @@
     <ClCompile Include="EndingLevel.cpp">
       <Filter>Level</Filter>
     </ClCompile>
+    <ClCompile Include="KirbyCore.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Level">

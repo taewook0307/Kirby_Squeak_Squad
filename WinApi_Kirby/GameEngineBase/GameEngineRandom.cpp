@@ -1,4 +1,5 @@
 ﻿#include "GameEngineRandom.h"
+
 #include <iostream>
 
 GameEngineRandom GameEngineRandom::MainRandom;
@@ -23,4 +24,3 @@ int GameEngineRandom::RandomInt(int _Min, int _Max)
 GameEngineRandom::~GameEngineRandom()
 {
 }
-
