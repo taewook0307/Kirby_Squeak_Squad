@@ -18,6 +18,7 @@
       <Filter>Level</Filter>
     </ClInclude>
     <ClInclude Include="KirbyCore.h" />
+    <ClInclude Include="KirbyGameEnum.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Player.cpp" />

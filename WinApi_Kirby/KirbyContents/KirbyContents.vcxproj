@@ -46,6 +46,7 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="KirbyGameEnum.h" />
     <ClInclude Include="Player.h">
       <SubType>
       </SubType>
