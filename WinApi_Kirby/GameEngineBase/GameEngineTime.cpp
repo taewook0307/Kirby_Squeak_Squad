@@ -4,6 +4,7 @@
 
 GameEngineTime::GameEngineTime()
 {
+	
 }
 
 GameEngineTime::~GameEngineTime()
