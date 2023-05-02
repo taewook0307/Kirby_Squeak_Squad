@@ -4,7 +4,10 @@
 
 GameEngineTime::GameEngineTime()
 {
-	
+	QueryPerformanceFrequency(&Count);
+	QueryPerformanceCounter(&Cur);
+
+	// QueryPerformanceCounter(&Prev);	
 }
 
 GameEngineTime::~GameEngineTime()

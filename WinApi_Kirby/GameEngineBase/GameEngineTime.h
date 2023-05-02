@@ -16,6 +16,8 @@ public:
 protected:
 
 private:
-
+	LARGE_INTEGER Count;
+	LARGE_INTEGER Cur;
+	LARGE_INTEGER Prev;
 };
 

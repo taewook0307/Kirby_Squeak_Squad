@@ -130,6 +130,7 @@ void GameEngineWindow::MessageLoop(HINSTANCE _Inst, void(*_Start)(HINSTANCE), vo
 
             TranslateMessage(&msg);
             DispatchMessage(&msg);
+            continue;
         }
 
         // 윈도우 메세지가 없는 시간을 데드타임
