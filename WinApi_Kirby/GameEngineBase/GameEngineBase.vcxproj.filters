@@ -5,11 +5,13 @@
     <ClCompile Include="GameEngineRandom.cpp" />
     <ClCompile Include="GameEngineString.cpp" />
     <ClCompile Include="GameEngineMath.cpp" />
+    <ClCompile Include="GameEngineTime.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameEngineDebug.h" />
     <ClInclude Include="GameEngineRandom.h" />
     <ClInclude Include="GameEngineString.h" />
     <ClInclude Include="GameEngineMath.h" />
+    <ClInclude Include="GameEngineTime.h" />
   </ItemGroup>
 </Project>

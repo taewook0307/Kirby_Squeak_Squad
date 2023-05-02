@@ -29,6 +29,7 @@ public:
 protected:
 
 private:
+	static bool IsWindowUpdate;
 	static HINSTANCE Instance;
 	std::string Title = "";
 	HWND hWnd = nullptr;

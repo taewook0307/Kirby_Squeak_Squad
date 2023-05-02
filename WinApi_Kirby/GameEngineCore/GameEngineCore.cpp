@@ -33,6 +33,8 @@ void GameEngineCore::CoreUpdate()
 		NextLevel = nullptr;
 	}
 
+	// 한 프레임이 도는 동안에는 기본적인 세팅의 변화가 없게하기 위한 설계의도
+	// 한 프레임 동안 CurLevel의 값을 바꾸지 않도록 하기 위한 구조
 	CurLevel->Update();
 	CurLevel->ActorUpdate();
 	CurLevel->Render();
