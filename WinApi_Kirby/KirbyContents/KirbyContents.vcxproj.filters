@@ -1,7 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClInclude Include="Player.h" />
     <ClInclude Include="TitleLevel.h">
       <Filter>Level</Filter>
     </ClInclude>
@@ -19,9 +18,11 @@
     </ClInclude>
     <ClInclude Include="KirbyCore.h" />
     <ClInclude Include="KirbyGameEnum.h" />
+    <ClInclude Include="Player.h">
+      <Filter>Actor</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Player.cpp" />
     <ClCompile Include="TitleLevel.cpp">
       <Filter>Level</Filter>
     </ClCompile>
@@ -38,10 +39,16 @@
       <Filter>Level</Filter>
     </ClCompile>
     <ClCompile Include="KirbyCore.cpp" />
+    <ClCompile Include="Player.cpp">
+      <Filter>Actor</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Level">
       <UniqueIdentifier>{d5f0921c-9f50-4a4f-bef0-c360771f6c1c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Actor">
+      <UniqueIdentifier>{e57817f0-f32e-424e-9703-c33237c1cf7d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
