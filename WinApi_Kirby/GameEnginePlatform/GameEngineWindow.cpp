@@ -115,7 +115,7 @@ void GameEngineWindow::MessageLoop(HINSTANCE _Inst, void(*_Start)(HINSTANCE), vo
     while (IsWindowUpdate)
     {
         // 윈도우에 무슨 일이 있는게 아니라 메시지가 없어도 리턴되어야 함
-        // 동기함수 : 함수가 제대로 끝날때까지 기다리는 함수
+        // 동기함수 : 함수가 제대로 끝날때까지 기다리는 함수, 함수가 제대로 끝이 나야 return
         // 동기 ex) _getch(), GetMessage() 등
         // 비동기함수
         // PeekMessage : 윈도우 메세지가 없으면 그냥 0이 리턴
