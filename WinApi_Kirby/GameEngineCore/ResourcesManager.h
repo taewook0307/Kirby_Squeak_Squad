@@ -62,15 +62,9 @@ public:
 
 	}
 
-	GameEngineTexture* FindTexture(const std::string& _Image)
-	{
+	GameEngineTexture* FindTexture(const std::string& _Image);
 
-	}
-
-	bool IsLoadTexture(const std::string& _Image)
-	{
-
-	}
+	bool IsLoadTexture(const std::string& _Image);
 
 protected:
 
