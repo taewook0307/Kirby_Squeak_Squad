@@ -15,7 +15,7 @@ void TitleLevel::Start()
 	CreateActor<Player>(static_cast<int>(KirbyGameEnum::Kirby));
 }
 
-void TitleLevel::Update()
+void TitleLevel::Update(float _Delta)
 {
 
 }

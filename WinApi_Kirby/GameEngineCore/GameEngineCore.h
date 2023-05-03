@@ -17,10 +17,6 @@ class GameEngineLevel;
 class GameEngineCore
 {
 public:
-	// constrcuter destructer
-	GameEngineCore();
-	~GameEngineCore();
-
 	// delete Function
 	GameEngineCore(const GameEngineCore& _Other) = delete;
 	GameEngineCore(GameEngineCore&& _Other) noexcept = delete;
@@ -81,6 +77,10 @@ public:
 protected:
 
 private:
+	// constrcuter destructer
+	GameEngineCore();
+	~GameEngineCore();
+
 	static std::string WindowTitle;
 	static CoreProcess* Process;
 

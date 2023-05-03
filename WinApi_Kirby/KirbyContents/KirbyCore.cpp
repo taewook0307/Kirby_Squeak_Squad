@@ -26,7 +26,7 @@ void KirbyCore::Start()
 	GameEngineCore::ChangeLevel("TitleLevel");
 }
 
-void KirbyCore::Update()
+void KirbyCore::Update(float _Delta)
 {
 
 }

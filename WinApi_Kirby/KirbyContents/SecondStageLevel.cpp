@@ -13,7 +13,7 @@ void SecondStageLevel::Start()
 
 }
 
-void SecondStageLevel::Update()
+void SecondStageLevel::Update(float _Delta)
 {
 
 }

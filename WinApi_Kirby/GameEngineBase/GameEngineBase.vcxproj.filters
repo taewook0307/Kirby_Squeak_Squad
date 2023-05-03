@@ -6,6 +6,7 @@
     <ClCompile Include="GameEngineString.cpp" />
     <ClCompile Include="GameEngineMath.cpp" />
     <ClCompile Include="GameEngineTime.cpp" />
+    <ClCompile Include="GameEnginePath.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameEngineDebug.h" />
@@ -13,5 +14,6 @@
     <ClInclude Include="GameEngineString.h" />
     <ClInclude Include="GameEngineMath.h" />
     <ClInclude Include="GameEngineTime.h" />
+    <ClInclude Include="GameEnginePath.h" />
   </ItemGroup>
 </Project>

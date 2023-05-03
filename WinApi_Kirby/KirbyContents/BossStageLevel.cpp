@@ -13,7 +13,7 @@ void BossStageLevel::Start()
 
 }
 
-void BossStageLevel::Update()
+void BossStageLevel::Update(float _Delta)
 {
 
 }

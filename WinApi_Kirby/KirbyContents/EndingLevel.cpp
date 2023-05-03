@@ -13,7 +13,7 @@ void EndingLevel::Start()
 
 }
 
-void EndingLevel::Update()
+void EndingLevel::Update(float _Delta)
 {
 
 }
