@@ -15,5 +15,10 @@ void GameEnginePath::GetCurrentPath()
 
 void GameEnginePath::MoveParent()
 {
+	Path = Path.parent_path();
+}
+
+void GameEnginePath::MoveChild()
+{
 
 }

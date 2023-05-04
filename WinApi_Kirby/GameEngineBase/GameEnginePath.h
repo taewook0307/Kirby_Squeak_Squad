@@ -20,6 +20,8 @@ public:
 
 	void MoveParent();
 
+	void MoveChild();
+
 protected:
 
 private:
