@@ -12,3 +12,8 @@ void GameEnginePath::GetCurrentPath()
 {
 	Path = std::filesystem::current_path();
 }
+
+void GameEnginePath::MoveParent()
+{
+
+}

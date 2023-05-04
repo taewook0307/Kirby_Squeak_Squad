@@ -21,6 +21,7 @@ void Player::Start()
 		GameEnginePath FilePath;
 
 		FilePath.GetCurrentPath();
+		FilePath.MoveParent();
 
 		ResourcesManager::GetInst().TextureLoad("Player_Idle.Bmp");
 	}
