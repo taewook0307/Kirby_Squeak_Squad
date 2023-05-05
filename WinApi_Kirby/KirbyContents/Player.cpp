@@ -1,5 +1,6 @@
 ﻿#include "Player.h"
 
+#include <Windows.h>
 #include <GameEngineBase/GameEngineTime.h>
 #include <GameEngineBase/GameEnginePath.h>
 #include <GameEnginePlatform/GameEngineWindow.h>
@@ -16,14 +17,15 @@ Player::~Player()
 
 void Player::Start()
 {
-	if (false == ResourcesManager::GetInst().IsLoadTexture("Player_Idle.Bmp"))
+	if (false == ResourcesManager::GetInst().IsLoadTexture("Idle.Bmp"))
 	{
 		GameEnginePath FilePath;
 
 		FilePath.GetCurrentPath();
-		FilePath.MoveParent();
-
-		ResourcesManager::GetInst().TextureLoad("Player_Idle.Bmp");
+		
+		FilePath.MoveParentToExistsChild("Resources");
+		FilePath.MoveChild("Resources\\Enermy\\Waddle Dee Large\\Idle\\Idle.Bmp");
+		ResourcesManager::GetInst().TextureLoad(FilePath.GetStringPath());
 	}
 
 	SetPos({ 200, 200 });
@@ -38,13 +40,10 @@ void Player::Update(float _Delta)
 void Player::Render()
 {
 	HDC WindowDC = GameEngineWindow::MainWindow.GetHDC();
+	GameEngineTexture* FindTexture = ResourcesManager::GetInst().FindTexture("Idle.Bmp");
+	HDC ImageDC = FindTexture->GetImageDC();
 
-	Rectangle(WindowDC,
-		GetPos().iX() - GetScale().ihX(),
-		GetPos().iY() - GetScale().ihY(),
-		GetPos().iX() + GetScale().ihX(),
-		GetPos().iY() + GetScale().ihY()
-	);
+	BitBlt(WindowDC, 100, 100, 200, 200, ImageDC, 0, 0, SRCCOPY);
 }
 
 void Player::Release()
