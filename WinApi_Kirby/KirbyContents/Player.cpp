@@ -17,14 +17,14 @@ Player::~Player()
 
 void Player::Start()
 {
-	if (false == ResourcesManager::GetInst().IsLoadTexture("WaddleDeeLarge_Idle_1.Bmp"))
+	if (false == ResourcesManager::GetInst().IsLoadTexture("Waddle_Dee_Large_Idle_1.Bmp"))
 	{
 		GameEnginePath FilePath;
 
 		FilePath.GetCurrentPath();
 		
 		FilePath.MoveParentToExistsChild("Resources");
-		FilePath.MoveChild("Resources\\Enermy\\WaddleDeeLarge\\Idle\\WaddleDeeLarge_Idle_1.Bmp");
+		FilePath.MoveChild("Resources\\Enermy\\WaddleDeeLarge\\Waddle_Dee_Large_Idle_1.Bmp");
 		ResourcesManager::GetInst().TextureLoad(FilePath.GetStringPath());
 	}
 
@@ -40,7 +40,7 @@ void Player::Update(float _Delta)
 void Player::Render()
 {
 	HDC WindowDC = GameEngineWindow::MainWindow.GetHDC();
-	GameEngineTexture* FindTexture = ResourcesManager::GetInst().FindTexture("WaddleDeeLarge_Idle_1.Bmp");
+	GameEngineTexture* FindTexture = ResourcesManager::GetInst().FindTexture("Waddle_Dee_Large_Idle_1.Bmp");
 	HDC ImageDC = FindTexture->GetImageDC();
 
 	BitBlt(WindowDC, 100, 100, 200, 200, ImageDC, 0, 0, SRCCOPY);
