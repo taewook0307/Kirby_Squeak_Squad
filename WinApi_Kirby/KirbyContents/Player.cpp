@@ -44,7 +44,15 @@ void Player::Render()
 	GameEngineTexture* FindTexture = ResourcesManager::GetInst().FindTexture("Kirby_Idle_1.Bmp");
 	HDC ImageDC = FindTexture->GetImageDC();
 
-	if (!BitBlt(WindowDC, 100, 100, 200, 200, ImageDC, 0, 0, SRCCOPY))
+	if (!BitBlt(WindowDC,
+		GetPos().iX() - GetScale().ihX(),
+		GetPos().iY() - GetScale().ihY(),
+		GetPos().iX() + GetScale().ihX(),
+		GetPos().iY() + GetScale().ihY(),
+		ImageDC,
+		0,
+		0,
+		SRCCOPY))
 	{
 		MsgBoxAssert("이미지 Render에 실패했습니다.");
 		return;
