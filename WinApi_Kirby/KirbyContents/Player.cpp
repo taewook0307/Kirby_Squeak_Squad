@@ -5,7 +5,7 @@
 #include <GameEngineBase/GameEngineTime.h>
 #include <GameEngineBase/GameEnginePath.h>
 #include <GameEnginePlatform/GameEngineWindow.h>
-#include <GameEngineCore/GameEngineTexture.h>
+#include <GameEnginePlatform/GameEngineWindowTexture.h>
 #include <GameEngineCore/ResourcesManager.h>
 
 Player::Player()
@@ -40,23 +40,9 @@ void Player::Update(float _Delta)
 
 void Player::Render()
 {
-	HDC WindowDC = GameEngineWindow::MainWindow.GetHDC();
-	GameEngineTexture* FindTexture = ResourcesManager::GetInst().FindTexture("Kirby_Idle_1.Bmp");
-	HDC ImageDC = FindTexture->GetImageDC();
-
-	if (!BitBlt(WindowDC,
-		GetPos().iX() - GetScale().ihX(),
-		GetPos().iY() - GetScale().ihY(),
-		GetPos().iX() + GetScale().ihX(),
-		GetPos().iY() + GetScale().ihY(),
-		ImageDC,
-		0,
-		0,
-		SRCCOPY))
-	{
-		MsgBoxAssert("이미지 Render에 실패했습니다.");
-		return;
-	}
+	GameEngineWindowTexture* BackBuffer = GameEngineWindow::MainWindow.GetBackBuffer();
+	GameEngineWindowTexture* FindTexture = ResourcesManager::GetInst().FindTexture("Kirby_Idle_1.Bmp");
+	BackBuffer->BitCopy(FindTexture, GetPos(), GetScale());
 }
 
 void Player::Release()

@@ -1,7 +1,7 @@
 ﻿#include "ResourcesManager.h"
-#include "GameEngineTexture.h"
 
 #include <GameEngineBase/GameEngineString.h>
+#include <GameEnginePlatform/GameEngineWindowTexture.h>
 
 ResourcesManager ResourcesManager::Inst;
 
@@ -16,9 +16,9 @@ ResourcesManager::ResourcesManager()
 
 ResourcesManager::~ResourcesManager()
 {
-	for (const std::pair<std::string, GameEngineTexture*> Pair : AllTexture)
+	for (const std::pair<std::string, GameEngineWindowTexture*> Pair : AllTexture)
 	{
-		GameEngineTexture* Texture = Pair.second;
+		GameEngineWindowTexture* Texture = Pair.second;
 
 		if (nullptr != Texture)
 		{
@@ -33,22 +33,24 @@ bool ResourcesManager::IsLoadTexture(const std::string& _Name)
 	return FindTexture(_Name) != nullptr;
 }
 
-void ResourcesManager::TextureLoad(const std::string& _Name, const std::string& _Path)
+GameEngineWindowTexture* ResourcesManager::TextureLoad(const std::string& _Name, const std::string& _Path)
 {
 	std::string UpperName = GameEngineString::ToUpperReturn(_Name);
 
-	GameEngineTexture* LoadTexture = new GameEngineTexture();
+	GameEngineWindowTexture* LoadTexture = new GameEngineWindowTexture();
 
 	LoadTexture->ResLoad(_Path);
 
 	AllTexture.insert(std::make_pair(UpperName, LoadTexture));
+
+	return LoadTexture;
 }
 
-GameEngineTexture* ResourcesManager::FindTexture(const std::string& _Name)
+GameEngineWindowTexture* ResourcesManager::FindTexture(const std::string& _Name)
 {
 	std::string UpperName = GameEngineString::ToUpperReturn(_Name);
 
-	std::map<std::string, GameEngineTexture*>::iterator FindIter = AllTexture.find(UpperName);
+	std::map<std::string, GameEngineWindowTexture*>::iterator FindIter = AllTexture.find(UpperName);
 
 	if (FindIter == AllTexture.end())
 	{

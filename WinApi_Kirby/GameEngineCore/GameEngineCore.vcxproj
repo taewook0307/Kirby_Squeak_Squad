@@ -175,10 +175,6 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="GameEngineTexture.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
     <ClInclude Include="ResourcesManager.h">
       <SubType>
       </SubType>
@@ -198,10 +194,6 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="GameEngineObject.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="GameEngineTexture.cpp">
       <SubType>
       </SubType>
     </ClCompile>

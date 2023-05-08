@@ -7,10 +7,12 @@ class GameEngineMath
 class float4
 {
 public:
-	float X;
-	float Y;
-	float Z;
-	float W;
+	static const float4 ZERO;
+
+	float X = 0.0f;
+	float Y = 0.0f;
+	float Z = 0.0f;
+	float W = 1.0f;
 
 	inline int iX() const
 	{

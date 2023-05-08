@@ -155,9 +155,17 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="GameEngineWindowTexture.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameEngineWindow.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="GameEngineWindowTexture.cpp">
       <SubType>
       </SubType>
     </ClCompile>
