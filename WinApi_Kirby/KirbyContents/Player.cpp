@@ -1,6 +1,7 @@
 ﻿#include "Player.h"
 
 #include <Windows.h>
+#include <GameEngineBase/GameEngineDebug.h>
 #include <GameEngineBase/GameEngineTime.h>
 #include <GameEngineBase/GameEnginePath.h>
 #include <GameEnginePlatform/GameEngineWindow.h>
@@ -17,14 +18,14 @@ Player::~Player()
 
 void Player::Start()
 {
-	if (false == ResourcesManager::GetInst().IsLoadTexture("Waddle_Dee_Large_Idle_1.Bmp"))
+	if (false == ResourcesManager::GetInst().IsLoadTexture("Kirby_Idle_1.Bmp"))
 	{
 		GameEnginePath FilePath;
 
 		FilePath.GetCurrentPath();
 		
 		FilePath.MoveParentToExistsChild("Resources");
-		FilePath.MoveChild("Resources\\Enermy\\WaddleDeeLarge\\Waddle_Dee_Large_Idle_1.Bmp");
+		FilePath.MoveChild("Resources\\Kirby\\Kirby\\Idle\\Kirby_Idle_1.Bmp");
 		ResourcesManager::GetInst().TextureLoad(FilePath.GetStringPath());
 	}
 
@@ -40,10 +41,14 @@ void Player::Update(float _Delta)
 void Player::Render()
 {
 	HDC WindowDC = GameEngineWindow::MainWindow.GetHDC();
-	GameEngineTexture* FindTexture = ResourcesManager::GetInst().FindTexture("Waddle_Dee_Large_Idle_1.Bmp");
+	GameEngineTexture* FindTexture = ResourcesManager::GetInst().FindTexture("Kirby_Idle_1.Bmp");
 	HDC ImageDC = FindTexture->GetImageDC();
 
-	BitBlt(WindowDC, 100, 100, 200, 200, ImageDC, 0, 0, SRCCOPY);
+	if (!BitBlt(WindowDC, 100, 100, 200, 200, ImageDC, 0, 0, SRCCOPY))
+	{
+		MsgBoxAssert("이미지 Render에 실패했습니다.");
+		return;
+	}
 }
 
 void Player::Release()
