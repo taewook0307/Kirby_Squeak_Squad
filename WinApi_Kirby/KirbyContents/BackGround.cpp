@@ -21,11 +21,11 @@ void BackGround::Update(float _Delta) {
 }
 void BackGround::Render()
 {
-	GameEngineWindowTexture* BackBuffer = GameEngineWindow::MainWindow.GetWindowBuffer();
+	GameEngineWindowTexture* WindowBuffer = GameEngineWindow::MainWindow.GetWindowBuffer();
 	GameEngineWindowTexture* FindTexture = ResourcesManager::GetInst().FindTexture(FileName);
 	// BackBuffer->BitCopy(FindTexture, GetPos());
 
-	BackBuffer->BitCopy(FindTexture, GetPos());
+	WindowBuffer->BitCopy(FindTexture, GetPos());
 }
 void BackGround::Release() {
 }
