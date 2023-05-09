@@ -41,7 +41,7 @@ void BackGround::Init(const std::string& _FileName)
 		FilePath.GetCurrentPath();
 
 		FilePath.MoveParentToExistsChild("Resources");
-		FilePath.MoveChild("ContentsResources\\Texture\\" + _FileName);
+		FilePath.MoveChild("Resources\\Stage\\FirstStage\\" + _FileName);
 
 		GameEngineWindowTexture* Text = ResourcesManager::GetInst().TextureLoad(FilePath.GetStringPath());
 
