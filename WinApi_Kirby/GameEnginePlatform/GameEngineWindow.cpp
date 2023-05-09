@@ -17,6 +17,17 @@ GameEngineWindow::~GameEngineWindow()
         delete WindowBuffer;
         WindowBuffer = nullptr;
     }
+
+    if (nullptr != BackBuffer)
+    {
+        delete BackBuffer;
+        BackBuffer = nullptr;
+    }
+}
+
+void GameEngineWindow::DoubleBuffering()
+{
+    WindowBuffer->BitCopy(BackBuffer, BackBuffer->GetScale());
 }
 
 void GameEngineWindow::Open(const std::string& _Title, HINSTANCE _hInstance)
@@ -52,6 +63,9 @@ void GameEngineWindow::InitInstance()
 
     WindowBuffer = new GameEngineWindowTexture();
     WindowBuffer->ResCreate(Hdc);
+
+    BackBuffer = new GameEngineWindowTexture();
+    BackBuffer->ResCreate(WindowBuffer->GetScale());
 
     ShowWindow(hWnd, SW_SHOW);
     UpdateWindow(hWnd);
@@ -163,6 +177,13 @@ void GameEngineWindow::MessageLoop(HINSTANCE _Inst, void(*_Start)(HINSTANCE), vo
 void GameEngineWindow::SetPosAndScale(const float4& _Pos, const float4& _Scale)
 {
     Scale = _Scale;
+
+    if (nullptr != BackBuffer)
+    {
+        delete BackBuffer;
+        BackBuffer = new GameEngineWindowTexture();
+        BackBuffer->ResCreate(Scale);
+    }
 
     RECT Rc = { 0, 0, _Scale.iX(), _Scale.iY() };
 

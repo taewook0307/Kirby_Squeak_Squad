@@ -38,6 +38,11 @@ public:
 		return WindowBuffer;
 	}
 
+	GameEngineWindowTexture* GetBackBuffer()
+	{
+		return BackBuffer;
+	}
+
 	void SetPosAndScale(const float4& _Pos, const float4& _Scale);
 
 	static void WindowLoopOff()
@@ -45,6 +50,7 @@ public:
 		IsWindowUpdate = false;
 	}
 
+	void DoubleBuffering();
 protected:
 
 private:
@@ -55,6 +61,7 @@ private:
 	HDC Hdc = nullptr;
 	float4 Scale = float4::ZERO;
 	GameEngineWindowTexture* WindowBuffer = nullptr;
+	GameEngineWindowTexture* BackBuffer = nullptr;
 
 	static LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
 	void InitInstance();

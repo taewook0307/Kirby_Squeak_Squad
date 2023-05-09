@@ -7,8 +7,10 @@
 #include <map>
 
 // 설명 : 화면혹은 장면을 표현 ex) 타이틀 장면, 플레이 장면, 엔딩 장면 등
+class GameEngineCamera;
 class GameEngineLevel : public GameEngineObject
 {
+	friend class GameEngineActor;
 	friend class GameEngineCore;
 
 public:
@@ -36,6 +38,9 @@ public:
 protected:
 
 private:
+	GameEngineCamera* MainCamera;
+	GameEngineCamera* UICamera;
+
 	std::map<int, std::list<GameEngineActor*>> AllActors;
 
 	void ActorInit(GameEngineActor* _Actor);
