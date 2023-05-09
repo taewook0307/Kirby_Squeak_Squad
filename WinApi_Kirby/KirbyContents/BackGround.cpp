@@ -34,7 +34,7 @@ void BackGround::Render()
 	// BackBuffer->BitCopy(FindTexture, GetPos());
 	float4 Scale = FindTexture->GetScale();
 
-	Scale *= 2.0f;
+	Scale *= 5.0f;
 
 	BackBuffer->TransCopy(FindTexture, GetPos(), Scale, {0, 0}, FindTexture->GetScale());
 }
