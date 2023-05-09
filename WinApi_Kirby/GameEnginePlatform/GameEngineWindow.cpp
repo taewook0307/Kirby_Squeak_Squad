@@ -27,7 +27,7 @@ GameEngineWindow::~GameEngineWindow()
 
 void GameEngineWindow::DoubleBuffering()
 {
-    WindowBuffer->BitCopy(BackBuffer, BackBuffer->GetScale());
+    WindowBuffer->BitCopy(BackBuffer, Scale.Half(), BackBuffer->GetScale());
 }
 
 void GameEngineWindow::Open(const std::string& _Title, HINSTANCE _hInstance)

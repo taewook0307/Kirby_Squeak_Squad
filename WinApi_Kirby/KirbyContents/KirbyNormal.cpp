@@ -29,6 +29,8 @@ void KirbyNormal::Start()
 		ResourcesManager::GetInst().TextureLoad(FilePath.GetStringPath());
 	}
 
+	CreateRenderer("Test.Bmp");
+
 	SetPos({ 200, 200 });
 	SetScale({ 100, 100 });
 }
@@ -40,9 +42,9 @@ void KirbyNormal::Update(float _Delta)
 
 void KirbyNormal::Render()
 {
-	GameEngineWindowTexture* WindowBuffer = GameEngineWindow::MainWindow.GetWindowBuffer();
+	GameEngineWindowTexture* BackBuffer = GameEngineWindow::MainWindow.GetBackBuffer();
 	GameEngineWindowTexture* FindTexture = ResourcesManager::GetInst().FindTexture("Kirby_Idle_1.Bmp");
-	WindowBuffer->BitCopy(FindTexture, GetPos(), GetScale());
+	BackBuffer->TransCopy(FindTexture, GetPos(), { 100, 100 }, { 0, 0 }, FindTexture->GetScale());
 }
 
 void KirbyNormal::Release()

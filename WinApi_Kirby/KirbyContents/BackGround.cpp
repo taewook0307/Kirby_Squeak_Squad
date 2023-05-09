@@ -3,6 +3,8 @@
 #include <GameEngineCore/ResourcesManager.h>
 #include <GameEnginePlatform/GameEngineWindow.h>
 
+#pragma comment(lib, "msimg32.lib")
+
 BackGround::BackGround()
 {
 }
@@ -21,11 +23,20 @@ void BackGround::Update(float _Delta) {
 }
 void BackGround::Render()
 {
-	GameEngineWindowTexture* WindowBuffer = GameEngineWindow::MainWindow.GetWindowBuffer();
+	GameEngineWindowTexture* BackBuffer = GameEngineWindow::MainWindow.GetBackBuffer();
 	GameEngineWindowTexture* FindTexture = ResourcesManager::GetInst().FindTexture(FileName);
-	// BackBuffer->BitCopy(FindTexture, GetPos());
 
-	WindowBuffer->BitCopy(FindTexture, GetPos());
+	if (nullptr == FindTexture)
+	{
+		return;
+	}
+
+	// BackBuffer->BitCopy(FindTexture, GetPos());
+	float4 Scale = FindTexture->GetScale();
+
+	Scale *= 2.0f;
+
+	BackBuffer->TransCopy(FindTexture, GetPos(), Scale, {0, 0}, FindTexture->GetScale());
 }
 void BackGround::Release() {
 }

@@ -1,7 +1,8 @@
 ﻿#include "GameEngineWindowTexture.h"
-
-#include <GameEngineBase/GameEngineDebug.h>
 #include "GameEngineWindow.h"
+
+#include <Windows.h>
+#include <GameEngineBase/GameEngineDebug.h>
 
 GameEngineWindowTexture::GameEngineWindowTexture()
 {
@@ -83,7 +84,7 @@ void GameEngineWindowTexture::BitCopy(GameEngineWindowTexture* _CopyTexture, con
 	BitCopy(_CopyTexture, _Pos, _CopyTexture->GetScale());
 }
 
-void GameEngineWindowTexture::TransCopy(GameEngineWindowTexture* _CopyTexture, const float4& _Pos, const float4& _Scale, const float4& _OtherPos, const float4& _OtherScale, int _TransColor = RGB(255, 0, 255))
+void GameEngineWindowTexture::TransCopy(GameEngineWindowTexture* _CopyTexture, const float4& _Pos, const float4& _Scale, const float4& _OtherPos, const float4& _OtherScale, int _TransColor/* = RGB(255, 0, 255)*/)
 {
 	HDC CopyImageDC = _CopyTexture->GetImageDC();
 
