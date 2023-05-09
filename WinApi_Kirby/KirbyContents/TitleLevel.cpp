@@ -1,5 +1,5 @@
 ﻿#include "TitleLevel.h"
-#include "Player.h"
+#include "KirbyNormal.h"
 #include "KirbyGameEnum.h"
 
 TitleLevel::TitleLevel()
@@ -12,7 +12,7 @@ TitleLevel::~TitleLevel()
 
 void TitleLevel::Start()
 {
-	CreateActor<Player>(static_cast<int>(KirbyGameEnum::Kirby));
+	CreateActor<KirbyNormal>(static_cast<int>(KirbyGameEnum::Kirby));
 }
 
 void TitleLevel::Update(float _Delta)

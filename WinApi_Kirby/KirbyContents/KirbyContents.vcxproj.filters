@@ -18,11 +18,17 @@
     </ClInclude>
     <ClInclude Include="KirbyCore.h" />
     <ClInclude Include="KirbyGameEnum.h" />
-    <ClInclude Include="Player.h">
-      <Filter>Actor</Filter>
-    </ClInclude>
     <ClInclude Include="BackGround.h">
       <Filter>Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="KirbyGameMap.h">
+      <Filter>Actor\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="Monster.h">
+      <Filter>Actor\Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="KirbyNormal.h">
+      <Filter>Actor\KirbyForm</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -42,11 +48,17 @@
       <Filter>Level</Filter>
     </ClCompile>
     <ClCompile Include="KirbyCore.cpp" />
-    <ClCompile Include="Player.cpp">
-      <Filter>Actor</Filter>
-    </ClCompile>
     <ClCompile Include="BackGround.cpp">
       <Filter>Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="KirbyGameMap.cpp">
+      <Filter>Actor\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="Monster.cpp">
+      <Filter>Actor\Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="KirbyNormal.cpp">
+      <Filter>Actor\KirbyForm</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -55,6 +67,15 @@
     </Filter>
     <Filter Include="Actor">
       <UniqueIdentifier>{e57817f0-f32e-424e-9703-c33237c1cf7d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Actor\KirbyForm">
+      <UniqueIdentifier>{606bd203-8d06-42b2-a48e-4d03b3cebd8a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Actor\Monster">
+      <UniqueIdentifier>{a3e97866-4d90-4043-a28a-fd68b7c99eba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Actor\Map">
+      <UniqueIdentifier>{3767a70c-d7f0-4932-8def-4b0c95b65e7b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
