@@ -1,7 +1,6 @@
 ﻿#include "GameEngineWindow.h"
 
 #include <GameEngineBase/GameEngineDebug.h>
-#include <GameEnginePlatform/GameEngineWindowTexture.h>
 
 HINSTANCE GameEngineWindow::Instance = nullptr;
 GameEngineWindow GameEngineWindow::MainWindow;

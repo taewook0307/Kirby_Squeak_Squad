@@ -1,9 +1,9 @@
 #pragma once
+#include "GameEngineWindowTexture.h"
+
 #include <Windows.h>
 #include <string>
-#include <GameEngineBase/GameEngineMath.h>
 
-class GameEngineWindowTexture;
 class GameEngineWindow
 {
 public:
