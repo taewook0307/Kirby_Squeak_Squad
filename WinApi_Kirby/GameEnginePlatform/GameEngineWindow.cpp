@@ -12,10 +12,10 @@ GameEngineWindow::GameEngineWindow()
 
 GameEngineWindow::~GameEngineWindow()
 {
-    if (nullptr != BackBuffer)
+    if (nullptr != WindowBuffer)
     {
-        delete BackBuffer;
-        BackBuffer = nullptr;
+        delete WindowBuffer;
+        WindowBuffer = nullptr;
     }
 }
 
@@ -50,8 +50,8 @@ void GameEngineWindow::InitInstance()
 
     Hdc = GetDC(hWnd);
 
-    BackBuffer = new GameEngineWindowTexture();
-    BackBuffer->ResCreate(Hdc);
+    WindowBuffer = new GameEngineWindowTexture();
+    WindowBuffer->ResCreate(Hdc);
 
     ShowWindow(hWnd, SW_SHOW);
     UpdateWindow(hWnd);

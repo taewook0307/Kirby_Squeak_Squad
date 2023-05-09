@@ -19,18 +19,18 @@
     <ClInclude Include="KirbyCore.h" />
     <ClInclude Include="KirbyGameEnum.h" />
     <ClInclude Include="KirbyGameMap.h">
-      <Filter>Actor\Map</Filter>
-    </ClInclude>
-    <ClInclude Include="Monster.h">
-      <Filter>Actor\Monster</Filter>
-    </ClInclude>
-    <ClInclude Include="KirbyNormal.h">
-      <Filter>Actor\KirbyForm</Filter>
+      <Filter>Map</Filter>
     </ClInclude>
     <ClInclude Include="KirbySword.h">
-      <Filter>Actor\KirbyForm</Filter>
+      <Filter>KirbyForm</Filter>
     </ClInclude>
     <ClInclude Include="BackGround.h">
+      <Filter>Global</Filter>
+    </ClInclude>
+    <ClInclude Include="Monster.h">
+      <Filter>Global</Filter>
+    </ClInclude>
+    <ClInclude Include="KirbyNormal.h">
       <Filter>Global</Filter>
     </ClInclude>
   </ItemGroup>
@@ -52,18 +52,18 @@
     </ClCompile>
     <ClCompile Include="KirbyCore.cpp" />
     <ClCompile Include="KirbyGameMap.cpp">
-      <Filter>Actor\Map</Filter>
-    </ClCompile>
-    <ClCompile Include="Monster.cpp">
-      <Filter>Actor\Monster</Filter>
-    </ClCompile>
-    <ClCompile Include="KirbyNormal.cpp">
-      <Filter>Actor\KirbyForm</Filter>
+      <Filter>Map</Filter>
     </ClCompile>
     <ClCompile Include="KirbySword.cpp">
-      <Filter>Actor\KirbyForm</Filter>
+      <Filter>KirbyForm</Filter>
     </ClCompile>
     <ClCompile Include="BackGround.cpp">
+      <Filter>Global</Filter>
+    </ClCompile>
+    <ClCompile Include="Monster.cpp">
+      <Filter>Global</Filter>
+    </ClCompile>
+    <ClCompile Include="KirbyNormal.cpp">
       <Filter>Global</Filter>
     </ClCompile>
   </ItemGroup>
@@ -71,20 +71,14 @@
     <Filter Include="Level">
       <UniqueIdentifier>{d5f0921c-9f50-4a4f-bef0-c360771f6c1c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Actor">
-      <UniqueIdentifier>{e57817f0-f32e-424e-9703-c33237c1cf7d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Actor\KirbyForm">
-      <UniqueIdentifier>{606bd203-8d06-42b2-a48e-4d03b3cebd8a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Actor\Monster">
-      <UniqueIdentifier>{a3e97866-4d90-4043-a28a-fd68b7c99eba}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Actor\Map">
-      <UniqueIdentifier>{3767a70c-d7f0-4932-8def-4b0c95b65e7b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Global">
       <UniqueIdentifier>{ca9be298-be3d-402d-8a7c-07e3a4839929}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="KirbyForm">
+      <UniqueIdentifier>{606bd203-8d06-42b2-a48e-4d03b3cebd8a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Map">
+      <UniqueIdentifier>{3767a70c-d7f0-4932-8def-4b0c95b65e7b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

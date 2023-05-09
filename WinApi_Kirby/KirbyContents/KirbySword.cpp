@@ -40,7 +40,7 @@ void KirbySword::Update(float _Delta)
 
 void KirbySword::Render()
 {
-	GameEngineWindowTexture* BackBuffer = GameEngineWindow::MainWindow.GetBackBuffer();
+	GameEngineWindowTexture* BackBuffer = GameEngineWindow::MainWindow.GetWindowBuffer();
 	GameEngineWindowTexture* FindTexture = ResourcesManager::GetInst().FindTexture("SwordKirby_Idle_1.Bmp");
 	BackBuffer->BitCopy(FindTexture, GetPos(), GetScale());
 }

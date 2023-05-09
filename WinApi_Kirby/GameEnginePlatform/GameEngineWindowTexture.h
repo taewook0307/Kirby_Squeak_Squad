@@ -32,12 +32,14 @@ public:
 
 	void BitCopy(GameEngineWindowTexture* _CopyTexture, const float4& _Pos);
 	void BitCopy(GameEngineWindowTexture* _CopyTexture, const float4& _Pos, const float4 _Scale);
+
+	void TransCopy(GameEngineWindowTexture* _CopyTexture, const float4& _Pos, const float4 _Scale);
 protected:
 
 private:
-	HBITMAP BitMap;
-	HBITMAP OldBitMap;
-	HDC ImageDC;
+	HBITMAP BitMap = nullptr;
+	HBITMAP OldBitMap = nullptr;
+	HDC ImageDC = nullptr;
 
 	BITMAP Info;
 

@@ -6,7 +6,7 @@ class GameEngineObject
 public:
 	// constrcuter destructer
 	GameEngineObject();
-	~GameEngineObject();
+	virtual ~GameEngineObject();
 
 	// delete Function
 	GameEngineObject(const GameEngineObject& _Other) = delete;
