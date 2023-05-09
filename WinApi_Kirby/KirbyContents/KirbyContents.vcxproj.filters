@@ -18,9 +18,6 @@
     </ClInclude>
     <ClInclude Include="KirbyCore.h" />
     <ClInclude Include="KirbyGameEnum.h" />
-    <ClInclude Include="BackGround.h">
-      <Filter>Actor</Filter>
-    </ClInclude>
     <ClInclude Include="KirbyGameMap.h">
       <Filter>Actor\Map</Filter>
     </ClInclude>
@@ -29,6 +26,12 @@
     </ClInclude>
     <ClInclude Include="KirbyNormal.h">
       <Filter>Actor\KirbyForm</Filter>
+    </ClInclude>
+    <ClInclude Include="KirbySword.h">
+      <Filter>Actor\KirbyForm</Filter>
+    </ClInclude>
+    <ClInclude Include="BackGround.h">
+      <Filter>Global</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -48,9 +51,6 @@
       <Filter>Level</Filter>
     </ClCompile>
     <ClCompile Include="KirbyCore.cpp" />
-    <ClCompile Include="BackGround.cpp">
-      <Filter>Actor</Filter>
-    </ClCompile>
     <ClCompile Include="KirbyGameMap.cpp">
       <Filter>Actor\Map</Filter>
     </ClCompile>
@@ -59,6 +59,12 @@
     </ClCompile>
     <ClCompile Include="KirbyNormal.cpp">
       <Filter>Actor\KirbyForm</Filter>
+    </ClCompile>
+    <ClCompile Include="KirbySword.cpp">
+      <Filter>Actor\KirbyForm</Filter>
+    </ClCompile>
+    <ClCompile Include="BackGround.cpp">
+      <Filter>Global</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -76,6 +82,9 @@
     </Filter>
     <Filter Include="Actor\Map">
       <UniqueIdentifier>{3767a70c-d7f0-4932-8def-4b0c95b65e7b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Global">
+      <UniqueIdentifier>{ca9be298-be3d-402d-8a7c-07e3a4839929}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

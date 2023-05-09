@@ -1,4 +1,4 @@
-﻿#include "KirbyNormal.h"
+﻿#include "KirbySword.h"
 
 #include <Windows.h>
 #include <GameEngineBase/GameEngineDebug.h>
@@ -8,24 +8,24 @@
 #include <GameEnginePlatform/GameEngineWindowTexture.h>
 #include <GameEngineCore/ResourcesManager.h>
 
-KirbyNormal::KirbyNormal()
+KirbySword::KirbySword()
 {
 }
 
-KirbyNormal::~KirbyNormal()
+KirbySword::~KirbySword()
 {
 }
 
-void KirbyNormal::Start()
+void KirbySword::Start()
 {
-	if (false == ResourcesManager::GetInst().IsLoadTexture("Kirby_Idle_1.Bmp"))
+	if (false == ResourcesManager::GetInst().IsLoadTexture("SwordKirby_Idle_1.Bmp"))
 	{
 		GameEnginePath FilePath;
 
 		FilePath.GetCurrentPath();
 
 		FilePath.MoveParentToExistsChild("Resources");
-		FilePath.MoveChild("Resources\\Kirby\\NormalKirby\\Idle\\Kirby_Idle_1.Bmp");
+		FilePath.MoveChild("Resources\\Kirby\\SwordKirby\\Idle\\SwordKirby_Idle_1.Bmp");
 		ResourcesManager::GetInst().TextureLoad(FilePath.GetStringPath());
 	}
 
@@ -33,19 +33,19 @@ void KirbyNormal::Start()
 	SetScale({ 100, 100 });
 }
 
-void KirbyNormal::Update(float _Delta)
+void KirbySword::Update(float _Delta)
 {
 	AddPos({ 100.0f * _Delta, 0.0f });
 }
 
-void KirbyNormal::Render()
+void KirbySword::Render()
 {
 	GameEngineWindowTexture* BackBuffer = GameEngineWindow::MainWindow.GetBackBuffer();
-	GameEngineWindowTexture* FindTexture = ResourcesManager::GetInst().FindTexture("Kirby_Idle_1.Bmp");
+	GameEngineWindowTexture* FindTexture = ResourcesManager::GetInst().FindTexture("SwordKirby_Idle_1.Bmp");
 	BackBuffer->BitCopy(FindTexture, GetPos(), GetScale());
 }
 
-void KirbyNormal::Release()
+void KirbySword::Release()
 {
 
 }
