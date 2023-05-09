@@ -53,7 +53,7 @@ private:
 	std::string Title = "";
 	HWND hWnd = nullptr;
 	HDC Hdc = nullptr;
-	float4 Scale;
+	float4 Scale = float4::ZERO;
 	GameEngineWindowTexture* BackBuffer = nullptr;
 
 	static LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
