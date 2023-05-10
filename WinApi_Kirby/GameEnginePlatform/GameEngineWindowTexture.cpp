@@ -96,8 +96,8 @@ void GameEngineWindowTexture::TransCopy(GameEngineWindowTexture* _CopyTexture, c
 		CopyImageDC,
 		_OtherPos.iX(),			// 카피 하려는 이미지의 왼쪽 위 x
 		_OtherPos.iY(),			// 카피 하려는 이미지의 왼쪽 위 y
-		_OtherScale.iX(),		// 카피 하려는 이미지의 오른쪽 위 x
-		_OtherScale.iY(),		// 카피 하려는 이미지의 오른쪽 위 y
+		_OtherScale.iX(),		// 카피 하려는 이미지의 너비
+		_OtherScale.iY(),		// 카피 하려는 이미지의 높이
 		_TransColor				// 출력하지 않고자 하는 색
 	);
 }
