@@ -14,7 +14,7 @@ class GameEngineActor : public GameEngineObject
 public:
 	// constrcuter destructer
 	GameEngineActor();
-	~GameEngineActor();
+	virtual ~GameEngineActor();
 
 	// delete Function
 	GameEngineActor(const GameEngineActor& _Other) = delete;

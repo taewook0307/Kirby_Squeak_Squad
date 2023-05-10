@@ -29,8 +29,6 @@ void KirbyNormal::Start()
 		ResourcesManager::GetInst().TextureLoad(FilePath.GetStringPath());
 	}
 
-	CreateRenderer("Test.Bmp");
-
 	SetPos({ 200, 200 });
 	SetScale({ 100, 100 });
 }
