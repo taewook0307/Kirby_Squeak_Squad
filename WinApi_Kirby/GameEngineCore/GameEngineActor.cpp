@@ -8,6 +8,7 @@ GameEngineActor::GameEngineActor()
 
 GameEngineActor::~GameEngineActor()
 {
+
 }
 
 GameEngineRenderer* GameEngineActor::CreateRenderer(const std::string& _ImageName)
