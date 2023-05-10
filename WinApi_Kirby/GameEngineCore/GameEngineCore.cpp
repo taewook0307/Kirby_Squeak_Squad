@@ -41,9 +41,10 @@ void GameEngineCore::CoreUpdate()
 	// 한 프레임 동안 CurLevel의 값을 바꾸지 않도록 하기 위한 구조
 	CurLevel->Update(Delta);
 	CurLevel->ActorUpdate(Delta);
+	GameEngineWindow::MainWindow.ClearBackBuffer();
+	CurLevel->ActorRender();
 	CurLevel->Render();
 	GameEngineWindow::MainWindow.DoubleBuffering();
-	CurLevel->ActorRender();
 }
 
 void GameEngineCore::CoreEnd()

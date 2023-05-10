@@ -47,7 +47,13 @@ public:
 		return Scale;
 	}
 
-	GameEngineRenderer* CreateRenderer(const std::string& _ImageName);
+	template<typename EnumType>
+	GameEngineRenderer* CreateRenderer(const std::string& _ImageName, EnumType _Order)
+	{
+		return CreateRenderer(_ImageName, static_cast<int>(_Order));
+	}
+
+	GameEngineRenderer* CreateRenderer(const std::string& _ImageName, int _Order);
 
 	GameEngineLevel* GetLevel()
 	{

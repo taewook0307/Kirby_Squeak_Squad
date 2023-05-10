@@ -1,9 +1,14 @@
 #pragma once
 
-enum class KirbyGameEnum
+enum class UpdateOrder
+{
+	Player,
+	Monster
+};
+
+enum class RenderOrder
 {
 	BackGround,
-	Floor,
-	Kirby,
-	Item
+	Play,
+	PlayUI
 };

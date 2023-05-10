@@ -24,15 +24,26 @@ public:
 	GameEngineLevel& operator=(const GameEngineLevel& _Other) = delete;
 	GameEngineLevel& operator=(GameEngineLevel&& _Other) noexcept = delete;
 
+	template<typename ActorType, typename EnumType>
+	ActorType* CreateActor(EnumType _Order)
+	{
+		return CreateActor<ActorType>(static_cast<int>(_Order));
+	}
+
 	template<typename ActorType>
 	ActorType* CreateActor(int _Order = 0)
 	{
 		std::list<GameEngineActor*>& GroupList = AllActors[_Order];
 		GameEngineActor* NewActor = new ActorType();
-		ActorInit(NewActor);
+		ActorInit(NewActor, _Order);
 		GroupList.push_back(NewActor);
 
 		return dynamic_cast<ActorType*>(NewActor);
+	}
+
+	GameEngineCamera* GetMainCamera()
+	{
+		return MainCamera;
 	}
 
 protected:
@@ -43,7 +54,7 @@ private:
 
 	std::map<int, std::list<GameEngineActor*>> AllActors;
 
-	void ActorInit(GameEngineActor* _Actor);
+	void ActorInit(GameEngineActor* _Actor, int _Order);
 
 	void ActorUpdate(float _Delta);
 	void ActorRender();

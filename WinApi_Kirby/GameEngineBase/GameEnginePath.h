@@ -27,6 +27,8 @@ public:
 
 	void MoveChild(const std::string& _ChildPath);
 
+	std::string PlusFliePath(const std::string& _ChildPath);
+
 	std::string GetStringPath()
 	{
 		return Path.string();

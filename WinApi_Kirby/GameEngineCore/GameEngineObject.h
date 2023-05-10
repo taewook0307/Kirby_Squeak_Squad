@@ -47,9 +47,15 @@ public:
 		return IsDeathValue;
 	}
 
+	void SetOrder(int _Order)
+	{
+		Order = _Order;
+	}
+
 protected:
 
 private:
+	int Order = 0;
 	bool IsUpdateValue = true;
 	bool IsDeathValue = false;
 };

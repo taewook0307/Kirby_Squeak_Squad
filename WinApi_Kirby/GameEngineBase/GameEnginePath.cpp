@@ -65,3 +65,17 @@ void GameEnginePath::MoveChild(const std::string& _ChildPath)
 	}
 	Path = CheckPath;
 }
+
+std::string GameEnginePath::PlusFliePath(const std::string& _ChildPath)
+{
+	std::filesystem::path CheckPath = Path;
+
+	CheckPath.append(_ChildPath);
+
+	if (false == std::filesystem::exists(CheckPath))
+	{
+		MsgBoxAssert("존재하지 않는 경로로 이동하려고 했습니다" + CheckPath.string());
+	}
+
+	return CheckPath.string();
+}

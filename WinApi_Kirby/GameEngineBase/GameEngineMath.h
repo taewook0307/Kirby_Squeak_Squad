@@ -51,35 +51,46 @@ public:
 
 	float4 operator+(const float4& _Other)
 	{
-		float4 ResultValue;
+		float4 ReturnValue;
 
-		ResultValue.X = X + _Other.X;
-		ResultValue.Y = Y + _Other.Y;
-		ResultValue.Z = Z + _Other.Z;
+		ReturnValue.X = X + _Other.X;
+		ReturnValue.Y = Y + _Other.Y;
+		ReturnValue.Z = Z + _Other.Z;
 
-		return ResultValue;
+		return ReturnValue;
+	}
+
+	float4 operator-(const float4& _Other)
+	{
+		float4 ReturnValue;
+
+		ReturnValue.X = X - _Other.X;
+		ReturnValue.Y = Y - _Other.Y;
+		ReturnValue.Z = Z - _Other.Z;
+
+		return ReturnValue;
 	}
 
 	float4 operator*(const float4& _Other)
 	{
-		float4 ResultValue;
+		float4 ReturnValue;
 
-		ResultValue.X = X * _Other.X;
-		ResultValue.Y = Y * _Other.Y;
-		ResultValue.Z = Z * _Other.Z;
+		ReturnValue.X = X * _Other.X;
+		ReturnValue.Y = Y * _Other.Y;
+		ReturnValue.Z = Z * _Other.Z;
 
-		return ResultValue;
+		return ReturnValue;
 	}
 
-	float4 operator*(const float _Other)
+	float4 operator*(const float _Value)
 	{
-		float4 ResultValue;
+		float4 ReturnValue;
 
-		ResultValue.X = X * _Other;
-		ResultValue.Y = Y * _Other;
-		ResultValue.Z = Z * _Other;
+		ReturnValue.X = X * _Value;
+		ReturnValue.Y = Y * _Value;
+		ReturnValue.Z = Z * _Value;
 
-		return ResultValue;
+		return ReturnValue;
 	}
 
 	float4& operator+=(const float4& _Other)
@@ -87,6 +98,15 @@ public:
 		X += _Other.X;
 		Y += _Other.Y;
 		Z += _Other.Z;
+
+		return *this;
+	}
+
+	float4& operator-=(const float4& _Other)
+	{
+		X -= _Other.X;
+		Y -= _Other.Y;
+		Z -= _Other.Z;
 
 		return *this;
 	}
@@ -100,11 +120,11 @@ public:
 		return *this;
 	}
 
-	float4& operator*=(const float _Other)
+	float4& operator*=(const float _Value)
 	{
-		X *= _Other;
-		Y *= _Other;
-		Z *= _Other;
+		X *= _Value;
+		Y *= _Value;
+		Z *= _Value;
 
 		return *this;
 	}

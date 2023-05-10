@@ -13,9 +13,9 @@ TitleLevel::~TitleLevel()
 
 void TitleLevel::Start()
 {
-	CreateActor<KirbyNormal>(static_cast<int>(KirbyGameEnum::Kirby));
-	BackGround* Back = CreateActor<BackGround>(static_cast<int>(KirbyGameEnum::Floor));
+	BackGround* Back = CreateActor<BackGround>(RenderOrder::BackGround);
 	Back->Init("FirstStage_1.Bmp");
+	CreateActor<KirbyNormal>(RenderOrder::Play);
 }
 
 void TitleLevel::Update(float _Delta)
