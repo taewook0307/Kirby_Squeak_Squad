@@ -13,9 +13,9 @@ TitleLevel::~TitleLevel()
 
 void TitleLevel::Start()
 {
+	CreateActor<KirbyNormal>(RenderOrder::Play);
 	BackGround* Back = CreateActor<BackGround>(RenderOrder::BackGround);
 	Back->Init("FirstStage_1.Bmp");
-	CreateActor<KirbyNormal>(RenderOrder::Play);
 }
 
 void TitleLevel::Update(float _Delta)

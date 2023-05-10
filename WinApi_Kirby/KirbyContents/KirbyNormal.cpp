@@ -22,6 +22,8 @@ KirbyNormal::~KirbyNormal()
 
 void KirbyNormal::Start()
 {
+	float4 Scale = float4::ZERO;
+
 	if (false == ResourcesManager::GetInst().IsLoadTexture("Kirby_Idle_1.Bmp"))
 	{
 		GameEnginePath FilePath;
@@ -31,11 +33,12 @@ void KirbyNormal::Start()
 		FilePath.MoveParentToExistsChild("Resources");
 		FilePath.MoveChild("Resources\\Kirby\\NormalKirby\\Idle\\");
 
-		ResourcesManager::GetInst().TextureLoad(FilePath.PlusFliePath("Kirby_Idle_1.Bmp"));
+		GameEngineWindowTexture* Text = ResourcesManager::GetInst().TextureLoad(FilePath.PlusFliePath("Kirby_Idle_1.Bmp"));
+		Scale = Text->GetScale();
 	}
 
 	GameEngineRenderer* Ptr = CreateRenderer("Kirby_Idle_1.Bmp", RenderOrder::Play);
-	Ptr->SetRenderScale({ 200, 200 });
+	Ptr->SetRenderScale(Scale * 5.0f);
 	Ptr->SetTexture("Kirby_Idle_1.Bmp");
 
 	float4 WinScale = GameEngineWindow::MainWindow.GetScale();
