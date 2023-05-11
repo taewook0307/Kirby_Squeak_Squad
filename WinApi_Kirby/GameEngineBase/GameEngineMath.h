@@ -8,6 +8,10 @@ class float4
 {
 public:
 	static const float4 ZERO;
+	static const float4 LEFT;
+	static const float4 RIGHT;
+	static const float4 UP;
+	static const float4 DOWN;
 
 	float X = 0.0f;
 	float Y = 0.0f;

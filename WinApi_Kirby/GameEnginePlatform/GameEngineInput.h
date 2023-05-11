@@ -1,8 +1,31 @@
 #pragma once
 #include <Windows.h>
+#include <map>
+#include <string>
 
 class GameEngineInput
 {
+private:
+	class GameEngineKey
+	{
+		bool Down = false;
+		bool Press = false;
+		bool Up = false;
+		bool Free = true;
+
+		// 의미가 없다고 봐요.
+		float PressTime = 0.0f;
+
+		int Key = -1;
+
+		bool KeyCheck()
+		{
+			return 0 != GetAsyncKeyState(Key);
+		}
+
+		void Update(float _DeltaTime);
+	};
+
 public:
 	// constrcuter destructer
 	GameEngineInput();
@@ -17,5 +40,5 @@ public:
 protected:
 
 private:
-
+	static std::map<std::string, GameEngineKey> AllKeys;
 };

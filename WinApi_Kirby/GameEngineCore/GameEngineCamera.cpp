@@ -46,3 +46,34 @@ void GameEngineCamera::PushRenderer(GameEngineRenderer* _Renderer, int _Order)
 
 	Renderers[_Order].push_back(_Renderer);
 }
+
+void GameEngineCamera::Release()
+{
+	std::map<int, std::list<GameEngineRenderer*>>::iterator GroupStartIter = Renderers.begin();
+	std::map<int, std::list<GameEngineRenderer*>>::iterator GroupEndIter = Renderers.end();
+
+	for (; GroupStartIter != GroupEndIter; ++GroupStartIter)
+	{
+		std::list<GameEngineRenderer*>& RendererGroup = GroupStartIter->second;
+
+		std::list<GameEngineRenderer*>::iterator RendererStartIter = RendererGroup.begin();
+		std::list<GameEngineRenderer*>::iterator RendererEndIter = RendererGroup.end();
+
+		for (; RendererStartIter != RendererEndIter; )
+		{
+			GameEngineRenderer* Renderer = *RendererStartIter;
+			if (false == Renderer->IsDeath())
+			{
+				++RendererStartIter;
+				continue;
+			}
+
+			if (nullptr == Renderer)
+			{
+				MsgBoxAssert("nullptr인 액터가 레벨의 리스트에 들어가 있었습니다.");
+				continue;
+			}
+			RendererStartIter = RendererGroup.erase(RendererStartIter);
+		}
+	}
+}

@@ -47,19 +47,29 @@ public:
 		return Scale;
 	}
 
+	GameEngineRenderer* CreateRenderer(const std::string& _ImageName, int _Order);
+
 	template<typename EnumType>
 	GameEngineRenderer* CreateRenderer(const std::string& _ImageName, EnumType _Order)
 	{
 		return CreateRenderer(_ImageName, static_cast<int>(_Order));
 	}
 
-	GameEngineRenderer* CreateRenderer(const std::string& _ImageName, int _Order);
+	template<typename EnumType>
+	GameEngineRenderer* CreateRenderer(EnumType _Order)
+	{
+		return CreateRenderer("", static_cast<int>(_Order));
+	}
+
+	GameEngineRenderer* CreateRenderer(int _Order = 0)
+	{
+		return CreateRenderer("", static_cast<int>(_Order));
+	}
 
 	GameEngineLevel* GetLevel()
 	{
 		return Level;
 	}
-
 protected:
 
 private:
@@ -69,4 +79,6 @@ private:
 	std::list<GameEngineRenderer*> AllRenderer;
 
 	void PushMainCameraRenderer(GameEngineRenderer*);
+
+	void ActorRelease();
 };
