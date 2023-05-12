@@ -90,7 +90,8 @@ void GameEngineWindowTexture::TransCopy(GameEngineWindowTexture* _CopyTexture, c
 {
 	HDC CopyImageDC = _CopyTexture->GetImageDC();
 
-	TransparentBlt(ImageDC,
+	TransparentBlt(
+		ImageDC,
 		_Pos.iX() - _Scale.ihX(),
 		_Pos.iY() - _Scale.ihY(),
 		_Scale.iX(),

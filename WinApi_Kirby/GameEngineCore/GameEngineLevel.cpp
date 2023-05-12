@@ -58,7 +58,7 @@ void GameEngineLevel::ActorUpdate(float _Delta)
 				continue;
 			}
 
-			_ActorPtr->AddLiveTiem(_Delta);
+			_ActorPtr->AddLiveTime(_Delta);
 			_ActorPtr->Update(_Delta);
 		}
 	}

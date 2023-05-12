@@ -3,6 +3,7 @@
 // 설명 : 모든 기본적인 행동을 제안하는 클래스
 class GameEngineObject
 {
+	friend class GameEngineLevel;
 public:
 	// constrcuter destructer
 	GameEngineObject();

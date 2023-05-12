@@ -13,7 +13,6 @@ private:
 		bool Up = false;
 		bool Free = true;
 
-		// 의미가 없다고 봐요.
 		float PressTime = 0.0f;
 
 		int Key = -1;
