@@ -35,15 +35,15 @@ void KirbyNormal::Start()
 
 		GameEngineWindowTexture* Text = ResourcesManager::GetInst().TextureLoad(FilePath.PlusFliePath("Kirby_Idle_1.Bmp"));
 		Scale = Text->GetScale();
+
+		GameEngineRenderer* Ptr = CreateRenderer("Kirby_Idle_1.Bmp", RenderOrder::Play);
+		Ptr->SetRenderScale(Scale * 5.0f);
+		Ptr->SetTexture("Kirby_Idle_1.Bmp");
+
+		float4 WinScale = GameEngineWindow::MainWindow.GetScale();
+
+		SetPos(WinScale.Half());
 	}
-
-	GameEngineRenderer* Ptr = CreateRenderer("Kirby_Idle_1.Bmp", RenderOrder::Play);
-	Ptr->SetRenderScale(Scale * 5.0f);
-	Ptr->SetTexture("Kirby_Idle_1.Bmp");
-
-	float4 WinScale = GameEngineWindow::MainWindow.GetScale();
-
-	SetPos(WinScale.Half());
 }
 
 void KirbyNormal::Update(float _Delta)
