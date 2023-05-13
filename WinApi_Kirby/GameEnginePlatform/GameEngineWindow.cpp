@@ -5,6 +5,7 @@
 HINSTANCE GameEngineWindow::Instance = nullptr;
 GameEngineWindow GameEngineWindow::MainWindow;
 bool GameEngineWindow::IsWindowUpdate = true;
+bool GameEngineWindow::IsFocusValue = false;
 
 GameEngineWindow::GameEngineWindow()
 {
@@ -89,6 +90,16 @@ LRESULT CALLBACK GameEngineWindow::WndProc(HWND hWnd, UINT message, WPARAM wPara
 {
     switch (message)
     {
+    case WM_SETFOCUS:
+    {
+        IsFocusValue = true;
+        return DefWindowProc(hWnd, message, wParam, lParam);
+    }
+    case WM_KILLFOCUS:
+    {
+        IsFocusValue = false;
+        return DefWindowProc(hWnd, message, wParam, lParam);
+    }
     case WM_PAINT:
     {
         PAINTSTRUCT ps;

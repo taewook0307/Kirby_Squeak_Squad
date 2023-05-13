@@ -52,10 +52,16 @@ public:
 
 	void ClearBackBuffer();
 	void DoubleBuffering();
+
+	static bool IsFocus()
+	{
+		return IsFocusValue;
+	}
 protected:
 
 private:
 	static bool IsWindowUpdate;
+	static bool IsFocusValue;
 	static HINSTANCE Instance;
 	std::string Title = "";
 	HWND hWnd = nullptr;

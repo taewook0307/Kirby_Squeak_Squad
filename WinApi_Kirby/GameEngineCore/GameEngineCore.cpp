@@ -4,6 +4,7 @@
 #include <GameEngineBase/GameEngineDebug.h>
 #include <GameEngineBase/GameEngineTime.h>
 #include <GameEnginePlatform/GameEngineWindow.h>
+#include <GameEnginePlatform/GameEngineInput.h>
 
 std::string GameEngineCore::WindowTitle = "";
 std::map<std::string, class GameEngineLevel*> GameEngineCore::AllLevel;
@@ -22,6 +23,7 @@ GameEngineCore::~GameEngineCore()
 void GameEngineCore::CoreStart(HINSTANCE _Inst)
 {
 	GameEngineWindow::MainWindow.Open(WindowTitle, _Inst);
+	GameEngineInput::InputInit();
 
 	Process->Start();
 }
@@ -30,22 +32,36 @@ void GameEngineCore::CoreUpdate()
 {
 	if (nullptr != NextLevel)
 	{
-		CurLevel = NextLevel;
+		if (nullptr != CurLevel)
+		{
+			CurLevel->LevelEnd(NextLevel);
+		}
+
+		NextLevel->LevelStart(CurLevel);
+		CurLevel = NextLevel;	
 		NextLevel = nullptr;
 		GameEngineTime::MainTimer.Reset();
 	}
 
 	GameEngineTime::MainTimer.Update();
 	float Delta = GameEngineTime::MainTimer.GetDeltaTime();
-	// 한 프레임이 도는 동안에는 기본적인 세팅의 변화가 없게하기 위한 설계의도
-	// 한 프레임 동안 CurLevel의 값을 바꾸지 않도록 하기 위한 구조
+
+	if (true == GameEngineWindow::IsFocus())
+	{
+		GameEngineInput::Update(Delta);
+	}
+	else
+	{
+		GameEngineInput::Reset();
+	}
+
 	CurLevel->Update(Delta);
 	CurLevel->ActorUpdate(Delta);
 	GameEngineWindow::MainWindow.ClearBackBuffer();
 	CurLevel->ActorRender();
 	CurLevel->Render();
 	GameEngineWindow::MainWindow.DoubleBuffering();
-	CurLevel->Release();
+	CurLevel->ActorRelease();
 }
 
 void GameEngineCore::CoreEnd()
