@@ -51,10 +51,6 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="KirbyGameEnum.h" />
-    <ClInclude Include="KirbyGameMap.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
     <ClInclude Include="KirbyNormal.h">
       <SubType>
       </SubType>
@@ -94,10 +90,6 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="KirbyCore.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="KirbyGameMap.cpp">
       <SubType>
       </SubType>
     </ClCompile>

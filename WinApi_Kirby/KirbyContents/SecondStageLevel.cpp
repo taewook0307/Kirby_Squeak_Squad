@@ -1,5 +1,5 @@
 ﻿#include "SecondStageLevel.h"
-#include "KirbyNormal.h"
+#include "BackGround.h"
 #include "KirbyGameEnum.h"
 
 #include <GameEnginePlatform/GameEngineInput.h>
@@ -15,7 +15,7 @@ SecondStageLevel::~SecondStageLevel()
 
 void SecondStageLevel::Start()
 {
-	
+	CreateActor<BackGround>(RenderOrder::BackGround);
 }
 
 void SecondStageLevel::Update(float _Delta)

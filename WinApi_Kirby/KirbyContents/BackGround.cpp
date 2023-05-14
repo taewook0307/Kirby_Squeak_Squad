@@ -15,27 +15,12 @@ BackGround::~BackGround()
 {
 }
 
-void BackGround::Start()
-{
-	
-}
-
-
 void BackGround::Update(float _Delta)
 {
 
 }
 
-void BackGround::Render()
-{
-	
-}
-void BackGround::Release()
-{
-
-}
-
-void BackGround::Init(const std::string& _FileName)
+void BackGround::Init(const std::string& _LevelName, const std::string& _FileName)
 {
 	FileName = _FileName;
 

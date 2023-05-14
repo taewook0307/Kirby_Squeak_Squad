@@ -18,9 +18,6 @@
     </ClInclude>
     <ClInclude Include="KirbyCore.h" />
     <ClInclude Include="KirbyGameEnum.h" />
-    <ClInclude Include="KirbyGameMap.h">
-      <Filter>Map</Filter>
-    </ClInclude>
     <ClInclude Include="KirbySword.h">
       <Filter>KirbyForm</Filter>
     </ClInclude>
@@ -51,9 +48,6 @@
       <Filter>Level</Filter>
     </ClCompile>
     <ClCompile Include="KirbyCore.cpp" />
-    <ClCompile Include="KirbyGameMap.cpp">
-      <Filter>Map</Filter>
-    </ClCompile>
     <ClCompile Include="KirbySword.cpp">
       <Filter>KirbyForm</Filter>
     </ClCompile>
@@ -76,9 +70,6 @@
     </Filter>
     <Filter Include="KirbyForm">
       <UniqueIdentifier>{606bd203-8d06-42b2-a48e-4d03b3cebd8a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Map">
-      <UniqueIdentifier>{3767a70c-d7f0-4932-8def-4b0c95b65e7b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
