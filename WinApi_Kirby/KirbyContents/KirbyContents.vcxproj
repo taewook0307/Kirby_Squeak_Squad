@@ -59,11 +59,19 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="Map.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="Monster.h">
       <SubType>
       </SubType>
     </ClInclude>
     <ClInclude Include="SecondStageLevel.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="ThirdStageLevel.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -101,11 +109,19 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="Map.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="Monster.cpp">
       <SubType>
       </SubType>
     </ClCompile>
     <ClCompile Include="SecondStageLevel.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="ThirdStageLevel.cpp">
       <SubType>
       </SubType>
     </ClCompile>

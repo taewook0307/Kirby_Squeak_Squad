@@ -20,7 +20,7 @@ void BackGround::Update(float _Delta)
 
 }
 
-void BackGround::Init(const std::string& _LevelName, const std::string& _FileName)
+void BackGround::Init(const std::string& _FileName)
 {
 	FileName = _FileName;
 
@@ -31,7 +31,7 @@ void BackGround::Init(const std::string& _LevelName, const std::string& _FileNam
 		FilePath.GetCurrentPath();
 
 		FilePath.MoveParentToExistsChild("Resources");
-		FilePath.MoveChild("Resources\\Stage\\FirstStage\\" + _FileName);
+		FilePath.MoveChild("Resources\\BackGround\\" + _FileName);
 
 		GameEngineWindowTexture* Text = ResourcesManager::GetInst().TextureLoad(FilePath.GetStringPath());
 

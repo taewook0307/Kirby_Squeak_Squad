@@ -1,5 +1,6 @@
 ﻿#include "SecondStageLevel.h"
 #include "BackGround.h"
+#include "Map.h"
 #include "KirbyGameEnum.h"
 
 #include <GameEnginePlatform/GameEngineInput.h>
@@ -15,13 +16,16 @@ SecondStageLevel::~SecondStageLevel()
 
 void SecondStageLevel::Start()
 {
-	CreateActor<BackGround>(RenderOrder::BackGround);
+	BackGround* Back = CreateActor<BackGround>(RenderOrder::BackGround);
+	Back->Init("SecondStageLevel.Bmp");
+	Map* FirstStageMap = CreateActor<Map>(RenderOrder::Map);
+	FirstStageMap->Init("SecondStageMap_1.bmp");
 }
 
 void SecondStageLevel::Update(float _Delta)
 {
-	if (true == GameEngineInput::IsDown('3'))
+	if (true == GameEngineInput::IsDown('P'))
 	{
-		GameEngineCore::ChangeLevel("BossStageLevel");
+		GameEngineCore::ChangeLevel("ThirdStageLevel");
 	}
 }

@@ -16,12 +16,13 @@ TitleLevel::~TitleLevel()
 
 void TitleLevel::Start()
 {
-	
+	BackGround* TitleBack = CreateActor<BackGround>(RenderOrder::BackGround);
+	TitleBack->Init("TitleLevel.bmp");
 }
 
 void TitleLevel::Update(float _Delta)
 {
-	if (true == GameEngineInput::IsDown('1'))
+	if (true == GameEngineInput::IsDown('P'))
 	{
 		GameEngineCore::ChangeLevel("FirstStageLevel");
 	}

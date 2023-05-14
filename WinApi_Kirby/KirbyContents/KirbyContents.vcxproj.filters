@@ -30,6 +30,12 @@
     <ClInclude Include="KirbyNormal.h">
       <Filter>Global</Filter>
     </ClInclude>
+    <ClInclude Include="Map.h">
+      <Filter>Global</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdStageLevel.h">
+      <Filter>Level</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TitleLevel.cpp">
@@ -59,6 +65,12 @@
     </ClCompile>
     <ClCompile Include="KirbyNormal.cpp">
       <Filter>Global</Filter>
+    </ClCompile>
+    <ClCompile Include="Map.cpp">
+      <Filter>Global</Filter>
+    </ClCompile>
+    <ClCompile Include="ThirdStageLevel.cpp">
+      <Filter>Level</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

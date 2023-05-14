@@ -42,7 +42,7 @@ void KirbyNormal::Start()
 
 		float4 WinScale = GameEngineWindow::MainWindow.GetScale();
 
-		SetPos(WinScale.Half());
+		SetPos({ WinScale.Half().Half().X, WinScale.Half().Half().Y });
 	}
 }
 
@@ -73,6 +73,7 @@ void KirbyNormal::Update(float _Delta)
 	}
 
 	AddPos(MovePos);
+
 	GetLevel()->GetMainCamera()->AddPos(MovePos);
 }
 

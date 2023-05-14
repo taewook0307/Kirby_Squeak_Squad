@@ -15,12 +15,13 @@ BossStageLevel::~BossStageLevel()
 
 void BossStageLevel::Start()
 {
-	
+	BackGround* Back = CreateActor<BackGround>(RenderOrder::BackGround);
+	Back->Init("BossStage_1.bmp");
 }
 
 void BossStageLevel::Update(float _Delta)
 {
-	if (true == GameEngineInput::IsDown('4'))
+	if (true == GameEngineInput::IsDown('P'))
 	{
 		GameEngineCore::ChangeLevel("EndingLevel");
 	}
