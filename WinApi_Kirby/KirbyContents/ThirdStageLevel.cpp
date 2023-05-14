@@ -1,7 +1,6 @@
 ﻿#include "ThirdStageLevel.h"
 #include "BackGround.h"
 #include "Map.h"
-#include "KirbyNormal.h"
 #include "KirbyGameEnum.h"
 
 #include <GameEnginePlatform/GameEngineInput.h>

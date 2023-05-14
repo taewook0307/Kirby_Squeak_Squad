@@ -1,5 +1,4 @@
 ﻿#include "TitleLevel.h"
-#include "KirbyNormal.h"
 #include "BackGround.h"
 #include "KirbyGameEnum.h"
 

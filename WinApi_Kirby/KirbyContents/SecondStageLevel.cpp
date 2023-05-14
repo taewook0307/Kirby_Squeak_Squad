@@ -18,6 +18,7 @@ void SecondStageLevel::Start()
 {
 	BackGround* Back = CreateActor<BackGround>(RenderOrder::BackGround);
 	Back->Init("SecondStageLevel.Bmp");
+
 	Map* FirstStageMap = CreateActor<Map>(RenderOrder::Map);
 	FirstStageMap->Init("SecondStageMap_1.bmp");
 }

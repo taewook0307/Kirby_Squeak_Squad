@@ -37,7 +37,7 @@ void BackGround::Init(const std::string& _FileName)
 
 		float4 Scale = Text->GetScale();
 		
-		Scale *= 5.0f;
+		Scale = GameEngineWindow::MainWindow.GetScale();
 
 		GameEngineRenderer* Render = CreateRenderer(_FileName, RenderOrder::BackGround);
 		Render->SetRenderPos(Scale.Half());
