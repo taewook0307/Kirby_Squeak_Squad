@@ -7,6 +7,7 @@
 #include <GameEngineBase/GameEnginePath.h>
 #include <GameEnginePlatform/GameEngineWindow.h>
 #include <GameEnginePlatform/GameEngineWindowTexture.h>
+#include <GameEnginePlatform/GameEngineInput.h>
 #include <GameEngineCore/ResourcesManager.h>
 #include <GameEngineCore/GameEngineLevel.h>
 #include <GameEngineCore/GameEngineCamera.h>
@@ -26,24 +27,24 @@ void Kirby::Update(float _Delta)
 
 	float4 MovePos = float4::ZERO;
 
-	if (0 != GetAsyncKeyState('A'))
+	if (0 != GameEngineInput::IsPress('A'))
 	{
 		MovePos = { -Speed * _Delta, 0.0f };
 		GetLevel()->GetMainCamera()->AddPos(MovePos);
 	}
 
-	if (0 != GetAsyncKeyState('D'))
+	if (0 != GameEngineInput::IsPress('D'))
 	{
 		MovePos = { Speed * _Delta, 0.0f };
 		GetLevel()->GetMainCamera()->AddPos(MovePos);
 	}
 
-	if (0 != GetAsyncKeyState('W'))
+	if (0 != GameEngineInput::IsPress('W'))
 	{
 		MovePos = { 0.0f, -Speed * _Delta };
 	}
 
-	if (0 != GetAsyncKeyState('S'))
+	if (0 != GameEngineInput::IsPress('S'))
 	{
 		MovePos = { 0.0f, Speed * _Delta };
 	}
