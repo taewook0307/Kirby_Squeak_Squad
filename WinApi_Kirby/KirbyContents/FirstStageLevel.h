@@ -22,5 +22,7 @@ private:
 	void Start() override;
 	void Update(float _Delta) override;
 
-	Kirby* Player = nullptr;
+	void LevelStart(GameEngineLevel* _PrevLevel) override;
+
+	Kirby* LevelPlayer = nullptr;
 };

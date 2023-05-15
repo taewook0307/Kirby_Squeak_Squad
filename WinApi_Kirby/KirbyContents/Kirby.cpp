@@ -29,11 +29,13 @@ void Kirby::Update(float _Delta)
 	if (0 != GetAsyncKeyState('A'))
 	{
 		MovePos = { -Speed * _Delta, 0.0f };
+		GetLevel()->GetMainCamera()->AddPos(MovePos);
 	}
 
 	if (0 != GetAsyncKeyState('D'))
 	{
 		MovePos = { Speed * _Delta, 0.0f };
+		GetLevel()->GetMainCamera()->AddPos(MovePos);
 	}
 
 	if (0 != GetAsyncKeyState('W'))
@@ -47,8 +49,6 @@ void Kirby::Update(float _Delta)
 	}
 
 	AddPos(MovePos);
-
-	GetLevel()->GetMainCamera()->AddPos(MovePos);
 }
 
 void Kirby::FormInit(const std::string& _ImagePath, const std::string& _ImageName)
