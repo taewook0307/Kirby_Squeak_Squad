@@ -2,6 +2,7 @@
 
 #include <GameEngineCore/GameEngineLevel.h>
 
+class Kirby;
 class FirstStageLevel : public GameEngineLevel
 {
 public:
@@ -20,4 +21,6 @@ protected:
 private:
 	void Start() override;
 	void Update(float _Delta) override;
+
+	Kirby* Player = nullptr;
 };
