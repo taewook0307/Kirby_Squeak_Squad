@@ -66,6 +66,9 @@
     <ClCompile Include="Kirby.cpp">
       <Filter>Global</Filter>
     </ClCompile>
+    <ClCompile Include="Kirby_State.cpp">
+      <Filter>Global</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Level">

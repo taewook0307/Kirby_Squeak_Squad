@@ -3,6 +3,16 @@
 #include <string>
 #include <GameEngineCore/GameEngineActor.h>
 
+enum class PlayerState
+{
+	Idle,
+	Walk,
+	Run,
+	Stop,
+	Jump,
+	Max
+};
+
 class Kirby : public GameEngineActor
 {
 public:
@@ -16,14 +26,32 @@ public:
 	Kirby& operator=(const Kirby& _Other) = delete;
 	Kirby& operator=(Kirby&& _Other) noexcept = delete;
 
-	void FormInit(const std::string& _ImagePath, const std::string& _ImageName);
-
 	GameEngineRenderer* MainRenderer = nullptr;
 protected:
+	void StateUpdate(float _Delta);
+
+	void IdleStart();
+	void WalkStart();
+	void RunStart();
+	void StopStart();
+	void JumpStart();
+
+	void IdleUpdate(float _Delta);
+	void WalkUpdate(float _Delta);
+	void RunUpdate(float _Delta);
+	void StopUpdate(float _Delta);
+	void JumpUpdate(float _Delta);
+
+	void ChangeState(PlayerState _State);
+
+	PlayerState State = PlayerState::Max;
 
 private:
+	void Start() override;
 	void Update(float _Delta) override;
 
 	std::string ImagePath;
 	std::string ImageName;
+
+	float Speed = 200.0f;
 };

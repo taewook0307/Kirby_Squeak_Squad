@@ -55,7 +55,10 @@ void GameEngineRenderer::SetTexture(const std::string& _Name)
 
 void GameEngineRenderer::SetRenderScaleToTexture()
 {
-	RenderScale = Texture->GetScale();
+	if (nullptr != Texture)
+	{
+		RenderScale = Texture->GetScale();
+	}
 	ScaleCheck = false;
 }
 
@@ -86,6 +89,11 @@ void GameEngineRenderer::Render(GameEngineCamera* _Camera, float _Delta)
 		Texture = SpriteInfo.BaseTexture;
 		SetCopyPos(SpriteInfo.RenderPos);
 		SetCopyScale(SpriteInfo.RenderScale);
+
+		if (false == ScaleCheck)
+		{
+			SetRenderScale(SpriteInfo.RenderScale * ScaleRatio);
+		}
 	}
 
 	if (nullptr == Texture)

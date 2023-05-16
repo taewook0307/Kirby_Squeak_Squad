@@ -28,7 +28,7 @@ void BackGround::Init(const std::string& _FileName)
 	{
 		GameEnginePath FilePath;
 
-		FilePath.GetCurrentPath();
+		FilePath.SetCurrentPath();
 
 		FilePath.MoveParentToExistsChild("Resources");
 		FilePath.MoveChild("Resources\\BackGround\\" + _FileName);

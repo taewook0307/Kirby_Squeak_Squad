@@ -26,7 +26,6 @@ void FirstStageLevel::Start()
 	FirstStageMap->Init("FirstStageMap_1.bmp");
 
 	LevelPlayer = CreateActor<Kirby>(RenderOrder::Play);
-	LevelPlayer->FormInit("NormalKirby", "Kirby_Idle_1.bmp");
 }
 
 void FirstStageLevel::Update(float _Delta)

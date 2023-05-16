@@ -127,7 +127,18 @@ GameEngineSprite* ResourcesManager::CreateSpriteFolder(
 	const std::string& _Path
 )
 {
-	GameEngineDirectory Directory = _Path;
+	std::string UpperName = GameEngineString::ToUpperReturn(_SpriteName);
 
-	return nullptr;
+	if (nullptr != FindSprite(UpperName))
+	{
+		MsgBoxAssert("이미 로드한 스프라이트입니다." + _SpriteName);
+	}
+
+	GameEngineSprite* NewSprite = new GameEngineSprite();
+
+	NewSprite->CreateSpriteFolder(_Path);
+
+	AllSprite.insert(std::make_pair(UpperName, NewSprite));
+
+	return NewSprite;
 }

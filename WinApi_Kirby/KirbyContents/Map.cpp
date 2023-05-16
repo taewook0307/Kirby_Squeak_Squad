@@ -26,7 +26,7 @@ void Map::Init(const std::string& _FileName)
 	{
 		GameEnginePath FilePath;
 
-		FilePath.GetCurrentPath();
+		FilePath.SetCurrentPath();
 
 		FilePath.MoveParentToExistsChild("Resources");
 		FilePath.MoveChild("Resources\\Map\\" + _FileName);

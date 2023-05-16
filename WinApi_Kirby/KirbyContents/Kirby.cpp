@@ -21,79 +21,83 @@ Kirby::~Kirby()
 {
 }
 
-void Kirby::Update(float _Delta)
+void Kirby::Start()
 {
-	float Speed = 200.0f;
-
-	float4 MovePos = float4::ZERO;
-
-	if (0 != GameEngineInput::IsPress('A'))
 	{
-		MovePos = { -Speed * _Delta, 0.0f };
-		GetLevel()->GetMainCamera()->AddPos(MovePos);
+		GameEnginePath FolderPath;
+		FolderPath.SetCurrentPath();
+		FolderPath.MoveParentToExistsChild("Resources");
+
+		FolderPath.MoveChild("Resources\\Kirby\\");
+
+		ResourcesManager::GetInst().CreateSpriteFolder("NormalKirby", FolderPath.PlusFliePath("NormalKirby"));
 	}
 
-	if (0 != GameEngineInput::IsPress('D'))
 	{
-		MovePos = { Speed * _Delta, 0.0f };
-		GetLevel()->GetMainCamera()->AddPos(MovePos);
+		MainRenderer = CreateRenderer(RenderOrder::Play);
+		
+		MainRenderer->CreateAnimation("Right_Idle", "NormalKirby", 0, 1, 0.5f, true);
+		MainRenderer->CreateAnimation("Right_Walk", "NormalKirby", 21, 30, 0.1f, true);
+		MainRenderer->CreateAnimation("Right_Run", "NormalKirby", 12, 19, 0.1f, true);
+		MainRenderer->CreateAnimation("Right_Stop", "NormalKirby", 20, 20, 0.1f, true);
+		MainRenderer->CreateAnimation("Right_Jump", "NormalKirby", 2, 11, 0.1f, true);
+
+		MainRenderer->ChangeAnimation("Right_Idle");
+		MainRenderer->SetRenderScaleToTexture();
+		MainRenderer->SetScaleRatio(5.0f);
 	}
 
-	if (0 != GameEngineInput::IsPress('W'))
-	{
-		MovePos = { 0.0f, -Speed * _Delta };
-	}
-
-	if (0 != GameEngineInput::IsPress('S'))
-	{
-		MovePos = { 0.0f, Speed * _Delta };
-	}
-
-	if (MovePos.X != 0.0f || MovePos.Y != 0.0f)
-	{
-		MainRenderer->ChangeAnimation("Run");
-	}
-	else
-	{
-		MainRenderer->ChangeAnimation("Idle");
-	}
-
-	AddPos(MovePos);
+	ChangeState(PlayerState::Idle);
 }
 
-void Kirby::FormInit(const std::string& _ImagePath, const std::string& _ImageName)
+void Kirby::Update(float _Delta)
 {
-	float4 Scale = float4::ZERO;
+	StateUpdate(_Delta);
+}
 
-	if (false == ResourcesManager::GetInst().IsLoadTexture(_ImageName))
+void Kirby::StateUpdate(float _Delta)
+{
+	switch (State)
 	{
-		GameEnginePath FilePath;
-
-		FilePath.GetCurrentPath();
-
-		FilePath.MoveParentToExistsChild("Resources");
-
-		GameEnginePath FolderPath = FilePath;
-
-		FilePath.MoveChild("Resources\\Kirby\\" + _ImagePath);
-
-		//GameEngineWindowTexture* Text = ResourcesManager::GetInst().TextureLoad(FilePath.PlusFliePath(_ImageName));
-		//Scale = Text->GetScale();
-		FolderPath.MoveChild("Resources\\Kirby\\");
-		ResourcesManager::GetInst().CreateSpriteSheet(FolderPath.PlusFliePath("Left_Player.bmp"), 5, 17);
-
-		//MainRenderer = CreateRenderer(_ImageName, RenderOrder::Play);
-		//MainRenderer->SetRenderScale(Scale * 5.0f);
-		//MainRenderer->SetTexture(_ImageName);
-		MainRenderer = CreateRenderer(RenderOrder::Play);
-		MainRenderer->SetRenderScale({ 200, 200 });
-
-		MainRenderer->CreateAnimation("Idle", "Left_Player.bmp", 0, 2, 0.1f, true);
-		MainRenderer->CreateAnimation("Run", "Left_Player.bmp", 3, 6, 0.1f, true);
-		MainRenderer->ChangeAnimation("Idle");
-
-		float4 WinScale = GameEngineWindow::MainWindow.GetScale();
-
-		SetPos({ WinScale.Half().Half().X, WinScale.Half().Half().Y });
+	case PlayerState::Idle:
+		return IdleUpdate(_Delta);
+	case PlayerState::Walk:
+		return WalkUpdate(_Delta);
+	case PlayerState::Run:
+		return RunUpdate(_Delta);
+	case PlayerState::Stop:
+		return StopUpdate(_Delta);
+	case PlayerState::Jump:
+		return JumpUpdate(_Delta);
+	default:
+		break;
 	}
+}
+
+void Kirby::ChangeState(PlayerState _State)
+{
+	if (_State != State)
+	{
+		switch (_State)
+		{
+		case PlayerState::Idle:
+			IdleStart();
+			break;
+		case PlayerState::Walk:
+			WalkStart();
+			break;
+		case PlayerState::Run:
+			RunStart();
+			break;
+		case PlayerState::Stop:
+			StopStart();
+			break;
+		case PlayerState::Jump:
+			JumpStart();
+			break;
+		default:
+			break;
+		}
+	}
+	State = _State;
 }

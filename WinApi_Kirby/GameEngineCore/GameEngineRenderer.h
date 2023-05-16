@@ -49,6 +49,11 @@ public:
 		CopyScale = _Value;
 	}
 
+	void SetScaleRatio(const float& _Value)
+	{
+		ScaleRatio = _Value;
+	}
+
 	void SetRenderScaleToTexture();
 
 	bool IsDeath() override;
@@ -65,6 +70,8 @@ private:
 
 	float4 CopyPos = float4::ZERO;
 	float4 CopyScale = float4::ZERO;
+
+	float ScaleRatio = 1.0f;
 
 	bool ScaleCheck = false;
 

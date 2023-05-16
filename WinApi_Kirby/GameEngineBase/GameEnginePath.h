@@ -21,7 +21,7 @@ public:
 
 	std::string GetFileName();
 
-	void GetCurrentPath();
+	void SetCurrentPath();
 
 	void MoveParent();
 
@@ -38,7 +38,7 @@ public:
 
 	bool IsDirectory();
 protected:
+	std::filesystem::path Path;
 
 private:
-	std::filesystem::path Path;
 };
