@@ -49,6 +49,15 @@ void Kirby::Update(float _Delta)
 		MovePos = { 0.0f, Speed * _Delta };
 	}
 
+	if (MovePos.X != 0.0f || MovePos.Y != 0.0f)
+	{
+		MainRenderer->ChangeAnimation("Run");
+	}
+	else
+	{
+		MainRenderer->ChangeAnimation("Idle");
+	}
+
 	AddPos(MovePos);
 }
 
@@ -63,14 +72,25 @@ void Kirby::FormInit(const std::string& _ImagePath, const std::string& _ImageNam
 		FilePath.GetCurrentPath();
 
 		FilePath.MoveParentToExistsChild("Resources");
+
+		GameEnginePath FolderPath = FilePath;
+
 		FilePath.MoveChild("Resources\\Kirby\\" + _ImagePath);
 
-		GameEngineWindowTexture* Text = ResourcesManager::GetInst().TextureLoad(FilePath.PlusFliePath(_ImageName));
-		Scale = Text->GetScale();
+		//GameEngineWindowTexture* Text = ResourcesManager::GetInst().TextureLoad(FilePath.PlusFliePath(_ImageName));
+		//Scale = Text->GetScale();
+		FolderPath.MoveChild("Resources\\Kirby\\");
+		ResourcesManager::GetInst().CreateSpriteSheet(FolderPath.PlusFliePath("Left_Player.bmp"), 5, 17);
 
-		GameEngineRenderer* Ptr = CreateRenderer(_ImageName, RenderOrder::Play);
-		Ptr->SetRenderScale(Scale * 5.0f);
-		Ptr->SetTexture(_ImageName);
+		//MainRenderer = CreateRenderer(_ImageName, RenderOrder::Play);
+		//MainRenderer->SetRenderScale(Scale * 5.0f);
+		//MainRenderer->SetTexture(_ImageName);
+		MainRenderer = CreateRenderer(RenderOrder::Play);
+		MainRenderer->SetRenderScale({ 200, 200 });
+
+		MainRenderer->CreateAnimation("Idle", "Left_Player.bmp", 0, 2, 0.1f, true);
+		MainRenderer->CreateAnimation("Run", "Left_Player.bmp", 3, 6, 0.1f, true);
+		MainRenderer->ChangeAnimation("Idle");
 
 		float4 WinScale = GameEngineWindow::MainWindow.GetScale();
 

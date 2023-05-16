@@ -21,7 +21,7 @@
       <Filter>Rendering</Filter>
     </ClInclude>
     <ClInclude Include="GameEngineSprite.h">
-      <Filter>Rendering</Filter>
+      <Filter>Resources</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -45,7 +45,7 @@
       <Filter>Rendering</Filter>
     </ClCompile>
     <ClCompile Include="GameEngineSprite.cpp">
-      <Filter>Rendering</Filter>
+      <Filter>Resources</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

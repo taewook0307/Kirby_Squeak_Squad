@@ -9,6 +9,7 @@
 내부에 static이든 참조형이든 자기자신의 객체 하나를 자신이 들고 있는 디자인 패턴
 */
 
+class GameEngineSprite;
 class GameEngineWindowTexture;
 class ResourcesManager
 {
@@ -64,6 +65,26 @@ public:
 
 	GameEngineWindowTexture* FindTexture(const std::string& _Name);
 
+	GameEngineSprite* FindSprite(const std::string& _Name);
+
+	GameEngineSprite* CreateSpriteFolder(const std::string& _Path)
+	{
+		GameEnginePath FolderPath = _Path;
+
+		return CreateSpriteFolder(FolderPath.GetFileName(), _Path);
+	}
+
+	GameEngineSprite* CreateSpriteFolder(const std::string& _SpriteName, const std::string& _Path);
+
+	GameEngineSprite* CreateSpriteSheet(const std::string& _TexturePath, int _XCount, int _YCount)
+	{
+		GameEnginePath Path = _TexturePath;
+
+		return CreateSpriteSheet(Path.GetFileName(), _TexturePath, _XCount, _YCount);
+	}
+
+	GameEngineSprite* CreateSpriteSheet(const std::string& _SpriteName, const std::string& _TexturePath, int _XCount, int _YCount);
+
 	bool IsLoadTexture(const std::string& _Name);
 
 protected:
@@ -72,6 +93,8 @@ private:
 	static ResourcesManager Inst;
 
 	std::map<std::string, GameEngineWindowTexture*> AllTexture;
+
+	std::map<std::string, GameEngineSprite*> AllSprite;
 
 	/*
 	static ResourcesManager* Inst;

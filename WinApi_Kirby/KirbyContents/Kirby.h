@@ -17,6 +17,8 @@ public:
 	Kirby& operator=(Kirby&& _Other) noexcept = delete;
 
 	void FormInit(const std::string& _ImagePath, const std::string& _ImageName);
+
+	GameEngineRenderer* MainRenderer = nullptr;
 protected:
 
 private:
