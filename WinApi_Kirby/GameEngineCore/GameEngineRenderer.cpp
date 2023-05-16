@@ -2,8 +2,10 @@
 #include "ResourcesManager.h"
 #include "GameEngineActor.h"
 #include "GameEngineCamera.h"
+#include "GameEngineSprite.h"
 
 #include <GameEngineBase/GameEngineDebug.h>
+#include <GameEngineBase/GameEngineString.h>
 #include <GameEnginePlatform/GameEngineWindow.h>
 #include <GameEnginePlatform/GameEngineWindowTexture.h>
 

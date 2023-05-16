@@ -20,6 +20,9 @@
     <ClInclude Include="GameEngineCamera.h">
       <Filter>Rendering</Filter>
     </ClInclude>
+    <ClInclude Include="GameEngineSprite.h">
+      <Filter>Rendering</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameEngineCore.cpp" />
@@ -39,6 +42,9 @@
       <Filter>Rendering</Filter>
     </ClCompile>
     <ClCompile Include="GameEngineCamera.cpp">
+      <Filter>Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngineSprite.cpp">
       <Filter>Rendering</Filter>
     </ClCompile>
   </ItemGroup>

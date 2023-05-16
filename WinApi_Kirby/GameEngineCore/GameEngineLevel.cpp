@@ -64,9 +64,9 @@ void GameEngineLevel::ActorUpdate(float _Delta)
 	}
 }
 
-void GameEngineLevel::ActorRender()
+void GameEngineLevel::ActorRender(float _Delta)
 {
-	MainCamera->Render();
+	MainCamera->Render(_Delta);
 
 	for (const std::pair<int, std::list<GameEngineActor*>>& _Pair : AllActors)
 	{
