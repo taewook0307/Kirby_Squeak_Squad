@@ -33,7 +33,7 @@
     <ClInclude Include="Kirby.h">
       <Filter>Global</Filter>
     </ClInclude>
-    <ClInclude Include="StateEnum.h">
+    <ClInclude Include="ActorEnum.h">
       <Filter>Global</Filter>
     </ClInclude>
   </ItemGroup>

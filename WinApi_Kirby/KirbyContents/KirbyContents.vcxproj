@@ -67,7 +67,7 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="StateEnum.h" />
+    <ClInclude Include="ActorEnum.h" />
     <ClInclude Include="ThirdStageLevel.h">
       <SubType>
       </SubType>

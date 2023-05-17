@@ -1,5 +1,5 @@
 #pragma once
-#include "StateEnum.h"
+#include "ActorEnum.h"
 
 #include <string>
 #include <GameEngineCore/GameEngineActor.h>
@@ -33,9 +33,12 @@ protected:
 	void StopUpdate(float _Delta);
 	void JumpUpdate(float _Delta);
 
-	void ChangeState(PlayerState _State);
+	void ChangeState(ActorState _State);
 
-	PlayerState State = PlayerState::Max;
+	ActorState State = ActorState::Max;
+	ActorDir Dir = ActorDir::Right;
+
+	void DirChange();
 
 private:
 	void Start() override;

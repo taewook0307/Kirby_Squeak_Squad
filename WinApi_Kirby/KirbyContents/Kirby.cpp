@@ -37,7 +37,7 @@ void Kirby::Start()
 		MainRenderer = CreateRenderer(RenderOrder::Play);
 		
 		MainRenderer->CreateAnimation("Right_Idle", "NormalKirby", 0, 1, 0.5f, true);
-		MainRenderer->CreateAnimation("Right_Walk", "NormalKirby", 21, 30, 0.1f, true);
+		MainRenderer->CreateAnimation("Right_Walk", "NormalKirby", 21, 30, 0.05f, true);
 		MainRenderer->CreateAnimation("Right_Run", "NormalKirby", 12, 19, 0.1f, true);
 		MainRenderer->CreateAnimation("Right_Stop", "NormalKirby", 20, 20, 0.1f, true);
 		MainRenderer->CreateAnimation("Right_Jump", "NormalKirby", 2, 11, 0.1f, true);
@@ -47,7 +47,7 @@ void Kirby::Start()
 		MainRenderer->SetScaleRatio(4.0f);
 	}
 
-	ChangeState(PlayerState::Idle);
+	ChangeState(ActorState::Idle);
 }
 
 void Kirby::Update(float _Delta)
@@ -59,40 +59,40 @@ void Kirby::StateUpdate(float _Delta)
 {
 	switch (State)
 	{
-	case PlayerState::Idle:
+	case ActorState::Idle:
 		return IdleUpdate(_Delta);
-	case PlayerState::Walk:
+	case ActorState::Walk:
 		return WalkUpdate(_Delta);
-	case PlayerState::Run:
+	case ActorState::Run:
 		return RunUpdate(_Delta);
-	case PlayerState::Stop:
+	case ActorState::Stop:
 		return StopUpdate(_Delta);
-	case PlayerState::Jump:
+	case ActorState::Jump:
 		return JumpUpdate(_Delta);
 	default:
 		break;
 	}
 }
 
-void Kirby::ChangeState(PlayerState _State)
+void Kirby::ChangeState(ActorState _State)
 {
 	if (_State != State)
 	{
 		switch (_State)
 		{
-		case PlayerState::Idle:
+		case ActorState::Idle:
 			IdleStart();
 			break;
-		case PlayerState::Walk:
+		case ActorState::Walk:
 			WalkStart();
 			break;
-		case PlayerState::Run:
+		case ActorState::Run:
 			RunStart();
 			break;
-		case PlayerState::Stop:
+		case ActorState::Stop:
 			StopStart();
 			break;
-		case PlayerState::Jump:
+		case ActorState::Jump:
 			JumpStart();
 			break;
 		default:
@@ -100,4 +100,23 @@ void Kirby::ChangeState(PlayerState _State)
 		}
 	}
 	State = _State;
+}
+
+void Kirby::DirChange()
+{
+	ActorDir CheckDir = Dir;
+
+	if (true == GameEngineInput::IsDown('A'))
+	{
+		CheckDir = ActorDir::Left;
+	}
+	if (true == GameEngineInput::IsDown('D'))
+	{
+		CheckDir = ActorDir::Right;
+	}
+
+	if (CheckDir != Dir)
+	{
+		Dir = CheckDir;
+	}
 }

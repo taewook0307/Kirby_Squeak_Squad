@@ -37,13 +37,15 @@ void Kirby::IdleUpdate(float _Delta)
 		|| true == GameEngineInput::IsDown('S')
 		|| true == GameEngineInput::IsDown('D'))
 	{
-		ChangeState(PlayerState::Walk);
+		ChangeState(ActorState::Walk);
 		return;
 	}
 }
 
 void Kirby::WalkUpdate(float _Delta)
 {
+	DirChange();
+
 	float4 MovePos = float4::ZERO;
 
 	if (true == GameEngineInput::IsPress('A'))
@@ -70,7 +72,7 @@ void Kirby::WalkUpdate(float _Delta)
 
 	if (MovePos == float4::ZERO)
 	{
-		ChangeState(PlayerState::Idle);
+		ChangeState(ActorState::Idle);
 		return;
 	}
 
