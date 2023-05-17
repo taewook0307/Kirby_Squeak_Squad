@@ -19,12 +19,12 @@ public:
 
 	GameEngineRenderer* MainRenderer = nullptr;
 
-	void MapInit(const std::string& _FolderName);
+	void MapAnimation(const std::string& _PathName);
 protected:
 
 private:
-	std::string FolderName;
-	GameEngineSprite* MainTexture = nullptr;
+	std::string PathName;
+	GameEngineSprite* MainSprite = nullptr;
 
 	void Start() override;
 };

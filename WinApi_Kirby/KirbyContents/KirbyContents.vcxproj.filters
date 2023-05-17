@@ -80,5 +80,11 @@
     <Filter Include="Global">
       <UniqueIdentifier>{ca9be298-be3d-402d-8a7c-07e3a4839929}</UniqueIdentifier>
     </Filter>
+    <Filter Include="KirbyForm">
+      <UniqueIdentifier>{4f2e2437-9c54-4a9f-b588-4c2a19a35768}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Monster">
+      <UniqueIdentifier>{6cfa2133-0f4c-4c27-b86d-213a1eb99fa8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>

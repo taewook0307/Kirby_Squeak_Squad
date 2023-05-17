@@ -2,6 +2,8 @@
 #include <string>
 #include <GameEngineCore/GameEngineActor.h>
 
+class GameEngineWindowTexture;
+class GameEngineRenderer;
 class BackGround : public GameEngineActor
 {
 public:
@@ -20,7 +22,10 @@ public:
 protected:
 
 private:
-	std::string FileName;
+	std::string FileName = "";
+	float4 Scale = float4::ZERO;
+	GameEngineWindowTexture* MainTexture = nullptr;
+	GameEngineRenderer* MainRenderer = nullptr;
 
 	void Update(float _Delta) override;
 };

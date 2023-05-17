@@ -33,14 +33,13 @@ void BackGround::Init(const std::string& _FileName)
 		FilePath.MoveParentToExistsChild("Resources");
 		FilePath.MoveChild("Resources\\BackGround\\" + _FileName);
 
-		GameEngineWindowTexture* Text = ResourcesManager::GetInst().TextureLoad(FilePath.GetStringPath());
-
-		float4 Scale = Text->GetScale();
+		MainTexture = ResourcesManager::GetInst().TextureLoad(FilePath.GetStringPath());
 		
 		Scale = GameEngineWindow::MainWindow.GetScale();
-
-		GameEngineRenderer* Render = CreateRenderer(_FileName, RenderOrder::BackGround);
-		Render->SetRenderPos(Scale.Half());
-		Render->SetRenderScale(Scale);
+	}
+	{
+		MainRenderer = CreateRenderer(_FileName, RenderOrder::BackGround);
+		MainRenderer->SetRenderPos(Scale.Half());
+		MainRenderer->SetRenderScale(Scale);
 	}
 }

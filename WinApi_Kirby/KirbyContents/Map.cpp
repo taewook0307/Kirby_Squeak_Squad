@@ -22,14 +22,9 @@ Map::~Map()
 {
 }
 
-void Map::Start()
+void Map::MapAnimation(const std::string& _PathName)
 {
-	
-}
-
-void Map::MapInit(const std::string& _FolderName)
-{
-	FolderName = _FolderName;
+	PathName = _PathName;
 
 	{
 		GameEnginePath FolderPath;
@@ -39,18 +34,18 @@ void Map::MapInit(const std::string& _FolderName)
 
 		FolderPath.MoveChild("Resources\\Map\\");
 
-		MainTexture = ResourcesManager::GetInst().CreateSpriteFolder(FolderName, FolderPath.PlusFliePath(FolderName));
+		MainSprite = ResourcesManager::GetInst().CreateSpriteFolder(PathName, FolderPath.PlusFliePath(PathName));
 	}
 
 	{
 		MainRenderer = CreateRenderer(RenderOrder::Map);
 
-		MainRenderer->CreateAnimation(FolderName + "Idle", FolderName);
+		MainRenderer->CreateAnimation(PathName + "Idle", PathName);
 
-		MainRenderer->ChangeAnimation(FolderName + "Idle");
+		MainRenderer->ChangeAnimation(PathName + "Idle");
 		MainRenderer->SetRenderScaleToTexture();
 		MainRenderer->SetScaleRatio(5.0f);
 
-		MainRenderer->SetRenderPos((MainTexture->GetSprite(0).BaseTexture->GetScale() *= 5.0f).Half());
+		MainRenderer->SetRenderPos((MainSprite->GetSprite(0).BaseTexture->GetScale() *= 5.0f).Half());
 	}
 }

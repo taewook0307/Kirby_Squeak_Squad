@@ -23,7 +23,7 @@ void FirstStageLevel::Start()
 	Back->Init("FirstStageLevel.Bmp");
 
 	Map* FirstStage = CreateActor<Map>(RenderOrder::Map);
-	FirstStage->MapInit("FirstStage");
+	FirstStage->MapAnimation("FirstStage");
 
 	LevelPlayer = CreateActor<Kirby>(RenderOrder::Play);
 }

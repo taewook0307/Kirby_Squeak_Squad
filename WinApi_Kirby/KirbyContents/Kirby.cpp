@@ -44,7 +44,7 @@ void Kirby::Start()
 
 		MainRenderer->ChangeAnimation("Right_Idle");
 		MainRenderer->SetRenderScaleToTexture();
-		MainRenderer->SetScaleRatio(5.0f);
+		MainRenderer->SetScaleRatio(4.0f);
 	}
 
 	ChangeState(PlayerState::Idle);

@@ -20,7 +20,7 @@ void ThirdStageLevel::Start()
 	Back->Init("ThirdStageLevel.Bmp");
 
 	Map* ThirdStage = CreateActor<Map>(RenderOrder::Map);
-	ThirdStage->MapInit("ThirdStage");
+	ThirdStage->MapAnimation("ThirdStage");
 }
 
 void ThirdStageLevel::Update(float _Delta)
