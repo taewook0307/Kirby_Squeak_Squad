@@ -1,4 +1,5 @@
 #pragma once
+
 #include "GameEngineObject.h"
 
 #include <map>
@@ -6,14 +7,15 @@
 #include <string>
 #include <GameEngineBase/GameEngineMath.h>
 
+// 설명 :
 class GameEngineSprite;
-class GameEngineWindowTexture;
-class GameEngineCamera;
 class GameEngineActor;
+class GameEngineWindowTexture;
 class GameEngineRenderer : public GameEngineObject
 {
 	friend class GameEngineCamera;
 	friend class GameEngineActor;
+
 public:
 	// constrcuter destructer
 	GameEngineRenderer();
@@ -50,9 +52,9 @@ public:
 		CopyScale = _Value;
 	}
 
-	void SetScaleRatio(const float& _Value)
+	void SetScaleRatio(const float& _Scale)
 	{
-		ScaleRatio = _Value;
+		ScaleRatio = _Scale;
 	}
 
 	void SetRenderScaleToTexture();
@@ -62,21 +64,21 @@ public:
 protected:
 
 private:
-	GameEngineWindowTexture* Texture = nullptr;
 	GameEngineActor* Master = nullptr;
+	GameEngineWindowTexture* Texture = nullptr;
 	GameEngineSprite* Sprite = nullptr;
-
-	float4 RenderPos = float4::ZERO;
-	float4 RenderScale = float4::ZERO;
-
-	float4 CopyPos = float4::ZERO;
-	float4 CopyScale = float4::ZERO;
 
 	float ScaleRatio = 1.0f;
 
 	bool ScaleCheck = false;
 
-	void Render(GameEngineCamera* _Camera, float _Delta);
+	float4 RenderPos;
+	float4 RenderScale;
+
+	float4 CopyPos;
+	float4 CopyScale;
+
+	void Render(class GameEngineCamera* _Camera, float _DeltaTime);
 
 private:
 	class Animation
@@ -92,18 +94,25 @@ private:
 	};
 
 public:
-	Animation* FindAnimation(const std::string& _Animation);
+	Animation* FindAnimation(const std::string& _AniamtionName);
 
+	/// <summary>
+	/// 애니메이션 생성함수
+	/// </summary>
+	/// <param name="_AniamtionName">애니메이션 이름</param>
+	/// <param name="_SpriteName">스프라이트 이름</param>
+	/// <param name="_Start">시작 프레임</param>
+	/// <param name="_End">끝 프레임</param>
+	/// <param name="_Inter">애니메이션 시간</param>
+	/// <param name="_Loop">애니메이션 반복</param>
 	void CreateAnimation(
-		const std::string& _AnimationName,
+		const std::string& _AniamtionName,
 		const std::string& _SpriteName,
-		size_t _Start = -1,
-		size_t _End = -1,
+		size_t _Start = -1, size_t _End = -1,
 		float _Inter = 0.1f,
-		bool _Loop = true
-	);
+		bool _Loop = true);
 
-	void ChangeAnimation(const std::string& _AnimationName, bool _ForceChange = false);
+	void ChangeAnimation(const std::string& _AniamtionName, bool _ForceChange = false);
 
 	std::map<std::string, Animation> AllAnimation;
 	Animation* CurAnimation = nullptr;

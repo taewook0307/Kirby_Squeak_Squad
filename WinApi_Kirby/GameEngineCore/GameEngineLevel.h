@@ -1,4 +1,5 @@
 #pragma once
+
 #include "GameEngineObject.h"
 #include "GameEngineActor.h"
 
@@ -6,7 +7,7 @@
 #include <string>
 #include <map>
 
-// 설명 : 화면혹은 장면을 표현 ex) 타이틀 장면, 플레이 장면, 엔딩 장면 등
+// 설명 : 화면 혹은 장면을 표현
 class GameEngineCamera;
 class GameEngineLevel : public GameEngineObject
 {
@@ -49,6 +50,7 @@ public:
 protected:
 	virtual void LevelStart(GameEngineLevel* _PrevLevel) {}
 	virtual void LevelEnd(GameEngineLevel* _NextLevel) {}
+
 private:
 	GameEngineCamera* MainCamera;
 	GameEngineCamera* UICamera;
@@ -56,7 +58,6 @@ private:
 	std::map<int, std::list<GameEngineActor*>> AllActors;
 
 	void ActorInit(GameEngineActor* _Actor, int _Order);
-
 	void ActorUpdate(float _Delta);
 	void ActorRender(float _Delta);
 	void ActorRelease();

@@ -4,10 +4,11 @@
 class GameEngineObject
 {
 	friend class GameEngineLevel;
+
 public:
 	// constrcuter destructer
 	GameEngineObject();
-	~GameEngineObject();
+	virtual ~GameEngineObject();
 
 	// delete Function
 	GameEngineObject(const GameEngineObject& _Other) = delete;

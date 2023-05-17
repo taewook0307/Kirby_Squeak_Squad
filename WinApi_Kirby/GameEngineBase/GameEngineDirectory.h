@@ -1,4 +1,5 @@
 #pragma once
+
 #include "GameEngineFile.h"
 
 // Ό³Έν :
@@ -7,7 +8,7 @@ class GameEngineDirectory : public GameEnginePath
 public:
 	// constrcuter destructer
 	GameEngineDirectory();
-	GameEngineDirectory(const std::string& _Path);
+	GameEngineDirectory(const std::string& _path);
 	~GameEngineDirectory();
 
 	// delete Function
@@ -16,7 +17,7 @@ public:
 	GameEngineDirectory& operator=(const GameEngineDirectory& _Other) = delete;
 	GameEngineDirectory& operator=(GameEngineDirectory&& _Other) noexcept = delete;
 
-	std::vector<GameEngineFile> GetAllFile(std::vector<std::string> _Ext);
+	std::vector<class GameEngineFile> GetAllFile(std::vector<std::string> _Ext);
 
 protected:
 

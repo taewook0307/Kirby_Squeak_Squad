@@ -1,8 +1,8 @@
 ﻿#include "GameEngineRenderer.h"
-#include "ResourcesManager.h"
 #include "GameEngineActor.h"
 #include "GameEngineCamera.h"
 #include "GameEngineSprite.h"
+#include "ResourcesManager.h"
 
 #include <GameEngineBase/GameEngineDebug.h>
 #include <GameEngineBase/GameEngineString.h>
@@ -17,14 +17,13 @@ GameEngineRenderer::~GameEngineRenderer()
 {
 }
 
-void GameEngineRenderer::SetSprite(const std::string& _Name, size_t _Index /* = 0*/)
+void GameEngineRenderer::SetSprite(const std::string& _Name, size_t _Index/* = 0*/)
 {
 	Sprite = ResourcesManager::GetInst().FindSprite(_Name);
 
 	if (nullptr == Sprite)
 	{
 		MsgBoxAssert("존재하지 않는 스프라이트를 세팅하려고 했습니다." + _Name);
-		return;
 	}
 
 	const GameEngineSprite::Sprite& SpriteInfo = Sprite->GetSprite(_Index);
@@ -41,7 +40,7 @@ void GameEngineRenderer::SetTexture(const std::string& _Name)
 
 	if (nullptr == Texture)
 	{
-		MsgBoxAssert("존재하지 않는 텍스쳐입니다" + _Name);
+		MsgBoxAssert("존재하지 않는 텍스처를 세팅하려고 했습니다." + _Name);
 	}
 
 	SetCopyPos(float4::ZERO);
@@ -62,15 +61,16 @@ void GameEngineRenderer::SetRenderScaleToTexture()
 	ScaleCheck = false;
 }
 
-void GameEngineRenderer::Render(GameEngineCamera* _Camera, float _Delta)
+void GameEngineRenderer::Render(GameEngineCamera* _Camera, float _DeltaTime)
 {
 	if (nullptr != CurAnimation)
 	{
-		CurAnimation->CurInter -= _Delta;
+		CurAnimation->CurInter -= _DeltaTime;
 		if (0.0f >= CurAnimation->CurInter)
 		{
 			CurAnimation->CurInter = CurAnimation->Inters[CurAnimation->CurFrame - CurAnimation->StartFrame];
-			++CurAnimation->CurFrame;
+
+			++CurAnimation->CurFrame;\
 
 			if (CurAnimation->CurFrame > CurAnimation->EndFrame)
 			{
@@ -84,6 +84,7 @@ void GameEngineRenderer::Render(GameEngineCamera* _Camera, float _Delta)
 				}
 			}
 		}
+
 		Sprite = CurAnimation->Sprite;
 		const GameEngineSprite::Sprite& SpriteInfo = Sprite->GetSprite(CurAnimation->CurFrame);
 		Texture = SpriteInfo.BaseTexture;
@@ -98,7 +99,7 @@ void GameEngineRenderer::Render(GameEngineCamera* _Camera, float _Delta)
 
 	if (nullptr == Texture)
 	{
-		MsgBoxAssert("이미지를 세팅하지 않은 렌더러입니다");
+		MsgBoxAssert("이미지를 세팅하지 않은 랜더러 입니다.");
 	}
 
 	GameEngineWindowTexture* BackBuffer = GameEngineWindow::MainWindow.GetBackBuffer();
@@ -117,7 +118,7 @@ GameEngineRenderer::Animation* GameEngineRenderer::FindAnimation(const std::stri
 
 	std::map<std::string, Animation>::iterator FindIter = AllAnimation.find(UpperName);
 
-	if (AllAnimation.end() == FindIter)
+	if (FindIter == AllAnimation.end())
 	{
 		return nullptr;
 	}
@@ -128,8 +129,7 @@ GameEngineRenderer::Animation* GameEngineRenderer::FindAnimation(const std::stri
 void GameEngineRenderer::CreateAnimation(
 	const std::string& _AniamtionName,
 	const std::string& _SpriteName,
-	size_t _Start /*= -1*/,
-	size_t _End /*= -1*/,
+	size_t _Start /*= -1*/, size_t _End /*= -1*/,
 	float _Inter /*= 0.1f*/,
 	bool _Loop /*= true*/)
 {
@@ -137,7 +137,7 @@ void GameEngineRenderer::CreateAnimation(
 
 	if (nullptr != FindAnimation(UpperName))
 	{
-		MsgBoxAssert("이미 존재하는 애니메이션 이름입니다." + UpperName);
+		MsgBoxAssert("이미 존재하는 애니메이션 네임입니다." + UpperName);
 		return;
 	}
 
@@ -179,7 +179,6 @@ void GameEngineRenderer::CreateAnimation(
 	}
 
 	Animation.Loop = _Loop;
-
 }
 
 void GameEngineRenderer::ChangeAnimation(const std::string& _AniamtionName, bool _ForceChange)

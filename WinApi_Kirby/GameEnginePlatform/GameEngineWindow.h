@@ -1,9 +1,11 @@
 #pragma once
+
 #include "GameEngineWindowTexture.h"
 
 #include <Windows.h>
 #include <string>
 
+// Ό³Έν :
 class GameEngineWindow
 {
 public:
@@ -23,7 +25,7 @@ public:
 
 	static void MessageLoop(HINSTANCE _Inst, void(*_Start)(HINSTANCE), void(*_Update)(), void(*_End)());
 
-	HDC GetHDC() const
+	HDC GetHDC()
 	{
 		return Hdc;
 	}
@@ -43,6 +45,8 @@ public:
 		return BackBuffer;
 	}
 
+	float4 GetMousePos();
+
 	void SetPosAndScale(const float4& _Pos, const float4& _Scale);
 
 	static void WindowLoopOff()
@@ -57,6 +61,7 @@ public:
 	{
 		return IsFocusValue;
 	}
+
 protected:
 
 private:
@@ -65,10 +70,13 @@ private:
 	static HINSTANCE Instance;
 	std::string Title = "";
 	HWND hWnd = nullptr;
-	HDC Hdc = nullptr;
-	float4 Scale = float4::ZERO;
+
+	float4 Scale;
 	GameEngineWindowTexture* WindowBuffer = nullptr;
+
 	GameEngineWindowTexture* BackBuffer = nullptr;
+
+	HDC Hdc = nullptr;
 
 	static LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
 	void InitInstance();

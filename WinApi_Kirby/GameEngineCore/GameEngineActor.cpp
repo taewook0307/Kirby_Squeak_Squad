@@ -1,7 +1,7 @@
 ﻿#include "GameEngineActor.h"
+#include "GameEngineRenderer.h"
 #include "GameEngineLevel.h"
 #include "GameEngineCamera.h"
-#include "GameEngineRenderer.h"
 
 #include <GameEngineBase/GameEngineDebug.h>
 
@@ -15,6 +15,33 @@ GameEngineActor::~GameEngineActor()
 	{
 		delete Render;
 		Render = nullptr;
+	}
+}
+
+void GameEngineActor::ActorRelease()
+{
+	std::list<GameEngineRenderer*>::iterator ObjectStartIter = AllRenderer.begin();
+	std::list<GameEngineRenderer*>::iterator ObjectEndIter = AllRenderer.end();
+
+	for (; ObjectStartIter != ObjectEndIter; )
+	{
+		GameEngineRenderer* Renderer = *ObjectStartIter;
+		if (false == Renderer->IsDeath())
+		{
+			++ObjectStartIter;
+			continue;
+		}
+
+		if (nullptr == Renderer)
+		{
+			MsgBoxAssert("nullptr인 액터가 레벨의 리스트에 들어가 있었습니다.");
+			continue;
+		}
+
+		delete Renderer;
+		Renderer = nullptr;
+
+		ObjectStartIter = AllRenderer.erase(ObjectStartIter);
 	}
 }
 
@@ -34,39 +61,4 @@ GameEngineRenderer* GameEngineActor::CreateRenderer(const std::string& _ImageNam
 	AllRenderer.push_back(NewRenderer);
 
 	return NewRenderer;
-}
-
-void GameEngineActor::ActorRelease()
-{
-	std::list<GameEngineRenderer*>& Group = AllRenderer;
-
-	std::list<GameEngineRenderer*>::iterator GroupStartIter = Group.begin();
-	std::list<GameEngineRenderer*>::iterator GroupEndIter = Group.end();
-
-	for (; GroupStartIter != GroupEndIter;)
-	{
-		GameEngineRenderer* Renderer = *GroupStartIter;
-
-		if (false == Renderer->IsDeath())
-		{
-			++GroupStartIter;
-			continue;
-		}
-
-		if (nullptr == Renderer)
-		{
-			MsgBoxAssert("nullptr인 Renderer가 Actor의 list에 들어가 있었습니다.");
-			continue;
-		}
-
-		delete Renderer;
-		Renderer = nullptr;
-
-		GroupStartIter = Group.erase(GroupStartIter);
-	}
-}
-
-void GameEngineActor::PushMainCameraRenderer(GameEngineRenderer*)
-{
-
 }

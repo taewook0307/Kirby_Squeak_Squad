@@ -1,9 +1,9 @@
 #pragma once
-#include <Windows.h>
-#include <string>
-#include <assert.h>
 
-//// Ό³Έν :
+#include <Windows.h>
+#include <assert.h>
+#include <string>
+
 class GameEngineDebug
 {
 public:

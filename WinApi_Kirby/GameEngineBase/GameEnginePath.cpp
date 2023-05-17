@@ -6,9 +6,10 @@ GameEnginePath::GameEnginePath()
 	SetCurrentPath();
 }
 
-GameEnginePath::GameEnginePath(const std::string& _Path)
-	: Path(_Path)
+GameEnginePath::GameEnginePath(const std::string& _path)
+	: Path(_path)
 {
+
 }
 
 GameEnginePath::~GameEnginePath()
@@ -24,6 +25,7 @@ void GameEnginePath::SetCurrentPath()
 {
 	Path = std::filesystem::current_path();
 }
+
 
 void GameEnginePath::MoveParent()
 {
@@ -49,9 +51,11 @@ void GameEnginePath::MoveParentToExistsChild(const std::string& _ChildPath)
 
 		if (Path == Path.root_path())
 		{
-			MsgBoxAssert(_ChildPath + "경로를 가지는 파일이나 폴더가 존재하지 않습니다.");
+			MsgBoxAssert("루트 경로까지 샅샅히 뒤졌지만" + _ChildPath + "파일이나 폴더를 하위로 가지고 있는 경로를 찾지 못했습니다");
 		}
 	}
+
+
 }
 
 void GameEnginePath::MoveChild(const std::string& _ChildPath)
@@ -62,12 +66,13 @@ void GameEnginePath::MoveChild(const std::string& _ChildPath)
 
 	if (false == std::filesystem::exists(CheckPath))
 	{
-		MsgBoxAssert("존재하지 않는 경로입니다" + CheckPath.string());
+		MsgBoxAssert("존재하지 않는 경로로 이동하려고 했습니다." + CheckPath.string());
 	}
+
 	Path = CheckPath;
 }
 
-std::string GameEnginePath::PlusFliePath(const std::string& _ChildPath)
+std::string GameEnginePath::PlusFilePath(const std::string& _ChildPath)
 {
 	std::filesystem::path CheckPath = Path;
 
@@ -75,7 +80,7 @@ std::string GameEnginePath::PlusFliePath(const std::string& _ChildPath)
 
 	if (false == std::filesystem::exists(CheckPath))
 	{
-		MsgBoxAssert("존재하지 않는 경로로 이동하려고 했습니다" + CheckPath.string());
+		MsgBoxAssert("존재하지 않는 경로로 이동하려고 했습니다." + CheckPath.string());
 	}
 
 	return CheckPath.string();
@@ -84,4 +89,29 @@ std::string GameEnginePath::PlusFliePath(const std::string& _ChildPath)
 bool GameEnginePath::IsDirectory()
 {
 	return std::filesystem::is_directory(Path);
+}
+
+std::string GameEnginePath::GetParentString(const std::string& _ChildPath)
+{
+	int CountBeforeBackSlash = 0;
+
+	while (true)
+	{
+		if ('\\' == _ChildPath[CountBeforeBackSlash])
+		{
+			break;
+		}
+
+		++CountBeforeBackSlash;
+	}
+
+	std::string ChildPath = "";
+	ChildPath.reserve(CountBeforeBackSlash);
+
+	for (size_t i = 0; i < CountBeforeBackSlash; i++)
+	{
+		ChildPath.push_back(_ChildPath[i]);
+	}
+
+	return ChildPath;
 }

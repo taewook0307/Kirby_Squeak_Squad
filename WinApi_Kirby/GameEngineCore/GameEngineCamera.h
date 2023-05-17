@@ -1,14 +1,17 @@
 #pragma once
+
 #include "GameEngineRenderer.h"
 
 #include <map>
 #include <list>
 
+// Ό³Έν :
 class GameEngineRenderer;
 class GameEngineCamera
 {
 	friend class GameEngineActor;
 	friend class GameEngineLevel;
+
 public:
 	// constrcuter destructer
 	GameEngineCamera();
@@ -34,6 +37,7 @@ public:
 	{
 		Pos += _Value;
 	}
+
 protected:
 
 private:
@@ -43,7 +47,7 @@ private:
 
 	void PushRenderer(GameEngineRenderer* _Renderer, int _Order);
 
-	void Render(float _Delta);
-
 	void Release();
+
+	void Render(float _Delta);
 };

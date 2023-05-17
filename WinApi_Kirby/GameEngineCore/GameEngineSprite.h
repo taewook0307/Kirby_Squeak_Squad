@@ -3,6 +3,7 @@
 #include <vector>
 #include <GameEnginePlatform/GameEngineWindowTexture.h>
 
+// Ό³Έν :
 class GameEngineSprite
 {
 public:
@@ -14,6 +15,7 @@ public:
 		float4 RenderScale = float4::ZERO;
 	};
 
+public:
 	// constrcuter destructer
 	GameEngineSprite();
 	~GameEngineSprite();
@@ -34,6 +36,7 @@ public:
 	{
 		return AllSprite.size();
 	}
+
 protected:
 
 private:

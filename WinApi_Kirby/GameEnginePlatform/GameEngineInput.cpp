@@ -12,48 +12,6 @@ GameEngineInput::~GameEngineInput()
 {
 }
 
-void GameEngineInput::GameEngineKey::Update(float _DeltaTime)
-{
-	if (true == KeyCheck())
-	{
-		PressTime += _DeltaTime;
-
-		if (true == Free)
-		{
-			Down = true;
-			Press = true;
-			Up = false;
-			Free = false;
-		}
-		else if (true == Down)
-		{
-			Down = false;
-			Press = true;
-			Up = false;
-			Free = false;
-		}
-	}
-	else
-	{
-		PressTime = 0.0f;
-
-		if (true == Press)
-		{
-			Down = false;
-			Press = false;
-			Up = true;
-			Free = true;
-		}
-		else if (true == Up)
-		{
-			Down = false;
-			Press = false;
-			Up = false;
-			Free = true;
-		}
-	}
-}
-
 void GameEngineInput::InputInit()
 {
 	static bool Check = false;
@@ -162,14 +120,47 @@ void GameEngineInput::InputInit()
 	}
 }
 
-void GameEngineInput::Update(float _DeltaTime)
-{
-	std::map<int, GameEngineKey>::iterator StartIter = AllKeys.begin();
-	std::map<int, GameEngineKey>::iterator EndIter = AllKeys.end();
 
-	for (; StartIter != EndIter; ++StartIter)
+void GameEngineInput::GameEngineKey::Update(float _DeltaTime)
+{
+	if (true == KeyCheck())
 	{
-		StartIter->second.Update(_DeltaTime);
+		PressTime += _DeltaTime;
+
+		if (true == Free)
+		{
+			Down = true;
+			Press = true;
+			Up = false;
+			Free = false;
+		}
+		else if (true == Down)
+		{
+			Down = false;
+			Press = true;
+			Up = false;
+			Free = false;
+		}
+	}
+
+	else
+	{
+		PressTime = 0.0f;
+
+		if (true == Press)
+		{
+			Down = false;
+			Press = false;
+			Up = true;
+			Free = true;
+		}
+		else if (true == Up)
+		{
+			Down = false;
+			Press = false;
+			Up = false;
+			Free = true;
+		}
 	}
 }
 
@@ -181,6 +172,17 @@ void GameEngineInput::Reset()
 	for (; StartIter != EndIter; ++StartIter)
 	{
 		StartIter->second.Reset();
+	}
+}
+
+void GameEngineInput::Update(float _DeltaTime)
+{
+	std::map<int, GameEngineKey>::iterator StartIter = AllKeys.begin();
+	std::map<int, GameEngineKey>::iterator EndIter = AllKeys.end();
+
+	for (; StartIter != EndIter; ++StartIter)
+	{
+		StartIter->second.Update(_DeltaTime);
 	}
 }
 

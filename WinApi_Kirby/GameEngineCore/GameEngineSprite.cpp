@@ -18,7 +18,7 @@ void GameEngineSprite::CreateSpriteSheet(GameEngineWindowTexture* _Texture, int 
 
 	AllSprite.resize(_XCount * _YCount);
 
-	float4 StartPos = float4::ZERO;
+	float4 StartPos = { float4::ZERO };
 	float4 ImageSize = { TexScale.X / _XCount, TexScale.Y / _YCount };
 
 	for (size_t y = 0; y < _YCount; y++)
@@ -26,7 +26,7 @@ void GameEngineSprite::CreateSpriteSheet(GameEngineWindowTexture* _Texture, int 
 		for (size_t x = 0; x < _XCount; x++)
 		{
 			size_t Index = (y * _XCount) + x;
-			
+
 			AllSprite[Index].BaseTexture = _Texture;
 			AllSprite[Index].RenderPos.X = StartPos.X;
 			AllSprite[Index].RenderPos.Y = StartPos.Y;
@@ -65,7 +65,7 @@ const GameEngineSprite::Sprite& GameEngineSprite::GetSprite(size_t _Index)
 
 	if (0 > _Index)
 	{
-		MsgBoxAssert("0보다 작은 스프라이트 인덱스입니다.");
+		MsgBoxAssert("0보다 작은 스프라이트 인덱스 입니다.");
 		return ReturnValue;
 	}
 

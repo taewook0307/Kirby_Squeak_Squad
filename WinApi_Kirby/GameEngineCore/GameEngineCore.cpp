@@ -38,7 +38,9 @@ void GameEngineCore::CoreUpdate()
 		}
 
 		NextLevel->LevelStart(CurLevel);
-		CurLevel = NextLevel;	
+
+		CurLevel = NextLevel;
+
 		NextLevel = nullptr;
 		GameEngineTime::MainTimer.Reset();
 	}
@@ -56,11 +58,13 @@ void GameEngineCore::CoreUpdate()
 	}
 
 	CurLevel->Update(Delta);
+
 	CurLevel->ActorUpdate(Delta);
 	GameEngineWindow::MainWindow.ClearBackBuffer();
 	CurLevel->ActorRender(Delta);
 	CurLevel->Render();
 	GameEngineWindow::MainWindow.DoubleBuffering();
+
 	CurLevel->ActorRelease();
 }
 
@@ -83,7 +87,6 @@ void GameEngineCore::CoreEnd()
 		}
 	}
 }
-
 
 void GameEngineCore::EngineStart(const std::string& _Title, HINSTANCE _Inst, CoreProcess* _Ptr)
 {

@@ -1,8 +1,11 @@
 #pragma once
+
 #include <Windows.h>
 #include <map>
 #include <string>
+#include <GameEngineBase/GameEngineMath.h>
 
+// Ό³Έν :
 class GameEngineInput
 {
 private:
@@ -52,7 +55,7 @@ private:
 		}
 
 		GameEngineKey(int _Key)
-			:Key(_Key)
+			: Key(_Key)
 		{
 
 		}
@@ -69,6 +72,8 @@ public:
 	GameEngineInput& operator=(const GameEngineInput& _Other) = delete;
 	GameEngineInput& operator=(GameEngineInput&& _Other) noexcept = delete;
 
+	static float4 MousePos();
+
 	static void InputInit();
 	static void Update(float _DeltaTime);
 	static void Reset();
@@ -77,6 +82,7 @@ public:
 	static bool IsUp(int _Key);
 	static bool IsPress(int _Key);
 	static bool IsFree(int _Key);
+
 protected:
 
 private:

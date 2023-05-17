@@ -1,13 +1,8 @@
 #pragma once
-#include <string>
-#include <map>
-#include <GameEngineBase/GameEnginePath.h>
 
-/*
-싱글톤
-생성자를 private로 시키고
-내부에 static이든 참조형이든 자기자신의 객체 하나를 자신이 들고 있는 디자인 패턴
-*/
+#include <map>
+#include <string>
+#include <GameEngineBase/GameEnginePath.h>
 
 class GameEngineSprite;
 class GameEngineWindowTexture;
@@ -24,36 +19,6 @@ public:
 	{
 		return Inst;
 	}
-
-	/*
-	포인터를 이용한 싱글톤
-	static ResourcesManager* GetInst()
-	{
-		if (nullptr == Inst)
-		{
-			Inst = new ResourcesManager();
-		}
-		return Inst;
-	}
-
-	static void Destory()
-	{
-		if (nullptr != Inst)
-		{
-			delete Inst;
-			Inst = nullptr;
-		}
-	}
-
-	static void ResetInst()
-	{
-		if (nullptr != Inst)
-		{
-			delete Inst;
-			Inst = new ResourcesManager();
-		}
-	}
-	*/
 
 	GameEngineWindowTexture* TextureLoad(const std::string& _Path)
 	{
@@ -85,22 +50,19 @@ public:
 
 	GameEngineSprite* CreateSpriteSheet(const std::string& _SpriteName, const std::string& _TexturePath, int _XCount, int _YCount);
 
-	bool IsLoadTexture(const std::string& _Name);
+	bool IsLoadTexture(const std::string& _Image);
+
+	void TextureFileLoad(const std::string& _FileName, const std::string& _Path);
+	void SpriteFileLoad(const std::string& _FileName, const std::string& _Path, int _XCount, int _YCount);
 
 protected:
 
 private:
 	static ResourcesManager Inst;
 
-	std::map<std::string, GameEngineWindowTexture*> AllTexture;
-
-	std::map<std::string, GameEngineSprite*> AllSprite;
-
-	/*
-	static ResourcesManager* Inst;
-	*/
-
-	// constrcuter destructer
 	ResourcesManager();
 	~ResourcesManager();
+
+	std::map<std::string, GameEngineWindowTexture*> AllTexture;
+	std::map<std::string, GameEngineSprite*> AllSprite;
 };
