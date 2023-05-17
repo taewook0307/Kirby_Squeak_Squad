@@ -33,6 +33,9 @@
     <ClInclude Include="Kirby.h">
       <Filter>Global</Filter>
     </ClInclude>
+    <ClInclude Include="StateEnum.h">
+      <Filter>Global</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TitleLevel.cpp">

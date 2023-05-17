@@ -1,17 +1,8 @@
 #pragma once
+#include "StateEnum.h"
 
 #include <string>
 #include <GameEngineCore/GameEngineActor.h>
-
-enum class PlayerState
-{
-	Idle,
-	Walk,
-	Run,
-	Stop,
-	Jump,
-	Max
-};
 
 class Kirby : public GameEngineActor
 {
@@ -50,8 +41,5 @@ private:
 	void Start() override;
 	void Update(float _Delta) override;
 
-	std::string ImagePath;
-	std::string ImageName;
-
-	float Speed = 200.0f;
+	float Speed = 300.0f;
 };
