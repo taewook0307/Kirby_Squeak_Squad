@@ -25,6 +25,4 @@ protected:
 private:
 	std::string PathName;
 	GameEngineSprite* MainSprite = nullptr;
-
-	void Start() override;
 };
