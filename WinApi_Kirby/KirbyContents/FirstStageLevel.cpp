@@ -22,8 +22,8 @@ void FirstStageLevel::Start()
 	BackGround* Back = CreateActor<BackGround>(RenderOrder::BackGround);
 	Back->Init("FirstStageLevel.Bmp");
 
-	Map* FirstStageMap = CreateActor<Map>(RenderOrder::Map);
-	FirstStageMap->Init("FirstStageMap_1.bmp");
+	Map* FirstStage = CreateActor<Map>(RenderOrder::Map);
+	FirstStage->MapInit("FirstStage");
 
 	LevelPlayer = CreateActor<Kirby>(RenderOrder::Play);
 }

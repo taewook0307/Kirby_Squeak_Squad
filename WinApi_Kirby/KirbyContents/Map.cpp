@@ -1,9 +1,18 @@
 ﻿#include "Map.h"
 #include "KirbyGameEnum.h"
 
-#include <GameEngineCore/ResourcesManager.h>
+#include <Windows.h>
+#include <GameEngineBase/GameEngineDebug.h>
+#include <GameEngineBase/GameEngineTime.h>
+#include <GameEngineBase/GameEnginePath.h>
 #include <GameEnginePlatform/GameEngineWindow.h>
+#include <GameEnginePlatform/GameEngineWindowTexture.h>
+#include <GameEnginePlatform/GameEngineInput.h>
+#include <GameEngineCore/ResourcesManager.h>
+#include <GameEngineCore/GameEngineLevel.h>
+#include <GameEngineCore/GameEngineCamera.h>
 #include <GameEngineCore/GameEngineRenderer.h>
+#include <GameEngineCore/GameEngineSprite.h>
 
 Map::Map()
 {
@@ -13,32 +22,35 @@ Map::~Map()
 {
 }
 
-void Map::Update(float _Delta)
+void Map::Start()
 {
-
+	
 }
 
-void Map::Init(const std::string& _FileName)
+void Map::MapInit(const std::string& _FolderName)
 {
-	FileName = _FileName;
+	FolderName = _FolderName;
 
-	if (false == ResourcesManager::GetInst().IsLoadTexture(_FileName))
 	{
-		GameEnginePath FilePath;
+		GameEnginePath FolderPath;
 
-		FilePath.SetCurrentPath();
+		FolderPath.SetCurrentPath();
+		FolderPath.MoveParentToExistsChild("Resources");
 
-		FilePath.MoveParentToExistsChild("Resources");
-		FilePath.MoveChild("Resources\\Map\\" + _FileName);
+		FolderPath.MoveChild("Resources\\Map\\");
 
-		GameEngineWindowTexture* Text = ResourcesManager::GetInst().TextureLoad(FilePath.GetStringPath());
+		MainTexture = ResourcesManager::GetInst().CreateSpriteFolder(FolderName, FolderPath.PlusFliePath(FolderName));
+	}
 
-		float4 Scale = Text->GetScale();
+	{
+		MainRenderer = CreateRenderer(RenderOrder::Map);
 
-		Scale *= 5.0f;
+		MainRenderer->CreateAnimation(FolderName + "Idle", FolderName);
 
-		GameEngineRenderer* Render = CreateRenderer(_FileName, RenderOrder::BackGround);
-		Render->SetRenderPos(Scale.Half());
-		Render->SetRenderScale(Scale);
+		MainRenderer->ChangeAnimation(FolderName + "Idle");
+		MainRenderer->SetRenderScaleToTexture();
+		MainRenderer->SetScaleRatio(5.0f);
+
+		MainRenderer->SetRenderPos((MainTexture->GetSprite(0).BaseTexture->GetScale() *= 5.0f).Half());
 	}
 }

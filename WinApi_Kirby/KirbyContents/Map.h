@@ -2,6 +2,8 @@
 #include <string>
 #include <GameEngineCore/GameEngineActor.h>
 
+class GameEngineSprite;
+class GameEngineRenderer;
 class Map : public GameEngineActor
 {
 public:
@@ -15,13 +17,14 @@ public:
 	Map& operator=(const Map& _Other) = delete;
 	Map& operator=(Map&& _Other) noexcept = delete;
 
-	void Init(const std::string& _FileName);
+	GameEngineRenderer* MainRenderer = nullptr;
 
+	void MapInit(const std::string& _FolderName);
 protected:
 
 private:
-	std::string FileName;
+	std::string FolderName;
+	GameEngineSprite* MainTexture = nullptr;
 
-	void Update(float _Delta) override;
+	void Start() override;
 };
-

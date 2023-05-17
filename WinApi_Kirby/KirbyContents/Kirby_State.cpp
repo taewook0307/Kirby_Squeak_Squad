@@ -49,11 +49,13 @@ void Kirby::WalkUpdate(float _Delta)
 	if (true == GameEngineInput::IsPress('A'))
 	{
 		MovePos = { -Speed * _Delta, 0.0f };
+		GetLevel()->GetMainCamera()->AddPos(MovePos);
 	}
 
 	if (true == GameEngineInput::IsPress('D'))
 	{
 		MovePos = { Speed * _Delta, 0.0f };
+		GetLevel()->GetMainCamera()->AddPos(MovePos);
 	}
 
 	if (true == GameEngineInput::IsPress('W'))
@@ -73,7 +75,6 @@ void Kirby::WalkUpdate(float _Delta)
 	}
 
 	AddPos(MovePos);
-	GetLevel()->GetMainCamera()->AddPos(MovePos);
 }
 
 void Kirby::RunUpdate(float _Delta)
