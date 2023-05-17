@@ -34,7 +34,7 @@ void Map::MapAnimation(const std::string& _PathName)
 
 		FolderPath.MoveChild("Resources\\Map\\");
 
-		MainSprite = ResourcesManager::GetInst().CreateSpriteFolder(PathName, FolderPath.PlusFliePath(PathName));
+		MainSprite = ResourcesManager::GetInst().CreateSpriteFolder(PathName, FolderPath.PlusFilePath(PathName));
 	}
 
 	{

@@ -1,16 +1,9 @@
 ﻿#include "Kirby.h"
 #include "KirbyGameEnum.h"
 
-#include <Windows.h>
-#include <GameEngineBase/GameEngineDebug.h>
-#include <GameEngineBase/GameEngineTime.h>
 #include <GameEngineBase/GameEnginePath.h>
-#include <GameEnginePlatform/GameEngineWindow.h>
-#include <GameEnginePlatform/GameEngineWindowTexture.h>
 #include <GameEnginePlatform/GameEngineInput.h>
 #include <GameEngineCore/ResourcesManager.h>
-#include <GameEngineCore/GameEngineLevel.h>
-#include <GameEngineCore/GameEngineCamera.h>
 #include <GameEngineCore/GameEngineRenderer.h>
 
 Kirby::Kirby()
@@ -30,7 +23,7 @@ void Kirby::Start()
 
 		FolderPath.MoveChild("Resources\\Kirby\\");
 
-		ResourcesManager::GetInst().CreateSpriteFolder("NormalKirby", FolderPath.PlusFliePath("NormalKirby"));
+		ResourcesManager::GetInst().CreateSpriteFolder("NormalKirby", FolderPath.PlusFilePath("NormalKirby"));
 	}
 
 	{

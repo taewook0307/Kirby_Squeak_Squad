@@ -111,6 +111,7 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="Monster_State.cpp" />
     <ClCompile Include="SecondStageLevel.cpp">
       <SubType>
       </SubType>

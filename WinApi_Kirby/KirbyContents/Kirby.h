@@ -1,4 +1,5 @@
 #pragma once
+
 #include "ActorEnum.h"
 
 #include <string>
