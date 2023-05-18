@@ -16,8 +16,6 @@ enum class MonsterState
 {
 	Idle,
 	Walk,
-	Run,
-	Stop,
 	Attack,
 	Damage,
 	Jump,
@@ -27,6 +25,5 @@ enum class MonsterState
 enum class ActorDir
 {
 	Left,
-	Right,
-	Max
+	Right
 };

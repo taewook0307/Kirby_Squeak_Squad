@@ -12,7 +12,6 @@ void Kirby::IdleStart()
 
 void Kirby::WalkStart()
 {
-	DirChange();
 	ChangeAnimationState("Walk");
 }
 
@@ -23,6 +22,7 @@ void Kirby::IdleUpdate(float _Delta)
 		|| true == GameEngineInput::IsDown('S')
 		|| true == GameEngineInput::IsDown('D'))
 	{
+		DirChange();
 		ChangeState(KirbyState::Walk);
 		return;
 	}
@@ -30,29 +30,20 @@ void Kirby::IdleUpdate(float _Delta)
 
 void Kirby::WalkUpdate(float _Delta)
 {
+	DirChange();
 	float4 MovePos = float4::ZERO;
 
-	if (true == GameEngineInput::IsPress('A'))
+	if (true == GameEngineInput::IsPress('A') && Dir == ActorDir::Left)
 	{
 		MovePos = { -Speed * _Delta, 0.0f };
 		GetLevel()->GetMainCamera()->AddPos(MovePos);
 	}
 
-	if (true == GameEngineInput::IsPress('D'))
+	if (true == GameEngineInput::IsPress('D') && Dir == ActorDir::Right)
 	{
 		MovePos = { Speed * _Delta, 0.0f };
 		GetLevel()->GetMainCamera()->AddPos(MovePos);
-	}
-
-	if (true == GameEngineInput::IsPress('W'))
-	{
-		MovePos = { 0.0f, -Speed * _Delta };
-	}
-
-	if (true == GameEngineInput::IsPress('S'))
-	{
-		MovePos = { 0.0f, Speed * _Delta };
-	}
+	} 
 
 	if (MovePos == float4::ZERO)
 	{

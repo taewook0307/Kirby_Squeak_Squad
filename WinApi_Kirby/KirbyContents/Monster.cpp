@@ -32,10 +32,6 @@ void Monster::StateUpdate(float _Delta)
 		return IdleUpdate(_Delta);
 	case MonsterState::Walk:
 		return WalkUpdate(_Delta);
-	case MonsterState::Run:
-		return RunUpdate(_Delta);
-	case MonsterState::Stop:
-		return StopUpdate(_Delta);
 	case MonsterState::Attack:
 		return AttackUpdate(_Delta);
 	case MonsterState::Damage:
@@ -58,12 +54,6 @@ void Monster::ChangeState(MonsterState _State)
 			break;
 		case MonsterState::Walk:
 			WalkStart();
-			break;
-		case MonsterState::Run:
-			RunStart();
-			break;
-		case MonsterState::Stop:
-			StopStart();
 			break;
 		case MonsterState::Attack:
 			AttackStart();

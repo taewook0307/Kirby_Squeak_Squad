@@ -27,16 +27,12 @@ protected:
 
 	virtual void IdleStart();
 	virtual void WalkStart();
-	virtual void RunStart();
-	virtual void StopStart();
 	virtual void AttackStart();
 	virtual void DamageStart();
 	virtual void JumpStart();
 
 	virtual void IdleUpdate(float _Delta);
 	virtual void WalkUpdate(float _Delta);
-	virtual void RunUpdate(float _Delta);
-	virtual void StopUpdate(float _Delta);
 	virtual void AttackUpdate(float _Delta);
 	virtual void DamageUpdate(float _Delta);
 	virtual void JumpUpdate(float _Delta);
@@ -45,7 +41,6 @@ protected:
 	ActorDir Dir = ActorDir::Right;
 
 	void DirChange(int _Value);
-
 private:
 	float Speed = 300.0f;
 };
