@@ -21,7 +21,7 @@ protected:
 	GameEngineRenderer* MainRenderer = nullptr;
 
 	void StateUpdate(float _Delta);
-	void ChangeState(ActorState _State);
+	void ChangeState(MonsterState _State);
 	void Start() override;
 	void Update(float _Delta) override;
 
@@ -41,7 +41,7 @@ protected:
 	virtual void DamageUpdate(float _Delta);
 	virtual void JumpUpdate(float _Delta);
 
-	ActorState State = ActorState::Max;
+	MonsterState State = MonsterState::Max;
 	ActorDir Dir = ActorDir::Right;
 
 	void DirChange(int _Value);

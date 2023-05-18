@@ -34,9 +34,9 @@ protected:
 	void StopUpdate(float _Delta);
 	void JumpUpdate(float _Delta);
 
-	void ChangeState(ActorState _State);
+	void ChangeState(KirbyState _State);
 
-	ActorState State = ActorState::Max;
+	KirbyState State = KirbyState::Max;
 	ActorDir Dir = ActorDir::Right;
 
 	void DirChange();

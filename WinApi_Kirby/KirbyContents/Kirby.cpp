@@ -40,7 +40,7 @@ void Kirby::Start()
 		MainRenderer->SetScaleRatio(4.0f);
 	}
 
-	ChangeState(ActorState::Idle);
+	ChangeState(KirbyState::Idle);
 }
 
 void Kirby::Update(float _Delta)
@@ -52,40 +52,40 @@ void Kirby::StateUpdate(float _Delta)
 {
 	switch (State)
 	{
-	case ActorState::Idle:
+	case KirbyState::Idle:
 		return IdleUpdate(_Delta);
-	case ActorState::Walk:
+	case KirbyState::Walk:
 		return WalkUpdate(_Delta);
-	case ActorState::Run:
+	case KirbyState::Run:
 		return RunUpdate(_Delta);
-	case ActorState::Stop:
+	case KirbyState::Stop:
 		return StopUpdate(_Delta);
-	case ActorState::Jump:
+	case KirbyState::Jump:
 		return JumpUpdate(_Delta);
 	default:
 		break;
 	}
 }
 
-void Kirby::ChangeState(ActorState _State)
+void Kirby::ChangeState(KirbyState _State)
 {
 	if (_State != State)
 	{
 		switch (_State)
 		{
-		case ActorState::Idle:
+		case KirbyState::Idle:
 			IdleStart();
 			break;
-		case ActorState::Walk:
+		case KirbyState::Walk:
 			WalkStart();
 			break;
-		case ActorState::Run:
+		case KirbyState::Run:
 			RunStart();
 			break;
-		case ActorState::Stop:
+		case KirbyState::Stop:
 			StopStart();
 			break;
-		case ActorState::Jump:
+		case KirbyState::Jump:
 			JumpStart();
 			break;
 		default:

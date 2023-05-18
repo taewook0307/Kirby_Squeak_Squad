@@ -28,50 +28,50 @@ void Monster::StateUpdate(float _Delta)
 {
 	switch (State)
 	{
-	case ActorState::Idle:
+	case MonsterState::Idle:
 		return IdleUpdate(_Delta);
-	case ActorState::Walk:
+	case MonsterState::Walk:
 		return WalkUpdate(_Delta);
-	case ActorState::Run:
+	case MonsterState::Run:
 		return RunUpdate(_Delta);
-	case ActorState::Stop:
+	case MonsterState::Stop:
 		return StopUpdate(_Delta);
-	case ActorState::Attack:
+	case MonsterState::Attack:
 		return AttackUpdate(_Delta);
-	case ActorState::Damage:
+	case MonsterState::Damage:
 		return DamageUpdate(_Delta);
-	case ActorState::Jump:
+	case MonsterState::Jump:
 		return JumpUpdate(_Delta);
 	default:
 		break;
 	}
 }
 
-void Monster::ChangeState(ActorState _State)
+void Monster::ChangeState(MonsterState _State)
 {
 	if (_State != State)
 	{
 		switch (_State)
 		{
-		case ActorState::Idle:
+		case MonsterState::Idle:
 			IdleStart();
 			break;
-		case ActorState::Walk:
+		case MonsterState::Walk:
 			WalkStart();
 			break;
-		case ActorState::Run:
+		case MonsterState::Run:
 			RunStart();
 			break;
-		case ActorState::Stop:
+		case MonsterState::Stop:
 			StopStart();
 			break;
-		case ActorState::Attack:
+		case MonsterState::Attack:
 			AttackStart();
 			break;
-		case ActorState::Damage:
+		case MonsterState::Damage:
 			DamageStart();
 			break;
-		case ActorState::Jump:
+		case MonsterState::Jump:
 			JumpStart();
 			break;
 		default:
