@@ -17,30 +17,36 @@ public:
 	Monster& operator=(const Monster& _Other) = delete;
 	Monster& operator=(Monster&& _Other) noexcept = delete;
 
-	GameEngineRenderer* MainRenderer = nullptr;
 protected:
+	GameEngineRenderer* MainRenderer = nullptr;
+
 	void StateUpdate(float _Delta);
-
-	void IdleStart();
-	void WalkStart();
-	void StopStart();
-	void JumpStart();
-
-	void IdleUpdate(float _Delta);
-	void WalkUpdate(float _Delta);
-	void StopUpdate(float _Delta);
-	void JumpUpdate(float _Delta);
-
 	void ChangeState(ActorState _State);
+	void Start() override;
+	void Update(float _Delta) override;
+
+	virtual void IdleStart();
+	virtual void WalkStart();
+	virtual void RunStart();
+	virtual void StopStart();
+	virtual void AttackStart();
+	virtual void DamageStart();
+	virtual void JumpStart();
+
+	virtual void IdleUpdate(float _Delta);
+	virtual void WalkUpdate(float _Delta);
+	virtual void RunUpdate(float _Delta);
+	virtual void StopUpdate(float _Delta);
+	virtual void AttackUpdate(float _Delta);
+	virtual void DamageUpdate(float _Delta);
+	virtual void JumpUpdate(float _Delta);
 
 	ActorState State = ActorState::Max;
 	ActorDir Dir = ActorDir::Right;
 
-	void DirChange();
-private:
-	void Start() override;
-	void Update(float _Delta) override;
+	void DirChange(int _Value);
 
+private:
 	float Speed = 300.0f;
 };
 

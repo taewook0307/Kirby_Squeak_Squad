@@ -6,6 +6,8 @@ enum class ActorState
 	Walk,
 	Run,
 	Stop,
+	Attack,
+	Damage,
 	Jump,
 	Max
 };

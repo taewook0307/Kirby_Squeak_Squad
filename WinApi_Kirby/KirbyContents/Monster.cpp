@@ -36,6 +36,10 @@ void Monster::StateUpdate(float _Delta)
 		return RunUpdate(_Delta);
 	case ActorState::Stop:
 		return StopUpdate(_Delta);
+	case ActorState::Attack:
+		return AttackUpdate(_Delta);
+	case ActorState::Damage:
+		return DamageUpdate(_Delta);
 	case ActorState::Jump:
 		return JumpUpdate(_Delta);
 	default:
@@ -61,6 +65,12 @@ void Monster::ChangeState(ActorState _State)
 		case ActorState::Stop:
 			StopStart();
 			break;
+		case ActorState::Attack:
+			AttackStart();
+			break;
+		case ActorState::Damage:
+			DamageStart();
+			break;
 		case ActorState::Jump:
 			JumpStart();
 			break;
@@ -71,17 +81,20 @@ void Monster::ChangeState(ActorState _State)
 	State = _State;
 }
 
-void Monster::DirChange()
+void Monster::DirChange(int _Value)
 {
 	ActorDir CheckDir = Dir;
 
-	if (true == GameEngineInput::IsDown('A'))
+	switch (_Value)
 	{
+	case 0:
 		CheckDir = ActorDir::Left;
-	}
-	if (true == GameEngineInput::IsDown('D'))
-	{
+		break;
+	case 1:
 		CheckDir = ActorDir::Right;
+		break;
+	default:
+		break;
 	}
 
 	if (CheckDir != Dir)

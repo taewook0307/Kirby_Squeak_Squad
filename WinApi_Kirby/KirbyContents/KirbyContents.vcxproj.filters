@@ -21,9 +21,6 @@
     <ClInclude Include="BackGround.h">
       <Filter>Global</Filter>
     </ClInclude>
-    <ClInclude Include="Monster.h">
-      <Filter>Global</Filter>
-    </ClInclude>
     <ClInclude Include="Map.h">
       <Filter>Global</Filter>
     </ClInclude>
@@ -35,6 +32,12 @@
     </ClInclude>
     <ClInclude Include="ActorEnum.h">
       <Filter>Global</Filter>
+    </ClInclude>
+    <ClInclude Include="Monster.h">
+      <Filter>Global</Filter>
+    </ClInclude>
+    <ClInclude Include="IceMonster.h">
+      <Filter>Monster</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -57,9 +60,6 @@
     <ClCompile Include="BackGround.cpp">
       <Filter>Global</Filter>
     </ClCompile>
-    <ClCompile Include="Monster.cpp">
-      <Filter>Global</Filter>
-    </ClCompile>
     <ClCompile Include="Map.cpp">
       <Filter>Global</Filter>
     </ClCompile>
@@ -72,8 +72,14 @@
     <ClCompile Include="Kirby_State.cpp">
       <Filter>Global</Filter>
     </ClCompile>
+    <ClCompile Include="Monster.cpp">
+      <Filter>Global</Filter>
+    </ClCompile>
     <ClCompile Include="Monster_State.cpp">
       <Filter>Global</Filter>
+    </ClCompile>
+    <ClCompile Include="IceMonster.cpp">
+      <Filter>Monster</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
