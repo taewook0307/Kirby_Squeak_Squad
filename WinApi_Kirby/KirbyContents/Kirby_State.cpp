@@ -7,27 +7,13 @@
 
 void Kirby::IdleStart()
 {
-	MainRenderer->ChangeAnimation("Right_Idle");
+	ChangeAnimationState("Idle");
 }
 
 void Kirby::WalkStart()
 {
-	MainRenderer->ChangeAnimation("Right_Walk");
-}
-
-void Kirby::RunStart()
-{
-	MainRenderer->ChangeAnimation("Right_Run");
-}
-
-void Kirby::StopStart()
-{
-	MainRenderer->ChangeAnimation("Right_Stop");
-}
-
-void Kirby::JumpStart()
-{
-	MainRenderer->ChangeAnimation("Right_Jump");
+	DirChange();
+	ChangeAnimationState("Walk");
 }
 
 void Kirby::IdleUpdate(float _Delta)
@@ -44,8 +30,6 @@ void Kirby::IdleUpdate(float _Delta)
 
 void Kirby::WalkUpdate(float _Delta)
 {
-	DirChange();
-
 	float4 MovePos = float4::ZERO;
 
 	if (true == GameEngineInput::IsPress('A'))
@@ -77,19 +61,4 @@ void Kirby::WalkUpdate(float _Delta)
 	}
 
 	AddPos(MovePos);
-}
-
-void Kirby::RunUpdate(float _Delta)
-{
-
-}
-
-void Kirby::StopUpdate(float _Delta)
-{
-
-}
-
-void Kirby::JumpUpdate(float _Delta)
-{
-
 }

@@ -24,6 +24,7 @@ void Kirby::Start()
 		FolderPath.MoveChild("Resources\\Kirby\\");
 
 		ResourcesManager::GetInst().CreateSpriteFolder("Right_Kirby", FolderPath.PlusFilePath("Right_Kirby"));
+		ResourcesManager::GetInst().CreateSpriteFolder("Left_Kirby", FolderPath.PlusFilePath("Left_Kirby"));
 	}
 
 	{
@@ -34,6 +35,9 @@ void Kirby::Start()
 		MainRenderer->CreateAnimation("Right_Run", "Right_Kirby", 12, 19, 0.1f, true);
 		MainRenderer->CreateAnimation("Right_Stop", "Right_Kirby", 20, 20, 0.1f, true);
 		MainRenderer->CreateAnimation("Right_Jump", "Right_Kirby", 2, 11, 0.1f, true);
+
+		MainRenderer->CreateAnimation("Left_Idle", "Left_Kirby", 0, 1, 0.5f, true);
+		MainRenderer->CreateAnimation("Left_Walk", "Left_Kirby", 2, 11, 0.05f, true);
 
 		MainRenderer->ChangeAnimation("Right_Idle");
 		MainRenderer->SetRenderScaleToTexture();
@@ -56,12 +60,6 @@ void Kirby::StateUpdate(float _Delta)
 		return IdleUpdate(_Delta);
 	case KirbyState::Walk:
 		return WalkUpdate(_Delta);
-	case KirbyState::Run:
-		return RunUpdate(_Delta);
-	case KirbyState::Stop:
-		return StopUpdate(_Delta);
-	case KirbyState::Jump:
-		return JumpUpdate(_Delta);
 	default:
 		break;
 	}
@@ -79,15 +77,6 @@ void Kirby::ChangeState(KirbyState _State)
 		case KirbyState::Walk:
 			WalkStart();
 			break;
-		case KirbyState::Run:
-			RunStart();
-			break;
-		case KirbyState::Stop:
-			StopStart();
-			break;
-		case KirbyState::Jump:
-			JumpStart();
-			break;
 		default:
 			break;
 		}
@@ -97,7 +86,7 @@ void Kirby::ChangeState(KirbyState _State)
 
 void Kirby::DirChange()
 {
-	ActorDir CheckDir = Dir;
+	ActorDir CheckDir = ActorDir::Max;
 
 	if (true == GameEngineInput::IsDown('A'))
 	{
@@ -108,8 +97,36 @@ void Kirby::DirChange()
 		CheckDir = ActorDir::Right;
 	}
 
-	if (CheckDir != Dir)
+	if (CheckDir != ActorDir::Max)
 	{
 		Dir = CheckDir;
 	}
+
+	if (CheckDir != Dir && CheckDir != ActorDir::Max)
+	{
+		ChangeAnimationState(CurState);
+	}
+}
+
+void Kirby::ChangeAnimationState(const std::string& _StateName)
+{
+	std::string AnimationName;
+
+	switch (Dir)
+	{
+	case ActorDir::Right:
+		AnimationName = "Right_";
+		break;
+	case ActorDir::Left:
+		AnimationName = "Left_";
+		break;
+	default:
+		break;
+	}
+
+	AnimationName += _StateName;
+
+	CurState = _StateName;
+
+	MainRenderer->ChangeAnimation(AnimationName);
 }

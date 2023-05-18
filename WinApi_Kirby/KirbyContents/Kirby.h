@@ -21,26 +21,21 @@ public:
 	GameEngineRenderer* MainRenderer = nullptr;
 protected:
 	void StateUpdate(float _Delta);
+	void ChangeState(KirbyState _State);
 
 	void IdleStart();
 	void WalkStart();
-	void RunStart();
-	void StopStart();
-	void JumpStart();
 
 	void IdleUpdate(float _Delta);
 	void WalkUpdate(float _Delta);
-	void RunUpdate(float _Delta);
-	void StopUpdate(float _Delta);
-	void JumpUpdate(float _Delta);
-
-	void ChangeState(KirbyState _State);
 
 	KirbyState State = KirbyState::Max;
+	std::string CurState = "";
 	ActorDir Dir = ActorDir::Right;
 
 	void DirChange();
 
+	void ChangeAnimationState(const std::string& _StateName);
 private:
 	void Start() override;
 	void Update(float _Delta) override;

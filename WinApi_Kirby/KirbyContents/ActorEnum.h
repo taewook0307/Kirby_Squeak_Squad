@@ -27,5 +27,6 @@ enum class MonsterState
 enum class ActorDir
 {
 	Left,
-	Right
+	Right,
+	Max
 };
