@@ -23,17 +23,17 @@ void Kirby::Start()
 
 		FolderPath.MoveChild("Resources\\Kirby\\");
 
-		ResourcesManager::GetInst().CreateSpriteFolder("NormalKirby", FolderPath.PlusFilePath("NormalKirby"));
+		ResourcesManager::GetInst().CreateSpriteFolder("Right_Kirby", FolderPath.PlusFilePath("Right_Kirby"));
 	}
 
 	{
 		MainRenderer = CreateRenderer(RenderOrder::Play);
 		
-		MainRenderer->CreateAnimation("Right_Idle", "NormalKirby", 0, 1, 0.5f, true);
-		MainRenderer->CreateAnimation("Right_Walk", "NormalKirby", 21, 30, 0.05f, true);
-		MainRenderer->CreateAnimation("Right_Run", "NormalKirby", 12, 19, 0.1f, true);
-		MainRenderer->CreateAnimation("Right_Stop", "NormalKirby", 20, 20, 0.1f, true);
-		MainRenderer->CreateAnimation("Right_Jump", "NormalKirby", 2, 11, 0.1f, true);
+		MainRenderer->CreateAnimation("Right_Idle", "Right_Kirby", 0, 1, 0.5f, true);
+		MainRenderer->CreateAnimation("Right_Walk", "Right_Kirby", 21, 30, 0.05f, true);
+		MainRenderer->CreateAnimation("Right_Run", "Right_Kirby", 12, 19, 0.1f, true);
+		MainRenderer->CreateAnimation("Right_Stop", "Right_Kirby", 20, 20, 0.1f, true);
+		MainRenderer->CreateAnimation("Right_Jump", "Right_Kirby", 2, 11, 0.1f, true);
 
 		MainRenderer->ChangeAnimation("Right_Idle");
 		MainRenderer->SetRenderScaleToTexture();
