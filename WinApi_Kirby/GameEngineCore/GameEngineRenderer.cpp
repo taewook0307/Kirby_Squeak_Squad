@@ -15,6 +15,7 @@ GameEngineRenderer::GameEngineRenderer()
 
 GameEngineRenderer::~GameEngineRenderer()
 {
+
 }
 
 void GameEngineRenderer::SetSprite(const std::string& _Name, size_t _Index/* = 0*/)

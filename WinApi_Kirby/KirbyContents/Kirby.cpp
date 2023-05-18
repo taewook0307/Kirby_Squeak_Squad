@@ -86,7 +86,7 @@ void Kirby::ChangeState(KirbyState _State)
 
 void Kirby::DirChange()
 {
-	ActorDir CheckDir = ActorDir::Max;
+	ActorDir CheckDir = Dir;
 
 	if (true == GameEngineInput::IsDown('A'))
 	{
@@ -97,13 +97,9 @@ void Kirby::DirChange()
 		CheckDir = ActorDir::Right;
 	}
 
-	if (CheckDir != ActorDir::Max)
+	if (CheckDir != Dir)
 	{
 		Dir = CheckDir;
-	}
-
-	if (CheckDir != Dir && CheckDir != ActorDir::Max)
-	{
 		ChangeAnimationState(CurState);
 	}
 }
