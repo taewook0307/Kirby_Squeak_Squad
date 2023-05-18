@@ -121,3 +121,29 @@ void GameEngineLevel::ActorRelease()
 		}
 	}
 }
+
+void GameEngineLevel::ActorLevelStart()
+{
+	for (const std::pair<int, std::list<GameEngineActor*>>& Pair : AllActors)
+	{
+		const std::list<GameEngineActor*>& ActorGroup = Pair.second;
+
+		for (GameEngineActor* ActorPtr : ActorGroup)
+		{
+			ActorPtr->LevelStart();
+		}
+	}
+}
+
+void GameEngineLevel::ActorLevelEnd()
+{
+	for (const std::pair<int, std::list<GameEngineActor*>>& Pair : AllActors)
+	{
+		const std::list<GameEngineActor*>& ActorGroup = Pair.second;
+
+		for (GameEngineActor* ActorPtr : ActorGroup)
+		{
+			ActorPtr->LevelEnd();
+		}
+	}
+}

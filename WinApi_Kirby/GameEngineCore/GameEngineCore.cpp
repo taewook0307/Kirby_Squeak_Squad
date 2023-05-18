@@ -35,9 +35,11 @@ void GameEngineCore::CoreUpdate()
 		if (nullptr != CurLevel)
 		{
 			CurLevel->LevelEnd(NextLevel);
+			CurLevel->ActorLevelEnd();
 		}
 
 		NextLevel->LevelStart(CurLevel);
+		NextLevel->ActorLevelStart();
 
 		CurLevel = NextLevel;
 
@@ -57,6 +59,7 @@ void GameEngineCore::CoreUpdate()
 		GameEngineInput::Reset();
 	}
 
+	CurLevel->AddLiveTime(Delta);
 	CurLevel->Update(Delta);
 
 	CurLevel->ActorUpdate(Delta);
