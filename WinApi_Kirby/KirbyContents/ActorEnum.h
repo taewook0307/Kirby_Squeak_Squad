@@ -3,12 +3,19 @@
 enum class KirbyState
 {
 	Idle,
+	Down,
+	Slide,
+	Jump,
 	Walk,
 	Run,
 	Stop,
+	Breathe,
+	BreatheOut,
+	Drop,
+	Fly,
+	Move,
 	Attack,
 	Damage,
-	Jump,
 	Max
 };
 
