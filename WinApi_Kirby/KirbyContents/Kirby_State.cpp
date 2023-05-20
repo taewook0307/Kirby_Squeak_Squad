@@ -1,7 +1,8 @@
 #include "Kirby.h"
 
-#include <GameEngineCore/GameEngineRenderer.h>
+#include <GameEngineBase/GameEngineTime.h>
 #include <GameEnginePlatform/GameEngineInput.h>
+#include <GameEngineCore/GameEngineRenderer.h>
 #include <GameEngineCore/GameEngineLevel.h>
 #include <GameEngineCore/GameEngineCamera.h>
 
@@ -73,31 +74,26 @@ void Kirby::SlideUpdate(float _Delta)
 
 	float4 StartPos = GetPos();
 	float4 MovePos = float4::ZERO;
+	float CopySpeed = Speed / 2.0f;
 
-	if (Dir == ActorDir::Left)
+	if (Dir == ActorDir::Left && GameEngineTime::MainTimer.GetDeltaTime() <= 0.05f)
 	{
-		MovePos = { -Speed * _Delta, 0.0f };
+		MovePos = { -CopySpeed * _Delta, 0.0f };
 
-		while (StartPos <= MovePos)
-		{
-			AddPos(MovePos);
-			StartPos + MovePos;
-		}
-
-		ChangeState(KirbyState::Idle);
-		return;
+		AddPos(MovePos);
+		GetLevel()->GetMainCamera()->AddPos(MovePos);
 	}
 
-	if (Dir == ActorDir::Right)
+	else if (Dir == ActorDir::Right && GameEngineTime::MainTimer.GetDeltaTime() <= 0.05f)
 	{
-		MovePos = { Speed * _Delta, 0.0f };
+		MovePos = { CopySpeed * _Delta, 0.0f };
 
-		while (StartPos <= StartPos)
-		{
-			AddPos(MovePos);
-			StartPos + MovePos;
-		}
+		AddPos(MovePos);
+		GetLevel()->GetMainCamera()->AddPos(MovePos);
+	}
 
+	else if (GameEngineTime::MainTimer.GetDeltaTime() >= 0.05f)
+	{
 		ChangeState(KirbyState::Idle);
 		return;
 	}

@@ -32,7 +32,7 @@ void Kirby::Start()
 		
 		MainRenderer->CreateAnimation("Right_Idle", "Right_Kirby.Bmp", 0, 1, 0.5f, true);
 		MainRenderer->CreateAnimation("Right_Down", "Right_Kirby.Bmp", 2, 3, 0.5f, true);
-		MainRenderer->CreateAnimation("Right_Slide", "Right_Kirby.Bmp", 4, 5, 3.0f, true);
+		MainRenderer->CreateAnimation("Right_Slide", "Right_Kirby.Bmp", 4, 5, 1.0f, true);
 		MainRenderer->CreateAnimation("Right_Jump", "Right_Kirby.Bmp", 6, 6, 0.1f, true);
 		MainRenderer->CreateAnimation("Right_JumpToDown", "Right_Kirby.Bmp", 7, 14, 0.1f, true);
 		MainRenderer->CreateAnimation("Right_JumpToLand", "Right_Kirby.Bmp", 14, 15, 0.1f, true);
@@ -50,7 +50,7 @@ void Kirby::Start()
 
 		MainRenderer->CreateAnimation("Left_Idle", "Left_Kirby.Bmp", 0, 1, 0.5f, true);
 		MainRenderer->CreateAnimation("Left_Down", "Left_Kirby.Bmp", 2, 3, 0.5f, true);
-		MainRenderer->CreateAnimation("Left_Slide", "Left_Kirby.Bmp", 4, 5, 3.0f, true);
+		MainRenderer->CreateAnimation("Left_Slide", "Left_Kirby.Bmp", 4, 5, 1.0f, true);
 		MainRenderer->CreateAnimation("Left_Jump", "Left_Kirby.Bmp", 6, 6, 0.1f, true);
 		MainRenderer->CreateAnimation("Left_JumpToDown", "Left_Kirby.Bmp", 7, 14, 0.1f, true);
 		MainRenderer->CreateAnimation("Left_JumpToLand", "Left_Kirby.Bmp", 14, 15, 0.1f, true);
