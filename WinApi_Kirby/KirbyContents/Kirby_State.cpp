@@ -70,30 +70,40 @@ void Kirby::DownUpdate(float _Delta)
 
 void Kirby::SlideUpdate(float _Delta)
 {
-	DirCheck();
-
 	float4 StartPos = GetPos();
 	float4 MovePos = float4::ZERO;
-	float CopySpeed = Speed / 2.0f;
+	float CopySpeed = Speed / 1.5f;
 
-	if (Dir == ActorDir::Left && GameEngineTime::MainTimer.GetDeltaTime() <= 0.05f)
+	static float SlideTimer = 0.0f;
+
+	if (Dir == ActorDir::Left && SlideTimer <= 1.0f)
 	{
 		MovePos = { -CopySpeed * _Delta, 0.0f };
 
 		AddPos(MovePos);
 		GetLevel()->GetMainCamera()->AddPos(MovePos);
+		SlideTimer += _Delta;
+		return;
 	}
 
-	else if (Dir == ActorDir::Right && GameEngineTime::MainTimer.GetDeltaTime() <= 0.05f)
+	if (Dir == ActorDir::Right && SlideTimer <= 1.0f)
 	{
 		MovePos = { CopySpeed * _Delta, 0.0f };
 
 		AddPos(MovePos);
 		GetLevel()->GetMainCamera()->AddPos(MovePos);
+		SlideTimer += _Delta;
+		return;
 	}
 
-	else if (GameEngineTime::MainTimer.GetDeltaTime() >= 0.05f)
+	if (SlideTimer <= 1.2f || SlideTimer >= 1.0f)
 	{
+		SlideTimer += _Delta;
+	}
+
+	if (SlideTimer >= 1.2f)
+	{
+		SlideTimer = 0.0f;
 		ChangeState(KirbyState::Idle);
 		return;
 	}
