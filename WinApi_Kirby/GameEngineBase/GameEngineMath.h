@@ -154,20 +154,6 @@ public:
 			Z == _Value.Z;
 	}
 
-	bool operator<=(const float4 _Value) const
-	{
-		return X <= _Value.X &&
-			Y <= _Value.Y &&
-			Z <= _Value.Z;
-	}
-
-	bool operator>=(const float4 _Value) const
-	{
-		return X >= _Value.X &&
-			Y >= _Value.Y &&
-			Z >= _Value.Z;
-	}
-
 	inline float Size()
 	{
 		float Value = X * X + Y * Y;
