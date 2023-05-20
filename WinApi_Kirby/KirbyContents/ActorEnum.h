@@ -15,6 +15,7 @@ enum class KirbyState
 	Fly,
 	Move,
 	Attack,
+	StopAttack,
 	Damage,
 	Max
 };
