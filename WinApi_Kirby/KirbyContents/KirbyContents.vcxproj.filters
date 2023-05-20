@@ -39,6 +39,18 @@
     <ClInclude Include="IceMonster.h">
       <Filter>Monster</Filter>
     </ClInclude>
+    <ClInclude Include="FireKirby.h">
+      <Filter>KirbyForm</Filter>
+    </ClInclude>
+    <ClInclude Include="IceKirby.h">
+      <Filter>KirbyForm</Filter>
+    </ClInclude>
+    <ClInclude Include="TornadoKirby.h">
+      <Filter>KirbyForm</Filter>
+    </ClInclude>
+    <ClInclude Include="SparkKirby.h">
+      <Filter>KirbyForm</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TitleLevel.cpp">
@@ -80,6 +92,30 @@
     </ClCompile>
     <ClCompile Include="IceMonster.cpp">
       <Filter>Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="FireKirby.cpp">
+      <Filter>KirbyForm</Filter>
+    </ClCompile>
+    <ClCompile Include="IceKirby.cpp">
+      <Filter>KirbyForm</Filter>
+    </ClCompile>
+    <ClCompile Include="TornadoKirby.cpp">
+      <Filter>KirbyForm</Filter>
+    </ClCompile>
+    <ClCompile Include="SparkKirby.cpp">
+      <Filter>KirbyForm</Filter>
+    </ClCompile>
+    <ClCompile Include="SparkKirby_State.cpp">
+      <Filter>KirbyForm</Filter>
+    </ClCompile>
+    <ClCompile Include="FireKirby_State.cpp">
+      <Filter>KirbyForm</Filter>
+    </ClCompile>
+    <ClCompile Include="TornadoKirby_State.cpp">
+      <Filter>KirbyForm</Filter>
+    </ClCompile>
+    <ClCompile Include="IceKirby_State.cpp">
+      <Filter>KirbyForm</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

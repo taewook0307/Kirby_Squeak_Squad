@@ -20,26 +20,26 @@ public:
 
 	GameEngineRenderer* MainRenderer = nullptr;
 protected:
-	void StateUpdate(float _Delta);
-	void ChangeState(KirbyState _State);
+	virtual void StateUpdate(float _Delta);
+	virtual void ChangeState(KirbyState _State);
 
-	void IdleStart();
-	void DownStart();
-	void SlideStart();
-	void WalkStart();
+	virtual void IdleStart();
+	virtual void DownStart();
+	virtual void SlideStart();
+	virtual void WalkStart();
 
-	void IdleUpdate(float _Delta);
-	void DownUpdate(float _Delta);
-	void SlideUpdate(float _Delta);
-	void WalkUpdate(float _Delta);
+	virtual void IdleUpdate(float _Delta);
+	virtual void DownUpdate(float _Delta);
+	virtual void SlideUpdate(float _Delta);
+	virtual void WalkUpdate(float _Delta);
+
+	virtual void DirCheck();
+
+	virtual void ChangeAnimationState(const std::string& _StateName);
 
 	KirbyState State = KirbyState::Max;
 	std::string CurState = "";
 	ActorDir Dir = ActorDir::Right;
-
-	void DirCheck();
-
-	void ChangeAnimationState(const std::string& _StateName);
 private:
 	void Start() override;
 	void Update(float _Delta) override;

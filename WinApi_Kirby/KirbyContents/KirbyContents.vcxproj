@@ -42,7 +42,15 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="FireKirby.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="FirstStageLevel.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="IceKirby.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -72,11 +80,19 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="ActorEnum.h" />
+    <ClInclude Include="SparkKirby.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="ThirdStageLevel.h">
       <SubType>
       </SubType>
     </ClInclude>
     <ClInclude Include="TitleLevel.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="TornadoKirby.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -94,10 +110,20 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="FireKirby.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="FireKirby_State.cpp" />
     <ClCompile Include="FirstStageLevel.cpp">
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="IceKirby.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="IceKirby_State.cpp" />
     <ClCompile Include="IceMonster.cpp">
       <SubType>
       </SubType>
@@ -124,6 +150,11 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="SparkKirby.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="SparkKirby_State.cpp" />
     <ClCompile Include="ThirdStageLevel.cpp">
       <SubType>
       </SubType>
@@ -132,6 +163,11 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="TornadoKirby.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="TornadoKirby_State.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

@@ -44,7 +44,6 @@ void Kirby::IdleUpdate(float _Delta)
 	}
 }
 
-
 void Kirby::DownUpdate(float _Delta)
 {
 	DirCheck();

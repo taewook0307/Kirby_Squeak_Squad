@@ -2,6 +2,7 @@
 #include "BackGround.h"
 #include "Map.h"
 #include "Kirby.h"
+#include "SparkKirby.h"
 #include "KirbyGameEnum.h"
 
 #include <GameEnginePlatform/GameEngineWindow.h>
@@ -25,7 +26,7 @@ void FirstStageLevel::Start()
 	Map* FirstStage = CreateActor<Map>(RenderOrder::Map);
 	FirstStage->MapAnimation("FirstStage");
 
-	LevelPlayer = CreateActor<Kirby>(RenderOrder::Play);
+	LevelPlayer = CreateActor<SparkKirby>(RenderOrder::Play);
 }
 
 void FirstStageLevel::Update(float _Delta)
