@@ -65,5 +65,5 @@ GameEngineRenderer* GameEngineActor::CreateRenderer(const std::string& _ImageNam
 
 GameEngineRenderer* GameEngineActor::CreateCollision(int _Order/* = 0*/)
 {
-
+	return nullptr;
 }

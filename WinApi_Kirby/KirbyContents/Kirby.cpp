@@ -17,27 +17,53 @@ Kirby::~Kirby()
 void Kirby::Start()
 {
 	{
-		GameEnginePath FolderPath;
-		FolderPath.SetCurrentPath();
-		FolderPath.MoveParentToExistsChild("Resources");
+		GameEnginePath FilePath;
+		FilePath.SetCurrentPath();
+		FilePath.MoveParentToExistsChild("Resources");
 
-		FolderPath.MoveChild("Resources\\Kirby\\");
+		FilePath.MoveChild("Resources\\Kirby\\Normal\\");
 
-		ResourcesManager::GetInst().CreateSpriteFolder("Right_Kirby", FolderPath.PlusFilePath("Right_Kirby"));
-		ResourcesManager::GetInst().CreateSpriteFolder("Left_Kirby", FolderPath.PlusFilePath("Left_Kirby"));
+		ResourcesManager::GetInst().CreateSpriteSheet(FilePath.PlusFilePath("Right_Kirby.Bmp"), 10, 21);
+		ResourcesManager::GetInst().CreateSpriteSheet(FilePath.PlusFilePath("Left_Kirby.Bmp"), 10, 21);
 	}
 
 	{
 		MainRenderer = CreateRenderer(RenderOrder::Play);
 		
-		MainRenderer->CreateAnimation("Right_Idle", "Right_Kirby", 0, 1, 0.5f, true);
-		MainRenderer->CreateAnimation("Right_Walk", "Right_Kirby", 21, 30, 0.05f, true);
-		MainRenderer->CreateAnimation("Right_Run", "Right_Kirby", 12, 19, 0.1f, true);
-		MainRenderer->CreateAnimation("Right_Stop", "Right_Kirby", 20, 20, 0.1f, true);
-		MainRenderer->CreateAnimation("Right_Jump", "Right_Kirby", 2, 11, 0.1f, true);
+		MainRenderer->CreateAnimation("Right_Idle", "Right_Kirby.Bmp", 0, 1, 0.5f, true);
+		MainRenderer->CreateAnimation("Right_Down", "Right_Kirby.Bmp", 2, 3, 0.5f, true);
+		MainRenderer->CreateAnimation("Right_Slide", "Right_Kirby.Bmp", 4, 5, 0.5f, true);
+		MainRenderer->CreateAnimation("Right_Jump", "Right_Kirby.Bmp", 6, 6, 0.1f, true);
+		MainRenderer->CreateAnimation("Right_JumpToDown", "Right_Kirby.Bmp", 7, 14, 0.1f, true);
+		MainRenderer->CreateAnimation("Right_JumpToLand", "Right_Kirby.Bmp", 14, 15, 0.1f, true);
+		MainRenderer->CreateAnimation("Right_Walk", "Right_Kirby.Bmp", 16, 25, 0.1f, true);
+		MainRenderer->CreateAnimation("Right_Run", "Right_Kirby.Bmp", 26, 33, 0.1f, true);
+		MainRenderer->CreateAnimation("Right_Stop", "Right_Kirby.Bmp", 34, 34, 0.1f, true);
+		MainRenderer->CreateAnimation("Right_StopToIdle", "Right_Kirby.Bmp", 35, 36, 0.1f, true);
+		MainRenderer->CreateAnimation("Right_Breathe", "Right_Kirby.Bmp", 37, 41, 0.1f, true);
+		MainRenderer->CreateAnimation("Right_BreatheOut", "Right_Kirby.Bmp", 60, 61, 0.1f, true);
+		MainRenderer->CreateAnimation("Right_Fly", "Right_Kirby.Bmp", 42, 59, 0.1f, true);
+		MainRenderer->CreateAnimation("Right_Drop", "Right_Kirby.Bmp", 62, 77, 0.1f, true);
+		MainRenderer->CreateAnimation("Right_Move", "Right_Kirby.Bmp", 78, 81, 0.1f, true);
+		MainRenderer->CreateAnimation("Right_Damage", "Right_Kirby.Bmp", 82, 86, 0.1f, true);
 
-		MainRenderer->CreateAnimation("Left_Idle", "Left_Kirby", 0, 1, 0.5f, true);
-		MainRenderer->CreateAnimation("Left_Walk", "Left_Kirby", 2, 11, 0.05f, true);
+
+		MainRenderer->CreateAnimation("Left_Idle", "Left_Kirby.Bmp", 0, 1, 0.5f, true);
+		MainRenderer->CreateAnimation("Left_Down", "Left_Kirby.Bmp", 2, 3, 0.5f, true);
+		MainRenderer->CreateAnimation("Left_Slide", "Left_Kirby.Bmp", 4, 5, 0.5f, true);
+		MainRenderer->CreateAnimation("Left_Jump", "Left_Kirby.Bmp", 6, 6, 0.1f, true);
+		MainRenderer->CreateAnimation("Left_JumpToDown", "Left_Kirby.Bmp", 7, 14, 0.1f, true);
+		MainRenderer->CreateAnimation("Left_JumpToLand", "Left_Kirby.Bmp", 14, 15, 0.1f, true);
+		MainRenderer->CreateAnimation("Left_Walk", "Left_Kirby.Bmp", 16, 25, 0.1f, true);
+		MainRenderer->CreateAnimation("Left_Run", "Left_Kirby.Bmp", 26, 33, 0.1f, true);
+		MainRenderer->CreateAnimation("Left_Stop", "Left_Kirby.Bmp", 34, 34, 0.1f, true);
+		MainRenderer->CreateAnimation("Left_StopToIdle", "Left_Kirby.Bmp", 35, 36, 0.1f, true);
+		MainRenderer->CreateAnimation("Left_Breathe", "Left_Kirby.Bmp", 37, 41, 0.1f, true);
+		MainRenderer->CreateAnimation("Left_BreatheOut", "Left_Kirby.Bmp", 60, 61, 0.1f, true);
+		MainRenderer->CreateAnimation("Left_Fly", "Left_Kirby.Bmp", 42, 59, 0.1f, true);
+		MainRenderer->CreateAnimation("Left_Drop", "Left_Kirby.Bmp", 62, 77, 0.1f, true);
+		MainRenderer->CreateAnimation("Left_Move", "Left_Kirby.Bmp", 78, 81, 0.1f, true);
+		MainRenderer->CreateAnimation("Left_Damage", "Left_Kirby.Bmp", 82, 86, 0.1f, true);
 
 		MainRenderer->ChangeAnimation("Right_Idle");
 		MainRenderer->SetRenderScaleToTexture();
