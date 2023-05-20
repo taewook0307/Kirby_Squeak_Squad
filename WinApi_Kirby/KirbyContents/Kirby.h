@@ -24,16 +24,20 @@ protected:
 	void ChangeState(KirbyState _State);
 
 	void IdleStart();
+	void DownStart();
+	void SlideStart();
 	void WalkStart();
 
 	void IdleUpdate(float _Delta);
+	void DownUpdate(float _Delta);
+	void SlideUpdate(float _Delta);
 	void WalkUpdate(float _Delta);
 
 	KirbyState State = KirbyState::Max;
 	std::string CurState = "";
 	ActorDir Dir = ActorDir::Right;
 
-	void DirChange();
+	void DirCheck();
 
 	void ChangeAnimationState(const std::string& _StateName);
 private:
