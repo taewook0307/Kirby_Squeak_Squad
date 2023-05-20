@@ -106,3 +106,28 @@ void GameEngineWindowTexture::TransCopy(GameEngineWindowTexture* _CopyTexture, c
 		_TransColor
 	);
 }
+
+unsigned int GameEngineWindowTexture::GetColor(unsigned int _DefaultColor, float4 _Pos)
+{
+	if (0 > _Pos.iX())
+	{
+		return _DefaultColor;
+	}
+
+	if (0 > _Pos.iY())
+	{
+		return _DefaultColor;
+	}
+
+	if (GetScale().iX() <= _Pos.iX())
+	{
+		return _DefaultColor;
+	}
+
+	if (GetScale().iX() <= _Pos.iY())
+	{
+		return _DefaultColor;
+	}
+
+	return GetPixel(ImageDC, _Pos.iX(), _Pos.iY());
+}

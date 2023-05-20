@@ -9,6 +9,7 @@
 
 // 설명 : 화면 혹은 장면을 표현
 class GameEngineCamera;
+class GameEngineCollision;
 class GameEngineLevel : public GameEngineObject
 {
 	friend class GameEngineActor;
@@ -56,6 +57,10 @@ private:
 	GameEngineCamera* UICamera;
 
 	std::map<int, std::list<GameEngineActor*>> AllActors;
+
+	std::map<int, std::list<GameEngineCollision*>> AllCollision;
+
+	void PushCollision(GameEngineCollision* _Collision) {};
 
 	void ActorInit(GameEngineActor* _Actor, int _Order);
 	void ActorUpdate(float _Delta);

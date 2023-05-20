@@ -39,6 +39,7 @@ public:
 
 	void TransCopy(GameEngineWindowTexture* _CopyTexture, const float4& _Pos, const float4& _Scale, const float4& _OtherPos, const float4& _OtherScale, int _TransColor = RGB(255, 0, 255));
 
+	unsigned int GetColor(unsigned int _DefaultColor, float4 _Pos);
 protected:
 
 private:
