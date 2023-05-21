@@ -59,16 +59,15 @@ void Map::MapInit(const std::string& _PathName, const std::string& _BitMapFIleNa
 		MainRenderer->SetScaleRatio(5.0f);
 
 		MainRenderer->SetRenderPos((MainSprite->GetSprite(0).BaseTexture->GetScale() *= 5.0f).Half());
-
-		MainRenderer->On();
 	}
 
 	{
 		DebugRenderer = CreateRenderer(_BitMapFIleName, RenderOrder::Map);
-		DebugRenderer->SetRenderPos((DebugTexture->GetScale() * 5.0f).Half());
-
-		DebugRenderer->Off();
+		DebugRenderer->SetRenderPos(DebugTexture->GetScale().Half());
 	}
+
+	MainRenderer->On();
+	DebugRenderer->Off();
 }
 
 void Map::SwitchRender()

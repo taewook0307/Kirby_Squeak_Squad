@@ -75,11 +75,6 @@ void Kirby::Start()
 
 void Kirby::Update(float _Delta)
 {
-	if (true == GameEngineInput::IsDown('J'))
-	{
-
-	}
-
 	StateUpdate(_Delta);
 }
 

@@ -19,8 +19,8 @@ void SecondStageLevel::Start()
 	BackGround* Back = CreateActor<BackGround>(RenderOrder::BackGround);
 	Back->Init("SecondStageLevel.Bmp");
 
-	/*Map* SecondStage = CreateActor<Map>(RenderOrder::Map);
-	SecondStage->MapAnimation("SecondStage");*/
+	SecondStage = CreateActor<Map>(RenderOrder::Map);
+	SecondStage->MapInit("SecondStage", "SecondStageBitMap.Bmp");
 }
 
 void SecondStageLevel::Update(float _Delta)
@@ -28,5 +28,10 @@ void SecondStageLevel::Update(float _Delta)
 	if (true == GameEngineInput::IsDown('P'))
 	{
 		GameEngineCore::ChangeLevel("ThirdStageLevel");
+	}
+
+	if (true == GameEngineInput::IsDown('J'))
+	{
+		SecondStage->SwitchRender();
 	}
 }

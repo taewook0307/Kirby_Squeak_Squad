@@ -36,6 +36,11 @@ void FirstStageLevel::Update(float _Delta)
 	{
 		GameEngineCore::ChangeLevel("SecondStageLevel");
 	}
+
+	if (true == GameEngineInput::IsDown('J'))
+	{
+		FirstStage->SwitchRender();
+	}
 }
 
 void FirstStageLevel::LevelStart(GameEngineLevel* _PrevLevel)
@@ -49,6 +54,7 @@ void FirstStageLevel::LevelStart(GameEngineLevel* _PrevLevel)
 		float4 WinScale = GameEngineWindow::MainWindow.GetScale();
 		LevelPlayer->SetPos({ WinScale.Half().Half().X, WinScale.Half().Half().Y });
 		LevelPlayer->SetGroundBitMap("FirstStageBitMap.Bmp");
+
 		GetMainCamera()->SetPos(float4::ZERO);
 	}
 }

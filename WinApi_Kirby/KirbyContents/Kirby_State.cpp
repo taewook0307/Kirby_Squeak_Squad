@@ -28,6 +28,17 @@ void Kirby::WalkStart()
 
 void Kirby::IdleUpdate(float _Delta)
 {
+	unsigned int Color = GetGroundColor(RGB(255, 255, 255));
+
+	if (RGB(255, 255, 255) == Color)
+	{
+		Gravity(_Delta);
+	}
+	else
+	{
+		GravityReset();
+	}
+
 	if (true == GameEngineInput::IsDown('A')
 		|| true == GameEngineInput::IsDown('D'))
 	{
