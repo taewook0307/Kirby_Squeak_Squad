@@ -1,4 +1,4 @@
-#include "SparkKirby.h"
+#include "IceKirby.h"
 
 #include <GameEngineBase/GameEngineTime.h>
 #include <GameEnginePlatform/GameEngineInput.h>
@@ -6,42 +6,42 @@
 #include <GameEngineCore/GameEngineLevel.h>
 #include <GameEngineCore/GameEngineCamera.h>
 
-void SparkKirby::IdleStart()
+void IceKirby::IdleStart()
 {
 	Kirby::IdleStart();
 }
 
-void SparkKirby::DownStart()
+void IceKirby::DownStart()
 {
 	Kirby::DownStart();
 }
 
-void SparkKirby::SlideStart()
+void IceKirby::SlideStart()
 {
 	Kirby::SlideStart();
 }
 
-void SparkKirby::WalkStart()
+void IceKirby::WalkStart()
 {
 	Kirby::WalkStart();
 }
 
-void SparkKirby::IdleUpdate(float _Delta)
+void IceKirby::IdleUpdate(float _Delta)
 {
 	Kirby::IdleUpdate(_Delta);
 }
 
-void SparkKirby::DownUpdate(float _Delta)
+void IceKirby::DownUpdate(float _Delta)
 {
 	Kirby::DownUpdate(_Delta);
 }
 
-void SparkKirby::SlideUpdate(float _Delta)
+void IceKirby::SlideUpdate(float _Delta)
 {
 	Kirby::SlideUpdate(_Delta);
 }
 
-void SparkKirby::WalkUpdate(float _Delta)
+void IceKirby::WalkUpdate(float _Delta)
 {
 	Kirby::WalkUpdate(_Delta);
 }
