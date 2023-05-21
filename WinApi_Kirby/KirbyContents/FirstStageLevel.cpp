@@ -24,10 +24,10 @@ void FirstStageLevel::Start()
 	BackGround* Back = CreateActor<BackGround>(RenderOrder::BackGround);
 	Back->Init("FirstStageLevel.Bmp");
 
-	Map* FirstStage = CreateActor<Map>(RenderOrder::Map);
-	FirstStage->MapAnimation("FirstStage");
+	FirstStage = CreateActor<Map>(RenderOrder::Map);
+	FirstStage->MapInit("FirstStage", "FirstStageBitMap.Bmp");
 
-	LevelPlayer = CreateActor<IceKirby>(RenderOrder::Play);
+	LevelPlayer = CreateActor<Kirby>(RenderOrder::Play);
 }
 
 void FirstStageLevel::Update(float _Delta)
@@ -45,7 +45,10 @@ void FirstStageLevel::LevelStart(GameEngineLevel* _PrevLevel)
 		MsgBoxAssert("플레이어를 세팅해주지 않았습니다");
 	}
 
-	float4 WinScale = GameEngineWindow::MainWindow.GetScale();
-	LevelPlayer->SetPos({ WinScale.Half().Half().X, WinScale.Half().Half().Y });
-	GetMainCamera()->SetPos(float4::ZERO);
+	{
+		float4 WinScale = GameEngineWindow::MainWindow.GetScale();
+		LevelPlayer->SetPos({ WinScale.Half().Half().X, WinScale.Half().Half().Y });
+		LevelPlayer->SetGroundBitMap("FirstStageBitMap.Bmp");
+		GetMainCamera()->SetPos(float4::ZERO);
+	}
 }

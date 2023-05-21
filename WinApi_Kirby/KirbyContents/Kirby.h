@@ -1,11 +1,11 @@
 #pragma once
 
 #include "ActorEnum.h"
+#include "BaseActor.h"
 
 #include <string>
-#include <GameEngineCore/GameEngineActor.h>
 
-class Kirby : public GameEngineActor
+class Kirby : public BaseActor
 {
 public:
 	// constrcuter destructer

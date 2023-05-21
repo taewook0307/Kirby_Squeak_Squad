@@ -27,13 +27,7 @@
     <ClInclude Include="ThirdStageLevel.h">
       <Filter>Level</Filter>
     </ClInclude>
-    <ClInclude Include="Kirby.h">
-      <Filter>Global</Filter>
-    </ClInclude>
     <ClInclude Include="ActorEnum.h">
-      <Filter>Global</Filter>
-    </ClInclude>
-    <ClInclude Include="Monster.h">
       <Filter>Global</Filter>
     </ClInclude>
     <ClInclude Include="IceMonster.h">
@@ -50,6 +44,18 @@
     </ClInclude>
     <ClInclude Include="SparkKirby.h">
       <Filter>KirbyForm</Filter>
+    </ClInclude>
+    <ClInclude Include="Gravity.h">
+      <Filter>Global</Filter>
+    </ClInclude>
+    <ClInclude Include="Kirby.h">
+      <Filter>KirbyForm</Filter>
+    </ClInclude>
+    <ClInclude Include="Monster.h">
+      <Filter>Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseActor.h">
+      <Filter>Global</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -78,18 +84,6 @@
     <ClCompile Include="ThirdStageLevel.cpp">
       <Filter>Level</Filter>
     </ClCompile>
-    <ClCompile Include="Kirby.cpp">
-      <Filter>Global</Filter>
-    </ClCompile>
-    <ClCompile Include="Kirby_State.cpp">
-      <Filter>Global</Filter>
-    </ClCompile>
-    <ClCompile Include="Monster.cpp">
-      <Filter>Global</Filter>
-    </ClCompile>
-    <ClCompile Include="Monster_State.cpp">
-      <Filter>Global</Filter>
-    </ClCompile>
     <ClCompile Include="IceMonster.cpp">
       <Filter>Monster</Filter>
     </ClCompile>
@@ -116,6 +110,24 @@
     </ClCompile>
     <ClCompile Include="IceKirby_State.cpp">
       <Filter>KirbyForm</Filter>
+    </ClCompile>
+    <ClCompile Include="Gravity.cpp">
+      <Filter>Global</Filter>
+    </ClCompile>
+    <ClCompile Include="Kirby.cpp">
+      <Filter>KirbyForm</Filter>
+    </ClCompile>
+    <ClCompile Include="Kirby_State.cpp">
+      <Filter>KirbyForm</Filter>
+    </ClCompile>
+    <ClCompile Include="Monster_State.cpp">
+      <Filter>Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="Monster.cpp">
+      <Filter>Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseActor.cpp">
+      <Filter>Global</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -5,6 +5,7 @@
 
 class GameEngineSprite;
 class GameEngineRenderer;
+class GameEngineWindowTexture;
 class Map : public GameEngineActor
 {
 public:
@@ -19,11 +20,19 @@ public:
 	Map& operator=(Map&& _Other) noexcept = delete;
 
 	GameEngineRenderer* MainRenderer = nullptr;
+	GameEngineRenderer* DebugRenderer = nullptr;
 
-	void MapAnimation(const std::string& _PathName);
+	void MapInit(const std::string& _PathName, const std::string& _BitMapFIleName);
+
+	void SwitchRender();
 protected:
 
 private:
-	std::string PathName;
+	std::string PathName = "";
+	std::string DebugBitMapName = "";
+
 	GameEngineSprite* MainSprite = nullptr;
+	GameEngineWindowTexture* DebugTexture = nullptr;
+
+	bool SwitchRenderValue = true;
 };

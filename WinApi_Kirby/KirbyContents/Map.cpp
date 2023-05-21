@@ -22,9 +22,10 @@ Map::~Map()
 {
 }
 
-void Map::MapAnimation(const std::string& _PathName)
+void Map::MapInit(const std::string& _PathName, const std::string& _BitMapFIleName)
 {
 	PathName = _PathName;
+	DebugBitMapName = _BitMapFIleName;
 
 	{
 		GameEnginePath FolderPath;
@@ -38,6 +39,17 @@ void Map::MapAnimation(const std::string& _PathName)
 	}
 
 	{
+		GameEnginePath FilePath;
+
+		FilePath.SetCurrentPath();
+		FilePath.MoveParentToExistsChild("Resources");
+
+		FilePath.MoveChild("Resources\\Map\\" + _PathName + "\\" + _BitMapFIleName);
+
+		DebugTexture = ResourcesManager::GetInst().TextureLoad(FilePath.GetStringPath());
+	}
+
+	{
 		MainRenderer = CreateRenderer(RenderOrder::Map);
 
 		MainRenderer->CreateAnimation(PathName + "Idle", PathName);
@@ -47,5 +59,30 @@ void Map::MapAnimation(const std::string& _PathName)
 		MainRenderer->SetScaleRatio(5.0f);
 
 		MainRenderer->SetRenderPos((MainSprite->GetSprite(0).BaseTexture->GetScale() *= 5.0f).Half());
+
+		MainRenderer->On();
+	}
+
+	{
+		DebugRenderer = CreateRenderer(_BitMapFIleName, RenderOrder::Map);
+		DebugRenderer->SetRenderPos((DebugTexture->GetScale() * 5.0f).Half());
+
+		DebugRenderer->Off();
+	}
+}
+
+void Map::SwitchRender()
+{
+	SwitchRenderValue = !SwitchRenderValue;
+
+	if (true == SwitchRenderValue)
+	{
+		MainRenderer->On();
+		DebugRenderer->Off();
+	}
+	else
+	{
+		MainRenderer->Off();
+		DebugRenderer->On();
 	}
 }

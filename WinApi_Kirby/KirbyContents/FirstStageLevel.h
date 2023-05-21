@@ -2,6 +2,7 @@
 
 #include <GameEngineCore/GameEngineLevel.h>
 
+class Map;
 class Kirby;
 class FirstStageLevel : public GameEngineLevel
 {
@@ -25,4 +26,5 @@ private:
 	void LevelStart(GameEngineLevel* _PrevLevel) override;
 
 	Kirby* LevelPlayer = nullptr;
+	Map* FirstStage = nullptr;
 };
