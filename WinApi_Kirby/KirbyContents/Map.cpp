@@ -44,7 +44,7 @@ void Map::MapInit(const std::string& _PathName, const std::string& _BitMapFIleNa
 		FilePath.SetCurrentPath();
 		FilePath.MoveParentToExistsChild("Resources");
 
-		FilePath.MoveChild("Resources\\Map\\" + _PathName + "\\" + _BitMapFIleName);
+		FilePath.MoveChild("Resources\\Map\\" + _BitMapFIleName);
 
 		DebugTexture = ResourcesManager::GetInst().TextureLoad(FilePath.GetStringPath());
 	}
