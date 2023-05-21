@@ -26,11 +26,17 @@ protected:
 	virtual void IdleStart();
 	virtual void DownStart();
 	virtual void SlideStart();
+	virtual void JumpStart();
+	virtual void JumpToDownStart();
+	virtual void JumpToLandStart();
 	virtual void WalkStart();
 
 	virtual void IdleUpdate(float _Delta);
 	virtual void DownUpdate(float _Delta);
 	virtual void SlideUpdate(float _Delta);
+	virtual void JumpUpdate(float _Delta);
+	virtual void JumpToDownUpdate(float _Delta);
+	virtual void JumpToLandUpdate(float _Delta);
 	virtual void WalkUpdate(float _Delta);
 
 	virtual void DirCheck();
@@ -45,4 +51,5 @@ private:
 	void Update(float _Delta) override;
 
 	float Speed = 300.0f;
+	float JumpPower = 300.0f;
 };

@@ -35,7 +35,7 @@ void Kirby::Start()
 		MainRenderer->CreateAnimation("Right_Slide", "Right_Kirby.Bmp", 4, 5, 1.0f, true);
 		MainRenderer->CreateAnimation("Right_Jump", "Right_Kirby.Bmp", 6, 6, 0.1f, true);
 		MainRenderer->CreateAnimation("Right_JumpToDown", "Right_Kirby.Bmp", 7, 14, 0.1f, true);
-		MainRenderer->CreateAnimation("Right_JumpToLand", "Right_Kirby.Bmp", 14, 15, 0.1f, true);
+		MainRenderer->CreateAnimation("Right_JumpToLand", "Right_Kirby.Bmp", 15, 15, 0.5f, true);
 		MainRenderer->CreateAnimation("Right_Walk", "Right_Kirby.Bmp", 16, 25, 0.1f, true);
 		MainRenderer->CreateAnimation("Right_Run", "Right_Kirby.Bmp", 26, 33, 0.1f, true);
 		MainRenderer->CreateAnimation("Right_Stop", "Right_Kirby.Bmp", 34, 34, 0.1f, true);
@@ -53,7 +53,7 @@ void Kirby::Start()
 		MainRenderer->CreateAnimation("Left_Slide", "Left_Kirby.Bmp", 4, 5, 1.0f, true);
 		MainRenderer->CreateAnimation("Left_Jump", "Left_Kirby.Bmp", 6, 6, 0.1f, true);
 		MainRenderer->CreateAnimation("Left_JumpToDown", "Left_Kirby.Bmp", 7, 14, 0.1f, true);
-		MainRenderer->CreateAnimation("Left_JumpToLand", "Left_Kirby.Bmp", 14, 15, 0.1f, true);
+		MainRenderer->CreateAnimation("Left_JumpToLand", "Left_Kirby.Bmp", 15, 15, 0.5f, true);
 		MainRenderer->CreateAnimation("Left_Walk", "Left_Kirby.Bmp", 16, 25, 0.1f, true);
 		MainRenderer->CreateAnimation("Left_Run", "Left_Kirby.Bmp", 26, 33, 0.1f, true);
 		MainRenderer->CreateAnimation("Left_Stop", "Left_Kirby.Bmp", 34, 34, 0.1f, true);
@@ -88,6 +88,12 @@ void Kirby::StateUpdate(float _Delta)
 		return DownUpdate(_Delta);
 	case KirbyState::Slide:
 		return SlideUpdate(_Delta);
+	case KirbyState::Jump:
+		return JumpUpdate(_Delta);
+	case KirbyState::JumpToDown:
+		return JumpToDownUpdate(_Delta);
+	case KirbyState::JumpToLand:
+		return JumpToLandUpdate(_Delta);
 	case KirbyState::Walk:
 		return WalkUpdate(_Delta);
 	default:
@@ -109,6 +115,15 @@ void Kirby::ChangeState(KirbyState _State)
 			break;
 		case KirbyState::Slide:
 			SlideStart();
+			break;
+		case KirbyState::Jump:
+			JumpStart();
+			break;
+		case KirbyState::JumpToDown:
+			JumpToDownStart();
+			break;
+		case KirbyState::JumpToLand:
+			JumpToLandStart();
 			break;
 		case KirbyState::Walk:
 			WalkStart();

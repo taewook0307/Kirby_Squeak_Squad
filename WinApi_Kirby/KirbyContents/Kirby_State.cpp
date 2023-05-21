@@ -21,6 +21,21 @@ void Kirby::SlideStart()
 	ChangeAnimationState("Slide");
 }
 
+void Kirby::JumpStart()
+{
+	ChangeAnimationState("Jump");
+}
+
+void Kirby::JumpToDownStart()
+{
+	ChangeAnimationState("JumpToDown");
+}
+
+void Kirby::JumpToLandStart()
+{
+	ChangeAnimationState("JumpToLand");
+}
+
 void Kirby::WalkStart()
 {
 	ChangeAnimationState("Walk");
@@ -51,6 +66,13 @@ void Kirby::IdleUpdate(float _Delta)
 	{
 		DirCheck();
 		ChangeState(KirbyState::Down);
+		return;
+	}
+
+	if (true == GameEngineInput::IsDown(VK_SPACE))
+	{
+		DirCheck();
+		ChangeState(KirbyState::Jump);
 		return;
 	}
 }
@@ -119,6 +141,92 @@ void Kirby::SlideUpdate(float _Delta)
 	}
 }
 
+void Kirby::JumpUpdate(float _Delta)
+{
+	DirCheck();
+
+	static float JumpTimer = 0.0f;
+
+	float4 MovePos = float4::UP * _Delta * JumpPower;
+
+	AddPos(MovePos);
+
+	float4 MoveXPos = float4::ZERO;
+
+	if (true == GameEngineInput::IsPress('A') && Dir == ActorDir::Left)
+	{
+		MoveXPos = { -Speed * _Delta, 0.0f };
+		AddPos(MoveXPos);
+		GetLevel()->GetMainCamera()->AddPos(MoveXPos);
+	}
+
+	if (true == GameEngineInput::IsPress('D') && Dir == ActorDir::Right)
+	{
+		MoveXPos = { Speed * _Delta, 0.0f };
+		AddPos(MoveXPos);
+		GetLevel()->GetMainCamera()->AddPos(MoveXPos);
+	}
+
+	if (JumpTimer >= 1.0f)
+	{
+		JumpTimer = 0.0f;
+		ChangeState(KirbyState::JumpToDown);
+		return;
+	}
+	JumpTimer += _Delta;
+}
+
+void Kirby::JumpToDownUpdate(float _Delta)
+{
+	DirCheck();
+
+	unsigned int Color = GetGroundColor(RGB(255, 255, 255));
+
+	if (RGB(255, 255, 255) == Color)
+	{
+		Gravity(_Delta);
+
+		float4 MovePos = float4::ZERO;
+
+		if (true == GameEngineInput::IsPress('A') && Dir == ActorDir::Left)
+		{
+			MovePos = { -Speed * _Delta, 0.0f };
+			AddPos(MovePos);
+			GetLevel()->GetMainCamera()->AddPos(MovePos);
+		}
+
+		if (true == GameEngineInput::IsPress('D') && Dir == ActorDir::Right)
+		{
+			MovePos = { Speed * _Delta, 0.0f };
+			AddPos(MovePos);
+			GetLevel()->GetMainCamera()->AddPos(MovePos);
+		}
+	}
+	else
+	{
+		GravityReset();
+		ChangeState(KirbyState::JumpToLand);
+		return;
+	}
+}
+
+void Kirby::JumpToLandUpdate(float _Delta)
+{
+	DirCheck();
+
+	static float LandTimer = 0.0f;
+
+	LandTimer += _Delta;
+
+	if (LandTimer >= 0.5f)
+	{
+		LandTimer = 0.0f;
+		ChangeState(KirbyState::Idle);
+		return;
+	}
+}
+
+
 void Kirby::WalkUpdate(float _Delta)
 {
 	DirCheck();
@@ -134,7 +242,13 @@ void Kirby::WalkUpdate(float _Delta)
 	{
 		MovePos = { Speed * _Delta, 0.0f };
 		GetLevel()->GetMainCamera()->AddPos(MovePos);
-	} 
+	}
+
+	if (true == GameEngineInput::IsDown(VK_SPACE))
+	{
+		ChangeState(KirbyState::Jump);
+		return;
+	}
 
 	if (MovePos == float4::ZERO)
 	{

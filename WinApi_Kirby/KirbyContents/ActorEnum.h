@@ -7,7 +7,7 @@ enum class KirbyState
 	Slide,
 	Jump,
 	JumpToDown,
-	JumptoLand,
+	JumpToLand,
 	Walk,
 	Run,
 	Stop,
