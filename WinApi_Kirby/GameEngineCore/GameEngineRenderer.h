@@ -89,6 +89,7 @@ private:
 		size_t StartFrame = -1;
 		size_t EndFrame = -1;
 		float CurInter = 0.0f;
+		std::vector<size_t> Frames;
 		std::vector<float> Inters;
 		bool Loop = true;
 	};
@@ -108,7 +109,8 @@ public:
 	void CreateAnimation(
 		const std::string& _AniamtionName,
 		const std::string& _SpriteName,
-		size_t _Start = -1, size_t _End = -1,
+		size_t _Start = -1,
+		size_t _End = -1,
 		float _Inter = 0.1f,
 		bool _Loop = true);
 

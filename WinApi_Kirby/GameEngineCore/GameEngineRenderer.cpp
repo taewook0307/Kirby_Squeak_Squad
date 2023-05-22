@@ -4,6 +4,7 @@
 #include "GameEngineSprite.h"
 #include "ResourcesManager.h"
 
+#include <math.h>
 #include <GameEngineBase/GameEngineDebug.h>
 #include <GameEngineBase/GameEngineString.h>
 #include <GameEnginePlatform/GameEngineWindow.h>
@@ -69,15 +70,15 @@ void GameEngineRenderer::Render(GameEngineCamera* _Camera, float _DeltaTime)
 		CurAnimation->CurInter -= _DeltaTime;
 		if (0.0f >= CurAnimation->CurInter)
 		{
-			CurAnimation->CurInter = CurAnimation->Inters[CurAnimation->CurFrame - CurAnimation->StartFrame];
+			CurAnimation->CurInter = CurAnimation->Inters[CurAnimation->CurFrame];
 
-			++CurAnimation->CurFrame;\
+			++CurAnimation->CurFrame;
 
-			if (CurAnimation->CurFrame > CurAnimation->EndFrame)
+			if (CurAnimation->CurFrame > abs(static_cast<int>(CurAnimation->EndFrame - CurAnimation->StartFrame)))
 			{
 				if (true == CurAnimation->Loop)
 				{
-					CurAnimation->CurFrame = CurAnimation->StartFrame;
+					CurAnimation->CurFrame = 0;
 				}
 				else
 				{
@@ -86,8 +87,10 @@ void GameEngineRenderer::Render(GameEngineCamera* _Camera, float _DeltaTime)
 			}
 		}
 
+		int Frame = CurAnimation->Frames[CurAnimation->CurFrame];
+
 		Sprite = CurAnimation->Sprite;
-		const GameEngineSprite::Sprite& SpriteInfo = Sprite->GetSprite(CurAnimation->CurFrame);
+		const GameEngineSprite::Sprite& SpriteInfo = Sprite->GetSprite(Frame);
 		Texture = SpriteInfo.BaseTexture;
 		SetCopyPos(SpriteInfo.RenderPos);
 		SetCopyScale(SpriteInfo.RenderScale);
@@ -130,7 +133,8 @@ GameEngineRenderer::Animation* GameEngineRenderer::FindAnimation(const std::stri
 void GameEngineRenderer::CreateAnimation(
 	const std::string& _AniamtionName,
 	const std::string& _SpriteName,
-	size_t _Start /*= -1*/, size_t _End /*= -1*/,
+	size_t _Start /*= -1*/,
+	size_t _End /*= -1*/,
 	float _Inter /*= 0.1f*/,
 	bool _Loop /*= true*/)
 {
@@ -172,11 +176,23 @@ void GameEngineRenderer::CreateAnimation(
 		Animation.EndFrame = Animation.Sprite->GetSpriteCount() - 1;
 	}
 
-	Animation.Inters.resize((Animation.EndFrame - Animation.StartFrame) + 1);
+	Animation.Frames.resize(abs(static_cast<int>(Animation.EndFrame - Animation.StartFrame)) + 1);
+	Animation.Inters.resize(abs(static_cast<int>(Animation.EndFrame - Animation.StartFrame)) + 1);
+
+	int FrameDir = 1;
+
+	if (_Start > _End)
+	{
+		FrameDir = -1;
+	}
+
+	size_t Start = _Start;
 
 	for (size_t i = 0; i < Animation.Inters.size(); i++)
 	{
+		Animation.Frames[i] = Start;
 		Animation.Inters[i] = _Inter;
+		Start += FrameDir;
 	}
 
 	Animation.Loop = _Loop;
@@ -194,7 +210,7 @@ void GameEngineRenderer::ChangeAnimation(const std::string& _AniamtionName, bool
 	CurAnimation = FindAnimation(_AniamtionName);
 
 	CurAnimation->CurInter = CurAnimation->Inters[0];
-	CurAnimation->CurFrame = CurAnimation->StartFrame;
+	CurAnimation->CurFrame = 0;
 
 	if (nullptr == CurAnimation)
 	{
