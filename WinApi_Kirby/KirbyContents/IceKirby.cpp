@@ -69,11 +69,6 @@ void IceKirby::ChangeState(KirbyState _State)
 	Kirby::ChangeState(_State);
 }
 
-void IceKirby::DirCheck()
-{
-	Kirby::DirCheck();
-}
-
 void IceKirby::ChangeAnimationState(const std::string& _StateName)
 {
 	std::string AnimationName;

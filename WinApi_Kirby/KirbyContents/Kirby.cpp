@@ -2,9 +2,12 @@
 #include "KirbyGameEnum.h"
 
 #include <GameEngineBase/GameEnginePath.h>
+#include <GameEnginePlatform/GameEngineWindow.h>
 #include <GameEnginePlatform/GameEngineInput.h>
 #include <GameEngineCore/ResourcesManager.h>
 #include <GameEngineCore/GameEngineRenderer.h>
+#include <GameEngineCore/GameEngineLevel.h>
+#include <GameEngineCore/GameEngineCamera.h>
 
 Kirby::Kirby()
 {
@@ -176,4 +179,25 @@ void Kirby::ChangeAnimationState(const std::string& _StateName)
 	CurState = _StateName;
 
 	MainRenderer->ChangeAnimation(AnimationName);
+}
+
+void Kirby::CameraMove(float4 _MovePos)
+{
+	float4 CameraPos = GetLevel()->GetMainCamera()->GetPos();
+	float4 WinScale = GameEngineWindow::MainWindow.GetScale();
+	float4 MovePos = _MovePos;
+
+	CameraPos += MovePos;
+
+	if (CameraPos.X <= 0)
+	{
+		return;
+	}
+
+	if (GetPos().X <= WinScale.Half().Half().X)
+	{
+		return;
+	}
+
+	GetLevel()->GetMainCamera()->AddPos(_MovePos);
 }

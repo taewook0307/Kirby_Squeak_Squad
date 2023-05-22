@@ -20,7 +20,7 @@ void SecondStageLevel::Start()
 	SecondStage->MapInit("SecondStage", "SecondStageBitMap.Bmp");
 
 	BackGround* Back = CreateActor<BackGround>(RenderOrder::BackGround);
-	Back->BackGroundInit("SecondStageLevel.Bmp");
+	Back->BackGroundInit("SecondStageLevel.Bmp", "SecondStageBitMap.Bmp");
 }
 
 void SecondStageLevel::Update(float _Delta)

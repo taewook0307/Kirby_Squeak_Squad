@@ -70,11 +70,6 @@ void SparkKirby::ChangeState(KirbyState _State)
 	Kirby::ChangeState(_State);
 }
 
-void SparkKirby::DirCheck()
-{
-	Kirby::DirCheck();
-}
-
 void SparkKirby::ChangeAnimationState(const std::string& _StateName)
 {
 	std::string AnimationName;

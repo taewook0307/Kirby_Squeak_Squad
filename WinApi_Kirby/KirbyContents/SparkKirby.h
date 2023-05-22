@@ -29,8 +29,6 @@ protected:
 	void SlideUpdate(float _Delta) override;
 	void WalkUpdate(float _Delta) override;
 
-	void DirCheck() override;
-
 	void ChangeAnimationState(const std::string& _StateName);
 private:
 

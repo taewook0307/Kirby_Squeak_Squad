@@ -39,9 +39,11 @@ protected:
 	virtual void JumpToLandUpdate(float _Delta);
 	virtual void WalkUpdate(float _Delta);
 
-	virtual void DirCheck();
+	void DirCheck();
 
 	virtual void ChangeAnimationState(const std::string& _StateName);
+
+	void CameraMove(float4 _MovePos);
 
 	KirbyState State = KirbyState::Max;
 	std::string CurState = "";

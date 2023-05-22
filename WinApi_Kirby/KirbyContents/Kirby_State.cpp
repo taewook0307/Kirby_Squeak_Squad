@@ -62,7 +62,7 @@ void Kirby::IdleUpdate(float _Delta)
 		return;
 	}
 
-	if (true == GameEngineInput::IsDown('S'))
+	if (true == GameEngineInput::IsDown('S') || true == GameEngineInput::IsPress('S'))
 	{
 		DirCheck();
 		ChangeState(KirbyState::Down);
@@ -239,8 +239,6 @@ void Kirby::WalkUpdate(float _Delta)
 	float4 MovePos = float4::ZERO;
 	float4 CheckPos = float4::ZERO;
 
-	float4 CameraPos = GetLevel()->GetMainCamera()->GetPos();
-
 	// 왼쪽 이동
 	if (true == GameEngineInput::IsPress('A') && Dir == ActorDir::Left)
 	{
@@ -262,11 +260,17 @@ void Kirby::WalkUpdate(float _Delta)
 		if (Color == RGB(255, 255, 255))
 		{
 			AddPos(MovePos);
-			GetLevel()->GetMainCamera()->AddPos(MovePos);
+			CameraMove(MovePos);
 		}
 	}
 
-	// 웅크리는 상태 이동
+	if (true == GameEngineInput::IsDown('S'))
+	{
+		ChangeState(KirbyState::Down);
+		return;
+	}
+
+	// 점프 상태 이동
 	if (true == GameEngineInput::IsDown(VK_SPACE))
 	{
 		ChangeState(KirbyState::Jump);
