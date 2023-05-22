@@ -152,6 +152,7 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="Kirby_Move_State.cpp" />
     <ClCompile Include="Kirby_State.cpp" />
     <ClCompile Include="Map.cpp">
       <SubType>
