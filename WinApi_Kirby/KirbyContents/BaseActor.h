@@ -39,6 +39,11 @@ public:
 
 	int GetGroundColor(unsigned int _DefaultColor, float4 _Pos = float4::ZERO);
 
+	GameEngineWindowTexture* GetGroundBitMap() const
+	{
+		return GroundBitMap;
+	}
+
 protected:
 
 private:

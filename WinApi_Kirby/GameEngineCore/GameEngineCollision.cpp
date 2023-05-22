@@ -23,7 +23,7 @@ void GameEngineCollision::SetOrder(int _Order)
 	NextCollisions.push_back(this);
 }
 
-bool GameEngineCollision::Collision(int _Order, std::vector<GameEngineCollision*>& _Result, CollisionType _ThisType = CollisionType::Circle, CollisionType _OrderType = CollisionType::Circle)
+bool GameEngineCollision::Collision(int _Order, std::vector<GameEngineCollision*>& _Result, CollisionType _ThisType /* = CollisionType::Circle */, CollisionType _OrderType /* = CollisionType::Circle */)
 {
 	return false;
 }

@@ -128,7 +128,7 @@ void Kirby::SlideUpdate(float _Delta)
 		MovePos = { CopySpeed * _Delta, 0.0f };
 
 		AddPos(MovePos);
-		GetLevel()->GetMainCamera()->AddPos(MovePos);
+		CameraMove(MovePos);
 		SlideTimer += _Delta;
 		return;
 	}
@@ -164,14 +164,14 @@ void Kirby::JumpUpdate(float _Delta)
 	{
 		MoveXPos = { -Speed * _Delta, 0.0f };
 		AddPos(MoveXPos);
-		GetLevel()->GetMainCamera()->AddPos(MoveXPos);
+		CameraMove(MoveXPos);
 	}
 
 	if (true == GameEngineInput::IsPress('D') && Dir == ActorDir::Right)
 	{
 		MoveXPos = { Speed * _Delta, 0.0f };
 		AddPos(MoveXPos);
-		GetLevel()->GetMainCamera()->AddPos(MoveXPos);
+		CameraMove(MoveXPos);
 	}
 
 	if (JumpTimer >= 1.0f)
@@ -199,14 +199,14 @@ void Kirby::JumpToDownUpdate(float _Delta)
 		{
 			MovePos = { -Speed * _Delta, 0.0f };
 			AddPos(MovePos);
-			GetLevel()->GetMainCamera()->AddPos(MovePos);
+			CameraMove(MovePos);
 		}
 
 		if (true == GameEngineInput::IsPress('D') && Dir == ActorDir::Right)
 		{
 			MovePos = { Speed * _Delta, 0.0f };
 			AddPos(MovePos);
-			GetLevel()->GetMainCamera()->AddPos(MovePos);
+			CameraMove(MovePos);
 		}
 	}
 	else

@@ -185,16 +185,31 @@ void Kirby::CameraMove(float4 _MovePos)
 {
 	float4 CameraPos = GetLevel()->GetMainCamera()->GetPos();
 	float4 WinScale = GameEngineWindow::MainWindow.GetScale();
+	float4 BitMapScale = GetGroundBitMap()->GetScale();
 	float4 MovePos = _MovePos;
 
 	CameraPos += MovePos;
 
+	// 카메라가 맵 왼쪽 밖으로 이동할 경우
 	if (CameraPos.X <= 0)
 	{
 		return;
 	}
 
+	// 커비의 위치가 비트맵의 왼쪽 끝부분일 경우
 	if (GetPos().X <= WinScale.Half().Half().X)
+	{
+		return;
+	}
+
+	// 카메라가 맵 오른쪽 밖으로 이동할 경우
+	if (CameraPos.X + WinScale.X >= BitMapScale.X)
+	{
+		return;
+	}
+
+	// 커비의 위치가 비트맵의 끝부분일 경우
+	if (GetPos().X <= BitMapScale.X && GetPos().X >= BitMapScale.X - WinScale.Half().Half().X)
 	{
 		return;
 	}

@@ -18,6 +18,7 @@ enum class CollisionType
 class GameEngineActor;
 class GameEngineCollision : public GameEngineObject
 {
+	friend GameEngineActor;
 public:
 	// constrcuter destructer
 	GameEngineCollision();

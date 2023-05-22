@@ -52,6 +52,6 @@ private:
 	void Start() override;
 	void Update(float _Delta) override;
 
-	float Speed = 300.0f;
+	float Speed = 500.0f;
 	float JumpPower = 300.0f;
 };
