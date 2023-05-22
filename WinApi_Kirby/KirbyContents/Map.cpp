@@ -53,7 +53,6 @@ void Map::MapInit(const std::string& _PathName, const std::string& _BitMapFIleNa
 		MainRenderer = CreateRenderer(RenderOrder::Map);
 
 		MainRenderer->CreateAnimation(PathName + "Idle", PathName);
-
 		MainRenderer->ChangeAnimation(PathName + "Idle");
 		MainRenderer->SetRenderScaleToTexture();
 		MainRenderer->SetScaleRatio(5.0f);

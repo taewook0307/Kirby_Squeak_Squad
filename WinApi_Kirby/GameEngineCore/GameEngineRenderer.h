@@ -61,11 +61,14 @@ public:
 
 	bool IsDeath() override;
 
+	void SetOrder(int _Order) override;
 protected:
+	void Start() override;
 
 private:
-	GameEngineActor* Master = nullptr;
 	GameEngineWindowTexture* Texture = nullptr;
+	GameEngineActor* Master = nullptr;
+	GameEngineCamera* Camera = nullptr;
 	GameEngineSprite* Sprite = nullptr;
 
 	float ScaleRatio = 1.0f;

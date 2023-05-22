@@ -1,8 +1,9 @@
 ﻿#include "GameEngineRenderer.h"
+#include "GameEngineLevel.h"
 #include "GameEngineActor.h"
 #include "GameEngineCamera.h"
-#include "GameEngineSprite.h"
 #include "ResourcesManager.h"
+#include "GameEngineSprite.h"
 
 #include <math.h>
 #include <GameEngineBase/GameEngineDebug.h>
@@ -17,6 +18,11 @@ GameEngineRenderer::GameEngineRenderer()
 GameEngineRenderer::~GameEngineRenderer()
 {
 
+}
+
+void GameEngineRenderer::Start()
+{
+	Camera = Master->GetLevel()->GetMainCamera();
 }
 
 void GameEngineRenderer::SetSprite(const std::string& _Name, size_t _Index/* = 0*/)
@@ -87,7 +93,7 @@ void GameEngineRenderer::Render(GameEngineCamera* _Camera, float _DeltaTime)
 			}
 		}
 
-		int Frame = CurAnimation->Frames[CurAnimation->CurFrame];
+		size_t Frame = CurAnimation->Frames[CurAnimation->CurFrame];
 
 		Sprite = CurAnimation->Sprite;
 		const GameEngineSprite::Sprite& SpriteInfo = Sprite->GetSprite(Frame);
@@ -115,6 +121,27 @@ bool GameEngineRenderer::IsDeath()
 {
 	return true == GameEngineObject::IsDeath() || Master->IsDeath();
 }
+
+
+void GameEngineRenderer::SetOrder(int _Order)
+{
+	if (nullptr == Camera)
+	{
+		MsgBoxAssert("카메라가 세팅되지 않았는데 오더를 지정했습니다.");
+		return;
+	}
+
+	std::list<GameEngineRenderer*>& PrevRenders = Camera->Renderers[GetOrder()];
+	PrevRenders.remove(this);
+
+	GameEngineObject::SetOrder(_Order);
+
+	std::list<GameEngineRenderer*>& NextRenders = Camera->Renderers[GetOrder()];
+	NextRenders.push_back(this);
+}
+
+//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// Animation 관련 함수
 
 GameEngineRenderer::Animation* GameEngineRenderer::FindAnimation(const std::string& _AniamtionName)
 {
@@ -186,7 +213,7 @@ void GameEngineRenderer::CreateAnimation(
 		FrameDir = -1;
 	}
 
-	size_t Start = _Start;
+	size_t Start = Animation.StartFrame;
 
 	for (size_t i = 0; i < Animation.Inters.size(); i++)
 	{

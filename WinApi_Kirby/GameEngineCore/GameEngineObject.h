@@ -50,9 +50,14 @@ public:
 		return IsDeathValue;
 	}
 
-	void SetOrder(int _Order)
+	virtual void SetOrder(int _Order)
 	{
 		Order = _Order;
+	}
+
+	int GetOrder()
+	{
+		return Order;
 	}
 
 	float GetLiveTime()

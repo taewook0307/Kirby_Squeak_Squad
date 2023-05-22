@@ -49,9 +49,9 @@ GameEngineRenderer* GameEngineActor::CreateRenderer(const std::string& _ImageNam
 {
 	GameEngineRenderer* NewRenderer = new GameEngineRenderer();
 
-	GetLevel()->MainCamera->PushRenderer(NewRenderer, _Order);
-
 	NewRenderer->Master = this;
+	NewRenderer->Start();
+	NewRenderer->SetOrder(_Order);
 
 	if (_ImageName != "")
 	{
