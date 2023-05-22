@@ -16,11 +16,11 @@ ThirdStageLevel::~ThirdStageLevel()
 
 void ThirdStageLevel::Start()
 {
-	BackGround* Back = CreateActor<BackGround>(RenderOrder::BackGround);
-	Back->Init("ThirdStageLevel.Bmp");
-
 	/*Map* ThirdStage = CreateActor<Map>(RenderOrder::Map);
-	ThirdStage->MapAnimation("ThirdStage");*/
+	ThirdStage->MapInit("ThirdStage");*/
+
+	BackGround* Back = CreateActor<BackGround>(RenderOrder::BackGround);
+	Back->BackGroundInit("ThirdStageLevel.Bmp");
 }
 
 void ThirdStageLevel::Update(float _Delta)

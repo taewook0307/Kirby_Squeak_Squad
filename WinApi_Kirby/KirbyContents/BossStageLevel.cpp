@@ -16,7 +16,7 @@ BossStageLevel::~BossStageLevel()
 void BossStageLevel::Start()
 {
 	BackGround* Back = CreateActor<BackGround>(RenderOrder::BackGround);
-	Back->Init("BossStage_1.bmp");
+	Back->BackGroundInit("BossStage_1.bmp");
 }
 
 void BossStageLevel::Update(float _Delta)

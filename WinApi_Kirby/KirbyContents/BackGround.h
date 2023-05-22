@@ -4,6 +4,7 @@
 
 class GameEngineWindowTexture;
 class GameEngineRenderer;
+class Map;
 class BackGround : public GameEngineActor
 {
 public:
@@ -17,7 +18,7 @@ public:
 	BackGround& operator=(const BackGround& _Other) = delete;
 	BackGround& operator=(BackGround&& _Other) noexcept = delete;
 
-	void Init(const std::string& _FileName);
+	void BackGroundInit(const std::string& _FileName, const std::string& _MapFileName = "");
 
 protected:
 
@@ -26,6 +27,8 @@ private:
 	float4 Scale = float4::ZERO;
 	GameEngineWindowTexture* MainTexture = nullptr;
 	GameEngineRenderer* MainRenderer = nullptr;
+
+	GameEngineWindowTexture* MapTexture = nullptr;
 
 	void Update(float _Delta) override;
 };

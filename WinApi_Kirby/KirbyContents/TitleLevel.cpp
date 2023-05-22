@@ -16,7 +16,7 @@ TitleLevel::~TitleLevel()
 void TitleLevel::Start()
 {
 	BackGround* TitleBack = CreateActor<BackGround>(RenderOrder::BackGround);
-	TitleBack->Init("TitleLevel.bmp");
+	TitleBack->BackGroundInit("TitleLevel.bmp");
 }
 
 void TitleLevel::Update(float _Delta)

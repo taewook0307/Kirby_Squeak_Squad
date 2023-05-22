@@ -16,5 +16,5 @@ EndingLevel::~EndingLevel()
 void EndingLevel::Start()
 {
 	BackGround* Back = CreateActor<BackGround>(RenderOrder::BackGround);
-	Back->Init("EndingLevel.bmp");
+	Back->BackGroundInit("EndingLevel.bmp");
 }
