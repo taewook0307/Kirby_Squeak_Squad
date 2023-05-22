@@ -48,14 +48,14 @@
     <ClInclude Include="Gravity.h">
       <Filter>Global</Filter>
     </ClInclude>
-    <ClInclude Include="Kirby.h">
-      <Filter>KirbyForm</Filter>
-    </ClInclude>
     <ClInclude Include="Monster.h">
       <Filter>Monster</Filter>
     </ClInclude>
     <ClInclude Include="BaseActor.h">
       <Filter>Global</Filter>
+    </ClInclude>
+    <ClInclude Include="Kirby.h">
+      <Filter>KirbyForm\Kirby</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -114,12 +114,6 @@
     <ClCompile Include="Gravity.cpp">
       <Filter>Global</Filter>
     </ClCompile>
-    <ClCompile Include="Kirby.cpp">
-      <Filter>KirbyForm</Filter>
-    </ClCompile>
-    <ClCompile Include="Kirby_State.cpp">
-      <Filter>KirbyForm</Filter>
-    </ClCompile>
     <ClCompile Include="Monster_State.cpp">
       <Filter>Monster</Filter>
     </ClCompile>
@@ -128,6 +122,12 @@
     </ClCompile>
     <ClCompile Include="BaseActor.cpp">
       <Filter>Global</Filter>
+    </ClCompile>
+    <ClCompile Include="Kirby.cpp">
+      <Filter>KirbyForm\Kirby</Filter>
+    </ClCompile>
+    <ClCompile Include="Kirby_State.cpp">
+      <Filter>KirbyForm\Kirby</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -142,6 +142,9 @@
     </Filter>
     <Filter Include="Monster">
       <UniqueIdentifier>{6cfa2133-0f4c-4c27-b86d-213a1eb99fa8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="KirbyForm\Kirby">
+      <UniqueIdentifier>{315602f1-5f71-444c-8bff-6251b589f199}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
