@@ -31,6 +31,7 @@ void Kirby::IdleUpdate(float _Delta)
 		GravityReset();
 	}
 
+	// 걷기 상태 이동
 	if (true == GameEngineInput::IsDown('A')
 		|| true == GameEngineInput::IsDown('D'))
 	{
@@ -39,6 +40,7 @@ void Kirby::IdleUpdate(float _Delta)
 		return;
 	}
 
+	// 웅크리기 상태 이동
 	if (true == GameEngineInput::IsDown('S') || true == GameEngineInput::IsPress('S'))
 	{
 		DirCheck();
@@ -46,6 +48,7 @@ void Kirby::IdleUpdate(float _Delta)
 		return;
 	}
 
+	// 점프 상태 이동
 	if (true == GameEngineInput::IsDown(VK_SPACE))
 	{
 		DirCheck();

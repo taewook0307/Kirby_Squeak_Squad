@@ -6,6 +6,8 @@
 #include <GameEngineCore/GameEngineLevel.h>
 #include <GameEngineCore/GameEngineCamera.h>
 
+#define EMPTYCOLOR RGB(255,255,255)
+
 void Kirby::SlideStart()
 {
 	ChangeAnimationState("Slide");
@@ -34,8 +36,8 @@ void Kirby::WalkStart()
 
 void Kirby::SlideUpdate(float _Delta)
 {
-	float4 StartPos = GetPos();
 	float4 MovePos = float4::ZERO;
+	float4 CheckPos = float4::ZERO;
 	float CopySpeed = Speed / 1.5f;
 
 	static float SlideTimer = 0.0f;
@@ -44,9 +46,15 @@ void Kirby::SlideUpdate(float _Delta)
 	if (Dir == ActorDir::Left && SlideTimer <= 1.0f)
 	{
 		MovePos = { -CopySpeed * _Delta, 0.0f };
+		CheckPos = { -50.0f, -30.0f };
 
-		AddPos(MovePos);
-		CameraMove(MovePos);
+		unsigned int Color = GetGroundColor(EMPTYCOLOR, CheckPos);
+
+		if (EMPTYCOLOR == Color)
+		{
+			AddPos(MovePos);
+			CameraMove(MovePos);
+		}
 		SlideTimer += _Delta;
 		return;
 	}
@@ -55,9 +63,16 @@ void Kirby::SlideUpdate(float _Delta)
 	if (Dir == ActorDir::Right && SlideTimer <= 1.0f)
 	{
 		MovePos = { CopySpeed * _Delta, 0.0f };
+		CheckPos = { 50.0f, -30.0f };
 
-		AddPos(MovePos);
-		CameraMove(MovePos);
+		unsigned int Color = GetGroundColor(EMPTYCOLOR, CheckPos);
+
+		if (EMPTYCOLOR == Color)
+		{
+			AddPos(MovePos);
+			CameraMove(MovePos);
+		}
+
 		SlideTimer += _Delta;
 		return;
 	}
@@ -83,24 +98,39 @@ void Kirby::JumpUpdate(float _Delta)
 
 	static float JumpTimer = 0.0f;
 
-	float4 MovePos = float4::UP * _Delta * JumpPower;
+	float4 JumpPos = float4::UP * _Delta * JumpPower;
 
-	AddPos(MovePos);
+	AddPos(JumpPos);
 
-	float4 MoveXPos = float4::ZERO;
+	float4 MovePos = float4::ZERO;
+	float4 CheckPos = float4::ZERO;
 
 	if (true == GameEngineInput::IsPress('A') && Dir == ActorDir::Left)
 	{
-		MoveXPos = { -Speed * _Delta, 0.0f };
-		AddPos(MoveXPos);
-		CameraMove(MoveXPos);
+		MovePos = { -Speed * _Delta, 0.0f };
+		CheckPos = { 50.0f, -30.0f };
+
+		unsigned int Color = GetGroundColor(EMPTYCOLOR, CheckPos);
+
+		if (EMPTYCOLOR == Color)
+		{
+			AddPos(MovePos);
+			CameraMove(MovePos);
+		}
 	}
 
 	if (true == GameEngineInput::IsPress('D') && Dir == ActorDir::Right)
 	{
-		MoveXPos = { Speed * _Delta, 0.0f };
-		AddPos(MoveXPos);
-		CameraMove(MoveXPos);
+		MovePos = { Speed * _Delta, 0.0f };
+		CheckPos = { 50.0f, -30.0f };
+
+		unsigned int Color = GetGroundColor(EMPTYCOLOR, CheckPos);
+
+		if (EMPTYCOLOR == Color)
+		{
+			AddPos(MovePos);
+			CameraMove(MovePos);
+		}
 	}
 
 	if (JumpTimer >= 1.0f)
@@ -116,26 +146,41 @@ void Kirby::JumpToDownUpdate(float _Delta)
 {
 	DirCheck();
 
-	unsigned int Color = GetGroundColor(RGB(255, 255, 255));
+	unsigned int Color = GetGroundColor(EMPTYCOLOR);
 
 	if (RGB(255, 255, 255) == Color)
 	{
 		Gravity(_Delta);
 
 		float4 MovePos = float4::ZERO;
+		float4 CheckPos = float4::ZERO;
 
 		if (true == GameEngineInput::IsPress('A') && Dir == ActorDir::Left)
 		{
 			MovePos = { -Speed * _Delta, 0.0f };
-			AddPos(MovePos);
-			CameraMove(MovePos);
+			CheckPos = { 50.0f, -30.0f };
+
+			unsigned int Color = GetGroundColor(EMPTYCOLOR, CheckPos);
+
+			if (EMPTYCOLOR == Color)
+			{
+				AddPos(MovePos);
+				CameraMove(MovePos);
+			}
 		}
 
 		if (true == GameEngineInput::IsPress('D') && Dir == ActorDir::Right)
 		{
 			MovePos = { Speed * _Delta, 0.0f };
-			AddPos(MovePos);
-			CameraMove(MovePos);
+			CheckPos = { 50.0f, -30.0f };
+
+			unsigned int Color = GetGroundColor(EMPTYCOLOR, CheckPos);
+
+			if (EMPTYCOLOR == Color)
+			{
+				AddPos(MovePos);
+				CameraMove(MovePos);
+			}
 		}
 	}
 	else
@@ -184,9 +229,9 @@ void Kirby::WalkUpdate(float _Delta)
 
 	// 이동 방향 앞에 장애물 여부 확인 후 이동
 	{
-		unsigned int Color = GetGroundColor(RGB(255, 255, 255), CheckPos);
+		unsigned int Color = GetGroundColor(EMPTYCOLOR, CheckPos);
 
-		if (Color == RGB(255, 255, 255))
+		if (EMPTYCOLOR == Color)
 		{
 			AddPos(MovePos);
 			CameraMove(MovePos);
