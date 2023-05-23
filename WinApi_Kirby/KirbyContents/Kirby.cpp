@@ -42,7 +42,7 @@ void Kirby::Start()
 		MainRenderer->CreateAnimation("Right_Walk", "Right_Kirby.Bmp", 16, 25, 0.1f, true);
 		MainRenderer->CreateAnimation("Right_Run", "Right_Kirby.Bmp", 26, 33, 0.1f, true);
 		MainRenderer->CreateAnimation("Right_Stop", "Right_Kirby.Bmp", 34, 34, 0.1f, true);
-		MainRenderer->CreateAnimation("Right_StopToIdle", "Right_Kirby.Bmp", 35, 36, 0.1f, true);
+		MainRenderer->CreateAnimation("Right_StopToIdle", "Right_Kirby.Bmp", 35, 36, 0.2f, true);
 		MainRenderer->CreateAnimation("Right_Breathe", "Right_Kirby.Bmp", 37, 41, 0.1f, true);
 		MainRenderer->CreateAnimation("Right_BreatheOut", "Right_Kirby.Bmp", 60, 61, 0.1f, true);
 		MainRenderer->CreateAnimation("Right_Fly", "Right_Kirby.Bmp", 42, 59, 0.1f, true);
@@ -60,7 +60,7 @@ void Kirby::Start()
 		MainRenderer->CreateAnimation("Left_Walk", "Left_Kirby.Bmp", 16, 25, 0.1f, true);
 		MainRenderer->CreateAnimation("Left_Run", "Left_Kirby.Bmp", 26, 33, 0.1f, true);
 		MainRenderer->CreateAnimation("Left_Stop", "Left_Kirby.Bmp", 34, 34, 0.1f, true);
-		MainRenderer->CreateAnimation("Left_StopToIdle", "Left_Kirby.Bmp", 35, 36, 0.1f, true);
+		MainRenderer->CreateAnimation("Left_StopToIdle", "Left_Kirby.Bmp", 35, 36, 0.2f, true);
 		MainRenderer->CreateAnimation("Left_Breathe", "Left_Kirby.Bmp", 37, 41, 0.1f, true);
 		MainRenderer->CreateAnimation("Left_BreatheOut", "Left_Kirby.Bmp", 60, 61, 0.1f, true);
 		MainRenderer->CreateAnimation("Left_Fly", "Left_Kirby.Bmp", 42, 59, 0.1f, true);
@@ -101,6 +101,10 @@ void Kirby::StateUpdate(float _Delta)
 		return WalkUpdate(_Delta);
 	case KirbyState::Run:
 		return RunUpdate(_Delta);
+	case KirbyState::Stop:
+		return StopUpdate(_Delta);
+	case KirbyState::StopToIdle:
+		return StopToIdleUpdate(_Delta);
 	default:
 		break;
 	}
@@ -135,6 +139,12 @@ void Kirby::ChangeState(KirbyState _State)
 			break;
 		case KirbyState::Run:
 			RunStart();
+			break;
+		case KirbyState::Stop:
+			StopStart();
+			break;
+		case KirbyState::StopToIdle:
+			StopToIdleStart();
 			break;
 		default:
 			break;

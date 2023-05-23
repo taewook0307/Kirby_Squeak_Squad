@@ -6,6 +6,7 @@
 #include <string>
 
 #define EMPTYCOLOR RGB(255,255,255)
+#define BASESPEED 300.0f
 
 class Kirby : public BaseActor
 {
@@ -34,6 +35,7 @@ protected:
 	void WalkStart();
 	void RunStart();
 	void StopStart();
+	void StopToIdleStart();
 
 	void IdleUpdate(float _Delta);
 	void DownUpdate(float _Delta);
@@ -43,6 +45,8 @@ protected:
 	void JumpToLandUpdate(float _Delta);
 	void WalkUpdate(float _Delta);
 	void RunUpdate(float _Delta);
+	void StopUpdate(float _Delta);
+	void StopToIdleUpdate(float _Delta);
 
 	void DirCheck();
 
@@ -61,5 +65,5 @@ private:
 	void Update(float _Delta) override;
 
 	float Speed = 300.0f;
-	float JumpPower = 300.0f;
+	float JumpPower = BASESPEED;
 };
