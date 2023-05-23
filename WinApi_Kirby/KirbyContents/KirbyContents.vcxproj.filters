@@ -132,6 +132,9 @@
     <ClCompile Include="Kirby_Move_State.cpp">
       <Filter>KirbyForm\Kirby</Filter>
     </ClCompile>
+    <ClCompile Include="Kirby_Special_State.cpp">
+      <Filter>KirbyForm\Kirby</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Level">

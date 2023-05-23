@@ -85,6 +85,13 @@ void Kirby::IdleUpdate(float _Delta)
 		ChangeState(KirbyState::Run);
 		return;
 	}
+
+	if (true == GameEngineInput::IsPress('F'))
+	{
+		DirCheck();
+		ChangeState(KirbyState::Breathe);
+		return;
+	}
 }
 
 void Kirby::DownUpdate(float _Delta)

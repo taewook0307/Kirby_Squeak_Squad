@@ -29,7 +29,6 @@ void Kirby::Start()
 		ResourcesManager::GetInst().CreateSpriteSheet(FilePath.PlusFilePath("Right_Kirby.Bmp"), 10, 21);
 		ResourcesManager::GetInst().CreateSpriteSheet(FilePath.PlusFilePath("Left_Kirby.Bmp"), 10, 21);
 	}
-
 	{
 		MainRenderer = CreateRenderer(RenderOrder::Play);
 		
@@ -43,9 +42,11 @@ void Kirby::Start()
 		MainRenderer->CreateAnimation("Right_Run", "Right_Kirby.Bmp", 26, 33, 0.1f, true);
 		MainRenderer->CreateAnimation("Right_Stop", "Right_Kirby.Bmp", 34, 34, 0.1f, true);
 		MainRenderer->CreateAnimation("Right_StopToIdle", "Right_Kirby.Bmp", 35, 36, 0.2f, true);
-		MainRenderer->CreateAnimation("Right_Breathe", "Right_Kirby.Bmp", 37, 41, 0.1f, true);
-		MainRenderer->CreateAnimation("Right_BreatheOut", "Right_Kirby.Bmp", 60, 61, 0.1f, true);
-		MainRenderer->CreateAnimation("Right_Fly", "Right_Kirby.Bmp", 42, 59, 0.1f, true);
+		MainRenderer->CreateAnimation("Right_Breathe", "Right_Kirby.Bmp", 37, 41, 0.2f, true);
+		MainRenderer->FindAnimation("Right_Breathe")->Inters[3] = 0.7f;
+		MainRenderer->FindAnimation("Right_Breathe")->Inters[4] = 0.7f;
+		MainRenderer->CreateAnimation("Right_Fly", "Right_Kirby.Bmp", 42, 59, 0.2f, true);
+		MainRenderer->CreateAnimation("Right_BreatheOut", "Right_Kirby.Bmp", 60, 61, 0.3f, true);
 		MainRenderer->CreateAnimation("Right_Drop", "Right_Kirby.Bmp", 62, 77, 0.1f, true);
 		MainRenderer->CreateAnimation("Right_Move", "Right_Kirby.Bmp", 78, 81, 0.1f, true);
 		MainRenderer->CreateAnimation("Right_Damage", "Right_Kirby.Bmp", 82, 86, 0.1f, true);
@@ -105,6 +106,12 @@ void Kirby::StateUpdate(float _Delta)
 		return StopUpdate(_Delta);
 	case KirbyState::StopToIdle:
 		return StopToIdleUpdate(_Delta);
+	case KirbyState::Breathe:
+		return BreatheUpdate(_Delta);
+	case KirbyState::Fly:
+		return FlyUpdate(_Delta);
+	case KirbyState::BreatheOut:
+		return BreatheOutUpdate(_Delta);
 	default:
 		break;
 	}
@@ -145,6 +152,15 @@ void Kirby::ChangeState(KirbyState _State)
 			break;
 		case KirbyState::StopToIdle:
 			StopToIdleStart();
+			break;
+		case KirbyState::Breathe:
+			BreatheStart();
+			break;
+		case KirbyState::Fly:
+			FlyStart();
+			break;
+		case KirbyState::BreatheOut:
+			BreatheOutStart();
 			break;
 		default:
 			break;

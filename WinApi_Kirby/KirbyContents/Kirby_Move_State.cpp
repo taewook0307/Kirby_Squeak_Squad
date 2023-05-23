@@ -439,7 +439,7 @@ void Kirby::StopUpdate(float _Delta)
 	if (ActorDir::Left == Dir && MovePos.X > -1.0f || ActorDir::Right == Dir && MovePos.X < 1.0f)
 	{
 		DirCheck();
-		Speed = BASESPEED;
+		Speed = BASEPOWER;
 		ChangeState(KirbyState::StopToIdle);
 		return;
 	}
