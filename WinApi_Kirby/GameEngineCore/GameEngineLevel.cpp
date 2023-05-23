@@ -1,15 +1,15 @@
-Ôªø#include "GameEngineLevel.h"
+#include "GameEngineLevel.h"
 #include "GameEngineCamera.h"
-
 #include <GameEngineBase/GameEngineDebug.h>
+#include "GameEngineCollision.h"
 
-GameEngineLevel::GameEngineLevel()
+GameEngineLevel::GameEngineLevel() 
 {
 	MainCamera = new GameEngineCamera();
 	UICamera = new GameEngineCamera();
 }
 
-GameEngineLevel::~GameEngineLevel()
+GameEngineLevel::~GameEngineLevel() 
 {
 	if (nullptr != MainCamera)
 	{
@@ -27,7 +27,7 @@ GameEngineLevel::~GameEngineLevel()
 	{
 		const std::list<GameEngineActor*>& Group = _Pair.second;
 
-		for (GameEngineActor* _Actor : Group)
+		for (GameEngineActor* _Actor: Group)
 		{
 			if (nullptr != _Actor)
 			{
@@ -38,7 +38,8 @@ GameEngineLevel::~GameEngineLevel()
 	}
 }
 
-void GameEngineLevel::ActorInit(GameEngineActor* _Actor, int _Order)
+
+void GameEngineLevel::ActorInit(GameEngineActor* _Actor, int _Order) 
 {
 	_Actor->Level = this;
 	_Actor->SetOrder(_Order);
@@ -63,11 +64,22 @@ void GameEngineLevel::ActorUpdate(float _Delta)
 		}
 	}
 }
-
 void GameEngineLevel::ActorRender(float _Delta)
 {
 	MainCamera->Render(_Delta);
 
+	for (const std::pair<int, std::list<GameEngineCollision*>>& Pair : AllCollision)
+	{
+		const std::list < GameEngineCollision*>& Group = Pair.second;
+
+		for (GameEngineCollision* Collision : Group)
+		{
+			Collision->DebugRender();
+		}
+
+	}
+
+	// forπÆ¿ª µπ∏Æ∞Ì ¿÷Ω¿¥œ¥Ÿ.
 	for (const std::pair<int, std::list<GameEngineActor*>>& _Pair : AllActors)
 	{
 		const std::list<GameEngineActor*>& Group = _Pair.second;
@@ -88,62 +100,97 @@ void GameEngineLevel::ActorRelease()
 {
 	MainCamera->Release();
 
-	std::map<int, std::list<GameEngineActor*>>::iterator GroupStartIter = AllActors.begin();
-	std::map<int, std::list<GameEngineActor*>>::iterator GroupEndIter = AllActors.end();
-
-	for (; GroupStartIter != GroupEndIter; ++GroupStartIter)
 	{
-		std::list<GameEngineActor*>& Group = GroupStartIter->second;
+		std::map<int, std::list<GameEngineCollision*>>::iterator GroupStartIter = AllCollision.begin();
+		std::map<int, std::list<GameEngineCollision*>>::iterator GroupEndIter = AllCollision.end();
 
-		std::list<GameEngineActor*>::iterator ObjectStartIter = Group.begin();
-		std::list<GameEngineActor*>::iterator ObjectEndIter = Group.end();
+		// ¥´≤≈ ∏∏≈≠¿Ã∂Ûµµ ø¨ªÍ¿ª ¡Ÿ¿Ã∑¡¥¬ ∞≈¡“.
 
-		for (; ObjectStartIter != ObjectEndIter; )
+		for (; GroupStartIter != GroupEndIter; ++GroupStartIter)
 		{
-			GameEngineActor* Actor = *ObjectStartIter;
-			if (false == Actor->IsDeath())
+			std::list<GameEngineCollision*>& Group = GroupStartIter->second;
+
+			std::list<GameEngineCollision*>::iterator ObjectStartIter = Group.begin();
+			std::list<GameEngineCollision*>::iterator ObjectEndIter = Group.end();
+
+			for (; ObjectStartIter != ObjectEndIter; )
 			{
-				Actor->ActorRelease();
-				++ObjectStartIter;
-				continue;
+				GameEngineCollision* Object = *ObjectStartIter;
+				if (false == Object->IsDeath())
+				{
+					++ObjectStartIter;
+					continue;
+				}
+
+				ObjectStartIter = Group.erase(ObjectStartIter);
+
 			}
-
-			if (nullptr == Actor)
-			{
-				MsgBoxAssert("nullptrÏù∏ Ïï°ÌÑ∞Í∞Ä Î†àÎ≤®Ïùò Î¶¨Ïä§Ìä∏Ïóê Îì§Ïñ¥Í∞Ä ÏûàÏóàÏäµÎãàÎã§.");
-				continue;
-			}
-
-			delete Actor;
-			Actor = nullptr;
-
-			ObjectStartIter = Group.erase(ObjectStartIter);
 		}
 	}
-}
 
-void GameEngineLevel::ActorLevelStart()
-{
-	for (const std::pair<int, std::list<GameEngineActor*>>& Pair : AllActors)
+	// ±∏¡∂∞° πŸ≤∞Ã¥œ¥Ÿ.
 	{
-		const std::list<GameEngineActor*>& ActorGroup = Pair.second;
+		std::map<int, std::list<GameEngineActor*>>::iterator GroupStartIter = AllActors.begin();
+		std::map<int, std::list<GameEngineActor*>>::iterator GroupEndIter = AllActors.end();
 
-		for (GameEngineActor* ActorPtr : ActorGroup)
+		// ¥´≤≈ ∏∏≈≠¿Ã∂Ûµµ ø¨ªÍ¿ª ¡Ÿ¿Ã∑¡¥¬ ∞≈¡“.
+
+		for (; GroupStartIter != GroupEndIter; ++GroupStartIter)
 		{
-			ActorPtr->LevelStart();
+			std::list<GameEngineActor*>& Group = GroupStartIter->second;
+
+			std::list<GameEngineActor*>::iterator ObjectStartIter = Group.begin();
+			std::list<GameEngineActor*>::iterator ObjectEndIter = Group.end();
+
+			for (; ObjectStartIter != ObjectEndIter; )
+			{
+				GameEngineActor* Actor = *ObjectStartIter;
+				if (false == Actor->IsDeath())
+				{
+					Actor->ActorRelease();
+					++ObjectStartIter;
+					continue;
+				}
+
+				if (nullptr == Actor)
+				{
+					MsgBoxAssert("nullptr¿Œ æ◊≈Õ∞° ∑π∫ß¿« ∏ÆΩ∫∆Æø° µÈæÓ∞° ¿÷æ˙Ω¿¥œ¥Ÿ.");
+					continue;
+				}
+
+				delete Actor;
+				Actor = nullptr;
+
+				//                      i
+				// [s] [a] [a]     [a] [e]
+				ObjectStartIter = Group.erase(ObjectStartIter);
+
+			}
 		}
 	}
+
 }
 
 void GameEngineLevel::ActorLevelEnd()
 {
-	for (const std::pair<int, std::list<GameEngineActor*>>& Pair : AllActors)
+	for (const std::pair<int, std::list<GameEngineActor*>>& _Pair : AllActors)
 	{
-		const std::list<GameEngineActor*>& ActorGroup = Pair.second;
+		const std::list<GameEngineActor*>& Group = _Pair.second;
 
-		for (GameEngineActor* ActorPtr : ActorGroup)
+		for (GameEngineActor* _Actor : Group)
 		{
-			ActorPtr->LevelEnd();
+			_Actor->LevelEnd();
+		}
+	}
+}
+void GameEngineLevel::ActorLevelStart() {
+	for (const std::pair<int, std::list<GameEngineActor*>>& _Pair : AllActors)
+	{
+		const std::list<GameEngineActor*>& Group = _Pair.second;
+
+		for (GameEngineActor* _Actor : Group)
+		{
+			_Actor->LevelStart();
 		}
 	}
 }

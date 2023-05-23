@@ -1,17 +1,20 @@
-ï»¿#include "GameEngineCamera.h"
-
+#include "GameEngineCamera.h"
 #include <GameEngineBase/GameEngineDebug.h>
 
-GameEngineCamera::GameEngineCamera()
+GameEngineCamera::GameEngineCamera() 
 {
 }
 
-GameEngineCamera::~GameEngineCamera()
+GameEngineCamera::~GameEngineCamera() 
 {
 }
 
 void GameEngineCamera::Render(float _Delta)
 {
+	//for (const std::pair<int, std::list<GameEngineRenderer*>>& Pair : Renderers)
+	//{
+	//}
+
 	std::map<int, std::list<GameEngineRenderer*>>::iterator GroupStartIter = Renderers.begin();
 	std::map<int, std::list<GameEngineRenderer*>>::iterator GroupEndIter = Renderers.end();
 
@@ -41,7 +44,7 @@ void GameEngineCamera::PushRenderer(GameEngineRenderer* _Renderer, int _Order)
 {
 	if (nullptr == _Renderer)
 	{
-		MsgBoxAssert("nullptrì¸ ëœë”ëŸ¬ë¥¼ ê·¸ë£¹ì— ì†í•˜ê²Œ í•˜ë ¤ê³  í–ˆìŠµë‹ˆë‹¤.");
+		MsgBoxAssert("nullptrÀÎ ·£´õ·¯¸¦ ±×·ì¿¡ ¼ÓÇÏ°Ô ÇÏ·Á°í Çß½À´Ï´Ù.");
 	}
 
 	_Renderer->Camera = this;
@@ -50,8 +53,11 @@ void GameEngineCamera::PushRenderer(GameEngineRenderer* _Renderer, int _Order)
 
 void GameEngineCamera::Release()
 {
+
 	std::map<int, std::list<GameEngineRenderer*>>::iterator GroupStartIter = Renderers.begin();
 	std::map<int, std::list<GameEngineRenderer*>>::iterator GroupEndIter = Renderers.end();
+
+	// ´«²Å ¸¸Å­ÀÌ¶óµµ ¿¬»êÀ» ÁÙÀÌ·Á´Â °ÅÁÒ.
 
 	for (; GroupStartIter != GroupEndIter; ++GroupStartIter)
 	{
@@ -71,11 +77,12 @@ void GameEngineCamera::Release()
 
 			if (nullptr == Object)
 			{
-				MsgBoxAssert("nullptrì¸ ëœë”ëŸ¬ê°€ ë ˆë²¨ì˜ ë¦¬ìŠ¤íŠ¸ì— ë“¤ì–´ê°€ ìˆì—ˆìŠµë‹ˆë‹¤.");
+				MsgBoxAssert("nullptrÀÎ ·£´õ·¯°¡ ·¹º§ÀÇ ¸®½ºÆ®¿¡ µé¾î°¡ ÀÖ¾ú½À´Ï´Ù.");
 				continue;
 			}
-
+			// [s] [a] [a]     [a] [e]
 			ActorStartIter = Group.erase(ActorStartIter);
+
 		}
 	}
 }

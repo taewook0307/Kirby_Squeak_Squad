@@ -1,37 +1,31 @@
-ï»¿#include "GameEngineTime.h"
-
+#include "GameEngineTime.h"
 #include <Windows.h>
 
 GameEngineTime GameEngineTime::MainTimer;
 
-GameEngineTime::GameEngineTime()
+GameEngineTime::GameEngineTime() 
 {
-	// Count = 1ì´ˆë‹¹ ëˆ„ë¥¸ íšŸìˆ˜
 	QueryPerformanceFrequency(&Count);
 	Reset();
 }
 
-GameEngineTime::~GameEngineTime()
+GameEngineTime::~GameEngineTime() 
 {
 }
 
 void GameEngineTime::Reset()
 {
-	// Prev = ì»´í“¨í„°ê°€ ì‹¤í–‰ëœ í›„ ì§€ê¸ˆê¹Œì§€ ëˆ„ë¥¸ íšŸìˆ˜
 	QueryPerformanceCounter(&Cur);
 	Prev = Cur;
 }
 
-// í”„ë ˆì„ ì‚¬ì´ì—ì„œ ì‹¤í–‰ë˜ì–´ì•¼í•  í•¨ìˆ˜ë“¤
-void GameEngineTime::Update()
+// ÇÁ·¹ÀÓ »çÀÌ¿¡¼­ ½ÇÇàµÇ¾î¾ßÇÒ ÇÔ¼öµéÀº ´Ù ¾÷µ¥ÀÌÆ®¶ó°í ÀÌ¸§À» ÁöÀ» °ÍÀÌ´Ù.
+void GameEngineTime::Update() 
 {
-	// Cur = ì‹¤í–‰ë  ë•Œ ëˆ„ë¥¸ íšŸìˆ˜
 	QueryPerformanceCounter(&Cur);
-
-	// Cur - Prev = (Updateê°€ ì‹¤í–‰ë  ë•Œê¹Œì§€ì˜ ëˆ„ë¥¸ íšŸìˆ˜) - (Resetì´ ì‹¤í–‰ë˜ê¸° ì „ê¹Œì§€ ëˆ„ë¥¸ íšŸìˆ˜)
 	Tick = Cur.QuadPart - Prev.QuadPart;
 
-	// í•œ í”„ë ˆì„ì´ ì‹¤í–‰ë˜ëŠ” ì‚¬ì´ì— ëˆ„ë¥¸ íšŸìˆ˜ / 1ì´ˆë‹¹ ëˆ„ë¥¸ íšŸìˆ˜
+	// 8¹ÙÀÌÆ® ½Ç¼öÇü                  »çÀÌ°ª        /          ¼¿¼öÀÖ´Â ½Ã°£
 	DoubleDelta = static_cast<double>(Tick) / static_cast<double>(Count.QuadPart);
 	Prev.QuadPart = Cur.QuadPart;
 	FloatDelta = static_cast<float>(DoubleDelta);

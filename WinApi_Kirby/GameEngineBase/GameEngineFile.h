@@ -1,9 +1,8 @@
 #pragma once
-
 #include "GameEnginePath.h"
-
 #include <string>
 
+// Ό³Έν :
 class GameEngineFile : public GameEnginePath
 {
 public:
@@ -23,3 +22,4 @@ protected:
 private:
 
 };
+

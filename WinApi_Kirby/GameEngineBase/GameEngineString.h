@@ -1,5 +1,4 @@
 #pragma once
-
 #include <string>
 
 // Ό³Έν :
@@ -16,7 +15,7 @@ public:
 	GameEngineString& operator=(const GameEngineString& _Other) = delete;
 	GameEngineString& operator=(GameEngineString&& _Other) noexcept = delete;
 
-	static std::string ToUpperReturn(const std::string& _Value)
+	static std::string ToUpperReturn(const std::string& _Value) 
 	{
 		std::string UpperString = _Value;
 
@@ -33,3 +32,4 @@ protected:
 private:
 
 };
+

@@ -24,3 +24,4 @@ protected:
 private:
 	int Seed = 0;
 };
+

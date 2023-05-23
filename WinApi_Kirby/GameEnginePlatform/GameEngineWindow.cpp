@@ -1,7 +1,8 @@
-ï»¿#include "GameEngineWindow.h"
-
-#include <iostream>
+#include "GameEngineWindow.h"
 #include <GameEngineBase/GameEngineDebug.h>
+#include <iostream>
+
+
 
 HINSTANCE GameEngineWindow::Instance = nullptr;
 GameEngineWindow GameEngineWindow::MainWindow;
@@ -19,6 +20,7 @@ GameEngineWindow::~GameEngineWindow()
 		delete BackBuffer;
 		BackBuffer = nullptr;
 	}
+
 
 	if (nullptr != WindowBuffer)
 	{
@@ -44,7 +46,7 @@ void GameEngineWindow::Open(const std::string& _Title, HINSTANCE _hInstance)
 
 	if (nullptr == Instance)
 	{
-		MsgBoxAssert("HInstanceì—†ì´ ìœˆë„ìš°ë¥¼ ë§Œë“¤ìˆ˜ëŠ” ì—†ìŠµë‹ˆë‹¤.");
+		MsgBoxAssert("HInstance¾øÀÌ À©µµ¿ì¸¦ ¸¸µé¼ö´Â ¾ø½À´Ï´Ù.");
 		return;
 	}
 
@@ -55,11 +57,32 @@ void GameEngineWindow::Open(const std::string& _Title, HINSTANCE _hInstance)
 
 void GameEngineWindow::InitInstance()
 {
-	hWnd = CreateWindowA("DefaultWindow", Title.c_str(), WS_OVERLAPPEDWINDOW, CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, nullptr, nullptr, Instance, nullptr);
+	//WS_OVERLAPPED | \
+    //    WS_CAPTION | \
+    //    WS_SYSMENU | \
+    //    WS_THICKFRAME | \
+    //    WS_MINIMIZEBOX | \
+    //    WS_MAXIMIZEBOX
+
+
+	// int Test = WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU | WS_THICKFRAME ;
+
+
+
+
+
+
+
+
+
+	// WS_OVERLAPPEDWINDOW
+
+	hWnd = CreateWindowA("DefaultWindow", Title.c_str(), WS_OVERLAPPEDWINDOW,
+		CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, nullptr, nullptr, Instance, nullptr);
 
 	if (!hWnd)
 	{
-		MsgBoxAssert("ìœˆë„ìš° ìƒì„±ì— ì‹¤íŒ¨í–ˆìŠµë‹ˆë‹¤.");
+		MsgBoxAssert("À©µµ¿ì »ı¼º¿¡ ½ÇÆĞÇß½À´Ï´Ù.");
 		return;
 	}
 
@@ -68,11 +91,15 @@ void GameEngineWindow::InitInstance()
 	WindowBuffer = new GameEngineWindowTexture();
 	WindowBuffer->ResCreate(Hdc);
 
+	// ´õÇÃ¹öÆÛ¸µÀ» ÇÏ±â À§ÇÑ ÀÌ¹ÌÁö
 	BackBuffer = new GameEngineWindowTexture();
 	BackBuffer->ResCreate(WindowBuffer->GetScale());
 
+	// CreateDC()
+
 	ShowWindow(hWnd, SW_SHOW);
 	UpdateWindow(hWnd);
+
 }
 
 LRESULT CALLBACK GameEngineWindow::WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
@@ -98,6 +125,7 @@ LRESULT CALLBACK GameEngineWindow::WndProc(HWND hWnd, UINT message, WPARAM wPara
 	break;
 	case WM_DESTROY:
 		IsWindowUpdate = false;
+		// PostQuitMessage(0);
 		break;
 	default:
 		return DefWindowProc(hWnd, message, wParam, lParam);
@@ -117,6 +145,7 @@ void GameEngineWindow::MyRegisterClass()
 	WNDCLASSEXA wcex;
 	wcex.cbSize = sizeof(WNDCLASSEX);
 	wcex.style = CS_HREDRAW | CS_VREDRAW;
+	// LRESULT(CALLBACK* WNDPROC)(HWND, unsigned int, unsigned int, unsigned int);
 	wcex.lpfnWndProc = GameEngineWindow::WndProc;
 	wcex.cbClsExtra = 0;
 	wcex.cbWndExtra = 0;
@@ -130,7 +159,7 @@ void GameEngineWindow::MyRegisterClass()
 
 	if (false == RegisterClassExA(&wcex))
 	{
-		MsgBoxAssert("ìœˆë„ìš° í´ë˜ìŠ¤ ë™ë¡ì— ì‹¤íŒ¨í–ˆìŠµë‹ˆë‹¤.");
+		MsgBoxAssert("À©µµ¿ì Å¬·¡½º µ¿·Ï¿¡ ½ÇÆĞÇß½À´Ï´Ù.");
 		return;
 	}
 
@@ -139,6 +168,7 @@ void GameEngineWindow::MyRegisterClass()
 
 void GameEngineWindow::MessageLoop(HINSTANCE _Inst, void(*_Start)(HINSTANCE), void(*_Update)(), void(*_End)())
 {
+	// À©µµ¿ì°¡ ¶ß±âÀü¿¡ ·ÎµùÇØ¾ßÇÒ ÀÌ¹ÌÁö³ª »ç¿îµå µîµîÀ» Ã³¸®ÇÏ´Â ´Ü°è
 	if (nullptr != _Start)
 	{
 		_Start(_Inst);
@@ -148,29 +178,59 @@ void GameEngineWindow::MessageLoop(HINSTANCE _Inst, void(*_Start)(HINSTANCE), vo
 
 	while (IsWindowUpdate)
 	{
+		// À©µµ¿ì¿¡ ¹«½¼ÀÏÀÌ ÀÖ´Â°Ô ¾Æ´Ï¶ó ¸Ş¼¼Áö°¡ ÀÖµç ¾øµç
+		// µ¿±âÇÔ¼ö _getch()
+		// <= Å°°¡ ´­¸±¶§±îÁö ¸ØÃá´Ù
+		// (ÇÔ¼ö°¡ Á¦´ë·Î ³¡³¯¶§±îÁö ±â´Ù¸®´Â ÇÔ¼öµéÀ» µ¿±â ÇÔ¼ö¶ó°í ÇÕ´Ï´Ù).
+		// GetMessage´Â µ¿±â ÇÔ¼ö¿¡¿ä. À©µµ¿ìÀÇ ¸Ş¼¼Áö°¡ ¹ß»ıÇÒ¶§±îÁö ±â´Ù¸°´Ù.
+		// ºñµ¿±â ¸Ş¼¼Áö ÇÔ¼ö°¡ ÀÖ´Ù. 
+		// PeekMessage´Â À©µµ¿ì ¸Ş¼¼Áö°¡ ¾øÀ¸¸é 0ÀÌ ¸®ÅÏµÇ°í ±×³É ¸®ÅÏÇÕ´Ï´Ù.
+
+		// ÇÁ·¹ÀÓ°ú µ¥µåÅ¸ÀÓÀÌ ¿Ï¼ºµÆ´Ù.
 		if (PeekMessage(&msg, nullptr, 0, 0, PM_REMOVE))
 		{
+			//if (nullptr != _Update)
+			//{
+			//	_Update();
+			//}
+
 			TranslateMessage(&msg);
 			DispatchMessage(&msg);
 			continue;
 		}
 
+		// À©µµ¿ì ¸Ş¼¼Áö°¡ ¾ø´Â ½Ã°£À» µ¥µåÅ¸ÀÓÀÌ¶ó°í ÇÕ´Ï´Ù.
+		// °ÔÀÓÀº µ¥µåÅ¸ÀÓ¿¡ µ¹¾Æ°¡´Â°Ô º¸ÅëÀÌ´Ù.
+		// °ÔÀÓÁß¿¡ 2°¡Áö Á¾·ù°¡ ÀÖ´Ù. À©µµ¿ì¸¦ ¿òÁ÷ÀÌ°Å³ª Å©±â¸¦ ÁÙÀÌ¸é
+		// È­¸éÀÌ Á¤ÁöÇÏ´Â °ÔÀÓ. 
+		// ³»°¡ ±×·± À©µµ¿ì ¸Ş¼¼Áö¸¦ ¹ß»ı½ÃÅ°´Â ¿ÍÁß¿¡µµ °ÔÀÓÀº °è¼Ó µ¹¾Æ°¡´Â °ÔÀÓÀÖ´Ù.
+
+		// ÀÌ°Ô ÇÑ¹Ù²î°¡ µµ´Â °ÍÀ» ÇÁ·¹ÀÓ
+		// FPS
+		// ÃÊ´ç È­¸éÀÌ ±×·ÁÁö´Â È½¼ö
+		// ÇÏµå¿ş¾î¿Íµµ ¿¬°áÀÌ ÀÖ´Ù.
 		if (nullptr != _Update)
 		{
 			_Update();
 		}
+
 	}
+
 
 	if (nullptr != _End)
 	{
 		_End();
 	}
 
+
+	// (int)msg.wParam;
+
 	return;
 }
 
 void GameEngineWindow::SetPosAndScale(const float4& _Pos, const float4& _Scale)
 {
+	// Window¿¡¼­ LP Æ÷ÀÎÅÍ¶ó´Â ¶æ Long Pointer
 	Scale = _Scale;
 
 	if (nullptr != BackBuffer)
@@ -180,10 +240,13 @@ void GameEngineWindow::SetPosAndScale(const float4& _Pos, const float4& _Scale)
 		BackBuffer->ResCreate(Scale);
 	}
 
+	//                200           200
 	RECT Rc = { 0, 0, _Scale.iX(), _Scale.iY() };
 
-	AdjustWindowRect(&Rc, WS_OVERLAPPEDWINDOW, FALSE);
 
+	AdjustWindowRect(&Rc, WS_OVERLAPPEDWINDOW,FALSE);
+
+	//                          100        100         500          500
 	SetWindowPos(hWnd, nullptr, _Pos.iX(), _Pos.iY(), Rc.right - Rc.left, Rc.bottom - Rc.top, SWP_NOZORDER);
 }
 

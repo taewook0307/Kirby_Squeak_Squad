@@ -1,33 +1,49 @@
-ï»¿#include "GameEngineWindowTexture.h"
-#include "GameEngineWindow.h"
-
+#include "GameEngineWindowTexture.h"
 #include <Windows.h>
 #include <GameEngineBase/GameEngineDebug.h>
+#include "GameEngineWindow.h"
 
 #pragma comment(lib, "msimg32.lib")
 
-GameEngineWindowTexture::GameEngineWindowTexture()
+
+GameEngineWindowTexture::GameEngineWindowTexture() 
 {
 }
 
-GameEngineWindowTexture::~GameEngineWindowTexture()
+GameEngineWindowTexture::~GameEngineWindowTexture() 
 {
 }
 
 void GameEngineWindowTexture::ResLoad(const std::string& _Path)
 {
+	// ´Ü¼øÈ÷ ºñÆ®¸Ê¸¸ ·ÎµåÇÏ´Â ÇÔ¼ö°¡ ¾Æ´Ï¶ó¼­ ¿ì¸®¿¡°Ô ±×³É HANDLEÀ» ÁØ´Ù
+	// ¼±»ı´Ô ±â¾ïÀ¸·Î´Â Ä¿¼­ ¾ÆÀÌÄÜµîµµ ÀÌ³à¼®À¸·Î ·ÎµåÇÒ¼ö ÀÖ¾ú³ª? ÇÏ´Âµ¥ ±×·¡¼­ 
+
+	// LoadBitmapA()
+
+	// LPCSTR == const char*
+
 	HANDLE ImageHandle = LoadImageA(nullptr, _Path.c_str(), IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
 
 	if (nullptr == ImageHandle)
 	{
-		MsgBoxAssert("ì´ë¯¸ì§€ ë¡œë“œì— ì‹¤íŒ¨í–ˆìŠµë‹ˆë‹¤." + _Path);
+		MsgBoxAssert("ÀÌ¹ÌÁö ·Îµå¿¡ ½ÇÆĞÇß½À´Ï´Ù." + _Path);
 		return;
 	}
 
+	// ÀÌ¹ÌÁöÀÇ ÇÚµéÀÏ »ÓÀÌ°í.
 	BitMap = static_cast<HBITMAP>(ImageHandle);
 
+	// ¾ø´ø ±ÇÇÑÀ» »õ·Ó°Ô ¸¸µé¾î¾ß ÇÑ´Ù.
+	// Window¿¡¼­ ¾ò¾î¿Â DC
 	ImageDC = CreateCompatibleDC(nullptr);
+	// ÀÌ¹ÌÁöÀÇ ¼öÁ¤ ±ÇÇÑÀ» ¸¸µé¾î ³»°í
 
+	// ImageDC ±ÇÇÑ¿¡
+	// BitMap 2Â÷¿øÀÇ »ö±ò ÁıÇÕÀ» ¿¬°áÇØ¶ó.
+	// »ç½Ç ÀÌ¹Ì ¸¸µé¾îÁöÀÚ¸¶ÀÚ ³»ºÎ¿¡ 1,1 ÀÌ¹ÌÁö¿Í ¿¬°áµÇ¾îÀÖ°í
+	// ³»°¡ ·ÎµåÇÑ ÀÌ¹ÌÁö¸¦ ±× 1,1Â¥¸®¸¦ ¹Ğ¾î³»°í ±³Ã¼ÇÏ´Â ÀÛ¾÷À» ÇÏ´Âµ¥.
+	// ÀÌ ÇÔ¼öÀÇ ¸®ÅÏ°ªÀÌ ±âÁ¸¿¡ ¿¬°áµÇ¾îÀÖ´ø ¾Ö¸¦ ¸®ÅÏÇØÁÖ´Â°Í.
 	OldBitMap = static_cast<HBITMAP>(SelectObject(ImageDC, BitMap));
 
 	ScaleCheck();
@@ -35,18 +51,28 @@ void GameEngineWindowTexture::ResLoad(const std::string& _Path)
 
 void GameEngineWindowTexture::ResCreate(const float4& _Scale)
 {
+	// ±×³É ºñ¾îÀÖ´Â Èò»ö ÀÌ¹ÌÁö¸¦ ÇÏ³ª ¸¸µå´Â ÇÔ¼öÀÎ°Å¿¡¿ä.
 	HANDLE ImageHandle = CreateCompatibleBitmap(GameEngineWindow::MainWindow.GetHDC(), _Scale.iX(), _Scale.iY());
 
 	if (nullptr == ImageHandle)
 	{
-		MsgBoxAssert("ì´ë¯¸ì§€ ìƒì„±ì— ì‹¤íŒ¨í–ˆìŠµë‹ˆë‹¤.");
+		MsgBoxAssert("ÀÌ¹ÌÁö »ı¼º¿¡ ½ÇÆĞÇß½À´Ï´Ù.");
 		return;
 	}
 
+	// ÀÌ¹ÌÁöÀÇ ÇÚµéÀÏ »ÓÀÌ°í.
 	BitMap = static_cast<HBITMAP>(ImageHandle);
 
+	// ¾ø´ø ±ÇÇÑÀ» »õ·Ó°Ô ¸¸µé¾î¾ß ÇÑ´Ù.
+	// Window¿¡¼­ ¾ò¾î¿Â DC
 	ImageDC = CreateCompatibleDC(nullptr);
+	// ÀÌ¹ÌÁöÀÇ ¼öÁ¤ ±ÇÇÑÀ» ¸¸µé¾î ³»°í
 
+	// ImageDC ±ÇÇÑ¿¡
+	// BitMap 2Â÷¿øÀÇ »ö±ò ÁıÇÕÀ» ¿¬°áÇØ¶ó.
+	// »ç½Ç ÀÌ¹Ì ¸¸µé¾îÁöÀÚ¸¶ÀÚ ³»ºÎ¿¡ 1,1 ÀÌ¹ÌÁö¿Í ¿¬°áµÇ¾îÀÖ°í
+	// ³»°¡ ·ÎµåÇÑ ÀÌ¹ÌÁö¸¦ ±× 1,1Â¥¸®¸¦ ¹Ğ¾î³»°í ±³Ã¼ÇÏ´Â ÀÛ¾÷À» ÇÏ´Âµ¥.
+	// ÀÌ ÇÔ¼öÀÇ ¸®ÅÏ°ªÀÌ ±âÁ¸¿¡ ¿¬°áµÇ¾îÀÖ´ø ¾Ö¸¦ ¸®ÅÏÇØÁÖ´Â°Í.
 	OldBitMap = static_cast<HBITMAP>(SelectObject(ImageDC, BitMap));
 
 	ScaleCheck();
@@ -63,8 +89,11 @@ void GameEngineWindowTexture::ScaleCheck()
 
 float4 GameEngineWindowTexture::GetScale()
 {
+	
 	return { static_cast<float>(Info.bmWidth), static_cast<float>(Info.bmHeight) };
 }
+
+
 
 void GameEngineWindowTexture::BitCopy(GameEngineWindowTexture* _CopyTexture, const float4& _Pos)
 {
@@ -72,44 +101,50 @@ void GameEngineWindowTexture::BitCopy(GameEngineWindowTexture* _CopyTexture, con
 }
 
 void GameEngineWindowTexture::BitCopy(
-	GameEngineWindowTexture* _CopyTexture,
-	const float4& _Pos,
+	GameEngineWindowTexture* _CopyTexture, 
+	const float4& _Pos, 
 	const float4& _Scale)
 {
 	HDC CopyImageDC = _CopyTexture->GetImageDC();
 
-	BitBlt(ImageDC,
+	//// Æ¯Á¤ DC¿¡ ¿¬°áµÈ »ö»óÀ»
+	//// Æ¯Á¤ DC¿¡ °í¼Óº¹»çÇÏ´Â ÇÔ¼öÀÔ´Ï´Ù.
+	BitBlt(ImageDC, 
 		_Pos.iX() - _Scale.ihX(),
 		_Pos.iY() - _Scale.ihY(),
 		_Scale.iX(),
 		_Scale.iY(),
 		CopyImageDC,
-		0,
-		0,
+		0, 
+		0, 
 		SRCCOPY);
+
 }
 
 void GameEngineWindowTexture::TransCopy(GameEngineWindowTexture* _CopyTexture, const float4& _Pos, const float4& _Scale, const float4& _OtherPos, const float4& _OtherScale, int _TransColor/* = RGB(255, 0, 255)*/)
 {
 	HDC CopyImageDC = _CopyTexture->GetImageDC();
 
+	//// Æ¯Á¤ DC¿¡ ¿¬°áµÈ »ö»óÀ»
+	//// Æ¯Á¤ DC¿¡ °í¼Óº¹»çÇÏ´Â ÇÔ¼öÀÔ´Ï´Ù.
 	TransparentBlt(ImageDC,
 		_Pos.iX() - _Scale.ihX(),
 		_Pos.iY() - _Scale.ihY(),
-		_Scale.iX(),
-		_Scale.iY(),
+		_Scale.iX(), 
+		_Scale.iY(), 
 		CopyImageDC,
-		_OtherPos.iX(),		// ì¹´í”¼í•˜ë ¤ëŠ” ì´ë¯¸ì§€ì˜ ì™¼ìª½ ìœ„ x
-		_OtherPos.iY(),		// ì¹´í”¼í•˜ë ¤ëŠ” ì´ë¯¸ì§€ì˜ ì™¼ìª½ ìœ„ y
-		_OtherScale.iX(),	// ê·¸ ë¶€ë¶„ë¶€í„° ì‚¬ì´ì¦ˆ x
-		_OtherScale.iY(),	// ê·¸ ë¶€ë¶„ë¶€í„° ì‚¬ì´ì¦ˆ y
+		_OtherPos.iX(), // Ä«ÇÇÇÏ·Á´Â ÀÌ¹ÌÁöÀÇ ¿ŞÂÊÀ§ x
+		_OtherPos.iY(), // Ä«ÇÇÇÏ·Á´Â ÀÌ¹ÌÁöÀÇ ¿ŞÂÊÀ§ y
+		_OtherScale.iX(), // ±×ºÎºĞºÎÅÍ »çÀÌÁî  x
+		_OtherScale.iY(), // ±×ºÎºĞºÎÅÍ »çÀÌÁî  y
 		_TransColor
 	);
+
 }
 
 unsigned int GameEngineWindowTexture::GetColor(unsigned int _DefaultColor, float4 _Pos)
 {
-	if (0 > _Pos.iX())
+	if (0 > _Pos.iX() )
 	{
 		return _DefaultColor;
 	}

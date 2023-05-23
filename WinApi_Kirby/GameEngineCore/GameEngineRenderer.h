@@ -1,17 +1,15 @@
 #pragma once
-
-#include "GameEngineObject.h"
-
+#include "GameEngineActorSubObject.h"
+#include <GameEngineBase/GameEngineMath.h>
+#include <string>
 #include <map>
 #include <vector>
-#include <string>
-#include <GameEngineBase/GameEngineMath.h>
 
 // 설명 :
 class GameEngineSprite;
 class GameEngineActor;
 class GameEngineWindowTexture;
-class GameEngineRenderer : public GameEngineObject
+class GameEngineRenderer : public GameEngineActorSubObject
 {
 	friend class GameEngineCamera;
 	friend class GameEngineActor;
@@ -36,6 +34,7 @@ public:
 		RenderPos = _Value;
 	}
 
+
 	void SetRenderScale(const float4& _Value)
 	{
 		RenderScale = _Value;
@@ -57,18 +56,19 @@ public:
 		ScaleRatio = _Scale;
 	}
 
+
 	void SetRenderScaleToTexture();
 
-	bool IsDeath() override;
 
-	void SetOrder(int _Order) override;
+	void SetOrder(int _Order) override; 
+
 protected:
 	void Start() override;
 
+
 private:
-	GameEngineWindowTexture* Texture = nullptr;
-	GameEngineActor* Master = nullptr;
 	GameEngineCamera* Camera = nullptr;
+	GameEngineWindowTexture* Texture = nullptr;
 	GameEngineSprite* Sprite = nullptr;
 
 	float ScaleRatio = 1.0f;
@@ -110,15 +110,16 @@ public:
 	/// <param name="_Inter">애니메이션 시간</param>
 	/// <param name="_Loop">애니메이션 반복</param>
 	void CreateAnimation(
-		const std::string& _AniamtionName,
-		const std::string& _SpriteName,
-		size_t _Start = -1,
-		size_t _End = -1,
-		float _Inter = 0.1f,
+		const std::string& _AniamtionName, 
+		const std::string& _SpriteName, 
+		size_t _Start = -1, size_t _End = -1,
+		float _Inter = 0.1f, 
 		bool _Loop = true);
 
 	void ChangeAnimation(const std::string& _AniamtionName, bool _ForceChange = false);
 
+
 	std::map<std::string, Animation> AllAnimation;
 	Animation* CurAnimation = nullptr;
 };
+

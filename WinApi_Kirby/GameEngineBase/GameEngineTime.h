@@ -1,7 +1,7 @@
 #pragma once
-
 #include <Windows.h>
 
+// Ό³Έν :
 class GameEngineTime
 {
 public:
@@ -32,8 +32,8 @@ private:
 	LARGE_INTEGER Count = { 0 };
 	LARGE_INTEGER Cur = { 0 };
 	LARGE_INTEGER Prev = { 0 };
-
 	__int64 Tick;
 	double DoubleDelta;
 	float FloatDelta;
 };
+

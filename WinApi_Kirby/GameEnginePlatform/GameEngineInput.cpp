@@ -1,5 +1,4 @@
-ï»¿#include "GameEngineInput.h"
-
+#include "GameEngineInput.h"
 #include <GameEngineBase/GameEngineDebug.h>
 
 std::map<int, GameEngineInput::GameEngineKey> GameEngineInput::AllKeys;
@@ -20,6 +19,7 @@ void GameEngineInput::InputInit()
 	{
 		return;
 	}
+
 
 	AllKeys[VK_LBUTTON] = GameEngineKey(VK_LBUTTON);
 	AllKeys[VK_RBUTTON] = GameEngineKey(VK_RBUTTON);
@@ -118,6 +118,7 @@ void GameEngineInput::InputInit()
 	{
 		AllKeys[i] = GameEngineKey(i);
 	}
+
 }
 
 
@@ -125,8 +126,11 @@ void GameEngineInput::GameEngineKey::Update(float _DeltaTime)
 {
 	if (true == KeyCheck())
 	{
+		// Å°°¡ ´­·È´Ù.
+
 		PressTime += _DeltaTime;
 
+		// ¿©ÅÂ±îÁö Å°°¡ ´­·È´øÀûÀÌ ¾ø´Ù´Â °ÅÁÒ.
 		if (true == Free)
 		{
 			Down = true;
@@ -141,12 +145,12 @@ void GameEngineInput::GameEngineKey::Update(float _DeltaTime)
 			Up = false;
 			Free = false;
 		}
-	}
 
+	}
 	else
 	{
 		PressTime = 0.0f;
-
+		// Å°°¡ ´­¸®Áö ¾Ê¾Ò´Ù.
 		if (true == Press)
 		{
 			Down = false;
@@ -173,6 +177,7 @@ void GameEngineInput::Reset()
 	{
 		StartIter->second.Reset();
 	}
+
 }
 
 void GameEngineInput::Update(float _DeltaTime)
@@ -184,44 +189,43 @@ void GameEngineInput::Update(float _DeltaTime)
 	{
 		StartIter->second.Update(_DeltaTime);
 	}
+
 }
 
 bool GameEngineInput::IsDown(int _Key)
 {
 	if (AllKeys.end() == AllKeys.find(_Key))
 	{
-		MsgBoxAssert("ì•„ì§ ì²˜ë¦¬í•˜ì§€ ëª»í•˜ëŠ” í‚¤ì…ë‹ˆë‹¤." + std::to_string(_Key));
+		MsgBoxAssert("¾ÆÁ÷ Ã³¸®ÇÏÁö ¸øÇÏ´Â Å°ÀÔ´Ï´Ù." + std::to_string(_Key));
 	}
 
 	return AllKeys[_Key].Down;
 }
-
 bool GameEngineInput::IsUp(int _Key)
 {
 	if (AllKeys.end() == AllKeys.find(_Key))
 	{
-		MsgBoxAssert("ì•„ì§ ì²˜ë¦¬í•˜ì§€ ëª»í•˜ëŠ” í‚¤ì…ë‹ˆë‹¤." + std::to_string(_Key));
+		MsgBoxAssert("¾ÆÁ÷ Ã³¸®ÇÏÁö ¸øÇÏ´Â Å°ÀÔ´Ï´Ù." + std::to_string(_Key));
 	}
 
 	return AllKeys[_Key].Up;
 }
-
 bool GameEngineInput::IsPress(int _Key)
 {
 	if (AllKeys.end() == AllKeys.find(_Key))
 	{
-		MsgBoxAssert("ì•„ì§ ì²˜ë¦¬í•˜ì§€ ëª»í•˜ëŠ” í‚¤ì…ë‹ˆë‹¤." + std::to_string(_Key));
+		MsgBoxAssert("¾ÆÁ÷ Ã³¸®ÇÏÁö ¸øÇÏ´Â Å°ÀÔ´Ï´Ù." + std::to_string(_Key));
 	}
 
 	return AllKeys[_Key].Press;
 }
-
 bool GameEngineInput::IsFree(int _Key)
 {
 	if (AllKeys.end() == AllKeys.find(_Key))
 	{
-		MsgBoxAssert("ì•„ì§ ì²˜ë¦¬í•˜ì§€ ëª»í•˜ëŠ” í‚¤ì…ë‹ˆë‹¤." + std::to_string(_Key));
+		MsgBoxAssert("¾ÆÁ÷ Ã³¸®ÇÏÁö ¸øÇÏ´Â Å°ÀÔ´Ï´Ù." + std::to_string(_Key));
 	}
 
 	return AllKeys[_Key].Free;
 }
+

@@ -14,17 +14,20 @@
     <ClInclude Include="ResourcesManager.h">
       <Filter>Resources</Filter>
     </ClInclude>
-    <ClInclude Include="GameEngineRenderer.h">
-      <Filter>Rendering</Filter>
-    </ClInclude>
     <ClInclude Include="GameEngineCamera.h">
-      <Filter>Rendering</Filter>
+      <Filter>Object\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngineRenderer.h">
+      <Filter>Object\Rendering</Filter>
     </ClInclude>
     <ClInclude Include="GameEngineSprite.h">
       <Filter>Resources</Filter>
     </ClInclude>
     <ClInclude Include="GameEngineCollision.h">
-      <Filter>Collision</Filter>
+      <Filter>Object\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngineActorSubObject.h">
+      <Filter>Object</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -41,31 +44,34 @@
     <ClCompile Include="ResourcesManager.cpp">
       <Filter>Resources</Filter>
     </ClCompile>
-    <ClCompile Include="GameEngineRenderer.cpp">
-      <Filter>Rendering</Filter>
-    </ClCompile>
     <ClCompile Include="GameEngineCamera.cpp">
-      <Filter>Rendering</Filter>
+      <Filter>Object\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngineRenderer.cpp">
+      <Filter>Object\Rendering</Filter>
     </ClCompile>
     <ClCompile Include="GameEngineSprite.cpp">
       <Filter>Resources</Filter>
     </ClCompile>
     <ClCompile Include="GameEngineCollision.cpp">
-      <Filter>Collision</Filter>
+      <Filter>Object\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngineActorSubObject.cpp">
+      <Filter>Object</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Object">
-      <UniqueIdentifier>{a7f15de3-4e55-41da-b42e-58374b7cbf17}</UniqueIdentifier>
+      <UniqueIdentifier>{d6701332-c44b-4b38-b9a4-951393a7d315}</UniqueIdentifier>
     </Filter>
     <Filter Include="Resources">
-      <UniqueIdentifier>{cb064f71-f999-4f11-a1ee-e8e7f70dab5e}</UniqueIdentifier>
+      <UniqueIdentifier>{1818e0d7-cb5a-46f4-be5f-0a6f9835ca06}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Rendering">
-      <UniqueIdentifier>{d8e1c73d-1f46-4327-9a97-ec7f8a5e7bb7}</UniqueIdentifier>
+    <Filter Include="Object\Rendering">
+      <UniqueIdentifier>{b13f0ac0-9252-44b2-b9e4-39504d4bc4c4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Collision">
-      <UniqueIdentifier>{ed0a73f0-89da-4fa7-963a-036d22e9e3b7}</UniqueIdentifier>
+    <Filter Include="Object\Collision">
+      <UniqueIdentifier>{b52073fc-2ac2-4b89-83f4-4c1c31ac97e8}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

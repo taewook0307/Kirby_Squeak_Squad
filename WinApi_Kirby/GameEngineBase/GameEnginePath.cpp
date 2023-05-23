@@ -1,18 +1,18 @@
-ï»¿#include "GameEnginePath.h"
+#include "GameEnginePath.h"
 #include "GameEngineDebug.h"
 
-GameEnginePath::GameEnginePath()
+GameEnginePath::GameEnginePath() 
 {
 	SetCurrentPath();
 }
 
-GameEnginePath::GameEnginePath(const std::string& _path)
+GameEnginePath::GameEnginePath(const std::string& _path) 
 	: Path(_path)
 {
 
 }
 
-GameEnginePath::~GameEnginePath()
+GameEnginePath::~GameEnginePath() 
 {
 }
 
@@ -21,13 +21,13 @@ std::string GameEnginePath::GetFileName()
 	return Path.filename().string();
 }
 
-void GameEnginePath::SetCurrentPath()
+void GameEnginePath::SetCurrentPath() 
 {
 	Path = std::filesystem::current_path();
 }
 
 
-void GameEnginePath::MoveParent()
+void GameEnginePath::MoveParent() 
 {
 	Path = Path.parent_path();
 }
@@ -44,14 +44,14 @@ void GameEnginePath::MoveParentToExistsChild(const std::string& _ChildPath)
 		{
 			MoveParent();
 		}
-		else
+		else 
 		{
 			break;
 		}
 
 		if (Path == Path.root_path())
 		{
-			MsgBoxAssert("ë£¨íŠ¸ ê²½ë¡œê¹Œì§€ ìƒ…ìƒ…íˆ ë’¤ì¡Œì§€ë§Œ" + _ChildPath + "íŒŒì¼ì´ë‚˜ í´ë”ë¥¼ í•˜ìœ„ë¡œ ê°€ì§€ê³  ìˆëŠ” ê²½ë¡œë¥¼ ì°¾ì§€ ëª»í–ˆìŠµë‹ˆë‹¤");
+			MsgBoxAssert("·çÆ® °æ·Î±îÁö »ô»ôÈ÷ µÚÁ³Áö¸¸" + _ChildPath + "ÆÄÀÏÀÌ³ª Æú´õ¸¦ ÇÏÀ§·Î °¡Áö°í ÀÖ´Â °æ·Î¸¦ Ã£Áö ¸øÇß½À´Ï´Ù");
 		}
 	}
 
@@ -66,10 +66,11 @@ void GameEnginePath::MoveChild(const std::string& _ChildPath)
 
 	if (false == std::filesystem::exists(CheckPath))
 	{
-		MsgBoxAssert("ì¡´ì¬í•˜ì§€ ì•ŠëŠ” ê²½ë¡œë¡œ ì´ë™í•˜ë ¤ê³  í–ˆìŠµë‹ˆë‹¤." + CheckPath.string());
+		MsgBoxAssert("Á¸ÀçÇÏÁö ¾Ê´Â °æ·Î·Î ÀÌµ¿ÇÏ·Á°í Çß½À´Ï´Ù." + CheckPath.string());
 	}
 
 	Path = CheckPath;
+	// Path.append(_ChildPath);
 }
 
 std::string GameEnginePath::PlusFilePath(const std::string& _ChildPath)
@@ -80,7 +81,7 @@ std::string GameEnginePath::PlusFilePath(const std::string& _ChildPath)
 
 	if (false == std::filesystem::exists(CheckPath))
 	{
-		MsgBoxAssert("ì¡´ì¬í•˜ì§€ ì•ŠëŠ” ê²½ë¡œë¡œ ì´ë™í•˜ë ¤ê³  í–ˆìŠµë‹ˆë‹¤." + CheckPath.string());
+		MsgBoxAssert("Á¸ÀçÇÏÁö ¾Ê´Â °æ·Î·Î ÀÌµ¿ÇÏ·Á°í Çß½À´Ï´Ù." + CheckPath.string());
 	}
 
 	return CheckPath.string();

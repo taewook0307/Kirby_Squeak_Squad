@@ -1,5 +1,4 @@
 #pragma once
-
 #include <string>
 #include <filesystem>
 
@@ -27,7 +26,7 @@ public:
 
 	std::string PlusFilePath(const std::string& _ChildPath);
 
-	std::string GetStringPath()
+	std::string GetStringPath() 
 	{
 		return Path.string();
 	}
@@ -40,5 +39,7 @@ protected:
 	std::filesystem::path Path;
 
 private:
+
 	// std::string Path;
 };
+

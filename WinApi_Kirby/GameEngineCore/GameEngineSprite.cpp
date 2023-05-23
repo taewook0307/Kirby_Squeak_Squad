@@ -1,18 +1,17 @@
-ï»¿#include "GameEngineSprite.h"
-#include "ResourcesManager.h"
-
+#include "GameEngineSprite.h"
 #include <GameEngineBase/GameEngineDebug.h>
 #include <GameEngineBase/GameEngineDirectory.h>
+#include "ResourcesManager.h"
 
-GameEngineSprite::GameEngineSprite()
+GameEngineSprite::GameEngineSprite() 
 {
 }
 
-GameEngineSprite::~GameEngineSprite()
+GameEngineSprite::~GameEngineSprite() 
 {
 }
 
-void GameEngineSprite::CreateSpriteSheet(GameEngineWindowTexture* _Texture, int _XCount, int _YCount)
+void GameEngineSprite::CreateSpriteSheet(GameEngineWindowTexture* _Texture, int _XCount, int _YCount) 
 {
 	float4 TexScale = _Texture->GetScale();
 
@@ -20,6 +19,7 @@ void GameEngineSprite::CreateSpriteSheet(GameEngineWindowTexture* _Texture, int 
 
 	float4 StartPos = { float4::ZERO };
 	float4 ImageSize = { TexScale.X / _XCount, TexScale.Y / _YCount };
+
 
 	for (size_t y = 0; y < _YCount; y++)
 	{
@@ -40,6 +40,8 @@ void GameEngineSprite::CreateSpriteSheet(GameEngineWindowTexture* _Texture, int 
 		StartPos.X = 0;
 		StartPos.Y += ImageSize.Y;
 	}
+
+	
 }
 
 void GameEngineSprite::CreateSpriteFolder(const std::string& _Path)
@@ -65,13 +67,13 @@ const GameEngineSprite::Sprite& GameEngineSprite::GetSprite(size_t _Index)
 
 	if (0 > _Index)
 	{
-		MsgBoxAssert("0ë³´ë‹¤ ì‘ì€ ìŠ¤í”„ë¼ì´íŠ¸ ì¸ë±ìŠ¤ ì…ë‹ˆë‹¤.");
+		MsgBoxAssert("0º¸´Ù ÀÛÀº ½ºÇÁ¶óÀÌÆ® ÀÎµ¦½º ÀÔ´Ï´Ù.");
 		return ReturnValue;
 	}
 
 	if (AllSprite.size() <= _Index)
 	{
-		MsgBoxAssert("ìŠ¤í”„ë¼ì´íŠ¸ ì¸ë±ìŠ¤ ë²”ìœ„ë¥¼ ì˜¤ë²„í–ˆìŠµë‹ˆë‹¤.");
+		MsgBoxAssert("½ºÇÁ¶óÀÌÆ® ÀÎµ¦½º ¹üÀ§¸¦ ¿À¹öÇß½À´Ï´Ù.");
 		return ReturnValue;
 	}
 

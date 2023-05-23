@@ -1,7 +1,5 @@
 #pragma once
-
 #include "GameEngineRenderer.h"
-
 #include <map>
 #include <list>
 
@@ -9,9 +7,9 @@
 class GameEngineRenderer;
 class GameEngineCamera
 {
-	friend class GameEngineLevel;
-	friend class GameEngineActor;
 	friend class GameEngineRenderer;
+	friend class GameEngineActor;
+	friend class GameEngineLevel;
 
 public:
 	// constrcuter destructer
@@ -29,7 +27,7 @@ public:
 		return Pos;
 	}
 
-	void SetPos(const float4& _Value)
+	void SetPos(const float4& _Value) 
 	{
 		Pos = _Value;
 	}
@@ -52,3 +50,4 @@ private:
 
 	void Render(float _Delta);
 };
+

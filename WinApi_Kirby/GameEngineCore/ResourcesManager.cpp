@@ -1,23 +1,27 @@
-ï»¿#include "ResourcesManager.h"
-#include "GameEngineSprite.h"
-
-#include <GameEngineBase/GameEngineDebug.h>
-#include <GameEngineBase/GameEngineString.h>
-#include <GameEngineBase/GameEngineDirectory.h>
+#include "ResourcesManager.h"
 #include <GameEnginePlatform/GameEngineWindowTexture.h>
+#include <GameEngineBase/GameEngineString.h>
+#include "GameEngineSprite.h"
+#include <GameEngineBase/GameEngineDebug.h>
+#include <GameEngineBase/GameEngineDirectory.h>
 
 ResourcesManager ResourcesManager::Inst;
+
+// Æ÷ÀÎÅÍ 
+// ResourcesManager* ResourcesManager::Inst = new ResourcesManager();
+// ResourcesManager* ResourcesManager::Inst;
+
 
 bool ResourcesManager::IsLoadTexture(const std::string& _Name)
 {
 	return FindTexture(_Name) != nullptr;
 }
 
-ResourcesManager::ResourcesManager()
+ResourcesManager::ResourcesManager() 
 {
 }
 
-ResourcesManager::~ResourcesManager()
+ResourcesManager::~ResourcesManager() 
 {
 	for (const std::pair<std::string, GameEngineWindowTexture*>& Pair : AllTexture)
 	{
@@ -40,11 +44,13 @@ ResourcesManager::~ResourcesManager()
 			Sprite = nullptr;
 		}
 	}
+
 }
 
 GameEngineWindowTexture* ResourcesManager::FindTexture(const std::string& _Name)
 {
 	std::string UpperName = GameEngineString::ToUpperReturn(_Name);
+
 
 	std::map<std::string, GameEngineWindowTexture*>::iterator FindIter = AllTexture.find(UpperName);
 
@@ -52,7 +58,7 @@ GameEngineWindowTexture* ResourcesManager::FindTexture(const std::string& _Name)
 	{
 		return nullptr;
 	}
-
+	
 	return FindIter->second;
 }
 
@@ -60,6 +66,7 @@ GameEngineWindowTexture* ResourcesManager::TextureLoad(const std::string& _Name,
 {
 	std::string UpperName = GameEngineString::ToUpperReturn(_Name);
 
+	// µ¿Àû ¹ÙÀÎµùÀÌ¶ó°í ÇÕ´Ï´Ù.
 	GameEngineWindowTexture* LoadTexture = new GameEngineWindowTexture();
 
 	LoadTexture->ResLoad(_Path);
@@ -72,6 +79,7 @@ GameEngineWindowTexture* ResourcesManager::TextureLoad(const std::string& _Name,
 GameEngineSprite* ResourcesManager::FindSprite(const std::string& _Name)
 {
 	std::string UpperName = GameEngineString::ToUpperReturn(_Name);
+
 
 	std::map<std::string, GameEngineSprite*>::iterator FindIter = AllSprite.find(UpperName);
 
@@ -92,7 +100,7 @@ GameEngineSprite* ResourcesManager::CreateSpriteSheet(const std::string& _Sprite
 
 	if (nullptr != FindSprite(UpperName))
 	{
-		MsgBoxAssert("ì´ë¯¸ ë¡œë“œí•œ ìŠ¤í”„ë¼ì´íŠ¸ë¥¼ ë˜ ë¡œë“œí•˜ë ¤ê³  í–ˆìŠµë‹ˆë‹¤.");
+		MsgBoxAssert("ÀÌ¹Ì ·ÎµåÇÑ ½ºÇÁ¶óÀÌÆ®¸¦ ¶Ç ·ÎµåÇÏ·Á°í Çß½À´Ï´Ù.");
 	}
 
 	GameEnginePath Path = _TexturePath;
@@ -115,13 +123,13 @@ GameEngineSprite* ResourcesManager::CreateSpriteSheet(const std::string& _Sprite
 	return NewSprite;
 }
 
-GameEngineSprite* ResourcesManager::CreateSpriteFolder(const std::string& _SpriteName, const std::string& _Path)
+GameEngineSprite* ResourcesManager::CreateSpriteFolder(const std::string& _SpriteName, const std::string& _Path) 
 {
 	std::string UpperName = GameEngineString::ToUpperReturn(_SpriteName);
 
 	if (nullptr != FindSprite(UpperName))
 	{
-		MsgBoxAssert("ì´ë¯¸ ë¡œë“œí•œ ìŠ¤í”„ë¼ì´íŠ¸ë¥¼ ë˜ ë¡œë“œí•˜ë ¤ê³  í–ˆìŠµë‹ˆë‹¤.");
+		MsgBoxAssert("ÀÌ¹Ì ·ÎµåÇÑ ½ºÇÁ¶óÀÌÆ®¸¦ ¶Ç ·ÎµåÇÏ·Á°í Çß½À´Ï´Ù.");
 	}
 
 	GameEngineSprite* NewSprite = new GameEngineSprite();
@@ -139,7 +147,7 @@ void ResourcesManager::TextureFileLoad(const std::string& _FileName, const std::
 	{
 		GameEnginePath FilePath;
 		FilePath.SetCurrentPath();
-
+		
 		std::string ParentPath = GameEnginePath::GetParentString(_Path);
 		FilePath.MoveParentToExistsChild(ParentPath);
 		FilePath.MoveChild(_Path + _FileName);
@@ -156,7 +164,12 @@ void ResourcesManager::SpriteFileLoad(const std::string& _FileName, const std::s
 
 	GameEnginePath FilePath;
 
+	// _Path
+	// "BBB\\CCC\\DDD"
+	// "BBB\\CCC\\DDD\\FFF"
 	std::string ParentPath = GameEnginePath::GetParentString(_Path);
+	// ParentPath
+	// "BBB"
 
 	FilePath.MoveParentToExistsChild(ParentPath);
 	FilePath.MoveChild(_Path);

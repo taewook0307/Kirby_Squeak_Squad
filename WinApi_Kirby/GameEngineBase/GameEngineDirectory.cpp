@@ -1,28 +1,31 @@
-ï»¿#include "GameEngineDirectory.h"
+#include "GameEngineDirectory.h"
 #include "GameEngineDebug.h"
 #include "GameEngineString.h"
 
-GameEngineDirectory::GameEngineDirectory()
+GameEngineDirectory::GameEngineDirectory() 
 {
 }
 
-GameEngineDirectory::~GameEngineDirectory()
+GameEngineDirectory::~GameEngineDirectory() 
 {
 }
 
-GameEngineDirectory::GameEngineDirectory(const std::string& _path)
+GameEngineDirectory::GameEngineDirectory(const std::string& _path) 
 	: GameEnginePath(_path)
 {
 	if (false == IsDirectory())
 	{
-		MsgBoxAssert("ë””ë ‰í† ë¦¬ ê²½ë¡œê°€ ì•„ë‹™ë‹ˆë‹¤." + _path);
+		MsgBoxAssert("µð·ºÅä¸® °æ·Î°¡ ¾Æ´Õ´Ï´Ù." + _path);
 	}
 
 
 }
 
-std::vector<GameEngineFile> GameEngineDirectory::GetAllFile(std::vector<std::string> _Ext)
+// ÀÚ½ÅÀÇ µð·ºÅä¸®ÀÇ ÆÄÀÏ¸¸ ³Ö½À´Ï´Ù.
+// 
+std::vector<GameEngineFile> GameEngineDirectory::GetAllFile(std::vector<std::string> _Ext) 
 {
+
 	std::filesystem::directory_iterator DirIter = std::filesystem::directory_iterator(Path);
 
 	std::vector<std::string> UpperFilter;
@@ -62,7 +65,11 @@ std::vector<GameEngineFile> GameEngineDirectory::GetAllFile(std::vector<std::str
 			continue;
 		}
 
+
 		Result.push_back(GameEngineFile(Path.string()));
+
 	}
+
+
 	return Result;
 }
