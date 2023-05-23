@@ -99,6 +99,8 @@ void Kirby::StateUpdate(float _Delta)
 		return JumpToLandUpdate(_Delta);
 	case KirbyState::Walk:
 		return WalkUpdate(_Delta);
+	case KirbyState::Run:
+		return RunUpdate(_Delta);
 	default:
 		break;
 	}
@@ -131,6 +133,9 @@ void Kirby::ChangeState(KirbyState _State)
 		case KirbyState::Walk:
 			WalkStart();
 			break;
+		case KirbyState::Run:
+			RunStart();
+			break;
 		default:
 			break;
 		}
@@ -142,11 +147,11 @@ void Kirby::DirCheck()
 {
 	ActorDir CheckDir = Dir;
 
-	if (true == GameEngineInput::IsDown('A'))
+	if (true == GameEngineInput::IsDown('A') || true == GameEngineInput::IsDown('Q'))
 	{
 		CheckDir = ActorDir::Left;
 	}
-	if (true == GameEngineInput::IsDown('D'))
+	if (true == GameEngineInput::IsDown('D') || true == GameEngineInput::IsDown('E'))
 	{
 		CheckDir = ActorDir::Right;
 	}

@@ -54,21 +54,6 @@ void IceKirby::Start()
 	ChangeState(KirbyState::Idle);
 }
 
-void IceKirby::Update(float _Delta)
-{
-	Kirby::StateUpdate(_Delta);
-}
-
-void IceKirby::StateUpdate(float _Delta)
-{
-	Kirby::StateUpdate(_Delta);
-}
-
-void IceKirby::ChangeState(KirbyState _State)
-{
-	Kirby::ChangeState(_State);
-}
-
 void IceKirby::ChangeAnimationState(const std::string& _StateName)
 {
 	std::string AnimationName;

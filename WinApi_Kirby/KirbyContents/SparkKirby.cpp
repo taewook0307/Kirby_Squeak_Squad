@@ -55,21 +55,6 @@ void SparkKirby::Start()
 	ChangeState(KirbyState::Idle);
 }
 
-void SparkKirby::Update(float _Delta)
-{
-	Kirby::StateUpdate(_Delta);
-}
-
-void SparkKirby::StateUpdate(float _Delta)
-{
-	Kirby::StateUpdate(_Delta);
-}
-
-void SparkKirby::ChangeState(KirbyState _State)
-{
-	Kirby::ChangeState(_State);
-}
-
 void SparkKirby::ChangeAnimationState(const std::string& _StateName)
 {
 	std::string AnimationName;

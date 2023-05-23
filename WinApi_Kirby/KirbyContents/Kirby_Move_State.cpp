@@ -6,8 +6,6 @@
 #include <GameEngineCore/GameEngineLevel.h>
 #include <GameEngineCore/GameEngineCamera.h>
 
-#define EMPTYCOLOR RGB(255,255,255)
-
 void Kirby::SlideStart()
 {
 	ChangeAnimationState("Slide");
@@ -31,6 +29,16 @@ void Kirby::JumpToLandStart()
 void Kirby::WalkStart()
 {
 	ChangeAnimationState("Walk");
+}
+
+void Kirby::RunStart()
+{
+	ChangeAnimationState("Run");
+}
+
+void Kirby::StopStart()
+{
+	ChangeAnimationState("Stop");
 }
 
 
@@ -133,6 +141,34 @@ void Kirby::JumpUpdate(float _Delta)
 		}
 	}
 
+	if (true == GameEngineInput::IsPress('Q') && Dir == ActorDir::Left)
+	{
+		MovePos = { -Speed * _Delta * 2.0f, 0.0f };
+		CheckPos = { 50.0f, -30.0f };
+
+		unsigned int Color = GetGroundColor(EMPTYCOLOR, CheckPos);
+
+		if (EMPTYCOLOR == Color)
+		{
+			AddPos(MovePos);
+			CameraMove(MovePos);
+		}
+	}
+
+	if (true == GameEngineInput::IsPress('E') && Dir == ActorDir::Right)
+	{
+		MovePos = { Speed * _Delta * 2.0f, 0.0f };
+		CheckPos = { 50.0f, -30.0f };
+
+		unsigned int Color = GetGroundColor(EMPTYCOLOR, CheckPos);
+
+		if (EMPTYCOLOR == Color)
+		{
+			AddPos(MovePos);
+			CameraMove(MovePos);
+		}
+	}
+
 	if (JumpTimer >= 1.0f)
 	{
 		JumpTimer = 0.0f;
@@ -148,7 +184,7 @@ void Kirby::JumpToDownUpdate(float _Delta)
 
 	unsigned int Color = GetGroundColor(EMPTYCOLOR);
 
-	if (RGB(255, 255, 255) == Color)
+	if (EMPTYCOLOR == Color)
 	{
 		Gravity(_Delta);
 
@@ -172,6 +208,34 @@ void Kirby::JumpToDownUpdate(float _Delta)
 		if (true == GameEngineInput::IsPress('D') && Dir == ActorDir::Right)
 		{
 			MovePos = { Speed * _Delta, 0.0f };
+			CheckPos = { 50.0f, -30.0f };
+
+			unsigned int Color = GetGroundColor(EMPTYCOLOR, CheckPos);
+
+			if (EMPTYCOLOR == Color)
+			{
+				AddPos(MovePos);
+				CameraMove(MovePos);
+			}
+		}
+
+		if (true == GameEngineInput::IsPress('Q') && Dir == ActorDir::Left)
+		{
+			MovePos = { -Speed * _Delta * 2.0f, 0.0f };
+			CheckPos = { 50.0f, -30.0f };
+
+			unsigned int Color = GetGroundColor(EMPTYCOLOR, CheckPos);
+
+			if (EMPTYCOLOR == Color)
+			{
+				AddPos(MovePos);
+				CameraMove(MovePos);
+			}
+		}
+
+		if (true == GameEngineInput::IsPress('E') && Dir == ActorDir::Right)
+		{
+			MovePos = { Speed * _Delta * 2.0f, 0.0f };
 			CheckPos = { 50.0f, -30.0f };
 
 			unsigned int Color = GetGroundColor(EMPTYCOLOR, CheckPos);
@@ -210,6 +274,9 @@ void Kirby::JumpToLandUpdate(float _Delta)
 void Kirby::WalkUpdate(float _Delta)
 {
 	DirCheck();
+
+	KirbyGravity(_Delta);
+
 	float4 MovePos = float4::ZERO;
 	float4 CheckPos = float4::ZERO;
 
@@ -238,6 +305,74 @@ void Kirby::WalkUpdate(float _Delta)
 		}
 	}
 
+	// 웅크리기 상태 이동
+	if (true == GameEngineInput::IsDown('S'))
+	{
+		ChangeState(KirbyState::Down);
+		return;
+	}
+
+	// 점프 상태 이동
+	if (true == GameEngineInput::IsDown(VK_SPACE))
+	{
+		ChangeState(KirbyState::Jump);
+		return;
+	}
+
+	// 이동하지 않을 시 대기 상태 이동
+	if (MovePos == float4::ZERO)
+	{
+		ChangeState(KirbyState::Idle);
+		return;
+	}
+
+	// 달리기 상태 이동
+	if (true == GameEngineInput::IsDown('E')
+		|| true == GameEngineInput::IsDown('Q'))
+	{
+		DirCheck();
+		ChangeState(KirbyState::Run);
+		return;
+	}
+}
+
+void Kirby::RunUpdate(float _Delta)
+{
+	DirCheck();
+
+	KirbyGravity(_Delta);
+
+	float4 MovePos = float4::ZERO;
+	float4 CheckPos = float4::ZERO;
+
+	float RunSpeed = Speed * 2.0f;
+
+	// 왼쪽 이동
+	if (true == GameEngineInput::IsPress('Q') && Dir == ActorDir::Left)
+	{
+		CheckPos = { -30.0f, -50.0f };
+		MovePos = { -RunSpeed * _Delta, 0.0f };
+	}
+
+	// 오른쪽 이동
+	if (true == GameEngineInput::IsPress('E') && Dir == ActorDir::Right)
+	{
+		CheckPos = { 30.0f, -50.0f };
+		MovePos = { RunSpeed * _Delta, 0.0f };
+	}
+
+	// 이동 방향 앞에 장애물 여부 확인 후 이동
+	{
+		unsigned int Color = GetGroundColor(EMPTYCOLOR, CheckPos);
+
+		if (EMPTYCOLOR == Color)
+		{
+			AddPos(MovePos);
+			CameraMove(MovePos);
+		}
+	}
+
+	// 웅크리기 상태 이동
 	if (true == GameEngineInput::IsDown('S'))
 	{
 		ChangeState(KirbyState::Down);

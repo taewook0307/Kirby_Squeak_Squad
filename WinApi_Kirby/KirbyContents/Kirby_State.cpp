@@ -6,6 +6,28 @@
 #include <GameEngineCore/GameEngineLevel.h>
 #include <GameEngineCore/GameEngineCamera.h>
 
+void Kirby::KirbyGravity(float _Delta)
+{
+	unsigned int Color = GetGroundColor(EMPTYCOLOR);
+
+	if (EMPTYCOLOR == Color)
+	{
+		Gravity(_Delta);
+	}
+	else
+	{
+		unsigned int CheckColor = GetGroundColor(EMPTYCOLOR, float4::UP);
+
+		while (CheckColor != EMPTYCOLOR)
+		{
+			CheckColor = GetGroundColor(EMPTYCOLOR, float4::UP);
+			AddPos(float4::UP);
+		}
+
+		GravityReset();
+	}
+}
+
 void Kirby::IdleStart()
 {
 	ChangeAnimationState("Idle");
@@ -20,16 +42,7 @@ void Kirby::IdleUpdate(float _Delta)
 {
 	DirCheck();
 
-	unsigned int Color = GetGroundColor(RGB(255, 255, 255));
-
-	if (RGB(255, 255, 255) == Color)
-	{
-		Gravity(_Delta);
-	}
-	else
-	{
-		GravityReset();
-	}
+	KirbyGravity(_Delta);
 
 	// 걷기 상태 이동
 	if (true == GameEngineInput::IsDown('A')
@@ -55,11 +68,22 @@ void Kirby::IdleUpdate(float _Delta)
 		ChangeState(KirbyState::Jump);
 		return;
 	}
+
+	// 달리기 상태 이동
+	if (true == GameEngineInput::IsDown('E')
+		|| true == GameEngineInput::IsDown('Q'))
+	{
+		DirCheck();
+		ChangeState(KirbyState::Run);
+		return;
+	}
 }
 
 void Kirby::DownUpdate(float _Delta)
 {
 	DirCheck();
+
+	KirbyGravity(_Delta);
 
 	// 슬라이딩 상태 전환
 	if (true == GameEngineInput::IsDown('A') && Dir == ActorDir::Left
