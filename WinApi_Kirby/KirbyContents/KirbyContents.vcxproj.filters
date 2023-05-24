@@ -138,6 +138,9 @@
     <ClCompile Include="Kirby_Attack_State.cpp">
       <Filter>KirbyForm\Kirby</Filter>
     </ClCompile>
+    <ClCompile Include="Kirby_Jump_State.cpp">
+      <Filter>KirbyForm\Kirby</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Level">
