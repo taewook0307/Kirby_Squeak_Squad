@@ -138,19 +138,19 @@ void Kirby::WalkUpdate(float _Delta)
 		return;
 	}
 
-	// 이동하지 않을 시 대기 상태 이동
-	if (MovePos == float4::ZERO)
-	{
-		ChangeState(KirbyState::Idle);
-		return;
-	}
-
 	// 달리기 상태 이동
 	if (true == GameEngineInput::IsDown('E')
 		|| true == GameEngineInput::IsDown('Q'))
 	{
 		DirCheck();
 		ChangeState(KirbyState::Run);
+		return;
+	}
+
+	// 이동하지 않을 시 대기 상태 이동
+	if (MovePos == float4::ZERO)
+	{
+		ChangeState(KirbyState::Idle);
 		return;
 	}
 }
@@ -261,13 +261,8 @@ void Kirby::StopUpdate(float _Delta)
 
 void Kirby::StopToIdleUpdate(float _Delta)
 {
-	static float StopTimer = 0.0f;
-
-	StopTimer += _Delta;
-
-	if (StopTimer >= 0.4f)
+	if (true == MainRenderer->IsAnimationEnd())
 	{
-		StopTimer = 0.0f;
 		ChangeState(KirbyState::Idle);
 		return;
 	}
