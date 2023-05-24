@@ -119,6 +119,10 @@ public:
 
 	void ChangeAnimation(const std::string& _AniamtionName, bool _ForceChange = false);
 
+	bool IsAnimationEnd()
+	{
+		return CurAnimation->IsEnd;
+	}
 
 	std::map<std::string, Animation> AllAnimation;
 	Animation* CurAnimation = nullptr;

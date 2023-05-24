@@ -35,6 +35,7 @@ void Kirby::Start()
 		MainRenderer->CreateAnimation("Right_Idle", "Right_Kirby.Bmp", 0, 1, 0.5f, true);
 		MainRenderer->CreateAnimation("Right_Down", "Right_Kirby.Bmp", 2, 3, 0.5f, true);
 		MainRenderer->CreateAnimation("Right_Slide", "Right_Kirby.Bmp", 4, 5, 1.0f, false);
+		MainRenderer->FindAnimation("Right_Slide")->Inters[1] = 0.2f;
 		MainRenderer->CreateAnimation("Right_Jump", "Right_Kirby.Bmp", 6, 6, 0.1f, true);
 		MainRenderer->CreateAnimation("Right_JumpToDown", "Right_Kirby.Bmp", 7, 14, 0.1f, false);
 		MainRenderer->CreateAnimation("Right_JumpToLand", "Right_Kirby.Bmp", 15, 15, 0.5f, true);
@@ -55,22 +56,22 @@ void Kirby::Start()
 
 		MainRenderer->CreateAnimation("Left_Idle", "Left_Kirby.Bmp", 0, 1, 0.5f, true);
 		MainRenderer->CreateAnimation("Left_Down", "Left_Kirby.Bmp", 2, 3, 0.5f, true);
-		MainRenderer->CreateAnimation("Left_Slide", "Left_Kirby.Bmp", 4, 5, 1.0f, true);
+		MainRenderer->CreateAnimation("Left_Slide", "Left_Kirby.Bmp", 4, 5, 1.0f, false);
+		MainRenderer->FindAnimation("Left_Slide")->Inters[1] = 0.2f;
 		MainRenderer->CreateAnimation("Left_Jump", "Left_Kirby.Bmp", 6, 6, 0.1f, true);
-		MainRenderer->CreateAnimation("Left_JumpToDown", "Left_Kirby.Bmp", 7, 14, 0.1f, true);
+		MainRenderer->CreateAnimation("Left_JumpToDown", "Left_Kirby.Bmp", 7, 14, 0.1f, false);
 		MainRenderer->CreateAnimation("Left_JumpToLand", "Left_Kirby.Bmp", 15, 15, 0.5f, true);
 		MainRenderer->CreateAnimation("Left_Walk", "Left_Kirby.Bmp", 16, 25, 0.1f, true);
 		MainRenderer->CreateAnimation("Left_Run", "Left_Kirby.Bmp", 26, 33, 0.1f, true);
 		MainRenderer->CreateAnimation("Left_Stop", "Left_Kirby.Bmp", 34, 34, 0.1f, true);
 		MainRenderer->CreateAnimation("Left_StopToIdle", "Left_Kirby.Bmp", 35, 36, 0.2f, true);
-		MainRenderer->CreateAnimation("Left_Breathe", "Left_Kirby.Bmp", 37, 41, 0.1f, true);
-		MainRenderer->CreateAnimation("Left_BreatheOut", "Left_Kirby.Bmp", 60, 61, 0.1f, true);
-		MainRenderer->CreateAnimation("Left_Fly", "Left_Kirby.Bmp", 42, 59, 0.1f, true);
-		MainRenderer->CreateAnimation("Left_Drop", "Left_Kirby.Bmp", 62, 77, 0.1f, true);
+		MainRenderer->CreateAnimation("Left_Breathe", "Left_Kirby.Bmp", 37, 41, 0.2f, false);
+		MainRenderer->CreateAnimation("Left_Fly", "Left_Kirby.Bmp", 42, 59, 0.2f, true);
+		MainRenderer->CreateAnimation("Left_BreatheOut", "Left_Kirby.Bmp", 60, 61, 0.3f, false);
+		MainRenderer->CreateAnimation("Left_Drop", "Left_Kirby.Bmp", 62, 66, 0.2f, false);
 		MainRenderer->CreateAnimation("Left_FlyLand", "Left_Kirby.Bmp", 67, 67, 0.1f, true);
 		MainRenderer->CreateAnimation("Left_Move", "Left_Kirby.Bmp", 78, 81, 0.1f, true);
 		MainRenderer->CreateAnimation("Left_Damage", "Left_Kirby.Bmp", 82, 86, 0.1f, true);
-
 		MainRenderer->ChangeAnimation("Right_Idle");
 		MainRenderer->SetRenderScaleToTexture();
 		MainRenderer->SetScaleRatio(4.0f);

@@ -82,7 +82,7 @@ void Kirby::SlideUpdate(float _Delta)
 	}
 
 	// 슬라이딩 정지 후 대기 상태 전환
-	if (SlideTimer >= 1.2f)
+	if (true == MainRenderer->IsAnimationEnd())
 	{
 		SlideTimer = 0.0f;
 		ChangeState(KirbyState::Idle);
