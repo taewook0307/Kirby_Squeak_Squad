@@ -16,6 +16,8 @@ enum class KirbyState
 	BreatheOut,
 	Fly,
 	Drop,
+	FlyLand,
+	FlyLandTurn,
 	Move,
 	Damage,
 	Max

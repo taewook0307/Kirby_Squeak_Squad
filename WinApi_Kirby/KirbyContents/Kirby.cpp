@@ -47,7 +47,8 @@ void Kirby::Start()
 		MainRenderer->FindAnimation("Right_Breathe")->Inters[4] = 0.7f;
 		MainRenderer->CreateAnimation("Right_Fly", "Right_Kirby.Bmp", 42, 59, 0.2f, true);
 		MainRenderer->CreateAnimation("Right_BreatheOut", "Right_Kirby.Bmp", 60, 61, 0.3f, true);
-		MainRenderer->CreateAnimation("Right_Drop", "Right_Kirby.Bmp", 62, 77, 0.1f, true);
+		MainRenderer->CreateAnimation("Right_Drop", "Right_Kirby.Bmp", 62, 66, 0.2f, true);
+		MainRenderer->CreateAnimation("Right_FlyLand", "Right_Kirby.Bmp", 67, 67, 0.1f, true);
 		MainRenderer->CreateAnimation("Right_Move", "Right_Kirby.Bmp", 78, 81, 0.1f, true);
 		MainRenderer->CreateAnimation("Right_Damage", "Right_Kirby.Bmp", 82, 86, 0.1f, true);
 
@@ -66,6 +67,7 @@ void Kirby::Start()
 		MainRenderer->CreateAnimation("Left_BreatheOut", "Left_Kirby.Bmp", 60, 61, 0.1f, true);
 		MainRenderer->CreateAnimation("Left_Fly", "Left_Kirby.Bmp", 42, 59, 0.1f, true);
 		MainRenderer->CreateAnimation("Left_Drop", "Left_Kirby.Bmp", 62, 77, 0.1f, true);
+		MainRenderer->CreateAnimation("Left_FlyLand", "Left_Kirby.Bmp", 67, 67, 0.1f, true);
 		MainRenderer->CreateAnimation("Left_Move", "Left_Kirby.Bmp", 78, 81, 0.1f, true);
 		MainRenderer->CreateAnimation("Left_Damage", "Left_Kirby.Bmp", 82, 86, 0.1f, true);
 
@@ -112,6 +114,10 @@ void Kirby::StateUpdate(float _Delta)
 		return FlyUpdate(_Delta);
 	case KirbyState::BreatheOut:
 		return BreatheOutUpdate(_Delta);
+	case KirbyState::Drop:
+		return DropUpdate(_Delta);
+	case KirbyState::FlyLand:
+		return FlyLandUpdate(_Delta);
 	default:
 		break;
 	}
@@ -161,6 +167,12 @@ void Kirby::ChangeState(KirbyState _State)
 			break;
 		case KirbyState::BreatheOut:
 			BreatheOutStart();
+			break;
+		case KirbyState::Drop:
+			DropStart();
+			break;
+		case KirbyState::FlyLand:
+			FlyLandStart();
 			break;
 		default:
 			break;

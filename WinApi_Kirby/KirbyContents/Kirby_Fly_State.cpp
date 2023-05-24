@@ -1,5 +1,6 @@
 #include "Kirby.h"
 
+#include <GameEnginePlatform/GameEngineWindow.h>
 #include <GameEnginePlatform/GameEngineInput.h>
 
 void Kirby::BreatheStart()
@@ -15,6 +16,16 @@ void Kirby::FlyStart()
 void Kirby::BreatheOutStart()
 {
 	ChangeAnimationState("BreatheOut");
+}
+
+void Kirby::DropStart()
+{
+	ChangeAnimationState("Drop");
+}
+
+void Kirby::FlyLandStart()
+{
+	ChangeAnimationState("FlyLand");
 }
 
 void Kirby::BreatheUpdate(float _Delta)
@@ -87,6 +98,7 @@ void Kirby::FlyUpdate(float _Delta)
 
 	if (true == GameEngineInput::IsDown(VK_SPACE))
 	{
+		FlyPower = BASEPOWER;
 		ChangeState(KirbyState::BreatheOut);
 		return;
 	}
@@ -108,6 +120,48 @@ void Kirby::BreatheOutUpdate(float _Delta)
 	if (BreatheOutTimer >= 0.6f)
 	{
 		BreatheOutTimer = 0.0f;
+		ChangeState(KirbyState::Drop);
+		return;
+	}
+}
+
+void Kirby::DropUpdate(float _Delta)
+{
+	unsigned int Color = GetGroundColor(EMPTYCOLOR);
+
+	float4 WinScale = GameEngineWindow::MainWindow.GetScale();
+	float4 CurPos = GetPos();
+
+	if (EMPTYCOLOR == Color)
+	{
+		Gravity(_Delta);
+	}
+	else
+	{
+		GravityReset();
+		float Check = WinScale.Y *= 0.3f;
+		if (CurPos.Y > Check)
+		{
+			ChangeState(KirbyState::FlyLand);
+			return;
+		}
+		else
+		{
+			ChangeState(KirbyState::Idle);
+			return;
+		}
+	}
+}
+
+void Kirby::FlyLandUpdate(float _Delta)
+{
+	static float FlyLandTimer = 0.0f;
+
+	FlyLandTimer += _Delta;
+
+	if (FlyLandTimer >= 1.2f)
+	{
+		FlyLandTimer = 0.0f;
 		ChangeState(KirbyState::Idle);
 		return;
 	}
