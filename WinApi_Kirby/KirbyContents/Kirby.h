@@ -38,9 +38,11 @@ protected:
 	void StopToIdleStart();
 	void BreatheStart();
 	void FlyStart();
+	void BreatheOutLandStart();
 	void BreatheOutStart();
 	void DropStart();
-	void FlyLandStart();
+	void FlyToLandStart();
+	void FlyToTurnLandStart();
 
 	void IdleUpdate(float _Delta);
 	void DownUpdate(float _Delta);
@@ -54,9 +56,11 @@ protected:
 	void StopToIdleUpdate(float _Delta);
 	void BreatheUpdate(float _Delta);
 	void FlyUpdate(float _Delta);
+	void BreatheOutLandUpdate(float _Delta);
 	void BreatheOutUpdate(float _Delta);
 	void DropUpdate(float _Delta);
-	void FlyLandUpdate(float _Delta);
+	void FlyToLandUpdate(float _Delta);
+	void FlyToTurnLandUpdate(float _Delta);
 
 	void DirCheck();
 

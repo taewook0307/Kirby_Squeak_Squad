@@ -2,6 +2,7 @@
 
 #include <GameEnginePlatform/GameEngineWindow.h>
 #include <GameEnginePlatform/GameEngineInput.h>
+#include <GameEngineCore/GameEngineRenderer.h>
 
 void Kirby::BreatheStart()
 {
@@ -11,6 +12,11 @@ void Kirby::BreatheStart()
 void Kirby::FlyStart()
 {
 	ChangeAnimationState("Fly");
+}
+
+void Kirby::BreatheOutLandStart()
+{
+	ChangeAnimationState("BreatheOutLand");
 }
 
 void Kirby::BreatheOutStart()
@@ -23,20 +29,20 @@ void Kirby::DropStart()
 	ChangeAnimationState("Drop");
 }
 
-void Kirby::FlyLandStart()
+void Kirby::FlyToLandStart()
 {
-	ChangeAnimationState("FlyLand");
+	ChangeAnimationState("FlyToLand");
+}
+
+void Kirby::FlyToTurnLandStart()
+{
+	ChangeAnimationState("FlyToTurnLand");
 }
 
 void Kirby::BreatheUpdate(float _Delta)
 {
-	static float FlyBreatheTimer = 0.0f;
-
-	FlyBreatheTimer += _Delta;
-
-	if (FlyBreatheTimer >= 2.0f)
+	if (true == MainRenderer->IsAnimationEnd())
 	{
-		FlyBreatheTimer = 0.0f;
 		ChangeState(KirbyState::Fly);
 		return;
 	}
@@ -47,15 +53,12 @@ void Kirby::FlyUpdate(float _Delta)
 	DirCheck();
 
 	float4 FlyPos = float4::UP * FlyPower * _Delta;
-	float4 FlyCheckPos = { 0.0f, -100.0f };
-	float4 DownCheckPos = { 0.0f, 0.0f };
-
+	
 	float4 MovePos = float4::ZERO;
 	float4 CheckPos = float4::ZERO;
 
-	unsigned int Color = FlyPos.Y < 0 ? GetGroundColor(EMPTYCOLOR, FlyCheckPos) : GetGroundColor(EMPTYCOLOR, DownCheckPos);
-
-	if (EMPTYCOLOR == Color)
+	float4 UpPos = GetPos() += FlyPos;
+	if (UpPos.Y > 100.0f)
 	{
 		AddPos(FlyPos);
 	}
@@ -65,28 +68,31 @@ void Kirby::FlyUpdate(float _Delta)
 	if (true == GameEngineInput::IsDown('F'))
 	{
 		FlyPower = BASEPOWER;
-		AddPos(FlyPos);
-	}
 
-	if (true == GameEngineInput::IsPress('A') && Dir == ActorDir::Left)
-	{
-		MovePos = { -Speed * _Delta, 0.0f };
-		CheckPos = { 50.0f, -30.0f };
+		UpPos = GetPos() += FlyPos;
 
-		unsigned int Color = GetGroundColor(EMPTYCOLOR, CheckPos);
-
-		if (EMPTYCOLOR == Color)
+		if (UpPos.Y > 100.0f)
 		{
-			AddPos(MovePos);
-			CameraMove(MovePos);
+			AddPos(FlyPos);
 		}
 	}
 
+	// 오른쪽 이동
 	if (true == GameEngineInput::IsPress('D') && Dir == ActorDir::Right)
 	{
 		MovePos = { Speed * _Delta, 0.0f };
-		CheckPos = { 50.0f, -30.0f };
+		CheckPos = { 50.0f, -50.0f };
+	}
 
+	// 왼쪽 이동
+	if (true == GameEngineInput::IsPress('A') && Dir == ActorDir::Left)
+	{
+		MovePos = { -Speed * _Delta, 0.0f };
+		CheckPos = { -50.0f, -50.0f };
+	}
+
+	// 이동 방향 앞에 장애물 여부 확인 후 이동
+	{
 		unsigned int Color = GetGroundColor(EMPTYCOLOR, CheckPos);
 
 		if (EMPTYCOLOR == Color)
@@ -102,6 +108,25 @@ void Kirby::FlyUpdate(float _Delta)
 		ChangeState(KirbyState::BreatheOut);
 		return;
 	}
+
+	float4 DownCheckPos = { 0.0f, 0.0f };
+	unsigned int DownColor = GetGroundColor(EMPTYCOLOR, DownCheckPos);
+
+	if (EMPTYCOLOR != DownColor && FlyPos.Y > 0)
+	{
+		FlyPower = BASEPOWER;
+		ChangeState(KirbyState::BreatheOutLand);
+		return;
+	}
+}
+
+void Kirby::BreatheOutLandUpdate(float _Delta)
+{
+	if (true == MainRenderer->IsAnimationEnd())
+	{
+		ChangeState(KirbyState::Idle);
+		return;
+	}
 }
 
 void Kirby::BreatheOutUpdate(float _Delta)
@@ -111,15 +136,46 @@ void Kirby::BreatheOutUpdate(float _Delta)
 	if (EMPTYCOLOR == Color)
 	{
 		Gravity(_Delta);
+
+		float4 MovePos = float4::ZERO;
+		float4 CheckPos = float4::ZERO;
+
+		// 오른쪽 이동
+		if (true == GameEngineInput::IsPress('D') && Dir == ActorDir::Right)
+		{
+			MovePos = { Speed * _Delta, 0.0f };
+			CheckPos = { 30.0f, -50.0f };
+		}
+
+		// 왼쪽 이동
+		if (true == GameEngineInput::IsPress('A') && Dir == ActorDir::Left)
+		{
+			MovePos = { -Speed * _Delta, 0.0f };
+			CheckPos = { -30.0f, -50.0f };
+		}
+
+		// 이동 방향 앞에 장애물 여부 확인 후 이동
+		{
+			unsigned int XColor = GetGroundColor(EMPTYCOLOR, CheckPos);
+
+			if (EMPTYCOLOR == XColor)
+			{
+				AddPos(MovePos);
+				CameraMove(MovePos);
+			}
+		}
+	}
+	else
+	{
+		if (true == MainRenderer->IsAnimationEnd())
+		{
+			ChangeState(KirbyState::Idle);
+			return;
+		}
 	}
 
-	static float BreatheOutTimer = 0.0f;
-
-	BreatheOutTimer += _Delta;
-
-	if (BreatheOutTimer >= 0.6f)
+	if (true == MainRenderer->IsAnimationEnd())
 	{
-		BreatheOutTimer = 0.0f;
 		ChangeState(KirbyState::Drop);
 		return;
 	}
@@ -127,30 +183,88 @@ void Kirby::BreatheOutUpdate(float _Delta)
 
 void Kirby::DropUpdate(float _Delta)
 {
+	static float DropTimer = 0.0f;
+
 	unsigned int Color = GetGroundColor(EMPTYCOLOR);
 
 	if (EMPTYCOLOR == Color)
 	{
+		DropTimer += _Delta;
 		Gravity(_Delta);
+
+		float4 MovePos = float4::ZERO;
+		float4 CheckPos = float4::ZERO;
+
+		// 오른쪽 이동
+		if (true == GameEngineInput::IsPress('D') && Dir == ActorDir::Right)
+		{
+			MovePos = { Speed * _Delta, 0.0f };
+			CheckPos = { 30.0f, -50.0f };
+		}
+
+		// 왼쪽 이동
+		if (true == GameEngineInput::IsPress('A') && Dir == ActorDir::Left)
+		{
+			CheckPos = { -30.0f, -50.0f };
+			MovePos = { -Speed * _Delta, 0.0f };
+		}
+
+		// 이동 방향 앞에 장애물 여부 확인 후 이동
+		{
+			unsigned int XColor = GetGroundColor(EMPTYCOLOR, CheckPos);
+
+			if (EMPTYCOLOR == XColor)
+			{
+				AddPos(MovePos);
+				CameraMove(MovePos);
+			}
+		}
 	}
 	else
 	{
 		GravityReset();
-		ChangeState(KirbyState::FlyLand);
+		if (DropTimer < 1.0f)
+		{
+			DropTimer = 0.0f;
+			ChangeState(KirbyState::FlyToLand);
+			return;
+		}
+		else
+		{
+			DropTimer = 0.0f;
+			ChangeState(KirbyState::FlyToTurnLand);
+			return;
+		}
+	}
+}
+
+void Kirby::FlyToLandUpdate(float _Delta)
+{
+	if (true == MainRenderer->IsAnimationEnd())
+	{
+		ChangeState(KirbyState::Idle);
 		return;
 	}
 }
 
-void Kirby::FlyLandUpdate(float _Delta)
+void Kirby::FlyToTurnLandUpdate(float _Delta)
 {
-	static float FlyLandTimer = 0.0f;
+	float4 FlyPos = float4::UP * FlyPower * 0.7f * _Delta;
 
-	FlyLandTimer += _Delta;
-
-	if (FlyLandTimer >= 1.2f)
+	float4 UpPos = GetPos() += FlyPos;
+	if (UpPos.Y > 100.0f)
 	{
-		FlyLandTimer = 0.0f;
-		ChangeState(KirbyState::Idle);
+		AddPos(FlyPos);
+	}
+
+	FlyPower -= 10.0f;
+
+	unsigned int Color = GetGroundColor(EMPTYCOLOR);
+
+	if (EMPTYCOLOR != Color)
+	{
+		FlyPower = BASEPOWER;
+		ChangeState(KirbyState::FlyToLand);
 		return;
 	}
 }

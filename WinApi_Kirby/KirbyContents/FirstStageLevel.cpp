@@ -22,10 +22,10 @@ FirstStageLevel::~FirstStageLevel()
 void FirstStageLevel::Start()
 {
 	FirstStage = CreateActor<Map>(RenderOrder::Map);
-	FirstStage->MapInit("FirstStage", "FirstStageBitMap.Bmp");
+	FirstStage->MapInit("FirstStage", "FirstStageBitMapTest.Bmp");
 
 	BackGround* Back = CreateActor<BackGround>(RenderOrder::BackGround);
-	Back->BackGroundInit("FirstStageLevel.Bmp", "FirstStageBitMap.Bmp");
+	Back->BackGroundInit("FirstStageLevel.Bmp", "FirstStageBitMapTest.Bmp");
 
 	LevelPlayer = CreateActor<Kirby>(RenderOrder::Play);
 }
@@ -53,7 +53,7 @@ void FirstStageLevel::LevelStart(GameEngineLevel* _PrevLevel)
 	{
 		float4 WinScale = GameEngineWindow::MainWindow.GetScale();
 		LevelPlayer->SetPos({ WinScale.Half().Half().X, WinScale.Half().Half().Y });
-		LevelPlayer->SetGroundBitMap("FirstStageBitMap.Bmp");
+		LevelPlayer->SetGroundBitMap("FirstStageBitMapTest.Bmp");
 
 		GetMainCamera()->SetPos(float4::ZERO);
 	}

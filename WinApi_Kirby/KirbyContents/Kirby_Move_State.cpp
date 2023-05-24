@@ -34,6 +34,8 @@ void Kirby::StopToIdleStart()
 
 void Kirby::SlideUpdate(float _Delta)
 {
+	KirbyGravity(_Delta);
+
 	float4 MovePos = float4::ZERO;
 	float4 CheckPos = float4::ZERO;
 	float CopySpeed = Speed / 1.5f;
@@ -204,7 +206,7 @@ void Kirby::RunUpdate(float _Delta)
 	}
 
 	// 이동하지 않을 시 대기 상태 이동
-	if (true == GameEngineInput::IsUp('Q') || true == GameEngineInput::IsUp('E'))
+	if (MovePos == float4::ZERO)
 	{
 		DirCheck();
 		ChangeState(KirbyState::Stop);
