@@ -152,8 +152,9 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="Kirby_Attack_State.cpp" />
+    <ClCompile Include="Kirby_Fly_State.cpp" />
     <ClCompile Include="Kirby_Move_State.cpp" />
-    <ClCompile Include="Kirby_Special_State.cpp" />
     <ClCompile Include="Kirby_State.cpp" />
     <ClCompile Include="Map.cpp">
       <SubType>

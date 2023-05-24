@@ -132,7 +132,10 @@
     <ClCompile Include="Kirby_Move_State.cpp">
       <Filter>KirbyForm\Kirby</Filter>
     </ClCompile>
-    <ClCompile Include="Kirby_Special_State.cpp">
+    <ClCompile Include="Kirby_Fly_State.cpp">
+      <Filter>KirbyForm\Kirby</Filter>
+    </ClCompile>
+    <ClCompile Include="Kirby_Attack_State.cpp">
       <Filter>KirbyForm\Kirby</Filter>
     </ClCompile>
   </ItemGroup>

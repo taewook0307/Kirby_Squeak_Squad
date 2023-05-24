@@ -100,7 +100,7 @@ void Kirby::BreatheOutUpdate(float _Delta)
 	{
 		Gravity(_Delta);
 	}
-	
+
 	static float BreatheOutTimer = 0.0f;
 
 	BreatheOutTimer += _Delta;
