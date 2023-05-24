@@ -34,6 +34,11 @@ void Kirby::FlyToLandStart()
 	ChangeAnimationState("FlyToLand");
 }
 
+void Kirby::FlyToTurnUpStart()
+{
+	ChangeAnimationState("FlyToTurnUp");
+}
+
 void Kirby::FlyToTurnLandStart()
 {
 	ChangeAnimationState("FlyToTurnLand");
@@ -232,7 +237,7 @@ void Kirby::DropUpdate(float _Delta)
 		else
 		{
 			DropTimer = 0.0f;
-			ChangeState(KirbyState::FlyToTurnLand);
+			ChangeState(KirbyState::FlyToTurnUp);
 			return;
 		}
 	}
@@ -247,24 +252,79 @@ void Kirby::FlyToLandUpdate(float _Delta)
 	}
 }
 
-void Kirby::FlyToTurnLandUpdate(float _Delta)
+void Kirby::FlyToTurnUpUpdate(float _Delta)
 {
 	float4 FlyPos = float4::UP * FlyPower * 0.7f * _Delta;
+	float4 CheckPos = float4::ZERO;
 
-	float4 UpPos = GetPos() += FlyPos;
-	if (UpPos.Y > 100.0f)
+	if (Dir == ActorDir::Left)
+	{
+		FlyPos = { -Speed * 0.3f * _Delta, -FlyPower * 0.7f * _Delta };
+		CheckPos = { -50.0f, -50.0f };
+	}
+
+	if (Dir == ActorDir::Right)
+	{
+		FlyPos = { Speed * 0.3f * _Delta, -FlyPower * 0.7f * _Delta };
+		CheckPos = { 50.0f, -50.0f };
+	}
+
+	unsigned int Color = GetGroundColor(EMPTYCOLOR, CheckPos);
+
+	if (EMPTYCOLOR == Color)
 	{
 		AddPos(FlyPos);
 	}
 
 	FlyPower -= 10.0f;
+	
+	if (FlyPos.Y > 0)
+	{
+		ChangeState(KirbyState::FlyToTurnLand);
+		return;
+	}
+}
 
+void Kirby::FlyToTurnLandUpdate(float _Delta)
+{
+	float4 FlyPos = float4::UP * FlyPower * 0.7f * _Delta;
+	float4 MovePos = float4::ZERO;
+	float4 CheckPos = float4::ZERO;
+
+	if (Dir == ActorDir::Left)
+	{
+		MovePos = { -Speed * 0.3f * _Delta, 0.0f };
+		CheckPos = { -50.0f, -30.0f };
+	}
+
+	if (Dir == ActorDir::Right)
+	{
+		MovePos = { Speed * 0.3f * _Delta, 0.0f };
+		CheckPos = { 50.0f, -30.0f };
+	}
+
+	unsigned int XColor = GetGroundColor(EMPTYCOLOR, CheckPos);
 	unsigned int Color = GetGroundColor(EMPTYCOLOR);
 
-	if (EMPTYCOLOR != Color)
+	if (EMPTYCOLOR == XColor)
+	{
+		AddPos(MovePos);
+		AddPos(FlyPos);
+	}
+	else
+	{
+		if (EMPTYCOLOR == Color)
+		{
+			AddPos(FlyPos);
+		}
+	}
+
+	if(EMPTYCOLOR != Color)
 	{
 		FlyPower = BASEPOWER;
 		ChangeState(KirbyState::FlyToLand);
 		return;
 	}
+	
+	FlyPower -= 10.0f;
 }

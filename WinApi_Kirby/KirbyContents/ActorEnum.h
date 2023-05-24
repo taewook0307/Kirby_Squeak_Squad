@@ -18,6 +18,7 @@ enum class KirbyState
 	Fly,
 	Drop,
 	FlyToLand,
+	FlyToTurnUp,
 	FlyToTurnLand,
 	Move,
 	Damage,

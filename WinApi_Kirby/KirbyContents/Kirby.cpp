@@ -51,7 +51,8 @@ void Kirby::Start()
 		MainRenderer->CreateAnimation("Right_BreatheOut", "Right_Kirby.Bmp", 60, 61, 0.2f, true);
 		MainRenderer->CreateAnimation("Right_Drop", "Right_Kirby.Bmp", 62, 63, 0.2f, false);
 		MainRenderer->CreateAnimation("Right_FlyToLand", "Right_Kirby.Bmp", 77, 77, 0.3f, true);
-		MainRenderer->CreateAnimation("Right_FlyToTurnLand", "Right_Kirby.Bmp", 64, 76, 0.2f, false);
+		MainRenderer->CreateAnimation("Right_FlyToTurnUp", "Right_Kirby.Bmp", 64, 70, 0.2f, false);
+		MainRenderer->CreateAnimation("Right_FlyToTurnLand", "Right_Kirby.Bmp", 70, 76, 0.2f, false);
 		MainRenderer->CreateAnimation("Right_Move", "Right_Kirby.Bmp", 78, 81, 0.1f, true);
 		MainRenderer->CreateAnimation("Right_Damage", "Right_Kirby.Bmp", 82, 86, 0.1f, true);
 
@@ -74,7 +75,8 @@ void Kirby::Start()
 		MainRenderer->CreateAnimation("Left_BreatheOut", "Left_Kirby.Bmp", 60, 61, 0.2f, true);
 		MainRenderer->CreateAnimation("Left_Drop", "Left_Kirby.Bmp", 62, 63, 0.2f, false);
 		MainRenderer->CreateAnimation("Left_FlyToLand", "Left_Kirby.Bmp", 77, 77, 0.3f, true);
-		MainRenderer->CreateAnimation("Left_FlyToTurnLand", "Left_Kirby.Bmp", 64, 76, 0.2f, false);
+		MainRenderer->CreateAnimation("Left_FlyToTurnUp", "Left_Kirby.Bmp", 64, 70, 0.2f, false);
+		MainRenderer->CreateAnimation("Left_FlyToTurnLand", "Left_Kirby.Bmp", 70, 76, 0.2f, false);
 		MainRenderer->CreateAnimation("Left_Move", "Left_Kirby.Bmp", 78, 81, 0.1f, true);
 		MainRenderer->CreateAnimation("Left_Damage", "Left_Kirby.Bmp", 82, 86, 0.1f, true);
 
@@ -128,6 +130,8 @@ void Kirby::StateUpdate(float _Delta)
 		return DropUpdate(_Delta);
 	case KirbyState::FlyToLand:
 		return FlyToLandUpdate(_Delta);
+	case KirbyState::FlyToTurnUp:
+		return FlyToTurnUpUpdate(_Delta);
 	case KirbyState::FlyToTurnLand:
 		return FlyToTurnLandUpdate(_Delta);
 	default:
@@ -188,6 +192,9 @@ void Kirby::ChangeState(KirbyState _State)
 			break;
 		case KirbyState::FlyToLand:
 			FlyToLandStart();
+			break;
+		case KirbyState::FlyToTurnUp:
+			FlyToTurnUpStart();
 			break;
 		case KirbyState::FlyToTurnLand:
 			FlyToTurnLandStart();
