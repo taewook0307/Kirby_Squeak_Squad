@@ -35,13 +35,3 @@ void KirbyCore::Update(float _Delta)
 {
 
 }
-
-void KirbyCore::Render()
-{
-
-}
-
-void KirbyCore::Release()
-{
-
-}

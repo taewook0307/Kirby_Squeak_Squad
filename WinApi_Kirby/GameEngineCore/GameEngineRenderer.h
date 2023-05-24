@@ -95,6 +95,7 @@ private:
 		std::vector<size_t> Frames;
 		std::vector<float> Inters;
 		bool Loop = true;
+		bool IsEnd = false;
 	};
 
 public:

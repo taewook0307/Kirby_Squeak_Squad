@@ -4,6 +4,7 @@
 #include <GameEngineBase/GameEngineTime.h>
 #include "GameEngineLevel.h"
 #include <GameEnginePlatform/GameEngineInput.h>
+#include <GameEnginePlatform/GameEngineSound.h>
 
 std::string GameEngineCore::WindowTitle = "";
 std::map<std::string, class GameEngineLevel*> GameEngineCore::AllLevel;
@@ -71,7 +72,7 @@ void GameEngineCore::CoreUpdate()
 	CurLevel->ActorUpdate(Delta);
 	GameEngineWindow::MainWindow.ClearBackBuffer();
 	CurLevel->ActorRender(Delta);
-	CurLevel->Render();
+	CurLevel->Render(Delta);
 	GameEngineWindow::MainWindow.DoubleBuffering();
 
 	// 프레임의 가장 마지막에 Release가 될겁니다.

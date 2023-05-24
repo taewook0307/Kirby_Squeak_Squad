@@ -4,10 +4,12 @@
     <ClInclude Include="GameEngineWindow.h" />
     <ClInclude Include="GameEngineWindowTexture.h" />
     <ClInclude Include="GameEngineInput.h" />
+    <ClInclude Include="GameEngineSound.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameEngineWindow.cpp" />
     <ClCompile Include="GameEngineWindowTexture.cpp" />
     <ClCompile Include="GameEngineInput.cpp" />
+    <ClCompile Include="GameEngineSound.cpp" />
   </ItemGroup>
 </Project>

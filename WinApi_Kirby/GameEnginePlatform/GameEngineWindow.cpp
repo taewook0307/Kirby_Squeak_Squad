@@ -36,7 +36,10 @@ void GameEngineWindow::ClearBackBuffer()
 
 void GameEngineWindow::DoubleBuffering()
 {
-	WindowBuffer->BitCopy(BackBuffer, Scale.Half(), BackBuffer->GetScale());
+	float4 CopyLeftTop = float4::ZERO;
+	float4 CopyRightBot = BackBuffer->GetScale();
+
+	WindowBuffer->TransCopy(BackBuffer, Scale.Half(), BackBuffer->GetScale() * CopyRatio, CopyLeftTop, CopyRightBot);
 }
 
 void GameEngineWindow::Open(const std::string& _Title, HINSTANCE _hInstance)

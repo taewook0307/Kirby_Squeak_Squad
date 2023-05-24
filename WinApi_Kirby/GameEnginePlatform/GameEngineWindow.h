@@ -60,6 +60,16 @@ public:
 		return IsFocusValue;
 	}
 
+	void SetDoubleBufferingCopyScaleRatio(float _Ratio)
+	{
+		CopyRatio = _Ratio;
+	}
+
+	void AddDoubleBufferingCopyScaleRatio(float _Ratio)
+	{
+		CopyRatio += _Ratio;
+	}
+
 protected:
 
 private:
@@ -69,6 +79,7 @@ private:
 	std::string Title = "";
 	HWND hWnd = nullptr;
 
+	float CopyRatio = 1.0f;
 
 	float4 Scale;
 	GameEngineWindowTexture* WindowBuffer = nullptr;
