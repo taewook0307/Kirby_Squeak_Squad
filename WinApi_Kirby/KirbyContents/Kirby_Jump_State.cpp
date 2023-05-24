@@ -1,6 +1,7 @@
 #include "Kirby.h"
 
 #include <GameEnginePlatform/GameEngineInput.h>
+#include <GameEngineCore/GameEngineRenderer.h>
 
 void Kirby::JumpStart()
 {
@@ -64,7 +65,7 @@ void Kirby::JumpUpdate(float _Delta)
 
 	if (true == GameEngineInput::IsPress('Q') && Dir == ActorDir::Left)
 	{
-		MovePos = { -Speed * _Delta * 2.0f, 0.0f };
+		MovePos = { -RunSpeed * _Delta, 0.0f };
 		CheckPos = { 50.0f, -30.0f };
 
 		unsigned int Color = GetGroundColor(EMPTYCOLOR, CheckPos);
@@ -78,7 +79,7 @@ void Kirby::JumpUpdate(float _Delta)
 
 	if (true == GameEngineInput::IsPress('E') && Dir == ActorDir::Right)
 	{
-		MovePos = { Speed * _Delta * 2.0f, 0.0f };
+		MovePos = { RunSpeed * _Delta, 0.0f };
 		CheckPos = { 50.0f, -30.0f };
 
 		unsigned int Color = GetGroundColor(EMPTYCOLOR, CheckPos);
@@ -142,7 +143,7 @@ void Kirby::JumpToDownUpdate(float _Delta)
 
 		if (true == GameEngineInput::IsPress('Q') && Dir == ActorDir::Left)
 		{
-			MovePos = { -Speed * _Delta * 2.0f, 0.0f };
+			MovePos = { -RunSpeed * _Delta, 0.0f };
 			CheckPos = { 50.0f, -30.0f };
 
 			unsigned int Color = GetGroundColor(EMPTYCOLOR, CheckPos);
@@ -156,7 +157,7 @@ void Kirby::JumpToDownUpdate(float _Delta)
 
 		if (true == GameEngineInput::IsPress('E') && Dir == ActorDir::Right)
 		{
-			MovePos = { Speed * _Delta * 2.0f, 0.0f };
+			MovePos = { RunSpeed * _Delta, 0.0f };
 			CheckPos = { 50.0f, -30.0f };
 
 			unsigned int Color = GetGroundColor(EMPTYCOLOR, CheckPos);
@@ -178,15 +179,8 @@ void Kirby::JumpToDownUpdate(float _Delta)
 
 void Kirby::JumpToLandUpdate(float _Delta)
 {
-	DirCheck();
-
-	static float LandTimer = 0.0f;
-
-	LandTimer += _Delta;
-
-	if (LandTimer >= 0.5f)
+	if (true == MainRenderer->IsAnimationEnd())
 	{
-		LandTimer = 0.0f;
 		ChangeState(KirbyState::Idle);
 		return;
 	}

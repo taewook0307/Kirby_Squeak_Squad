@@ -164,8 +164,6 @@ void Kirby::RunUpdate(float _Delta)
 	float4 MovePos = float4::ZERO;
 	float4 CheckPos = float4::ZERO;
 
-	float RunSpeed = Speed * 2.0f;
-
 	// ¿ÞÂÊ ÀÌµ¿
 	if (true == GameEngineInput::IsPress('Q') && Dir == ActorDir::Left)
 	{
@@ -216,8 +214,6 @@ void Kirby::RunUpdate(float _Delta)
 
 void Kirby::StopUpdate(float _Delta)
 {
-	DirCheck();
-
 	KirbyGravity(_Delta);
 
 	float4 MovePos = float4::ZERO;

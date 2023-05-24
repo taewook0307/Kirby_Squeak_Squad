@@ -75,6 +75,7 @@ private:
 	void Update(float _Delta) override;
 
 	float Speed = BASEPOWER;
+	float RunSpeed = Speed * 1.5f;
 	float JumpPower = BASEPOWER;
 	float FlyPower = BASEPOWER;
 };
