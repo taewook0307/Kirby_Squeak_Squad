@@ -111,12 +111,16 @@ void Kirby::JumpUpdate(float _Delta)
 
 	static float JumpTimer = 0.0f;
 
-	float4 JumpPos = float4::UP * _Delta * JumpPower;
-
-	AddPos(JumpPos);
-
 	float4 MovePos = float4::ZERO;
-	float4 CheckPos = float4::ZERO;
+	float4 JumpPos = float4::UP * _Delta * JumpPower;
+	float4 CheckPos = { 0.0f, -80.0f };
+
+	unsigned int UpColor = GetGroundColor(EMPTYCOLOR, CheckPos);
+
+	if (EMPTYCOLOR == UpColor)
+	{
+		AddPos(JumpPos);
+	}
 
 	if (true == GameEngineInput::IsPress('A') && Dir == ActorDir::Left)
 	{
