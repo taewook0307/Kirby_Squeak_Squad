@@ -28,9 +28,9 @@ void Kirby::JumpUpdate(float _Delta)
 	float4 JumpPos = float4::UP * _Delta * JumpPower;
 	float4 CheckPos = { 0.0f, -80.0f };
 
-	unsigned int UpColor = GetGroundColor(EMPTYCOLOR, CheckPos);
+	float4 UpPos = GetPos() += JumpPos;
 
-	if (EMPTYCOLOR == UpColor)
+	if (UpPos.Y > 100.0f)
 	{
 		AddPos(JumpPos);
 	}
