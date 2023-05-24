@@ -129,9 +129,6 @@ void Kirby::DropUpdate(float _Delta)
 {
 	unsigned int Color = GetGroundColor(EMPTYCOLOR);
 
-	float4 WinScale = GameEngineWindow::MainWindow.GetScale();
-	float4 CurPos = GetPos();
-
 	if (EMPTYCOLOR == Color)
 	{
 		Gravity(_Delta);
@@ -139,17 +136,8 @@ void Kirby::DropUpdate(float _Delta)
 	else
 	{
 		GravityReset();
-		float Check = WinScale.Y *= 0.3f;
-		if (CurPos.Y > Check)
-		{
-			ChangeState(KirbyState::FlyLand);
-			return;
-		}
-		else
-		{
-			ChangeState(KirbyState::Idle);
-			return;
-		}
+		ChangeState(KirbyState::FlyLand);
+		return;
 	}
 }
 
