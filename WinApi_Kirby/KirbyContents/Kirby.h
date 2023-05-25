@@ -5,7 +5,6 @@
 
 #include <string>
 
-#define EMPTYCOLOR RGB(255,255,255)
 #define BASEPOWER 300.0f
 
 class Kirby : public BaseActor
@@ -45,6 +44,8 @@ protected:
 	void FlyToTurnUpStart();
 	void FlyToTurnLandStart();
 	void LevelMoveStart();
+	void DamageStart();
+	void DamageLandStart();
 
 	void IdleUpdate(float _Delta);
 	void DownUpdate(float _Delta);
@@ -65,6 +66,8 @@ protected:
 	void FlyToTurnUpUpdate(float _Delta);
 	void FlyToTurnLandUpdate(float _Delta);
 	void LevelMoveUpdate(float _Delta);
+	void DamageUpdate(float _Delta);
+	void DamageLandUpdate(float _Delta);
 
 	void DirCheck();
 

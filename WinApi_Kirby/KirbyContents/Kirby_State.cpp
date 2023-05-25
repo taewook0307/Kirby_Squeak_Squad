@@ -101,6 +101,12 @@ void Kirby::IdleUpdate(float _Delta)
 		ChangeState(KirbyState::LevelMove);
 		return;
 	}
+
+	if (true == GameEngineInput::IsDown('Y'))
+	{
+		ChangeState(KirbyState::Damage);
+		return;
+	}
 }
 
 void Kirby::DownUpdate(float _Delta)

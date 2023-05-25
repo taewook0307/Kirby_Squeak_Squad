@@ -2,6 +2,8 @@
 
 #include <GameEngineCore/GameEngineActor.h>
 
+#define EMPTYCOLOR RGB(255,255,255)
+
 class GameEngineWindowTexture;
 class BaseActor : public GameEngineActor
 {
