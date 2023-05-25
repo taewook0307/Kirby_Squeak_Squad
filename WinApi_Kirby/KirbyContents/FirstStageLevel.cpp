@@ -22,8 +22,6 @@ FirstStageLevel::~FirstStageLevel()
 
 void FirstStageLevel::Start()
 {
-	GameEngineSound::SoundLoad("aaa", "aaa");
-
 	FirstStage = CreateActor<Map>(RenderOrder::Map);
 	FirstStage->MapInit("FirstStage", "FirstStageBitMapTest.Bmp");
 
