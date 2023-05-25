@@ -5,8 +5,6 @@
 
 #include <string>
 
-#define BASEPOWER 300.0f
-
 class Kirby : public BaseActor
 {
 public:

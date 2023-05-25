@@ -1,10 +1,14 @@
 #pragma once
 
 #include "ActorEnum.h"
+#include "BaseActor.h"
 
-#include <GameEngineCore/GameEngineActor.h>
+#include <string>
 
-class Monster : public GameEngineActor
+#define IDLE 0
+#define WALK 1
+
+class Monster : public BaseActor
 {
 public:
 	// constrcuter destructer
@@ -25,21 +29,24 @@ protected:
 	void Start() override;
 	void Update(float _Delta) override;
 
-	virtual void IdleStart();
-	virtual void WalkStart();
-	virtual void AttackStart();
-	virtual void DamageStart();
+	void IdleStart();
+	void WalkStart();
+	void AttackStart();
+	void DamageStart();
 
 	virtual void IdleUpdate(float _Delta);
 	virtual void WalkUpdate(float _Delta);
 	virtual void AttackUpdate(float _Delta);
 	virtual void DamageUpdate(float _Delta);
 
+	virtual void ChangeAnimationState(const std::string& _StateName);
+
 	MonsterState State = MonsterState::Max;
+	std::string CurState = "";
 	ActorDir Dir = ActorDir::Right;
 
 	void DirChange(int _Value);
 private:
-	float Speed = 300.0f;
+	float Speed = BASEPOWER;
 };
 
