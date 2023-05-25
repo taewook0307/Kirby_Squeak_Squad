@@ -126,6 +126,10 @@ void Kirby::Render(float _Delta)
 		Data.Pos = ActorCameraPos() + float4 RIGHTDROPCHECKPOS;
 		Data.Scale = { 5, 5 };
 		Rectangle(dc, Data.iLeft(), Data.iTop(), Data.iRight(), Data.iBot());
+
+		Data.Pos = ActorCameraPos() + float4 UPCHECKPOS;
+		Data.Scale = { 5, 5 };
+		Rectangle(dc, Data.iLeft(), Data.iTop(), Data.iRight(), Data.iBot());
 	}
 }
 

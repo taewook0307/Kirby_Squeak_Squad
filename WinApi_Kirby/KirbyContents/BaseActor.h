@@ -7,6 +7,7 @@
 #define RIGHTMOVECHECKPOS { 40.0f , -40.0f }
 #define LEFTDROPCHECKPOS { -40.0f, -20.0f }
 #define RIGHTDROPCHECKPOS { 40.0f, -20.0f }
+#define UPCHECKPOS { 0.0f, -80.0f }
 
 class GameEngineWindowTexture;
 class BaseActor : public GameEngineActor
