@@ -21,6 +21,7 @@ Kirby::~Kirby()
 
 void Kirby::Start()
 {
+	IsCheckPosPoint = false;
 	{
 		GameEnginePath FilePath;
 		FilePath.SetCurrentPath();
@@ -115,6 +116,14 @@ void Kirby::Render(float _Delta)
 		Rectangle(dc, Data.iLeft(), Data.iTop(), Data.iRight(), Data.iBot());
 
 		Data.Pos = ActorCameraPos() + float4 RIGHTMOVECHECKPOS;
+		Data.Scale = { 5, 5 };
+		Rectangle(dc, Data.iLeft(), Data.iTop(), Data.iRight(), Data.iBot());
+
+		Data.Pos = ActorCameraPos() + float4 LEFTDROPCHECKPOS;
+		Data.Scale = { 5, 5 };
+		Rectangle(dc, Data.iLeft(), Data.iTop(), Data.iRight(), Data.iBot());
+
+		Data.Pos = ActorCameraPos() + float4 RIGHTDROPCHECKPOS;
 		Data.Scale = { 5, 5 };
 		Rectangle(dc, Data.iLeft(), Data.iTop(), Data.iRight(), Data.iBot());
 	}

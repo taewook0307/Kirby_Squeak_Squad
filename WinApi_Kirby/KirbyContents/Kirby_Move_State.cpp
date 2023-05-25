@@ -248,7 +248,9 @@ void Kirby::StopUpdate(float _Delta)
 		CameraMove(MovePos += OppositePos);
 	}
 
-	if (ActorDir::Left == Dir && MovePos.X > -1.0f || ActorDir::Right == Dir && MovePos.X < 1.0f)
+	if (ActorDir::Left == Dir && MovePos.X > -1.0f
+		|| ActorDir::Right == Dir && MovePos.X < 1.0f
+		|| EMPTYCOLOR != Color)
 	{
 		DirCheck();
 		Speed = BASEPOWER;

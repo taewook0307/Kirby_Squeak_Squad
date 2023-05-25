@@ -6,8 +6,6 @@
 #include <string>
 
 #define BASEPOWER 300.0f
-#define LEFTMOVECHECKPOS { -40.0f , -40.0f }
-#define RIGHTMOVECHECKPOS { 40.0f , -40.0f }
 
 class Kirby : public BaseActor
 {

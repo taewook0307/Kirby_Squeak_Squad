@@ -3,6 +3,10 @@
 #include <GameEngineCore/GameEngineActor.h>
 
 #define EMPTYCOLOR RGB(255,255,255)
+#define LEFTMOVECHECKPOS { -40.0f , -40.0f }
+#define RIGHTMOVECHECKPOS { 40.0f , -40.0f }
+#define LEFTDROPCHECKPOS { -40.0f, -20.0f }
+#define RIGHTDROPCHECKPOS { 40.0f, -20.0f }
 
 class GameEngineWindowTexture;
 class BaseActor : public GameEngineActor

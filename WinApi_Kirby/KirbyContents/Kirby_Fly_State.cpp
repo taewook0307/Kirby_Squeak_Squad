@@ -88,18 +88,18 @@ void Kirby::FlyUpdate(float _Delta)
 		}
 	}
 
-	// 오른쪽 이동
-	if (true == GameEngineInput::IsPress('D') && Dir == ActorDir::Right)
-	{
-		MovePos = { Speed * _Delta, 0.0f };
-		CheckPos = { 50.0f, -50.0f };
-	}
-
 	// 왼쪽 이동
 	if (true == GameEngineInput::IsPress('A') && Dir == ActorDir::Left)
 	{
 		MovePos = { -Speed * _Delta, 0.0f };
-		CheckPos = { -50.0f, -50.0f };
+		CheckPos = LEFTMOVECHECKPOS;
+	}
+
+	// 오른쪽 이동
+	if (true == GameEngineInput::IsPress('D') && Dir == ActorDir::Right)
+	{
+		MovePos = { Speed * _Delta, 0.0f };
+		CheckPos = RIGHTMOVECHECKPOS;
 	}
 
 	// 이동 방향 앞에 장애물 여부 확인 후 이동
@@ -155,18 +155,18 @@ void Kirby::BreatheOutUpdate(float _Delta)
 		float4 MovePos = float4::ZERO;
 		float4 CheckPos = float4::ZERO;
 
-		// 오른쪽 이동
-		if (true == GameEngineInput::IsPress('D') && Dir == ActorDir::Right)
-		{
-			MovePos = { Speed * _Delta, 0.0f };
-			CheckPos = { 30.0f, -50.0f };
-		}
-
 		// 왼쪽 이동
 		if (true == GameEngineInput::IsPress('A') && Dir == ActorDir::Left)
 		{
 			MovePos = { -Speed * _Delta, 0.0f };
-			CheckPos = { -30.0f, -50.0f };
+			CheckPos = LEFTDROPCHECKPOS;
+		}
+
+		// 오른쪽 이동
+		if (true == GameEngineInput::IsPress('D') && Dir == ActorDir::Right)
+		{
+			MovePos = { Speed * _Delta, 0.0f };
+			CheckPos = RIGHTDROPCHECKPOS;
 		}
 
 		// 이동 방향 앞에 장애물 여부 확인 후 이동
@@ -216,18 +216,18 @@ void Kirby::DropUpdate(float _Delta)
 		float4 MovePos = float4::ZERO;
 		float4 CheckPos = float4::ZERO;
 
+		// 왼쪽 이동
+		if (true == GameEngineInput::IsPress('A') && Dir == ActorDir::Left)
+		{
+			MovePos = { -Speed * _Delta, 0.0f };
+			CheckPos = LEFTDROPCHECKPOS;
+		}
+
 		// 오른쪽 이동
 		if (true == GameEngineInput::IsPress('D') && Dir == ActorDir::Right)
 		{
 			MovePos = { Speed * _Delta, 0.0f };
-			CheckPos = { 30.0f, -50.0f };
-		}
-
-		// 왼쪽 이동
-		if (true == GameEngineInput::IsPress('A') && Dir == ActorDir::Left)
-		{
-			CheckPos = { -30.0f, -50.0f };
-			MovePos = { -Speed * _Delta, 0.0f };
+			CheckPos = RIGHTDROPCHECKPOS;
 		}
 
 		// 이동 방향 앞에 장애물 여부 확인 후 이동
@@ -282,14 +282,14 @@ void Kirby::FlyToTurnUpUpdate(float _Delta)
 	if (Dir == ActorDir::Left)
 	{
 		FlyPos = { -Speed * 0.3f * _Delta, -FlyPower * 0.7f * _Delta };
-		CheckPos = { -50.0f, -50.0f };
+		CheckPos = LEFTMOVECHECKPOS;
 	}
 
 	// 오른쪽 방향에 경우 오른쪽 위로 이동
 	if (Dir == ActorDir::Right)
 	{
 		FlyPos = { Speed * 0.3f * _Delta, -FlyPower * 0.7f * _Delta };
-		CheckPos = { 50.0f, -50.0f };
+		CheckPos = RIGHTMOVECHECKPOS;
 	}
 
 	unsigned int Color = GetGroundColor(EMPTYCOLOR, CheckPos);
@@ -321,14 +321,14 @@ void Kirby::FlyToTurnLandUpdate(float _Delta)
 	if (Dir == ActorDir::Left)
 	{
 		MovePos = { -Speed * 0.3f * _Delta, 0.0f };
-		CheckPos = { -50.0f, -30.0f };
+		CheckPos = LEFTDROPCHECKPOS;
 	}
 
 	// 오른쪽 방향으로 이동하는 Pos 값 및 CheckPos 값 설정
 	if (Dir == ActorDir::Right)
 	{
 		MovePos = { Speed * 0.3f * _Delta, 0.0f };
-		CheckPos = { 50.0f, -30.0f };
+		CheckPos = RIGHTDROPCHECKPOS;
 	}
 
 	unsigned int XColor = GetGroundColor(EMPTYCOLOR, CheckPos);

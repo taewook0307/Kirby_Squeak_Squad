@@ -26,7 +26,7 @@ void Kirby::JumpUpdate(float _Delta)
 
 	float4 MovePos = float4::ZERO;
 	float4 JumpPos = float4::UP * _Delta * JumpPower;
-	float4 CheckPos = { 0.0f, -80.0f };
+	float4 CheckPos = float4::ZERO;
 
 	float4 UpPos = GetPos() += JumpPos;
 
@@ -38,7 +38,7 @@ void Kirby::JumpUpdate(float _Delta)
 	if (true == GameEngineInput::IsPress('A') && Dir == ActorDir::Left)
 	{
 		MovePos = { -Speed * _Delta, 0.0f };
-		CheckPos = { -50.0f, -80.0f };
+		CheckPos = LEFTMOVECHECKPOS;
 
 		unsigned int Color = GetGroundColor(EMPTYCOLOR, CheckPos);
 
@@ -52,7 +52,7 @@ void Kirby::JumpUpdate(float _Delta)
 	if (true == GameEngineInput::IsPress('D') && Dir == ActorDir::Right)
 	{
 		MovePos = { Speed * _Delta, 0.0f };
-		CheckPos = { 50.0f, -80.0f };
+		CheckPos = RIGHTMOVECHECKPOS;
 
 		unsigned int Color = GetGroundColor(EMPTYCOLOR, CheckPos);
 
@@ -66,7 +66,7 @@ void Kirby::JumpUpdate(float _Delta)
 	if (true == GameEngineInput::IsPress('Q') && Dir == ActorDir::Left)
 	{
 		MovePos = { -RunSpeed * _Delta, 0.0f };
-		CheckPos = { -50.0f, -80.0f };
+		CheckPos = LEFTMOVECHECKPOS;
 
 		unsigned int Color = GetGroundColor(EMPTYCOLOR, CheckPos);
 
@@ -80,7 +80,7 @@ void Kirby::JumpUpdate(float _Delta)
 	if (true == GameEngineInput::IsPress('E') && Dir == ActorDir::Right)
 	{
 		MovePos = { RunSpeed * _Delta, 0.0f };
-		CheckPos = { 50.0f, -80.0f };
+		CheckPos = RIGHTMOVECHECKPOS;
 
 		unsigned int Color = GetGroundColor(EMPTYCOLOR, CheckPos);
 
@@ -116,7 +116,7 @@ void Kirby::JumpToDownUpdate(float _Delta)
 		if (true == GameEngineInput::IsPress('A') && Dir == ActorDir::Left)
 		{
 			MovePos = { -Speed * _Delta, 0.0f };
-			CheckPos = { -50.0f, -30.0f };
+			CheckPos = LEFTDROPCHECKPOS;
 
 			unsigned int Color = GetGroundColor(EMPTYCOLOR, CheckPos);
 
@@ -130,7 +130,7 @@ void Kirby::JumpToDownUpdate(float _Delta)
 		if (true == GameEngineInput::IsPress('D') && Dir == ActorDir::Right)
 		{
 			MovePos = { Speed * _Delta, 0.0f };
-			CheckPos = { 50.0f, -30.0f };
+			CheckPos = RIGHTDROPCHECKPOS;
 
 			unsigned int Color = GetGroundColor(EMPTYCOLOR, CheckPos);
 
@@ -144,7 +144,7 @@ void Kirby::JumpToDownUpdate(float _Delta)
 		if (true == GameEngineInput::IsPress('Q') && Dir == ActorDir::Left)
 		{
 			MovePos = { -RunSpeed * _Delta, 0.0f };
-			CheckPos = { -50.0f, -30.0f };
+			CheckPos = LEFTDROPCHECKPOS;
 
 			unsigned int Color = GetGroundColor(EMPTYCOLOR, CheckPos);
 
@@ -158,7 +158,7 @@ void Kirby::JumpToDownUpdate(float _Delta)
 		if (true == GameEngineInput::IsPress('E') && Dir == ActorDir::Right)
 		{
 			MovePos = { RunSpeed * _Delta, 0.0f };
-			CheckPos = { 50.0f, -30.0f };
+			CheckPos = RIGHTDROPCHECKPOS;
 
 			unsigned int Color = GetGroundColor(EMPTYCOLOR, CheckPos);
 
