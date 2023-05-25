@@ -44,6 +44,7 @@ protected:
 	void FlyToLandStart();
 	void FlyToTurnUpStart();
 	void FlyToTurnLandStart();
+	void LevelMoveStart();
 
 	void IdleUpdate(float _Delta);
 	void DownUpdate(float _Delta);
@@ -63,6 +64,7 @@ protected:
 	void FlyToLandUpdate(float _Delta);
 	void FlyToTurnUpUpdate(float _Delta);
 	void FlyToTurnLandUpdate(float _Delta);
+	void LevelMoveUpdate(float _Delta);
 
 	void DirCheck();
 

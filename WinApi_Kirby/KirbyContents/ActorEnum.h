@@ -20,7 +20,7 @@ enum class KirbyState
 	FlyToLand,
 	FlyToTurnUp,
 	FlyToTurnLand,
-	Move,
+	LevelMove,
 	Damage,
 	Max
 };

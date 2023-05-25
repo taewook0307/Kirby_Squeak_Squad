@@ -53,8 +53,8 @@ void Kirby::Start()
 		MainRenderer->CreateAnimation("Right_FlyToLand", "Right_Kirby.Bmp", 77, 77, 0.3f, true);
 		MainRenderer->CreateAnimation("Right_FlyToTurnUp", "Right_Kirby.Bmp", 64, 70, 0.2f, false);
 		MainRenderer->CreateAnimation("Right_FlyToTurnLand", "Right_Kirby.Bmp", 70, 76, 0.2f, false);
-		MainRenderer->CreateAnimation("Right_Move", "Right_Kirby.Bmp", 78, 81, 0.1f, true);
-		MainRenderer->CreateAnimation("Right_Damage", "Right_Kirby.Bmp", 82, 86, 0.1f, true);
+		MainRenderer->CreateAnimation("Right_LevelMove", "Right_Kirby.Bmp", 78, 81, 0.1f, false);
+		MainRenderer->CreateAnimation("Right_Damage", "Right_Kirby.Bmp", 82, 86, 0.1f, false);
 
 		// Left Animaition
 		MainRenderer->CreateAnimation("Left_Idle", "Left_Kirby.Bmp", 0, 1, 0.5f, true);
@@ -77,8 +77,8 @@ void Kirby::Start()
 		MainRenderer->CreateAnimation("Left_FlyToLand", "Left_Kirby.Bmp", 77, 77, 0.3f, true);
 		MainRenderer->CreateAnimation("Left_FlyToTurnUp", "Left_Kirby.Bmp", 64, 70, 0.2f, false);
 		MainRenderer->CreateAnimation("Left_FlyToTurnLand", "Left_Kirby.Bmp", 70, 76, 0.2f, false);
-		MainRenderer->CreateAnimation("Left_Move", "Left_Kirby.Bmp", 78, 81, 0.1f, true);
-		MainRenderer->CreateAnimation("Left_Damage", "Left_Kirby.Bmp", 82, 86, 0.1f, true);
+		MainRenderer->CreateAnimation("Left_LevelMove", "Left_Kirby.Bmp", 78, 81, 0.1f, false);
+		MainRenderer->CreateAnimation("Left_Damage", "Left_Kirby.Bmp", 82, 86, 0.1f, false);
 
 		// Setting
 		MainRenderer->ChangeAnimation("Right_Idle");
@@ -134,6 +134,8 @@ void Kirby::StateUpdate(float _Delta)
 		return FlyToTurnUpUpdate(_Delta);
 	case KirbyState::FlyToTurnLand:
 		return FlyToTurnLandUpdate(_Delta);
+	case KirbyState::LevelMove:
+		return LevelMoveUpdate(_Delta);
 	default:
 		break;
 	}
@@ -198,6 +200,9 @@ void Kirby::ChangeState(KirbyState _State)
 			break;
 		case KirbyState::FlyToTurnLand:
 			FlyToTurnLandStart();
+			break;
+		case KirbyState::LevelMove:
+			LevelMoveStart();
 			break;
 		default:
 			break;

@@ -1,10 +1,7 @@
 #include "Kirby.h"
 
-#include <GameEngineBase/GameEngineTime.h>
 #include <GameEnginePlatform/GameEngineInput.h>
 #include <GameEngineCore/GameEngineRenderer.h>
-#include <GameEngineCore/GameEngineLevel.h>
-#include <GameEngineCore/GameEngineCamera.h>
 
 void Kirby::KirbyGravity(float _Delta)
 {
@@ -44,6 +41,11 @@ void Kirby::IdleStart()
 void Kirby::DownStart()
 {
 	ChangeAnimationState("Down");
+}
+
+void Kirby::LevelMoveStart()
+{
+	ChangeAnimationState("LevelMove");
 }
 
 void Kirby::IdleUpdate(float _Delta)
@@ -92,6 +94,13 @@ void Kirby::IdleUpdate(float _Delta)
 		ChangeState(KirbyState::Breathe);
 		return;
 	}
+
+	// 체크용
+	if (true == GameEngineInput::IsDown('W'))
+	{
+		ChangeState(KirbyState::LevelMove);
+		return;
+	}
 }
 
 void Kirby::DownUpdate(float _Delta)
@@ -117,6 +126,16 @@ void Kirby::DownUpdate(float _Delta)
 	// 대기 상태 전환
 	if (true == GameEngineInput::IsUp('S'))
 	{
+		ChangeState(KirbyState::Idle);
+		return;
+	}
+}
+
+void Kirby::LevelMoveUpdate(float _Delta)
+{
+	if (true == MainRenderer->IsAnimationEnd())
+	{
+		// ChangeLevel();
 		ChangeState(KirbyState::Idle);
 		return;
 	}
