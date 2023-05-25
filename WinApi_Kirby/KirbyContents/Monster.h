@@ -29,13 +29,11 @@ protected:
 	virtual void WalkStart();
 	virtual void AttackStart();
 	virtual void DamageStart();
-	virtual void JumpStart();
 
 	virtual void IdleUpdate(float _Delta);
 	virtual void WalkUpdate(float _Delta);
 	virtual void AttackUpdate(float _Delta);
 	virtual void DamageUpdate(float _Delta);
-	virtual void JumpUpdate(float _Delta);
 
 	MonsterState State = MonsterState::Max;
 	ActorDir Dir = ActorDir::Right;

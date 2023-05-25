@@ -36,8 +36,6 @@ void Monster::StateUpdate(float _Delta)
 		return AttackUpdate(_Delta);
 	case MonsterState::Damage:
 		return DamageUpdate(_Delta);
-	case MonsterState::Jump:
-		return JumpUpdate(_Delta);
 	default:
 		break;
 	}
@@ -60,9 +58,6 @@ void Monster::ChangeState(MonsterState _State)
 			break;
 		case MonsterState::Damage:
 			DamageStart();
-			break;
-		case MonsterState::Jump:
-			JumpStart();
 			break;
 		default:
 			break;

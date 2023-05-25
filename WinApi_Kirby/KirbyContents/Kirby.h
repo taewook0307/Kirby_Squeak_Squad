@@ -46,6 +46,10 @@ protected:
 	void LevelMoveStart();
 	void DamageStart();
 	void DamageLandStart();
+	void AttackReadyStart();
+	void KeepStart();
+	void AttackStart();
+
 
 	void IdleUpdate(float _Delta);
 	void DownUpdate(float _Delta);
@@ -68,6 +72,9 @@ protected:
 	void LevelMoveUpdate(float _Delta);
 	void DamageUpdate(float _Delta);
 	void DamageLandUpdate(float _Delta);
+	void AttackReadyUpdate(float _Delta);
+	void KeepUpdate(float _Delta);
+	void AttackUpdate(float _Delta);
 
 	void DirCheck();
 

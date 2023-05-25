@@ -59,6 +59,9 @@ void Kirby::Start()
 		MainRenderer->CreateAnimation("Right_LevelMove", "Right_Kirby.Bmp", 78, 81, 0.1f, false);
 		MainRenderer->CreateAnimation("Right_Damage", "Right_Kirby.Bmp", 82, 84, 0.2f, false);
 		MainRenderer->CreateAnimation("Right_DamageLand", "Right_Kirby.Bmp", 85, 86, 0.3f, false);
+		MainRenderer->CreateAnimation("Right_AttackReady", "Right_Kirby.Bmp", 87, 91, 0.1f, false);
+		MainRenderer->CreateAnimation("Right_Keep", "Right_Kirby.Bmp", 92, 98, 0.1f, false);
+		MainRenderer->CreateAnimation("Right_Attack", "Right_Kirby.Bmp", 99, 103, 0.1f, false);
 
 		// Left Animaition
 		MainRenderer->CreateAnimation("Left_Idle", "Left_Kirby.Bmp", 0, 1, 0.5f, true);
@@ -84,6 +87,9 @@ void Kirby::Start()
 		MainRenderer->CreateAnimation("Left_LevelMove", "Left_Kirby.Bmp", 78, 81, 0.1f, false);
 		MainRenderer->CreateAnimation("Left_Damage", "Left_Kirby.Bmp", 82, 84, 0.2f, false);
 		MainRenderer->CreateAnimation("Left_DamageLand", "Left_Kirby.Bmp", 85, 86, 0.3f, false);
+		MainRenderer->CreateAnimation("Left_AttackReady", "Left_Kirby.Bmp", 87, 91, 0.1f, false);
+		MainRenderer->CreateAnimation("Left_Keep", "Left_Kirby.Bmp", 92, 98, 0.1f, false);
+		MainRenderer->CreateAnimation("Left_Attack", "Left_Kirby.Bmp", 99, 103, 0.1f, false);
 
 		// Setting
 		MainRenderer->ChangeAnimation("Right_Idle");
@@ -179,6 +185,12 @@ void Kirby::StateUpdate(float _Delta)
 		return DamageUpdate(_Delta);
 	case KirbyState::DamageLand:
 		return DamageLandUpdate(_Delta);
+	case KirbyState::AttackReady:
+		return AttackReadyUpdate(_Delta);
+	case KirbyState::Keep:
+		return KeepUpdate(_Delta);
+	case KirbyState::Attack:
+		return AttackUpdate(_Delta);
 	default:
 		break;
 	}
@@ -252,6 +264,15 @@ void Kirby::ChangeState(KirbyState _State)
 			break;
 		case KirbyState::DamageLand:
 			DamageLandStart();
+			break;
+		case KirbyState::AttackReady:
+			AttackReadyStart();
+			break;
+		case KirbyState::Keep:
+			KeepStart();
+			break;
+		case KirbyState::Attack:
+			AttackStart();
 			break;
 		default:
 			break;

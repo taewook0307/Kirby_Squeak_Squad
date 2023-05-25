@@ -12,6 +12,21 @@ void Kirby::DamageLandStart()
 	ChangeAnimationState("DamageLand");
 }
 
+void Kirby::AttackReadyStart()
+{
+	ChangeAnimationState("AttackReady");
+}
+
+void Kirby::KeepStart()
+{
+	ChangeAnimationState("Keep");
+}
+
+void Kirby::AttackStart()
+{
+	ChangeAnimationState("Attack");
+}
+
 // 충돌 체크 후 방향지정필요
 void Kirby::DamageUpdate(float _Delta)
 {
@@ -71,6 +86,33 @@ void Kirby::DamageLandUpdate(float _Delta)
 	}
 
 	if (true == MainRenderer->IsAnimationEnd() && EMPTYCOLOR != Color)
+	{
+		ChangeState(KirbyState::Idle);
+		return;
+	}
+}
+
+void Kirby::AttackReadyUpdate(float _Delta)
+{
+	if (MainRenderer->IsAnimationEnd())
+	{
+		ChangeState(KirbyState::Keep);
+		return;
+	}
+}
+
+void Kirby::KeepUpdate(float _Delta)
+{
+	if (MainRenderer->IsAnimationEnd())
+	{
+		ChangeState(KirbyState::Attack);
+		return;
+	}
+}
+
+void Kirby::AttackUpdate(float _Delta)
+{
+	if (MainRenderer->IsAnimationEnd())
 	{
 		ChangeState(KirbyState::Idle);
 		return;

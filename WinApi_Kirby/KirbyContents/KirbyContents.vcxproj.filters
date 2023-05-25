@@ -126,9 +126,6 @@
     <ClCompile Include="Kirby.cpp">
       <Filter>KirbyForm\Kirby</Filter>
     </ClCompile>
-    <ClCompile Include="Kirby_State.cpp">
-      <Filter>KirbyForm\Kirby</Filter>
-    </ClCompile>
     <ClCompile Include="Kirby_Move_State.cpp">
       <Filter>KirbyForm\Kirby</Filter>
     </ClCompile>
@@ -139,6 +136,12 @@
       <Filter>KirbyForm\Kirby</Filter>
     </ClCompile>
     <ClCompile Include="Kirby_Jump_State.cpp">
+      <Filter>KirbyForm\Kirby</Filter>
+    </ClCompile>
+    <ClCompile Include="Kirby_Keep_State.cpp">
+      <Filter>KirbyForm\Kirby</Filter>
+    </ClCompile>
+    <ClCompile Include="Kirby_Base_State.cpp">
       <Filter>KirbyForm\Kirby</Filter>
     </ClCompile>
   </ItemGroup>

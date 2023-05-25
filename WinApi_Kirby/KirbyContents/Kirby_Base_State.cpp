@@ -95,6 +95,13 @@ void Kirby::IdleUpdate(float _Delta)
 		return;
 	}
 
+	if (true == GameEngineInput::IsDown('C'))
+	{
+		DirCheck();
+		ChangeState(KirbyState::AttackReady);
+		return;
+	}
+
 	// 체크용
 	if (true == GameEngineInput::IsDown('W'))
 	{
@@ -108,6 +115,7 @@ void Kirby::IdleUpdate(float _Delta)
 		return;
 	}
 
+	// Debug 용
 	if (true == GameEngineInput::IsDown('J'))
 	{
 		IsCheckPosPointChange();

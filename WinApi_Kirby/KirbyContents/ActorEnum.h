@@ -23,6 +23,9 @@ enum class KirbyState
 	LevelMove,
 	Damage,
 	DamageLand,
+	AttackReady,
+	Attack,
+	Keep,
 	Max
 };
 
@@ -32,7 +35,6 @@ enum class MonsterState
 	Walk,
 	Attack,
 	Damage,
-	Jump,
 	Max
 };
 
