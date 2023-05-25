@@ -25,6 +25,7 @@ void GameEngineCore::CoreStart(HINSTANCE _Inst)
 	// 엔진쪽에 준비를 다 해고
 	GameEngineWindow::MainWindow.Open(WindowTitle, _Inst);
 	GameEngineInput::InputInit();
+	// GameEngineSound::Init();
 
 	// 유저의 준비를 해준다.
 	Process->Start();

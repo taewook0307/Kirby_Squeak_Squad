@@ -8,6 +8,7 @@
 
 #include <GameEnginePlatform/GameEngineWindow.h>
 #include <GameEnginePlatform/GameEngineInput.h>
+#include <GameEnginePlatform/GameEngineSound.h>
 #include <GameEngineCore/GameEngineCore.h>
 #include <GameEngineCore/GameEngineCamera.h>
 
@@ -21,6 +22,8 @@ FirstStageLevel::~FirstStageLevel()
 
 void FirstStageLevel::Start()
 {
+	GameEngineSound::SoundLoad("aaa", "aaa");
+
 	FirstStage = CreateActor<Map>(RenderOrder::Map);
 	FirstStage->MapInit("FirstStage", "FirstStageBitMapTest.Bmp");
 

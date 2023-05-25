@@ -12,4 +12,15 @@
     <ClCompile Include="GameEngineInput.cpp" />
     <ClCompile Include="GameEngineSound.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <Filter Include="FMOD">
+      <UniqueIdentifier>{81afa028-dcec-4fe2-a5b1-cf1ec39409a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FMOD\Debug">
+      <UniqueIdentifier>{44fb1bb5-b314-4ca9-a1a6-a0ab8ca7b927}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FMOD\Release">
+      <UniqueIdentifier>{1e7700f3-5c02-4e17-bd1a-3fad486ed3fb}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
 </Project>
