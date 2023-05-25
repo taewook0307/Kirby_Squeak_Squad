@@ -46,7 +46,7 @@ void Kirby::SlideUpdate(float _Delta)
 	if (Dir == ActorDir::Left && SlideTimer <= 1.0f)
 	{
 		MovePos = { -CopySpeed * _Delta, 0.0f };
-		CheckPos = { -50.0f, -30.0f };
+		CheckPos = LEFTMOVECHECKPOS;
 
 		unsigned int Color = GetGroundColor(EMPTYCOLOR, CheckPos);
 
@@ -63,7 +63,7 @@ void Kirby::SlideUpdate(float _Delta)
 	if (Dir == ActorDir::Right && SlideTimer <= 1.0f)
 	{
 		MovePos = { CopySpeed * _Delta, 0.0f };
-		CheckPos = { 50.0f, -30.0f };
+		CheckPos = RIGHTMOVECHECKPOS;
 
 		unsigned int Color = GetGroundColor(EMPTYCOLOR, CheckPos);
 
@@ -104,15 +104,15 @@ void Kirby::WalkUpdate(float _Delta)
 	// 왼쪽 이동
 	if (true == GameEngineInput::IsPress('A') && Dir == ActorDir::Left)
 	{
-		CheckPos = { -30.0f, -50.0f };
 		MovePos = { -Speed * _Delta, 0.0f };
+		CheckPos = LEFTMOVECHECKPOS;
 	}
 
 	// 오른쪽 이동
 	if (true == GameEngineInput::IsPress('D') && Dir == ActorDir::Right)
 	{
-		CheckPos = { 30.0f, -50.0f };
 		MovePos = { Speed * _Delta, 0.0f };
+		CheckPos = RIGHTMOVECHECKPOS;
 	}
 
 	// 이동 방향 앞에 장애물 여부 확인 후 이동
@@ -169,15 +169,15 @@ void Kirby::RunUpdate(float _Delta)
 	// 왼쪽 이동
 	if (true == GameEngineInput::IsPress('Q') && Dir == ActorDir::Left)
 	{
-		CheckPos = { -30.0f, -50.0f };
 		MovePos = { -RunSpeed * _Delta, 0.0f };
+		CheckPos = LEFTMOVECHECKPOS;
 	}
 
 	// 오른쪽 이동
 	if (true == GameEngineInput::IsPress('E') && Dir == ActorDir::Right)
 	{
-		CheckPos = { 30.0f, -50.0f };
 		MovePos = { RunSpeed * _Delta, 0.0f };
+		CheckPos = RIGHTMOVECHECKPOS;
 	}
 
 	// 이동 방향 앞에 장애물 여부 확인 후 이동
@@ -226,14 +226,14 @@ void Kirby::StopUpdate(float _Delta)
 
 	if (ActorDir::Left == Dir)
 	{
-		CheckPos = { -30.0f, -50.0f };
 		MovePos = { -RunSpeed * _Delta, 0.0f };
+		CheckPos = LEFTMOVECHECKPOS;
 	}
 
 	if (ActorDir::Right == Dir)
 	{
-		CheckPos = { 30.0f, -50.0f };
 		MovePos = { RunSpeed * _Delta, 0.0f };
+		CheckPos = RIGHTMOVECHECKPOS;
 	}
 
 	OppositePos = MovePos * -0.1f;

@@ -8,6 +8,8 @@
 #include <GameEngineCore/GameEngineRenderer.h>
 #include <GameEngineCore/GameEngineLevel.h>
 #include <GameEngineCore/GameEngineCamera.h>
+#include <GameEngineCore/GameEngineSprite.h>
+#include <GameEngineCore/GameEngineCollision.h>
 
 Kirby::Kirby()
 {
@@ -94,6 +96,28 @@ void Kirby::Start()
 void Kirby::Update(float _Delta)
 {
 	StateUpdate(_Delta);
+}
+
+void Kirby::Render(float _Delta)
+{
+	HDC dc = GameEngineWindow::MainWindow.GetBackBuffer()->GetImageDC();
+
+	CollisionData Data;
+
+	if (true == IsCheckPosPoint)
+	{
+		Data.Pos = ActorCameraPos();
+		Data.Scale = { 5, 5 };
+		Rectangle(dc, Data.iLeft(), Data.iTop(), Data.iRight(), Data.iBot());
+
+		Data.Pos = ActorCameraPos() + float4 LEFTMOVECHECKPOS;
+		Data.Scale = { 5, 5 };
+		Rectangle(dc, Data.iLeft(), Data.iTop(), Data.iRight(), Data.iBot());
+
+		Data.Pos = ActorCameraPos() + float4 RIGHTMOVECHECKPOS;
+		Data.Scale = { 5, 5 };
+		Rectangle(dc, Data.iLeft(), Data.iTop(), Data.iRight(), Data.iBot());
+	}
 }
 
 void Kirby::StateUpdate(float _Delta)

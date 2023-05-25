@@ -17,7 +17,7 @@ void Kirby::DamageUpdate(float _Delta)
 {
 	float4 FlyPos = float4::UP * FlyPower * 0.5f * _Delta;
 	float4 CheckPos = float4::ZERO;
-	unsigned int Color = 0.0f;
+	unsigned int Color = 0;
 
 	if (FlyPos.Y < 0)
 	{

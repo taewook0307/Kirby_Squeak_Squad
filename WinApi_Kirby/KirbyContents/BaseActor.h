@@ -18,8 +18,6 @@ public:
 	BaseActor& operator=(const BaseActor& _Other) = delete;
 	BaseActor& operator=(BaseActor&& _Other) noexcept = delete;
 
-	void CameraFocus();
-
 	void Gravity(float _Delta);
 
 	inline void GravityReset()
@@ -46,6 +44,8 @@ public:
 		return GroundBitMap;
 	}
 
+	float4 ActorCameraPos();
+
 protected:
 
 private:
@@ -53,7 +53,7 @@ private:
 
 	bool IsGravity = true;
 
-	float GravityAcceleration = 10.0f;
+	float GravityAcceleration = 9.8f;
 
 	float4 GravityVector = float4::ZERO;
 };

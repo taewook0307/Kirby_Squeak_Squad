@@ -6,6 +6,8 @@
 #include <string>
 
 #define BASEPOWER 300.0f
+#define LEFTMOVECHECKPOS { -40.0f , -40.0f }
+#define RIGHTMOVECHECKPOS { 40.0f , -40.0f }
 
 class Kirby : public BaseActor
 {
@@ -77,13 +79,21 @@ protected:
 
 	void KirbyGravity(float _Delta);
 
+	void IsCheckPosPointChange()
+	{
+		IsCheckPosPoint = !IsCheckPosPoint;
+	}
+
 	KirbyState State = KirbyState::Max;
 	std::string CurState = "";
 	ActorDir Dir = ActorDir::Right;
 
 private:
+	bool IsCheckPosPoint = false;
+
 	void Start() override;
 	void Update(float _Delta) override;
+	void Render(float _Delta) override;
 
 	float Speed = BASEPOWER;
 	float RunSpeed = Speed * 1.5f;

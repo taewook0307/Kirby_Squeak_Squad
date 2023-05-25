@@ -13,12 +13,6 @@ BaseActor::~BaseActor()
 {
 }
 
-void BaseActor::CameraFocus()
-{
-	float4 WindowScale = GameEngineWindow::MainWindow.GetScale();
-	GetLevel()->GetMainCamera()->SetPos(GetPos() + float4{ -WindowScale.hX(), -WindowScale.hY() });
-}
-
 void BaseActor::Gravity(float _Delta)
 {
 	if (false == IsGravity)
@@ -50,4 +44,9 @@ int BaseActor::GetGroundColor(unsigned int _DefaultColor, float4 _Pos)
 	}
 
 	return GroundBitMap->GetColor(_DefaultColor, GetPos() + _Pos);
+}
+
+float4 BaseActor::ActorCameraPos()
+{
+	return GetPos() - GetLevel()->GetMainCamera()->GetPos();
 }
