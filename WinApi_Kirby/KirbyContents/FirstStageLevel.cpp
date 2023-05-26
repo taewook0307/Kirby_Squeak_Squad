@@ -53,6 +53,11 @@ void FirstStageLevel::Update(float _Delta)
 	{
 		FirstStage->SwitchRender();
 	}
+
+	if (true == GameEngineInput::IsDown('H'))
+	{
+		CollisionDebugRenderSwitch();
+	}
 }
 
 void FirstStageLevel::LevelStart(GameEngineLevel* _PrevLevel)
