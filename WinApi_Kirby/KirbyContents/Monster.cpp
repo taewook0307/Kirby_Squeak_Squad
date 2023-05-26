@@ -5,6 +5,7 @@
 #include <GameEnginePlatform/GameEngineInput.h>
 #include <GameEngineCore/ResourcesManager.h>
 #include <GameEngineCore/GameEngineRenderer.h>
+#include <GameEngineCore/GameEngineCollision.h>
 
 Monster::Monster()
 {
@@ -39,11 +40,18 @@ void Monster::Start()
 		MainRenderer->CreateAnimation("Left_Monster_Walk", "Left_NormalMonster.Bmp", 4, 11, 0.2f, true);
 		MainRenderer->CreateAnimation("Left_Monster_Attack", "Left_NormalMonster.Bmp", 12, 14, 0.2f, false);
 		MainRenderer->CreateAnimation("Left_Monster_Damage", "Left_NormalMonster.Bmp", 15, 15, 0.2f, true);
+
+		MainRenderer->ChangeAnimation("Right_Monster_Idle");
+		MainRenderer->SetRenderScaleToTexture();
+		MainRenderer->SetScaleRatio(3.0f);
 	}
 
-	MainRenderer->ChangeAnimation("Right_Monster_Idle");
-	MainRenderer->SetRenderScaleToTexture();
-	MainRenderer->SetScaleRatio(4.0f);
+	{
+		BodyCollision = CreateCollision(CollisionOrder::MonsterBody);
+		BodyCollision->SetCollisionPos(MONSTERBODYCOLLISONPOS);
+		BodyCollision->SetCollisionScale(MONSTERBODYCOLLISIONSCALE);
+		BodyCollision->SetCollisionType(CollisionType::Rect);
+	}
 
 	ChangeState(MonsterState::Idle);
 }

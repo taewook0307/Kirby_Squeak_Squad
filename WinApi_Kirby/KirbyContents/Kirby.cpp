@@ -98,7 +98,8 @@ void Kirby::Start()
 	}
 	{
 		BodyCollision = CreateCollision(CollisionOrder::Body);
-		BodyCollision->SetCollisionScale({ 50, 50 });
+		BodyCollision->SetCollisionPos(BODYCOLLISIONPOS);
+		BodyCollision->SetCollisionScale(BODYCOLLISIONSCALE);
 		BodyCollision->SetCollisionType(CollisionType::Rect);
 	}
 

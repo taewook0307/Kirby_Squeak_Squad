@@ -34,4 +34,9 @@ void SecondStageLevel::Update(float _Delta)
 	{
 		SecondStage->SwitchRender();
 	}
+
+	if (true == GameEngineInput::IsDown('H'))
+	{
+		CollisionDebugRenderSwitch();
+	}
 }

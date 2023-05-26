@@ -5,8 +5,8 @@
 
 #include <string>
 
-#define IDLE 0
-#define WALK 1
+#define MONSTERBODYCOLLISONPOS { 0.0f, -30.0f }
+#define MONSTERBODYCOLLISIONSCALE { 70.0f, 70.0f }
 
 class Monster : public BaseActor
 {
@@ -23,6 +23,7 @@ public:
 
 protected:
 	GameEngineRenderer* MainRenderer = nullptr;
+	GameEngineCollision* BodyCollision = nullptr;
 
 	void StateUpdate(float _Delta);
 	void ChangeState(MonsterState _State);

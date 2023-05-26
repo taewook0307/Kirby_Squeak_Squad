@@ -5,6 +5,9 @@
 
 #include <string>
 
+#define BODYCOLLISIONPOS { 0.0f, -30.0f }
+#define BODYCOLLISIONSCALE { 70.0f, 70.0f }
+
 class Kirby : public BaseActor
 {
 public:
