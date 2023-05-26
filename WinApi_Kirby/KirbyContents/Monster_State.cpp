@@ -91,12 +91,9 @@ void Monster::WalkUpdate(float _Delta)
 	MoveTimer += _Delta;
 }
 
-void Monster::AttackUpdate(float _Delta)
-{
-
-}
+void Monster::AttackUpdate(float _Delta) {}
 
 void Monster::DamageUpdate(float _Delta)
 {
-
+	
 }
