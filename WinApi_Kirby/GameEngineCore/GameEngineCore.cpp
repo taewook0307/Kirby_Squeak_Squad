@@ -12,15 +12,15 @@ CoreProcess* GameEngineCore::Process = nullptr;
 GameEngineLevel* GameEngineCore::CurLevel = nullptr;
 GameEngineLevel* GameEngineCore::NextLevel = nullptr;
 
-GameEngineCore::GameEngineCore() 
+GameEngineCore::GameEngineCore()
 {
 }
 
-GameEngineCore::~GameEngineCore() 
+GameEngineCore::~GameEngineCore()
 {
 }
 
-void GameEngineCore::CoreStart(HINSTANCE _Inst) 
+void GameEngineCore::CoreStart(HINSTANCE _Inst)
 {
 	// 엔진쪽에 준비를 다 해고
 	GameEngineWindow::MainWindow.Open(WindowTitle, _Inst);
@@ -31,7 +31,7 @@ void GameEngineCore::CoreStart(HINSTANCE _Inst)
 	Process->Start();
 }
 
-void GameEngineCore::CoreUpdate() 
+void GameEngineCore::CoreUpdate()
 {
 	if (nullptr != NextLevel)
 	{
@@ -51,6 +51,7 @@ void GameEngineCore::CoreUpdate()
 	}
 
 	// 업데이트를 
+	GameEngineSound::Update();
 	GameEngineTime::MainTimer.Update();
 	float Delta = GameEngineTime::MainTimer.GetDeltaTime();
 
@@ -58,7 +59,7 @@ void GameEngineCore::CoreUpdate()
 	{
 		GameEngineInput::Update(Delta);
 	}
-	else 
+	else
 	{
 		GameEngineInput::Reset();
 	}
@@ -81,8 +82,10 @@ void GameEngineCore::CoreUpdate()
 
 }
 
-void GameEngineCore::CoreEnd() 
+void GameEngineCore::CoreEnd()
 {
+	GameEngineSound::Release();
+
 	Process->Release();
 
 	if (nullptr != Process)
