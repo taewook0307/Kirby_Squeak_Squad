@@ -115,7 +115,6 @@ void Kirby::Update(float _Delta)
 	{
 		BodyCollision->Off();
 		ChangeState(KirbyState::Damage);
-		BodyCollision->On();
 		return;
 	}
 }
