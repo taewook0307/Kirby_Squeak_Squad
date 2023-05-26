@@ -1,6 +1,7 @@
 #include "Kirby.h"
 
 #include <GameEngineCore/GameEngineRenderer.h>
+#include <GameEngineCore/GameEngineCollision.h>
 
 void Kirby::DamageStart()
 {
@@ -87,6 +88,7 @@ void Kirby::DamageLandUpdate(float _Delta)
 
 	if (true == MainRenderer->IsAnimationEnd() && EMPTYCOLOR != Color)
 	{
+		GravityReset();
 		ChangeState(KirbyState::Idle);
 		return;
 	}

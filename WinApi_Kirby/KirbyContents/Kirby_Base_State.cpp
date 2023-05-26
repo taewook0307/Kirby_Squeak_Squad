@@ -2,6 +2,7 @@
 
 #include <GameEnginePlatform/GameEngineInput.h>
 #include <GameEngineCore/GameEngineRenderer.h>
+#include <GameEngineCore/GameEngineCollision.h>
 
 void Kirby::KirbyGravity(float _Delta)
 {
@@ -50,6 +51,8 @@ void Kirby::LevelMoveStart()
 
 void Kirby::IdleUpdate(float _Delta)
 {
+	BodyCollision->On();
+
 	DirCheck();
 
 	KirbyGravity(_Delta);

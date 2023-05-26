@@ -23,6 +23,7 @@ public:
 
 	GameEngineRenderer* MainRenderer = nullptr;
 	GameEngineCollision* BodyCollision = nullptr;
+	GameEngineCollision* AttackCollision = nullptr;
 protected:
 	void StateUpdate(float _Delta);
 	void ChangeState(KirbyState _State);

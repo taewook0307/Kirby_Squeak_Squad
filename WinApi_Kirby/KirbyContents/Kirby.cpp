@@ -113,7 +113,9 @@ void Kirby::Update(float _Delta)
 	std::vector<GameEngineCollision*> Col;
 	if (true == BodyCollision->Collision(CollisionOrder::MonsterBody, Col, CollisionType::Rect, CollisionType::Rect))
 	{
+		BodyCollision->Off();
 		ChangeState(KirbyState::Damage);
+		BodyCollision->On();
 		return;
 	}
 }
