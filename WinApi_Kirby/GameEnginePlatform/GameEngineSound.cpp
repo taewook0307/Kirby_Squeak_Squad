@@ -1,15 +1,15 @@
-ï»¿#include "GameEngineSound.h"
+#include "GameEngineSound.h"
 #include <GameEngineBase/GameEngineDebug.h>
 
-// libë¥¼ ê°€ì ¸ë‹¤ ì‚¬ìš©í•˜ê² ë‹¤ëŠ” ì „ì²˜ë¦¬ë¬¸ì…ë‹ˆë‹¤.
-// libëŠ” êµ¬í˜„ì´ë‹¤.
+// lib¸¦ °¡Á®´Ù »ç¿ëÇÏ°Ú´Ù´Â ÀüÃ³¸®¹®ÀÔ´Ï´Ù.
+// lib´Â ±¸ÇöÀÌ´Ù.
 #ifdef _DEBUG
 #pragma comment(lib, "..\\GameEnginePlatform\\ThirdParty\\FMOD\\lib\\x64\\fmodL_vc.lib")
 #else
 #pragma comment(lib, "..\\GameEnginePlatform\\ThirdParty\\FMOD\\lib\\x64\\fmod_vc.lib")
 #endif
 
-// FMODë¥¼ ì‚¬ìš©í•˜ê¸° ìœ„í•œ í•¸ë“¤ ë° ê°ì²´
+// FMOD¸¦ »ç¿ëÇÏ±â À§ÇÑ ÇÚµé ¹× °´Ã¼
 FMOD::System* SoundSystem = nullptr;
 
 class SoundSystemCreator
@@ -17,15 +17,15 @@ class SoundSystemCreator
 public:
 	SoundSystemCreator()
 	{
-		// ì´ëŸ° ì™¸ë¶€ í•¨ìˆ˜ëŠ” ë‚´ë¶€ì—ì„œ newë¥¼ í•˜ê³  ìˆìŠµë‹ˆë‹¤.
+		// ÀÌ·± ¿ÜºÎ ÇÔ¼ö´Â ³»ºÎ¿¡¼­ new¸¦ ÇÏ°í ÀÖ½À´Ï´Ù.
 		if (FMOD_RESULT::FMOD_OK != FMOD::System_Create(&SoundSystem))
 		{
-			MsgBoxAssert("ì‚¬ìš´ë“œ ì‹œìŠ¤í…œ ìƒì„±ì— ì‹¤íŒ¨í–ˆìŠµë‹ˆë‹¤.");
+			MsgBoxAssert("»ç¿îµå ½Ã½ºÅÛ »ı¼º¿¡ ½ÇÆĞÇß½À´Ï´Ù.");
 		}
 
 		if (FMOD_RESULT::FMOD_OK != SoundSystem->init(32, FMOD_DEFAULT, nullptr))
 		{
-			MsgBoxAssert("ì‚¬ìš´ë“œ ì‹œìŠ¤í…œ ì´ë‹ˆì…œë¼ì´ì¦ˆì— ì‹¤íŒ¨í–ˆìŠµë‹ˆë‹¤.");
+			MsgBoxAssert("»ç¿îµå ½Ã½ºÅÛ ÀÌ´Ï¼È¶óÀÌÁî¿¡ ½ÇÆĞÇß½À´Ï´Ù.");
 		}
 	}
 
@@ -38,11 +38,11 @@ public:
 SoundSystemCreator SoundInitObject = SoundSystemCreator();
 
 
-GameEngineSound::GameEngineSound()
+GameEngineSound::GameEngineSound() 
 {
 }
 
-GameEngineSound::~GameEngineSound()
+GameEngineSound::~GameEngineSound() 
 {
 }
 
@@ -60,7 +60,7 @@ GameEngineSound::~GameEngineSound()
 //
 //
 //
-//	// Fmodë¥¼ ì‚¬ìš©í•˜ê¸° ìœ„í•œ ì¤€ë¹„ë¥¼ í•˜ëŠ” í•¨ìˆ˜
+//	// Fmod¸¦ »ç¿ëÇÏ±â À§ÇÑ ÁØºñ¸¦ ÇÏ´Â ÇÔ¼ö
 //	IsOnce = true;
 //}
 
@@ -74,14 +74,14 @@ void GameEngineSound::SoundPlay(const std::string& _Name)
 
 }
 
-// 1ë²ˆì˜ ì¬ìƒì„ í•˜ê³  ì¡°ê¸ˆ íŠ¹ë³„ ê´€ë¦¬ ëœë‹¤.
+// 1¹øÀÇ Àç»ıÀ» ÇÏ°í Á¶±İ Æ¯º° °ü¸® µÈ´Ù.
 void GameEngineSound::PlayBgm(const std::string& _Name)
 {
 
 }
 
-// íŠ¹ë³„ ê´€ë¦¬ë˜ëŠ” ì‚¬ìš´ë“œ ì¬ìƒì„ ë©ˆì¶˜ë‹¤.
-void GameEngineSound::StopBgm()
+// Æ¯º° °ü¸®µÇ´Â »ç¿îµå Àç»ıÀ» ¸ØÃá´Ù.
+void GameEngineSound::StopBgm() 
 {
 
 }

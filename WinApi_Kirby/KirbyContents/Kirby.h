@@ -19,6 +19,7 @@ public:
 	Kirby& operator=(Kirby&& _Other) noexcept = delete;
 
 	GameEngineRenderer* MainRenderer = nullptr;
+	GameEngineCollision* BodyCollision = nullptr;
 protected:
 	void StateUpdate(float _Delta);
 	void ChangeState(KirbyState _State);
@@ -87,8 +88,8 @@ protected:
 	}
 
 	KirbyState State = KirbyState::Max;
-	std::string CurState = "";
 	ActorDir Dir = ActorDir::Right;
+	std::string CurState = "";
 
 private:
 	bool IsCheckPosPoint = false;

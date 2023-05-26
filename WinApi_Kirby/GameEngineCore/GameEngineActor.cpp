@@ -60,7 +60,25 @@ GameEngineRenderer* GameEngineActor::CreateRenderer(const std::string& _ImageNam
 	GameEngineRenderer* NewRenderer = new GameEngineRenderer();
 
 	NewRenderer->Master = this;
-	NewRenderer->Start();
+	NewRenderer->MainCameraSetting();
+	NewRenderer->SetOrder(_Order);
+
+	if (_ImageName != "")
+	{
+		NewRenderer->SetTexture(_ImageName);
+	}
+	AllRenderer.push_back(NewRenderer);
+
+	return NewRenderer;
+}
+
+
+GameEngineRenderer* GameEngineActor::CreateUIRenderer(const std::string& _ImageName, int _Order)
+{
+	GameEngineRenderer* NewRenderer = new GameEngineRenderer();
+
+	NewRenderer->Master = this;
+	NewRenderer->UICameraSetting();
 	NewRenderer->SetOrder(_Order);
 
 	if (_ImageName != "")

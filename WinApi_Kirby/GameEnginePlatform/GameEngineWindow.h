@@ -60,7 +60,7 @@ public:
 		return IsFocusValue;
 	}
 
-	void SetDoubleBufferingCopyScaleRatio(float _Ratio)
+	void SetDoubleBufferingCopyScaleRatio(float _Ratio) 
 	{
 		CopyRatio = _Ratio;
 	}

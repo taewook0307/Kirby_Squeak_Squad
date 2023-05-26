@@ -63,7 +63,7 @@ void GameEngineRenderer::SetRenderScaleToTexture()
 	ScaleCheck = false;
 }
 
-void GameEngineRenderer::Render(GameEngineCamera* _Camera, float _DeltaTime) 
+void GameEngineRenderer::Render(float _DeltaTime) 
 {
 	if (nullptr != CurAnimation)
 	{
@@ -76,6 +76,7 @@ void GameEngineRenderer::Render(GameEngineCamera* _Camera, float _DeltaTime)
 		if (0.0f >= CurAnimation->CurInter)
 		{
 			++CurAnimation->CurFrame;
+
 
 			if (CurAnimation->CurFrame > abs(static_cast<int>(CurAnimation->EndFrame - CurAnimation->StartFrame)))
 			{
@@ -116,7 +117,7 @@ void GameEngineRenderer::Render(GameEngineCamera* _Camera, float _DeltaTime)
 
 	GameEngineWindowTexture* BackBuffer = GameEngineWindow::MainWindow.GetBackBuffer();
 
-	BackBuffer->TransCopy(Texture, GetActor()->GetPos() + RenderPos - _Camera->GetPos(), RenderScale, CopyPos, CopyScale);
+	BackBuffer->TransCopy(Texture, GetActor()->GetPos() + RenderPos - Camera->GetPos(), RenderScale, CopyPos, CopyScale);
 
 }
 
@@ -230,9 +231,18 @@ void GameEngineRenderer::ChangeAnimation(const std::string& _AniamtionName, bool
 	}
 }
 
-void GameEngineRenderer::Start() 
+void GameEngineRenderer::MainCameraSetting()
 {
 	Camera = GetActor()->GetLevel()->GetMainCamera();
+}
+
+void GameEngineRenderer::UICameraSetting()
+{
+	Camera = GetActor()->GetLevel()->GetUICamera();
+}
+
+void GameEngineRenderer::Start() 
+{
 }
 
 void GameEngineRenderer::SetOrder(int _Order)

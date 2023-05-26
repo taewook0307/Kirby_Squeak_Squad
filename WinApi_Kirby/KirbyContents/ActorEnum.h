@@ -38,6 +38,15 @@ enum class MonsterState
 	Max
 };
 
+enum class CollisionOrder
+{
+	Body,
+	Attack,
+	MonsterBody,
+	MonsterAttack,
+	MonsterSearch
+};
+
 enum class ActorDir
 {
 	Left,

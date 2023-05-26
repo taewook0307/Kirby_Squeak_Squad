@@ -52,21 +52,27 @@ public:
 		return MainCamera;
 	}
 
+	GameEngineCamera* GetUICamera()
+	{
+		return UICamera;
+	}
+
+	static void CollisionDebugRenderSwitch() 
+	{
+		IsCollisionDebugRender = !IsCollisionDebugRender;
+	}
+
 protected:
 	virtual void LevelStart(GameEngineLevel* _PrevLevel) {}
 	virtual void LevelEnd(GameEngineLevel* _NextLevel) {}
 
 private:
+	static bool IsCollisionDebugRender;
+
 	GameEngineCamera* MainCamera;
 	GameEngineCamera* UICamera;
 
-	// 맵
-	// 플레이어
-	// 몬스터
-	
-	// -10번 std::list<> 액터 액터 액터 액터 
-	// 0번 std::list<> 액터 액터 액터 액터
-	// 1번 std::list<> 액터 액터 액터 액터
+
 
 	std::map<int, std::list<GameEngineActor*>> AllActors;
 

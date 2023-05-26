@@ -59,6 +59,25 @@ public:
 	GameEngineRenderer* CreateRenderer(const std::string& _ImageName, int _Order);
 
 	template<typename EnumType>
+	GameEngineRenderer* CreateUIRenderer(EnumType _Order)
+	{
+		return CreateUIRenderer("", static_cast<int>(_Order));
+	}
+
+	GameEngineRenderer* CreateUIRenderer(int _Order = 0)
+	{
+		return CreateUIRenderer("", static_cast<int>(_Order));
+	}
+
+	template<typename EnumType>
+	GameEngineRenderer* CreateUIRenderer(const std::string& _ImageName, EnumType _Order)
+	{
+		return CreateUIRenderer(_ImageName, static_cast<int>(_Order));
+	}
+
+	GameEngineRenderer* CreateUIRenderer(const std::string& _ImageName, int _Order);
+
+	template<typename EnumType>
 	GameEngineCollision* CreateCollision(EnumType _Order)
 	{
 		return CreateCollision(static_cast<int>(_Order));
