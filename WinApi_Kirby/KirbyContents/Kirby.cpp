@@ -109,6 +109,13 @@ void Kirby::Start()
 void Kirby::Update(float _Delta)
 {
 	StateUpdate(_Delta);
+
+	std::vector<GameEngineCollision*> Col;
+	if (true == BodyCollision->Collision(CollisionOrder::MonsterBody, Col, CollisionType::Rect, CollisionType::Rect))
+	{
+		ChangeState(KirbyState::Damage);
+		return;
+	}
 }
 
 void Kirby::Render(float _Delta)
