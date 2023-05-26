@@ -19,7 +19,7 @@ public:
 protected:
 	GameEngineRenderer* MainRenderer = nullptr;
 
-	void IdleStart() override;
+	/*void IdleStart() override;
 	void WalkStart() override;
 	void DamageStart() override;
 	void AttackStart() override;
@@ -27,7 +27,7 @@ protected:
 	void IdleUpdate(float _Delta) override;
 	void WalkUpdate(float _Delta) override;
 	void DamageUpdate(float _Delta) override;
-	void AttackUpdate(float _Delta) override;
+	void AttackUpdate(float _Delta) override;*/
 
 private:
 	float Speed = 300.0f;

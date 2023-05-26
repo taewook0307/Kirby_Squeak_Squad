@@ -93,12 +93,12 @@ protected:
 private:
 	bool IsCheckPosPoint = false;
 
-	void Start() override;
-	void Update(float _Delta) override;
-	void Render(float _Delta) override;
-
 	float Speed = BASEPOWER;
 	float RunSpeed = Speed * 1.5f;
 	float JumpPower = BASEPOWER;
 	float FlyPower = BASEPOWER;
+
+	void Start() override;
+	void Update(float _Delta) override;
+	void Render(float _Delta) override;
 };

@@ -1,9 +1,11 @@
 #pragma once
 
+#include <list>
 #include <GameEngineCore/GameEngineLevel.h>
 
 class Map;
 class Kirby;
+class Monster;
 class FirstStageLevel : public GameEngineLevel
 {
 public:
@@ -26,5 +28,6 @@ private:
 	void LevelStart(GameEngineLevel* _PrevLevel) override;
 
 	Kirby* LevelPlayer = nullptr;
+	Monster* LevelMonster = nullptr;
 	Map* FirstStage = nullptr;
 };

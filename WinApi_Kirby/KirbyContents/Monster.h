@@ -26,8 +26,6 @@ protected:
 
 	void StateUpdate(float _Delta);
 	void ChangeState(MonsterState _State);
-	void Start() override;
-	void Update(float _Delta) override;
 
 	void IdleStart();
 	void WalkStart();
@@ -39,14 +37,31 @@ protected:
 	virtual void AttackUpdate(float _Delta);
 	virtual void DamageUpdate(float _Delta);
 
+	void DirChange();
+
 	virtual void ChangeAnimationState(const std::string& _StateName);
+
+	void ChangeDirCheck()
+	{
+		DirCheck = !DirCheck;
+	}
+
+	void ChangeStateCheck()
+	{
+		StateCheck = !StateCheck;
+	}
 
 	MonsterState State = MonsterState::Max;
 	std::string CurState = "";
 	ActorDir Dir = ActorDir::Right;
 
-	void DirChange(int _Value);
 private:
-	float Speed = BASEPOWER;
+	float Speed = BASEPOWER / 3 * 2;
+
+	bool DirCheck = false;
+	bool StateCheck = false;
+
+	void Start() override;
+	void Update(float _Delta) override;
 };
 

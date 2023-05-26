@@ -4,6 +4,7 @@
 #include "Kirby.h"
 #include "SparkKirby.h"
 #include "IceKirby.h"
+#include "Monster.h"
 #include "KirbyGameEnum.h"
 
 #include <GameEnginePlatform/GameEngineWindow.h>
@@ -18,6 +19,7 @@ FirstStageLevel::FirstStageLevel()
 
 FirstStageLevel::~FirstStageLevel()
 {
+	
 }
 
 void FirstStageLevel::Start()
@@ -29,6 +31,15 @@ void FirstStageLevel::Start()
 	Back->BackGroundInit("FirstStageLevel.Bmp", "FirstStageBitMapTest.Bmp");
 
 	LevelPlayer = CreateActor<Kirby>(RenderOrder::Play);
+
+	LevelMonster = CreateActor<Monster>(RenderOrder::Play);
+
+	/*if (nullptr == NewMonster)
+	{
+		MsgBoxAssert("몬스터를 만들지 못했습니다 : FirstLevel");
+	}
+
+	LevelMonsters.push_back(NewMonster);*/
 }
 
 void FirstStageLevel::Update(float _Delta)
@@ -57,5 +68,8 @@ void FirstStageLevel::LevelStart(GameEngineLevel* _PrevLevel)
 		LevelPlayer->SetGroundBitMap("FirstStageBitMapTest.Bmp");
 
 		GetMainCamera()->SetPos(float4::ZERO);
+
+		LevelMonster->SetPos(WinScale.Half());
+		LevelMonster->SetGroundBitMap("FirstStageBitMapTest.Bmp");
 	}
 }

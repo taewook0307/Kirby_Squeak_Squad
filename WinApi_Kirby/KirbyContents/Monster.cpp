@@ -30,16 +30,22 @@ void Monster::Start()
 	{
 		MainRenderer = CreateRenderer(RenderOrder::Play);
 
-		MainRenderer->CreateAnimation("Right_Idle", "Right_NormalMonster.Bmp", 0, 3, 0.2f, true);
-		MainRenderer->CreateAnimation("Right_Walk", "Right_NormalMonster.Bmp", 4, 11, 0.2f, true);
-		MainRenderer->CreateAnimation("Right_Idle", "Right_NormalMonster.Bmp", 12, 14, 0.2f, false);
-		MainRenderer->CreateAnimation("Right_Idle", "Right_NormalMonster.Bmp", 15, 15, 0.2f, true);
+		MainRenderer->CreateAnimation("Right_Monster_Idle", "Right_NormalMonster.Bmp", 0, 3, 0.2f, true);
+		MainRenderer->CreateAnimation("Right_Monster_Walk", "Right_NormalMonster.Bmp", 4, 11, 0.2f, true);
+		MainRenderer->CreateAnimation("Right_Monster_Attack", "Right_NormalMonster.Bmp", 12, 14, 0.2f, false);
+		MainRenderer->CreateAnimation("Right_Monster_Damage", "Right_NormalMonster.Bmp", 15, 15, 0.2f, true);
 
-		MainRenderer->CreateAnimation("Left_Idle", "Right_NormalMonster.Bmp", 0, 3, 0.2f, true);
-		MainRenderer->CreateAnimation("Left_Walk", "Right_NormalMonster.Bmp", 4, 11, 0.2f, true);
-		MainRenderer->CreateAnimation("Left_Idle", "Right_NormalMonster.Bmp", 12, 14, 0.2f, false);
-		MainRenderer->CreateAnimation("Left_Idle", "Right_NormalMonster.Bmp", 15, 15, 0.2f, true);
+		MainRenderer->CreateAnimation("Left_Monster_Idle", "Left_NormalMonster.Bmp", 0, 3, 0.2f, true);
+		MainRenderer->CreateAnimation("Left_Monster_Walk", "Left_NormalMonster.Bmp", 4, 11, 0.2f, true);
+		MainRenderer->CreateAnimation("Left_Monster_Attack", "Left_NormalMonster.Bmp", 12, 14, 0.2f, false);
+		MainRenderer->CreateAnimation("Left_Monster_Damage", "Left_NormalMonster.Bmp", 15, 15, 0.2f, true);
 	}
+
+	MainRenderer->ChangeAnimation("Right_Monster_Idle");
+	MainRenderer->SetRenderScaleToTexture();
+	MainRenderer->SetScaleRatio(4.0f);
+
+	ChangeState(MonsterState::Idle);
 }
 
 void Monster::Update(float _Delta)
@@ -89,25 +95,24 @@ void Monster::ChangeState(MonsterState _State)
 	State = _State;
 }
 
-void Monster::DirChange(int _Value)
+void Monster::DirChange()
 {
 	ActorDir CheckDir = Dir;
 
-	switch (_Value)
+	if (Dir == ActorDir::Left)
 	{
-	case 0:
-		CheckDir = ActorDir::Left;
-		break;
-	case 1:
 		CheckDir = ActorDir::Right;
-		break;
-	default:
-		break;
+	}
+	
+	if (Dir == ActorDir::Right)
+	{
+		CheckDir = ActorDir::Left;
 	}
 
 	if (CheckDir != Dir)
 	{
 		Dir = CheckDir;
+		ChangeAnimationState(CurState);
 	}
 }
 
@@ -118,10 +123,10 @@ void Monster::ChangeAnimationState(const std::string& _StateName)
 	switch (Dir)
 	{
 	case ActorDir::Right:
-		AnimationName = "Right_";
+		AnimationName = "Right_Monster_";
 		break;
 	case ActorDir::Left:
-		AnimationName = "Left_";
+		AnimationName = "Left_Monster_";
 		break;
 	default:
 		break;
