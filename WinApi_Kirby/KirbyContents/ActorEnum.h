@@ -24,6 +24,7 @@ enum class KirbyState
 	Damage,
 	DamageLand,
 	AttackReady,
+	AttackLoop,
 	Attack,
 	Keep,
 	Max

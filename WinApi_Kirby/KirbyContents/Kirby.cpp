@@ -29,67 +29,67 @@ void Kirby::Start()
 
 		FilePath.MoveChild("Resources\\Kirby\\Normal\\");
 
-		ResourcesManager::GetInst().CreateSpriteSheet(FilePath.PlusFilePath("Right_Kirby.Bmp"), 10, 21);
-		ResourcesManager::GetInst().CreateSpriteSheet(FilePath.PlusFilePath("Left_Kirby.Bmp"), 10, 21);
+		ResourcesManager::GetInst().CreateSpriteSheet(FilePath.PlusFilePath("Right_Kirby_Test.Bmp"), 10, 20);
+		ResourcesManager::GetInst().CreateSpriteSheet(FilePath.PlusFilePath("Left_Kirby_Test.Bmp"), 10, 20);
 	}
 	{
 		MainRenderer = CreateRenderer(RenderOrder::Play);
 		
 		// Right Animaition
-		MainRenderer->CreateAnimation("Right_Idle", "Right_Kirby.Bmp", 0, 1, 0.5f, true);
-		MainRenderer->CreateAnimation("Right_Down", "Right_Kirby.Bmp", 2, 3, 0.5f, true);
-		MainRenderer->CreateAnimation("Right_Slide", "Right_Kirby.Bmp", 4, 5, 1.0f, false);
+		MainRenderer->CreateAnimation("Right_Idle", "Right_Kirby_Test.Bmp", 0, 1, 0.5f, true);
+		MainRenderer->CreateAnimation("Right_Down", "Right_Kirby_Test.Bmp", 2, 3, 0.5f, true);
+		MainRenderer->CreateAnimation("Right_Slide", "Right_Kirby_Test.Bmp", 4, 5, 1.0f, false);
 		MainRenderer->FindAnimation("Right_Slide")->Inters[1] = 0.2f;
-		MainRenderer->CreateAnimation("Right_Jump", "Right_Kirby.Bmp", 6, 6, 0.1f, true);
-		MainRenderer->CreateAnimation("Right_JumpToDown", "Right_Kirby.Bmp", 7, 14, 0.1f, false);
-		MainRenderer->CreateAnimation("Right_JumpToLand", "Right_Kirby.Bmp", 15, 15, 0.3f, true);
-		MainRenderer->CreateAnimation("Right_Walk", "Right_Kirby.Bmp", 16, 25, 0.05f, true);
-		MainRenderer->CreateAnimation("Right_Run", "Right_Kirby.Bmp", 26, 33, 0.05f, true);
-		MainRenderer->CreateAnimation("Right_Stop", "Right_Kirby.Bmp", 34, 34, 0.1f, true);
-		MainRenderer->CreateAnimation("Right_StopToIdle", "Right_Kirby.Bmp", 35, 36, 0.2f, false);
-		MainRenderer->CreateAnimation("Right_Breathe", "Right_Kirby.Bmp", 37, 41, 0.2f, false);
-		MainRenderer->FindAnimation("Right_Breathe")->Inters[4] = 0.4f;
-		MainRenderer->CreateAnimation("Right_Fly", "Right_Kirby.Bmp", 42, 59, 0.2f, true);
-		MainRenderer->CreateAnimation("Right_BreatheOutLand", "Right_Kirby.Bmp", 101, 103, 0.1f, false);
-		MainRenderer->CreateAnimation("Right_BreatheOut", "Right_Kirby.Bmp", 60, 61, 0.2f, true);
-		MainRenderer->CreateAnimation("Right_Drop", "Right_Kirby.Bmp", 62, 63, 0.2f, false);
-		MainRenderer->CreateAnimation("Right_FlyToLand", "Right_Kirby.Bmp", 77, 77, 0.3f, true);
-		MainRenderer->CreateAnimation("Right_FlyToTurnUp", "Right_Kirby.Bmp", 64, 70, 0.2f, false);
-		MainRenderer->CreateAnimation("Right_FlyToTurnLand", "Right_Kirby.Bmp", 70, 76, 0.2f, false);
-		MainRenderer->CreateAnimation("Right_LevelMove", "Right_Kirby.Bmp", 78, 81, 0.1f, false);
-		MainRenderer->CreateAnimation("Right_Damage", "Right_Kirby.Bmp", 82, 84, 0.2f, false);
-		MainRenderer->CreateAnimation("Right_DamageLand", "Right_Kirby.Bmp", 85, 86, 0.3f, false);
-		MainRenderer->CreateAnimation("Right_AttackReady", "Right_Kirby.Bmp", 87, 91, 0.1f, false);
-		MainRenderer->CreateAnimation("Right_Keep", "Right_Kirby.Bmp", 92, 98, 0.1f, false);
-		MainRenderer->CreateAnimation("Right_Attack", "Right_Kirby.Bmp", 99, 103, 0.1f, false);
+		MainRenderer->CreateAnimation("Right_Jump", "Right_Kirby_Test.Bmp", 6, 6, 0.1f, true);
+		MainRenderer->CreateAnimation("Right_JumpToDown", "Right_Kirby_Test.Bmp", 7, 14, 0.1f, false);
+		MainRenderer->CreateAnimation("Right_JumpToLand", "Right_Kirby_Test.Bmp", 15, 15, 0.3f, true);
+		MainRenderer->CreateAnimation("Right_Walk", "Right_Kirby_Test.Bmp", 16, 25, 0.05f, true);
+		MainRenderer->CreateAnimation("Right_Run", "Right_Kirby_Test.Bmp", 26, 33, 0.05f, true);
+		MainRenderer->CreateAnimation("Right_Stop", "Right_Kirby_Test.Bmp", 34, 34, 0.1f, true);
+		MainRenderer->CreateAnimation("Right_StopToIdle", "Right_Kirby_Test.Bmp", 35, 36, 0.2f, false);
+		MainRenderer->CreateAnimation("Right_Breathe", "Right_Kirby_Test.Bmp", 37, 42, 0.2f, false);
+		MainRenderer->CreateAnimation("Right_Fly", "Right_Kirby_Test.Bmp", 43, 60, 0.2f, true);
+		MainRenderer->CreateAnimation("Right_BreatheOutLand", "Right_Kirby_Test.Bmp", 61, 62, 0.1f, false);
+		MainRenderer->CreateAnimation("Right_BreatheOut", "Right_Kirby_Test.Bmp", 61, 62, 0.2f, true);
+		MainRenderer->CreateAnimation("Right_Drop", "Right_Kirby_Test.Bmp", 63, 64, 0.2f, false);
+		MainRenderer->CreateAnimation("Right_FlyToLand", "Right_Kirby_Test.Bmp", 78, 78, 0.3f, true);
+		MainRenderer->CreateAnimation("Right_FlyToTurnUp", "Right_Kirby_Test.Bmp", 65, 71, 0.2f, false);
+		MainRenderer->CreateAnimation("Right_FlyToTurnLand", "Right_Kirby_Test.Bmp", 71, 77, 0.2f, false);
+		MainRenderer->CreateAnimation("Right_LevelMove", "Right_Kirby_Test.Bmp", 79, 82, 0.1f, false);
+		MainRenderer->CreateAnimation("Right_Damage", "Right_Kirby_Test.Bmp", 83, 85, 0.2f, false);
+		MainRenderer->CreateAnimation("Right_DamageLand", "Right_Kirby_Test.Bmp", 86, 87, 0.3f, false);
+		MainRenderer->CreateAnimation("Right_AttackReady", "Right_Kirby_Test.Bmp", 88, 91, 0.1f, false);
+		MainRenderer->CreateAnimation("Right_AttackLoop", "Right_Kirby_Test.Bmp", 92, 93, 0.1f, true);
+		MainRenderer->CreateAnimation("Right_Keep", "Right_Kirby_Test.Bmp", 95, 100, 0.1f, false);
+		MainRenderer->CreateAnimation("Right_Attack", "Right_Kirby_Test.Bmp", 101, 105, 0.1f, false);
 
 		// Left Animaition
-		MainRenderer->CreateAnimation("Left_Idle", "Left_Kirby.Bmp", 0, 1, 0.5f, true);
-		MainRenderer->CreateAnimation("Left_Down", "Left_Kirby.Bmp", 2, 3, 0.5f, true);
-		MainRenderer->CreateAnimation("Left_Slide", "Left_Kirby.Bmp", 4, 5, 1.0f, false);
+		MainRenderer->CreateAnimation("Left_Idle", "Left_Kirby_Test.Bmp", 0, 1, 0.5f, true);
+		MainRenderer->CreateAnimation("Left_Down", "Left_Kirby_Test.Bmp", 2, 3, 0.5f, true);
+		MainRenderer->CreateAnimation("Left_Slide", "Left_Kirby_Test.Bmp", 4, 5, 1.0f, false);
 		MainRenderer->FindAnimation("Left_Slide")->Inters[1] = 0.2f;
-		MainRenderer->CreateAnimation("Left_Jump", "Left_Kirby.Bmp", 6, 6, 0.1f, true);
-		MainRenderer->CreateAnimation("Left_JumpToDown", "Left_Kirby.Bmp", 7, 14, 0.1f, false);
-		MainRenderer->CreateAnimation("Left_JumpToLand", "Left_Kirby.Bmp", 15, 15, 0.3f, true);
-		MainRenderer->CreateAnimation("Left_Walk", "Left_Kirby.Bmp", 16, 25, 0.05f, true);
-		MainRenderer->CreateAnimation("Left_Run", "Left_Kirby.Bmp", 26, 33, 0.05f, true);
-		MainRenderer->CreateAnimation("Left_Stop", "Left_Kirby.Bmp", 34, 34, 0.1f, true);
-		MainRenderer->CreateAnimation("Left_StopToIdle", "Left_Kirby.Bmp", 35, 36, 0.2f, false);
-		MainRenderer->CreateAnimation("Left_Breathe", "Left_Kirby.Bmp", 37, 41, 0.2f, false);
-		MainRenderer->FindAnimation("Left_Breathe")->Inters[4] = 0.4f;
-		MainRenderer->CreateAnimation("Left_Fly", "Left_Kirby.Bmp", 42, 59, 0.2f, true);
-		MainRenderer->CreateAnimation("Left_BreatheOutLand", "Left_Kirby.Bmp", 101, 103, 0.1f, false);
-		MainRenderer->CreateAnimation("Left_BreatheOut", "Left_Kirby.Bmp", 60, 61, 0.2f, true);
-		MainRenderer->CreateAnimation("Left_Drop", "Left_Kirby.Bmp", 62, 63, 0.2f, false);
-		MainRenderer->CreateAnimation("Left_FlyToLand", "Left_Kirby.Bmp", 77, 77, 0.3f, true);
-		MainRenderer->CreateAnimation("Left_FlyToTurnUp", "Left_Kirby.Bmp", 64, 70, 0.2f, false);
-		MainRenderer->CreateAnimation("Left_FlyToTurnLand", "Left_Kirby.Bmp", 70, 76, 0.2f, false);
-		MainRenderer->CreateAnimation("Left_LevelMove", "Left_Kirby.Bmp", 78, 81, 0.1f, false);
-		MainRenderer->CreateAnimation("Left_Damage", "Left_Kirby.Bmp", 82, 84, 0.2f, false);
-		MainRenderer->CreateAnimation("Left_DamageLand", "Left_Kirby.Bmp", 85, 86, 0.3f, false);
-		MainRenderer->CreateAnimation("Left_AttackReady", "Left_Kirby.Bmp", 87, 91, 0.1f, false);
-		MainRenderer->CreateAnimation("Left_Keep", "Left_Kirby.Bmp", 92, 98, 0.1f, false);
-		MainRenderer->CreateAnimation("Left_Attack", "Left_Kirby.Bmp", 99, 103, 0.1f, false);
+		MainRenderer->CreateAnimation("Left_Jump", "Left_Kirby_Test.Bmp", 6, 6, 0.1f, true);
+		MainRenderer->CreateAnimation("Left_JumpToDown", "Left_Kirby_Test.Bmp", 7, 14, 0.1f, false);
+		MainRenderer->CreateAnimation("Left_JumpToLand", "Left_Kirby_Test.Bmp", 15, 15, 0.3f, true);
+		MainRenderer->CreateAnimation("Left_Walk", "Left_Kirby_Test.Bmp", 16, 25, 0.05f, true);
+		MainRenderer->CreateAnimation("Left_Run", "Left_Kirby_Test.Bmp", 26, 33, 0.05f, true);
+		MainRenderer->CreateAnimation("Left_Stop", "Left_Kirby_Test.Bmp", 34, 34, 0.1f, true);
+		MainRenderer->CreateAnimation("Left_StopToIdle", "Left_Kirby_Test.Bmp", 35, 36, 0.2f, false);
+		MainRenderer->CreateAnimation("Left_Breathe", "Left_Kirby_Test.Bmp", 37, 42, 0.2f, false);
+		MainRenderer->CreateAnimation("Left_Fly", "Left_Kirby_Test.Bmp", 43, 60, 0.2f, true);
+		MainRenderer->CreateAnimation("Left_BreatheOutLand", "Left_Kirby_Test.Bmp", 61, 62, 0.1f, false);
+		MainRenderer->CreateAnimation("Left_BreatheOut", "Left_Kirby_Test.Bmp", 61, 62, 0.2f, true);
+		MainRenderer->CreateAnimation("Left_Drop", "Left_Kirby_Test.Bmp", 63, 64, 0.2f, false);
+		MainRenderer->CreateAnimation("Left_FlyToLand", "Left_Kirby_Test.Bmp", 78, 78, 0.3f, true);
+		MainRenderer->CreateAnimation("Left_FlyToTurnUp", "Left_Kirby_Test.Bmp", 65, 71, 0.2f, false);
+		MainRenderer->CreateAnimation("Left_FlyToTurnLand", "Left_Kirby_Test.Bmp", 71, 77, 0.2f, false);
+		MainRenderer->CreateAnimation("Left_LevelMove", "Left_Kirby_Test.Bmp", 79, 82, 0.1f, false);
+		MainRenderer->CreateAnimation("Left_Damage", "Left_Kirby_Test.Bmp", 83, 85, 0.2f, false);
+		MainRenderer->CreateAnimation("Left_DamageLand", "Left_Kirby_Test.Bmp", 86, 87, 0.3f, false);
+		MainRenderer->CreateAnimation("Left_AttackReady", "Left_Kirby_Test.Bmp", 88, 91, 0.1f, false);
+		MainRenderer->CreateAnimation("Left_AttackLoop", "Left_Kirby_Test.Bmp", 92, 93, 0.1f, true);
+		MainRenderer->CreateAnimation("Left_Keep", "Left_Kirby_Test.Bmp", 95, 100, 0.1f, false);
+		MainRenderer->CreateAnimation("Left_Attack", "Left_Kirby_Test.Bmp", 101, 105, 0.1f, false);
 
 		// Setting
 		MainRenderer->ChangeAnimation("Right_Idle");
@@ -201,6 +201,8 @@ void Kirby::StateUpdate(float _Delta)
 		return DamageLandUpdate(_Delta);
 	case KirbyState::AttackReady:
 		return AttackReadyUpdate(_Delta);
+	case KirbyState::AttackLoop:
+		return AttackLoopUpdate(_Delta);
 	case KirbyState::Keep:
 		return KeepUpdate(_Delta);
 	case KirbyState::Attack:
@@ -281,6 +283,9 @@ void Kirby::ChangeState(KirbyState _State)
 			break;
 		case KirbyState::AttackReady:
 			AttackReadyStart();
+			break;
+		case KirbyState::AttackLoop:
+			AttackLoopStart();
 			break;
 		case KirbyState::Keep:
 			KeepStart();

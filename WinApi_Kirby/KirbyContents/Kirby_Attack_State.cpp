@@ -1,5 +1,6 @@
 #include "Kirby.h"
 
+#include <GameEnginePlatform/GameEngineInput.h>
 #include <GameEngineCore/GameEngineRenderer.h>
 #include <GameEngineCore/GameEngineCollision.h>
 
@@ -16,6 +17,11 @@ void Kirby::DamageLandStart()
 void Kirby::AttackReadyStart()
 {
 	ChangeAnimationState("AttackReady");
+}
+
+void Kirby::AttackLoopStart()
+{
+	ChangeAnimationState("AttackLoop");
 }
 
 void Kirby::KeepStart()
@@ -97,6 +103,19 @@ void Kirby::DamageLandUpdate(float _Delta)
 void Kirby::AttackReadyUpdate(float _Delta)
 {
 	if (MainRenderer->IsAnimationEnd())
+	{
+		ChangeState(KirbyState::AttackLoop);
+		return;
+	}
+}
+
+void Kirby::AttackLoopUpdate(float _Delta)
+{
+	if (true == GameEngineInput::IsPress('C'))
+	{
+		int a = 0;
+	}
+	if (true == GameEngineInput::IsUp('C'))
 	{
 		ChangeState(KirbyState::Keep);
 		return;
