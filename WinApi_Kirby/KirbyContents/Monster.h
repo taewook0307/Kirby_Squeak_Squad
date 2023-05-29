@@ -4,6 +4,8 @@
 #include "BaseActor.h"
 
 #include <string>
+#include <vector>
+#include <GameEngineCore/GameEngineCollision.h>
 
 #define MONSTERBODYCOLLISONPOS { 0.0f, -30.0f }
 #define MONSTERBODYCOLLISIONSCALE { 70.0f, 70.0f }
@@ -22,9 +24,6 @@ public:
 	Monster& operator=(Monster&& _Other) noexcept = delete;
 
 protected:
-	GameEngineRenderer* MainRenderer = nullptr;
-	GameEngineCollision* BodyCollision = nullptr;
-
 	void StateUpdate(float _Delta);
 	void ChangeState(MonsterState _State);
 
@@ -61,6 +60,8 @@ private:
 
 	bool DirCheck = false;
 	bool StateCheck = false;
+
+	std::vector<GameEngineCollision*> Col;
 
 	void Start() override;
 	void Update(float _Delta) override;

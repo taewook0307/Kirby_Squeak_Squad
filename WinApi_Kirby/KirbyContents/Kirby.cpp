@@ -101,8 +101,13 @@ void Kirby::Start()
 		BodyCollision->SetCollisionPos(BODYCOLLISIONPOS);
 		BodyCollision->SetCollisionScale(BODYCOLLISIONSCALE);
 		BodyCollision->SetCollisionType(CollisionType::Rect);
+
+		AttackCollision = CreateCollision(CollisionOrder::Attack);
+		AttackCollision->SetCollisionScale(BODYCOLLISIONSCALE);
+		AttackCollision->SetCollisionType(CollisionType::Rect);
 	}
 
+	AttackCollision->Off();
 	ChangeState(KirbyState::Idle);
 }
 
@@ -110,9 +115,10 @@ void Kirby::Update(float _Delta)
 {
 	StateUpdate(_Delta);
 
-	std::vector<GameEngineCollision*> Col;
+	Col.reserve(Col.size() + 1);
 	if (true == BodyCollision->Collision(CollisionOrder::MonsterBody, Col, CollisionType::Rect, CollisionType::Rect))
 	{
+		float4 Pos = Col[0]->GetActorPivotPos();
 		BodyCollision->Off();
 		ChangeState(KirbyState::Damage);
 		return;

@@ -42,6 +42,12 @@ void Monster::IdleUpdate(float _Delta)
 		return;
 	}
 
+	if (true == BodyCollision->Collision(CollisionOrder::Body, Col, CollisionType::Rect, CollisionType::Rect))
+	{
+		ChangeState(MonsterState::Damage);
+		return;
+	}
+
 	IdleTimer += _Delta;
 }
 
@@ -88,12 +94,42 @@ void Monster::WalkUpdate(float _Delta)
 		return;
 	}
 
+	Col.reserve(Col.size() + 1);
+
+	if (true == BodyCollision->Collision(CollisionOrder::Attack, Col, CollisionType::Rect, CollisionType::Rect))
+	{
+		ChangeState(MonsterState::Damage);
+		return;
+	}
+
 	MoveTimer += _Delta;
 }
 
-void Monster::AttackUpdate(float _Delta) {}
+void Monster::AttackUpdate(float _Delta)
+{
+	BodyCollision->Off();
+}
 
 void Monster::DamageUpdate(float _Delta)
 {
-	
+	if (true == BodyCollision->Collision(CollisionOrder::Attack, Col, CollisionType::Rect, CollisionType::Rect))
+	{
+		GameEngineCollision* CurPlayerCollision = Col[Col.size() - 1];
+
+		GameEngineActor* CurPlayer = CurPlayerCollision->GetActor();
+
+		float Check = CurPlayer->GetPos().X;
+
+		if (Check < GetPos().X - 40.0f)
+		{
+			ChangeState(MonsterState::Attack);
+			return;
+		}
+	}
+
+	else
+	{
+		ChangeState(MonsterState::Idle);
+		return;
+	}
 }

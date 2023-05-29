@@ -34,13 +34,17 @@ void Kirby::AttackStart()
 	ChangeAnimationState("Attack");
 }
 
-// 충돌 체크 후 방향지정필요
 void Kirby::DamageUpdate(float _Delta)
 {
+	BodyCollision->Off();
+
 	float4 FlyPos = float4::UP * FlyPower * 0.5f * _Delta;
 	float4 MovePos = float4::ZERO;
 	float4 XCheckPos = float4::ZERO;
 	float4 CheckPos = float4::ZERO;
+	GameEngineCollision* CurMonsterCollision = Col[Col.size() - 1];
+	GameEngineActor* CurMonster = CurMonsterCollision->GetActor();
+	float4 DirPos = GetPos() - CurMonster->GetPos();
 	unsigned int Color = 0;
 
 	if (FlyPos.Y < 0)
@@ -59,7 +63,7 @@ void Kirby::DamageUpdate(float _Delta)
 		AddPos(FlyPos);
 	}
 
-	if (ActorDir::Left == Dir)
+	if (DirPos.X > 0.0f)
 	{
 		MovePos = { Speed * _Delta * 0.8f, 0.0f };
 		XCheckPos = LEFTMOVECHECKPOS;
@@ -94,6 +98,7 @@ void Kirby::DamageLandUpdate(float _Delta)
 
 	if (true == MainRenderer->IsAnimationEnd() && EMPTYCOLOR != Color)
 	{
+		BodyCollision->On();
 		GravityReset();
 		ChangeState(KirbyState::Idle);
 		return;
@@ -111,13 +116,47 @@ void Kirby::AttackReadyUpdate(float _Delta)
 
 void Kirby::AttackLoopUpdate(float _Delta)
 {
+	DirCheck();
+
 	if (true == GameEngineInput::IsPress('C'))
 	{
-		int a = 0;
+		if (ActorDir::Left == Dir)
+		{
+			AttackCollision->SetCollisionPos({ -100.0f, -40.0f });
+			AttackCollision->On();
+		}
+
+		else
+		{
+			AttackCollision->SetCollisionPos({ 100.0f, -40.0f });
+			AttackCollision->On();
+		}
 	}
+
+	Col.reserve(Col.size() + 1);
+
+	if (true == AttackCollision->Collision(CollisionOrder::MonsterBody, Col, CollisionType::Rect, CollisionType::Rect))
+	{
+		BodyCollision->Off();
+
+		GameEngineCollision* CurMonsterCollision = Col[Col.size() - 1];
+		
+		GameEngineActor* CurMonster = CurMonsterCollision->GetActor();
+
+		float4 DirPos = (GetPos() - CurMonster->GetPos()).NormalizeReturn();
+		CurMonster->AddPos(DirPos);
+
+		float Check = CurMonster->GetPos().X;
+		if (CurMonster->GetPos().X < GetPos().X + 40.0f)
+		{	
+			ChangeState(KirbyState::Keep);
+			return;
+		}
+	}
+
 	if (true == GameEngineInput::IsUp('C'))
 	{
-		ChangeState(KirbyState::Keep);
+		ChangeState(KirbyState::Idle);
 		return;
 	}
 }

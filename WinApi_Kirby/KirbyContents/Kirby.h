@@ -4,9 +4,11 @@
 #include "BaseActor.h"
 
 #include <string>
+#include <vector>
 
 #define BODYCOLLISIONPOS { 0.0f, -30.0f }
 #define BODYCOLLISIONSCALE { 70.0f, 70.0f }
+#define ATTACKCOLLSIONSCALE { 80.0f, 80.0f }
 
 class Kirby : public BaseActor
 {
@@ -21,8 +23,6 @@ public:
 	Kirby& operator=(const Kirby& _Other) = delete;
 	Kirby& operator=(Kirby&& _Other) noexcept = delete;
 
-	GameEngineRenderer* MainRenderer = nullptr;
-	GameEngineCollision* BodyCollision = nullptr;
 	GameEngineCollision* AttackCollision = nullptr;
 protected:
 	void StateUpdate(float _Delta);
@@ -98,6 +98,7 @@ protected:
 	std::string CurState = "";
 
 private:
+	std::vector<GameEngineCollision*> Col;
 	bool IsCheckPosPoint = false;
 
 	float Speed = BASEPOWER;

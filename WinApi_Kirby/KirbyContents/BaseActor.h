@@ -1,6 +1,7 @@
 #pragma once
 
 #include <GameEngineCore/GameEngineActor.h>
+#include <GameEngineCore/GameEngineCollision.h>
 
 #define BASEPOWER 300.0f
 #define EMPTYCOLOR RGB(255,255,255)
@@ -52,10 +53,17 @@ public:
 
 	float4 ActorCameraPos();
 
+	GameEngineCollision* GetBodyCollision()
+	{
+		return BodyCollision;
+	}
+
 protected:
+	GameEngineCollision* BodyCollision = nullptr;
+	GameEngineRenderer* MainRenderer = nullptr;
 
 private:
-	class GameEngineWindowTexture* GroundBitMap = nullptr;
+	GameEngineWindowTexture* GroundBitMap = nullptr;
 
 	bool IsGravity = true;
 

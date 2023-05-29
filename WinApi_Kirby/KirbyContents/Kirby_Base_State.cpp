@@ -67,7 +67,8 @@ void Kirby::IdleUpdate(float _Delta)
 	}
 
 	// 웅크리기 상태 이동
-	if (true == GameEngineInput::IsDown('S') || true == GameEngineInput::IsPress('S'))
+	if (true == GameEngineInput::IsDown('S')
+		|| true == GameEngineInput::IsPress('S'))
 	{
 		DirCheck();
 		ChangeState(KirbyState::Down);

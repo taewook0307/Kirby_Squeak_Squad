@@ -39,6 +39,15 @@ enum class MonsterState
 	Max
 };
 
+enum class MonsterType
+{
+	Normal,
+	Ice,
+	Fire,
+	Tornado,
+	Spark
+};
+
 enum class CollisionOrder
 {
 	Body,
