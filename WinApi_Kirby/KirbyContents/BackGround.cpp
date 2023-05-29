@@ -61,3 +61,30 @@ void BackGround::BackGroundInit(const std::string& _FileName, const std::string&
 		MainRenderer->SetRenderScale(Scale);
 	}
 }
+
+void BackGround::BackGroundAnimationInit(const std::string& _FolderName, const std::string& _MapFileName /* = "" */)
+{
+	{
+		GameEnginePath FolderPath;
+
+		FolderPath.SetCurrentPath();
+		FolderPath.MoveParentToExistsChild("Resources");
+
+		FolderPath.MoveChild("Resources\\BackGround\\");
+
+		MainSprite = ResourcesManager::GetInst().CreateSpriteFolder(_FolderName, FolderPath.PlusFilePath(_FolderName));
+	}
+
+	if (_MapFileName == "")
+	{
+		Scale = GameEngineWindow::MainWindow.GetScale();
+	}
+
+	{
+		MainRenderer = CreateRenderer(RenderOrder::BackGround);
+		MainRenderer->CreateAnimation(_FolderName, _FolderName, -1, -1, 0.5f, true);
+		MainRenderer->ChangeAnimation(_FolderName);
+		MainRenderer->SetRenderPos(Scale.Half());
+		MainRenderer->SetRenderScale(Scale);
+	}
+}

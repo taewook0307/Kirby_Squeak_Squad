@@ -1,4 +1,5 @@
 #include "Kirby.h"
+#include "Monster.h"
 
 #include <math.h>
 #include <GameEnginePlatform/GameEngineInput.h>
@@ -127,7 +128,7 @@ void Kirby::AttackLoopUpdate(float _Delta)
 
 	float4 MonsterPos = float4::ZERO;
 	float4 DirPos = float4::ZERO;
-	GameEngineActor* Monster = nullptr;
+	GameEngineActor* MonsterPtr = nullptr;
 	float Power = 0.0f;
 
 	// 공격 충돌체 생성
@@ -155,18 +156,20 @@ void Kirby::AttackLoopUpdate(float _Delta)
 		Power = 5.0f;
 
 		GameEngineCollision* MonsterCollision = Col[Col.size() - 1];
-		Monster = MonsterCollision->GetActor();
+		MonsterPtr = MonsterCollision->GetActor();
+		Monster* KeepMonster = dynamic_cast<Monster*>(MonsterPtr);
 
-		MonsterPos = Monster->GetPos();
+		KeepType = KeepMonster->GetMonsterType();
+		MonsterPos = KeepMonster->GetPos();
 		DirPos = (GetPos() - MonsterPos).NormalizeReturn();
 
 		Power *= 2.0f;
 
-		Monster->AddPos(DirPos *= Power);
+		KeepMonster->AddPos(DirPos *= Power);
 		
-		if (fabs(Monster->GetPos().X - GetPos().X) < 20.0f)
+		if (fabs(KeepMonster->GetPos().X - GetPos().X) < 20.0f)
 		{
-			Monster->Death();
+			KeepMonster->Death();
 			ChangeState(KirbyState::Keep);
 			return;
 		}

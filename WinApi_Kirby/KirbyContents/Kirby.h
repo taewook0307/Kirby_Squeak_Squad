@@ -98,6 +98,7 @@ protected:
 	std::string CurState = "";
 
 private:
+	MonsterType KeepType = MonsterType::Max;
 	float RatioValue = 4.0f;
 	bool IsCheckPosPoint = false;
 

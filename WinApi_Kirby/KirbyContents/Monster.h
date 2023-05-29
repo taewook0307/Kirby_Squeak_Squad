@@ -23,6 +23,11 @@ public:
 	Monster& operator=(const Monster& _Other) = delete;
 	Monster& operator=(Monster&& _Other) noexcept = delete;
 
+	MonsterType GetMonsterType() const
+	{
+		return Type;
+	}
+
 protected:
 	virtual void StateUpdate(float _Delta);
 	virtual void ChangeState(MonsterState _State);
@@ -44,10 +49,10 @@ protected:
 	MonsterState State = MonsterState::Max;
 	std::string CurState = "";
 	ActorDir Dir = ActorDir::Right;
-
 private:
 	float RatioValue = 3.0f;
 	float Speed = BASEPOWER / 3 * 2;
+	MonsterType Type = MonsterType::Normal;
 
 	std::vector<GameEngineCollision*> Col;
 

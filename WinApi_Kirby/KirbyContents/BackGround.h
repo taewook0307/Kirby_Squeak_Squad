@@ -2,6 +2,7 @@
 #include <string>
 #include <GameEngineCore/GameEngineActor.h>
 
+class GameEngineSprite;
 class GameEngineWindowTexture;
 class GameEngineRenderer;
 class Map;
@@ -19,16 +20,18 @@ public:
 	BackGround& operator=(BackGround&& _Other) noexcept = delete;
 
 	void BackGroundInit(const std::string& _FileName, const std::string& _MapFileName = "");
+	void BackGroundAnimationInit(const std::string& _FolderName, const std::string& _MapFileName = "");
 
 protected:
 
 private:
 	std::string FileName = "";
 	float4 Scale = float4::ZERO;
+	
 	GameEngineWindowTexture* MainTexture = nullptr;
-	GameEngineRenderer* MainRenderer = nullptr;
-
+	GameEngineSprite* MainSprite = nullptr;
 	GameEngineWindowTexture* MapTexture = nullptr;
+	GameEngineRenderer* MainRenderer = nullptr;
 
 	void Update(float _Delta) override;
 };

@@ -45,7 +45,8 @@ enum class MonsterType
 	Ice,
 	Fire,
 	Tornado,
-	Spark
+	Spark,
+	Max
 };
 
 enum class CollisionOrder
