@@ -46,6 +46,7 @@ void Kirby::DamageUpdate(float _Delta)
 	GameEngineActor* CurMonster = CurMonsterCollision->GetActor();
 	float4 DirPos = GetPos() - CurMonster->GetPos();
 	unsigned int Color = 0;
+	unsigned int XColor = 0;
 
 	if (FlyPos.Y < 0)
 	{
@@ -67,16 +68,21 @@ void Kirby::DamageUpdate(float _Delta)
 	{
 		MovePos = { Speed * _Delta * 0.8f, 0.0f };
 		XCheckPos = LEFTMOVECHECKPOS;
+		XColor = GetGroundColor(EMPTYCOLOR, LEFTMOVECHECKPOS);
 	}
 	else
 	{
 		MovePos = { -Speed * _Delta * 0.8f, 0.0f };
 		XCheckPos = RIGHTMOVECHECKPOS;
+		XColor = GetGroundColor(EMPTYCOLOR, LEFTMOVECHECKPOS);
 	}
 
-	AddPos(MovePos);
-	CameraMove(MovePos);
-
+	if (XColor == EMPTYCOLOR)
+	{
+		AddPos(MovePos);
+		CameraMove(MovePos);
+	}
+	
 	FlyPower -= 25.0f;
 
 	if (true == MainRenderer->IsAnimationEnd() && EMPTYCOLOR != Color)
@@ -118,23 +124,35 @@ void Kirby::AttackLoopUpdate(float _Delta)
 {
 	DirCheck();
 
+	// 공격 충돌체 생성
 	if (true == GameEngineInput::IsPress('C'))
 	{
 		if (ActorDir::Left == Dir)
 		{
 			AttackCollision->SetCollisionPos({ -100.0f, -40.0f });
+			AttackCollision->SetCollisionScale(BODYCOLLISIONSCALE);
 			AttackCollision->On();
 		}
 
 		else
 		{
 			AttackCollision->SetCollisionPos({ 100.0f, -40.0f });
+			AttackCollision->SetCollisionScale(BODYCOLLISIONSCALE);
 			AttackCollision->On();
 		}
 	}
 
+	if (true == AttackCollision->Collision(CollisionOrder::MonsterBody, Col, CollisionType::Rect, CollisionType::Rect))
+	{
+		GameEngineCollision* MonsterCollision = Col[Col.size() - 1];
+		GameEngineActor* Monster = MonsterCollision->GetActor();
+	}
+
+	// 공격 충돌체 제거
 	if (true == GameEngineInput::IsUp('C'))
 	{
+		AttackCollision->SetCollisionScale(float4::ZERO);
+		AttackCollision->Off();
 		ChangeState(KirbyState::Idle);
 		return;
 	}

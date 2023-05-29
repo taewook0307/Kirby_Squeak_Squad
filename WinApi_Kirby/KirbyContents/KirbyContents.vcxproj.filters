@@ -57,6 +57,15 @@
     <ClInclude Include="Kirby.h">
       <Filter>KirbyForm\Kirby</Filter>
     </ClInclude>
+    <ClInclude Include="FireMonster.h">
+      <Filter>Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="SparkMonster.h">
+      <Filter>Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="TornadoMonster.h">
+      <Filter>Monster</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TitleLevel.cpp">
@@ -143,6 +152,15 @@
     </ClCompile>
     <ClCompile Include="Kirby_Base_State.cpp">
       <Filter>KirbyForm\Kirby</Filter>
+    </ClCompile>
+    <ClCompile Include="FireMonster.cpp">
+      <Filter>Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="SparkMonster.cpp">
+      <Filter>Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="TornadoMonster.cpp">
+      <Filter>Monster</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

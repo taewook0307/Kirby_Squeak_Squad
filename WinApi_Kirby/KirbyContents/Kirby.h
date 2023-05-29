@@ -98,13 +98,14 @@ protected:
 	std::string CurState = "";
 
 private:
-	std::vector<GameEngineCollision*> Col;
+	float RatioValue = 4.0f;
 	bool IsCheckPosPoint = false;
 
 	float Speed = BASEPOWER;
 	float RunSpeed = Speed * 1.5f;
 	float JumpPower = BASEPOWER;
 	float FlyPower = BASEPOWER;
+	std::vector<GameEngineCollision*> Col;
 
 	void Start() override;
 	void Update(float _Delta) override;

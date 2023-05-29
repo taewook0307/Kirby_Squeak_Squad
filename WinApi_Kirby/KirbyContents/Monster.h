@@ -24,8 +24,8 @@ public:
 	Monster& operator=(Monster&& _Other) noexcept = delete;
 
 protected:
-	void StateUpdate(float _Delta);
-	void ChangeState(MonsterState _State);
+	virtual void StateUpdate(float _Delta);
+	virtual void ChangeState(MonsterState _State);
 
 	void IdleStart();
 	void WalkStart();
@@ -41,25 +41,13 @@ protected:
 
 	virtual void ChangeAnimationState(const std::string& _StateName);
 
-	void ChangeDirCheck()
-	{
-		DirCheck = !DirCheck;
-	}
-
-	void ChangeStateCheck()
-	{
-		StateCheck = !StateCheck;
-	}
-
 	MonsterState State = MonsterState::Max;
 	std::string CurState = "";
 	ActorDir Dir = ActorDir::Right;
 
 private:
+	float RatioValue = 3.0f;
 	float Speed = BASEPOWER / 3 * 2;
-
-	bool DirCheck = false;
-	bool StateCheck = false;
 
 	std::vector<GameEngineCollision*> Col;
 

@@ -50,6 +50,10 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="FireMonster.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="FirstStageLevel.h">
       <SubType>
       </SubType>
@@ -92,6 +96,10 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="SparkMonster.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="ThirdStageLevel.h">
       <SubType>
       </SubType>
@@ -101,6 +109,10 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="TornadoKirby.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="TornadoMonster.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -127,6 +139,10 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="FireKirby_State.cpp" />
+    <ClCompile Include="FireMonster.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="FirstStageLevel.cpp">
       <SubType>
       </SubType>
@@ -176,6 +192,10 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="SparkKirby_State.cpp" />
+    <ClCompile Include="SparkMonster.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="ThirdStageLevel.cpp">
       <SubType>
       </SubType>
@@ -189,6 +209,10 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="TornadoKirby_State.cpp" />
+    <ClCompile Include="TornadoMonster.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

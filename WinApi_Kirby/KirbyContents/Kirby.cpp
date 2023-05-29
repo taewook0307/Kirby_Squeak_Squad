@@ -94,7 +94,7 @@ void Kirby::Start()
 		// Setting
 		MainRenderer->ChangeAnimation("Right_Idle");
 		MainRenderer->SetRenderScaleToTexture();
-		MainRenderer->SetScaleRatio(4.0f);
+		MainRenderer->SetScaleRatio(RatioValue);
 	}
 	{
 		BodyCollision = CreateCollision(CollisionOrder::Body);
@@ -103,7 +103,6 @@ void Kirby::Start()
 		BodyCollision->SetCollisionType(CollisionType::Rect);
 
 		AttackCollision = CreateCollision(CollisionOrder::Attack);
-		AttackCollision->SetCollisionScale(BODYCOLLISIONSCALE);
 		AttackCollision->SetCollisionType(CollisionType::Rect);
 	}
 

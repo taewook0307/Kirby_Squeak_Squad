@@ -1,6 +1,5 @@
 #pragma once
 
-#include "ActorEnum.h"
 #include "Monster.h"
 
 class IceMonster : public Monster

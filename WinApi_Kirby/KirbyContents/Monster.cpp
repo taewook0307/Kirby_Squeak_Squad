@@ -2,7 +2,6 @@
 #include "KirbyGameEnum.h"
 
 #include <GameEngineBase/GameEnginePath.h>
-#include <GameEnginePlatform/GameEngineInput.h>
 #include <GameEngineCore/ResourcesManager.h>
 #include <GameEngineCore/GameEngineRenderer.h>
 #include <GameEngineCore/GameEngineCollision.h>
@@ -32,18 +31,18 @@ void Monster::Start()
 		MainRenderer = CreateRenderer(RenderOrder::Play);
 
 		MainRenderer->CreateAnimation("Right_Monster_Idle", "Right_NormalMonster.Bmp", 0, 3, 0.2f, true);
-		MainRenderer->CreateAnimation("Right_Monster_Walk", "Right_NormalMonster.Bmp", 4, 11, 0.2f, true);
+		MainRenderer->CreateAnimation("Right_Monster_Walk", "Right_NormalMonster.Bmp", 4, 11, 0.05f, true);
 		MainRenderer->CreateAnimation("Right_Monster_Attack", "Right_NormalMonster.Bmp", 12, 14, 0.2f, false);
 		MainRenderer->CreateAnimation("Right_Monster_Damage", "Right_NormalMonster.Bmp", 15, 15, 0.2f, true);
 
 		MainRenderer->CreateAnimation("Left_Monster_Idle", "Left_NormalMonster.Bmp", 0, 3, 0.2f, true);
-		MainRenderer->CreateAnimation("Left_Monster_Walk", "Left_NormalMonster.Bmp", 4, 11, 0.2f, true);
+		MainRenderer->CreateAnimation("Left_Monster_Walk", "Left_NormalMonster.Bmp", 4, 11, 0.05f, true);
 		MainRenderer->CreateAnimation("Left_Monster_Attack", "Left_NormalMonster.Bmp", 12, 14, 0.2f, false);
 		MainRenderer->CreateAnimation("Left_Monster_Damage", "Left_NormalMonster.Bmp", 15, 15, 0.2f, true);
 
 		MainRenderer->ChangeAnimation("Right_Monster_Idle");
 		MainRenderer->SetRenderScaleToTexture();
-		MainRenderer->SetScaleRatio(3.0f);
+		MainRenderer->SetScaleRatio(RatioValue);
 	}
 
 	{
