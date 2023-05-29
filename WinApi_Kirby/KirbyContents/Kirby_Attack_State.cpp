@@ -1,5 +1,6 @@
 #include "Kirby.h"
 
+#include <math.h>
 #include <GameEnginePlatform/GameEngineInput.h>
 #include <GameEngineCore/GameEngineRenderer.h>
 #include <GameEngineCore/GameEngineCollision.h>
@@ -124,28 +125,51 @@ void Kirby::AttackLoopUpdate(float _Delta)
 {
 	DirCheck();
 
+	float4 MonsterPos = float4::ZERO;
+	float4 DirPos = float4::ZERO;
+	GameEngineActor* Monster = nullptr;
+	float Power = 0.0f;
+
 	// 공격 충돌체 생성
 	if (true == GameEngineInput::IsPress('C'))
 	{
 		if (ActorDir::Left == Dir)
 		{
-			AttackCollision->SetCollisionPos({ -100.0f, -40.0f });
+			AttackCollision->SetCollisionPos({ -80.0f, -40.0f });
 			AttackCollision->SetCollisionScale(BODYCOLLISIONSCALE);
 			AttackCollision->On();
 		}
 
 		else
 		{
-			AttackCollision->SetCollisionPos({ 100.0f, -40.0f });
-			AttackCollision->SetCollisionScale(BODYCOLLISIONSCALE);
+			AttackCollision->SetCollisionPos({ 90.0f, -40.0f });
+			AttackCollision->SetCollisionScale({90.0f, 90.0f});
 			AttackCollision->On();
 		}
 	}
 
 	if (true == AttackCollision->Collision(CollisionOrder::MonsterBody, Col, CollisionType::Rect, CollisionType::Rect))
 	{
+		BodyCollision->Off();
+
+		Power = 5.0f;
+
 		GameEngineCollision* MonsterCollision = Col[Col.size() - 1];
-		GameEngineActor* Monster = MonsterCollision->GetActor();
+		Monster = MonsterCollision->GetActor();
+
+		MonsterPos = Monster->GetPos();
+		DirPos = (GetPos() - MonsterPos).NormalizeReturn();
+
+		Power *= 2.0f;
+
+		Monster->AddPos(DirPos *= Power);
+		
+		if (fabs(Monster->GetPos().X - GetPos().X) < 20.0f)
+		{
+			Monster->Death();
+			ChangeState(KirbyState::Keep);
+			return;
+		}
 	}
 
 	// 공격 충돌체 제거

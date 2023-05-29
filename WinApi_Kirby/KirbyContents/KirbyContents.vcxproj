@@ -196,6 +196,7 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="SparkMonster_State.cpp" />
     <ClCompile Include="ThirdStageLevel.cpp">
       <SubType>
       </SubType>

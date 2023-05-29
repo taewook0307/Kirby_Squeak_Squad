@@ -162,6 +162,9 @@
     <ClCompile Include="TornadoMonster.cpp">
       <Filter>Monster</Filter>
     </ClCompile>
+    <ClCompile Include="SparkMonster_State.cpp">
+      <Filter>Monster</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Level">
