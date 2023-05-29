@@ -133,27 +133,6 @@ void Kirby::AttackLoopUpdate(float _Delta)
 		}
 	}
 
-	Col.reserve(Col.size() + 1);
-
-	if (true == AttackCollision->Collision(CollisionOrder::MonsterBody, Col, CollisionType::Rect, CollisionType::Rect))
-	{
-		BodyCollision->Off();
-
-		GameEngineCollision* CurMonsterCollision = Col[Col.size() - 1];
-		
-		GameEngineActor* CurMonster = CurMonsterCollision->GetActor();
-
-		float4 DirPos = (GetPos() - CurMonster->GetPos()).NormalizeReturn();
-		CurMonster->AddPos(DirPos);
-
-		float Check = CurMonster->GetPos().X;
-		if (CurMonster->GetPos().X < GetPos().X + 40.0f)
-		{	
-			ChangeState(KirbyState::Keep);
-			return;
-		}
-	}
-
 	if (true == GameEngineInput::IsUp('C'))
 	{
 		ChangeState(KirbyState::Idle);

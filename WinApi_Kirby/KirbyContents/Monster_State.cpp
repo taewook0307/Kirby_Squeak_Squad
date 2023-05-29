@@ -107,29 +107,10 @@ void Monster::WalkUpdate(float _Delta)
 
 void Monster::AttackUpdate(float _Delta)
 {
-	BodyCollision->Off();
+	
 }
 
 void Monster::DamageUpdate(float _Delta)
 {
-	if (true == BodyCollision->Collision(CollisionOrder::Attack, Col, CollisionType::Rect, CollisionType::Rect))
-	{
-		GameEngineCollision* CurPlayerCollision = Col[Col.size() - 1];
-
-		GameEngineActor* CurPlayer = CurPlayerCollision->GetActor();
-
-		float Check = CurPlayer->GetPos().X;
-
-		if (Check < GetPos().X - 40.0f)
-		{
-			ChangeState(MonsterState::Attack);
-			return;
-		}
-	}
-
-	else
-	{
-		ChangeState(MonsterState::Idle);
-		return;
-	}
+	
 }
