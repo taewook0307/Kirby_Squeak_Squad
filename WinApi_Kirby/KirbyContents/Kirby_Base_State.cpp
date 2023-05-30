@@ -1,6 +1,7 @@
 #include "Kirby.h"
 
 #include <GameEnginePlatform/GameEngineInput.h>
+#include <GameEngineCore/GameEngineCore.h>
 #include <GameEngineCore/GameEngineRenderer.h>
 #include <GameEngineCore/GameEngineCollision.h>
 
@@ -106,8 +107,9 @@ void Kirby::IdleUpdate(float _Delta)
 		return;
 	}
 
-	// Ã¼Å©¿ë
-	if (true == GameEngineInput::IsDown('W'))
+	unsigned int Color = GetGroundColor(EMPTYCOLOR, UPCHECKPOS);
+
+	if (true == GameEngineInput::IsDown('W') && DOORCOLOR == Color)
 	{
 		ChangeState(KirbyState::LevelMove);
 		return;
@@ -152,8 +154,7 @@ void Kirby::LevelMoveUpdate(float _Delta)
 {
 	if (true == MainRenderer->IsAnimationEnd())
 	{
-		// ChangeLevel();
-		ChangeState(KirbyState::Idle);
+		GameEngineCore::ChangeLevel("SecondStageLevel");
 		return;
 	}
 }

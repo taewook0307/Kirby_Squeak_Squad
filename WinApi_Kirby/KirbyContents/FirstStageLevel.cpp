@@ -44,11 +44,6 @@ void FirstStageLevel::Start()
 
 void FirstStageLevel::Update(float _Delta)
 {
-	if (true == GameEngineInput::IsDown('P'))
-	{
-		GameEngineCore::ChangeLevel("SecondStageLevel");
-	}
-
 	if (true == GameEngineInput::IsDown('J'))
 	{
 		FirstStage->SwitchRender();

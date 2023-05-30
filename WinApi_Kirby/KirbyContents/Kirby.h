@@ -105,11 +105,13 @@ private:
 	MonsterType KeepType = MonsterType::Max;
 	float RatioValue = 4.0f;
 	bool IsCheckPosPoint = false;
-
 	float Speed = BASEPOWER;
 	float RunSpeed = Speed * 1.5f;
 	float JumpPower = BASEPOWER;
 	float FlyPower = BASEPOWER;
+
+	std::string MoveLevel = "";
+
 	std::vector<GameEngineCollision*> Col;
 
 	void Start() override;
