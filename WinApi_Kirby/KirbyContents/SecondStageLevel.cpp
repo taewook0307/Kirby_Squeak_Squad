@@ -1,6 +1,6 @@
 ﻿#include "SecondStageLevel.h"
 #include "BackGround.h"
-#include "Map.h"
+#include "Ground.h"
 #include "KirbyGameEnum.h"
 
 #include <GameEnginePlatform/GameEngineInput.h>
@@ -16,8 +16,8 @@ SecondStageLevel::~SecondStageLevel()
 
 void SecondStageLevel::Start()
 {
-	SecondStage = CreateActor<Map>(RenderOrder::Map);
-	SecondStage->MapInit("SecondStage", "SecondStageBitMap.Bmp");
+	SecondStage = CreateActor<Ground>(RenderOrder::Map);
+	SecondStage->GroundInit("SecondStage", "SecondStageBitMap.Bmp");
 
 	BackGround* Back = CreateActor<BackGround>(RenderOrder::BackGround);
 	Back->BackGroundInit("SecondStageLevel.Bmp", "SecondStageBitMap.Bmp");

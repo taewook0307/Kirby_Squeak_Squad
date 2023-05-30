@@ -21,9 +21,6 @@
     <ClInclude Include="BackGround.h">
       <Filter>Global</Filter>
     </ClInclude>
-    <ClInclude Include="Map.h">
-      <Filter>Global</Filter>
-    </ClInclude>
     <ClInclude Include="ActorEnum.h">
       <Filter>Global</Filter>
     </ClInclude>
@@ -66,6 +63,9 @@
     <ClInclude Include="AttackEffect.h">
       <Filter>Global</Filter>
     </ClInclude>
+    <ClInclude Include="Ground.h">
+      <Filter>Global</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TitleLevel.cpp">
@@ -85,9 +85,6 @@
     </ClCompile>
     <ClCompile Include="KirbyCore.cpp" />
     <ClCompile Include="BackGround.cpp">
-      <Filter>Global</Filter>
-    </ClCompile>
-    <ClCompile Include="Map.cpp">
       <Filter>Global</Filter>
     </ClCompile>
     <ClCompile Include="IceMonster.cpp">
@@ -163,6 +160,9 @@
       <Filter>Monster</Filter>
     </ClCompile>
     <ClCompile Include="AttackEffect.cpp">
+      <Filter>Global</Filter>
+    </ClCompile>
+    <ClCompile Include="Ground.cpp">
       <Filter>Global</Filter>
     </ClCompile>
   </ItemGroup>

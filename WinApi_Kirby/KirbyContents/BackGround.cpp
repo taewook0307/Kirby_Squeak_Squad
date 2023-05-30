@@ -1,5 +1,5 @@
 ﻿#include "BackGround.h"
-#include "Map.h"
+#include "Ground.h"
 #include "KirbyGameEnum.h"
 
 #include <GameEngineCore/ResourcesManager.h>
@@ -21,7 +21,7 @@ void BackGround::Update(float _Delta)
 
 }
 
-void BackGround::BackGroundInit(const std::string& _FileName, const std::string& _MapFileName /* = "" */)
+void BackGround::BackGroundInit(const std::string& _FileName, const std::string& _GroundFileName /* = "" */)
 {
 	FileName = _FileName;
 
@@ -37,19 +37,19 @@ void BackGround::BackGroundInit(const std::string& _FileName, const std::string&
 		MainTexture = ResourcesManager::GetInst().TextureLoad(FilePath.GetStringPath());
 	}
 
-	if (_MapFileName == "")
+	if (_GroundFileName == "")
 	{
 		Scale = GameEngineWindow::MainWindow.GetScale();
 	}
 
-	else if (true == ResourcesManager::GetInst().IsLoadTexture(_MapFileName) && _MapFileName != "")
+	else if (true == ResourcesManager::GetInst().IsLoadTexture(_GroundFileName) && _GroundFileName != "")
 	{
-		MapTexture = ResourcesManager::GetInst().FindTexture(_MapFileName);
+		MapTexture = ResourcesManager::GetInst().FindTexture(_GroundFileName);
 
 		Scale = { MapTexture->GetScale().X, GameEngineWindow::MainWindow.GetScale().Y };
 	}
 
-	else if (false == ResourcesManager::GetInst().IsLoadTexture(_MapFileName) && _MapFileName != "")
+	else if (false == ResourcesManager::GetInst().IsLoadTexture(_GroundFileName) && _GroundFileName != "")
 	{
 		MsgBoxAssert("등록되지 않은 Map 이미지로 배경의 크기를 지정하려 했습니다.");
 		return;
@@ -62,7 +62,7 @@ void BackGround::BackGroundInit(const std::string& _FileName, const std::string&
 	}
 }
 
-void BackGround::BackGroundAnimationInit(const std::string& _FolderName, const std::string& _MapFileName /* = "" */)
+void BackGround::BackGroundAnimationInit(const std::string& _FolderName, const std::string& _GroundFileName /* = "" */)
 {
 	{
 		GameEnginePath FolderPath;
@@ -75,7 +75,7 @@ void BackGround::BackGroundAnimationInit(const std::string& _FolderName, const s
 		MainSprite = ResourcesManager::GetInst().CreateSpriteFolder(_FolderName, FolderPath.PlusFilePath(_FolderName));
 	}
 
-	if (_MapFileName == "")
+	if (_GroundFileName == "")
 	{
 		Scale = GameEngineWindow::MainWindow.GetScale();
 	}

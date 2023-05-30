@@ -1,4 +1,4 @@
-﻿#include "Map.h"
+﻿#include "Ground.h"
 #include "KirbyGameEnum.h"
 
 #include <Windows.h>
@@ -14,15 +14,15 @@
 #include <GameEngineCore/GameEngineRenderer.h>
 #include <GameEngineCore/GameEngineSprite.h>
 
-Map::Map()
+Ground::Ground()
 {
 }
 
-Map::~Map()
+Ground::~Ground()
 {
 }
 
-void Map::MapInit(const std::string& _PathName, const std::string& _BitMapFIleName)
+void Ground::GroundInit(const std::string& _PathName, const std::string& _BitMapFIleName)
 {
 	PathName = _PathName;
 	DebugBitMapName = _BitMapFIleName;
@@ -69,7 +69,7 @@ void Map::MapInit(const std::string& _PathName, const std::string& _BitMapFIleNa
 	DebugRenderer->Off();
 }
 
-void Map::SwitchRender()
+void Ground::SwitchRender()
 {
 	SwitchRenderValue = !SwitchRenderValue;
 

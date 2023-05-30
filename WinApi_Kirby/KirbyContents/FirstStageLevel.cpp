@@ -1,6 +1,6 @@
 ﻿#include "FirstStageLevel.h"
 #include "BackGround.h"
-#include "Map.h"
+#include "Ground.h"
 #include "Kirby.h"
 #include "SparkKirby.h"
 #include "IceKirby.h"
@@ -24,8 +24,8 @@ FirstStageLevel::~FirstStageLevel()
 
 void FirstStageLevel::Start()
 {
-	FirstStage = CreateActor<Map>(RenderOrder::Map);
-	FirstStage->MapInit("FirstStage", "FirstStageBitMap.Bmp");
+	FirstStage = CreateActor<Ground>(RenderOrder::Map);
+	FirstStage->GroundInit("FirstStage", "FirstStageBitMap.Bmp");
 
 	BackGround* Back = CreateActor<BackGround>(RenderOrder::BackGround);
 	Back->BackGroundInit("FirstStageLevel.Bmp", "FirstStageBitMap.Bmp");
@@ -69,7 +69,7 @@ void FirstStageLevel::LevelStart(GameEngineLevel* _PrevLevel)
 
 		GetMainCamera()->SetPos(float4::ZERO);
 
-		LevelMonster->SetPos(WinScale.Half());
+		LevelMonster->SetPos({ WinScale.X, WinScale.Half().Half().Y });
 		LevelMonster->SetGroundBitMap("FirstStageBitMap.Bmp");
 	}
 }

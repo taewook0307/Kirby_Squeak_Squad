@@ -3,7 +3,7 @@
 #include <list>
 #include <GameEngineCore/GameEngineLevel.h>
 
-class Map;
+class Ground;
 class Kirby;
 class Monster;
 class FirstStageLevel : public GameEngineLevel
@@ -29,6 +29,6 @@ private:
 
 	Kirby* LevelPlayer = nullptr;
 	Monster* LevelMonster = nullptr;
-	Map* FirstStage = nullptr;
+	Ground* FirstStage = nullptr;
 	std::list<Monster*> AllLevelMonster;
 };

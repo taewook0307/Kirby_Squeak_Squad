@@ -6,23 +6,23 @@
 class GameEngineSprite;
 class GameEngineRenderer;
 class GameEngineWindowTexture;
-class Map : public GameEngineActor
+class Ground : public GameEngineActor
 {
 public:
 	// constrcuter destructer
-	Map();
-	~Map();
+	Ground();
+	~Ground();
 
 	// delete Function
-	Map(const Map& _Other) = delete;
-	Map(Map&& _Other) noexcept = delete;
-	Map& operator=(const Map& _Other) = delete;
-	Map& operator=(Map&& _Other) noexcept = delete;
+	Ground(const Ground& _Other) = delete;
+	Ground(Ground&& _Other) noexcept = delete;
+	Ground& operator=(const Ground& _Other) = delete;
+	Ground& operator=(Ground&& _Other) noexcept = delete;
 
 	GameEngineRenderer* MainRenderer = nullptr;
 	GameEngineRenderer* DebugRenderer = nullptr;
 
-	void MapInit(const std::string& _PathName, const std::string& _BitMapFIleName);
+	void GroundInit(const std::string& _PathName, const std::string& _BitMapFIleName);
 
 	void SwitchRender();
 protected:

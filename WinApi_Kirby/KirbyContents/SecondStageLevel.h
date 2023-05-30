@@ -2,7 +2,7 @@
 
 #include <GameEngineCore/GameEngineLevel.h>
 
-class Map;
+class Ground;
 class SecondStageLevel : public GameEngineLevel
 {
 public:
@@ -19,7 +19,7 @@ public:
 protected:
 
 private:
-	Map* SecondStage = nullptr;
+	Ground* SecondStage = nullptr;
 
 	void Start() override;
 	void Update(float _Delta) override;
