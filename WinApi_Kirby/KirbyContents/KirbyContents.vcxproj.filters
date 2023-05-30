@@ -24,18 +24,6 @@
     <ClInclude Include="ActorEnum.h">
       <Filter>Global</Filter>
     </ClInclude>
-    <ClInclude Include="FireKirby.h">
-      <Filter>KirbyForm</Filter>
-    </ClInclude>
-    <ClInclude Include="IceKirby.h">
-      <Filter>KirbyForm</Filter>
-    </ClInclude>
-    <ClInclude Include="TornadoKirby.h">
-      <Filter>KirbyForm</Filter>
-    </ClInclude>
-    <ClInclude Include="SparkKirby.h">
-      <Filter>KirbyForm</Filter>
-    </ClInclude>
     <ClInclude Include="Gravity.h">
       <Filter>Global</Filter>
     </ClInclude>
@@ -66,6 +54,18 @@
     <ClInclude Include="TornadoMonster.h">
       <Filter>Monster\Tornado</Filter>
     </ClInclude>
+    <ClInclude Include="FireKirby.h">
+      <Filter>KirbyForm\Fire</Filter>
+    </ClInclude>
+    <ClInclude Include="IceKirby.h">
+      <Filter>KirbyForm\Ice</Filter>
+    </ClInclude>
+    <ClInclude Include="SparkKirby.h">
+      <Filter>KirbyForm\Spark</Filter>
+    </ClInclude>
+    <ClInclude Include="TornadoKirby.h">
+      <Filter>KirbyForm\Tornado</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TitleLevel.cpp">
@@ -86,30 +86,6 @@
     <ClCompile Include="KirbyCore.cpp" />
     <ClCompile Include="BackGround.cpp">
       <Filter>Global</Filter>
-    </ClCompile>
-    <ClCompile Include="FireKirby.cpp">
-      <Filter>KirbyForm</Filter>
-    </ClCompile>
-    <ClCompile Include="IceKirby.cpp">
-      <Filter>KirbyForm</Filter>
-    </ClCompile>
-    <ClCompile Include="TornadoKirby.cpp">
-      <Filter>KirbyForm</Filter>
-    </ClCompile>
-    <ClCompile Include="SparkKirby.cpp">
-      <Filter>KirbyForm</Filter>
-    </ClCompile>
-    <ClCompile Include="SparkKirby_State.cpp">
-      <Filter>KirbyForm</Filter>
-    </ClCompile>
-    <ClCompile Include="FireKirby_State.cpp">
-      <Filter>KirbyForm</Filter>
-    </ClCompile>
-    <ClCompile Include="TornadoKirby_State.cpp">
-      <Filter>KirbyForm</Filter>
-    </ClCompile>
-    <ClCompile Include="IceKirby_State.cpp">
-      <Filter>KirbyForm</Filter>
     </ClCompile>
     <ClCompile Include="Gravity.cpp">
       <Filter>Global</Filter>
@@ -168,6 +144,30 @@
     <ClCompile Include="IceMonster_State.cpp">
       <Filter>Monster\Ice</Filter>
     </ClCompile>
+    <ClCompile Include="FireKirby.cpp">
+      <Filter>KirbyForm\Fire</Filter>
+    </ClCompile>
+    <ClCompile Include="FireKirby_State.cpp">
+      <Filter>KirbyForm\Fire</Filter>
+    </ClCompile>
+    <ClCompile Include="IceKirby.cpp">
+      <Filter>KirbyForm\Ice</Filter>
+    </ClCompile>
+    <ClCompile Include="IceKirby_State.cpp">
+      <Filter>KirbyForm\Ice</Filter>
+    </ClCompile>
+    <ClCompile Include="SparkKirby.cpp">
+      <Filter>KirbyForm\Spark</Filter>
+    </ClCompile>
+    <ClCompile Include="SparkKirby_State.cpp">
+      <Filter>KirbyForm\Spark</Filter>
+    </ClCompile>
+    <ClCompile Include="TornadoKirby.cpp">
+      <Filter>KirbyForm\Tornado</Filter>
+    </ClCompile>
+    <ClCompile Include="TornadoKirby_State.cpp">
+      <Filter>KirbyForm\Tornado</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Level">
@@ -199,6 +199,18 @@
     </Filter>
     <Filter Include="Monster\Tornado">
       <UniqueIdentifier>{b8c47b16-cb58-490f-8de0-92cfd25a8fe5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="KirbyForm\Fire">
+      <UniqueIdentifier>{02abce2e-df0a-404d-a946-a19adbb9e723}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="KirbyForm\Ice">
+      <UniqueIdentifier>{4c8a9550-8f26-4760-ba56-3353f85c32ee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="KirbyForm\Tornado">
+      <UniqueIdentifier>{6f7f04db-c411-492f-9300-9e77ace68e8a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="KirbyForm\Spark">
+      <UniqueIdentifier>{861340bd-6bb2-4ab8-af11-af962473ac51}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
