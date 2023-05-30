@@ -16,7 +16,7 @@ class GameEngineLevel : public GameEngineObject
 	friend class GameEngineCollision;
 	friend class GameEngineActor;
 	friend class GameEngineCore;
-	
+
 public:
 	// constrcuter destructer
 	GameEngineLevel();
@@ -57,10 +57,12 @@ public:
 		return UICamera;
 	}
 
-	static void CollisionDebugRenderSwitch() 
+	static void CollisionDebugRenderSwitch()
 	{
 		IsCollisionDebugRender = !IsCollisionDebugRender;
 	}
+
+	void OverCheck(GameEngineLevel* _PrevLevel);
 
 protected:
 	virtual void LevelStart(GameEngineLevel* _PrevLevel) {}
@@ -82,6 +84,9 @@ private:
 
 	void ActorLevelEnd();
 	void ActorLevelStart();
+
+	void CollisionOverRelease();
+	void CollisionRelease();
 
 	void ActorUpdate(float _Delta);
 	void ActorRender(float _Delta);

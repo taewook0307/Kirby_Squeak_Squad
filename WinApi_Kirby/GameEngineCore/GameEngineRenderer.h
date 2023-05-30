@@ -5,6 +5,12 @@
 #include <map>
 #include <vector>
 
+enum class CameraType
+{
+	MAIN,
+	UI,
+};
+
 // 설명 :
 class GameEngineSprite;
 class GameEngineActor;
@@ -60,7 +66,7 @@ public:
 	void SetRenderScaleToTexture();
 
 
-	void SetOrder(int _Order) override; 
+	void SetOrder(int _Order) override;
 
 protected:
 	void Start() override;
@@ -111,10 +117,10 @@ public:
 	/// <param name="_Inter">애니메이션 시간</param>
 	/// <param name="_Loop">애니메이션 반복</param>
 	void CreateAnimation(
-		const std::string& _AniamtionName, 
-		const std::string& _SpriteName, 
+		const std::string& _AniamtionName,
+		const std::string& _SpriteName,
 		size_t _Start = -1, size_t _End = -1,
-		float _Inter = 0.1f, 
+		float _Inter = 0.1f,
 		bool _Loop = true);
 
 	void ChangeAnimation(const std::string& _AniamtionName, bool _ForceChange = false);
@@ -122,10 +128,17 @@ public:
 	void MainCameraSetting();
 	void UICameraSetting();
 
-	bool IsAnimationEnd() 
+	size_t GetCurFrame()
+	{
+		return CurAnimation->CurFrame;
+	}
+
+	bool IsAnimationEnd()
 	{
 		return CurAnimation->IsEnd;
 	}
+
+	CameraType CameraTypeValue = CameraType::MAIN;
 
 	std::map<std::string, Animation> AllAnimation;
 	Animation* CurAnimation = nullptr;
