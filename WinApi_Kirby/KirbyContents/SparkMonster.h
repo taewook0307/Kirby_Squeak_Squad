@@ -18,12 +18,12 @@ public:
 protected:
 	void StateUpdate(float _Delta) override;
 	void ChangeState(MonsterState _State) override;
+	void ChangeAnimationState(const std::string& _StateName) override;
 
 	void WalkUpdate(float _Delta) override;
 	void AttackUpdate(float _Delta) override;
 	void DamageUpdate(float _Delta) override;
 
-	void ChangeAnimationState(const std::string& _StateName) override;
 private:
 	float RatioValue = 3.0f;
 

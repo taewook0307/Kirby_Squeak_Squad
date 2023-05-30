@@ -24,9 +24,6 @@
     <ClInclude Include="ActorEnum.h">
       <Filter>Global</Filter>
     </ClInclude>
-    <ClInclude Include="IceMonster.h">
-      <Filter>Monster</Filter>
-    </ClInclude>
     <ClInclude Include="FireKirby.h">
       <Filter>KirbyForm</Filter>
     </ClInclude>
@@ -51,20 +48,23 @@
     <ClInclude Include="Kirby.h">
       <Filter>KirbyForm\Kirby</Filter>
     </ClInclude>
-    <ClInclude Include="FireMonster.h">
-      <Filter>Monster</Filter>
-    </ClInclude>
-    <ClInclude Include="SparkMonster.h">
-      <Filter>Monster</Filter>
-    </ClInclude>
-    <ClInclude Include="TornadoMonster.h">
-      <Filter>Monster</Filter>
-    </ClInclude>
     <ClInclude Include="AttackEffect.h">
       <Filter>Global</Filter>
     </ClInclude>
     <ClInclude Include="Ground.h">
       <Filter>Global</Filter>
+    </ClInclude>
+    <ClInclude Include="FireMonster.h">
+      <Filter>Monster\Fire</Filter>
+    </ClInclude>
+    <ClInclude Include="IceMonster.h">
+      <Filter>Monster\Ice</Filter>
+    </ClInclude>
+    <ClInclude Include="SparkMonster.h">
+      <Filter>Monster\Spark</Filter>
+    </ClInclude>
+    <ClInclude Include="TornadoMonster.h">
+      <Filter>Monster\Tornado</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -86,9 +86,6 @@
     <ClCompile Include="KirbyCore.cpp" />
     <ClCompile Include="BackGround.cpp">
       <Filter>Global</Filter>
-    </ClCompile>
-    <ClCompile Include="IceMonster.cpp">
-      <Filter>Monster</Filter>
     </ClCompile>
     <ClCompile Include="FireKirby.cpp">
       <Filter>KirbyForm</Filter>
@@ -147,23 +144,29 @@
     <ClCompile Include="Kirby_Base_State.cpp">
       <Filter>KirbyForm\Kirby</Filter>
     </ClCompile>
-    <ClCompile Include="FireMonster.cpp">
-      <Filter>Monster</Filter>
-    </ClCompile>
-    <ClCompile Include="SparkMonster.cpp">
-      <Filter>Monster</Filter>
-    </ClCompile>
-    <ClCompile Include="TornadoMonster.cpp">
-      <Filter>Monster</Filter>
-    </ClCompile>
-    <ClCompile Include="SparkMonster_State.cpp">
-      <Filter>Monster</Filter>
-    </ClCompile>
     <ClCompile Include="AttackEffect.cpp">
       <Filter>Global</Filter>
     </ClCompile>
     <ClCompile Include="Ground.cpp">
       <Filter>Global</Filter>
+    </ClCompile>
+    <ClCompile Include="FireMonster.cpp">
+      <Filter>Monster\Fire</Filter>
+    </ClCompile>
+    <ClCompile Include="IceMonster.cpp">
+      <Filter>Monster\Ice</Filter>
+    </ClCompile>
+    <ClCompile Include="SparkMonster.cpp">
+      <Filter>Monster\Spark</Filter>
+    </ClCompile>
+    <ClCompile Include="SparkMonster_State.cpp">
+      <Filter>Monster\Spark</Filter>
+    </ClCompile>
+    <ClCompile Include="TornadoMonster.cpp">
+      <Filter>Monster\Tornado</Filter>
+    </ClCompile>
+    <ClCompile Include="IceMonster_State.cpp">
+      <Filter>Monster\Ice</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -184,6 +187,18 @@
     </Filter>
     <Filter Include="Effect">
       <UniqueIdentifier>{c7ba1088-5f1b-4091-818e-3490a692a96d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Monster\Spark">
+      <UniqueIdentifier>{94a2439e-a381-419d-acd8-c340bc198d2b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Monster\Ice">
+      <UniqueIdentifier>{f6190281-a3e9-4212-b545-9391b2e774b4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Monster\Fire">
+      <UniqueIdentifier>{e6083353-6da0-4677-84d4-80063aa50f90}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Monster\Tornado">
+      <UniqueIdentifier>{b8c47b16-cb58-490f-8de0-92cfd25a8fe5}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
