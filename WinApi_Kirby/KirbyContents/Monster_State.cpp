@@ -28,7 +28,7 @@ void Monster::IdleUpdate(float _Delta)
 {
 	unsigned int Color = GetGroundColor(EMPTYCOLOR);
 
-	if (EMPTYCOLOR == Color)
+	if (EMPTYCOLOR == Color || DOORCOLOR == Color)
 	{
 		Gravity(_Delta);
 	}
@@ -76,7 +76,7 @@ void Monster::WalkUpdate(float _Delta)
 	{
 		unsigned int Color = GetGroundColor(EMPTYCOLOR, CheckPos);
 
-		if (EMPTYCOLOR == Color)
+		if (EMPTYCOLOR == Color || DOORCOLOR == Color)
 		{
 			AddPos(MovePos);
 		}

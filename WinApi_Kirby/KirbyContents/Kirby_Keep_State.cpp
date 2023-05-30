@@ -68,7 +68,7 @@ void Kirby::KeepWalkUpdate(float _Delta)
 	{
 		unsigned int Color = GetGroundColor(EMPTYCOLOR, CheckPos);
 
-		if (EMPTYCOLOR == Color)
+		if (EMPTYCOLOR == Color || DOORCOLOR == Color)
 		{
 			AddPos(MovePos);
 			CameraMove(MovePos);

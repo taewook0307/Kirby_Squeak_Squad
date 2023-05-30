@@ -61,7 +61,7 @@ void Kirby::DamageUpdate(float _Delta)
 	}
 	
 
-	if (EMPTYCOLOR == Color)
+	if (EMPTYCOLOR == Color || DOORCOLOR == Color)
 	{
 		AddPos(FlyPos);
 	}
@@ -79,7 +79,7 @@ void Kirby::DamageUpdate(float _Delta)
 		XColor = GetGroundColor(EMPTYCOLOR, LEFTMOVECHECKPOS);
 	}
 
-	if (XColor == EMPTYCOLOR)
+	if (XColor == EMPTYCOLOR || XColor == DOORCOLOR)
 	{
 		AddPos(MovePos);
 		CameraMove(MovePos);
@@ -87,7 +87,8 @@ void Kirby::DamageUpdate(float _Delta)
 	
 	FlyPower -= 25.0f;
 
-	if (true == MainRenderer->IsAnimationEnd() && EMPTYCOLOR != Color)
+	if (true == MainRenderer->IsAnimationEnd() && EMPTYCOLOR != Color
+		|| true == MainRenderer->IsAnimationEnd() && DOORCOLOR != Color)
 	{
 		FlyPower = BASEPOWER;
 		ChangeState(KirbyState::DamageLand);
@@ -99,7 +100,7 @@ void Kirby::DamageLandUpdate(float _Delta)
 {
 	unsigned int Color = GetGroundColor(EMPTYCOLOR);
 
-	if (EMPTYCOLOR == Color)
+	if (EMPTYCOLOR == Color || DOORCOLOR == Color)
 	{
 		Gravity(_Delta);
 	}

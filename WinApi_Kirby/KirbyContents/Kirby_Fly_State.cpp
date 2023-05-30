@@ -106,7 +106,7 @@ void Kirby::FlyUpdate(float _Delta)
 	{
 		unsigned int Color = GetGroundColor(EMPTYCOLOR, CheckPos);
 
-		if (EMPTYCOLOR == Color)
+		if (EMPTYCOLOR == Color || DOORCOLOR == Color)
 		{
 			AddPos(MovePos);
 			CameraMove(MovePos);
@@ -148,7 +148,7 @@ void Kirby::BreatheOutUpdate(float _Delta)
 {
 	unsigned int Color = GetGroundColor(EMPTYCOLOR);
 
-	if (EMPTYCOLOR == Color)
+	if (EMPTYCOLOR == Color || DOORCOLOR == Color)
 	{
 		Gravity(_Delta);
 
@@ -208,7 +208,7 @@ void Kirby::DropUpdate(float _Delta)
 	unsigned int Color = GetGroundColor(EMPTYCOLOR);
 
 	// 흰 공간에 있을 경우
-	if (EMPTYCOLOR == Color)
+	if (EMPTYCOLOR == Color || DOORCOLOR == Color)
 	{
 		DropTimer += _Delta;
 		Gravity(_Delta);
@@ -295,7 +295,7 @@ void Kirby::FlyToTurnUpUpdate(float _Delta)
 	unsigned int Color = GetGroundColor(EMPTYCOLOR, CheckPos);
 
 	// 벽이 있는 지 확인 후 없으면 위치값 위로 이동
-	if (EMPTYCOLOR == Color)
+	if (EMPTYCOLOR == Color || DOORCOLOR == Color)
 	{
 		AddPos(FlyPos);
 	}
@@ -343,7 +343,7 @@ void Kirby::FlyToTurnLandUpdate(float _Delta)
 	else
 	{
 		// 왼쪽 혹은 오른쪽 방향에 벽이 있을 경우 Y방향만 이동
-		if (EMPTYCOLOR == Color)
+		if (EMPTYCOLOR == Color || DOORCOLOR == Color)
 		{
 			AddPos(FlyPos);
 		}

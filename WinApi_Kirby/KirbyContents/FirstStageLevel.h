@@ -30,4 +30,5 @@ private:
 	Kirby* LevelPlayer = nullptr;
 	Monster* LevelMonster = nullptr;
 	Map* FirstStage = nullptr;
+	std::list<Monster*> AllLevelMonster;
 };

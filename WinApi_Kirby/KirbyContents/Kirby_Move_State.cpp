@@ -50,7 +50,7 @@ void Kirby::SlideUpdate(float _Delta)
 
 		unsigned int Color = GetGroundColor(EMPTYCOLOR, CheckPos);
 
-		if (EMPTYCOLOR == Color)
+		if (EMPTYCOLOR == Color || DOORCOLOR == Color)
 		{
 			AddPos(MovePos);
 			CameraMove(MovePos);
@@ -67,7 +67,7 @@ void Kirby::SlideUpdate(float _Delta)
 
 		unsigned int Color = GetGroundColor(EMPTYCOLOR, CheckPos);
 
-		if (EMPTYCOLOR == Color)
+		if (EMPTYCOLOR == Color || DOORCOLOR == Color)
 		{
 			AddPos(MovePos);
 			CameraMove(MovePos);
@@ -119,7 +119,7 @@ void Kirby::WalkUpdate(float _Delta)
 	{
 		unsigned int Color = GetGroundColor(EMPTYCOLOR, CheckPos);
 
-		if (EMPTYCOLOR == Color)
+		if (EMPTYCOLOR == Color || DOORCOLOR == Color)
 		{
 			AddPos(MovePos);
 			CameraMove(MovePos);
@@ -184,7 +184,7 @@ void Kirby::RunUpdate(float _Delta)
 	{
 		unsigned int Color = GetGroundColor(EMPTYCOLOR, CheckPos);
 
-		if (EMPTYCOLOR == Color)
+		if (EMPTYCOLOR == Color || DOORCOLOR == Color)
 		{
 			AddPos(MovePos);
 			CameraMove(MovePos);
@@ -242,7 +242,7 @@ void Kirby::StopUpdate(float _Delta)
 
 	Speed *= 0.8f;
 
-	if (EMPTYCOLOR == Color)
+	if (EMPTYCOLOR == Color || DOORCOLOR == Color)
 	{	
 		AddPos(MovePos += OppositePos);
 		CameraMove(MovePos += OppositePos);

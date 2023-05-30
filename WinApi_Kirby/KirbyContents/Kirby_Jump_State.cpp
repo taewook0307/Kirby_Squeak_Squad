@@ -42,7 +42,7 @@ void Kirby::JumpUpdate(float _Delta)
 
 		unsigned int Color = GetGroundColor(EMPTYCOLOR, CheckPos);
 
-		if (EMPTYCOLOR == Color)
+		if (EMPTYCOLOR == Color || DOORCOLOR == Color)
 		{
 			AddPos(MovePos);
 			CameraMove(MovePos);
@@ -56,7 +56,7 @@ void Kirby::JumpUpdate(float _Delta)
 
 		unsigned int Color = GetGroundColor(EMPTYCOLOR, CheckPos);
 
-		if (EMPTYCOLOR == Color)
+		if (EMPTYCOLOR == Color || DOORCOLOR == Color)
 		{
 			AddPos(MovePos);
 			CameraMove(MovePos);
@@ -70,7 +70,7 @@ void Kirby::JumpUpdate(float _Delta)
 
 		unsigned int Color = GetGroundColor(EMPTYCOLOR, CheckPos);
 
-		if (EMPTYCOLOR == Color)
+		if (EMPTYCOLOR == Color || DOORCOLOR == Color)
 		{
 			AddPos(MovePos);
 			CameraMove(MovePos);
@@ -84,7 +84,7 @@ void Kirby::JumpUpdate(float _Delta)
 
 		unsigned int Color = GetGroundColor(EMPTYCOLOR, CheckPos);
 
-		if (EMPTYCOLOR == Color)
+		if (EMPTYCOLOR == Color || DOORCOLOR == Color)
 		{
 			AddPos(MovePos);
 			CameraMove(MovePos);
@@ -106,7 +106,7 @@ void Kirby::JumpToDownUpdate(float _Delta)
 
 	unsigned int Color = GetGroundColor(EMPTYCOLOR);
 
-	if (EMPTYCOLOR == Color)
+	if (EMPTYCOLOR == Color || DOORCOLOR == Color)
 	{
 		Gravity(_Delta);
 
@@ -120,7 +120,7 @@ void Kirby::JumpToDownUpdate(float _Delta)
 
 			unsigned int Color = GetGroundColor(EMPTYCOLOR, CheckPos);
 
-			if (EMPTYCOLOR == Color)
+			if (EMPTYCOLOR == Color || DOORCOLOR == Color)
 			{
 				AddPos(MovePos);
 				CameraMove(MovePos);
@@ -134,7 +134,7 @@ void Kirby::JumpToDownUpdate(float _Delta)
 
 			unsigned int Color = GetGroundColor(EMPTYCOLOR, CheckPos);
 
-			if (EMPTYCOLOR == Color)
+			if (EMPTYCOLOR == Color || DOORCOLOR == Color)
 			{
 				AddPos(MovePos);
 				CameraMove(MovePos);
@@ -148,7 +148,7 @@ void Kirby::JumpToDownUpdate(float _Delta)
 
 			unsigned int Color = GetGroundColor(EMPTYCOLOR, CheckPos);
 
-			if (EMPTYCOLOR == Color)
+			if (EMPTYCOLOR == Color || DOORCOLOR == Color)
 			{
 				AddPos(MovePos);
 				CameraMove(MovePos);
@@ -162,7 +162,7 @@ void Kirby::JumpToDownUpdate(float _Delta)
 
 			unsigned int Color = GetGroundColor(EMPTYCOLOR, CheckPos);
 
-			if (EMPTYCOLOR == Color)
+			if (EMPTYCOLOR == Color || DOORCOLOR == Color)
 			{
 				AddPos(MovePos);
 				CameraMove(MovePos);
