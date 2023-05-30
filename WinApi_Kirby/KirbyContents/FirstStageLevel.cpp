@@ -69,7 +69,7 @@ void FirstStageLevel::LevelStart(GameEngineLevel* _PrevLevel)
 
 		GetMainCamera()->SetPos(float4::ZERO);
 
-		LevelMonster->SetPos({ WinScale.X, WinScale.Half().Half().Y });
+		LevelMonster->SetPos({ 2100.0f, 735.0f });
 		LevelMonster->SetGroundBitMap("FirstStageBitMap.Bmp");
 	}
 }
