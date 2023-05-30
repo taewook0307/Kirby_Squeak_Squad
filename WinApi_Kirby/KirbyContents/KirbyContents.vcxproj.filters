@@ -24,9 +24,6 @@
     <ClInclude Include="Map.h">
       <Filter>Global</Filter>
     </ClInclude>
-    <ClInclude Include="ThirdStageLevel.h">
-      <Filter>Level</Filter>
-    </ClInclude>
     <ClInclude Include="ActorEnum.h">
       <Filter>Global</Filter>
     </ClInclude>
@@ -92,9 +89,6 @@
     </ClCompile>
     <ClCompile Include="Map.cpp">
       <Filter>Global</Filter>
-    </ClCompile>
-    <ClCompile Include="ThirdStageLevel.cpp">
-      <Filter>Level</Filter>
     </ClCompile>
     <ClCompile Include="IceMonster.cpp">
       <Filter>Monster</Filter>

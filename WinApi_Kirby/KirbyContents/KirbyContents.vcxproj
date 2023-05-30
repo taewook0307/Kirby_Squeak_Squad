@@ -104,10 +104,6 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="ThirdStageLevel.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
     <ClInclude Include="TitleLevel.h">
       <SubType>
       </SubType>
@@ -205,10 +201,6 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="SparkMonster_State.cpp" />
-    <ClCompile Include="ThirdStageLevel.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
     <ClCompile Include="TitleLevel.cpp">
       <SubType>
       </SubType>

@@ -27,7 +27,7 @@ void SecondStageLevel::Update(float _Delta)
 {
 	if (true == GameEngineInput::IsDown('P'))
 	{
-		GameEngineCore::ChangeLevel("ThirdStageLevel");
+		GameEngineCore::ChangeLevel("BossStageLevel");
 	}
 
 	if (true == GameEngineInput::IsDown('J'))
