@@ -30,7 +30,7 @@ public:
 	// 정리된다.
 	virtual void Release() {}
 
-	void On() 
+	void On()
 	{
 		IsUpdateValue = true;
 	}
@@ -45,7 +45,7 @@ public:
 		this->IsDeathValue = true;
 	}
 
-	bool IsUpdate() 
+	bool IsUpdate()
 	{
 		return true == IsUpdateValue && false == IsDeathValue;
 	}
@@ -60,17 +60,23 @@ public:
 		return Order;
 	}
 
+	template<typename EnumType>
+	void SetOrder(EnumType _Order)
+	{
+		SetOrder(static_cast<int>(_Order));
+	}
+
 	virtual void SetOrder(int _Order)
 	{
 		Order = _Order;
 	}
 
-	float GetLiveTime() 
+	float GetLiveTime()
 	{
 		return LiveTime;
 	}
 
-	void ResetLiveTime() 
+	void ResetLiveTime()
 	{
 		LiveTime = 0.0f;
 	}
@@ -84,7 +90,7 @@ private:
 	bool IsUpdateValue = true; // 이걸 false로 만들면 됩니다.
 	bool IsDeathValue = false; // 아예 메모리에서 날려버리고 싶어.
 
-	void AddLiveTime(float _DeltaTime) 
+	void AddLiveTime(float _DeltaTime)
 	{
 		LiveTime += _DeltaTime;
 	}

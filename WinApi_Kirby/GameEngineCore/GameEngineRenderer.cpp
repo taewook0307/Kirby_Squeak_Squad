@@ -209,7 +209,7 @@ void GameEngineRenderer::CreateAnimation(
 }
 
 
-void GameEngineRenderer::ChangeAnimation(const std::string& _AniamtionName, bool _ForceChange)
+void GameEngineRenderer::ChangeAnimation(const std::string& _AniamtionName, int _FrameCount, bool _ForceChange)
 {
 	Animation* ChangeAni = FindAnimation(_AniamtionName);
 
@@ -221,7 +221,7 @@ void GameEngineRenderer::ChangeAnimation(const std::string& _AniamtionName, bool
 	CurAnimation = FindAnimation(_AniamtionName);
 
 	CurAnimation->CurInter = CurAnimation->Inters[0];
-	CurAnimation->CurFrame = 0;
+	CurAnimation->CurFrame = _FrameCount;
 	CurAnimation->IsEnd = false;
 
 	if (nullptr == CurAnimation)

@@ -132,6 +132,15 @@ void Kirby::Render(float _Delta)
 {
 	HDC dc = GameEngineWindow::MainWindow.GetBackBuffer()->GetImageDC();
 
+	std::string XText = "";
+	XText += "플레이어 위치 X 값 : ";
+	XText += std::to_string(GetPos().X);
+	std::string YText = "";
+	YText += "플레이어 위치 Y 값 : ";
+	YText += std::to_string(GetPos().Y);
+	TextOutA(dc, 2, 3, XText.c_str(), static_cast<int>(XText.size()));
+	TextOutA(dc, 2, 30, YText.c_str(), static_cast<int>(YText.size()));
+
 	CollisionData Data;
 
 	if (true == IsCheckPosPoint)

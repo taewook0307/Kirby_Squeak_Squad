@@ -247,7 +247,7 @@ void GameEngineWindow::SetPosAndScale(const float4& _Pos, const float4& _Scale)
 	RECT Rc = { 0, 0, _Scale.iX(), _Scale.iY() };
 
 
-	AdjustWindowRect(&Rc, WS_OVERLAPPEDWINDOW,FALSE);
+	AdjustWindowRect(&Rc, WS_OVERLAPPEDWINDOW, FALSE);
 
 	//                          100        100         500          500
 	SetWindowPos(hWnd, nullptr, _Pos.iX(), _Pos.iY(), Rc.right - Rc.left, Rc.bottom - Rc.top, SWP_NOZORDER);
@@ -260,4 +260,9 @@ float4 GameEngineWindow::GetMousePos()
 	ScreenToClient(hWnd, &MoniterPoint);
 
 	return float4{ static_cast<float>(MoniterPoint.x), static_cast<float>(MoniterPoint.y) };
+}
+
+void GameEngineWindow::CursorOff()
+{
+	ShowCursor(FALSE);
 }

@@ -23,7 +23,7 @@ public:
 
 	static void MessageLoop(HINSTANCE _Inst, void(*_Start)(HINSTANCE), void(*_Update)(), void(*_End)());
 
-	HDC GetHDC() 
+	HDC GetHDC()
 	{
 		return Hdc;
 	}
@@ -47,7 +47,7 @@ public:
 
 	void SetPosAndScale(const float4& _Pos, const float4& _Scale);
 
-	static void WindowLoopOff() 
+	static void WindowLoopOff()
 	{
 		IsWindowUpdate = false;
 	}
@@ -55,7 +55,9 @@ public:
 	void ClearBackBuffer();
 	void DoubleBuffering();
 
-	static bool IsFocus() 
+	void CursorOff();
+
+	static bool IsFocus()
 	{
 		return IsFocusValue;
 	}
@@ -65,7 +67,7 @@ public:
 		return CopyRatio;
 	}
 
-	void SetDoubleBufferingCopyScaleRatio(float _Ratio) 
+	void SetDoubleBufferingCopyScaleRatio(float _Ratio)
 	{
 		CopyRatio = _Ratio;
 	}
