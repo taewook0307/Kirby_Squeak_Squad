@@ -54,7 +54,7 @@ void SparkMonster::Start()
 	ChangeState(MonsterState::Walk);
 }
 
-void Monster::StateUpdate(float _Delta)
+void SparkMonster::StateUpdate(float _Delta)
 {
 	switch (State)
 	{
@@ -69,7 +69,7 @@ void Monster::StateUpdate(float _Delta)
 	}
 }
 
-void Monster::ChangeState(MonsterState _State)
+void SparkMonster::ChangeState(MonsterState _State)
 {
 	if (_State != State)
 	{

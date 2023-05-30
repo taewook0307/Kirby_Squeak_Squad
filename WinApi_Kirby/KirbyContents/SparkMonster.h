@@ -16,8 +16,8 @@ public:
 	SparkMonster& operator=(SparkMonster&& _Other) noexcept = delete;
 
 protected:
-	virtual void StateUpdate(float _Delta);
-	virtual void ChangeState(MonsterState _State);
+	void StateUpdate(float _Delta) override;
+	void ChangeState(MonsterState _State) override;
 
 	void WalkUpdate(float _Delta) override;
 	void AttackUpdate(float _Delta) override;
