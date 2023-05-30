@@ -66,6 +66,9 @@
     <ClInclude Include="TornadoMonster.h">
       <Filter>Monster</Filter>
     </ClInclude>
+    <ClInclude Include="AttackEffect.h">
+      <Filter>Global</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TitleLevel.cpp">
@@ -165,6 +168,9 @@
     <ClCompile Include="SparkMonster_State.cpp">
       <Filter>Monster</Filter>
     </ClCompile>
+    <ClCompile Include="AttackEffect.cpp">
+      <Filter>Global</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Level">
@@ -181,6 +187,9 @@
     </Filter>
     <Filter Include="KirbyForm\Kirby">
       <UniqueIdentifier>{315602f1-5f71-444c-8bff-6251b589f199}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Effect">
+      <UniqueIdentifier>{c7ba1088-5f1b-4091-818e-3490a692a96d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

@@ -68,13 +68,13 @@ void Kirby::DamageUpdate(float _Delta)
 
 	if (DirPos.X > 0.0f)
 	{
-		MovePos = { Speed * _Delta * 0.8f, 0.0f };
+		MovePos = { Speed * _Delta, 0.0f };
 		XCheckPos = LEFTMOVECHECKPOS;
 		XColor = GetGroundColor(EMPTYCOLOR, LEFTMOVECHECKPOS);
 	}
 	else
 	{
-		MovePos = { -Speed * _Delta * 0.8f, 0.0f };
+		MovePos = { -Speed * _Delta, 0.0f };
 		XCheckPos = RIGHTMOVECHECKPOS;
 		XColor = GetGroundColor(EMPTYCOLOR, LEFTMOVECHECKPOS);
 	}
@@ -126,6 +126,15 @@ void Kirby::AttackLoopUpdate(float _Delta)
 {
 	DirCheck();
 
+	// 공격 충돌체 제거
+	if (true == GameEngineInput::IsUp('C'))
+	{
+		AttackCollision->SetCollisionScale(float4::ZERO);
+		AttackCollision->Off();
+		ChangeState(KirbyState::Idle);
+		return;
+	}
+
 	float4 MonsterPos = float4::ZERO;
 	float4 DirPos = float4::ZERO;
 	GameEngineActor* MonsterPtr = nullptr;
@@ -136,8 +145,8 @@ void Kirby::AttackLoopUpdate(float _Delta)
 	{
 		if (ActorDir::Left == Dir)
 		{
-			AttackCollision->SetCollisionPos({ -80.0f, -40.0f });
-			AttackCollision->SetCollisionScale(BODYCOLLISIONSCALE);
+			AttackCollision->SetCollisionPos({ -90.0f, -40.0f });
+			AttackCollision->SetCollisionScale({ 90.0f, 90.0f });
 			AttackCollision->On();
 		}
 
@@ -174,20 +183,16 @@ void Kirby::AttackLoopUpdate(float _Delta)
 			return;
 		}
 	}
-
-	// 공격 충돌체 제거
-	if (true == GameEngineInput::IsUp('C'))
-	{
-		AttackCollision->SetCollisionScale(float4::ZERO);
-		AttackCollision->Off();
-		ChangeState(KirbyState::Idle);
-		return;
-	}
 }
 
 void Kirby::KeepUpdate(float _Delta)
 {
 	if (MainRenderer->IsAnimationEnd())
+	{
+		ChangeState(KirbyState::KeepIdle);
+		return;
+	}
+	if (true == GameEngineInput::IsDown('X'))
 	{
 		ChangeState(KirbyState::Attack);
 		return;
@@ -196,6 +201,7 @@ void Kirby::KeepUpdate(float _Delta)
 
 void Kirby::AttackUpdate(float _Delta)
 {
+	
 	if (MainRenderer->IsAnimationEnd())
 	{
 		ChangeState(KirbyState::Idle);

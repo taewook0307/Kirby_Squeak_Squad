@@ -51,8 +51,10 @@ protected:
 	void DamageLandStart();
 	void AttackReadyStart();
 	void AttackLoopStart();
-	void KeepStart();
 	void AttackStart();
+	void KeepStart();
+	void KeepIdleStart();
+	void KeepWalkStart();
 
 	void IdleUpdate(float _Delta);
 	void DownUpdate(float _Delta);
@@ -77,8 +79,10 @@ protected:
 	void DamageLandUpdate(float _Delta);
 	virtual void AttackReadyUpdate(float _Delta);
 	virtual void AttackLoopUpdate(float _Delta);
-	void KeepUpdate(float _Delta);
 	virtual void AttackUpdate(float _Delta);
+	void KeepUpdate(float _Delta);
+	void KeepIdleUpdate(float _Delta);
+	void KeepWalkUpdate(float _Delta);
 
 	void DirCheck();
 

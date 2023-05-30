@@ -27,6 +27,10 @@ enum class KirbyState
 	AttackLoop,
 	Attack,
 	Keep,
+	KeepIdle,
+	KeepWalk,
+	KeepJump,
+	KeepDamage,
 	Max
 };
 
