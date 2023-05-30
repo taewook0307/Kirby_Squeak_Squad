@@ -5,6 +5,7 @@
 
 #define BASEPOWER 300.0f
 #define EMPTYCOLOR RGB(255,255,255)
+#define DOORCOLOR RGB(0,0,255)
 #define LEFTMOVECHECKPOS { -40.0f , -40.0f }
 #define RIGHTMOVECHECKPOS { 40.0f , -40.0f }
 #define LEFTDROPCHECKPOS { -40.0f, -20.0f }
