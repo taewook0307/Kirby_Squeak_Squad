@@ -2,11 +2,11 @@
 #include <GameEngineBase/GameEngineDebug.h>
 #include "GameEngineActor.h"
 
-GameEngineCamera::GameEngineCamera()
+GameEngineCamera::GameEngineCamera() 
 {
 }
 
-GameEngineCamera::~GameEngineCamera()
+GameEngineCamera::~GameEngineCamera() 
 {
 }
 

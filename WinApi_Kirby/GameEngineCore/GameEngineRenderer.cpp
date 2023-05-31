@@ -10,11 +10,11 @@
 #include "GameEngineLevel.h"
 #include <math.h>
 
-GameEngineRenderer::GameEngineRenderer()
+GameEngineRenderer::GameEngineRenderer() 
 {
 }
 
-GameEngineRenderer::~GameEngineRenderer()
+GameEngineRenderer::~GameEngineRenderer() 
 {
 }
 
@@ -63,7 +63,7 @@ void GameEngineRenderer::SetRenderScaleToTexture()
 	ScaleCheck = false;
 }
 
-void GameEngineRenderer::Render(float _DeltaTime)
+void GameEngineRenderer::Render(float _DeltaTime) 
 {
 	if (nullptr != CurAnimation)
 	{
@@ -86,7 +86,7 @@ void GameEngineRenderer::Render(float _DeltaTime)
 				{
 					CurAnimation->CurFrame = 0;
 				}
-				else
+				else 
 				{
 					--CurAnimation->CurFrame;
 				}
@@ -153,7 +153,7 @@ void GameEngineRenderer::CreateAnimation(
 
 	GameEngineSprite* Sprite = ResourcesManager::GetInst().FindSprite(_SpriteName);
 
-	if (nullptr == Sprite)
+	if (nullptr ==  Sprite)
 	{
 		MsgBoxAssert("존재하지 않는 스프라이트로 애니메이션을 만들려고 했습니다." + _SpriteName);
 		return;
@@ -167,7 +167,7 @@ void GameEngineRenderer::CreateAnimation(
 	{
 		Animation.StartFrame = _Start;
 	}
-	else
+	else 
 	{
 		Animation.StartFrame = 0;
 	}
@@ -176,7 +176,7 @@ void GameEngineRenderer::CreateAnimation(
 	{
 		Animation.EndFrame = _End;
 	}
-	else
+	else 
 	{
 		Animation.EndFrame = Animation.Sprite->GetSpriteCount() - 1;
 	}
@@ -243,7 +243,7 @@ void GameEngineRenderer::UICameraSetting()
 	CameraTypeValue = CameraType::UI;
 }
 
-void GameEngineRenderer::Start()
+void GameEngineRenderer::Start() 
 {
 }
 

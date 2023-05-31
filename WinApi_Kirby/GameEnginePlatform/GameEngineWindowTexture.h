@@ -1,11 +1,18 @@
 #pragma once
-#include <string>
 #include <Windows.h>
+#include <gdiplus.h>
+#include <string>
 #include <GameEngineBase/GameEngineMath.h>
 
 // Ό³Έν :
 class GameEngineWindowTexture
 {
+	friend class GDIPlusInit;
+
+private:
+	static ULONG_PTR Token;
+	static Gdiplus::GdiplusStartupInput Input;
+
 public:
 	// constrcuter destructer
 	GameEngineWindowTexture();

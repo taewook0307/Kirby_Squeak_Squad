@@ -5,13 +5,13 @@
 
 bool GameEngineLevel::IsCollisionDebugRender = false;
 
-GameEngineLevel::GameEngineLevel()
+GameEngineLevel::GameEngineLevel() 
 {
 	MainCamera = new GameEngineCamera();
 	UICamera = new GameEngineCamera();
 }
 
-GameEngineLevel::~GameEngineLevel()
+GameEngineLevel::~GameEngineLevel() 
 {
 	if (nullptr != MainCamera)
 	{
@@ -29,7 +29,7 @@ GameEngineLevel::~GameEngineLevel()
 	{
 		const std::list<GameEngineActor*>& Group = _Pair.second;
 
-		for (GameEngineActor* _Actor : Group)
+		for (GameEngineActor* _Actor: Group)
 		{
 			if (nullptr != _Actor)
 			{
@@ -41,7 +41,7 @@ GameEngineLevel::~GameEngineLevel()
 }
 
 
-void GameEngineLevel::ActorInit(GameEngineActor* _Actor, int _Order)
+void GameEngineLevel::ActorInit(GameEngineActor* _Actor, int _Order) 
 {
 	_Actor->Level = this;
 	_Actor->SetOrder(_Order);
@@ -229,7 +229,7 @@ void GameEngineLevel::ActorLevelEnd()
 		}
 	}
 }
-void GameEngineLevel::ActorLevelStart()
+void GameEngineLevel::ActorLevelStart() 
 {
 	for (const std::pair<int, std::list<GameEngineActor*>>& _Pair : AllActors)
 	{
@@ -279,7 +279,7 @@ void GameEngineLevel::OverCheck(GameEngineLevel* _PrevLevel)
 				{
 					Render->MainCameraSetting();
 				}
-				else
+				else 
 				{
 					Render->UICameraSetting();
 				}
@@ -291,9 +291,9 @@ void GameEngineLevel::OverCheck(GameEngineLevel* _PrevLevel)
 			{
 				Collision->SetOrder(Collision->GetOrder());
 			}
+			
 
-
-
+			
 
 			AllActors[Actor->GetOrder()].push_back(Actor);
 

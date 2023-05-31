@@ -2,11 +2,11 @@
 #include "GameEngineDebug.h"
 #include <Windows.h>
 
-GameEngineString::GameEngineString()
+GameEngineString::GameEngineString() 
 {
 }
 
-GameEngineString::~GameEngineString()
+GameEngineString::~GameEngineString() 
 {
 }
 

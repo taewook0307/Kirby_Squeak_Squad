@@ -30,12 +30,12 @@ public:
 	// 정리된다.
 	virtual void Release() {}
 
-	void On()
+	virtual void On()
 	{
 		IsUpdateValue = true;
 	}
 
-	void Off()
+	virtual void Off()
 	{
 		IsUpdateValue = false;
 	}
@@ -45,7 +45,7 @@ public:
 		this->IsDeathValue = true;
 	}
 
-	bool IsUpdate()
+	bool IsUpdate() 
 	{
 		return true == IsUpdateValue && false == IsDeathValue;
 	}
@@ -71,12 +71,12 @@ public:
 		Order = _Order;
 	}
 
-	float GetLiveTime()
+	float GetLiveTime() 
 	{
 		return LiveTime;
 	}
 
-	void ResetLiveTime()
+	void ResetLiveTime() 
 	{
 		LiveTime = 0.0f;
 	}
@@ -90,7 +90,7 @@ private:
 	bool IsUpdateValue = true; // 이걸 false로 만들면 됩니다.
 	bool IsDeathValue = false; // 아예 메모리에서 날려버리고 싶어.
 
-	void AddLiveTime(float _DeltaTime)
+	void AddLiveTime(float _DeltaTime) 
 	{
 		LiveTime += _DeltaTime;
 	}

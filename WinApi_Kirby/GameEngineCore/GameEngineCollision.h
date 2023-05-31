@@ -148,10 +148,24 @@ public:
 		ColType = _ColType;
 	}
 
+	void On() override
+	{
+		GameEngineActorSubObject::On();
+		CollisionRenderValue = true;
+	}
+
+	void Off() override
+	{
+		GameEngineActorSubObject::Off();
+		CollisionRenderValue = false;
+	}
+
 protected:
 
 private:
 	CollisionType ColType = CollisionType::Rect;
+
+	bool CollisionRenderValue = true;
 
 	float4 CollisionPos;
 	float4 CollisionScale;

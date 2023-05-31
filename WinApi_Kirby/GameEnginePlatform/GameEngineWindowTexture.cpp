@@ -3,7 +3,33 @@
 #include <GameEngineBase/GameEngineDebug.h>
 #include "GameEngineWindow.h"
 
+#pragma comment(lib, "gdiplus")
 #pragma comment(lib, "msimg32.lib")
+
+ULONG_PTR GameEngineWindowTexture::Token;
+Gdiplus::GdiplusStartupInput GameEngineWindowTexture::Input;
+
+class GDIPlusInit 
+{
+public:
+	GDIPlusInit() 
+	{
+		Gdiplus::Status Result = Gdiplus::GdiplusStartup(&GameEngineWindowTexture::Token, &GameEngineWindowTexture::Input, nullptr);
+
+		if (Result != Gdiplus::Status::Ok)
+		{
+			int a = 0;
+		}
+	}
+	~GDIPlusInit() 
+	{
+		Gdiplus::GdiplusShutdown(GameEngineWindowTexture::Token);
+	}
+};
+
+GDIPlusInit InitInstance;
+
+/////////////////////// GIDPLUSInit
 
 
 GameEngineWindowTexture::GameEngineWindowTexture() 

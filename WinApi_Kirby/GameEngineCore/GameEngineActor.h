@@ -34,7 +34,7 @@ public:
 	}
 
 
-	float4 GetPos()
+	float4 GetPos() 
 	{
 		return Pos;
 	}
@@ -86,7 +86,7 @@ public:
 
 	GameEngineCollision* CreateCollision(int _Order = 0);
 
-	GameEngineLevel* GetLevel()
+	GameEngineLevel* GetLevel() 
 	{
 		return Level;
 	}

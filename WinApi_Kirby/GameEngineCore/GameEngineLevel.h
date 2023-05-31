@@ -16,7 +16,7 @@ class GameEngineLevel : public GameEngineObject
 	friend class GameEngineCollision;
 	friend class GameEngineActor;
 	friend class GameEngineCore;
-
+	
 public:
 	// constrcuter destructer
 	GameEngineLevel();
@@ -57,7 +57,7 @@ public:
 		return UICamera;
 	}
 
-	static void CollisionDebugRenderSwitch()
+	static void CollisionDebugRenderSwitch() 
 	{
 		IsCollisionDebugRender = !IsCollisionDebugRender;
 	}
