@@ -177,7 +177,7 @@ void Kirby::AttackLoopUpdate(float _Delta)
 
 		KeepMonster->AddPos(DirPos *= Power);
 		
-		if (fabs(KeepMonster->GetPos().X - GetPos().X) < 20.0f)
+		if (static_cast<float>(fabs(KeepMonster->GetPos().X - GetPos().X)) < 20.0f)
 		{
 			KeepMonster->Death();
 			ChangeState(KirbyState::Keep);

@@ -38,8 +38,8 @@ void IceMonster::Start()
 
 		MainRenderer->CreateAnimation("Left_Ice_Monster_Idle", "Left_IceEnermy.Bmp", 0, 0, 0.1f, true);
 		MainRenderer->CreateAnimation("Left_Ice_Monster_Walk", "Left_IceEnermy.Bmp", 1, 2, 0.5f, true);
-		MainRenderer->CreateAnimation("Left_Ice_Monster_Attack", "Left_IceEnermy.Bmp", 3, 5, 0.2f, false);
-		MainRenderer->CreateAnimation("Left_Ice_Monster_Damage", "Left_IceEnermy.Bmp", 6, 7, 0.3f, false);
+		MainRenderer->CreateAnimation("Left_Ice_Monster_Attack", "Left_IceEnermy.Bmp", 3, 8, 0.2f, false);
+		MainRenderer->CreateAnimation("Left_Ice_Monster_Damage", "Left_IceEnermy.Bmp", 9, 10, 0.3f, false);
 
 		MainRenderer->ChangeAnimation("Left_Ice_Monster_Idle");
 		MainRenderer->SetRenderScaleToTexture();
@@ -53,11 +53,17 @@ void IceMonster::Start()
 		BodyCollision->SetCollisionType(CollisionType::Rect);
 
 		SearchCollision = CreateCollision(CollisionOrder::MonsterSearch);
-		SearchCollision->SetCollisionPos({ -140.0f, -30.0f });
-		SearchCollision->SetCollisionScale({ 160.0f, 70.0f });
+		SearchCollision->SetCollisionPos(LEFTSEARCHCOLLISIONPOS);
+		SearchCollision->SetCollisionScale(SEARCHCOLLISONSCALE);
 		SearchCollision->SetCollisionType(CollisionType::Rect);
+
+		AttackCollision = CreateCollision(CollisionOrder::MonsterAttack);
+		AttackCollision->SetCollisionPos(LEFTSEARCHCOLLISIONPOS);
+		AttackCollision->SetCollisionScale(ATTACKCOLLISIONSCALE);
+		AttackCollision->SetCollisionType(CollisionType::Rect);
 	}
 
+	AttackCollision->Off();
 	ChangeState(MonsterState::Idle);
 }
 

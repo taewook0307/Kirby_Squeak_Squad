@@ -1,5 +1,8 @@
 #include "IceMonster.h"
 
+#include <math.h>
+#include <GameEngineCore/GameEngineRenderer.h>
+
 void IceMonster::IdleUpdate(float _Delta)
 {
 	static float IdleTimer = 0.0f;
@@ -12,13 +15,22 @@ void IceMonster::IdleUpdate(float _Delta)
 		return;
 	}
 
+	if (true == BodyCollision->Collision(CollisionOrder::Attack, Col, CollisionType::Rect, CollisionType::Rect)
+		|| true == BodyCollision->Collision(CollisionOrder::SpecialAttack, Col, CollisionType::Rect, CollisionType::Rect))
+	{
+		ChangeState(MonsterState::Damage);
+		return;
+	}
+
 	if (Dir == ActorDir::Left)
 	{
-		SearchCollision->SetCollisionPos({ -140.0f, -30.0f });
+		SearchCollision->SetCollisionPos(LEFTSEARCHCOLLISIONPOS);
+		AttackCollision->SetCollisionPos(LEFTSEARCHCOLLISIONPOS);
 	}
 	else
 	{
-		SearchCollision->SetCollisionPos({ 140.0f, -30.0f });
+		SearchCollision->SetCollisionPos(RIGHTTSEARCHCOLLISIONPOS);
+		AttackCollision->SetCollisionPos(RIGHTTSEARCHCOLLISIONPOS);
 	}
 
 	if (IdleTimer > 3.0f)
@@ -34,6 +46,14 @@ void IceMonster::WalkUpdate(float _Delta)
 {
 	float4 MovePos = float4::ZERO;
 
+
+	if (true == BodyCollision->Collision(CollisionOrder::Attack, Col, CollisionType::Rect, CollisionType::Rect)
+		|| true == BodyCollision->Collision(CollisionOrder::SpecialAttack, Col, CollisionType::Rect, CollisionType::Rect))
+	{
+		ChangeState(MonsterState::Damage);
+		return;
+	}
+
 	if (true == SearchCollision->Collision(CollisionOrder::Body, Col, CollisionType::Rect, CollisionType::Rect))
 	{
 		GameEngineCollision* PlayerBodyCollision = Col[Col.size() - 1];
@@ -43,6 +63,14 @@ void IceMonster::WalkUpdate(float _Delta)
 		float4 MovePos = (PlayerPos - MonsterPos).NormalizeReturn();
 
 		AddPos(MovePos);
+
+		float Distance = static_cast<float>(fabs((PlayerPos - MonsterPos).X));
+
+		if (Distance < ATTACKDISTANCE)
+		{
+			ChangeState(MonsterState::Attack);
+			return;
+		}
 	}
 	else
 	{
@@ -53,10 +81,24 @@ void IceMonster::WalkUpdate(float _Delta)
 
 void IceMonster::DamageUpdate(float _Delta)
 {
-
+	if (true == BodyCollision->Collision(CollisionOrder::SpecialAttack, Col, CollisionType::Rect, CollisionType::Rect))
+	{
+		if (true == MainRenderer->IsAnimationEnd())
+		{
+			Death();
+			return;
+		}
+	}
 }
 
 void IceMonster::AttackUpdate(float _Delta)
 {
+	AttackCollision->On();
 
+	if (true == MainRenderer->IsAnimationEnd())
+	{
+		AttackCollision->Off();
+		ChangeState(MonsterState::Idle);
+		return;
+	}
 }

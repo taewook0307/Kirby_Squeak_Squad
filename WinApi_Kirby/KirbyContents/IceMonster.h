@@ -2,6 +2,12 @@
 
 #include "Monster.h"
 
+#define LEFTSEARCHCOLLISIONPOS { -140.0f, -30.0f }
+#define RIGHTTSEARCHCOLLISIONPOS { 140.0f, -30.0f }
+#define SEARCHCOLLISONSCALE { 160.0f, 70.0f }
+#define ATTACKDISTANCE 170.0f
+#define ATTACKCOLLISIONSCALE { 130.0f, 70.0f }
+
 class IceMonster : public Monster
 {
 public:

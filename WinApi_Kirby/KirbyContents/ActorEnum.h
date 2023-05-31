@@ -60,8 +60,7 @@ enum class CollisionOrder
 	SpecialAttack,
 	MonsterBody,
 	MonsterAttack,
-	MonsterSearch,
-	MonsterSpecialAttack
+	MonsterSearch
 };
 
 enum class ActorDir
