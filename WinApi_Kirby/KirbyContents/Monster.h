@@ -48,14 +48,13 @@ protected:
 
 	MonsterState State = MonsterState::Max;
 	std::string CurState = "";
-	ActorDir Dir = ActorDir::Right;
-private:
+	ActorDir Dir = ActorDir::Left;
 	float RatioValue = 3.0f;
 	float Speed = BASEPOWER / 3 * 2;
 	MonsterType Type = MonsterType::Normal;
-
 	std::vector<GameEngineCollision*> Col;
 
+private:
 	void Start() override;
 	void Update(float _Delta) override;
 };

@@ -40,7 +40,6 @@ void Monster::Start()
 		MainRenderer->CreateAnimation("Left_Monster_Attack", "Left_NormalMonster.Bmp", 12, 14, 0.2f, false);
 		MainRenderer->CreateAnimation("Left_Monster_Damage", "Left_NormalMonster.Bmp", 15, 15, 0.2f, true);
 
-		MainRenderer->ChangeAnimation("Right_Monster_Idle");
 		MainRenderer->SetRenderScaleToTexture();
 		MainRenderer->SetScaleRatio(RatioValue);
 	}
