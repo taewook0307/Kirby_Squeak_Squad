@@ -6,6 +6,7 @@
 #include "IceKirby.h"
 #include "Monster.h"
 #include "IceMonster.h"
+#include "SparkMonster.h"
 #include "KirbyGameEnum.h"
 
 #include <GameEnginePlatform/GameEngineWindow.h>
@@ -33,7 +34,7 @@ void FirstStageLevel::Start()
 
 	LevelPlayer = CreateActor<Kirby>(RenderOrder::Play);
 
-	LevelMonster = CreateActor<IceMonster>(RenderOrder::Play);
+	LevelMonster = CreateActor<SparkMonster>(RenderOrder::Play);
 
 	/*if (nullptr == NewMonster)
 	{

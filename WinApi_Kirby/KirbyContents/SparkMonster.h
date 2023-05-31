@@ -16,17 +16,27 @@ public:
 	SparkMonster& operator=(SparkMonster&& _Other) noexcept = delete;
 
 protected:
-	void StateUpdate(float _Delta) override;
-	void ChangeState(MonsterState _State) override;
+	MonsterType GetMonsterType() const override
+	{
+		return Type;
+	}
+
+	GameEngineRenderer* MainRenderer = nullptr;
+	GameEngineCollision* AttackCollision = nullptr;
+	GameEngineCollision* BodyCollision = nullptr;
+
 	void ChangeAnimationState(const std::string& _StateName) override;
 
+	void IdleUpdate(float _Delta) override;
 	void WalkUpdate(float _Delta) override;
-	void AttackUpdate(float _Delta) override;
 	void DamageUpdate(float _Delta) override;
+	void AttackUpdate(float _Delta) override;
 
-private:
 	float RatioValue = 3.0f;
-
+	float Speed = BASEPOWER * 0.5f;
+	MonsterType Type = MonsterType::Spark;
+	std::vector<GameEngineCollision*> Spark_Col;
+private:
 	void Start() override;
 };
 
