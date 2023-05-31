@@ -55,25 +55,25 @@ void SparkKirby::Start()
 	ChangeState(KirbyState::Idle);
 }
 
-void SparkKirby::ChangeAnimationState(const std::string& _StateName)
-{
-	std::string AnimationName;
-
-	switch (Dir)
-	{
-	case ActorDir::Right:
-		AnimationName = "Right_Spark_";
-		break;
-	case ActorDir::Left:
-		AnimationName = "Left_Spark_";
-		break;
-	default:
-		break;
-	}
-
-	AnimationName += _StateName;
-
-	CurState = _StateName;
-
-	MainRenderer->ChangeAnimation(AnimationName);
-}
+//void SparkKirby::ChangeAnimationState(const std::string& _StateName)
+//{
+//	std::string AnimationName;
+//
+//	switch (Dir)
+//	{
+//	case ActorDir::Right:
+//		AnimationName = "Right_Spark_";
+//		break;
+//	case ActorDir::Left:
+//		AnimationName = "Left_Spark_";
+//		break;
+//	default:
+//		break;
+//	}
+//
+//	AnimationName += _StateName;
+//
+//	CurState = _StateName;
+//
+//	MainRenderer->ChangeAnimation(AnimationName);
+//}

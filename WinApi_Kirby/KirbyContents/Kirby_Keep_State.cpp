@@ -1,6 +1,7 @@
 #include "Kirby.h"
 
 #include <GameEnginePlatform/GameEngineInput.h>
+#include <GameEngineCore/GameEngineLevel.h>
 
 void Kirby::KeepIdleStart()
 {
@@ -28,7 +29,7 @@ void Kirby::KeepIdleUpdate(float _Delta)
 		return;
 	}
 
-	if (true == GameEngineInput::IsDown('X'))
+	if (true == GameEngineInput::IsDown('X') && KeepType == MonsterType::Normal)
 	{
 		ChangeState(KirbyState::Attack);
 		return;

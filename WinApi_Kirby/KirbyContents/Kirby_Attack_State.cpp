@@ -193,11 +193,6 @@ void Kirby::KeepUpdate(float _Delta)
 		ChangeState(KirbyState::KeepIdle);
 		return;
 	}
-	if (true == GameEngineInput::IsDown('X'))
-	{
-		ChangeState(KirbyState::Attack);
-		return;
-	}
 }
 
 void Kirby::AttackUpdate(float _Delta)

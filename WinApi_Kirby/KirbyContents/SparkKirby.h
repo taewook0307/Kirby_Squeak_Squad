@@ -17,7 +17,7 @@ public:
 
 protected:
 
-	void ChangeAnimationState(const std::string& _StateName);
+	// void ChangeAnimationState(const std::string& _StateName);
 private:
 
 	void Start() override;

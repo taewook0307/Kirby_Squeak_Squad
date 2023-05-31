@@ -28,6 +28,7 @@ private:
 	void LevelStart(GameEngineLevel* _PrevLevel) override;
 
 	Kirby* LevelPlayer = nullptr;
+	Kirby* SavePlayer = nullptr;
 	Monster* LevelMonster = nullptr;
 	Ground* FirstStage = nullptr;
 	std::list<Monster*> AllLevelMonster;

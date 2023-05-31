@@ -24,9 +24,20 @@ public:
 	Kirby& operator=(Kirby&& _Other) noexcept = delete;
 
 	GameEngineCollision* AttackCollision = nullptr;
+
+	KirbyState& GetKirbyState()
+	{
+		return State;
+	}
+
+	MonsterType& GetKeepType()
+	{
+		return KeepType;
+	}
+
 protected:
-	void StateUpdate(float _Delta);
-	void ChangeState(KirbyState _State);
+	virtual void StateUpdate(float _Delta);
+	virtual void ChangeState(KirbyState _State);
 
 	void IdleStart();
 	void DownStart();
@@ -84,7 +95,7 @@ protected:
 	void KeepIdleUpdate(float _Delta);
 	void KeepWalkUpdate(float _Delta);
 
-	void DirCheck();
+	virtual void DirCheck();
 
 	virtual void ChangeAnimationState(const std::string& _StateName);
 
@@ -100,8 +111,6 @@ protected:
 	KirbyState State = KirbyState::Max;
 	ActorDir Dir = ActorDir::Right;
 	std::string CurState = "";
-
-private:
 	float RatioValue = 4.0f;
 	float Speed = BASEPOWER;
 	float RunSpeed = Speed * 1.5f;
@@ -111,7 +120,7 @@ private:
 	std::vector<GameEngineCollision*> Col;
 
 	bool IsCheckPosPoint = false;
-
+private:
 	void Start() override;
 	void Update(float _Delta) override;
 	void Render(float _Delta) override;
