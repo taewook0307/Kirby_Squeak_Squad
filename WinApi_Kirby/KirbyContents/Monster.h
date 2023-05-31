@@ -23,7 +23,7 @@ public:
 	Monster& operator=(const Monster& _Other) = delete;
 	Monster& operator=(Monster&& _Other) noexcept = delete;
 
-	MonsterType GetMonsterType() const
+	virtual MonsterType GetMonsterType() const
 	{
 		return Type;
 	}
@@ -42,7 +42,7 @@ protected:
 	virtual void AttackUpdate(float _Delta);
 	virtual void DamageUpdate(float _Delta);
 
-	void DirChange();
+	virtual void DirChange();
 
 	virtual void ChangeAnimationState(const std::string& _StateName);
 

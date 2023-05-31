@@ -16,8 +16,17 @@ public:
 	IceMonster& operator=(IceMonster&& _Other) noexcept = delete;
 
 protected:
-	GameEngineRenderer* MainRenderer = nullptr;
+	MonsterType GetMonsterType() const override
+	{
+		return Type;
+	}
 
+	GameEngineRenderer* MainRenderer = nullptr;
+	GameEngineCollision* AttackCollision = nullptr;
+	GameEngineCollision* BodyCollision = nullptr;
+	GameEngineCollision* SearchCollision = nullptr;
+
+	void DirChange() override;
 	void ChangeAnimationState(const std::string& _StateName) override;
 
 	void IdleUpdate(float _Delta) override;
@@ -25,10 +34,14 @@ protected:
 	void DamageUpdate(float _Delta) override;
 	void AttackUpdate(float _Delta) override;
 
+	MonsterState State = MonsterState::Max;
+	std::string CurState = "";
+	ActorDir Dir = ActorDir::Left;
 private:
 	float RatioValue = 3.0f;
-
-	float Speed = 300.0f;
+	float Speed = BASEPOWER * 0.5f;
+	MonsterType Type = MonsterType::Ice;
+	std::vector<GameEngineCollision*> Col;
 
 	void Start() override;
 };

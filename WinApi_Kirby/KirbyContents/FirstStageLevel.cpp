@@ -5,6 +5,7 @@
 #include "SparkKirby.h"
 #include "IceKirby.h"
 #include "Monster.h"
+#include "IceMonster.h"
 #include "KirbyGameEnum.h"
 
 #include <GameEnginePlatform/GameEngineWindow.h>
@@ -32,7 +33,7 @@ void FirstStageLevel::Start()
 
 	LevelPlayer = CreateActor<Kirby>(RenderOrder::Play);
 
-	LevelMonster = CreateActor<Monster>(RenderOrder::Play);
+	LevelMonster = CreateActor<IceMonster>(RenderOrder::Play);
 
 	/*if (nullptr == NewMonster)
 	{
@@ -69,7 +70,7 @@ void FirstStageLevel::LevelStart(GameEngineLevel* _PrevLevel)
 
 		GetMainCamera()->SetPos(float4::ZERO);
 
-		LevelMonster->SetPos({ 2100.0f, 735.0f });
+		LevelMonster->SetPos({ 1000.0f, 735.0f });
 		LevelMonster->SetGroundBitMap("FirstStageBitMap.Bmp");
 	}
 }

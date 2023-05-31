@@ -24,22 +24,61 @@ void IceMonster::Start()
 
 		FilePath.MoveChild("Resources\\Enermy\\IceEnermy\\");
 
-		ResourcesManager::GetInst().CreateSpriteSheet(FilePath.PlusFilePath("Right_IceMonster.Bmp"), 5, 2);
-		ResourcesManager::GetInst().CreateSpriteSheet(FilePath.PlusFilePath("Left_IceMonster.Bmp"), 5, 2);
+		ResourcesManager::GetInst().CreateSpriteSheet(FilePath.PlusFilePath("Right_IceEnermy.Bmp"), 5, 3);
+		ResourcesManager::GetInst().CreateSpriteSheet(FilePath.PlusFilePath("Left_IceEnermy.Bmp"), 5, 3);
 	}
 
 	{
 		MainRenderer = CreateRenderer(RenderOrder::Play);
 
-		MainRenderer->CreateAnimation("Right_Ice_Monster_Idle", "Right_IceMonster.Bmp", 0, 0, 0.1f, true);
-		MainRenderer->CreateAnimation("Right_Ice_Monster_Walk", "Right_IceMonster.Bmp", 1, 2, 0.1f, true);
-		MainRenderer->CreateAnimation("Right_Ice_Monster_Attack", "Right_IceMonster.Bmp", 3, 5, 0.2f, false);
-		MainRenderer->CreateAnimation("Right_Ice_Monster_Damage", "Right_IceMonster.Bmp", 6, 7, 0.2f, false);
+		MainRenderer->CreateAnimation("Right_Ice_Monster_Idle", "Right_IceEnermy.Bmp", 0, 0, 0.1f, false);
+		MainRenderer->CreateAnimation("Right_Ice_Monster_Walk", "Right_IceEnermy.Bmp", 1, 2, 0.3f, true);
+		MainRenderer->CreateAnimation("Right_Ice_Monster_Attack", "Right_IceEnermy.Bmp", 3, 8, 0.2f, false);
+		MainRenderer->CreateAnimation("Right_Ice_Monster_Damage", "Right_IceEnermy.Bmp", 9, 10, 0.2f, false);
 
-		MainRenderer->CreateAnimation("Left_Ice_Monster_Idle", "Left_IceMonster.Bmp", 0, 0, 0.1f, true);
-		MainRenderer->CreateAnimation("Left_Ice_Monster_Walk", "Left_IceMonster.Bmp", 1, 2, 0.1f, true);
-		MainRenderer->CreateAnimation("Left_Ice_Monster_Attack", "Left_IceMonster.Bmp", 3, 5, 0.2f, false);
-		MainRenderer->CreateAnimation("Left_Ice_Monster_Damage", "Left_IceMonster.Bmp", 6, 7, 0.2f, false);
+		MainRenderer->CreateAnimation("Left_Ice_Monster_Idle", "Left_IceEnermy.Bmp", 0, 0, 0.1f, true);
+		MainRenderer->CreateAnimation("Left_Ice_Monster_Walk", "Left_IceEnermy.Bmp", 1, 2, 0.5f, true);
+		MainRenderer->CreateAnimation("Left_Ice_Monster_Attack", "Left_IceEnermy.Bmp", 3, 5, 0.2f, false);
+		MainRenderer->CreateAnimation("Left_Ice_Monster_Damage", "Left_IceEnermy.Bmp", 6, 7, 0.3f, false);
+
+		MainRenderer->ChangeAnimation("Left_Ice_Monster_Idle");
+		MainRenderer->SetRenderScaleToTexture();
+		MainRenderer->SetScaleRatio(RatioValue);
+	}
+
+	{
+		BodyCollision = CreateCollision(CollisionOrder::MonsterBody);
+		BodyCollision->SetCollisionPos(MONSTERBODYCOLLISONPOS);
+		BodyCollision->SetCollisionScale(MONSTERBODYCOLLISIONSCALE);
+		BodyCollision->SetCollisionType(CollisionType::Rect);
+
+		SearchCollision = CreateCollision(CollisionOrder::MonsterSearch);
+		SearchCollision->SetCollisionPos({ -140.0f, -30.0f });
+		SearchCollision->SetCollisionScale({ 160.0f, 70.0f });
+		SearchCollision->SetCollisionType(CollisionType::Rect);
+	}
+
+	ChangeState(MonsterState::Idle);
+}
+
+void IceMonster::DirChange()
+{
+	ActorDir CheckDir = Dir;
+
+	if (Dir == ActorDir::Left)
+	{
+		CheckDir = ActorDir::Right;
+	}
+
+	if (Dir == ActorDir::Right)
+	{
+		CheckDir = ActorDir::Left;
+	}
+
+	if (CheckDir != Dir)
+	{
+		Dir = CheckDir;
+		ChangeAnimationState(CurState);
 	}
 }
 

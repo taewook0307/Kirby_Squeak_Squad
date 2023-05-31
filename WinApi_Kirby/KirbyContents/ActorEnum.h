@@ -57,9 +57,11 @@ enum class CollisionOrder
 {
 	Body,
 	Attack,
+	SpecialAttack,
 	MonsterBody,
 	MonsterAttack,
-	MonsterSearch
+	MonsterSearch,
+	MonsterSpecialAttack
 };
 
 enum class ActorDir
