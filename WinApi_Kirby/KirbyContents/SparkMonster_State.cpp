@@ -44,6 +44,13 @@ void SparkMonster::WalkUpdate(float _Delta)
 
 	AddPos(MovePos);
 
+	if (true == BodyCollision->Collision(CollisionOrder::Attack, Col, CollisionType::Rect, CollisionType::Rect)
+		|| true == BodyCollision->Collision(CollisionOrder::SpecialAttack, Col, CollisionType::Rect, CollisionType::Rect))
+	{
+		ChangeState(MonsterState::Damage);
+		return;
+	}
+
 	if(Color != EMPTYCOLOR && Color != DOORCOLOR)
 	{	
 		GravityReset();
@@ -54,8 +61,18 @@ void SparkMonster::WalkUpdate(float _Delta)
 
 void SparkMonster::AttackUpdate(float _Delta)
 {
+	AttackCollision->On();
+
+	if (true == BodyCollision->Collision(CollisionOrder::Attack, Col, CollisionType::Rect, CollisionType::Rect)
+		|| true == BodyCollision->Collision(CollisionOrder::SpecialAttack, Col, CollisionType::Rect, CollisionType::Rect))
+	{
+		ChangeState(MonsterState::Damage);
+		return;
+	}
+
 	if (true == MainRenderer->IsAnimationEnd())
 	{
+		AttackCollision->Off();
 		DirChange();
 		ChangeState(MonsterState::Idle);
 		return;
@@ -64,5 +81,12 @@ void SparkMonster::AttackUpdate(float _Delta)
 
 void SparkMonster::DamageUpdate(float _Delta)
 {
-
+	if (true == BodyCollision->Collision(CollisionOrder::SpecialAttack, Col, CollisionType::Rect, CollisionType::Rect))
+	{
+		if (true == MainRenderer->IsAnimationEnd())
+		{
+			Death();
+			return;
+		}
+	}
 }

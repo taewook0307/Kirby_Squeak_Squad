@@ -50,8 +50,14 @@ void SparkMonster::Start()
 		BodyCollision->SetCollisionPos(MONSTERBODYCOLLISONPOS);
 		BodyCollision->SetCollisionScale(MONSTERBODYCOLLISIONSCALE);
 		BodyCollision->SetCollisionType(CollisionType::Rect);
+
+		AttackCollision = CreateCollision(CollisionOrder::MonsterBody);
+		AttackCollision->SetCollisionPos(MONSTERBODYCOLLISONPOS);
+		AttackCollision->SetCollisionScale(float4 MONSTERBODYCOLLISIONSCALE * 2.0f);
+		AttackCollision->SetCollisionType(CollisionType::Rect);
 	}
 
+	AttackCollision->Off();
 	ChangeState(MonsterState::Idle);
 }
 
