@@ -36,9 +36,9 @@ void FirstStageLevel::Start()
 
 	LevelPlayer = CreateActor<Kirby>(RenderOrder::Play);
 
-	LevelMonster = CreateActor<FireMonster>(RenderOrder::Play);
+	LevelMonster = CreateActor<IceMonster>(RenderOrder::Play);
 
-	LevelIceMonster = CreateActor<IceMonster>(RenderOrder::Play);
+	LevelFireMonster = CreateActor<FireMonster>(RenderOrder::Play);
 
 	LevelTornadoMonster = CreateActor<TornadoMonster>(RenderOrder::Play);
 
@@ -93,8 +93,8 @@ void FirstStageLevel::LevelStart(GameEngineLevel* _PrevLevel)
 		LevelMonster->SetPos({ 1000.0f, 735.0f });
 		LevelMonster->SetGroundBitMap("FirstStageBitMap.Bmp");
 
-		LevelIceMonster->SetPos({ 2100.0f, 735.0f });
-		LevelIceMonster->SetGroundBitMap("FirstStageBitMap.Bmp");
+		LevelFireMonster->SetPos({ 2100.0f, 735.0f });
+		LevelFireMonster->SetGroundBitMap("FirstStageBitMap.Bmp");
 
 		LevelTornadoMonster->SetPos({ 7000.0f, 660.0f });
 		LevelTornadoMonster->SetGroundBitMap("FirstStageBitMap.Bmp");

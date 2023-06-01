@@ -30,7 +30,7 @@ private:
 	Kirby* LevelPlayer = nullptr;
 	Kirby* SavePlayer = nullptr;
 	Monster* LevelMonster = nullptr;
-	Monster* LevelIceMonster = nullptr;
+	Monster* LevelFireMonster = nullptr;
 	Monster* LevelTornadoMonster = nullptr;
 	Monster* LevelSparkMonster = nullptr;
 	Ground* FirstStage = nullptr;
