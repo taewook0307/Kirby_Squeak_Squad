@@ -147,6 +147,7 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="FireMonster_State.cpp" />
     <ClCompile Include="FirstStageLevel.cpp">
       <SubType>
       </SubType>

@@ -171,6 +171,9 @@
     <ClCompile Include="Kirby_Move_State.cpp">
       <Filter>KirbyForm</Filter>
     </ClCompile>
+    <ClCompile Include="FireMonster_State.cpp">
+      <Filter>Monster\Fire</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Level">

@@ -5,6 +5,7 @@
 #include "SparkKirby.h"
 #include "IceKirby.h"
 #include "Monster.h"
+#include "FireMonster.h"
 #include "IceMonster.h"
 #include "SparkMonster.h"
 #include "TornadoMonster.h"
@@ -35,7 +36,7 @@ void FirstStageLevel::Start()
 
 	LevelPlayer = CreateActor<Kirby>(RenderOrder::Play);
 
-	LevelMonster = CreateActor<Monster>(RenderOrder::Play);
+	LevelMonster = CreateActor<FireMonster>(RenderOrder::Play);
 
 	LevelIceMonster = CreateActor<IceMonster>(RenderOrder::Play);
 
