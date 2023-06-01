@@ -114,12 +114,6 @@ void Kirby::IdleUpdate(float _Delta)
 		ChangeState(KirbyState::LevelMove);
 		return;
 	}
-
-	// Debug ¿ë
-	if (true == GameEngineInput::IsDown('J'))
-	{
-		IsCheckPosPointChange();
-	}
 }
 
 void Kirby::DownUpdate(float _Delta)

@@ -127,6 +127,12 @@ void Kirby::Update(float _Delta)
 		ChangeState(KirbyState::Damage);
 		return;
 	}
+
+	// Debug 용
+	if (true == GameEngineInput::IsDown('J'))
+	{
+		IsCheckPosPointChange();
+	}
 }
 
 void Kirby::Render(float _Delta)

@@ -35,12 +35,6 @@ void Kirby::KeepIdleUpdate(float _Delta)
 		ChangeState(KirbyState::Attack);
 		return;
 	}
-
-	// Debug ¿ë
-	if (true == GameEngineInput::IsDown('J'))
-	{
-		IsCheckPosPointChange();
-	}
 }
 
 void Kirby::KeepWalkUpdate(float _Delta)
