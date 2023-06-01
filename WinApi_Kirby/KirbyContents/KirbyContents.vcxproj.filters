@@ -33,9 +33,6 @@
     <ClInclude Include="BaseActor.h">
       <Filter>Global</Filter>
     </ClInclude>
-    <ClInclude Include="Kirby.h">
-      <Filter>KirbyForm\Kirby</Filter>
-    </ClInclude>
     <ClInclude Include="AttackEffect.h">
       <Filter>Global</Filter>
     </ClInclude>
@@ -65,6 +62,9 @@
     </ClInclude>
     <ClInclude Include="TornadoKirby.h">
       <Filter>KirbyForm\Tornado</Filter>
+    </ClInclude>
+    <ClInclude Include="Kirby.h">
+      <Filter>KirbyForm</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -98,27 +98,6 @@
     </ClCompile>
     <ClCompile Include="BaseActor.cpp">
       <Filter>Global</Filter>
-    </ClCompile>
-    <ClCompile Include="Kirby.cpp">
-      <Filter>KirbyForm\Kirby</Filter>
-    </ClCompile>
-    <ClCompile Include="Kirby_Move_State.cpp">
-      <Filter>KirbyForm\Kirby</Filter>
-    </ClCompile>
-    <ClCompile Include="Kirby_Fly_State.cpp">
-      <Filter>KirbyForm\Kirby</Filter>
-    </ClCompile>
-    <ClCompile Include="Kirby_Attack_State.cpp">
-      <Filter>KirbyForm\Kirby</Filter>
-    </ClCompile>
-    <ClCompile Include="Kirby_Jump_State.cpp">
-      <Filter>KirbyForm\Kirby</Filter>
-    </ClCompile>
-    <ClCompile Include="Kirby_Keep_State.cpp">
-      <Filter>KirbyForm\Kirby</Filter>
-    </ClCompile>
-    <ClCompile Include="Kirby_Base_State.cpp">
-      <Filter>KirbyForm\Kirby</Filter>
     </ClCompile>
     <ClCompile Include="AttackEffect.cpp">
       <Filter>Global</Filter>
@@ -168,6 +147,30 @@
     <ClCompile Include="TornadoKirby_State.cpp">
       <Filter>KirbyForm\Tornado</Filter>
     </ClCompile>
+    <ClCompile Include="TornadoMonster_State.cpp">
+      <Filter>Monster\Tornado</Filter>
+    </ClCompile>
+    <ClCompile Include="Kirby.cpp">
+      <Filter>KirbyForm</Filter>
+    </ClCompile>
+    <ClCompile Include="Kirby_Attack_State.cpp">
+      <Filter>KirbyForm</Filter>
+    </ClCompile>
+    <ClCompile Include="Kirby_Base_State.cpp">
+      <Filter>KirbyForm</Filter>
+    </ClCompile>
+    <ClCompile Include="Kirby_Fly_State.cpp">
+      <Filter>KirbyForm</Filter>
+    </ClCompile>
+    <ClCompile Include="Kirby_Jump_State.cpp">
+      <Filter>KirbyForm</Filter>
+    </ClCompile>
+    <ClCompile Include="Kirby_Keep_State.cpp">
+      <Filter>KirbyForm</Filter>
+    </ClCompile>
+    <ClCompile Include="Kirby_Move_State.cpp">
+      <Filter>KirbyForm</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Level">
@@ -181,9 +184,6 @@
     </Filter>
     <Filter Include="Monster">
       <UniqueIdentifier>{6cfa2133-0f4c-4c27-b86d-213a1eb99fa8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="KirbyForm\Kirby">
-      <UniqueIdentifier>{315602f1-5f71-444c-8bff-6251b589f199}</UniqueIdentifier>
     </Filter>
     <Filter Include="Effect">
       <UniqueIdentifier>{c7ba1088-5f1b-4091-818e-3490a692a96d}</UniqueIdentifier>

@@ -7,6 +7,7 @@
 #include "Monster.h"
 #include "IceMonster.h"
 #include "SparkMonster.h"
+#include "TornadoMonster.h"
 #include "KirbyGameEnum.h"
 
 #include <GameEnginePlatform/GameEngineWindow.h>
@@ -34,7 +35,13 @@ void FirstStageLevel::Start()
 
 	LevelPlayer = CreateActor<Kirby>(RenderOrder::Play);
 
-	LevelMonster = CreateActor<SparkMonster>(RenderOrder::Play);
+	LevelMonster = CreateActor<Monster>(RenderOrder::Play);
+
+	LevelIceMonster = CreateActor<IceMonster>(RenderOrder::Play);
+
+	LevelTornadoMonster = CreateActor<TornadoMonster>(RenderOrder::Play);
+
+	LevelSparkMonster = CreateActor<SparkMonster>(RenderOrder::Play);
 
 	/*if (nullptr == NewMonster)
 	{
@@ -84,5 +91,14 @@ void FirstStageLevel::LevelStart(GameEngineLevel* _PrevLevel)
 
 		LevelMonster->SetPos({ 1000.0f, 735.0f });
 		LevelMonster->SetGroundBitMap("FirstStageBitMap.Bmp");
+
+		LevelIceMonster->SetPos({ 2100.0f, 735.0f });
+		LevelIceMonster->SetGroundBitMap("FirstStageBitMap.Bmp");
+
+		LevelTornadoMonster->SetPos({ 7000.0f, 660.0f });
+		LevelTornadoMonster->SetGroundBitMap("FirstStageBitMap.Bmp");
+
+		LevelSparkMonster->SetPos({ 5100.0f, 660.0f });
+		LevelSparkMonster->SetGroundBitMap("FirstStageBitMap.Bmp");
 	}
 }

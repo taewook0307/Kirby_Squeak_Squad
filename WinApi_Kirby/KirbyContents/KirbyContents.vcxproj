@@ -215,6 +215,7 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="TornadoMonster_State.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

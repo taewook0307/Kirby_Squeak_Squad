@@ -42,8 +42,7 @@ protected:
 	float RatioValue = 3.0f;
 	float Speed = BASEPOWER * 0.5f;
 	MonsterType Type = MonsterType::Ice;
-	std::vector<GameEngineCollision*> Ice_Col;
+	std::vector<GameEngineCollision*> Col;
 private:
-
 	void Start() override;
 };
