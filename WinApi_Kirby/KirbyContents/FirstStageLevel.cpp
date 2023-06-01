@@ -58,12 +58,11 @@ void FirstStageLevel::Update(float _Delta)
 		&& LevelPlayer->GetKirbyState() == KirbyState::KeepIdle
 		&& LevelPlayer->GetKeepType() == MonsterType::Ice)
 	{
-		LevelPlayer->Off();
-		SavePlayer = LevelPlayer;
+		SavePos = LevelPlayer->GetPos();
+		LevelPlayer->Death();
 		LevelPlayer = CreateActor<IceKirby>(RenderOrder::Play);
-		LevelPlayer->SetPos(SavePlayer->GetPos());
+		LevelPlayer->SetPos(SavePos);
 		LevelPlayer->SetGroundBitMap("FirstStageBitMap.Bmp");
-		LevelPlayer->On();
 	}
 
 	if (true == GameEngineInput::IsDown('J'))
