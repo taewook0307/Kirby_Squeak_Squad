@@ -142,11 +142,17 @@ void Kirby::Render(float _Delta)
 	std::string XText = "";
 	XText += "플레이어 위치 X 값 : ";
 	XText += std::to_string(GetPos().X);
+	TextOutA(dc, 2, 3, XText.c_str(), static_cast<int>(XText.size()));
+
 	std::string YText = "";
 	YText += "플레이어 위치 Y 값 : ";
 	YText += std::to_string(GetPos().Y);
-	TextOutA(dc, 2, 3, XText.c_str(), static_cast<int>(XText.size()));
 	TextOutA(dc, 2, 30, YText.c_str(), static_cast<int>(YText.size()));
+
+	std::string FrameText = "";
+	FrameText += "Frame : ";
+	FrameText += std::to_string(1.0f / _Delta);
+	TextOutA(dc, 2, 60, FrameText.c_str(), static_cast<int>(FrameText.size()));
 
 	CollisionData Data;
 
