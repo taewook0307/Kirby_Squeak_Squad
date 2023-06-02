@@ -2,6 +2,10 @@
 
 #include "Kirby.h"
 
+#define LEFTATTACKCOLLISIONPOS { -140.0f, -30.0f }
+#define RIGHTTATTACKCOLLISIONPOS { 140.0f, -30.0f }
+#define ICEATTACKCOLLISIONSCALE { 130.0f, 70.0f }
+
 class IceKirby : public Kirby
 {
 public:
@@ -19,6 +23,8 @@ protected:
 	void StateUpdate(float _Delta) override;
 	void ChangeState(KirbyState _State) override;
 	void ChangeAnimationState(const std::string& _StateName) override;
+
+	void AttackLoopUpdate(float _Delta) override;
 private:
 	/*KirbyState State = KirbyState::Max;
 	ActorDir Dir = ActorDir::Right;

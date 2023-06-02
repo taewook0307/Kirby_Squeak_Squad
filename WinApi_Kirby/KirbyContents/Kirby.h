@@ -116,11 +116,13 @@ protected:
 	float RunSpeed = Speed * 1.5f;
 	float JumpPower = BASEPOWER;
 	float FlyPower = BASEPOWER;
-	MonsterType KeepType = MonsterType::Max;
 	std::vector<GameEngineCollision*> Col;
 
 	bool IsCheckPosPoint = false;
+
 private:
+	MonsterType KeepType = MonsterType::Max;
+
 	void Start() override;
 	void Update(float _Delta) override;
 	void Render(float _Delta) override;

@@ -122,8 +122,7 @@ void Kirby::Update(float _Delta)
 	if (true == BodyCollision->Collision(CollisionOrder::MonsterBody, Col, CollisionType::Rect, CollisionType::Rect)
 		|| true == BodyCollision->Collision(CollisionOrder::MonsterAttack, Col, CollisionType::Rect, CollisionType::Rect))
 	{
-		float4 Pos = Col[0]->GetActorPivotPos();
-		BodyCollision->Off();
+		float4 Pos = Col[Col.size() - 1]->GetActorPivotPos();
 		ChangeState(KirbyState::Damage);
 		return;
 	}
