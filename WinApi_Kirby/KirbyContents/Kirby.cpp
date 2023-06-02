@@ -22,6 +22,8 @@ Kirby::~Kirby()
 void Kirby::Start()
 {
 	IsCheckPosPoint = false;
+
+	if(ResourcesManager::GetInst().FindSprite("Right_Kirby.Bmp") == nullptr && ResourcesManager::GetInst().FindSprite("Left_Kirby.Bmp") == nullptr)
 	{
 		GameEnginePath FilePath;
 		FilePath.SetCurrentPath();

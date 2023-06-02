@@ -1,5 +1,7 @@
 #pragma once
 
+#include "ActorEnum.h"
+
 #include <list>
 #include <GameEngineCore/GameEngineLevel.h>
 
@@ -27,6 +29,7 @@ private:
 
 	void LevelStart(GameEngineLevel* _PrevLevel) override;
 
+	MonsterType LevelPlayerForm = MonsterType::Normal;
 	float4 SavePos = float4::ZERO;
 	Kirby* LevelPlayer = nullptr;
 	Monster* LevelMonster = nullptr;

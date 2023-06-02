@@ -52,7 +52,7 @@ void SparkMonster::Start()
 		BodyCollision->SetCollisionType(CollisionType::Rect);
 
 		AttackCollision = CreateCollision(CollisionOrder::MonsterBody);
-		AttackCollision->SetCollisionPos(MONSTERBODYCOLLISONPOS);
+		AttackCollision->SetCollisionPos(SPARKATTACKCOLLISIONPOS);
 		AttackCollision->SetCollisionScale(float4 MONSTERBODYCOLLISIONSCALE * 2.0f);
 		AttackCollision->SetCollisionType(CollisionType::Rect);
 	}

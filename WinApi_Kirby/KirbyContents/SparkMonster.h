@@ -2,6 +2,8 @@
 
 #include "Monster.h"
 
+#define SPARKATTACKCOLLISIONPOS { 0.0f, -55.0f }
+
 class SparkMonster : public Monster
 {
 public:
