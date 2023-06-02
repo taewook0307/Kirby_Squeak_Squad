@@ -18,26 +18,11 @@
     </ClInclude>
     <ClInclude Include="KirbyCore.h" />
     <ClInclude Include="KirbyGameEnum.h" />
-    <ClInclude Include="BackGround.h">
-      <Filter>Global</Filter>
-    </ClInclude>
     <ClInclude Include="ActorEnum.h">
-      <Filter>Global</Filter>
-    </ClInclude>
-    <ClInclude Include="Gravity.h">
       <Filter>Global</Filter>
     </ClInclude>
     <ClInclude Include="Monster.h">
       <Filter>Monster</Filter>
-    </ClInclude>
-    <ClInclude Include="BaseActor.h">
-      <Filter>Global</Filter>
-    </ClInclude>
-    <ClInclude Include="AttackEffect.h">
-      <Filter>Global</Filter>
-    </ClInclude>
-    <ClInclude Include="Ground.h">
-      <Filter>Global</Filter>
     </ClInclude>
     <ClInclude Include="FireMonster.h">
       <Filter>Monster\Fire</Filter>
@@ -66,6 +51,24 @@
     <ClInclude Include="Kirby.h">
       <Filter>KirbyForm</Filter>
     </ClInclude>
+    <ClInclude Include="BaseActor.h">
+      <Filter>Global\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Gravity.h">
+      <Filter>Global\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="AttackEffect.h">
+      <Filter>Global\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="BackGround.h">
+      <Filter>Global\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Ground.h">
+      <Filter>Global\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="SubLevel.h">
+      <Filter>Global</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TitleLevel.cpp">
@@ -84,26 +87,11 @@
       <Filter>Level</Filter>
     </ClCompile>
     <ClCompile Include="KirbyCore.cpp" />
-    <ClCompile Include="BackGround.cpp">
-      <Filter>Global</Filter>
-    </ClCompile>
-    <ClCompile Include="Gravity.cpp">
-      <Filter>Global</Filter>
-    </ClCompile>
     <ClCompile Include="Monster_State.cpp">
       <Filter>Monster</Filter>
     </ClCompile>
     <ClCompile Include="Monster.cpp">
       <Filter>Monster</Filter>
-    </ClCompile>
-    <ClCompile Include="BaseActor.cpp">
-      <Filter>Global</Filter>
-    </ClCompile>
-    <ClCompile Include="AttackEffect.cpp">
-      <Filter>Global</Filter>
-    </ClCompile>
-    <ClCompile Include="Ground.cpp">
-      <Filter>Global</Filter>
     </ClCompile>
     <ClCompile Include="FireMonster.cpp">
       <Filter>Monster\Fire</Filter>
@@ -174,6 +162,24 @@
     <ClCompile Include="FireMonster_State.cpp">
       <Filter>Monster\Fire</Filter>
     </ClCompile>
+    <ClCompile Include="BaseActor.cpp">
+      <Filter>Global\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Gravity.cpp">
+      <Filter>Global\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="AttackEffect.cpp">
+      <Filter>Global\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="BackGround.cpp">
+      <Filter>Global\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Ground.cpp">
+      <Filter>Global\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="SubLevel.cpp">
+      <Filter>Global</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Level">
@@ -214,6 +220,12 @@
     </Filter>
     <Filter Include="KirbyForm\Spark">
       <UniqueIdentifier>{861340bd-6bb2-4ab8-af11-af962473ac51}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Global\Player">
+      <UniqueIdentifier>{5b75b4de-cad5-432c-900b-334cca74c32c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Global\Scene">
+      <UniqueIdentifier>{3b8927b1-9155-45ce-84dd-9b0df5b5626c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

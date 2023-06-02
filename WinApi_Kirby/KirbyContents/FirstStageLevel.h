@@ -1,14 +1,13 @@
 #pragma once
 
-#include "ActorEnum.h"
+#include "SubLevel.h"
 
 #include <list>
-#include <GameEngineCore/GameEngineLevel.h>
 
 class Ground;
 class Kirby;
 class Monster;
-class FirstStageLevel : public GameEngineLevel
+class FirstStageLevel : public SubLevel
 {
 public:
 	// constrcuter destructer
@@ -29,7 +28,6 @@ private:
 
 	void LevelStart(GameEngineLevel* _PrevLevel) override;
 
-	MonsterType LevelPlayerForm = MonsterType::Normal;
 	float4 SavePos = float4::ZERO;
 	Kirby* LevelPlayer = nullptr;
 	Monster* LevelMonster = nullptr;
