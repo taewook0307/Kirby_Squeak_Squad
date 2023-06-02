@@ -17,6 +17,7 @@ SparkMonster::~SparkMonster()
 
 void SparkMonster::Start()
 {
+	if (ResourcesManager::GetInst().FindSprite("Right_SparkEnermy.Bmp") == nullptr && ResourcesManager::GetInst().FindSprite("Left_SparkEnermy.Bmp") == nullptr)
 	{
 		GameEnginePath FilePath;
 		FilePath.SetCurrentPath();

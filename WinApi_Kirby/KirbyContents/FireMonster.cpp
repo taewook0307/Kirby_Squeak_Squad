@@ -17,6 +17,7 @@ FireMonster::~FireMonster()
 
 void FireMonster::Start()
 {
+	if (ResourcesManager::GetInst().FindSprite("Right_FireEnermy.Bmp") == nullptr && ResourcesManager::GetInst().FindSprite("Left_FireEnermy.Bmp") == nullptr)
 	{
 		GameEnginePath FilePath;
 		FilePath.SetCurrentPath();

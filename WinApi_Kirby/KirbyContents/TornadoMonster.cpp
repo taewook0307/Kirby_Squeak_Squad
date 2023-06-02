@@ -17,6 +17,7 @@ TornadoMonster::~TornadoMonster()
 
 void TornadoMonster::Start()
 {
+	if (ResourcesManager::GetInst().FindSprite("Right_TornadoEnermy.Bmp") == nullptr && ResourcesManager::GetInst().FindSprite("Left_TornadoEnermy.Bmp") == nullptr)
 	{
 		GameEnginePath FilePath;
 		FilePath.SetCurrentPath();

@@ -16,6 +16,7 @@ Monster::~Monster()
 
 void Monster::Start()
 {
+	if (ResourcesManager::GetInst().FindSprite("Right_NormalMonster.Bmp") == nullptr && ResourcesManager::GetInst().FindSprite("Left_NormalMonster.Bmp") == nullptr)
 	{
 		GameEnginePath FilePath;
 		FilePath.SetCurrentPath();
