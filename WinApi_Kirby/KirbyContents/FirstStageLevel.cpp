@@ -35,6 +35,7 @@ void FirstStageLevel::Start()
 	Back->BackGroundInit("FirstStageLevel.Bmp", "FirstStageBitMap.Bmp");
 
 	LevelPlayer = CreateActor<Kirby>(RenderOrder::Play);
+	LevelPlayer->MapChangeAnimationEndReset();
 
 	LevelMonster = CreateActor<IceMonster>(RenderOrder::Play);
 
@@ -74,6 +75,11 @@ void FirstStageLevel::Update(float _Delta)
 		LevelPlayer = CreateActor<Kirby>(RenderOrder::Play);
 		LevelPlayer->SetPos(SavePos);
 		LevelPlayer->SetGroundBitMap("FirstStageBitMap.Bmp");
+	}
+
+	if (true == LevelPlayer->GetMapChangeAnimationEnd())
+	{
+		GameEngineCore::ChangeLevel("SecondStageLevel");
 	}
 
 	if (true == GameEngineInput::IsDown('J'))

@@ -148,7 +148,7 @@ void Kirby::LevelMoveUpdate(float _Delta)
 {
 	if (true == MainRenderer->IsAnimationEnd())
 	{
-		GameEngineCore::ChangeLevel("SecondStageLevel");
+		MapChangeAnimationEnd = true;
 		return;
 	}
 }

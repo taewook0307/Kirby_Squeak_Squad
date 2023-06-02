@@ -35,6 +35,16 @@ public:
 		return KeepType;
 	}
 
+	bool GetMapChangeAnimationEnd() const
+	{
+		return MapChangeAnimationEnd;
+	}
+
+	void MapChangeAnimationEndReset()
+	{
+		MapChangeAnimationEnd = false;
+	}
+
 protected:
 	virtual void StateUpdate(float _Delta);
 	virtual void ChangeState(KirbyState _State);
@@ -120,6 +130,7 @@ protected:
 
 	bool IsCheckPosPoint = false;
 
+	bool MapChangeAnimationEnd = false;
 private:
 	MonsterType KeepType = MonsterType::Max;
 
