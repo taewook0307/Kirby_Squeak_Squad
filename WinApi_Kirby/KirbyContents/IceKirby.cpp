@@ -32,7 +32,7 @@ void IceKirby::Start()
 
 		MainRenderer->CreateAnimation("Right_Ice_Idle", "Right_IceKirby.Bmp", 0, 1, 0.5f, true);
 		MainRenderer->CreateAnimation("Right_Ice_Down", "Right_IceKirby.Bmp", 2, 3, 0.5f, true);
-		MainRenderer->CreateAnimation("Right_Ice_Slide", "Right_IceKirby.Bmp", 4, 13, 1.0f, false);
+		MainRenderer->CreateAnimation("Right_Ice_Slide", "Right_IceKirby.Bmp", 4, 13, 0.1f, false);
 		MainRenderer->FindAnimation("Right_Ice_Slide")->Inters[9] = 0.2f;
 		MainRenderer->CreateAnimation("Right_Ice_Jump", "Right_IceKirby.Bmp", 14, 14, 0.1f, false);
 		MainRenderer->CreateAnimation("Right_Ice_JumpToDown", "Right_IceKirby.Bmp", 15, 22, 0.1f, false);
@@ -58,7 +58,7 @@ void IceKirby::Start()
 
 		MainRenderer->CreateAnimation("Left_Ice_Idle", "Left_IceKirby.Bmp", 0, 1, 0.5f, true);
 		MainRenderer->CreateAnimation("Left_Ice_Down", "Left_IceKirby.Bmp", 2, 3, 0.5f, true);
-		MainRenderer->CreateAnimation("Left_Ice_Slide", "Left_IceKirby.Bmp", 4, 13, 1.0f, false);
+		MainRenderer->CreateAnimation("Left_Ice_Slide", "Left_IceKirby.Bmp", 4, 13, 0.1f, false);
 		MainRenderer->FindAnimation("Left_Ice_Slide")->Inters[9] = 0.2f;
 		MainRenderer->CreateAnimation("Left_Ice_Jump", "Left_IceKirby.Bmp", 14, 14, 0.1f, false);
 		MainRenderer->CreateAnimation("Left_Ice_JumpToDown", "Left_IceKirby.Bmp", 15, 22, 0.1f, false);
