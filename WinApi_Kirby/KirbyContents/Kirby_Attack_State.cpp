@@ -127,10 +127,11 @@ void Kirby::AttackLoopUpdate(float _Delta)
 {
 	DirCheck();
 
+	AttackCollision->On();
+
 	// 공격 충돌체 제거
 	if (true == GameEngineInput::IsUp('C'))
 	{
-		AttackCollision->SetCollisionScale(float4::ZERO);
 		AttackCollision->Off();
 		ChangeState(KirbyState::Idle);
 		return;
@@ -146,16 +147,12 @@ void Kirby::AttackLoopUpdate(float _Delta)
 	{
 		if (ActorDir::Left == Dir)
 		{
-			AttackCollision->SetCollisionPos({ -90.0f, -40.0f });
-			AttackCollision->SetCollisionScale({ 90.0f, 90.0f });
-			AttackCollision->On();
+			AttackCollision->SetCollisionPos(LEFTINHALECOLLSIONSCALE);
 		}
 
 		else
 		{
-			AttackCollision->SetCollisionPos({ 90.0f, -40.0f });
-			AttackCollision->SetCollisionScale({90.0f, 90.0f});
-			AttackCollision->On();
+			AttackCollision->SetCollisionPos(RIGHTINHALECOLLSIONSCALE);
 		}
 	}
 

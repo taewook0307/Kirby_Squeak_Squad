@@ -52,7 +52,7 @@ void Kirby::Start()
 		MainRenderer->CreateAnimation("Right_Breathe", "Right_Kirby.Bmp", 48, 54, 0.1f, false);
 		MainRenderer->CreateAnimation("Right_Fly", "Right_Kirby.Bmp", 55, 72, 0.2f, true);
 		MainRenderer->CreateAnimation("Right_BreatheOutLand", "Right_Kirby.Bmp", 73, 74, 0.1f, false);
-		MainRenderer->CreateAnimation("Right_BreatheOut", "Right_Kirby.Bmp", 73, 74, 0.2f, true);
+		MainRenderer->CreateAnimation("Right_BreatheOut", "Right_Kirby.Bmp", 73, 74, 0.2f, false);
 		MainRenderer->CreateAnimation("Right_Drop", "Right_Kirby.Bmp", 75, 76, 0.2f, false);
 		MainRenderer->CreateAnimation("Right_FlyToLand", "Right_Kirby.Bmp", 88, 90, 0.3f, true);
 		MainRenderer->CreateAnimation("Right_FlyToTurnUp", "Right_Kirby.Bmp", 77, 83, 0.2f, false);
@@ -109,6 +109,7 @@ void Kirby::Start()
 		BodyCollision->SetCollisionType(CollisionType::Rect);
 
 		AttackCollision = CreateCollision(CollisionOrder::Attack);
+		AttackCollision->SetCollisionScale(INHALECOLLSIONSCALE);
 		AttackCollision->SetCollisionType(CollisionType::Rect);
 	}
 
