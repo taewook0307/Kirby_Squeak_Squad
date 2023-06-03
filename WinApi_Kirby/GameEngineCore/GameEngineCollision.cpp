@@ -6,47 +6,41 @@
 #include <GameEngineCore/GameEngineCamera.h>
 #include <list>
 
-bool (*GameEngineCollision::CollisionFunction[static_cast<int>(CollisionType::Max)][static_cast<int>(CollisionType::Max)])(GameEngineCollision* _Left, GameEngineCollision* _Right) = { nullptr };
+bool (*GameEngineCollision::CollisionFunction[static_cast<int>(CollisionType::Max)][static_cast<int>(CollisionType::Max)])(const CollisionData& _LeftData, const CollisionData& _RightData) = { nullptr };
 
-bool GameEngineCollision::PointToPoint(GameEngineCollision* _Left, GameEngineCollision* _Right)
+bool GameEngineCollision::PointToPoint(const CollisionData& _LeftData, const CollisionData& _RightData)
 {
 	MsgBoxAssert("충돌체크함수를 만들지 않았습니다.");
 	return false;
 }
-bool GameEngineCollision::PointToRect(GameEngineCollision* _Left, GameEngineCollision* _Right)
+bool GameEngineCollision::PointToRect(const CollisionData& _LeftData, const CollisionData& _RightData)
 {
-	CollisionData LeftData = _Left->GetCollisionData();
-	CollisionData RightData = _Right->GetCollisionData();
-
-	if (RightData.Bot() < LeftData.Pos.Y)
+	if (_RightData.Bot() < _LeftData.Pos.Y)
 	{
 		return false;
 	}
 
-	if (RightData.Top() > LeftData.Pos.Y)
+	if (_RightData.Top() > _LeftData.Pos.Y)
 	{
 		return false;
 	}
 
-	if (RightData.Left() > LeftData.Pos.X)
+	if (_RightData.Left() > _LeftData.Pos.X)
 	{
 		return false;
 	}
 
-	if (RightData.Right() < LeftData.Pos.X)
+	if (_RightData.Right() < _LeftData.Pos.X)
 	{
 		return false;
 	}
 
 	return true;
 }
-bool GameEngineCollision::PointToCirCle(GameEngineCollision* _Left, GameEngineCollision* _Right)
+bool GameEngineCollision::PointToCirCle(const CollisionData& _LeftData, const CollisionData& _RightData)
 {
-	CollisionData LeftData = _Left->GetCollisionData();
-	CollisionData RightData = _Right->GetCollisionData();
-
-	float Len = (LeftData.Pos - RightData.Pos).Size();
-	float RadiusSum = RightData.Scale.Max2D();
+	float Len = (_LeftData.Pos - _RightData.Pos).Size();
+	float RadiusSum = _RightData.Scale.Max2D();
 	RadiusSum *= 0.5f;
 
 	if (Len <= RadiusSum)
@@ -56,72 +50,110 @@ bool GameEngineCollision::PointToCirCle(GameEngineCollision* _Left, GameEngineCo
 
 	return false;
 }
-bool GameEngineCollision::RectToPoint(GameEngineCollision* _Left, GameEngineCollision* _Right)
+bool GameEngineCollision::RectToPoint(const CollisionData& _LeftData, const CollisionData& _RightData)
 {
-	CollisionData LeftData = _Left->GetCollisionData();
-	CollisionData RightData = _Right->GetCollisionData();
-
-	if (LeftData.Bot() < RightData.Pos.Y)
+	if (_LeftData.Bot() < _RightData.Pos.Y)
 	{
 		return false;
 	}
 
-	if (LeftData.Top() > RightData.Pos.Y)
+	if (_LeftData.Top() > _RightData.Pos.Y)
 	{
 		return false;
 	}
 
-	if (LeftData.Left() > RightData.Pos.X)
+	if (_LeftData.Left() > _RightData.Pos.X)
 	{
 		return false;
 	}
 
-	if (LeftData.Right() < RightData.Pos.X)
+	if (_LeftData.Right() < _RightData.Pos.X)
 	{
 		return false;
 	}
 
 	return true;
 }
-bool GameEngineCollision::RectToRect(GameEngineCollision* _Left, GameEngineCollision* _Right)
+bool GameEngineCollision::RectToRect(const CollisionData& _LeftData, const CollisionData& _RightData)
 {
-	CollisionData LeftData = _Left->GetCollisionData();
-	CollisionData RightData = _Right->GetCollisionData();
-
-	if (LeftData.Bot() < RightData.Top())
+	if (_LeftData.Bot() < _RightData.Top())
 	{
 		return false;
 	}
 
-	if (LeftData.Top() > RightData.Bot())
+	if (_LeftData.Top() > _RightData.Bot())
 	{
 		return false;
 	}
 
-	if (LeftData.Left() > RightData.Right())
+	if (_LeftData.Left() > _RightData.Right())
 	{
 		return false;
 	}
 
-	if (LeftData.Right() < RightData.Left())
+	if (_LeftData.Right() < _RightData.Left())
 	{
 		return false;
 	}
 
 	return true;
 }
-bool GameEngineCollision::RectToCirCle(GameEngineCollision* _Left, GameEngineCollision* _Right)
+bool GameEngineCollision::RectToCirCle(const CollisionData& _LeftData, const CollisionData& _RightData)
 {
-	MsgBoxAssert("충돌체크함수를 만들지 않았습니다.");
+	CollisionData PointData = _RightData;
+
+	CollisionData Rect1 = _LeftData;
+	Rect1.Scale.Y += _RightData.Scale.Max2D();
+
+	CollisionData Rect2 = _LeftData;
+	Rect2.Scale.X += _RightData.Scale.Max2D();
+
+	if (true == RectToPoint(Rect1, PointData))
+	{
+		return true;
+	}
+
+	if (true == RectToPoint(Rect2, PointData))
+	{
+		return true;
+	}
+
+	CollisionData CirCle;
+	CirCle.Pos = { _LeftData.Left(), _LeftData.Top() };
+	CirCle.Scale = _RightData.Scale;
+	if (true == CirCleToPoint(CirCle, PointData))
+	{
+		return true;
+	}
+
+	CirCle.Pos = { _LeftData.Right(), _LeftData.Top() };
+	if (true == CirCleToPoint(CirCle, PointData))
+	{
+		return true;
+	}
+
+	CirCle.Pos = { _LeftData.Left(), _LeftData.Bot() };
+	if (true == CirCleToPoint(CirCle, PointData))
+	{
+		return true;
+	}
+
+	CirCle.Pos = { _LeftData.Right(), _LeftData.Bot() };
+	if (true == CirCleToPoint(CirCle, PointData))
+	{
+		return true;
+	}
+
+
+	// MsgBoxAssert("충돌체크함수를 만들지 않았습니다.");
+	// 원4개 충돌이니까.
+
 	return false;
 }
-bool GameEngineCollision::CirCleToPoint(GameEngineCollision* _Left, GameEngineCollision* _Right)
+bool GameEngineCollision::CirCleToPoint(const CollisionData& _LeftData, const CollisionData& _RightData)
 {
-	CollisionData LeftData = _Left->GetCollisionData();
-	CollisionData RightData = _Right->GetCollisionData();
-
-	float Len = (LeftData.Pos - RightData.Pos).Size();
-	float RadiusSum = LeftData.Scale.Max2D();
+	float Len = (_LeftData.Pos - _RightData.Pos).Size();
+	float RadiusSum = _LeftData.Scale.Max2D();
 	RadiusSum *= 0.5f;
 
 	if (Len <= RadiusSum)
@@ -131,18 +163,62 @@ bool GameEngineCollision::CirCleToPoint(GameEngineCollision* _Left, GameEngineCo
 
 	return false;
 }
-bool GameEngineCollision::CirCleToRect(GameEngineCollision* _Left, GameEngineCollision* _Right)
+bool GameEngineCollision::CirCleToRect(const CollisionData& _LeftData, const CollisionData& _RightData)
 {
-	MsgBoxAssert("충돌체크함수를 만들지 않았습니다.");
+	CollisionData PointData = _LeftData;
+
+	CollisionData Rect1 = _RightData;
+	Rect1.Scale.Y += _LeftData.Scale.Max2D();
+
+	CollisionData Rect2 = _RightData;
+	Rect2.Scale.X += _LeftData.Scale.Max2D();
+
+	if (true == RectToPoint(Rect1, PointData))
+	{
+		return true;
+	}
+
+	if (true == RectToPoint(Rect2, PointData))
+	{
+		return true;
+	}
+
+	CollisionData CirCle;
+	CirCle.Pos = { _RightData.Left(), _RightData.Top() };
+	CirCle.Scale = _LeftData.Scale;
+	if (true == CirCleToPoint(CirCle, PointData))
+	{
+		return true;
+	}
+
+	CirCle.Pos = { _RightData.Right(), _RightData.Top() };
+	if (true == CirCleToPoint(CirCle, PointData))
+	{
+		return true;
+	}
+
+	CirCle.Pos = { _RightData.Left(), _RightData.Bot() };
+	if (true == CirCleToPoint(CirCle, PointData))
+	{
+		return true;
+	}
+
+	CirCle.Pos = { _RightData.Right(), _RightData.Bot() };
+	if (true == CirCleToPoint(CirCle, PointData))
+	{
+		return true;
+	}
+
+
+	// MsgBoxAssert("충돌체크함수를 만들지 않았습니다.");
+	// 원4개 충돌이니까.
+
 	return false;
 }
-bool GameEngineCollision::CirCleToCirCle(GameEngineCollision* _Left, GameEngineCollision* _Right)
+bool GameEngineCollision::CirCleToCirCle(const CollisionData& _LeftData, const CollisionData& _RightData)
 {
-	CollisionData LeftData = _Left->GetCollisionData();
-	CollisionData RightData = _Right->GetCollisionData();
-
-	float Len = (LeftData.Pos - RightData.Pos).Size();
-	float RadiusSum = LeftData.Scale.Max2D() + RightData.Scale.Max2D();
+	float Len = (_LeftData.Pos - _RightData.Pos).Size();
+	float RadiusSum = _LeftData.Scale.Max2D() + _RightData.Scale.Max2D();
 	RadiusSum *= 0.5f;
 
 	if (Len <= RadiusSum)
@@ -259,10 +335,10 @@ bool GameEngineCollision::CollisonCheck(GameEngineCollision* _Other
 		return false;
 	}
 
-	return CollisionFunction[static_cast<int>(_ThisType)][static_cast<int>(_OtherType)](this, _Other);
+	return CollisionFunction[static_cast<int>(_ThisType)][static_cast<int>(_OtherType)](this->GetCollisionData(), _Other->GetCollisionData());
 }
 
-void GameEngineCollision::DebugRender() 
+void GameEngineCollision::DebugRender()
 {
 
 	if (false == CollisionRenderValue)

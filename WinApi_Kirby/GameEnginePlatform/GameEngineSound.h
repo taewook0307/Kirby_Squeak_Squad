@@ -6,15 +6,16 @@
 // 선언
 #include <GameEnginePlatform/ThirdParty/FMOD/inc/fmod.hpp>
 
-class GameEngineSoundPlayer 
+class GameEngineSoundPlayer
 {
 	friend class GameEngineSound;
 
 public:
+	void SetLoop(int _Count);
 	void SetVolume(float _Volume);
 	void Stop();
 
-	GameEngineSoundPlayer() 
+	GameEngineSoundPlayer()
 	{
 
 	}
@@ -43,7 +44,7 @@ private:
 	static std::map<std::string, GameEngineSound*> AllSound;
 
 public:
-	static void SetGlobalVolume(float _Value) 
+	static void SetGlobalVolume(float _Value)
 	{
 		GlobalVolume = _Value;
 	}
@@ -53,7 +54,7 @@ public:
 		return GlobalVolume;
 	}
 
-	static void SoundLoad(const std::string& _Path) 
+	static void SoundLoad(const std::string& _Path)
 	{
 		GameEnginePath Path = _Path;
 		SoundLoad(Path.GetFileName(), _Path);
@@ -64,7 +65,7 @@ public:
 	static void SoundLoad(const std::string& _Name, const std::string& _Path);
 
 	// 1번의 재생을 하고 끝나면 그냥 종료하고 나는 컨트롤할수 없다.
-	static GameEngineSoundPlayer SoundPlay(const std::string& _Name);
+	static GameEngineSoundPlayer SoundPlay(const std::string& _Name, int _Loop = 0);
 
 	static void Release();
 

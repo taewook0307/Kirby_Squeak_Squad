@@ -25,7 +25,7 @@ public:
 	GameEngineWindowTexture& operator=(GameEngineWindowTexture&& _Other) noexcept = delete;
 
 	void ResLoad(const std::string& _Path);
-	void ResCreate(HDC  _ImageDC) 
+	void ResCreate(HDC  _ImageDC)
 	{
 		ImageDC = _ImageDC;
 		ScaleCheck();
@@ -34,7 +34,7 @@ public:
 	void ResCreate(const float4& _Scale);
 
 
-	HDC GetImageDC() 
+	HDC GetImageDC()
 	{
 		return ImageDC;
 	}
@@ -47,6 +47,8 @@ public:
 	void TransCopy(GameEngineWindowTexture* _CopyTexture, const float4& _Pos, const float4& _Scale, const float4& _OtherPos, const float4& _OtherScale, int _TransColor = RGB(255, 0, 255));
 
 	unsigned int GetColor(unsigned int _DefaultColor, float4 _Pos);
+
+	void FillTexture(unsigned int _Color);
 
 protected:
 

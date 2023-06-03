@@ -10,11 +10,11 @@
 #include "GameEngineLevel.h"
 #include <math.h>
 
-GameEngineRenderer::GameEngineRenderer() 
+GameEngineRenderer::GameEngineRenderer()
 {
 }
 
-GameEngineRenderer::~GameEngineRenderer() 
+GameEngineRenderer::~GameEngineRenderer()
 {
 }
 
@@ -63,8 +63,62 @@ void GameEngineRenderer::SetRenderScaleToTexture()
 	ScaleCheck = false;
 }
 
-void GameEngineRenderer::Render(float _DeltaTime) 
+void GameEngineRenderer::TextRender(float _DeltaTime)
 {
+	float4 TextPos = GetActor()->GetPos() + RenderPos - Camera->GetPos();
+
+	HDC hdc = GameEngineWindow::MainWindow.GetBackBuffer()->GetImageDC();
+	HFONT hFont, OldFont;
+	LOGFONTA lf;
+	lf.lfHeight = TextScale;// TextHeight;
+	lf.lfWidth = 0;
+	lf.lfEscapement = 0;
+	lf.lfOrientation = 0;
+	lf.lfWeight = 0;
+	lf.lfItalic = 0;
+	lf.lfUnderline = 0;
+	lf.lfStrikeOut = 0;
+	lf.lfCharSet = HANGEUL_CHARSET;
+	lf.lfOutPrecision = 0;
+	lf.lfClipPrecision = 0;
+	lf.lfQuality = 0;
+	lf.lfPitchAndFamily = VARIABLE_PITCH | FF_ROMAN;
+	// lstrcpy(lf.lfFaceName, TEXT(TextType.c_str()));
+	lstrcpy(lf.lfFaceName, Face.c_str());
+	hFont = CreateFontIndirect(&lf);
+	OldFont = static_cast<HFONT>(SelectObject(hdc, hFont));
+
+	//SetTextAlign(hdc, static_cast<UINT>(Align));
+	SetTextColor(hdc, RGB(255, 0, 0));
+	SetBkMode(hdc, TRANSPARENT);
+
+	RECT Rect;
+	Rect.left = TextPos.iX();
+	Rect.top = TextPos.iY();
+	Rect.right = TextPos.iX() + TextScale * static_cast<int>(Text.size());// TextBoxScale.ix();
+	Rect.bottom = TextPos.iY() + TextScale;// TextBoxScale.iy();
+
+
+
+	DrawTextA(hdc, Text.c_str(), static_cast<int>(Text.size()), &Rect, static_cast<UINT>(DT_BOTTOM));
+
+
+	// TextOutA(GameEngineWindow::GetDoubleBufferImage()->GetImageDC(), RenderPos.ix(), RenderPos.iy(), RenderText.c_str(), static_cast<int>(RenderText.size()));
+
+	SelectObject(hdc, OldFont);
+	DeleteObject(hFont);
+
+	return;
+}
+
+void GameEngineRenderer::Render(float _DeltaTime)
+{
+	if ("" != Text)
+	{
+		TextRender(_DeltaTime);
+		return;
+	}
+
 	if (nullptr != CurAnimation)
 	{
 		if (true == CurAnimation->Loop)
@@ -86,7 +140,7 @@ void GameEngineRenderer::Render(float _DeltaTime)
 				{
 					CurAnimation->CurFrame = 0;
 				}
-				else 
+				else
 				{
 					--CurAnimation->CurFrame;
 				}
@@ -153,7 +207,7 @@ void GameEngineRenderer::CreateAnimation(
 
 	GameEngineSprite* Sprite = ResourcesManager::GetInst().FindSprite(_SpriteName);
 
-	if (nullptr ==  Sprite)
+	if (nullptr == Sprite)
 	{
 		MsgBoxAssert("존재하지 않는 스프라이트로 애니메이션을 만들려고 했습니다." + _SpriteName);
 		return;
@@ -167,7 +221,7 @@ void GameEngineRenderer::CreateAnimation(
 	{
 		Animation.StartFrame = _Start;
 	}
-	else 
+	else
 	{
 		Animation.StartFrame = 0;
 	}
@@ -176,7 +230,7 @@ void GameEngineRenderer::CreateAnimation(
 	{
 		Animation.EndFrame = _End;
 	}
-	else 
+	else
 	{
 		Animation.EndFrame = Animation.Sprite->GetSpriteCount() - 1;
 	}
@@ -243,7 +297,7 @@ void GameEngineRenderer::UICameraSetting()
 	CameraTypeValue = CameraType::UI;
 }
 
-void GameEngineRenderer::Start() 
+void GameEngineRenderer::Start()
 {
 }
 
