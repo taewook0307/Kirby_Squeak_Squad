@@ -4,6 +4,8 @@
 #include "Kirby.h"
 #include "SparkKirby.h"
 #include "IceKirby.h"
+#include "FireKirby.h"
+#include "TornadoKirby.h"
 #include "Monster.h"
 #include "FireMonster.h"
 #include "IceMonster.h"
@@ -63,6 +65,42 @@ void FirstStageLevel::Update(float _Delta)
 		SavePos = LevelPlayer->GetPos();
 		LevelPlayer->Death();
 		LevelPlayer = CreateActor<IceKirby>(RenderOrder::Play);
+		LevelPlayer->SetPos(SavePos);
+		LevelPlayer->SetGroundBitMap("FirstStageBitMap.Bmp");
+	}
+
+	if (true == GameEngineInput::IsDown('X')
+		&& LevelPlayer->GetKirbyState() == KirbyState::KeepIdle
+		&& LevelPlayer->GetKeepType() == MonsterType::Spark)
+	{
+		LevelPlayerForm = LevelPlayer->GetKeepType();
+		SavePos = LevelPlayer->GetPos();
+		LevelPlayer->Death();
+		LevelPlayer = CreateActor<SparkKirby>(RenderOrder::Play);
+		LevelPlayer->SetPos(SavePos);
+		LevelPlayer->SetGroundBitMap("FirstStageBitMap.Bmp");
+	}
+
+	if (true == GameEngineInput::IsDown('X')
+		&& LevelPlayer->GetKirbyState() == KirbyState::KeepIdle
+		&& LevelPlayer->GetKeepType() == MonsterType::Fire)
+	{
+		LevelPlayerForm = LevelPlayer->GetKeepType();
+		SavePos = LevelPlayer->GetPos();
+		LevelPlayer->Death();
+		LevelPlayer = CreateActor<FireKirby>(RenderOrder::Play);
+		LevelPlayer->SetPos(SavePos);
+		LevelPlayer->SetGroundBitMap("FirstStageBitMap.Bmp");
+	}
+
+	if (true == GameEngineInput::IsDown('X')
+		&& LevelPlayer->GetKirbyState() == KirbyState::KeepIdle
+		&& LevelPlayer->GetKeepType() == MonsterType::Tornado)
+	{
+		LevelPlayerForm = LevelPlayer->GetKeepType();
+		SavePos = LevelPlayer->GetPos();
+		LevelPlayer->Death();
+		LevelPlayer = CreateActor<TornadoKirby>(RenderOrder::Play);
 		LevelPlayer->SetPos(SavePos);
 		LevelPlayer->SetGroundBitMap("FirstStageBitMap.Bmp");
 	}
