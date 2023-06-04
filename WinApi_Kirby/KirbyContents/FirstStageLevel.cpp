@@ -41,7 +41,7 @@ void FirstStageLevel::Start()
 
 	LevelMonster = CreateActor<IceMonster>(RenderOrder::Play);
 
-	LevelFireMonster = CreateActor<IceMonster>(RenderOrder::Play);
+	LevelFireMonster = CreateActor<FireMonster>(RenderOrder::Play);
 
 	LevelTornadoMonster = CreateActor<TornadoMonster>(RenderOrder::Play);
 
