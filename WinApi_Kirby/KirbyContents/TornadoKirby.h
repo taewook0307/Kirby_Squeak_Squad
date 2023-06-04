@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Kirby.h"
+#include "FormKirby.h"
 
-class TornadoKirby : public Kirby
+class TornadoKirby : public FormKirby
 {
 public:
 	// constrcuter destructer
@@ -16,8 +16,10 @@ public:
 	TornadoKirby& operator=(TornadoKirby&& _Other) noexcept = delete;
 
 protected:
+	void ChangeAnimationState(const std::string& _StateName) override;
 
+	// void AttackLoopUpdate(float _Delta) override;
 private:
-
+	void Start() override;
 };
 

@@ -31,6 +31,7 @@ enum class KirbyState
 	KeepWalk,
 	KeepJump,
 	KeepDamage,
+	Change,
 	Max
 };
 

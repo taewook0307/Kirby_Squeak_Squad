@@ -37,16 +37,16 @@
       <Filter>Monster\Tornado</Filter>
     </ClInclude>
     <ClInclude Include="FireKirby.h">
-      <Filter>KirbyForm\Fire</Filter>
+      <Filter>KirbyForm\Form\Fire</Filter>
     </ClInclude>
     <ClInclude Include="IceKirby.h">
-      <Filter>KirbyForm\Ice</Filter>
+      <Filter>KirbyForm\Form\Ice</Filter>
     </ClInclude>
     <ClInclude Include="SparkKirby.h">
-      <Filter>KirbyForm\Spark</Filter>
+      <Filter>KirbyForm\Form\Spark</Filter>
     </ClInclude>
     <ClInclude Include="TornadoKirby.h">
-      <Filter>KirbyForm\Tornado</Filter>
+      <Filter>KirbyForm\Form\Tornado</Filter>
     </ClInclude>
     <ClInclude Include="Kirby.h">
       <Filter>KirbyForm</Filter>
@@ -68,6 +68,9 @@
     </ClInclude>
     <ClInclude Include="SubLevel.h">
       <Filter>Global</Filter>
+    </ClInclude>
+    <ClInclude Include="FormKirby.h">
+      <Filter>KirbyForm\Form</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -112,28 +115,28 @@
       <Filter>Monster\Ice</Filter>
     </ClCompile>
     <ClCompile Include="FireKirby.cpp">
-      <Filter>KirbyForm\Fire</Filter>
+      <Filter>KirbyForm\Form\Fire</Filter>
     </ClCompile>
     <ClCompile Include="FireKirby_State.cpp">
-      <Filter>KirbyForm\Fire</Filter>
+      <Filter>KirbyForm\Form\Fire</Filter>
     </ClCompile>
     <ClCompile Include="IceKirby.cpp">
-      <Filter>KirbyForm\Ice</Filter>
+      <Filter>KirbyForm\Form\Ice</Filter>
     </ClCompile>
     <ClCompile Include="IceKirby_State.cpp">
-      <Filter>KirbyForm\Ice</Filter>
+      <Filter>KirbyForm\Form\Ice</Filter>
     </ClCompile>
     <ClCompile Include="SparkKirby.cpp">
-      <Filter>KirbyForm\Spark</Filter>
+      <Filter>KirbyForm\Form\Spark</Filter>
     </ClCompile>
     <ClCompile Include="SparkKirby_State.cpp">
-      <Filter>KirbyForm\Spark</Filter>
+      <Filter>KirbyForm\Form\Spark</Filter>
     </ClCompile>
     <ClCompile Include="TornadoKirby.cpp">
-      <Filter>KirbyForm\Tornado</Filter>
+      <Filter>KirbyForm\Form\Tornado</Filter>
     </ClCompile>
     <ClCompile Include="TornadoKirby_State.cpp">
-      <Filter>KirbyForm\Tornado</Filter>
+      <Filter>KirbyForm\Form\Tornado</Filter>
     </ClCompile>
     <ClCompile Include="TornadoMonster_State.cpp">
       <Filter>Monster\Tornado</Filter>
@@ -180,6 +183,9 @@
     <ClCompile Include="SubLevel.cpp">
       <Filter>Global</Filter>
     </ClCompile>
+    <ClCompile Include="FormKirby.cpp">
+      <Filter>KirbyForm\Form</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Level">
@@ -209,23 +215,26 @@
     <Filter Include="Monster\Tornado">
       <UniqueIdentifier>{b8c47b16-cb58-490f-8de0-92cfd25a8fe5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="KirbyForm\Fire">
-      <UniqueIdentifier>{02abce2e-df0a-404d-a946-a19adbb9e723}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="KirbyForm\Ice">
-      <UniqueIdentifier>{4c8a9550-8f26-4760-ba56-3353f85c32ee}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="KirbyForm\Tornado">
-      <UniqueIdentifier>{6f7f04db-c411-492f-9300-9e77ace68e8a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="KirbyForm\Spark">
-      <UniqueIdentifier>{861340bd-6bb2-4ab8-af11-af962473ac51}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Global\Player">
       <UniqueIdentifier>{5b75b4de-cad5-432c-900b-334cca74c32c}</UniqueIdentifier>
     </Filter>
     <Filter Include="Global\Scene">
       <UniqueIdentifier>{3b8927b1-9155-45ce-84dd-9b0df5b5626c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="KirbyForm\Form">
+      <UniqueIdentifier>{f4933eb1-b539-422d-95c0-9fc7313ac8b9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="KirbyForm\Form\Ice">
+      <UniqueIdentifier>{4c8a9550-8f26-4760-ba56-3353f85c32ee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="KirbyForm\Form\Fire">
+      <UniqueIdentifier>{02abce2e-df0a-404d-a946-a19adbb9e723}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="KirbyForm\Form\Spark">
+      <UniqueIdentifier>{861340bd-6bb2-4ab8-af11-af962473ac51}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="KirbyForm\Form\Tornado">
+      <UniqueIdentifier>{6f7f04db-c411-492f-9300-9e77ace68e8a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

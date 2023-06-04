@@ -1,8 +1,10 @@
 #pragma once
 
-#include "Kirby.h"
+#include "FormKirby.h"
 
-class SparkKirby : public Kirby
+#define SPARKATTACKCOLLISIONSCALE { 140.0f, 140.0f }
+
+class SparkKirby : public FormKirby
 {
 public:
 	// constrcuter destructer
@@ -16,10 +18,10 @@ public:
 	SparkKirby& operator=(SparkKirby&& _Other) noexcept = delete;
 
 protected:
+	void ChangeAnimationState(const std::string& _StateName) override;
 
-	// void ChangeAnimationState(const std::string& _StateName);
+	// void AttackLoopUpdate(float _Delta) override;
 private:
-
 	void Start() override;
 };
 
