@@ -61,7 +61,7 @@ void FirstStageLevel::Update(float _Delta)
 		&& LevelPlayer->GetKirbyState() == KirbyState::KeepIdle
 		&& LevelPlayer->GetKeepType() == MonsterType::Ice)
 	{
-		LevelPlayerForm = LevelPlayer->GetKeepType();
+		SetLevelPlayerForm(MonsterType::Ice);
 		SavePos = LevelPlayer->GetPos();
 		LevelPlayer->Death();
 		LevelPlayer = CreateActor<IceKirby>(RenderOrder::Play);
@@ -73,7 +73,7 @@ void FirstStageLevel::Update(float _Delta)
 		&& LevelPlayer->GetKirbyState() == KirbyState::KeepIdle
 		&& LevelPlayer->GetKeepType() == MonsterType::Spark)
 	{
-		LevelPlayerForm = LevelPlayer->GetKeepType();
+		SetLevelPlayerForm(MonsterType::Spark);
 		SavePos = LevelPlayer->GetPos();
 		LevelPlayer->Death();
 		LevelPlayer = CreateActor<SparkKirby>(RenderOrder::Play);
@@ -85,7 +85,7 @@ void FirstStageLevel::Update(float _Delta)
 		&& LevelPlayer->GetKirbyState() == KirbyState::KeepIdle
 		&& LevelPlayer->GetKeepType() == MonsterType::Fire)
 	{
-		LevelPlayerForm = LevelPlayer->GetKeepType();
+		SetLevelPlayerForm(MonsterType::Fire);
 		SavePos = LevelPlayer->GetPos();
 		LevelPlayer->Death();
 		LevelPlayer = CreateActor<FireKirby>(RenderOrder::Play);
@@ -97,7 +97,7 @@ void FirstStageLevel::Update(float _Delta)
 		&& LevelPlayer->GetKirbyState() == KirbyState::KeepIdle
 		&& LevelPlayer->GetKeepType() == MonsterType::Tornado)
 	{
-		LevelPlayerForm = LevelPlayer->GetKeepType();
+		SetLevelPlayerForm(MonsterType::Tornado);
 		SavePos = LevelPlayer->GetPos();
 		LevelPlayer->Death();
 		LevelPlayer = CreateActor<TornadoKirby>(RenderOrder::Play);
@@ -105,9 +105,9 @@ void FirstStageLevel::Update(float _Delta)
 		LevelPlayer->SetGroundBitMap("FirstStageBitMap.Bmp");
 	}
 
-	if (LevelPlayerForm != MonsterType::Normal && true == GameEngineInput::IsDown('Z'))
+	if (GetLevelPlayerForm() != MonsterType::Normal && true == GameEngineInput::IsDown('Z'))
 	{
-		LevelPlayerForm = MonsterType::Normal;
+		SetLevelPlayerForm(MonsterType::Normal);
 		SavePos = LevelPlayer->GetPos();
 		LevelPlayer->Death();
 		LevelPlayer = CreateActor<Kirby>(RenderOrder::Play);

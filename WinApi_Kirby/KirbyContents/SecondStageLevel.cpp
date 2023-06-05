@@ -21,6 +21,8 @@ void SecondStageLevel::Start()
 
 	BackGround* Back = CreateActor<BackGround>(RenderOrder::BackGround);
 	Back->BackGroundInit("SecondStageLevel.Bmp", "SecondStageBitMap.Bmp");
+
+	MonsterType Check = GetLevelPlayerForm();
 }
 
 void SecondStageLevel::Update(float _Delta)

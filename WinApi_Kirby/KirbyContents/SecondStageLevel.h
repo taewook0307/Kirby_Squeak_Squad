@@ -19,8 +19,11 @@ public:
 protected:
 
 private:
-	Ground* SecondStage = nullptr;
-
 	void Start() override;
 	void Update(float _Delta) override;
+
+	void LevelStart(GameEngineLevel* _PrevLevel) override;
+
+	Ground* SecondStage = nullptr;
+	Kirby* LevelPlayer = nullptr;
 };
