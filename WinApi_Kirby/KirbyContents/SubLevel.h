@@ -20,6 +20,7 @@ public:
 protected:
 	static MonsterType LevelPlayerForm;
 
+	static void SetLevelPlayerForm(const MonsterType& _Value);
 private:
 
 };
