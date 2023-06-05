@@ -115,22 +115,22 @@ void SecondStageLevel::LevelStart(GameEngineLevel* _PrevLevel)
 		LevelPlayer = CreateActor<Kirby>(RenderOrder::Play);
 		LevelPlayer->MapChangeAnimationEndReset();
 	}
-	if (GetLevelPlayerForm() == MonsterType::Fire)
+	else if (GetLevelPlayerForm() == MonsterType::Fire)
 	{
 		LevelPlayer = CreateActor<FireKirby>(RenderOrder::Play);
 		LevelPlayer->MapChangeAnimationEndReset();
 	}
-	if (GetLevelPlayerForm() == MonsterType::Ice)
+	else if (GetLevelPlayerForm() == MonsterType::Ice)
 	{
 		LevelPlayer = CreateActor<IceKirby>(RenderOrder::Play);
 		LevelPlayer->MapChangeAnimationEndReset();
 	}
-	if (GetLevelPlayerForm() == MonsterType::Spark)
+	else if (GetLevelPlayerForm() == MonsterType::Spark)
 	{
 		LevelPlayer = CreateActor<SparkKirby>(RenderOrder::Play);
 		LevelPlayer->MapChangeAnimationEndReset();
 	}
-	if (GetLevelPlayerForm() == MonsterType::Tornado)
+	else if (GetLevelPlayerForm() == MonsterType::Tornado)
 	{
 		LevelPlayer = CreateActor<TornadoKirby>(RenderOrder::Play);
 		LevelPlayer->MapChangeAnimationEndReset();
