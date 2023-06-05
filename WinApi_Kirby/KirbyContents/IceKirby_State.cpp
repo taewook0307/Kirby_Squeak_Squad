@@ -33,11 +33,6 @@ void IceKirby::AttackLoopUpdate(float _Delta)
 		GameEngineActor* MonsterPtr = MonsterCollision->GetActor();
 		Monster* KeepMonster = dynamic_cast<Monster*>(MonsterPtr);
 
-		float4 MonsterPos = KeepMonster->GetPos();
-		float4 DirPos = (MonsterPos - GetPos()).NormalizeReturn();
-
-		KeepMonster->AddPos(DirPos);
-
 		if (Timer > 3.0f)
 		{
 			KeepMonster->Death();

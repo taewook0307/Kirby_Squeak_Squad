@@ -419,5 +419,5 @@ void Kirby::CameraMove(float4 _MovePos)
 		return;
 	}
 
-	GetLevel()->GetMainCamera()->AddPos(_MovePos);
+	GetLevel()->GetMainCamera()->AddPos({ _MovePos.X, 0.0f });
 }

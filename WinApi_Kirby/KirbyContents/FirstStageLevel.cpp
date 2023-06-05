@@ -39,11 +39,11 @@ void FirstStageLevel::Start()
 	LevelPlayer = CreateActor<Kirby>(RenderOrder::Play);
 	LevelPlayer->MapChangeAnimationEndReset();
 
-	LevelMonster = CreateActor<IceMonster>(RenderOrder::Play);
+	LevelMonster = CreateActor<TornadoMonster>(RenderOrder::Play);
 
 	LevelFireMonster = CreateActor<FireMonster>(RenderOrder::Play);
 
-	LevelTornadoMonster = CreateActor<TornadoMonster>(RenderOrder::Play);
+	LevelTornadoMonster = CreateActor<IceMonster>(RenderOrder::Play);
 
 	LevelSparkMonster = CreateActor<SparkMonster>(RenderOrder::Play);
 

@@ -95,14 +95,7 @@ void SparkKirby::Start()
 		BodyCollision->SetCollisionType(CollisionType::Rect);
 
 		AttackCollision = CreateCollision(CollisionOrder::SpecialAttack);
-		if (Dir == ActorDir::Left)
-		{
-			AttackCollision->SetCollisionPos(BODYCOLLISIONPOS);
-		}
-		else
-		{
-			AttackCollision->SetCollisionPos(BODYCOLLISIONPOS);
-		}
+		AttackCollision->SetCollisionPos(BODYCOLLISIONPOS);
 		AttackCollision->SetCollisionScale(SPARKATTACKCOLLISIONSCALE);
 		AttackCollision->SetCollisionType(CollisionType::Rect);
 	}
