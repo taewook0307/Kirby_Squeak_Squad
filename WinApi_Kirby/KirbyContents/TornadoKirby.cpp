@@ -83,7 +83,14 @@ void TornadoKirby::Start()
 		MainRenderer->CreateAnimation("Left_Tornado_AttackLoop", "Left_TornadoKirby.Bmp", 148, 155, 0.1f, true);
 		MainRenderer->CreateAnimation("Left_Tornado_Attack", "Left_TornadoKirby.Bmp", 156, 168, 0.1f, false);
 
-		MainRenderer->ChangeAnimation("Right_Tornado_Idle");
+		if (Dir == ActorDir::Left)
+		{
+			MainRenderer->ChangeAnimation("Left_Tornado_Idle");
+		}
+		else
+		{
+			MainRenderer->ChangeAnimation("Right_Tornado_Idle");
+		}
 		MainRenderer->SetRenderScaleToTexture();
 		MainRenderer->SetScaleRatio(RatioValue);
 	}
@@ -95,14 +102,7 @@ void TornadoKirby::Start()
 		BodyCollision->SetCollisionType(CollisionType::Rect);
 
 		AttackCollision = CreateCollision(CollisionOrder::SpecialAttack);
-		if (Dir == ActorDir::Left)
-		{
-			AttackCollision->SetCollisionPos(BODYCOLLISIONPOS);
-		}
-		else
-		{
-			AttackCollision->SetCollisionPos(BODYCOLLISIONPOS);
-		}
+		AttackCollision->SetCollisionPos(BODYCOLLISIONPOS);
 		AttackCollision->SetCollisionScale(BODYCOLLISIONSCALE);
 		AttackCollision->SetCollisionType(CollisionType::Rect);
 	}

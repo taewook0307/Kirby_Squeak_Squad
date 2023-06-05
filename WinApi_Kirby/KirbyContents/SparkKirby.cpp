@@ -83,7 +83,14 @@ void SparkKirby::Start()
 		MainRenderer->CreateAnimation("Left_Spark_AttackLoop", "Left_SparkKirby.Bmp", 140, 143, 0.1f, true);
 		MainRenderer->CreateAnimation("Left_Spark_Attack", "Left_SparkKirby.Bmp", 144, 145, 0.1f, false);
 
-		MainRenderer->ChangeAnimation("Right_Spark_Idle");
+		if (Dir == ActorDir::Left)
+		{
+			MainRenderer->ChangeAnimation("Left_Spark_Idle");
+		}
+		else
+		{
+			MainRenderer->ChangeAnimation("Right_Spark_Idle");
+		}
 		MainRenderer->SetRenderScaleToTexture();
 		MainRenderer->SetScaleRatio(RatioValue);
 	}

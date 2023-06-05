@@ -83,7 +83,14 @@ void IceKirby::Start()
 		MainRenderer->CreateAnimation("Left_Ice_AttackLoop", "Left_IceKirby.Bmp", 105, 120, 0.1f, true);
 		MainRenderer->CreateAnimation("Left_Ice_Attack", "Left_IceKirby.Bmp", 121, 123, 0.1f, false);
 
-		MainRenderer->ChangeAnimation("Right_Ice_Idle");
+		if (Dir == ActorDir::Left)
+		{
+			MainRenderer->ChangeAnimation("Left_Ice_Idle");
+		}
+		else
+		{
+			MainRenderer->ChangeAnimation("Right_Ice_Idle");
+		}
 		MainRenderer->SetRenderScaleToTexture();
 		MainRenderer->SetScaleRatio(RatioValue);
 	}

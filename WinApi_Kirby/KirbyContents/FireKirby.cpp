@@ -83,7 +83,14 @@ void FireKirby::Start()
 		MainRenderer->CreateAnimation("Left_Fire_AttackLoop", "Left_FireKirby.Bmp", 143, 156, 0.1f, true);
 		MainRenderer->CreateAnimation("Left_Fire_Attack", "Left_FireKirby.Bmp", 157, 162, 0.1f, false);
 
-		MainRenderer->ChangeAnimation("Right_Fire_Idle");
+		if (Dir == ActorDir::Left)
+		{
+			MainRenderer->ChangeAnimation("Left_Fire_Idle");
+		}
+		else
+		{
+			MainRenderer->ChangeAnimation("Right_Fire_Idle");
+		}
 		MainRenderer->SetRenderScaleToTexture();
 		MainRenderer->SetScaleRatio(RatioValue);
 	}
