@@ -28,8 +28,8 @@ private:
 
 	void LevelStart(GameEngineLevel* _PrevLevel) override;
 
-	float4 SavePos = float4::ZERO;
 	Kirby* LevelPlayer = nullptr;
+	float4 SavePos = float4::ZERO;
 	Monster* LevelMonster = nullptr;
 	Monster* LevelFireMonster = nullptr;
 	Monster* LevelTornadoMonster = nullptr;

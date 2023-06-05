@@ -2,6 +2,7 @@
 
 #include "SubLevel.h"
 
+class Kirby;
 class Ground;
 class SecondStageLevel : public SubLevel
 {
@@ -23,7 +24,8 @@ private:
 	void Update(float _Delta) override;
 
 	void LevelStart(GameEngineLevel* _PrevLevel) override;
-
+	
 	Ground* SecondStage = nullptr;
 	Kirby* LevelPlayer = nullptr;
+	float4 SavePos = float4::ZERO;
 };
