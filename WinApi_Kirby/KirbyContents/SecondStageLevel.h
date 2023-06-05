@@ -1,9 +1,9 @@
 #pragma once
 
-#include <GameEngineCore/GameEngineLevel.h>
+#include "SubLevel.h"
 
 class Ground;
-class SecondStageLevel : public GameEngineLevel
+class SecondStageLevel : public SubLevel
 {
 public:
 	// constrcuter destructer

@@ -18,9 +18,9 @@ public:
 	SubLevel& operator=(SubLevel&& _Other) noexcept = delete;
 
 protected:
-	static MonsterType LevelPlayerForm;
-
 	static void SetLevelPlayerForm(const MonsterType& _Value);
-private:
 
+	static MonsterType& GetLevelPlayerForm();
+private:
+	static MonsterType LevelPlayerForm;
 };
