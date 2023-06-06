@@ -5,7 +5,6 @@
 #include <GameEngineCore/GameEngineRenderer.h>
 #include <GameEngineCore/GameEngineCollision.h>
 
-//--------------------------------------------------------------------------------------------------------------------------------------------
 void Kirby::KirbyGravity(float _Delta)
 {
 	unsigned int Color = GetGroundColor(EMPTYCOLOR);
@@ -19,7 +18,6 @@ void Kirby::KirbyGravity(float _Delta)
 		GravityReset();
 	}
 }
-//--------------------------------------------------------------------------------------------------------------------------------------------
 
 void Kirby::IdleStart()
 {
