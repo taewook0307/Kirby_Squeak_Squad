@@ -36,7 +36,7 @@ void FirstStageLevel::Start()
 	BackGround* Back = CreateActor<BackGround>(RenderOrder::BackGround);
 	Back->BackGroundInit("FirstStageLevel.Bmp", "FirstStageBitMap.Bmp");
 
-	LevelPlayer = CreateActor<Kirby>(RenderOrder::Play);
+	LevelPlayer = CreateActor<FireKirby>(RenderOrder::Play);
 	LevelPlayer->MapChangeAnimationEndReset();
 
 	LevelMonster = CreateActor<TornadoMonster>(RenderOrder::Play);
