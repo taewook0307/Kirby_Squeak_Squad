@@ -13,25 +13,9 @@ void Kirby::KirbyGravity(float _Delta)
 	if (EMPTYCOLOR == Color || DOORCOLOR == Color)
 	{
 		Gravity(_Delta);
-
-		unsigned int CheckColor = GetGroundColor(EMPTYCOLOR, float4::DOWN);
-
-		while (CheckColor == EMPTYCOLOR || CheckColor == DOORCOLOR)
-		{
-			CheckColor = GetGroundColor(EMPTYCOLOR, float4::DOWN);
-			AddPos(float4::DOWN);
-		}
 	}
 	else
 	{
-		unsigned int CheckColor = GetGroundColor(EMPTYCOLOR, float4::UP);
-
-		while (CheckColor != EMPTYCOLOR && CheckColor != DOORCOLOR)
-		{
-			CheckColor = GetGroundColor(EMPTYCOLOR, float4::UP);
-			AddPos(float4::UP);
-		}
-
 		GravityReset();
 	}
 }
@@ -60,9 +44,11 @@ void Kirby::IdleUpdate(float _Delta)
 
 	KirbyGravity(_Delta);
 
+	unsigned int Color = GetGroundColor(EMPTYCOLOR);
+
 	// 걷기 상태 이동
-	if (true == GameEngineInput::IsDown('A')
-		|| true == GameEngineInput::IsDown('D'))
+	if (true == GameEngineInput::IsDown('A') && Color != EMPTYCOLOR
+		|| true == GameEngineInput::IsDown('D') && Color != EMPTYCOLOR)
 	{
 		DirCheck();
 		ChangeState(KirbyState::Walk);
@@ -70,8 +56,8 @@ void Kirby::IdleUpdate(float _Delta)
 	}
 
 	// 웅크리기 상태 이동
-	if (true == GameEngineInput::IsDown('S')
-		|| true == GameEngineInput::IsPress('S'))
+	if (true == GameEngineInput::IsDown('S') && Color != EMPTYCOLOR
+		|| true == GameEngineInput::IsPress('S') && Color != EMPTYCOLOR)
 	{
 		DirCheck();
 		ChangeState(KirbyState::Down);
@@ -79,7 +65,7 @@ void Kirby::IdleUpdate(float _Delta)
 	}
 
 	// 점프 상태 이동
-	if (true == GameEngineInput::IsDown(VK_SPACE))
+	if (true == GameEngineInput::IsDown(VK_SPACE) && Color != EMPTYCOLOR)
 	{
 		DirCheck();
 		ChangeState(KirbyState::Jump);
@@ -87,34 +73,36 @@ void Kirby::IdleUpdate(float _Delta)
 	}
 
 	// 달리기 상태 이동
-	if (true == GameEngineInput::IsDown('E')
-		|| true == GameEngineInput::IsDown('Q'))
+	if (true == GameEngineInput::IsDown('E') && Color != EMPTYCOLOR
+		|| true == GameEngineInput::IsDown('Q') && Color != EMPTYCOLOR)
 	{
 		DirCheck();
 		ChangeState(KirbyState::Run);
 		return;
 	}
 
-	if (true == GameEngineInput::IsPress('F'))
+	if (true == GameEngineInput::IsPress('F') && Color != EMPTYCOLOR)
 	{
 		DirCheck();
 		ChangeState(KirbyState::Breathe);
 		return;
 	}
 
-	if (true == GameEngineInput::IsDown('C'))
+	if (true == GameEngineInput::IsDown('C') && Color != EMPTYCOLOR)
 	{
 		DirCheck();
 		ChangeState(KirbyState::AttackReady);
 		return;
 	}
 
-	unsigned int Color = GetGroundColor(EMPTYCOLOR, TOPCHECKPOS);
-
-	if (true == GameEngineInput::IsDown('W') && DOORCOLOR == Color)
 	{
-		ChangeState(KirbyState::LevelMove);
-		return;
+		unsigned int Color = GetGroundColor(EMPTYCOLOR, TOPCHECKPOS);
+
+		if (true == GameEngineInput::IsDown('W') && DOORCOLOR == Color)
+		{
+			ChangeState(KirbyState::LevelMove);
+			return;
+		}
 	}
 }
 
