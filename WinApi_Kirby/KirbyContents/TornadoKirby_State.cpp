@@ -56,7 +56,7 @@ void TornadoKirby::AttackUpdate(float _Delta)
 	{
 		AttackCollision->Off();
 		BodyCollision->On();
-		ChangeState(KirbyState::Attack);
+		ChangeState(KirbyState::AttackToIdle);
 		return;
 	}
 }

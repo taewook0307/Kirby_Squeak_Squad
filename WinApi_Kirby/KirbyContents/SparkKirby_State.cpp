@@ -32,7 +32,7 @@ void SparkKirby::AttackUpdate(float _Delta)
 	if (true == GameEngineInput::IsUp('C'))
 	{
 		AttackCollision->Off();
-		ChangeState(KirbyState::Attack);
+		ChangeState(KirbyState::AttackToIdle);
 		return;
 	}
 }
