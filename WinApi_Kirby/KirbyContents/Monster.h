@@ -7,6 +7,7 @@
 #include <vector>
 #include <GameEngineCore/GameEngineCollision.h>
 
+#define MONSTERSPEED 150.0f
 #define MONSTERBODYCOLLISONPOS { 0.0f, -30.0f }
 #define MONSTERBODYCOLLISIONSCALE { 70.0f, 70.0f }
 
@@ -50,7 +51,7 @@ protected:
 	std::string CurState = "";
 	ActorDir Dir = ActorDir::Left;
 	float RatioValue = 3.0f;
-	float Speed = BASEPOWER / 3 * 2;
+	float Speed = MONSTERSPEED;
 	MonsterType Type = MonsterType::Normal;
 	std::vector<GameEngineCollision*> Col;
 

@@ -298,6 +298,7 @@ void Kirby::FlyToTurnUpUpdate(float _Delta)
 	if (EMPTYCOLOR == Color || DOORCOLOR == Color)
 	{
 		AddPos(FlyPos);
+		CameraMove(FlyPos);
 	}
 
 	FlyPower -= 10.0f;
@@ -338,6 +339,7 @@ void Kirby::FlyToTurnLandUpdate(float _Delta)
 	if (EMPTYCOLOR == XColor)
 	{
 		AddPos(MovePos);
+		CameraMove(MovePos);
 		AddPos(FlyPos);
 	}
 	else

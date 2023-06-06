@@ -40,7 +40,7 @@ protected:
 	void AttackUpdate(float _Delta) override;
 
 	float RatioValue = 3.0f;
-	float Speed = BASEPOWER * 0.5f;
+	float Speed = MONSTERSPEED;
 	MonsterType Type = MonsterType::Fire;
 	std::vector<GameEngineCollision*> Col;
 private:

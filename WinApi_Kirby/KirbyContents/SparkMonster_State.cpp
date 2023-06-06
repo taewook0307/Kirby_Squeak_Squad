@@ -13,7 +13,7 @@ void SparkMonster::IdleUpdate(float _Delta)
 		return;
 	}
 
-	if (IdleTimer > 3.0f)
+	if (IdleTimer > 1.0f)
 	{
 		IdleTimer = 0.0f;
 		ChangeState(MonsterState::Walk);

@@ -3,7 +3,7 @@
 #include <GameEngineCore/GameEngineActor.h>
 #include <GameEngineCore/GameEngineCollision.h>
 
-#define BASEPOWER 300.0f
+#define GRAVITYPOWER 700.0f
 #define EMPTYCOLOR RGB(255,255,255)
 #define DOORCOLOR RGB(0,0,255)
 #define SLOPECOLOR RGB(0,255,0)
@@ -82,7 +82,7 @@ private:
 
 	bool IsGravity = true;
 
-	float GravityAcceleration = 100.0f;
+	float GravityAcceleration = GRAVITYPOWER;
 
 	float4 GravityVector = float4::ZERO;
 };

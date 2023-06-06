@@ -6,6 +6,8 @@
 #include <string>
 #include <vector>
 
+#define BASEPOWER 300.0f
+
 #define BODYCOLLISIONPOS { 0.0f, -30.0f }
 #define BODYCOLLISIONSCALE { 70.0f, 70.0f }
 #define LEFTINHALECOLLSIONSCALE { -150.0f, -40.0f }
@@ -126,7 +128,7 @@ protected:
 	float RatioValue = 4.0f;
 	float Speed = BASEPOWER;
 	float RunSpeed = Speed * 1.5f;
-	float JumpPower = BASEPOWER;
+	float JumpPower = GRAVITYPOWER;
 	float FlyPower = BASEPOWER;
 	std::vector<GameEngineCollision*> Col;
 
