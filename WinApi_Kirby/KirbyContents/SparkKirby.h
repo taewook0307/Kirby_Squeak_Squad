@@ -2,7 +2,7 @@
 
 #include "FormKirby.h"
 
-#define SPARKATTACKCOLLISIONSCALE { 140.0f, 140.0f }
+#define SPARKATTACKCOLLISIONSCALE { 210.0f, 210.0f }
 
 class SparkKirby : public FormKirby
 {
