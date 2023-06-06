@@ -6,11 +6,15 @@
 #define BASEPOWER 300.0f
 #define EMPTYCOLOR RGB(255,255,255)
 #define DOORCOLOR RGB(0,0,255)
-#define LEFTMOVECHECKPOS { -40.0f , -40.0f }
-#define RIGHTMOVECHECKPOS { 40.0f , -40.0f }
-#define LEFTDROPCHECKPOS { -40.0f, -20.0f }
-#define RIGHTDROPCHECKPOS { 40.0f, -20.0f }
-#define UPCHECKPOS { 0.0f, -80.0f }
+#define SLOPECOLOR RGB(0,255,0)
+
+#define TOPCHECKPOS { 0.0f, -80.0f }
+#define LEFTTOPCHECKPOS { -40.0f , -80.0f }
+#define RIGHTTOPCHECKPOS { 40.0f , -80.0f }
+#define LEFTCHECKPOS { -40.0f , -40.0f }
+#define RIGHTCHECKPOS { 40.0f , -40.0f }
+#define LEFTBOTCHECKPOS { -40.0f , 0.0f }
+#define RIGHTBOTCHECKPOS { 40.0f , 0.0f }
 
 class GameEngineWindowTexture;
 class BaseActor : public GameEngineActor

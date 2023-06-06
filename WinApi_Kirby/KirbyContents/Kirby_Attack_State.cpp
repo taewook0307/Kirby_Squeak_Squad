@@ -52,7 +52,7 @@ void Kirby::DamageUpdate(float _Delta)
 
 	if (FlyPos.Y < 0)
 	{
-		CheckPos = UPCHECKPOS;
+		CheckPos = TOPCHECKPOS;
 		Color = GetGroundColor(EMPTYCOLOR, CheckPos);
 	}
 	else
@@ -69,14 +69,14 @@ void Kirby::DamageUpdate(float _Delta)
 	if (DirPos.X > 0.0f)
 	{
 		MovePos = { Speed * _Delta, 0.0f };
-		XCheckPos = LEFTMOVECHECKPOS;
-		XColor = GetGroundColor(EMPTYCOLOR, LEFTMOVECHECKPOS);
+		XCheckPos = RIGHTCHECKPOS;
+		XColor = GetGroundColor(EMPTYCOLOR, RIGHTCHECKPOS);
 	}
 	else
 	{
 		MovePos = { -Speed * _Delta, 0.0f };
-		XCheckPos = RIGHTMOVECHECKPOS;
-		XColor = GetGroundColor(EMPTYCOLOR, LEFTMOVECHECKPOS);
+		XCheckPos = LEFTCHECKPOS;
+		XColor = GetGroundColor(EMPTYCOLOR, LEFTCHECKPOS);
 	}
 
 	if (XColor == EMPTYCOLOR || XColor == DOORCOLOR)

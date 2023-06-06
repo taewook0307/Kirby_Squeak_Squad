@@ -109,7 +109,7 @@ void Kirby::IdleUpdate(float _Delta)
 		return;
 	}
 
-	unsigned int Color = GetGroundColor(EMPTYCOLOR, UPCHECKPOS);
+	unsigned int Color = GetGroundColor(EMPTYCOLOR, TOPCHECKPOS);
 
 	if (true == GameEngineInput::IsDown('W') && DOORCOLOR == Color)
 	{

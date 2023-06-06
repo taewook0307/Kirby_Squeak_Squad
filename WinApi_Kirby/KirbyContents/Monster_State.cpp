@@ -62,14 +62,14 @@ void Monster::WalkUpdate(float _Delta)
 	if (Dir == ActorDir::Left)
 	{
 		MovePos = { -Speed * _Delta, 0.0f };
-		CheckPos = LEFTMOVECHECKPOS;
+		CheckPos = LEFTCHECKPOS;
 	}
 
 	// 오른쪽 이동
 	if (Dir == ActorDir::Right)
 	{
 		MovePos = { Speed * _Delta, 0.0f };
-		CheckPos = RIGHTMOVECHECKPOS;
+		CheckPos = RIGHTCHECKPOS;
 	}
 
 	// 이동 방향 앞에 장애물 여부 확인 후 이동

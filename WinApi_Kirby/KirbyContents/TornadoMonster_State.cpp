@@ -39,13 +39,13 @@ void TornadoMonster::WalkUpdate(float _Delta)
 	{
 		SearchCollision->SetCollisionPos(LEFTSEARCHCOLLISIONPOS);
 		MovePos = float4::LEFT * MovePower;
-		CheckPos = LEFTMOVECHECKPOS;
+		CheckPos = LEFTCHECKPOS;
 	}
 	else
 	{
 		SearchCollision->SetCollisionPos(RIGHTTSEARCHCOLLISIONPOS);
 		MovePos = float4::RIGHT * MovePower;
-		CheckPos = RIGHTMOVECHECKPOS;
+		CheckPos = RIGHTCHECKPOS;
 	}
 
 	unsigned int Color = GetGroundColor(EMPTYCOLOR, CheckPos);
