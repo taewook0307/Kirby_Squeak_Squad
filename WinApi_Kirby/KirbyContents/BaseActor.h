@@ -32,6 +32,11 @@ public:
 
 	void Gravity(float _Delta);
 
+	inline void SetGravityVector(float4 _GravityVector)
+	{
+		GravityVector = _GravityVector;
+	}
+
 	inline void GravityReset()
 	{
 		GravityVector = float4::ZERO;
@@ -72,7 +77,7 @@ private:
 
 	bool IsGravity = true;
 
-	float GravityAcceleration = 9.8f;
+	float GravityAcceleration = 100.0f;
 
 	float4 GravityVector = float4::ZERO;
 };

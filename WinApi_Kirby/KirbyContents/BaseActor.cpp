@@ -22,7 +22,7 @@ void BaseActor::Gravity(float _Delta)
 
 	GravityVector += float4::DOWN * GravityAcceleration * _Delta;
 
-	AddPos(GravityVector);
+	AddPos(GravityVector * _Delta);
 }
 
 void BaseActor::SetGroundBitMap(const std::string& _GroundBitMap)
