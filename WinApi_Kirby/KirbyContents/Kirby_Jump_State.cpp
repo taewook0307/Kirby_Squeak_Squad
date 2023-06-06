@@ -6,6 +6,7 @@
 void Kirby::JumpStart()
 {
 	ChangeAnimationState("Jump");
+	SetGravityVector(float4::UP * JumpPower);
 }
 
 void Kirby::JumpToDownStart()
@@ -22,18 +23,10 @@ void Kirby::JumpUpdate(float _Delta)
 {
 	DirCheck();
 
-	static float JumpTimer = 0.0f;
+	Gravity(_Delta);
 
 	float4 MovePos = float4::ZERO;
-	float4 JumpPos = float4::UP * _Delta * JumpPower;
 	float4 CheckPos = float4::ZERO;
-
-	float4 UpPos = GetPos() += JumpPos;
-
-	if (UpPos.Y > 100.0f)
-	{
-		AddPos(JumpPos);
-	}
 
 	if (true == GameEngineInput::IsPress('A') && Dir == ActorDir::Left)
 	{
@@ -91,13 +84,12 @@ void Kirby::JumpUpdate(float _Delta)
 		}
 	}
 
-	if (JumpTimer >= 1.0f)
+	if (GetGravityVector().Y > 0.0f || GetPos().Y < 100.0f)
 	{
-		JumpTimer = 0.0f;
+		GravityReset();
 		ChangeState(KirbyState::JumpToDown);
 		return;
 	}
-	JumpTimer += _Delta;
 }
 
 void Kirby::JumpToDownUpdate(float _Delta)

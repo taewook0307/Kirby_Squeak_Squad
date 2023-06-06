@@ -37,6 +37,11 @@ public:
 		GravityVector = _GravityVector;
 	}
 
+	inline float4 GetGravityVector() const
+	{
+		return GravityVector;
+	}
+
 	inline void GravityReset()
 	{
 		GravityVector = float4::ZERO;
