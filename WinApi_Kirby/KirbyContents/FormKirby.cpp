@@ -56,10 +56,10 @@ void FormKirby::StateUpdate(float _Delta)
 		return DamageLandUpdate(_Delta);
 	case KirbyState::AttackReady:
 		return AttackReadyUpdate(_Delta);
-	case KirbyState::AttackLoop:
-		return AttackLoopUpdate(_Delta);
 	case KirbyState::Attack:
 		return AttackUpdate(_Delta);
+	case KirbyState::AttackToIdle:
+		return AttackToIdleUpdate(_Delta);
 	default:
 		break;
 	}
@@ -137,11 +137,11 @@ void FormKirby::ChangeState(KirbyState _State)
 		case KirbyState::AttackReady:
 			AttackReadyStart();
 			break;
-		case KirbyState::AttackLoop:
-			AttackLoopStart();
-			break;
 		case KirbyState::Attack:
 			AttackStart();
+			break;
+		case KirbyState::AttackToIdle:
+			AttackToIdleStart();
 			break;
 		default:
 			break;

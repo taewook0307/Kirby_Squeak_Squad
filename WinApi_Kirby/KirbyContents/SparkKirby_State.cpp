@@ -7,7 +7,7 @@
 #include <GameEngineCore/GameEngineLevel.h>
 #include <GameEngineCore/GameEngineCamera.h>
 
-void SparkKirby::AttackLoopUpdate(float _Delta)
+void SparkKirby::AttackUpdate(float _Delta)
 {
 	DirCheck();
 

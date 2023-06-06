@@ -7,7 +7,7 @@
 #include <GameEngineCore/GameEngineLevel.h>
 #include <GameEngineCore/GameEngineCamera.h>
 
-void TornadoKirby::AttackLoopUpdate(float _Delta)
+void TornadoKirby::AttackUpdate(float _Delta)
 {
 	DirCheck();
 

@@ -7,7 +7,7 @@
 #include <GameEngineCore/GameEngineLevel.h>
 #include <GameEngineCore/GameEngineCamera.h>
 
-void FireKirby::AttackLoopUpdate(float _Delta)
+void FireKirby::AttackUpdate(float _Delta)
 {
 	DirCheck();
 

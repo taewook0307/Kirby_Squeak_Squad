@@ -54,8 +54,8 @@ void TornadoKirby::Start()
 		MainRenderer->CreateAnimation("Right_Tornado_Damage", "Right_TornadoKirby.Bmp", 129, 131, 0.2f, false);
 		MainRenderer->CreateAnimation("Right_Tornado_DamageLand", "Right_TornadoKirby.Bmp", 132, 135, 0.15f, false);
 		MainRenderer->CreateAnimation("Right_Tornado_AttackReady", "Right_TornadoKirby.Bmp", 136, 147, 0.1f, false);
-		MainRenderer->CreateAnimation("Right_Tornado_AttackLoop", "Right_TornadoKirby.Bmp", 148, 155, 0.1f, true);
-		MainRenderer->CreateAnimation("Right_Tornado_Attack", "Right_TornadoKirby.Bmp", 156, 168, 0.1f, false);
+		MainRenderer->CreateAnimation("Right_Tornado_Attack", "Right_TornadoKirby.Bmp", 148, 155, 0.1f, true);
+		MainRenderer->CreateAnimation("Right_Tornado_AttackToIdle", "Right_TornadoKirby.Bmp", 156, 168, 0.1f, false);
 
 		MainRenderer->CreateAnimation("Left_Tornado_Idle", "Left_TornadoKirby.Bmp", 0, 7, 0.125f, true);
 		MainRenderer->CreateAnimation("Left_Tornado_Down", "Left_TornadoKirby.Bmp", 8, 15, 0.125f, true);
@@ -80,8 +80,8 @@ void TornadoKirby::Start()
 		MainRenderer->CreateAnimation("Left_Tornado_Damage", "Left_TornadoKirby.Bmp", 129, 131, 0.2f, false);
 		MainRenderer->CreateAnimation("Left_Tornado_DamageLand", "Left_TornadoKirby.Bmp", 132, 135, 0.15f, false);
 		MainRenderer->CreateAnimation("Left_Tornado_AttackReady", "Left_TornadoKirby.Bmp", 136, 147, 0.1f, false);
-		MainRenderer->CreateAnimation("Left_Tornado_AttackLoop", "Left_TornadoKirby.Bmp", 148, 155, 0.1f, true);
-		MainRenderer->CreateAnimation("Left_Tornado_Attack", "Left_TornadoKirby.Bmp", 156, 168, 0.1f, false);
+		MainRenderer->CreateAnimation("Left_Tornado_Attack", "Left_TornadoKirby.Bmp", 148, 155, 0.1f, true);
+		MainRenderer->CreateAnimation("Left_Tornado_AttackToIdle", "Left_TornadoKirby.Bmp", 156, 168, 0.1f, false);
 
 		if (Dir == ActorDir::Left)
 		{

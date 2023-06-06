@@ -132,7 +132,7 @@ void Kirby::AttackUpdate(float _Delta)
 	if (true == GameEngineInput::IsUp('C'))
 	{
 		AttackCollision->Off();
-		ChangeState(KirbyState::AttackToIdle);
+		ChangeState(KirbyState::Idle);
 		return;
 	}
 

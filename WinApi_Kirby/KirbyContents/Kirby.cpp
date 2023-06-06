@@ -234,12 +234,12 @@ void Kirby::StateUpdate(float _Delta)
 		return DamageLandUpdate(_Delta);
 	case KirbyState::AttackReady:
 		return AttackReadyUpdate(_Delta);
-	case KirbyState::AttackLoop:
-		return AttackLoopUpdate(_Delta);
-	case KirbyState::Keep:
-		return KeepUpdate(_Delta);
 	case KirbyState::Attack:
 		return AttackUpdate(_Delta);
+	case KirbyState::AttackToIdle:
+		return AttackToIdleUpdate(_Delta);
+	case KirbyState::Keep:
+		return KeepUpdate(_Delta);
 	case KirbyState::KeepIdle:
 		return KeepIdleUpdate(_Delta);
 	case KirbyState::KeepWalk:
@@ -321,14 +321,14 @@ void Kirby::ChangeState(KirbyState _State)
 		case KirbyState::AttackReady:
 			AttackReadyStart();
 			break;
-		case KirbyState::AttackLoop:
-			AttackLoopStart();
+		case KirbyState::Attack:
+			AttackStart();
+			break;
+		case KirbyState::AttackToIdle:
+			AttackToIdleStart();
 			break;
 		case KirbyState::Keep:
 			KeepStart();
-			break;
-		case KirbyState::Attack:
-			AttackStart();
 			break;
 		case KirbyState::KeepIdle:
 			KeepIdleStart();
