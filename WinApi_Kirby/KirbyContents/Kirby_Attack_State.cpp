@@ -21,19 +21,19 @@ void Kirby::AttackReadyStart()
 	ChangeAnimationState("AttackReady");
 }
 
-void Kirby::AttackLoopStart()
+void Kirby::AttackStart()
 {
-	ChangeAnimationState("AttackLoop");
+	ChangeAnimationState("Attack");
+}
+
+void Kirby::AttackToIdleStart()
+{
+	ChangeAnimationState("AttackToIdle");
 }
 
 void Kirby::KeepStart()
 {
 	ChangeAnimationState("Keep");
-}
-
-void Kirby::AttackStart()
-{
-	ChangeAnimationState("Attack");
 }
 
 void Kirby::DamageUpdate(float _Delta)
@@ -107,7 +107,6 @@ void Kirby::DamageLandUpdate(float _Delta)
 
 	if (true == MainRenderer->IsAnimationEnd() && EMPTYCOLOR != Color)
 	{
-		BodyCollision->On();
 		GravityReset();
 		ChangeState(KirbyState::Idle);
 		return;
@@ -118,12 +117,12 @@ void Kirby::AttackReadyUpdate(float _Delta)
 {
 	if (MainRenderer->IsAnimationEnd())
 	{
-		ChangeState(KirbyState::AttackLoop);
+		ChangeState(KirbyState::Attack);
 		return;
 	}
 }
 
-void Kirby::AttackLoopUpdate(float _Delta)
+void Kirby::AttackUpdate(float _Delta)
 {
 	DirCheck();
 
@@ -133,7 +132,7 @@ void Kirby::AttackLoopUpdate(float _Delta)
 	if (true == GameEngineInput::IsUp('C'))
 	{
 		AttackCollision->Off();
-		ChangeState(KirbyState::Idle);
+		ChangeState(KirbyState::AttackToIdle);
 		return;
 	}
 
@@ -170,7 +169,7 @@ void Kirby::AttackLoopUpdate(float _Delta)
 		MonsterPos = KeepMonster->GetPos();
 		DirPos = (GetPos() - MonsterPos).NormalizeReturn();
 
-		Power *= 2.0f;
+		Power *= 3.0f;
 
 		KeepMonster->AddPos(DirPos *= Power);
 		
@@ -184,21 +183,20 @@ void Kirby::AttackLoopUpdate(float _Delta)
 	}
 }
 
+void Kirby::AttackToIdleUpdate(float _Delta)
+{
+	if (MainRenderer->IsAnimationEnd())
+	{
+		ChangeState(KirbyState::Idle);
+		return;
+	}
+}
+
 void Kirby::KeepUpdate(float _Delta)
 {
 	if (MainRenderer->IsAnimationEnd())
 	{
 		ChangeState(KirbyState::KeepIdle);
-		return;
-	}
-}
-
-void Kirby::AttackUpdate(float _Delta)
-{
-	
-	if (MainRenderer->IsAnimationEnd())
-	{
-		ChangeState(KirbyState::Idle);
 		return;
 	}
 }
