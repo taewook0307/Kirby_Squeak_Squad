@@ -102,7 +102,7 @@ protected:
 	void LevelMoveUpdate(float _Delta);
 	void DamageUpdate(float _Delta);
 	void DamageLandUpdate(float _Delta);
-	virtual void AttackReadyUpdate(float _Delta);
+	void AttackReadyUpdate(float _Delta);
 	virtual void AttackUpdate(float _Delta);
 	virtual void AttackToIdleUpdate(float _Delta);
 	void KeepUpdate(float _Delta);

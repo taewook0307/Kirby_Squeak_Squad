@@ -60,3 +60,23 @@ void TornadoKirby::AttackUpdate(float _Delta)
 		return;
 	}
 }
+
+void TornadoKirby::AttackToIdleUpdate(float _Delta)
+{
+	unsigned int Color = GetGroundColor(EMPTYCOLOR);
+
+	if (true == MainRenderer->IsAnimationEnd())
+	{
+		if (EMPTYCOLOR == Color || DOORCOLOR == Color)
+		{
+			Gravity(_Delta);
+		}
+
+		else
+		{
+			GravityReset();
+			ChangeState(KirbyState::Idle);
+			return;
+		}
+	}
+}
