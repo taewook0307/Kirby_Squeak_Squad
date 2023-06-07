@@ -123,6 +123,13 @@ public:
 		float _Inter = 0.1f,
 		bool _Loop = true);
 
+	void CreateAnimationToFrame(
+		const std::string& _AniamtionName,
+		const std::string& _SpriteName,
+		const std::vector<size_t>& _Frame,
+		float _Inter = 0.1f,
+		bool _Loop = true);
+
 	void ChangeAnimation(const std::string& _AniamtionName, int _StartFrame = 0, bool _ForceChange = false);
 
 	void MainCameraSetting();
