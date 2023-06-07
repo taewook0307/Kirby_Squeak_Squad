@@ -30,7 +30,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AttackEffect.h">
+    <ClInclude Include="AttackObject.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -126,7 +126,7 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="AttackEffect.cpp">
+    <ClCompile Include="AttackObject.cpp">
       <SubType>
       </SubType>
     </ClCompile>
