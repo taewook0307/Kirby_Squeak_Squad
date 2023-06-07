@@ -36,9 +36,9 @@ void TornadoKirby::Start()
 		MainRenderer->CreateAnimation("Right_Tornado_Slide", "Right_TornadoKirby.Bmp", 16, 25, 0.1f, false);
 		MainRenderer->FindAnimation("Right_Tornado_Slide")->Inters[9] = 0.2f;
 		MainRenderer->CreateAnimation("Right_Tornado_Jump", "Right_TornadoKirby.Bmp", 26, 27, 0.1f, true);
-		MainRenderer->CreateAnimation("Right_Tornado_JumpToDown", "Right_TornadoKirby.Bmp", 28, 35, 0.1f, false);
+		MainRenderer->CreateAnimation("Right_Tornado_JumpToDown", "Right_TornadoKirby.Bmp", 28, 35, 0.03f, false);
 		MainRenderer->CreateAnimation("Right_Tornado_JumpToLand", "Right_TornadoKirby.Bmp", 36, 36, 0.3f, false);
-		MainRenderer->CreateAnimation("Right_Tornado_Walk", "Right_TornadoKirby.Bmp", 37, 56, 0.05f, true);
+		MainRenderer->CreateAnimation("Right_Tornado_Walk", "Right_TornadoKirby.Bmp", 37, 56, 0.025f, true);
 		MainRenderer->CreateAnimation("Right_Tornado_Run", "Right_TornadoKirby.Bmp", 57, 64, 0.05f, true);
 		MainRenderer->CreateAnimation("Right_Tornado_Stop", "Right_TornadoKirby.Bmp", 65, 68, 0.1f, true);
 		MainRenderer->CreateAnimation("Right_Tornado_StopToIdle", "Right_TornadoKirby.Bmp", 69, 70, 0.2f, false);
@@ -62,9 +62,9 @@ void TornadoKirby::Start()
 		MainRenderer->CreateAnimation("Left_Tornado_Slide", "Left_TornadoKirby.Bmp", 16, 25, 0.1f, false);
 		MainRenderer->FindAnimation("Left_Tornado_Slide")->Inters[9] = 0.2f;
 		MainRenderer->CreateAnimation("Left_Tornado_Jump", "Left_TornadoKirby.Bmp", 26, 27, 0.1f, true);
-		MainRenderer->CreateAnimation("Left_Tornado_JumpToDown", "Left_TornadoKirby.Bmp", 28, 35, 0.1f, false);
+		MainRenderer->CreateAnimation("Left_Tornado_JumpToDown", "Left_TornadoKirby.Bmp", 28, 35, 0.03f, false);
 		MainRenderer->CreateAnimation("Left_Tornado_JumpToLand", "Left_TornadoKirby.Bmp", 36, 36, 0.3f, false);
-		MainRenderer->CreateAnimation("Left_Tornado_Walk", "Left_TornadoKirby.Bmp", 37, 56, 0.05f, true);
+		MainRenderer->CreateAnimation("Left_Tornado_Walk", "Left_TornadoKirby.Bmp", 37, 56, 0.025f, true);
 		MainRenderer->CreateAnimation("Left_Tornado_Run", "Left_TornadoKirby.Bmp", 57, 64, 0.05f, true);
 		MainRenderer->CreateAnimation("Left_Tornado_Stop", "Left_TornadoKirby.Bmp", 65, 68, 0.1f, true);
 		MainRenderer->CreateAnimation("Left_Tornado_StopToIdle", "Left_TornadoKirby.Bmp", 69, 70, 0.2f, false);

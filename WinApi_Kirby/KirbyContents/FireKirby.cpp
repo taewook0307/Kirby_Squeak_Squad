@@ -36,7 +36,7 @@ void FireKirby::Start()
 		MainRenderer->CreateAnimation("Right_Fire_Slide", "Right_FireKirby.Bmp", 16, 25, 0.1f, false);
 		MainRenderer->FindAnimation("Right_Fire_Slide")->Inters[9] = 0.2f;
 		MainRenderer->CreateAnimation("Right_Fire_Jump", "Right_FireKirby.Bmp", 26, 27, 0.1f, true);
-		MainRenderer->CreateAnimation("Right_Fire_JumpToDown", "Right_FireKirby.Bmp", 28, 35, 0.05f, false);
+		MainRenderer->CreateAnimation("Right_Fire_JumpToDown", "Right_FireKirby.Bmp", 28, 35, 0.03f, false);
 		MainRenderer->CreateAnimation("Right_Fire_JumpToLand", "Right_FireKirby.Bmp", 36, 36, 0.3f, false);
 		MainRenderer->CreateAnimation("Right_Fire_Walk", "Right_FireKirby.Bmp", 37, 56, 0.025f, true);
 		MainRenderer->CreateAnimation("Right_Fire_Run", "Right_FireKirby.Bmp", 57, 64, 0.05f, true);
@@ -62,7 +62,7 @@ void FireKirby::Start()
 		MainRenderer->CreateAnimation("Left_Fire_Slide", "Left_FireKirby.Bmp", 16, 25, 0.1f, false);
 		MainRenderer->FindAnimation("Left_Fire_Slide")->Inters[9] = 0.2f;
 		MainRenderer->CreateAnimation("Left_Fire_Jump", "Left_FireKirby.Bmp", 26, 27, 0.1f, true);
-		MainRenderer->CreateAnimation("Left_Fire_JumpToDown", "Left_FireKirby.Bmp", 28, 35, 0.05f, false);
+		MainRenderer->CreateAnimation("Left_Fire_JumpToDown", "Left_FireKirby.Bmp", 28, 35, 0.03f, false);
 		MainRenderer->CreateAnimation("Left_Fire_JumpToLand", "Left_FireKirby.Bmp", 36, 36, 0.3f, false);
 		MainRenderer->CreateAnimation("Left_Fire_Walk", "Left_FireKirby.Bmp", 37, 56, 0.025f, true);
 		MainRenderer->CreateAnimation("Left_Fire_Run", "Left_FireKirby.Bmp", 57, 64, 0.05f, true);

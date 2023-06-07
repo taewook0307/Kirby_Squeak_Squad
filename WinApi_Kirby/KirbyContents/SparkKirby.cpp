@@ -36,7 +36,7 @@ void SparkKirby::Start()
 		MainRenderer->CreateAnimation("Right_Spark_Slide", "Right_SparkKirby.Bmp", 16, 25, 0.1f, false);
 		MainRenderer->FindAnimation("Right_Spark_Slide")->Inters[9] = 0.2f;
 		MainRenderer->CreateAnimation("Right_Spark_Jump", "Right_SparkKirby.Bmp", 26, 27, 0.1f, true);
-		MainRenderer->CreateAnimation("Right_Spark_JumpToDown", "Right_SparkKirby.Bmp", 28, 35, 0.05f, false);
+		MainRenderer->CreateAnimation("Right_Spark_JumpToDown", "Right_SparkKirby.Bmp", 28, 35, 0.03f, false);
 		MainRenderer->CreateAnimation("Right_Spark_JumpToLand", "Right_SparkKirby.Bmp", 36, 36, 0.3f, false);
 		MainRenderer->CreateAnimation("Right_Spark_Walk", "Right_SparkKirby.Bmp", 37, 56, 0.025f, true);
 		MainRenderer->CreateAnimation("Right_Spark_Run", "Right_SparkKirby.Bmp", 57, 64, 0.05f, true);
@@ -62,7 +62,7 @@ void SparkKirby::Start()
 		MainRenderer->CreateAnimation("Left_Spark_Slide", "Left_SparkKirby.Bmp", 16, 25, 0.1f, false);
 		MainRenderer->FindAnimation("Left_Spark_Slide")->Inters[9] = 0.2f;
 		MainRenderer->CreateAnimation("Left_Spark_Jump", "Left_SparkKirby.Bmp", 26, 27, 1.0f, true);
-		MainRenderer->CreateAnimation("Left_Spark_JumpToDown", "Left_SparkKirby.Bmp", 28, 35, 0.05f, false);
+		MainRenderer->CreateAnimation("Left_Spark_JumpToDown", "Left_SparkKirby.Bmp", 28, 35, 0.03f, false);
 		MainRenderer->CreateAnimation("Left_Spark_JumpToLand", "Left_SparkKirby.Bmp", 36, 36, 0.3f, false);
 		MainRenderer->CreateAnimation("Left_Spark_Walk", "Left_SparkKirby.Bmp", 37, 56, 0.025f, true);
 		MainRenderer->CreateAnimation("Left_Spark_Run", "Left_SparkKirby.Bmp", 57, 64, 0.05f, true);
