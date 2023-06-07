@@ -57,7 +57,7 @@ protected:
 	void DownStart();
 	void SlideStart();
 	void JumpStart();
-	void JumpToDownStart();
+	void JumpToDropStart();
 	void JumpToLandStart();
 	void WalkStart();
 	void RunStart();
@@ -80,12 +80,17 @@ protected:
 	void KeepStart();
 	void KeepIdleStart();
 	void KeepWalkStart();
+	void KeepJumpStart();
+	void KeepJumpToDropStart();
+	void KeepJumpToLandStart();
+	void KeepDamageStart();
+	void ChangeStart();
 
 	void IdleUpdate(float _Delta);
 	void DownUpdate(float _Delta);
 	void SlideUpdate(float _Delta);
 	void JumpUpdate(float _Delta);
-	void JumpToDownUpdate(float _Delta);
+	void JumpToDropUpdate(float _Delta);
 	void JumpToLandUpdate(float _Delta);
 	void WalkUpdate(float _Delta);
 	void RunUpdate(float _Delta);
@@ -108,6 +113,11 @@ protected:
 	void KeepUpdate(float _Delta);
 	void KeepIdleUpdate(float _Delta);
 	void KeepWalkUpdate(float _Delta);
+	void KeepJumpUpdate(float _Delta);
+	void KeepJumpToDropUpdate(float _Delta);
+	void KeepJumpToLandUpdate(float _Delta);
+	void KeepDamageUpdate(float _Delta);
+	void ChangeUpdate(float _Delta);
 
 	virtual void DirCheck();
 

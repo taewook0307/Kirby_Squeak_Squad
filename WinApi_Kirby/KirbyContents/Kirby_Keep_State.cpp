@@ -14,6 +14,28 @@ void Kirby::KeepWalkStart()
 	ChangeAnimationState("KeepWalk");
 }
 
+void Kirby::KeepJumpStart()
+{
+	ChangeAnimationState("KeepJump");
+	SetGravityVector(float4::UP * JumpPower * 0.7f);
+}
+
+void Kirby::KeepJumpToDropStart()
+{
+	ChangeAnimationState("KeepJumpToDrop");
+}
+
+void Kirby::KeepJumpToLandStart()
+{
+	ChangeAnimationState("KeepJumpToLand");
+}
+
+void Kirby::KeepDamageStart()
+{
+	ChangeAnimationState("KeepDamage");
+}
+
+
 void Kirby::KeepIdleUpdate(float _Delta)
 {
 	BodyCollision->On();
@@ -80,6 +102,174 @@ void Kirby::KeepWalkUpdate(float _Delta)
 	if (true == GameEngineInput::IsDown('X'))
 	{
 		ChangeState(KirbyState::Attack);
+		return;
+	}
+}
+
+void Kirby::KeepJumpUpdate(float _Delta)
+{
+	DirCheck();
+
+	Gravity(_Delta);
+
+	float4 MovePos = float4::ZERO;
+	float4 CheckPos = float4::ZERO;
+
+	if (true == GameEngineInput::IsPress('A') && Dir == ActorDir::Left)
+	{
+		MovePos = { -Speed * _Delta, 0.0f };
+		CheckPos = LEFTCHECKPOS;
+
+		unsigned int Color = GetGroundColor(EMPTYCOLOR, CheckPos);
+
+		if (EMPTYCOLOR == Color || DOORCOLOR == Color)
+		{
+			AddPos(MovePos);
+			CameraMove(MovePos);
+		}
+	}
+
+	if (true == GameEngineInput::IsPress('D') && Dir == ActorDir::Right)
+	{
+		MovePos = { Speed * _Delta, 0.0f };
+		CheckPos = RIGHTCHECKPOS;
+
+		unsigned int Color = GetGroundColor(EMPTYCOLOR, CheckPos);
+
+		if (EMPTYCOLOR == Color || DOORCOLOR == Color)
+		{
+			AddPos(MovePos);
+			CameraMove(MovePos);
+		}
+	}
+
+	if (true == GameEngineInput::IsPress('Q') && Dir == ActorDir::Left)
+	{
+		MovePos = { -RunSpeed * _Delta, 0.0f };
+		CheckPos = LEFTCHECKPOS;
+
+		unsigned int Color = GetGroundColor(EMPTYCOLOR, CheckPos);
+
+		if (EMPTYCOLOR == Color || DOORCOLOR == Color)
+		{
+			AddPos(MovePos);
+			CameraMove(MovePos);
+		}
+	}
+
+	if (true == GameEngineInput::IsPress('E') && Dir == ActorDir::Right)
+	{
+		MovePos = { RunSpeed * _Delta, 0.0f };
+		CheckPos = RIGHTCHECKPOS;
+
+		unsigned int Color = GetGroundColor(EMPTYCOLOR, CheckPos);
+
+		if (EMPTYCOLOR == Color || DOORCOLOR == Color)
+		{
+			AddPos(MovePos);
+			CameraMove(MovePos);
+		}
+	}
+
+	if (GetGravityVector().Y > 0.0f || GetPos().Y < 100.0f)
+	{
+		GravityReset();
+		ChangeState(KirbyState::KeepJumpToDrop);
+		return;
+	}
+}
+
+void Kirby::KeepJumpToDropUpdate(float _Delta)
+{
+	DirCheck();
+
+	unsigned int Color = GetGroundColor(EMPTYCOLOR);
+
+	if (EMPTYCOLOR == Color || DOORCOLOR == Color)
+	{
+		Gravity(_Delta);
+
+		float4 MovePos = float4::ZERO;
+		float4 CheckPos = float4::ZERO;
+
+		if (true == GameEngineInput::IsPress('A') && Dir == ActorDir::Left)
+		{
+			MovePos = { -Speed * _Delta, 0.0f };
+			CheckPos = LEFTBOTCHECKPOS;
+
+			unsigned int Color = GetGroundColor(EMPTYCOLOR, CheckPos);
+
+			if (EMPTYCOLOR == Color || DOORCOLOR == Color)
+			{
+				AddPos(MovePos);
+				CameraMove(MovePos);
+			}
+		}
+
+		if (true == GameEngineInput::IsPress('D') && Dir == ActorDir::Right)
+		{
+			MovePos = { Speed * _Delta, 0.0f };
+			CheckPos = RIGHTBOTCHECKPOS;
+
+			unsigned int Color = GetGroundColor(EMPTYCOLOR, CheckPos);
+
+			if (EMPTYCOLOR == Color || DOORCOLOR == Color)
+			{
+				AddPos(MovePos);
+				CameraMove(MovePos);
+			}
+		}
+
+		if (true == GameEngineInput::IsPress('Q') && Dir == ActorDir::Left)
+		{
+			MovePos = { -RunSpeed * _Delta, 0.0f };
+			CheckPos = LEFTBOTCHECKPOS;
+
+			unsigned int Color = GetGroundColor(EMPTYCOLOR, CheckPos);
+
+			if (EMPTYCOLOR == Color || DOORCOLOR == Color)
+			{
+				AddPos(MovePos);
+				CameraMove(MovePos);
+			}
+		}
+
+		if (true == GameEngineInput::IsPress('E') && Dir == ActorDir::Right)
+		{
+			MovePos = { RunSpeed * _Delta, 0.0f };
+			CheckPos = RIGHTBOTCHECKPOS;
+
+			unsigned int Color = GetGroundColor(EMPTYCOLOR, CheckPos);
+
+			if (EMPTYCOLOR == Color || DOORCOLOR == Color)
+			{
+				AddPos(MovePos);
+				CameraMove(MovePos);
+			}
+		}
+	}
+	else
+	{
+		GravityReset();
+		ChangeState(KirbyState::KeepJumpToLand);
+		return;
+	}
+}
+
+void Kirby::KeepJumpToLandUpdate(float _Delta)
+{
+	if (true == MainRenderer->IsAnimationEnd())
+	{
+		ChangeState(KirbyState::KeepIdle);
+		return;
+	}
+}
+
+void Kirby::KeepDamageUpdate(float _Delta)
+{
+	if (true == MainRenderer->IsAnimationEnd())
+	{
+		ChangeState(KirbyState::KeepIdle);
 		return;
 	}
 }

@@ -36,7 +36,7 @@ void SparkKirby::Start()
 		MainRenderer->CreateAnimation("Right_Spark_Slide", "Right_SparkKirby.Bmp", 16, 25, 0.1f, false);
 		MainRenderer->FindAnimation("Right_Spark_Slide")->Inters[9] = 0.2f;
 		MainRenderer->CreateAnimation("Right_Spark_Jump", "Right_SparkKirby.Bmp", 26, 27, 0.1f, true);
-		MainRenderer->CreateAnimation("Right_Spark_JumpToDown", "Right_SparkKirby.Bmp", 28, 35, 0.03f, false);
+		MainRenderer->CreateAnimation("Right_Spark_JumpToDrop", "Right_SparkKirby.Bmp", 28, 35, 0.03f, false);
 		MainRenderer->CreateAnimation("Right_Spark_JumpToLand", "Right_SparkKirby.Bmp", 36, 36, 0.3f, false);
 		MainRenderer->CreateAnimation("Right_Spark_Walk", "Right_SparkKirby.Bmp", 37, 56, 0.025f, true);
 		MainRenderer->CreateAnimation("Right_Spark_Run", "Right_SparkKirby.Bmp", 57, 64, 0.05f, true);
@@ -56,13 +56,14 @@ void SparkKirby::Start()
 		MainRenderer->CreateAnimation("Right_Spark_AttackReady", "Right_SparkKirby.Bmp", 137, 139, 0.1f, false);
 		MainRenderer->CreateAnimation("Right_Spark_Attack", "Right_SparkKirby.Bmp", 140, 143, 0.1f, true);
 		MainRenderer->CreateAnimation("Right_Spark_AttackToIdle", "Right_SparkKirby.Bmp", 144, 145, 0.1f, false);
+		MainRenderer->CreateAnimation("Right_Spark_Change", "Right_SparkKirby.Bmp", 146, 160, 0.1f, false);
 
 		MainRenderer->CreateAnimation("Left_Spark_Idle", "Left_SparkKirby.Bmp", 0, 7, 0.125f, true);
 		MainRenderer->CreateAnimation("Left_Spark_Down", "Left_SparkKirby.Bmp", 8, 15, 0.125f, true);
 		MainRenderer->CreateAnimation("Left_Spark_Slide", "Left_SparkKirby.Bmp", 16, 25, 0.1f, false);
 		MainRenderer->FindAnimation("Left_Spark_Slide")->Inters[9] = 0.2f;
 		MainRenderer->CreateAnimation("Left_Spark_Jump", "Left_SparkKirby.Bmp", 26, 27, 1.0f, true);
-		MainRenderer->CreateAnimation("Left_Spark_JumpToDown", "Left_SparkKirby.Bmp", 28, 35, 0.03f, false);
+		MainRenderer->CreateAnimation("Left_Spark_JumpToDrop", "Left_SparkKirby.Bmp", 28, 35, 0.03f, false);
 		MainRenderer->CreateAnimation("Left_Spark_JumpToLand", "Left_SparkKirby.Bmp", 36, 36, 0.3f, false);
 		MainRenderer->CreateAnimation("Left_Spark_Walk", "Left_SparkKirby.Bmp", 37, 56, 0.025f, true);
 		MainRenderer->CreateAnimation("Left_Spark_Run", "Left_SparkKirby.Bmp", 57, 64, 0.05f, true);
@@ -82,15 +83,8 @@ void SparkKirby::Start()
 		MainRenderer->CreateAnimation("Left_Spark_AttackReady", "Left_SparkKirby.Bmp", 137, 139, 0.1f, false);
 		MainRenderer->CreateAnimation("Left_Spark_Attack", "Left_SparkKirby.Bmp", 140, 143, 0.1f, true);
 		MainRenderer->CreateAnimation("Left_Spark_AttackToIdle", "Left_SparkKirby.Bmp", 144, 145, 0.1f, false);
+		MainRenderer->CreateAnimation("Left_Spark_Change", "Left_SparkKirby.Bmp", 146, 160, 0.1f, false);
 
-		if (Dir == ActorDir::Left)
-		{
-			MainRenderer->ChangeAnimation("Left_Spark_Idle");
-		}
-		else
-		{
-			MainRenderer->ChangeAnimation("Right_Spark_Idle");
-		}
 		MainRenderer->SetRenderScaleToTexture();
 		MainRenderer->SetScaleRatio(RatioValue);
 	}
@@ -108,7 +102,7 @@ void SparkKirby::Start()
 	}
 
 	AttackCollision->Off();
-	ChangeState(KirbyState::Idle);
+	ChangeState(KirbyState::Change);
 }
 
 void SparkKirby::ChangeAnimationState(const std::string& _StateName)

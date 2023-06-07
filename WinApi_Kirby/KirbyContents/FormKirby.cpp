@@ -20,8 +20,8 @@ void FormKirby::StateUpdate(float _Delta)
 		return SlideUpdate(_Delta);
 	case KirbyState::Jump:
 		return JumpUpdate(_Delta);
-	case KirbyState::JumpToDown:
-		return JumpToDownUpdate(_Delta);
+	case KirbyState::JumpToDrop:
+		return JumpToDropUpdate(_Delta);
 	case KirbyState::JumpToLand:
 		return JumpToLandUpdate(_Delta);
 	case KirbyState::Walk:
@@ -60,6 +60,8 @@ void FormKirby::StateUpdate(float _Delta)
 		return AttackUpdate(_Delta);
 	case KirbyState::AttackToIdle:
 		return AttackToIdleUpdate(_Delta);
+	case KirbyState::Change:
+		return ChangeUpdate(_Delta);
 	default:
 		break;
 	}
@@ -83,8 +85,8 @@ void FormKirby::ChangeState(KirbyState _State)
 		case KirbyState::Jump:
 			JumpStart();
 			break;
-		case KirbyState::JumpToDown:
-			JumpToDownStart();
+		case KirbyState::JumpToDrop:
+			JumpToDropStart();
 			break;
 		case KirbyState::JumpToLand:
 			JumpToLandStart();
@@ -142,6 +144,9 @@ void FormKirby::ChangeState(KirbyState _State)
 			break;
 		case KirbyState::AttackToIdle:
 			AttackToIdleStart();
+			break;
+		case KirbyState::Change:
+			ChangeStart();
 			break;
 		default:
 			break;

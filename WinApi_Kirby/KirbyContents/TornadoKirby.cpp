@@ -36,7 +36,7 @@ void TornadoKirby::Start()
 		MainRenderer->CreateAnimation("Right_Tornado_Slide", "Right_TornadoKirby.Bmp", 16, 25, 0.1f, false);
 		MainRenderer->FindAnimation("Right_Tornado_Slide")->Inters[9] = 0.2f;
 		MainRenderer->CreateAnimation("Right_Tornado_Jump", "Right_TornadoKirby.Bmp", 26, 27, 0.1f, true);
-		MainRenderer->CreateAnimation("Right_Tornado_JumpToDown", "Right_TornadoKirby.Bmp", 28, 35, 0.03f, false);
+		MainRenderer->CreateAnimation("Right_Tornado_JumpToDrop", "Right_TornadoKirby.Bmp", 28, 35, 0.03f, false);
 		MainRenderer->CreateAnimation("Right_Tornado_JumpToLand", "Right_TornadoKirby.Bmp", 36, 36, 0.3f, false);
 		MainRenderer->CreateAnimation("Right_Tornado_Walk", "Right_TornadoKirby.Bmp", 37, 56, 0.025f, true);
 		MainRenderer->CreateAnimation("Right_Tornado_Run", "Right_TornadoKirby.Bmp", 57, 64, 0.05f, true);
@@ -56,13 +56,14 @@ void TornadoKirby::Start()
 		MainRenderer->CreateAnimation("Right_Tornado_AttackReady", "Right_TornadoKirby.Bmp", 136, 147, 0.1f, false);
 		MainRenderer->CreateAnimation("Right_Tornado_Attack", "Right_TornadoKirby.Bmp", 148, 155, 0.1f, true);
 		MainRenderer->CreateAnimation("Right_Tornado_AttackToIdle", "Right_TornadoKirby.Bmp", 156, 168, 0.1f, false);
+		MainRenderer->CreateAnimation("Right_Tornado_Change", "Right_TornadoKirby.Bmp", 169, 183, 0.1f, false);
 
 		MainRenderer->CreateAnimation("Left_Tornado_Idle", "Left_TornadoKirby.Bmp", 0, 7, 0.125f, true);
 		MainRenderer->CreateAnimation("Left_Tornado_Down", "Left_TornadoKirby.Bmp", 8, 15, 0.125f, true);
 		MainRenderer->CreateAnimation("Left_Tornado_Slide", "Left_TornadoKirby.Bmp", 16, 25, 0.1f, false);
 		MainRenderer->FindAnimation("Left_Tornado_Slide")->Inters[9] = 0.2f;
 		MainRenderer->CreateAnimation("Left_Tornado_Jump", "Left_TornadoKirby.Bmp", 26, 27, 0.1f, true);
-		MainRenderer->CreateAnimation("Left_Tornado_JumpToDown", "Left_TornadoKirby.Bmp", 28, 35, 0.03f, false);
+		MainRenderer->CreateAnimation("Left_Tornado_JumpToDrop", "Left_TornadoKirby.Bmp", 28, 35, 0.03f, false);
 		MainRenderer->CreateAnimation("Left_Tornado_JumpToLand", "Left_TornadoKirby.Bmp", 36, 36, 0.3f, false);
 		MainRenderer->CreateAnimation("Left_Tornado_Walk", "Left_TornadoKirby.Bmp", 37, 56, 0.025f, true);
 		MainRenderer->CreateAnimation("Left_Tornado_Run", "Left_TornadoKirby.Bmp", 57, 64, 0.05f, true);
@@ -82,15 +83,8 @@ void TornadoKirby::Start()
 		MainRenderer->CreateAnimation("Left_Tornado_AttackReady", "Left_TornadoKirby.Bmp", 136, 147, 0.1f, false);
 		MainRenderer->CreateAnimation("Left_Tornado_Attack", "Left_TornadoKirby.Bmp", 148, 155, 0.1f, true);
 		MainRenderer->CreateAnimation("Left_Tornado_AttackToIdle", "Left_TornadoKirby.Bmp", 156, 168, 0.1f, false);
+		MainRenderer->CreateAnimation("Left_Tornado_Change", "Left_TornadoKirby.Bmp", 169, 183, 0.1f, false);
 
-		if (Dir == ActorDir::Left)
-		{
-			MainRenderer->ChangeAnimation("Left_Tornado_Idle");
-		}
-		else
-		{
-			MainRenderer->ChangeAnimation("Right_Tornado_Idle");
-		}
 		MainRenderer->SetRenderScaleToTexture();
 		MainRenderer->SetScaleRatio(RatioValue);
 	}
@@ -108,7 +102,7 @@ void TornadoKirby::Start()
 	}
 
 	AttackCollision->Off();
-	ChangeState(KirbyState::Idle);
+	ChangeState(KirbyState::Change);
 }
 
 void TornadoKirby::ChangeAnimationState(const std::string& _StateName)

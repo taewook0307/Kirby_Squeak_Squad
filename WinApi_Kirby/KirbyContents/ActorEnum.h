@@ -6,7 +6,7 @@ enum class KirbyState
 	Down,
 	Slide,
 	Jump,
-	JumpToDown,
+	JumpToDrop,
 	JumpToLand,
 	Walk,
 	Run,
@@ -30,6 +30,8 @@ enum class KirbyState
 	KeepIdle,
 	KeepWalk,
 	KeepJump,
+	KeepJumpToDrop,
+	KeepJumpToLand,
 	KeepDamage,
 	Change,
 	Max

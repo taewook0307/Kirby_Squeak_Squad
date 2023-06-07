@@ -42,6 +42,11 @@ void Kirby::LevelMoveStart()
 	ChangeAnimationState("LevelMove");
 }
 
+void Kirby::ChangeStart()
+{
+	ChangeAnimationState("Change");
+}
+
 void Kirby::IdleUpdate(float _Delta)
 {
 	BodyCollision->On();
@@ -145,6 +150,15 @@ void Kirby::LevelMoveUpdate(float _Delta)
 	if (true == MainRenderer->IsAnimationEnd())
 	{
 		MapChangeAnimationEnd = true;
+		return;
+	}
+}
+
+void Kirby::ChangeUpdate(float _Delta)
+{
+	if (true == MainRenderer->IsAnimationEnd())
+	{
+		ChangeState(KirbyState::Idle);
 		return;
 	}
 }

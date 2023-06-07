@@ -9,9 +9,9 @@ void Kirby::JumpStart()
 	SetGravityVector(float4::UP * JumpPower);
 }
 
-void Kirby::JumpToDownStart()
+void Kirby::JumpToDropStart()
 {
-	ChangeAnimationState("JumpToDown");
+	ChangeAnimationState("JumpToDrop");
 }
 
 void Kirby::JumpToLandStart()
@@ -87,12 +87,12 @@ void Kirby::JumpUpdate(float _Delta)
 	if (GetGravityVector().Y > 0.0f || GetPos().Y < 100.0f)
 	{
 		GravityReset();
-		ChangeState(KirbyState::JumpToDown);
+		ChangeState(KirbyState::JumpToDrop);
 		return;
 	}
 }
 
-void Kirby::JumpToDownUpdate(float _Delta)
+void Kirby::JumpToDropUpdate(float _Delta)
 {
 	DirCheck();
 
