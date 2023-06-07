@@ -257,12 +257,6 @@ void Kirby::StopUpdate(float _Delta)
 		ChangeState(KirbyState::StopToIdle);
 		return;
 	}
-
-	/*if (true == MainRenderer->IsAnimationEnd())
-	{
-		ChangeState(KirbyState::StopToIdle);
-		return;
-	}*/
 }
 
 void Kirby::StopToIdleUpdate(float _Delta)
