@@ -54,9 +54,6 @@
     <ClInclude Include="BaseActor.h">
       <Filter>Global\Player</Filter>
     </ClInclude>
-    <ClInclude Include="Gravity.h">
-      <Filter>Global\Player</Filter>
-    </ClInclude>
     <ClInclude Include="BackGround.h">
       <Filter>Global\Scene</Filter>
     </ClInclude>
@@ -70,7 +67,7 @@
       <Filter>Player\Form</Filter>
     </ClInclude>
     <ClInclude Include="AttackObject.h">
-      <Filter>Global\Player</Filter>
+      <Filter>Player</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -168,9 +165,6 @@
     <ClCompile Include="BaseActor.cpp">
       <Filter>Global\Player</Filter>
     </ClCompile>
-    <ClCompile Include="Gravity.cpp">
-      <Filter>Global\Player</Filter>
-    </ClCompile>
     <ClCompile Include="BackGround.cpp">
       <Filter>Global\Scene</Filter>
     </ClCompile>
@@ -184,7 +178,7 @@
       <Filter>Player\Form</Filter>
     </ClCompile>
     <ClCompile Include="AttackObject.cpp">
-      <Filter>Global\Player</Filter>
+      <Filter>Player</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

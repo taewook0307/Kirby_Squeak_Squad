@@ -5,9 +5,11 @@
 #include <GameEngineCore/GameEngineActor.h>
 
 #define BASESPEED 500.0f
+#define STARCOLLISIONSCALE { 70.0f, 70.0f }
 
 class AttackObject : public GameEngineActor
 {
+	friend class Kirby;
 public:
 	// constrcuter destructer
 	AttackObject();
