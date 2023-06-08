@@ -191,9 +191,6 @@
     <Filter Include="Monster">
       <UniqueIdentifier>{6cfa2133-0f4c-4c27-b86d-213a1eb99fa8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Effect">
-      <UniqueIdentifier>{c7ba1088-5f1b-4091-818e-3490a692a96d}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Monster\Spark">
       <UniqueIdentifier>{94a2439e-a381-419d-acd8-c340bc198d2b}</UniqueIdentifier>
     </Filter>
