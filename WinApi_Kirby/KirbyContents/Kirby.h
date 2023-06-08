@@ -138,7 +138,7 @@ protected:
 	float Speed = BASEPOWER;
 	float RunSpeed = Speed * 1.5f;
 	float JumpPower = GRAVITYPOWER;
-	float FlyPower = BASEPOWER;
+	float FlyPower = GRAVITYPOWER;
 
 	std::vector<GameEngineCollision*> Col;
 

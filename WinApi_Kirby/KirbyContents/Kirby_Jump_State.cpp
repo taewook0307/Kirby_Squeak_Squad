@@ -95,7 +95,7 @@ void Kirby::JumpUpdate(float _Delta)
 		}
 	}
 
-	if (GetGravityVector().Y > 0.0f || GetPos().Y < 100.0f)
+	if (GetGravityVector().Y > 0.0f)
 	{
 		GravityReset();
 		ChangeState(KirbyState::JumpToDrop);
