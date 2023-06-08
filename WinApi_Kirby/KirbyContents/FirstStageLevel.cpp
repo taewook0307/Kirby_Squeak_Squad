@@ -41,11 +41,11 @@ void FirstStageLevel::Start()
 
 	LevelMonster = CreateActor<Monster>(RenderOrder::Play);
 
-	LevelFireMonster = CreateActor<SparkMonster>(RenderOrder::Play);
+	LevelFireMonster = CreateActor<Monster>(RenderOrder::Play);
 
-	LevelTornadoMonster = CreateActor<IceMonster>(RenderOrder::Play);
+	LevelTornadoMonster = CreateActor<Monster>(RenderOrder::Play);
 
-	LevelSparkMonster = CreateActor<SparkMonster>(RenderOrder::Play);
+	LevelSparkMonster = CreateActor<Monster>(RenderOrder::Play);
 
 	/*if (nullptr == NewMonster)
 	{

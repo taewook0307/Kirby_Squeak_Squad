@@ -203,6 +203,7 @@ void Kirby::AttackToIdleUpdate(float _Delta)
 
 	if (MainRenderer->IsAnimationEnd())
 	{
+		StarAttack = nullptr;
 		ChangeState(KirbyState::Idle);
 		return;
 	}
