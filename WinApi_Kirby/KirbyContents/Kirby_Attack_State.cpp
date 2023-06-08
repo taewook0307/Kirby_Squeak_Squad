@@ -1,9 +1,13 @@
 #include "Kirby.h"
+#include "KirbyGameEnum.h"
+#include "AttackObject.h"
 #include "Monster.h"
 
 #include <math.h>
 #include <GameEnginePlatform/GameEngineInput.h>
 #include <GameEngineCore/GameEngineRenderer.h>
+#include <GameEngineCore/GameEngineLevel.h>
+#include <GameEngineCore/GameEngineActor.h>
 #include <GameEngineCore/GameEngineCollision.h>
 
 void Kirby::DamageStart()
@@ -189,6 +193,13 @@ void Kirby::AttackUpdate(float _Delta)
 
 void Kirby::AttackToIdleUpdate(float _Delta)
 {
+	if (StarAttack == nullptr)
+	{
+		StarAttack = GetLevel()->CreateActor<AttackObject>(RenderOrder::Play);
+		StarAttack->SetPos(GetPos());
+		StarAttack->SetDir(Dir);
+	}
+
 	if (MainRenderer->IsAnimationEnd())
 	{
 		ChangeState(KirbyState::Idle);

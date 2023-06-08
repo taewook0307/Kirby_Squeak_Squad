@@ -6,6 +6,7 @@
 
 #define BASESPEED 500.0f
 #define STARCOLLISIONSCALE { 70.0f, 70.0f }
+#define STARCOLLISIONPOS { 0.0f, -40.0f }
 
 class AttackObject : public GameEngineActor
 {
@@ -38,6 +39,7 @@ protected:
 private:
 	ActorDir Dir = ActorDir::Right;
 	float Speed = BASESPEED;
+	float RatioValue = 4.0f;
 
 	void Start() override;
 	void Update(float _Delta) override;

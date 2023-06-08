@@ -14,6 +14,7 @@
 #define RIGHTINHALECOLLSIONSCALE { 150.0f, -40.0f }
 #define INHALECOLLSIONSCALE { 200.0f, 80.0f }
 
+class AttackObject;
 class Kirby : public BaseActor
 {
 public:
@@ -147,6 +148,7 @@ protected:
 	bool MapChangeAnimationEnd = false;
 private:
 	MonsterType KeepType = MonsterType::Max;
+	AttackObject* StarAttack = nullptr;
 
 	void Start() override;
 	void Update(float _Delta) override;

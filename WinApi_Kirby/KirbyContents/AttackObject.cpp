@@ -32,11 +32,15 @@ void AttackObject::Start()
 
 		MainRenderer->CreateAnimation("Star_Idle", "Star.Bmp", 0, 7, 0.1f, true);
 		MainRenderer->CreateAnimation("Star_Death", "Star.Bmp", 8, 11, 0.1f, false);
+		MainRenderer->SetRenderScaleToTexture();
+		MainRenderer->SetScaleRatio(RatioValue);
+
+		MainRenderer->ChangeAnimation("Star_Idle");
 	}
 
 	{
 		AttackCollision = CreateCollision(CollisionOrder::SpecialAttack);
-		AttackCollision->SetCollisionPos(float4::ZERO);
+		AttackCollision->SetCollisionPos(STARCOLLISIONPOS);
 		AttackCollision->SetCollisionScale(STARCOLLISIONSCALE);
 		AttackCollision->SetCollisionType(CollisionType::Rect);
 	}
@@ -57,9 +61,13 @@ void AttackObject::Update(float _Delta)
 	{
 		if (nullptr != MainRenderer)
 		{
-			// Death();
 			MainRenderer->Death();
 			MainRenderer = nullptr;
+		}
+		if (nullptr != AttackCollision)
+		{
+			AttackCollision->Death();
+			AttackCollision = nullptr;
 		}
 	}
 }

@@ -108,7 +108,6 @@ void Kirby::Start()
 		MainRenderer->CreateAnimation("Left_Change", "Left_Kirby.Bmp", 118, 126, 0.1f, false);
 
 		// Setting
-		MainRenderer->ChangeAnimation("Right_Idle");
 		MainRenderer->SetRenderScaleToTexture();
 		MainRenderer->SetScaleRatio(RatioValue);
 	}
