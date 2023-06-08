@@ -113,6 +113,14 @@ void FireMonster::WalkUpdate(float _Delta)
 
 void FireMonster::AttackUpdate(float _Delta)
 {
+	if (true == BodyCollision->Collision(CollisionOrder::Attack, Col, CollisionType::Rect, CollisionType::Rect)
+		|| true == BodyCollision->Collision(CollisionOrder::SpecialAttack, Col, CollisionType::Rect, CollisionType::Rect)
+		|| true == BodyCollision->Collision(CollisionOrder::Inhale, Col, CollisionType::Rect, CollisionType::Rect))
+	{
+		ChangeState(MonsterState::Damage);
+		return;
+	}
+
 	AttackCollision->On();
 
 	if (true == MainRenderer->IsAnimationEnd())
@@ -134,7 +142,7 @@ void FireMonster::DamageUpdate(float _Delta)
 		}
 	}
 
-	if (true == BodyCollision->Collision(CollisionOrder::Attack, Col, CollisionType::Rect, CollisionType::Rect))
+	else if (true == BodyCollision->Collision(CollisionOrder::Attack, Col, CollisionType::Rect, CollisionType::Rect))
 	{
 		if (true == MainRenderer->IsAnimationEnd())
 		{
@@ -143,7 +151,7 @@ void FireMonster::DamageUpdate(float _Delta)
 		}
 	}
 
-	if (false == BodyCollision->Collision(CollisionOrder::Inhale, Col, CollisionType::Rect, CollisionType::Rect))
+	else if (false == BodyCollision->Collision(CollisionOrder::Inhale, Col, CollisionType::Rect, CollisionType::Rect))
 	{
 		ChangeState(MonsterState::Idle);
 		return;

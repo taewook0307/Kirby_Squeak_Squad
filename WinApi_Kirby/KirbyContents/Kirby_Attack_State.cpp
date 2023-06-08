@@ -193,11 +193,16 @@ void Kirby::AttackUpdate(float _Delta)
 
 void Kirby::AttackToIdleUpdate(float _Delta)
 {
-	if (StarAttack == nullptr)
+	if (StarAttack == nullptr && KeepType == MonsterType::Normal)
 	{
 		StarAttack = GetLevel()->CreateActor<AttackObject>(RenderOrder::Play);
 		StarAttack->SetPos(GetPos());
 		StarAttack->SetDir(Dir);
+	}
+
+	if (StarAttack != nullptr && true == StarAttack->IsDeath())
+	{
+		StarAttack = nullptr;
 	}
 
 	if (MainRenderer->IsAnimationEnd())
