@@ -65,9 +65,9 @@ void Kirby::Start()
 		MainRenderer->CreateAnimation("Right_Keep", "Right_Kirby.Bmp", 106, 112, 0.1f, false);
 		MainRenderer->CreateAnimation("Right_AttackToIdle", "Right_Kirby.Bmp", 113, 117, 0.1f, false);
 		MainRenderer->CreateAnimation("Right_KeepIdle", "Right_Kirby.Bmp", 127, 128, 0.5f, true);
-		MainRenderer->CreateAnimation("Right_KeepJumpUp", "Right_Kirby.Bmp", 129, 133, 0.1f, false);
-		MainRenderer->CreateAnimation("Right_KeepJumpDrop", "Right_Kirby.Bmp", 134, 135, 0.1f, false);
-		MainRenderer->CreateAnimation("Right_KeepJumpLand", "Right_Kirby.Bmp", 136, 136, 0.3f, false);
+		MainRenderer->CreateAnimation("Right_KeepJump", "Right_Kirby.Bmp", 129, 133, 0.1f, false);
+		MainRenderer->CreateAnimation("Right_KeepJumpToDrop", "Right_Kirby.Bmp", 134, 135, 0.1f, false);
+		MainRenderer->CreateAnimation("Right_KeepJumpToLand", "Right_Kirby.Bmp", 136, 136, 0.3f, false);
 		MainRenderer->CreateAnimation("Right_KeepWalk", "Right_Kirby.Bmp", 137, 152, 0.05f, true);
 		MainRenderer->CreateAnimation("Right_KeepDamage", "Right_Kirby.Bmp", 153, 156, 0.1f, true);
 		MainRenderer->CreateAnimation("Right_Change", "Right_Kirby.Bmp", 118, 126, 0.1f, false);
@@ -101,8 +101,8 @@ void Kirby::Start()
 		MainRenderer->CreateAnimation("Left_AttackToIdle", "Left_Kirby.Bmp", 113, 117, 0.1f, false);
 		MainRenderer->CreateAnimation("Left_KeepIdle", "Left_Kirby.Bmp", 127, 128, 0.5f, true);
 		MainRenderer->CreateAnimation("Left_KeepJump", "Left_Kirby.Bmp", 129, 133, 0.1f, false);
-		MainRenderer->CreateAnimation("Left_KeepJumpDrop", "Left_Kirby.Bmp", 134, 135, 0.1f, false);
-		MainRenderer->CreateAnimation("Left_KeepJumpLand", "Left_Kirby.Bmp", 136, 136, 0.3f, false);
+		MainRenderer->CreateAnimation("Left_KeepJumpToDrop", "Left_Kirby.Bmp", 134, 135, 0.1f, false);
+		MainRenderer->CreateAnimation("Left_KeepJumpToLand", "Left_Kirby.Bmp", 136, 136, 0.3f, false);
 		MainRenderer->CreateAnimation("Left_KeepWalk", "Left_Kirby.Bmp", 137, 152, 0.05f, true);
 		MainRenderer->CreateAnimation("Left_KeepDamage", "Left_Kirby.Bmp", 153, 156, 0.1f, true);
 		MainRenderer->CreateAnimation("Left_Change", "Left_Kirby.Bmp", 118, 126, 0.1f, false);
@@ -261,6 +261,12 @@ void Kirby::StateUpdate(float _Delta)
 		return KeepIdleUpdate(_Delta);
 	case KirbyState::KeepWalk:
 		return KeepWalkUpdate(_Delta);
+	case KirbyState::KeepJump:
+		return KeepJumpUpdate(_Delta);
+	case KirbyState::KeepJumpToDrop:
+		return KeepJumpToDropUpdate(_Delta);
+	case KirbyState::KeepJumpToLand:
+		return KeepJumpToLandUpdate(_Delta);
 	case KirbyState::Change:
 		return ChangeUpdate(_Delta);
 	default:
@@ -354,6 +360,15 @@ void Kirby::ChangeState(KirbyState _State)
 			break;
 		case KirbyState::KeepWalk:
 			KeepWalkStart();
+			break;
+		case KirbyState::KeepJump:
+			KeepJumpStart();
+			break;
+		case KirbyState::KeepJumpToDrop:
+			KeepJumpToDropStart();
+			break;
+		case KirbyState::KeepJumpToLand:
+			KeepJumpToLandStart();
 			break;
 		case KirbyState::Change:
 			ChangeStart();

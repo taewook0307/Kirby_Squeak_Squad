@@ -52,6 +52,12 @@ void Kirby::KeepIdleUpdate(float _Delta)
 		return;
 	}
 
+	if (true == GameEngineInput::IsDown(VK_SPACE))
+	{
+		ChangeState(KirbyState::KeepJump);
+		return;
+	}
+
 	if (true == GameEngineInput::IsDown('X') && KeepType == MonsterType::Normal)
 	{
 		ChangeState(KirbyState::AttackToIdle);
@@ -102,6 +108,12 @@ void Kirby::KeepWalkUpdate(float _Delta)
 	if (true == GameEngineInput::IsDown('X'))
 	{
 		ChangeState(KirbyState::Attack);
+		return;
+	}
+
+	if (true == GameEngineInput::IsDown(VK_SPACE))
+	{
+		ChangeState(KirbyState::KeepJump);
 		return;
 	}
 }
