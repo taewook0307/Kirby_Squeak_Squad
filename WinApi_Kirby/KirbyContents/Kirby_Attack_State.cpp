@@ -43,6 +43,7 @@ void Kirby::KeepStart()
 void Kirby::DamageUpdate(float _Delta)
 {
 	BodyCollision->Off();
+	GravityReset();
 
 	float4 FlyPos = float4::UP * FlyPower * 0.5f * _Delta;
 	float4 MovePos = float4::ZERO;

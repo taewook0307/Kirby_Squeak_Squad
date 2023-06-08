@@ -44,6 +44,8 @@ private:
 
 	std::vector<GameEngineCollision*> StarCol;
 
+	bool CollisionCheck = false;
+
 	void Start() override;
 	void Update(float _Delta) override;
 };

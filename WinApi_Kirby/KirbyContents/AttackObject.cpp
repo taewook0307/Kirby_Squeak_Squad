@@ -49,13 +49,20 @@ void AttackObject::Start()
 
 void AttackObject::Update(float _Delta)
 {
+	float4 MovePos = float4::ZERO;
+
 	if (Dir == ActorDir::Left)
 	{
-		AddPos(float4::LEFT * _Delta * Speed);
+		MovePos = float4::LEFT * _Delta * Speed;
 	}
 	else
 	{
-		AddPos(float4::RIGHT * _Delta * Speed);
+		MovePos = float4::RIGHT * _Delta * Speed;
+	}
+
+	if (false == CollisionCheck)
+	{
+		AddPos(MovePos);
 	}
 
 	if (1.0f < GetLiveTime())
@@ -66,13 +73,20 @@ void AttackObject::Update(float _Delta)
 
 	if (true == AttackCollision->Collision(CollisionOrder::MonsterBody, StarCol, CollisionType::Rect, CollisionType::Rect))
 	{
+		CollisionCheck = true;
+
+		MainRenderer->ChangeAnimation("Star_Death");
+
 		GameEngineCollision* MonsterCollision = StarCol[StarCol.size() - 1];
 		GameEngineActor* MonsterPtr = MonsterCollision->GetActor();
 		Monster* ColMonster = dynamic_cast<Monster*>(MonsterPtr);
 
 		ColMonster->Death();
 
-		Death();
-		return;
+		if (true == MainRenderer->IsAnimationEnd())
+		{
+			Death();
+			return;
+		}
 	}
 }
