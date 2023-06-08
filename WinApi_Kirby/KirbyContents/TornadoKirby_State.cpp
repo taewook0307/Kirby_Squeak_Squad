@@ -44,9 +44,11 @@ void TornadoKirby::AttackUpdate(float _Delta)
 		MovePos = { 0.0f, Speed * _Delta };
 	}
 	
+	float4 CheckPos = GetPos() + MovePos;
+
 	unsigned int Color = GetGroundColor(EMPTYCOLOR, MovePos);
 
-	if (Color == EMPTYCOLOR)
+	if (Color == EMPTYCOLOR && CheckPos.Y > 100.0f)
 	{
 		AddPos(MovePos);
 		CameraMove(MovePos);

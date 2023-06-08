@@ -57,6 +57,7 @@ void IceKirby::Start()
 		MainRenderer->CreateAnimation("Right_Ice_Attack", "Right_IceKirby.Bmp", 105, 120, 0.1f, true);
 		MainRenderer->CreateAnimation("Right_Ice_AttackToIdle", "Right_IceKirby.Bmp", 121, 123, 0.1f, false);
 		MainRenderer->CreateAnimation("Right_Ice_Change", "Right_IceKirby.Bmp", 124, 136, 0.1f, false);
+		MainRenderer->FindAnimation("Right_Ice_Change")->Inters[7] = 0.3f;
 
 		MainRenderer->CreateAnimation("Left_Ice_Idle", "Left_IceKirby.Bmp", 0, 1, 0.5f, true);
 		MainRenderer->CreateAnimation("Left_Ice_Down", "Left_IceKirby.Bmp", 2, 3, 0.5f, true);
@@ -84,6 +85,7 @@ void IceKirby::Start()
 		MainRenderer->CreateAnimation("Left_Ice_Attack", "Left_IceKirby.Bmp", 105, 120, 0.1f, true);
 		MainRenderer->CreateAnimation("Left_Ice_AttackToIdle", "Left_IceKirby.Bmp", 121, 123, 0.1f, false);
 		MainRenderer->CreateAnimation("Left_Ice_Change", "Left_IceKirby.Bmp", 124, 136, 0.1f, false);
+		MainRenderer->FindAnimation("Left_Ice_Change")->Inters[7] = 0.3f;
 
 		MainRenderer->SetRenderScaleToTexture();
 		MainRenderer->SetScaleRatio(RatioValue);

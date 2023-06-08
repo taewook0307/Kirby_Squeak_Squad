@@ -175,7 +175,11 @@ void Kirby::AttackUpdate(float _Delta)
 		
 		if (static_cast<float>(fabs(KeepMonster->GetPos().X - GetPos().X)) < 20.0f)
 		{
-			KeepMonster->Death();
+			if (KeepMonster != nullptr)
+			{
+				KeepMonster->Death();
+				KeepMonster = nullptr;
+			}
 			AttackCollision->Off();
 			ChangeState(KirbyState::Keep);
 			return;
