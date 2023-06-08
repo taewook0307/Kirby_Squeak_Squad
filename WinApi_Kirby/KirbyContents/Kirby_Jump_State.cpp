@@ -23,8 +23,19 @@ void Kirby::JumpUpdate(float _Delta)
 {
 	DirCheck();
 
-	Gravity(_Delta);
+	unsigned int Color = GetGroundColor(EMPTYCOLOR, TOPCHECKPOS);
 
+	if (EMPTYCOLOR == Color || DOORCOLOR == Color)
+	{
+		Gravity(_Delta);
+	}
+	else
+	{
+		GravityReset();
+		ChangeState(KirbyState::JumpToDrop);
+		return;
+	}
+	
 	float4 MovePos = float4::ZERO;
 	float4 CheckPos = float4::ZERO;
 
