@@ -7,7 +7,8 @@ void SparkMonster::IdleUpdate(float _Delta)
 	static float IdleTimer = 0.0f;
 
 	if (true == BodyCollision->Collision(CollisionOrder::Attack, Col, CollisionType::Rect, CollisionType::Rect)
-		|| true == BodyCollision->Collision(CollisionOrder::SpecialAttack, Col, CollisionType::Rect, CollisionType::Rect))
+		|| true == BodyCollision->Collision(CollisionOrder::SpecialAttack, Col, CollisionType::Rect, CollisionType::Rect)
+		|| true == BodyCollision->Collision(CollisionOrder::Inhale, Col, CollisionType::Rect, CollisionType::Rect))
 	{
 		ChangeState(MonsterState::Damage);
 		return;
@@ -45,7 +46,8 @@ void SparkMonster::WalkUpdate(float _Delta)
 	AddPos(MovePos);
 
 	if (true == BodyCollision->Collision(CollisionOrder::Attack, Col, CollisionType::Rect, CollisionType::Rect)
-		|| true == BodyCollision->Collision(CollisionOrder::SpecialAttack, Col, CollisionType::Rect, CollisionType::Rect))
+		|| true == BodyCollision->Collision(CollisionOrder::SpecialAttack, Col, CollisionType::Rect, CollisionType::Rect)
+		|| true == BodyCollision->Collision(CollisionOrder::Inhale, Col, CollisionType::Rect, CollisionType::Rect))
 	{
 		ChangeState(MonsterState::Damage);
 		return;
@@ -88,5 +90,20 @@ void SparkMonster::DamageUpdate(float _Delta)
 			Death();
 			return;
 		}
+	}
+
+	if (true == BodyCollision->Collision(CollisionOrder::Attack, Col, CollisionType::Rect, CollisionType::Rect))
+	{
+		if (true == MainRenderer->IsAnimationEnd())
+		{
+			Death();
+			return;
+		}
+	}
+
+	if (false == BodyCollision->Collision(CollisionOrder::Inhale, Col, CollisionType::Rect, CollisionType::Rect))
+	{
+		ChangeState(MonsterState::Idle);
+		return;
 	}
 }

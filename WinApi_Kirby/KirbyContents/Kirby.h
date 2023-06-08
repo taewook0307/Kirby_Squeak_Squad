@@ -28,8 +28,6 @@ public:
 	Kirby& operator=(const Kirby& _Other) = delete;
 	Kirby& operator=(Kirby&& _Other) noexcept = delete;
 
-	GameEngineCollision* AttackCollision = nullptr;
-
 	KirbyState& GetKirbyState()
 	{
 		return State;
@@ -141,12 +139,14 @@ protected:
 	float RunSpeed = Speed * 1.5f;
 	float JumpPower = GRAVITYPOWER;
 	float FlyPower = BASEPOWER;
+
 	std::vector<GameEngineCollision*> Col;
 
 	bool IsCheckPosPoint = false;
 
 	bool MapChangeAnimationEnd = false;
 private:
+	GameEngineCollision* InhaleCollision = nullptr;
 	MonsterType KeepType = MonsterType::Max;
 	AttackObject* StarAttack = nullptr;
 

@@ -26,9 +26,7 @@ protected:
 		return Type;
 	}
 
-	GameEngineRenderer* MainRenderer = nullptr;
 	GameEngineCollision* AttackCollision = nullptr;
-	GameEngineCollision* BodyCollision = nullptr;
 	GameEngineCollision* SearchCollision = nullptr;
 
 	void ChangeAnimationState(const std::string& _StateName) override;

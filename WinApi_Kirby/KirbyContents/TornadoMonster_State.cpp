@@ -6,7 +6,8 @@
 void TornadoMonster::IdleUpdate(float _Delta)
 {
 	if (true == BodyCollision->Collision(CollisionOrder::Attack, Col, CollisionType::Rect, CollisionType::Rect)
-		|| true == BodyCollision->Collision(CollisionOrder::SpecialAttack, Col, CollisionType::Rect, CollisionType::Rect))
+		|| true == BodyCollision->Collision(CollisionOrder::SpecialAttack, Col, CollisionType::Rect, CollisionType::Rect)
+		|| true == BodyCollision->Collision(CollisionOrder::Inhale, Col, CollisionType::Rect, CollisionType::Rect))
 	{
 		ChangeState(MonsterState::Damage);
 		return;
@@ -23,7 +24,8 @@ void TornadoMonster::IdleUpdate(float _Delta)
 void TornadoMonster::WalkUpdate(float _Delta)
 {
 	if (true == BodyCollision->Collision(CollisionOrder::Attack, Col, CollisionType::Rect, CollisionType::Rect)
-		|| true == BodyCollision->Collision(CollisionOrder::SpecialAttack, Col, CollisionType::Rect, CollisionType::Rect))
+		|| true == BodyCollision->Collision(CollisionOrder::SpecialAttack, Col, CollisionType::Rect, CollisionType::Rect)
+		|| true == BodyCollision->Collision(CollisionOrder::Inhale, Col, CollisionType::Rect, CollisionType::Rect))
 	{
 		ChangeState(MonsterState::Damage);
 		return;
@@ -71,18 +73,6 @@ void TornadoMonster::WalkUpdate(float _Delta)
 	WalkTimer += _Delta;
 }
 
-void TornadoMonster::DamageUpdate(float _Delta)
-{
-	if (true == BodyCollision->Collision(CollisionOrder::SpecialAttack, Col, CollisionType::Rect, CollisionType::Rect))
-	{
-		if (true == MainRenderer->IsAnimationEnd())
-		{
-			Death();
-			return;
-		}
-	}
-}
-
 void TornadoMonster::AttackUpdate(float _Delta)
 {
 	AttackCollision->On();
@@ -102,6 +92,33 @@ void TornadoMonster::AttackUpdate(float _Delta)
 	else
 	{
 		AttackCollision->Off();
+		ChangeState(MonsterState::Idle);
+		return;
+	}
+}
+
+void TornadoMonster::DamageUpdate(float _Delta)
+{
+	if (true == BodyCollision->Collision(CollisionOrder::SpecialAttack, Col, CollisionType::Rect, CollisionType::Rect))
+	{
+		if (true == MainRenderer->IsAnimationEnd())
+		{
+			Death();
+			return;
+		}
+	}
+
+	if (true == BodyCollision->Collision(CollisionOrder::Attack, Col, CollisionType::Rect, CollisionType::Rect))
+	{
+		if (true == MainRenderer->IsAnimationEnd())
+		{
+			Death();
+			return;
+		}
+	}
+
+	if (false == BodyCollision->Collision(CollisionOrder::Inhale, Col, CollisionType::Rect, CollisionType::Rect))
+	{
 		ChangeState(MonsterState::Idle);
 		return;
 	}

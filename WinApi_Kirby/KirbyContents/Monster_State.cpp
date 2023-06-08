@@ -42,7 +42,9 @@ void Monster::IdleUpdate(float _Delta)
 		return;
 	}
 
-	if (true == BodyCollision->Collision(CollisionOrder::Body, Col, CollisionType::Rect, CollisionType::Rect))
+	if (true == BodyCollision->Collision(CollisionOrder::Attack, Col, CollisionType::Rect, CollisionType::Rect)
+		|| true == BodyCollision->Collision(CollisionOrder::SpecialAttack, Col, CollisionType::Rect, CollisionType::Rect)
+		|| true == BodyCollision->Collision(CollisionOrder::Inhale, Col, CollisionType::Rect, CollisionType::Rect))
 	{
 		ChangeState(MonsterState::Damage);
 		return;
@@ -96,7 +98,9 @@ void Monster::WalkUpdate(float _Delta)
 
 	Col.reserve(Col.size() + 1);
 
-	if (true == BodyCollision->Collision(CollisionOrder::Attack, Col, CollisionType::Rect, CollisionType::Rect))
+	if (true == BodyCollision->Collision(CollisionOrder::Attack, Col, CollisionType::Rect, CollisionType::Rect)
+		|| true == BodyCollision->Collision(CollisionOrder::SpecialAttack, Col, CollisionType::Rect, CollisionType::Rect)
+		|| true == BodyCollision->Collision(CollisionOrder::Inhale, Col, CollisionType::Rect, CollisionType::Rect))
 	{
 		ChangeState(MonsterState::Damage);
 		return;

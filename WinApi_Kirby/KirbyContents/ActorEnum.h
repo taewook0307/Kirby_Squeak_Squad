@@ -43,6 +43,7 @@ enum class MonsterState
 	Walk,
 	Attack,
 	Damage,
+	Death,
 	Max
 };
 
@@ -59,11 +60,13 @@ enum class MonsterType
 enum class CollisionOrder
 {
 	Body,
+	Inhale,
 	Attack,
 	SpecialAttack,
 	MonsterBody,
 	MonsterAttack,
-	MonsterSearch
+	MonsterSearch,
+	Max
 };
 
 enum class ActorDir
