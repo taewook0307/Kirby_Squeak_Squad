@@ -1,4 +1,5 @@
 ﻿#include "AttackObject.h"
+#include "Monster.h"
 #include "KirbyGameEnum.h"
 
 #include <GameEngineCore/ResourcesManager.h>
@@ -59,15 +60,19 @@ void AttackObject::Update(float _Delta)
 
 	if (1.0f < GetLiveTime())
 	{
-		if (nullptr != MainRenderer)
-		{
-			MainRenderer->Death();
-			MainRenderer = nullptr;
-		}
-		if (nullptr != AttackCollision)
-		{
-			AttackCollision->Death();
-			AttackCollision = nullptr;
-		}
+		Death();
+		return;
+	}
+
+	if (true == AttackCollision->Collision(CollisionOrder::MonsterBody, StarCol, CollisionType::Rect, CollisionType::Rect))
+	{
+		GameEngineCollision* MonsterCollision = StarCol[StarCol.size() - 1];
+		GameEngineActor* MonsterPtr = MonsterCollision->GetActor();
+		Monster* ColMonster = dynamic_cast<Monster*>(MonsterPtr);
+
+		ColMonster->Death();
+
+		Death();
+		return;
 	}
 }

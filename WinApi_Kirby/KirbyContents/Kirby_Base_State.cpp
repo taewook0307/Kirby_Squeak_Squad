@@ -17,7 +17,7 @@ void Kirby::KirbyGravity(float _Delta)
 	{
 		unsigned int CheckColor = GetGroundColor(EMPTYCOLOR, float4::UP);
 
-		while (CheckColor != EMPTYCOLOR)
+		while (CheckColor != EMPTYCOLOR && CheckColor != DOORCOLOR)
 		{
 			CheckColor = GetGroundColor(EMPTYCOLOR, float4::UP);
 			AddPos(float4::UP);

@@ -200,11 +200,6 @@ void Kirby::AttackToIdleUpdate(float _Delta)
 		StarAttack->SetDir(Dir);
 	}
 
-	if (StarAttack != nullptr && true == StarAttack->IsDeath())
-	{
-		StarAttack = nullptr;
-	}
-
 	if (MainRenderer->IsAnimationEnd())
 	{
 		ChangeState(KirbyState::Idle);

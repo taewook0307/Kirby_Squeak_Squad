@@ -2,6 +2,7 @@
 
 #include "ActorEnum.h"
 
+#include <vector>
 #include <GameEngineCore/GameEngineActor.h>
 
 #define BASESPEED 500.0f
@@ -40,6 +41,8 @@ private:
 	ActorDir Dir = ActorDir::Right;
 	float Speed = BASESPEED;
 	float RatioValue = 4.0f;
+
+	std::vector<GameEngineCollision*> StarCol;
 
 	void Start() override;
 	void Update(float _Delta) override;
