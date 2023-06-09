@@ -30,6 +30,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AttackMonster.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="AttackObject.h">
       <SubType>
       </SubType>
@@ -122,6 +126,10 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AttackMonster.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="AttackObject.cpp">
       <SubType>
       </SubType>

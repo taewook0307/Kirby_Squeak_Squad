@@ -35,12 +35,10 @@ protected:
 
 	void IdleStart();
 	void WalkStart();
-	void AttackStart();
 	void DamageStart();
 
 	virtual void IdleUpdate(float _Delta);
 	virtual void WalkUpdate(float _Delta);
-	virtual void AttackUpdate(float _Delta);
 	virtual void DamageUpdate(float _Delta);
 
 	virtual void DirChange();

@@ -1,10 +1,10 @@
 #pragma once
 
-#include "Monster.h"
+#include "AttackMonster.h"
 
 #define SPARKATTACKCOLLISIONPOS { 0.0f, -55.0f }
 
-class SparkMonster : public Monster
+class SparkMonster : public AttackMonster
 {
 public:
 	// constrcuter destructer

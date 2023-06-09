@@ -1,13 +1,13 @@
 #pragma once
 
-#include "Monster.h"
+#include "AttackMonster.h"
 
 #define LEFTSEARCHCOLLISIONPOS { -140.0f, -30.0f }
 #define RIGHTTSEARCHCOLLISIONPOS { 140.0f, -30.0f }
 #define SEARCHCOLLISONSCALE { 160.0f, 70.0f }
 #define TORNADOATTACKCOLLISIONSCALE { 80.0f, 80.0f }
 
-class TornadoMonster : public Monster
+class TornadoMonster : public AttackMonster
 {
 public:
 	// constrcuter destructer
