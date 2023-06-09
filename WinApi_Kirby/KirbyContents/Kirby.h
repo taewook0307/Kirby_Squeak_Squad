@@ -89,7 +89,7 @@ protected:
 	void DownUpdate(float _Delta);
 	void SlideUpdate(float _Delta);
 	void JumpUpdate(float _Delta);
-	void JumpToDropUpdate(float _Delta);
+	virtual void JumpToDropUpdate(float _Delta);
 	void JumpToLandUpdate(float _Delta);
 	void WalkUpdate(float _Delta);
 	void RunUpdate(float _Delta);

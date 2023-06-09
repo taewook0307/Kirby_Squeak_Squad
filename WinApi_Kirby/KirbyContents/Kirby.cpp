@@ -61,7 +61,7 @@ void Kirby::Start()
 		MainRenderer->CreateAnimation("Right_Damage", "Right_Kirby.Bmp", 95, 97, 0.2f, false);
 		MainRenderer->CreateAnimation("Right_DamageLand", "Right_Kirby.Bmp", 98, 99, 0.3f, false);
 		MainRenderer->CreateAnimation("Right_AttackReady", "Right_Kirby.Bmp", 100, 103, 0.1f, false);
-		MainRenderer->CreateAnimation("Right_Attack", "Right_Kirby.Bmp", 104, 105, 0.1f, true);
+		MainRenderer->CreateAnimation("Right_Attack", "Right_Kirby.Bmp", 104, 105, 0.2f, true);
 		MainRenderer->CreateAnimation("Right_Keep", "Right_Kirby.Bmp", 106, 112, 0.1f, false);
 		MainRenderer->CreateAnimation("Right_AttackToIdle", "Right_Kirby.Bmp", 113, 117, 0.1f, false);
 		MainRenderer->CreateAnimation("Right_KeepIdle", "Right_Kirby.Bmp", 127, 128, 0.5f, true);
@@ -96,7 +96,7 @@ void Kirby::Start()
 		MainRenderer->CreateAnimation("Left_Damage", "Left_Kirby.Bmp", 95, 97, 0.2f, false);
 		MainRenderer->CreateAnimation("Left_DamageLand", "Left_Kirby.Bmp", 98, 99, 0.3f, false);
 		MainRenderer->CreateAnimation("Left_AttackReady", "Left_Kirby.Bmp", 100, 103, 0.1f, false);
-		MainRenderer->CreateAnimation("Left_Attack", "Left_Kirby.Bmp", 104, 105, 0.1f, true);
+		MainRenderer->CreateAnimation("Left_Attack", "Left_Kirby.Bmp", 104, 105, 0.2f, true);
 		MainRenderer->CreateAnimation("Left_Keep", "Left_Kirby.Bmp", 106, 112, 0.1f, false);
 		MainRenderer->CreateAnimation("Left_AttackToIdle", "Left_Kirby.Bmp", 113, 117, 0.1f, false);
 		MainRenderer->CreateAnimation("Left_KeepIdle", "Left_Kirby.Bmp", 127, 128, 0.5f, true);

@@ -30,7 +30,7 @@ void FireMonster::Start()
 	}
 
 	{
-		MainRenderer = CreateRenderer(RenderOrder::Play);
+		MainRenderer = CreateRenderer(RenderOrder::Monster);
 
 		MainRenderer->CreateAnimation("Right_Fire_Monster_Idle", "Right_FireEnermy.Bmp", 0, 0, 0.1f, false);
 		MainRenderer->CreateAnimation("Right_Fire_Monster_Walk", "Right_FireEnermy.Bmp", 1, 5, 0.1f, true);

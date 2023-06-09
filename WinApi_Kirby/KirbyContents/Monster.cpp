@@ -29,7 +29,7 @@ void Monster::Start()
 	}
 
 	{
-		MainRenderer = CreateRenderer(RenderOrder::Play);
+		MainRenderer = CreateRenderer(RenderOrder::Monster);
 
 		MainRenderer->CreateAnimation("Right_Monster_Idle", "Right_NormalMonster.Bmp", 0, 3, 0.2f, true);
 		MainRenderer->CreateAnimation("Right_Monster_Walk", "Right_NormalMonster.Bmp", 4, 11, 0.05f, true);

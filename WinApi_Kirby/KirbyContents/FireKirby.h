@@ -22,6 +22,7 @@ public:
 protected:
 	void ChangeAnimationState(const std::string& _StateName) override;
 
+	void JumpToDropUpdate(float _Delta) override;
 	void AttackUpdate(float _Delta) override;
 private:
 	void Start() override;

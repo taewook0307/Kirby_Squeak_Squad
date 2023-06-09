@@ -29,7 +29,7 @@ void SparkKirby::Start()
 	}
 
 	{
-		MainRenderer = CreateRenderer(RenderOrder::Play);
+		MainRenderer = CreateRenderer(RenderOrder::Monster);
 
 		MainRenderer->CreateAnimation("Right_Spark_Idle", "Right_SparkKirby.Bmp", 0, 7, 0.125f, true);
 		MainRenderer->CreateAnimation("Right_Spark_Down", "Right_SparkKirby.Bmp", 8, 15, 0.125f, true);

@@ -121,8 +121,7 @@ void Kirby::FlyUpdate(float _Delta)
 		return;
 	}
 
-	float4 DownCheckPos = { 0.0f, 0.0f };
-	unsigned int DownColor = GetGroundColor(EMPTYCOLOR, DownCheckPos);
+	unsigned int DownColor = GetGroundColor(EMPTYCOLOR);
 
 	// 바닥에 닿고 FlyPos의 Y값이 아래 방향이면 착지 상태로 변경
 	if (EMPTYCOLOR != DownColor && FlyPos.Y > 0)
