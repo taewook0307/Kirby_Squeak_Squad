@@ -104,24 +104,3 @@ void TornadoMonster::AttackUpdate(float _Delta)
 		return;
 	}
 }
-
-void TornadoMonster::DamageUpdate(float _Delta)
-{
-	if (false == BodyCollision->Collision(CollisionOrder::SpecialAttack, Col, CollisionType::Rect, CollisionType::Rect) && false == IsDeath())
-	{
-		ChangeState(MonsterState::Idle);
-		return;
-	}
-
-	else if (false == BodyCollision->Collision(CollisionOrder::Attack, Col, CollisionType::Rect, CollisionType::Rect) && false == IsDeath())
-	{
-		ChangeState(MonsterState::Idle);
-		return;
-	}
-
-	else if (false == BodyCollision->Collision(CollisionOrder::Inhale, Col, CollisionType::Rect, CollisionType::Rect) && false == IsDeath())
-	{
-		ChangeState(MonsterState::Idle);
-		return;
-	}
-}

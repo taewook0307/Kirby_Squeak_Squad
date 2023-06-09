@@ -30,7 +30,6 @@ protected:
 	void IdleUpdate(float _Delta) override;
 	void WalkUpdate(float _Delta) override;
 	void AttackUpdate(float _Delta) override;
-	void DamageUpdate(float _Delta) override;
 
 	MonsterType Type = MonsterType::Spark;
 private:

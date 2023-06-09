@@ -40,7 +40,7 @@ protected:
 
 	virtual void IdleUpdate(float _Delta);
 	virtual void WalkUpdate(float _Delta);
-	virtual void DamageUpdate(float _Delta);
+	void DamageUpdate(float _Delta);
 	void DeathUpdate(float _Delta);
 
 	virtual void DirChange();

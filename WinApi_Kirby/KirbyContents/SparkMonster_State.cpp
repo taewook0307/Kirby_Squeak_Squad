@@ -88,30 +88,3 @@ void SparkMonster::AttackUpdate(float _Delta)
 		return;
 	}
 }
-
-void SparkMonster::DamageUpdate(float _Delta)
-{
-	if (true == BodyCollision->Collision(CollisionOrder::SpecialAttack, Col, CollisionType::Rect, CollisionType::Rect))
-	{
-		if (true == MainRenderer->IsAnimationEnd())
-		{
-			Death();
-			return;
-		}
-	}
-
-	else if (true == BodyCollision->Collision(CollisionOrder::Attack, Col, CollisionType::Rect, CollisionType::Rect))
-	{
-		if (true == MainRenderer->IsAnimationEnd())
-		{
-			Death();
-			return;
-		}
-	}
-
-	else if (false == BodyCollision->Collision(CollisionOrder::Inhale, Col, CollisionType::Rect, CollisionType::Rect))
-	{
-		ChangeState(MonsterState::Idle);
-		return;
-	}
-}
