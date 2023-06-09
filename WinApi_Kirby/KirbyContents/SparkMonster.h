@@ -23,9 +23,7 @@ protected:
 		return Type;
 	}
 
-	GameEngineRenderer* MainRenderer = nullptr;
 	GameEngineCollision* AttackCollision = nullptr;
-	GameEngineCollision* BodyCollision = nullptr;
 
 	void ChangeAnimationState(const std::string& _StateName) override;
 
@@ -34,10 +32,7 @@ protected:
 	void AttackUpdate(float _Delta) override;
 	void DamageUpdate(float _Delta) override;
 
-	float RatioValue = 3.0f;
-	float Speed = MONSTERSPEED;
 	MonsterType Type = MonsterType::Spark;
-	std::vector<GameEngineCollision*> Col;
 private:
 	void Start() override;
 };
