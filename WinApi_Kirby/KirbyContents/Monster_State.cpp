@@ -119,8 +119,11 @@ void Monster::DamageUpdate(float _Delta)
 
 	else if (true == BodyCollision->Collision(CollisionOrder::Attack, Col, CollisionType::Rect, CollisionType::Rect))
 	{
-		ChangeState(MonsterState::Death);
-		return;
+		if (true == MainRenderer->IsAnimationEnd())
+		{
+			ChangeState(MonsterState::Death);
+			return;
+		}
 	}
 
 	else if (false == BodyCollision->Collision(CollisionOrder::Inhale, Col, CollisionType::Rect, CollisionType::Rect))

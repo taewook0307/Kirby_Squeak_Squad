@@ -25,5 +25,7 @@ protected:
 	void AttackUpdate(float _Delta) override;
 private:
 	void Start() override;
+
+	float4 FrozenMonsterPos = float4::ZERO;
 };
 

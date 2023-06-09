@@ -14,14 +14,6 @@ void TornadoKirby::AttackUpdate(float _Delta)
 	AttackCollision->On();
 	BodyCollision->Off();
 
-	if (true == AttackCollision->Collision(CollisionOrder::MonsterBody, Col, CollisionType::Rect, CollisionType::Rect))
-	{
-		GameEngineCollision* MonsterCollision = Col[Col.size() - 1];
-		GameEngineActor* MonsterPtr = MonsterCollision->GetActor();
-		Monster* KeepMonster = dynamic_cast<Monster*>(MonsterPtr);
-
-		KeepMonster->Death();
-	}
 	float4 MovePos = float4::ZERO;
 
 	if (true == GameEngineInput::IsPress('A') && Dir == ActorDir::Left)

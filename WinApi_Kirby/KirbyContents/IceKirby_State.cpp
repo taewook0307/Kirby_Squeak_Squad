@@ -28,18 +28,10 @@ void IceKirby::AttackUpdate(float _Delta)
 
 	if (true == AttackCollision->Collision(CollisionOrder::MonsterBody, Col, CollisionType::Rect, CollisionType::Rect))
 	{
-		float Timer = 0.0f;
 		GameEngineCollision* MonsterCollision = Col[Col.size() - 1];
 		GameEngineActor* MonsterPtr = MonsterCollision->GetActor();
-		Monster* KeepMonster = dynamic_cast<Monster*>(MonsterPtr);
 
-		if (Timer > 3.0f)
-		{
-			KeepMonster->Death();
-			Timer = 0.0f;
-		}
-
-		Timer += _Delta;
+		FrozenMonsterPos = MonsterPtr->GetPos();
 	}
 
 	if (true == GameEngineInput::IsUp('C'))

@@ -39,20 +39,13 @@ void FirstStageLevel::Start()
 	LevelPlayer = CreateActor<Kirby>(RenderOrder::Play);
 	LevelPlayer->MapChangeAnimationEndReset();
 
-	LevelMonster = CreateActor<FireMonster>(RenderOrder::Play);
+	LevelMonster = CreateActor<IceMonster>(RenderOrder::Play);
 
 	LevelFireMonster = CreateActor<Monster>(RenderOrder::Play);
 
 	LevelTornadoMonster = CreateActor<Monster>(RenderOrder::Play);
 
 	LevelSparkMonster = CreateActor<Monster>(RenderOrder::Play);
-
-	/*if (nullptr == NewMonster)
-	{
-		MsgBoxAssert("몬스터를 만들지 못했습니다 : FirstLevel");
-	}
-
-	LevelMonsters.push_back(NewMonster);*/
 }
 
 void FirstStageLevel::Update(float _Delta)
