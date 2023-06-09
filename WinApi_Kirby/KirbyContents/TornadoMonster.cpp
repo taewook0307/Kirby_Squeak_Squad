@@ -25,8 +25,8 @@ void TornadoMonster::Start()
 
 		FilePath.MoveChild("Resources\\Enermy\\TornadoEnermy\\");
 
-		ResourcesManager::GetInst().CreateSpriteSheet(FilePath.PlusFilePath("Right_TornadoEnermy.Bmp"), 5, 3);
-		ResourcesManager::GetInst().CreateSpriteSheet(FilePath.PlusFilePath("Left_TornadoEnermy.Bmp"), 5, 3);
+		ResourcesManager::GetInst().CreateSpriteSheet(FilePath.PlusFilePath("Right_TornadoEnermy.Bmp"), 5, 5);
+		ResourcesManager::GetInst().CreateSpriteSheet(FilePath.PlusFilePath("Left_TornadoEnermy.Bmp"), 5, 5);
 	}
 
 	{
