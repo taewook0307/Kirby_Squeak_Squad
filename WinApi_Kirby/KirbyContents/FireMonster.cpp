@@ -25,8 +25,8 @@ void FireMonster::Start()
 
 		FilePath.MoveChild("Resources\\Enermy\\FireEnermy\\");
 
-		ResourcesManager::GetInst().CreateSpriteSheet(FilePath.PlusFilePath("Right_FireEnermy.Bmp"), 5, 4);
-		ResourcesManager::GetInst().CreateSpriteSheet(FilePath.PlusFilePath("Left_FireEnermy.Bmp"), 5, 4);
+		ResourcesManager::GetInst().CreateSpriteSheet(FilePath.PlusFilePath("Right_FireEnermy.Bmp"), 5, 5);
+		ResourcesManager::GetInst().CreateSpriteSheet(FilePath.PlusFilePath("Left_FireEnermy.Bmp"), 5, 5);
 	}
 
 	{
@@ -35,12 +35,14 @@ void FireMonster::Start()
 		MainRenderer->CreateAnimation("Right_Fire_Monster_Idle", "Right_FireEnermy.Bmp", 0, 0, 0.1f, false);
 		MainRenderer->CreateAnimation("Right_Fire_Monster_Walk", "Right_FireEnermy.Bmp", 1, 5, 0.1f, true);
 		MainRenderer->CreateAnimation("Right_Fire_Monster_Attack", "Right_FireEnermy.Bmp", 6, 12, 0.2f, false);
-		MainRenderer->CreateAnimation("Right_Fire_Monster_Damage", "Right_FireEnermy.Bmp", 13, 15, 0.2f, false);
+		MainRenderer->CreateAnimation("Right_Fire_Monster_Damage", "Right_FireEnermy.Bmp", 13, 14, 0.2f, false);
+		MainRenderer->CreateAnimation("Right_Fire_Monster_Death", "Right_FireEnermy.Bmp", 15, 22, 0.1f, false);
 
 		MainRenderer->CreateAnimation("Left_Fire_Monster_Idle", "Left_FireEnermy.Bmp", 0, 0, 0.1f, true);
 		MainRenderer->CreateAnimation("Left_Fire_Monster_Walk", "Left_FireEnermy.Bmp", 1, 5, 0.1f, true);
 		MainRenderer->CreateAnimation("Left_Fire_Monster_Attack", "Left_FireEnermy.Bmp", 6, 12, 0.2f, false);
 		MainRenderer->CreateAnimation("Left_Fire_Monster_Damage", "Left_FireEnermy.Bmp", 13, 15, 0.2f, false);
+		MainRenderer->CreateAnimation("Left_Fire_Monster_Death", "Left_FireEnermy.Bmp", 15, 22, 0.1f, false);
 
 		MainRenderer->SetRenderScaleToTexture();
 		MainRenderer->SetScaleRatio(RatioValue);

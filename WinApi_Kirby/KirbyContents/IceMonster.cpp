@@ -25,8 +25,8 @@ void IceMonster::Start()
 
 		FilePath.MoveChild("Resources\\Enermy\\IceEnermy\\");
 
-		ResourcesManager::GetInst().CreateSpriteSheet(FilePath.PlusFilePath("Right_IceEnermy.Bmp"), 5, 3);
-		ResourcesManager::GetInst().CreateSpriteSheet(FilePath.PlusFilePath("Left_IceEnermy.Bmp"), 5, 3);
+		ResourcesManager::GetInst().CreateSpriteSheet(FilePath.PlusFilePath("Right_IceEnermy.Bmp"), 5, 4);
+		ResourcesManager::GetInst().CreateSpriteSheet(FilePath.PlusFilePath("Left_IceEnermy.Bmp"), 5, 4);
 	}
 
 	{
@@ -35,12 +35,14 @@ void IceMonster::Start()
 		MainRenderer->CreateAnimation("Right_Ice_Monster_Idle", "Right_IceEnermy.Bmp", 0, 0, 0.1f, false);
 		MainRenderer->CreateAnimation("Right_Ice_Monster_Walk", "Right_IceEnermy.Bmp", 1, 2, 0.3f, true);
 		MainRenderer->CreateAnimation("Right_Ice_Monster_Attack", "Right_IceEnermy.Bmp", 3, 8, 0.2f, false);
-		MainRenderer->CreateAnimation("Right_Ice_Monster_Damage", "Right_IceEnermy.Bmp", 9, 10, 0.2f, false);
+		MainRenderer->CreateAnimation("Right_Ice_Monster_Damage", "Right_IceEnermy.Bmp", 9, 9, 0.2f, false);
+		MainRenderer->CreateAnimation("Right_Ice_Monster_Death", "Right_IceEnermy.Bmp", 10, 17, 0.1f, false);
 
 		MainRenderer->CreateAnimation("Left_Ice_Monster_Idle", "Left_IceEnermy.Bmp", 0, 0, 0.1f, true);
 		MainRenderer->CreateAnimation("Left_Ice_Monster_Walk", "Left_IceEnermy.Bmp", 1, 2, 0.3f, true);
 		MainRenderer->CreateAnimation("Left_Ice_Monster_Attack", "Left_IceEnermy.Bmp", 3, 8, 0.2f, false);
 		MainRenderer->CreateAnimation("Left_Ice_Monster_Damage", "Left_IceEnermy.Bmp", 9, 10, 0.2f, false);
+		MainRenderer->CreateAnimation("Left_Ice_Monster_Death", "Left_IceEnermy.Bmp", 10, 17, 0.1f, false);
 
 		MainRenderer->SetRenderScaleToTexture();
 		MainRenderer->SetScaleRatio(RatioValue);

@@ -16,7 +16,7 @@ Monster::~Monster()
 
 void Monster::Start()
 {
-	if (ResourcesManager::GetInst().FindSprite("Right_NormalMonster.Bmp") == nullptr && ResourcesManager::GetInst().FindSprite("Left_NormalMonster.Bmp") == nullptr)
+	if (ResourcesManager::GetInst().FindSprite("Right_NormalEnermy.Bmp") == nullptr && ResourcesManager::GetInst().FindSprite("Left_NormalEnermy.Bmp") == nullptr)
 	{
 		GameEnginePath FilePath;
 		FilePath.SetCurrentPath();
@@ -24,20 +24,22 @@ void Monster::Start()
 
 		FilePath.MoveChild("Resources\\Enermy\\NormalEnermy\\");
 
-		ResourcesManager::GetInst().CreateSpriteSheet(FilePath.PlusFilePath("Right_NormalMonster.Bmp"), 5, 3);
-		ResourcesManager::GetInst().CreateSpriteSheet(FilePath.PlusFilePath("Left_NormalMonster.Bmp"), 5, 3);
+		ResourcesManager::GetInst().CreateSpriteSheet(FilePath.PlusFilePath("Right_NormalEnermy.Bmp"), 5, 4);
+		ResourcesManager::GetInst().CreateSpriteSheet(FilePath.PlusFilePath("Left_NormalEnermy.Bmp"), 5, 4);
 	}
 
 	{
 		MainRenderer = CreateRenderer(RenderOrder::Monster);
 
-		MainRenderer->CreateAnimation("Right_Monster_Idle", "Right_NormalMonster.Bmp", 0, 3, 0.2f, true);
-		MainRenderer->CreateAnimation("Right_Monster_Walk", "Right_NormalMonster.Bmp", 9, 12, 0.1f, true);
-		MainRenderer->CreateAnimation("Right_Monster_Damage", "Right_NormalMonster.Bmp", 4, 8, 0.2f, false);
+		MainRenderer->CreateAnimation("Right_Monster_Idle", "Right_NormalEnermy.Bmp", 0, 3, 0.2f, true);
+		MainRenderer->CreateAnimation("Right_Monster_Walk", "Right_NormalEnermy.Bmp", 4, 7, 0.1f, true);
+		MainRenderer->CreateAnimation("Right_Monster_Damage", "Right_NormalEnermy.Bmp", 8, 9, 0.2f, false);
+		MainRenderer->CreateAnimation("Right_Monster_Death", "Right_NormalEnermy.Bmp", 10, 19, 0.1f, false);
 
-		MainRenderer->CreateAnimation("Left_Monster_Idle", "Left_NormalMonster.Bmp", 0, 3, 0.2f, true);
-		MainRenderer->CreateAnimation("Left_Monster_Walk", "Left_NormalMonster.Bmp", 9, 12, 0.1f, true);
-		MainRenderer->CreateAnimation("Left_Monster_Damage", "Left_NormalMonster.Bmp", 4, 8, 0.2f, false);
+		MainRenderer->CreateAnimation("Left_Monster_Idle", "Left_NormalEnermy.Bmp", 0, 3, 0.2f, true);
+		MainRenderer->CreateAnimation("Left_Monster_Walk", "Left_NormalEnermy.Bmp", 4, 7, 0.1f, true);
+		MainRenderer->CreateAnimation("Left_Monster_Damage", "Left_NormalEnermy.Bmp", 8, 9, 0.2f, false);
+		MainRenderer->CreateAnimation("Left_Monster_Death", "Left_NormalEnermy.Bmp", 10, 19, 0.1f, false);
 
 		MainRenderer->SetRenderScaleToTexture();
 		MainRenderer->SetScaleRatio(RatioValue);
@@ -68,6 +70,8 @@ void Monster::StateUpdate(float _Delta)
 		return WalkUpdate(_Delta);
 	case MonsterState::Damage:
 		return DamageUpdate(_Delta);
+	case MonsterState::Death:
+		return DeathUpdate(_Delta);
 	default:
 		break;
 	}
@@ -87,6 +91,9 @@ void Monster::ChangeState(MonsterState _State)
 			break;
 		case MonsterState::Damage:
 			DamageStart();
+			break;
+		case MonsterState::Death:
+			DeathStart();
 			break;
 		default:
 			break;
