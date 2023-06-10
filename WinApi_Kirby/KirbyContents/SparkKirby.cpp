@@ -58,6 +58,7 @@ void SparkKirby::Start()
 		MainRenderer->CreateAnimation("Right_Spark_AttackToIdle", "Right_SparkKirby.Bmp", 144, 145, 0.1f, false);
 		MainRenderer->CreateAnimation("Right_Spark_Change", "Right_SparkKirby.Bmp", 146, 160, 0.1f, false);
 		MainRenderer->FindAnimation("Right_Spark_Change")->Inters[7] = 0.3f;
+		MainRenderer->CreateAnimation("Right_Spark_Death", "Right_SparkKirby.Bmp", 161, 176, 0.1f, true);
 
 		MainRenderer->CreateAnimation("Left_Spark_Idle", "Left_SparkKirby.Bmp", 0, 7, 0.125f, true);
 		MainRenderer->CreateAnimation("Left_Spark_Down", "Left_SparkKirby.Bmp", 8, 15, 0.125f, true);
@@ -86,6 +87,7 @@ void SparkKirby::Start()
 		MainRenderer->CreateAnimation("Left_Spark_AttackToIdle", "Left_SparkKirby.Bmp", 144, 145, 0.1f, false);
 		MainRenderer->CreateAnimation("Left_Spark_Change", "Left_SparkKirby.Bmp", 146, 160, 0.1f, false);
 		MainRenderer->FindAnimation("Left_Spark_Change")->Inters[7] = 0.3f;
+		MainRenderer->CreateAnimation("Left_Spark_Death", "Left_SparkKirby.Bmp", 161, 176, 0.1f, true);
 
 		MainRenderer->SetRenderScaleToTexture();
 		MainRenderer->SetScaleRatio(RatioValue);

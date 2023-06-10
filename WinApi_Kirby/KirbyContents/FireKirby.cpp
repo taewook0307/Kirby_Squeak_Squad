@@ -58,6 +58,7 @@ void FireKirby::Start()
 		MainRenderer->CreateAnimation("Right_Fire_AttackToIdle", "Right_FireKirby.Bmp", 157, 162, 0.1f, false);
 		MainRenderer->CreateAnimation("Right_Fire_Change", "Right_FireKirby.Bmp", 163, 177, 0.1f, false);
 		MainRenderer->FindAnimation("Right_Fire_Change")->Inters[7] = 0.3f;
+		MainRenderer->CreateAnimation("Right_Fire_Death", "Right_FireKirby.Bmp", 178, 193, 0.1f, true);
 
 		MainRenderer->CreateAnimation("Left_Fire_Idle", "Left_FireKirby.Bmp", 0, 7, 0.125f, true);
 		MainRenderer->CreateAnimation("Left_Fire_Down", "Left_FireKirby.Bmp", 8, 15, 0.125f, true);
@@ -86,6 +87,7 @@ void FireKirby::Start()
 		MainRenderer->CreateAnimation("Left_Fire_AttackToIdle", "Left_FireKirby.Bmp", 157, 162, 0.1f, false);
 		MainRenderer->CreateAnimation("Left_Fire_Change", "Left_FireKirby.Bmp", 163, 177, 0.1f, false);
 		MainRenderer->FindAnimation("Left_Fire_Change")->Inters[7] = 0.3f;
+		MainRenderer->CreateAnimation("Left_Fire_Death", "Left_FireKirby.Bmp", 178, 193, 0.1f, true);
 
 		MainRenderer->SetRenderScaleToTexture();
 		MainRenderer->SetScaleRatio(RatioValue);

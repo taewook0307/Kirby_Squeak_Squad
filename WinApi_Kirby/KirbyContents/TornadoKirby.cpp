@@ -58,6 +58,7 @@ void TornadoKirby::Start()
 		MainRenderer->CreateAnimation("Right_Tornado_AttackToIdle", "Right_TornadoKirby.Bmp", 156, 168, 0.1f, false);
 		MainRenderer->CreateAnimation("Right_Tornado_Change", "Right_TornadoKirby.Bmp", 169, 183, 0.1f, false);
 		MainRenderer->FindAnimation("Right_Tornado_Change")->Inters[7] = 0.3f;
+		MainRenderer->CreateAnimation("Right_Tornado_Death", "Right_TornadoKirby.Bmp", 184, 199, 0.1f, true);
 
 		MainRenderer->CreateAnimation("Left_Tornado_Idle", "Left_TornadoKirby.Bmp", 0, 7, 0.125f, true);
 		MainRenderer->CreateAnimation("Left_Tornado_Down", "Left_TornadoKirby.Bmp", 8, 15, 0.125f, true);
@@ -86,6 +87,7 @@ void TornadoKirby::Start()
 		MainRenderer->CreateAnimation("Left_Tornado_AttackToIdle", "Left_TornadoKirby.Bmp", 156, 168, 0.1f, false);
 		MainRenderer->CreateAnimation("Left_Tornado_Change", "Left_TornadoKirby.Bmp", 169, 183, 0.1f, false);
 		MainRenderer->FindAnimation("Left_Tornado_Change")->Inters[7] = 0.3f;
+		MainRenderer->CreateAnimation("Left_Tornado_Death", "Left_TornadoKirby.Bmp", 184, 199, 0.1f, true);
 
 		MainRenderer->SetRenderScaleToTexture();
 		MainRenderer->SetScaleRatio(RatioValue);
