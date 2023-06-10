@@ -31,10 +31,6 @@ public:
 		Dir = _Dir;
 	}
 
-	void SetSpeed(const float _Speed)
-	{
-		Speed = _Speed;
-	}
 protected:
 
 private:
