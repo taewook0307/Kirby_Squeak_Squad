@@ -31,8 +31,8 @@ void Kirby::Start()
 
 		FilePath.MoveChild("Resources\\Kirby\\Normal\\");
 
-		ResourcesManager::GetInst().CreateSpriteSheet(FilePath.PlusFilePath("Right_Kirby.Bmp"), 10, 16);
-		ResourcesManager::GetInst().CreateSpriteSheet(FilePath.PlusFilePath("Left_Kirby.Bmp"), 10, 16);
+		ResourcesManager::GetInst().CreateSpriteSheet(FilePath.PlusFilePath("Right_Kirby.Bmp"), 10, 18);
+		ResourcesManager::GetInst().CreateSpriteSheet(FilePath.PlusFilePath("Left_Kirby.Bmp"), 10, 18);
 	}
 	{
 		MainRenderer = CreateRenderer(RenderOrder::Play);
@@ -71,6 +71,7 @@ void Kirby::Start()
 		MainRenderer->CreateAnimation("Right_KeepWalk", "Right_Kirby.Bmp", 137, 152, 0.05f, true);
 		MainRenderer->CreateAnimation("Right_KeepDamage", "Right_Kirby.Bmp", 153, 156, 0.1f, true);
 		MainRenderer->CreateAnimation("Right_Change", "Right_Kirby.Bmp", 118, 126, 0.1f, false);
+		MainRenderer->CreateAnimation("Right_Death", "Right_Kirby.Bmp", 157, 172, 0.1f, true);
 
 		// Left Animaition
 		MainRenderer->CreateAnimation("Left_Idle", "Left_Kirby.Bmp", 0, 1, 0.5f, true);
@@ -106,6 +107,7 @@ void Kirby::Start()
 		MainRenderer->CreateAnimation("Left_KeepWalk", "Left_Kirby.Bmp", 137, 152, 0.05f, true);
 		MainRenderer->CreateAnimation("Left_KeepDamage", "Left_Kirby.Bmp", 153, 156, 0.1f, true);
 		MainRenderer->CreateAnimation("Left_Change", "Left_Kirby.Bmp", 118, 126, 0.1f, false);
+		MainRenderer->CreateAnimation("Left_Death", "Left_Kirby.Bmp", 157, 172, 0.1f, true);
 
 		// Setting
 		MainRenderer->SetRenderScaleToTexture();
@@ -274,6 +276,8 @@ void Kirby::StateUpdate(float _Delta)
 		return KeepJumpToLandUpdate(_Delta);
 	case KirbyState::Change:
 		return ChangeUpdate(_Delta);
+	case KirbyState::Death:
+		return DeathUpdate(_Delta);
 	default:
 		break;
 	}
@@ -377,6 +381,9 @@ void Kirby::ChangeState(KirbyState _State)
 			break;
 		case KirbyState::Change:
 			ChangeStart();
+			break;
+		case KirbyState::Death:
+			DeathStart();
 			break;
 		default:
 			break;

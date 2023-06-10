@@ -186,6 +186,9 @@
     <ClCompile Include="BaseActor.cpp">
       <Filter>Global</Filter>
     </ClCompile>
+    <ClCompile Include="Kirby_Damage_State.cpp">
+      <Filter>Player</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Level">

@@ -95,6 +95,7 @@ protected:
 	void KeepJumpToLandStart();
 	void KeepDamageStart();
 	void ChangeStart();
+	void DeathStart();
 
 	void IdleUpdate(float _Delta);
 	void DownUpdate(float _Delta);
@@ -128,6 +129,7 @@ protected:
 	void KeepJumpToLandUpdate(float _Delta);
 	void KeepDamageUpdate(float _Delta);
 	void ChangeUpdate(float _Delta);
+	void DeathUpdate(float _Delta);
 
 	virtual void DirCheck();
 

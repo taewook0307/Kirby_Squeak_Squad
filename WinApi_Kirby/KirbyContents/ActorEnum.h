@@ -34,6 +34,7 @@ enum class KirbyState
 	KeepJumpToLand,
 	KeepDamage,
 	Change,
+	Death,
 	Max
 };
 

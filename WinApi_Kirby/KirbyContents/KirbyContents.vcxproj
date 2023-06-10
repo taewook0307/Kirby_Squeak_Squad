@@ -192,6 +192,7 @@
     </ClCompile>
     <ClCompile Include="Kirby_Attack_State.cpp" />
     <ClCompile Include="Kirby_Base_State.cpp" />
+    <ClCompile Include="Kirby_Damage_State.cpp" />
     <ClCompile Include="Kirby_Fly_State.cpp" />
     <ClCompile Include="Kirby_Jump_State.cpp" />
     <ClCompile Include="Kirby_Keep_State.cpp" />
