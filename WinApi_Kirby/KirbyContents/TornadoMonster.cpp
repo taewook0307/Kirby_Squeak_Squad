@@ -30,7 +30,7 @@ void TornadoMonster::Start()
 	}
 
 	{
-		MainRenderer = CreateRenderer(RenderOrder::Play);
+		MainRenderer = CreateRenderer(RenderOrder::Monster);
 
 		MainRenderer->CreateAnimation("Right_Tornado_Monster_Idle", "Right_TornadoEnermy.Bmp", 0, 7, 0.2f, false);
 		MainRenderer->CreateAnimation("Right_Tornado_Monster_Walk", "Right_TornadoEnermy.Bmp", 8, 9, 0.2f, true);

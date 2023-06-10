@@ -30,7 +30,7 @@ void IceMonster::Start()
 	}
 
 	{
-		MainRenderer = CreateRenderer(RenderOrder::Play);
+		MainRenderer = CreateRenderer(RenderOrder::Monster);
 
 		MainRenderer->CreateAnimation("Right_Ice_Monster_Idle", "Right_IceEnermy.Bmp", 0, 0, 0.1f, false);
 		MainRenderer->CreateAnimation("Right_Ice_Monster_Walk", "Right_IceEnermy.Bmp", 1, 2, 0.3f, true);

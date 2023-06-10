@@ -30,7 +30,7 @@ void SparkMonster::Start()
 	}
 
 	{
-		MainRenderer = CreateRenderer(RenderOrder::Play);
+		MainRenderer = CreateRenderer(RenderOrder::Monster);
 
 		MainRenderer->CreateAnimation("Right_Spark_Monster_Idle", "Right_SparkEnermy.Bmp", 0, 0, 0.1f, false);
 		MainRenderer->CreateAnimation("Right_Spark_Monster_Walk", "Right_SparkEnermy.Bmp", 1, 3, 0.3f, false);
