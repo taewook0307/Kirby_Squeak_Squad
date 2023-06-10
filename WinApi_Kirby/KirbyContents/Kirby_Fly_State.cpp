@@ -168,7 +168,8 @@ void Kirby::DropUpdate(float _Delta)
 		FlyGravity(_Delta);
 		DropTimer += 2.0f;
 	}
-	else
+
+	if (EMPTYCOLOR != Color && DOORCOLOR != Color)
 	{
 		GravityReset();
 		if (DropTimer > 2.0f)

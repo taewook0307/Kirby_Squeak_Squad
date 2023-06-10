@@ -48,7 +48,7 @@ void TornadoKirby::Start()
 		MainRenderer->CreateAnimation("Right_Tornado_BreatheOut", "Right_TornadoKirby.Bmp", 106, 107, 0.1f, false);
 		MainRenderer->CreateAnimation("Right_Tornado_Drop", "Right_TornadoKirby.Bmp", 108, 109, 0.1f, true);
 		MainRenderer->CreateAnimation("Right_Tornado_FlyToLand", "Right_TornadoKirby.Bmp", 124, 124, 0.1f, false);
-		MainRenderer->CreateAnimation("Right_Tornado_FlyToTurnUp", "Right_TornadoKirby.Bmp", 110, 121, 0.1f, false);
+		MainRenderer->CreateAnimation("Right_Tornado_FlyToTurnUp", "Right_TornadoKirby.Bmp", 110, 121, 0.05f, false);
 		MainRenderer->CreateAnimation("Right_Tornado_FlyToTurnLand", "Right_TornadoKirby.Bmp", 122, 123, 0.1f, true);
 		MainRenderer->CreateAnimation("Right_Tornado_LevelMove", "Right_TornadoKirby.Bmp", 125, 128, 0.1f, false);
 		MainRenderer->CreateAnimation("Right_Tornado_Damage", "Right_TornadoKirby.Bmp", 129, 131, 0.2f, false);
@@ -76,7 +76,7 @@ void TornadoKirby::Start()
 		MainRenderer->CreateAnimation("Left_Tornado_BreatheOut", "Left_TornadoKirby.Bmp", 106, 107, 0.1f, false);
 		MainRenderer->CreateAnimation("Left_Tornado_Drop", "Left_TornadoKirby.Bmp", 108, 109, 0.1f, true);
 		MainRenderer->CreateAnimation("Left_Tornado_FlyToLand", "Left_TornadoKirby.Bmp", 124, 124, 0.1f, false);
-		MainRenderer->CreateAnimation("Left_Tornado_FlyToTurnUp", "Left_TornadoKirby.Bmp", 110, 121, 0.1f, false);
+		MainRenderer->CreateAnimation("Left_Tornado_FlyToTurnUp", "Left_TornadoKirby.Bmp", 110, 121, 0.05f, false);
 		MainRenderer->CreateAnimation("Left_Tornado_FlyToTurnLand", "Left_TornadoKirby.Bmp", 122, 123, 0.1f, true);
 		MainRenderer->CreateAnimation("Left_Tornado_LevelMove", "Left_TornadoKirby.Bmp", 125, 128, 0.1f, false);
 		MainRenderer->CreateAnimation("Left_Tornado_Damage", "Left_TornadoKirby.Bmp", 129, 131, 0.2f, false);

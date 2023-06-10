@@ -48,8 +48,8 @@ void FireKirby::Start()
 		MainRenderer->CreateAnimation("Right_Fire_BreatheOut", "Right_FireKirby.Bmp", 106, 107, 0.1f, false);
 		MainRenderer->CreateAnimation("Right_Fire_Drop", "Right_FireKirby.Bmp", 108, 109, 0.1f, true);
 		MainRenderer->CreateAnimation("Right_Fire_FlyToLand", "Right_FireKirby.Bmp", 124, 124, 0.1f, false);
-		MainRenderer->CreateAnimation("Right_Fire_FlyToTurnUp", "Right_FireKirby.Bmp", 110, 121, 0.1f, false);
-		MainRenderer->CreateAnimation("Right_Fire_FlyToTurnLand", "Right_FireKirby.Bmp", 122, 123, 0.1f, true);
+		MainRenderer->CreateAnimation("Right_Fire_FlyToTurnUp", "Right_FireKirby.Bmp", 110, 121, 0.05f, false);
+		MainRenderer->CreateAnimation("Right_Fire_FlyToTurnLand", "Right_FireKirby.Bmp", 122, 123, 0.05f, true);
 		MainRenderer->CreateAnimation("Right_Fire_LevelMove", "Right_FireKirby.Bmp", 125, 129, 0.1f, false);
 		MainRenderer->CreateAnimation("Right_Fire_Damage", "Right_FireKirby.Bmp", 130, 132, 0.2f, false);
 		MainRenderer->CreateAnimation("Right_Fire_DamageLand", "Right_FireKirby.Bmp", 133, 136, 0.15f, false);
@@ -76,8 +76,8 @@ void FireKirby::Start()
 		MainRenderer->CreateAnimation("Left_Fire_BreatheOut", "Left_FireKirby.Bmp", 106, 107, 0.1f, false);
 		MainRenderer->CreateAnimation("Left_Fire_Drop", "Left_FireKirby.Bmp", 108, 109, 0.1f, true);
 		MainRenderer->CreateAnimation("Left_Fire_FlyToLand", "Left_FireKirby.Bmp", 124, 124, 0.1f, false);
-		MainRenderer->CreateAnimation("Left_Fire_FlyToTurnUp", "Left_FireKirby.Bmp", 110, 121, 0.1f, false);
-		MainRenderer->CreateAnimation("Left_Fire_FlyToTurnLand", "Left_FireKirby.Bmp", 122, 123, 0.1f, true);
+		MainRenderer->CreateAnimation("Left_Fire_FlyToTurnUp", "Left_FireKirby.Bmp", 110, 121, 0.05f, false);
+		MainRenderer->CreateAnimation("Left_Fire_FlyToTurnLand", "Left_FireKirby.Bmp", 122, 123, 0.05f, true);
 		MainRenderer->CreateAnimation("Left_Fire_LevelMove", "Left_FireKirby.Bmp", 125, 129, 0.1f, false);
 		MainRenderer->CreateAnimation("Left_Fire_Damage", "Left_FireKirby.Bmp", 130, 132, 0.2f, false);
 		MainRenderer->CreateAnimation("Left_Fire_DamageLand", "Left_FireKirby.Bmp", 133, 136, 0.15f, false);
