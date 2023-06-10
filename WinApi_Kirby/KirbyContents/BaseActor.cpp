@@ -25,6 +25,18 @@ void BaseActor::Gravity(float _Delta)
 	AddPos(GravityVector * _Delta);
 }
 
+void BaseActor::FlyGravity(float _Delta)
+{
+	if (false == IsGravity)
+	{
+		return;
+	}
+
+	GravityVector += float4::DOWN * GravityAcceleration * 0.5f * _Delta;
+
+	AddPos(GravityVector * _Delta);
+}
+
 void BaseActor::SetGroundBitMap(const std::string& _GroundBitMap)
 {
 	GroundBitMap = ResourcesManager::GetInst().FindTexture(_GroundBitMap);

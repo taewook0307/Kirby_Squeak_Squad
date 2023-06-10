@@ -12,6 +12,7 @@ void Kirby::BreatheStart()
 void Kirby::FlyStart()
 {
 	ChangeAnimationState("Fly");
+	SetGravityVector(float4::UP * FlyPower);
 }
 
 void Kirby::BreatheOutLandStart()
@@ -37,6 +38,7 @@ void Kirby::FlyToLandStart()
 void Kirby::FlyToTurnUpStart()
 {
 	ChangeAnimationState("FlyToTurnUp");
+	SetGravityVector(float4::UP * FlyPower * 0.8f);
 }
 
 void Kirby::FlyToTurnLandStart()
@@ -57,53 +59,28 @@ void Kirby::BreatheUpdate(float _Delta)
 // 비행 상태
 void Kirby::FlyUpdate(float _Delta)
 {
-	// 방향 체크
 	DirCheck();
 
-	float4 FlyPos = float4::UP * FlyPower * _Delta;
-	
+	unsigned int TopColor = GetGroundColor(EMPTYCOLOR, TOPCHECKPOS);
+
+	if (EMPTYCOLOR == TopColor || DOORCOLOR == TopColor)
+	{
+		FlyGravity(_Delta);
+	}
+	else
+	{
+		SetGravityVector(float4::DOWN);
+		FlyGravity(_Delta);
+	}
+
 	float4 MovePos = float4::ZERO;
 	float4 CheckPos = float4::ZERO;
 
-	float4 UpPos = GetPos() += FlyPos;
-	// 현재 위치에서 올라갈 시 화면 밖으로 나가는지 확인
-	if (UpPos.Y > 100.0f)
-	{
-		AddPos(FlyPos);
-	}
-
-	// 방향 변경을 위해 멤버 변수값 빼주기
-	FlyPower -= 10.0f;
-
-	// 맴버 변수값 초기값으로 변경 후 다시 위로 이동
-	if (true == GameEngineInput::IsDown('F'))
-	{
-		FlyPower = BASEPOWER;
-
-		UpPos = GetPos() += FlyPos;
-
-		if (UpPos.Y > 100.0f)
-		{
-			AddPos(FlyPos);
-		}
-	}
-
-	// 왼쪽 이동
 	if (true == GameEngineInput::IsPress('A') && Dir == ActorDir::Left)
 	{
 		MovePos = { -Speed * _Delta, 0.0f };
 		CheckPos = LEFTCHECKPOS;
-	}
 
-	// 오른쪽 이동
-	if (true == GameEngineInput::IsPress('D') && Dir == ActorDir::Right)
-	{
-		MovePos = { Speed * _Delta, 0.0f };
-		CheckPos = RIGHTCHECKPOS;
-	}
-
-	// 이동 방향 앞에 장애물 여부 확인 후 이동
-	{
 		unsigned int Color = GetGroundColor(EMPTYCOLOR, CheckPos);
 
 		if (EMPTYCOLOR == Color || DOORCOLOR == Color)
@@ -113,20 +90,35 @@ void Kirby::FlyUpdate(float _Delta)
 		}
 	}
 
-	// 스페이스바 누르면 낙하 상태로 변경
-	if (true == GameEngineInput::IsDown(VK_SPACE))
+	if (true == GameEngineInput::IsPress('D') && Dir == ActorDir::Right)
 	{
-		FlyPower = BASEPOWER;
+		MovePos = { Speed * _Delta, 0.0f };
+		CheckPos = RIGHTCHECKPOS;
+
+		unsigned int Color = GetGroundColor(EMPTYCOLOR, CheckPos);
+
+		if (EMPTYCOLOR == Color || DOORCOLOR == Color)
+		{
+			AddPos(MovePos);
+			CameraMove(MovePos);
+		}
+	}
+
+	if (true == GameEngineInput::IsPress('F'))
+	{
+		SetGravityVector(float4::UP * FlyPower);
+	}
+
+	if (true == GameEngineInput::IsPress(VK_SPACE))
+	{
 		ChangeState(KirbyState::BreatheOut);
 		return;
 	}
 
-	unsigned int DownColor = GetGroundColor(EMPTYCOLOR);
+	unsigned int BotColor = GetGroundColor(EMPTYCOLOR);
 
-	// 바닥에 닿고 FlyPos의 Y값이 아래 방향이면 착지 상태로 변경
-	if (EMPTYCOLOR != DownColor && FlyPos.Y > 0)
+	if (EMPTYCOLOR != BotColor && DOORCOLOR != BotColor)
 	{
-		FlyPower = BASEPOWER;
 		ChangeState(KirbyState::BreatheOutLand);
 		return;
 	}
@@ -149,48 +141,13 @@ void Kirby::BreatheOutUpdate(float _Delta)
 
 	if (EMPTYCOLOR == Color || DOORCOLOR == Color)
 	{
-		Gravity(_Delta);
-
-		float4 MovePos = float4::ZERO;
-		float4 CheckPos = float4::ZERO;
-
-		// 왼쪽 이동
-		if (true == GameEngineInput::IsPress('A') && Dir == ActorDir::Left)
-		{
-			MovePos = { -Speed * _Delta, 0.0f };
-			CheckPos = LEFTBOTCHECKPOS;
-		}
-
-		// 오른쪽 이동
-		if (true == GameEngineInput::IsPress('D') && Dir == ActorDir::Right)
-		{
-			MovePos = { Speed * _Delta, 0.0f };
-			CheckPos = RIGHTBOTCHECKPOS;
-		}
-
-		// 이동 방향 앞에 장애물 여부 확인 후 이동
-		{
-			unsigned int XColor = GetGroundColor(EMPTYCOLOR, CheckPos);
-
-			if (EMPTYCOLOR == XColor)
-			{
-				AddPos(MovePos);
-				CameraMove(MovePos);
-			}
-		}
+		FlyGravity(_Delta);
 	}
-
-	// 예외처리
 	else
 	{
-		if (true == MainRenderer->IsAnimationEnd())
-		{
-			ChangeState(KirbyState::Idle);
-			return;
-		}
+		GravityReset();
 	}
 
-	// 애니메이션이 다 실행되면 낙하 상태로 변경
 	if (true == MainRenderer->IsAnimationEnd())
 	{
 		ChangeState(KirbyState::Drop);
@@ -201,63 +158,101 @@ void Kirby::BreatheOutUpdate(float _Delta)
 // 낙하 상태
 void Kirby::DropUpdate(float _Delta)
 {
-	// 낙하 시간을 알기 위한 static 지역변수
-	static float DropTimer = 0.0f;
+	DirCheck();
 
+	static float DropTimer = 0.0f;
 	unsigned int Color = GetGroundColor(EMPTYCOLOR);
 
-	// 흰 공간에 있을 경우
 	if (EMPTYCOLOR == Color || DOORCOLOR == Color)
 	{
-		DropTimer += _Delta;
-		Gravity(_Delta);
-
-		float4 MovePos = float4::ZERO;
-		float4 CheckPos = float4::ZERO;
-
-		// 왼쪽 이동
-		if (true == GameEngineInput::IsPress('A') && Dir == ActorDir::Left)
-		{
-			MovePos = { -Speed * _Delta, 0.0f };
-			CheckPos = LEFTBOTCHECKPOS;
-		}
-
-		// 오른쪽 이동
-		if (true == GameEngineInput::IsPress('D') && Dir == ActorDir::Right)
-		{
-			MovePos = { Speed * _Delta, 0.0f };
-			CheckPos = RIGHTBOTCHECKPOS;
-		}
-
-		// 이동 방향 앞에 장애물 여부 확인 후 이동
-		{
-			unsigned int XColor = GetGroundColor(EMPTYCOLOR, CheckPos);
-
-			if (EMPTYCOLOR == XColor)
-			{
-				AddPos(MovePos);
-				CameraMove(MovePos);
-			}
-		}
+		FlyGravity(_Delta);
+		DropTimer += 2.0f;
 	}
-	// 흰 공간이 아닌 경우(지면에 닿았을 경우)
 	else
 	{
 		GravityReset();
-		// 떨어진 시간이 1초 이하면 착지 상태로 변경
-		if (DropTimer < 1.0f)
-		{
-			DropTimer = 0.0f;
-			ChangeState(KirbyState::FlyToLand);
-			return;
-		}
-		// 1초 이상이면 착지 후 턴 상태로 변경
-		else
+		if (DropTimer > 2.0f)
 		{
 			DropTimer = 0.0f;
 			ChangeState(KirbyState::FlyToTurnUp);
 			return;
 		}
+		else
+		{
+			DropTimer = 0.0f;
+			ChangeState(KirbyState::FlyToLand);
+			return;
+		}
+	}
+
+	float4 MovePos = float4::ZERO;
+	float4 CheckPos = float4::ZERO;
+
+	if (true == GameEngineInput::IsPress('A') && Dir == ActorDir::Left)
+	{
+		MovePos = { -Speed * _Delta, 0.0f };
+		CheckPos = LEFTCHECKPOS;
+
+		unsigned int Color = GetGroundColor(EMPTYCOLOR, CheckPos);
+
+		if (EMPTYCOLOR == Color || DOORCOLOR == Color)
+		{
+			AddPos(MovePos);
+			CameraMove(MovePos);
+		}
+	}
+
+	if (true == GameEngineInput::IsPress('D') && Dir == ActorDir::Right)
+	{
+		MovePos = { Speed * _Delta, 0.0f };
+		CheckPos = RIGHTCHECKPOS;
+
+		unsigned int Color = GetGroundColor(EMPTYCOLOR, CheckPos);
+
+		if (EMPTYCOLOR == Color || DOORCOLOR == Color)
+		{
+			AddPos(MovePos);
+			CameraMove(MovePos);
+		}
+	}
+}
+
+// 바닥에 부딪힌 후 턴하면서 살짝 위로 올라가는 상태
+void Kirby::FlyToTurnUpUpdate(float _Delta)
+{
+	unsigned int TopColor = GetGroundColor(EMPTYCOLOR, TOPCHECKPOS);
+
+	if (EMPTYCOLOR == TopColor || DOORCOLOR == TopColor)
+	{
+		FlyGravity(_Delta);
+	}
+	else
+	{
+		SetGravityVector(float4::DOWN);
+		FlyGravity(_Delta);
+	}
+
+	if (GetGravityVector().Y > 0.0f)
+	{
+		ChangeState(KirbyState::FlyToTurnLand);
+		return;
+	}
+}
+
+// 아래 방향으로 낙하
+void Kirby::FlyToTurnLandUpdate(float _Delta)
+{
+	unsigned int Color = GetGroundColor(EMPTYCOLOR);
+
+	if (EMPTYCOLOR == Color || DOORCOLOR == Color)
+	{
+		FlyGravity(_Delta);
+	}
+	else
+	{
+		GravityReset();
+		ChangeState(KirbyState::FlyToLand);
+		return;
 	}
 }
 
@@ -269,99 +264,4 @@ void Kirby::FlyToLandUpdate(float _Delta)
 		ChangeState(KirbyState::Idle);
 		return;
 	}
-}
-
-// 바닥에 부딪힌 후 턴하면서 살짝 위로 올라가는 상태
-void Kirby::FlyToTurnUpUpdate(float _Delta)
-{
-	float4 FlyPos = float4::UP * FlyPower * 0.7f * _Delta;
-	float4 CheckPos = float4::ZERO;
-
-	// 왼쪽 방향에 경우 왼쪽 위로 이동
-	if (Dir == ActorDir::Left)
-	{
-		FlyPos = { -Speed * 0.3f * _Delta, -FlyPower * 0.7f * _Delta };
-		CheckPos = LEFTCHECKPOS;
-	}
-
-	// 오른쪽 방향에 경우 오른쪽 위로 이동
-	if (Dir == ActorDir::Right)
-	{
-		FlyPos = { Speed * 0.3f * _Delta, -FlyPower * 0.7f * _Delta };
-		CheckPos = RIGHTCHECKPOS;
-	}
-
-	unsigned int Color = GetGroundColor(EMPTYCOLOR, CheckPos);
-
-	// 벽이 있는 지 확인 후 없으면 위치값 위로 이동
-	if (EMPTYCOLOR == Color || DOORCOLOR == Color)
-	{
-		AddPos(FlyPos);
-		CameraMove(FlyPos);
-	}
-
-	FlyPower -= 10.0f;
-	
-	// 더해주는 Pos값이 아래방향으로 바뀌면 FlyToTurnLand 상태로 변환
-	if (FlyPos.Y > 0)
-	{
-		ChangeState(KirbyState::FlyToTurnLand);
-		return;
-	}
-}
-
-// 아래 방향으로 낙하
-void Kirby::FlyToTurnLandUpdate(float _Delta)
-{
-	float4 FlyPos = float4::UP * FlyPower * 0.7f * _Delta;
-	float4 MovePos = float4::ZERO;
-	float4 CheckPos = float4::ZERO;
-
-	// 왼쪽 방향으로 이동하는 Pos 값 및 CheckPos 값 설정
-	if (Dir == ActorDir::Left)
-	{
-		MovePos = { -Speed * 0.3f * _Delta, 0.0f };
-		CheckPos = LEFTBOTCHECKPOS;
-	}
-
-	// 오른쪽 방향으로 이동하는 Pos 값 및 CheckPos 값 설정
-	if (Dir == ActorDir::Right)
-	{
-		MovePos = { Speed * 0.3f * _Delta, 0.0f };
-		CheckPos = RIGHTBOTCHECKPOS;
-	}
-
-	unsigned int XColor = GetGroundColor(EMPTYCOLOR, CheckPos);
-	unsigned int Color = GetGroundColor(EMPTYCOLOR);
-
-	// 왼쪽 혹은 오른쪽 방향에 벽이 없을경우 X방향 Y방향 전체 이동
-	if (EMPTYCOLOR == XColor)
-	{
-		AddPos(MovePos);
-		CameraMove(MovePos);
-		AddPos(FlyPos);
-	}
-	else
-	{
-		// 왼쪽 혹은 오른쪽 방향에 벽이 있을 경우 Y방향만 이동
-		if (EMPTYCOLOR == Color || DOORCOLOR == Color)
-		{
-			AddPos(FlyPos);
-		}
-		else
-		{
-			ChangeState(KirbyState::FlyToLand);
-			return;
-		}
-	}
-
-	// 지면을 만나면 착지 상태로 이동
-	if(EMPTYCOLOR != Color)
-	{
-		FlyPower = BASEPOWER;
-		ChangeState(KirbyState::FlyToLand);
-		return;
-	}
-	
-	FlyPower -= 10.0f;
 }

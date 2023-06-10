@@ -32,6 +32,8 @@ public:
 
 	void Gravity(float _Delta);
 
+	void FlyGravity(float _Delta);
+
 	inline void SetGravityVector(float4 _GravityVector)
 	{
 		GravityVector = _GravityVector;
