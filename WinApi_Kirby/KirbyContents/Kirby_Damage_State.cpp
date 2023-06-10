@@ -22,7 +22,8 @@ void Kirby::DamageLandStart()
 
 void Kirby::DeathStart()
 {
-	ChangeAnimationState("DamageLand");
+	ChangeAnimationState("Death");
+	SetGravityVector(float4::UP * JumpPower);
 }
 
 void Kirby::DamageUpdate(float _Delta)
@@ -84,6 +85,13 @@ void Kirby::DamageUpdate(float _Delta)
 	{
 		FlyPower = BASEPOWER;
 		Damage(MonsterAtt);
+
+		if (Hp < 0)
+		{
+			ChangeState(KirbyState::Death);
+			return;
+		}
+
 		ChangeState(KirbyState::DamageLand);
 		return;
 	}
@@ -108,5 +116,5 @@ void Kirby::DamageLandUpdate(float _Delta)
 
 void Kirby::DeathUpdate(float _Delta)
 {
-
+	Gravity(_Delta);
 }
