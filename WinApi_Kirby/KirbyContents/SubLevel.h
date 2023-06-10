@@ -17,10 +17,16 @@ public:
 	SubLevel& operator=(const SubLevel& _Other) = delete;
 	SubLevel& operator=(SubLevel&& _Other) noexcept = delete;
 
+	static int GetPlayerLife();
+
 protected:
 	static void SetLevelPlayerForm(const MonsterType& _Value);
 
 	static MonsterType& GetLevelPlayerForm();
+
+	static int PlayerLifeCount;
+
+	static void MinusPlayerLife();
 private:
 	static MonsterType LevelPlayerForm;
 };

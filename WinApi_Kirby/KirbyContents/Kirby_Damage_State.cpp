@@ -11,8 +11,6 @@
 #include <GameEngineCore/GameEngineActor.h>
 #include <GameEngineCore/GameEngineCollision.h>
 
-int Kirby::LifeCount = 3;
-
 void Kirby::DamageStart()
 {
 	ChangeAnimationState("Damage");
@@ -89,7 +87,7 @@ void Kirby::DamageUpdate(float _Delta)
 		FlyPower = BASEPOWER;
 		Damage(MonsterAtt);
 
-		if (Hp < 0 && LifeCount > 0)
+		if (Hp < 0)
 		{
 			ChangeState(KirbyState::Death);
 			return;
@@ -123,9 +121,10 @@ void Kirby::DeathUpdate(float _Delta)
 
 	float4 WinScale = GameEngineWindow::MainWindow.GetScale();
 
+	float4 ReStartPos = GetPos();
+
 	if (WinScale.Y < GetPos().Y)
 	{
-		--LifeCount;
 		Death();
 		return;
 	}
