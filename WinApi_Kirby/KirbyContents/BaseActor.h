@@ -3,6 +3,10 @@
 #include <GameEngineCore/GameEngineActor.h>
 #include <GameEngineCore/GameEngineCollision.h>
 
+#define BASEHP 200
+#define BASEATT 50
+#define MONSTERATT 30
+
 #define GRAVITYPOWER 700.0f
 #define EMPTYCOLOR RGB(255,255,255)
 #define DOORCOLOR RGB(0,0,255)

@@ -29,6 +29,16 @@ public:
 		return Type;
 	}
 
+	inline int GetMonsterHp() const
+	{
+		return Hp;
+	}
+
+	inline int GetMonsterAtt() const
+	{
+		return Att;
+	}
+
 protected:
 	virtual void StateUpdate(float _Delta);
 	virtual void ChangeState(MonsterState _State);
@@ -55,6 +65,13 @@ protected:
 	MonsterType Type = MonsterType::Normal;
 	std::vector<GameEngineCollision*> Col;
 
+	void Damage(int _Value)
+	{
+		Hp -= _Value;
+	}
+
+	int Hp = BASEHP;
+	int Att = MONSTERATT;
 private:
 	void Start() override;
 	void Update(float _Delta) override;

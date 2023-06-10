@@ -146,6 +146,24 @@ protected:
 	bool IsCheckPosPoint = false;
 
 	bool MapChangeAnimationEnd = false;
+
+	inline int GetHp() const
+	{
+		return Hp;
+	}
+
+	inline int GetAtt() const
+	{
+		return Att;
+	}
+
+	void Damage(int _Value)
+	{
+		Hp -= _Value;
+	}
+
+	int Hp = BASEHP;
+	int Att = BASEATT;
 private:
 	GameEngineCollision* InhaleCollision = nullptr;
 	MonsterType KeepType = MonsterType::Max;

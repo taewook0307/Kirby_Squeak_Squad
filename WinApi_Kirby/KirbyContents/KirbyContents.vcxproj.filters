@@ -51,9 +51,6 @@
     <ClInclude Include="Kirby.h">
       <Filter>Player</Filter>
     </ClInclude>
-    <ClInclude Include="BaseActor.h">
-      <Filter>Global\Player</Filter>
-    </ClInclude>
     <ClInclude Include="BackGround.h">
       <Filter>Global\Scene</Filter>
     </ClInclude>
@@ -71,6 +68,9 @@
     </ClInclude>
     <ClInclude Include="AttackMonster.h">
       <Filter>Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseActor.h">
+      <Filter>Global</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -165,9 +165,6 @@
     <ClCompile Include="FireMonster_State.cpp">
       <Filter>Monster\Fire</Filter>
     </ClCompile>
-    <ClCompile Include="BaseActor.cpp">
-      <Filter>Global\Player</Filter>
-    </ClCompile>
     <ClCompile Include="BackGround.cpp">
       <Filter>Global\Scene</Filter>
     </ClCompile>
@@ -185,6 +182,9 @@
     </ClCompile>
     <ClCompile Include="AttackMonster.cpp">
       <Filter>Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseActor.cpp">
+      <Filter>Global</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -208,9 +208,6 @@
     </Filter>
     <Filter Include="Monster\Tornado">
       <UniqueIdentifier>{b8c47b16-cb58-490f-8de0-92cfd25a8fe5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Global\Player">
-      <UniqueIdentifier>{5b75b4de-cad5-432c-900b-334cca74c32c}</UniqueIdentifier>
     </Filter>
     <Filter Include="Global\Scene">
       <UniqueIdentifier>{3b8927b1-9155-45ce-84dd-9b0df5b5626c}</UniqueIdentifier>

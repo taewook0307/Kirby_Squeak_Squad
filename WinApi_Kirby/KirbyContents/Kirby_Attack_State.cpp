@@ -51,6 +51,8 @@ void Kirby::DamageUpdate(float _Delta)
 	float4 CheckPos = float4::ZERO;
 	GameEngineCollision* CurMonsterCollision = Col[Col.size() - 1];
 	GameEngineActor* CurMonster = CurMonsterCollision->GetActor();
+	Monster* ColMonster = dynamic_cast<Monster*>(CurMonster);
+	int MonsterAtt = ColMonster->GetMonsterAtt();
 	float4 DirPos = GetPos() - CurMonster->GetPos();
 	unsigned int Color = 0;
 	unsigned int XColor = 0;
@@ -96,6 +98,7 @@ void Kirby::DamageUpdate(float _Delta)
 		|| true == MainRenderer->IsAnimationEnd() && DOORCOLOR != Color)
 	{
 		FlyPower = BASEPOWER;
+		Damage(MonsterAtt);
 		ChangeState(KirbyState::DamageLand);
 		return;
 	}
