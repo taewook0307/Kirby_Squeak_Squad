@@ -33,12 +33,12 @@ void Monster::Start()
 
 		MainRenderer->CreateAnimation("Right_Monster_Idle", "Right_NormalEnermy.Bmp", 0, 3, 0.2f, true);
 		MainRenderer->CreateAnimation("Right_Monster_Walk", "Right_NormalEnermy.Bmp", 4, 7, 0.1f, true);
-		MainRenderer->CreateAnimation("Right_Monster_Damage", "Right_NormalEnermy.Bmp", 8, 9, 0.2f, false);
+		MainRenderer->CreateAnimation("Right_Monster_Damage", "Right_NormalEnermy.Bmp", 8, 9, 0.5f, false);
 		MainRenderer->CreateAnimation("Right_Monster_Death", "Right_NormalEnermy.Bmp", 10, 19, 0.1f, false);
 
 		MainRenderer->CreateAnimation("Left_Monster_Idle", "Left_NormalEnermy.Bmp", 0, 3, 0.2f, true);
 		MainRenderer->CreateAnimation("Left_Monster_Walk", "Left_NormalEnermy.Bmp", 4, 7, 0.1f, true);
-		MainRenderer->CreateAnimation("Left_Monster_Damage", "Left_NormalEnermy.Bmp", 8, 9, 0.2f, false);
+		MainRenderer->CreateAnimation("Left_Monster_Damage", "Left_NormalEnermy.Bmp", 8, 9, 0.5f, false);
 		MainRenderer->CreateAnimation("Left_Monster_Death", "Left_NormalEnermy.Bmp", 10, 19, 0.1f, false);
 
 		MainRenderer->SetRenderScaleToTexture();

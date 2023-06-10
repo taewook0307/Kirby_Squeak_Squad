@@ -49,6 +49,16 @@ public:
 		MapChangeAnimationEnd = false;
 	}
 
+	inline int GetHp() const
+	{
+		return Hp;
+	}
+
+	inline int GetAtt() const
+	{
+		return Att;
+	}
+
 protected:
 	virtual void StateUpdate(float _Delta);
 	virtual void ChangeState(KirbyState _State);
@@ -146,16 +156,6 @@ protected:
 	bool IsCheckPosPoint = false;
 
 	bool MapChangeAnimationEnd = false;
-
-	inline int GetHp() const
-	{
-		return Hp;
-	}
-
-	inline int GetAtt() const
-	{
-		return Att;
-	}
 
 	void Damage(int _Value)
 	{
