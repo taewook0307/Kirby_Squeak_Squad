@@ -166,6 +166,7 @@ protected:
 
 	int Hp = BASEHP;
 	int Att = BASEATT;
+	static int LifeCount;
 private:
 	GameEngineCollision* InhaleCollision = nullptr;
 	MonsterType KeepType = MonsterType::Max;

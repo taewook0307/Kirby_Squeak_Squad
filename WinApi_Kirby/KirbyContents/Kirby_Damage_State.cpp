@@ -4,11 +4,14 @@
 #include "Monster.h"
 
 #include <math.h>
+#include <GameEnginePlatform/GameEngineWindow.h>
 #include <GameEnginePlatform/GameEngineInput.h>
 #include <GameEngineCore/GameEngineRenderer.h>
 #include <GameEngineCore/GameEngineLevel.h>
 #include <GameEngineCore/GameEngineActor.h>
 #include <GameEngineCore/GameEngineCollision.h>
+
+int Kirby::LifeCount = 3;
 
 void Kirby::DamageStart()
 {
@@ -86,7 +89,7 @@ void Kirby::DamageUpdate(float _Delta)
 		FlyPower = BASEPOWER;
 		Damage(MonsterAtt);
 
-		if (Hp < 0)
+		if (Hp < 0 && LifeCount > 0)
 		{
 			ChangeState(KirbyState::Death);
 			return;
@@ -117,4 +120,13 @@ void Kirby::DamageLandUpdate(float _Delta)
 void Kirby::DeathUpdate(float _Delta)
 {
 	Gravity(_Delta);
+
+	float4 WinScale = GameEngineWindow::MainWindow.GetScale();
+
+	if (WinScale.Y < GetPos().Y)
+	{
+		--LifeCount;
+		Death();
+		return;
+	}
 }
