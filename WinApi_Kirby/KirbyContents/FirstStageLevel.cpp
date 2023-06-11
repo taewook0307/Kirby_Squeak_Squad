@@ -50,6 +50,8 @@ void FirstStageLevel::Start()
 
 void FirstStageLevel::Update(float _Delta)
 {
+	// --------------------------------------------------------------------------------------------------------------
+	// 폼체인지 부분
 	if (true == GameEngineInput::IsDown('X')
 		&& LevelPlayer->GetKirbyState() == KirbyState::KeepIdle
 		&& LevelPlayer->GetKeepType() == MonsterType::Ice)
@@ -107,7 +109,9 @@ void FirstStageLevel::Update(float _Delta)
 		LevelPlayer->SetPos(SavePos);
 		LevelPlayer->SetGroundBitMap("FirstStageBitMap.Bmp");
 	}
+	// --------------------------------------------------------------------------------------------------------------
 
+	// 플레이어 데스 부분
 	if (0 < GetPlayerLife() && true == LevelPlayer->GetDeathCheck())
 	{
 		int Check = GetPlayerLife();
@@ -120,11 +124,13 @@ void FirstStageLevel::Update(float _Delta)
 		LevelPlayer->SetGroundBitMap("FirstStageBitMap.Bmp");
 	}
 
+	// 맵 이동
 	if (true == LevelPlayer->GetMapChangeAnimationEnd())
 	{
 		GameEngineCore::ChangeLevel("SecondStageLevel");
 	}
 
+	// 디버그용
 	if (true == GameEngineInput::IsDown('J'))
 	{
 		FirstStage->SwitchRender();
