@@ -7,6 +7,8 @@ void IceMonster::IdleUpdate(float _Delta)
 {
 	DamageMove();
 
+	BodyCollision->On();
+
 	static float IdleTimer = 0.0f;
 
 	if (true == SearchCollision->Collision(CollisionOrder::Body, Col, CollisionType::Rect, CollisionType::Rect))

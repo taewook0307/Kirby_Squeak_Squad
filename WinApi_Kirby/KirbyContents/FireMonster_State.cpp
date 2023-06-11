@@ -7,6 +7,8 @@ void FireMonster::IdleUpdate(float _Delta)
 {
 	DamageMove();
 
+	BodyCollision->On();
+
 	static float IdleTimer = 0.0f;
 
 	if (Dir == ActorDir::Left)

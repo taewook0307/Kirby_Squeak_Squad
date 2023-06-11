@@ -8,6 +8,8 @@ void SparkMonster::IdleUpdate(float _Delta)
 
 	DamageMove();
 
+	BodyCollision->On();
+
 	if (IdleTimer > 1.0f)
 	{
 		IdleTimer = 0.0f;

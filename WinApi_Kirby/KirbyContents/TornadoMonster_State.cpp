@@ -7,6 +7,8 @@ void TornadoMonster::IdleUpdate(float _Delta)
 {
 	DamageMove();
 
+	BodyCollision->On();
+
 	if (true == MainRenderer->IsAnimationEnd())
 	{
 		DirChange();

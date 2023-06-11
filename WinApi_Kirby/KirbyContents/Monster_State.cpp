@@ -33,6 +33,8 @@ void Monster::IdleUpdate(float _Delta)
 {
 	DamageMove();
 
+	BodyCollision->On();
+
 	unsigned int Color = GetGroundColor(EMPTYCOLOR);
 
 	if (EMPTYCOLOR == Color || DOORCOLOR == Color)
