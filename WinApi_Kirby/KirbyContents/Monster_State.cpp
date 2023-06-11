@@ -26,6 +26,8 @@ void Monster::DeathStart()
 
 void Monster::IdleUpdate(float _Delta)
 {
+	DamageMove();
+
 	unsigned int Color = GetGroundColor(EMPTYCOLOR);
 
 	if (EMPTYCOLOR == Color || DOORCOLOR == Color)
@@ -42,19 +44,13 @@ void Monster::IdleUpdate(float _Delta)
 		return;
 	}
 
-	if (true == BodyCollision->Collision(CollisionOrder::Attack, Col, CollisionType::Rect, CollisionType::Rect)
-		|| true == BodyCollision->Collision(CollisionOrder::SpecialAttack, Col, CollisionType::Rect, CollisionType::Rect)
-		|| true == BodyCollision->Collision(CollisionOrder::Inhale, Col, CollisionType::Rect, CollisionType::Rect))
-	{
-		ChangeState(MonsterState::Damage);
-		return;
-	}
-
 	IdleTimer += _Delta;
 }
 
 void Monster::WalkUpdate(float _Delta)
 {
+	DamageMove();
+
 	static float MoveTimer = 0.0f;
 
 	float4 MovePos = float4::ZERO;
@@ -96,16 +92,6 @@ void Monster::WalkUpdate(float _Delta)
 		return;
 	}
 
-	Col.reserve(Col.size() + 1);
-
-	if (true == BodyCollision->Collision(CollisionOrder::Attack, Col, CollisionType::Rect, CollisionType::Rect)
-		|| true == BodyCollision->Collision(CollisionOrder::SpecialAttack, Col, CollisionType::Rect, CollisionType::Rect)
-		|| true == BodyCollision->Collision(CollisionOrder::Inhale, Col, CollisionType::Rect, CollisionType::Rect))
-	{
-		ChangeState(MonsterState::Damage);
-		return;
-	}
-
 	MoveTimer += _Delta;
 }
 
@@ -113,44 +99,68 @@ void Monster::DamageUpdate(float _Delta)
 {
 	static float DamageTimer = 0.0f;
 
-	if (true == BodyCollision->Collision(CollisionOrder::SpecialAttack, Col, CollisionType::Rect, CollisionType::Rect))
+	float4 MovePos = float4::ZERO;
+
+	if (ActorDir::Left == DeathDir)
 	{
-		ChangeState(MonsterState::Death);
-		return;
-	}
-	else if (true == BodyCollision->Collision(CollisionOrder::Attack, Col, CollisionType::Rect, CollisionType::Rect))
-	{
-		DamageTimer += _Delta;
-		if (3.0f < DamageTimer)
-		{
-			DamageTimer = 0.0f;
-			ChangeState(MonsterState::Death);
-			return;
-		}
-	}
-	else if (true == BodyCollision->Collision(CollisionOrder::Inhale, Col, CollisionType::Rect, CollisionType::Rect))
-	{
-		DamageTimer = 3.0f;
-	}
-	else if (false == BodyCollision->Collision(CollisionOrder::Inhale, Col, CollisionType::Rect, CollisionType::Rect))
-	{
-		DamageTimer = 0.0f;
-		ChangeState(MonsterState::Idle);
-		return;
+		MovePos = float4::LEFT * Speed * _Delta;
 	}
 	else
 	{
-		if (3.0f >= DamageTimer)
-		{
-			ChangeState(MonsterState::Idle);
-			return;
-		}
+		MovePos = float4::RIGHT * Speed * _Delta;
 	}
+
+	if (DamageTimer > 1.0f)
+	{
+		DamageTimer = 0.0f;
+		ChangeState(MonsterState::Death);
+		return;
+	}
+
+	AddPos(MovePos);
+	DamageTimer += _Delta;
 }
 
 void Monster::DeathUpdate(float _Delta)
 {
 	if (true == MainRenderer->IsAnimationEnd())
+	{
+		Death();
+		return;
+	}
+}
+
+void Monster::DamageMove()
+{
+	if (true == BodyCollision->Collision(CollisionOrder::Inhale, Col, CollisionType::Rect, CollisionType::Rect))
+	{
+		ChangeState(MonsterState::Damage);
+		return;
+	}
+
+	if (true == BodyCollision->Collision(CollisionOrder::Attack, Col, CollisionType::Rect, CollisionType::Rect))
+	{
+		GameEngineCollision* PlayerAttackCollision = Col[Col.size() - 1];
+		GameEngineActor* CurPlayer = PlayerAttackCollision->GetActor();
+		float4 DirPos = GetPos() - CurPlayer->GetPos();
+
+		if (0.0f > DirPos.X)
+		{
+			Dir = ActorDir::Right;
+			DeathDir = ActorDir::Left;
+			ChangeState(MonsterState::Damage);
+			return;
+		}
+		else
+		{
+			Dir = ActorDir::Left;
+			DeathDir = ActorDir::Right;
+			ChangeState(MonsterState::Damage);
+			return;
+		}
+	}
+
+	if (true == BodyCollision->Collision(CollisionOrder::SpecialAttack, Col, CollisionType::Rect, CollisionType::Rect))
 	{
 		Death();
 		return;

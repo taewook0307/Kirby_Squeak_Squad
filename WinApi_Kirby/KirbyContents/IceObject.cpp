@@ -73,7 +73,7 @@ void IceObject::Update(float _Delta)
 		AddPos(MovePos);
 	}
 
-	if (1.0f < GetLiveTime() || true == AttackCollision->Collision(CollisionOrder::MonsterBody, StarCol, CollisionType::Rect, CollisionType::Rect))
+	if (1.0f < GetLiveTime() || true == AttackCollision->Collision(CollisionOrder::MonsterBody, IceCol, CollisionType::Rect, CollisionType::Rect))
 	{
 		CollisionCheck = true;
 

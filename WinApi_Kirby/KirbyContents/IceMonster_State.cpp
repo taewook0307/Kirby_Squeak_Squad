@@ -5,21 +5,13 @@
 
 void IceMonster::IdleUpdate(float _Delta)
 {
-	static float IdleTimer = 0.0f;
+	DamageMove();
 
-	Col.resize(Col.size() + 1);
+	static float IdleTimer = 0.0f;
 
 	if (true == SearchCollision->Collision(CollisionOrder::Body, Col, CollisionType::Rect, CollisionType::Rect))
 	{
 		ChangeState(MonsterState::Walk);
-		return;
-	}
-
-	if (true == BodyCollision->Collision(CollisionOrder::Attack, Col, CollisionType::Rect, CollisionType::Rect)
-		|| true == BodyCollision->Collision(CollisionOrder::SpecialAttack, Col, CollisionType::Rect, CollisionType::Rect)
-		|| true == BodyCollision->Collision(CollisionOrder::Inhale, Col, CollisionType::Rect, CollisionType::Rect))
-	{
-		ChangeState(MonsterState::Damage);
 		return;
 	}
 
@@ -45,16 +37,9 @@ void IceMonster::IdleUpdate(float _Delta)
 
 void IceMonster::WalkUpdate(float _Delta)
 {
+	DamageMove();
+
 	float4 MovePos = float4::ZERO;
-
-
-	if (true == BodyCollision->Collision(CollisionOrder::Attack, Col, CollisionType::Rect, CollisionType::Rect)
-		|| true == BodyCollision->Collision(CollisionOrder::SpecialAttack, Col, CollisionType::Rect, CollisionType::Rect)
-		|| true == BodyCollision->Collision(CollisionOrder::Inhale, Col, CollisionType::Rect, CollisionType::Rect))
-	{
-		ChangeState(MonsterState::Damage);
-		return;
-	}
 
 	if (true == SearchCollision->Collision(CollisionOrder::Body, Col, CollisionType::Rect, CollisionType::Rect))
 	{
@@ -83,13 +68,7 @@ void IceMonster::WalkUpdate(float _Delta)
 
 void IceMonster::AttackUpdate(float _Delta)
 {
-	if (true == BodyCollision->Collision(CollisionOrder::Attack, Col, CollisionType::Rect, CollisionType::Rect)
-		|| true == BodyCollision->Collision(CollisionOrder::SpecialAttack, Col, CollisionType::Rect, CollisionType::Rect)
-		|| true == BodyCollision->Collision(CollisionOrder::Inhale, Col, CollisionType::Rect, CollisionType::Rect))
-	{
-		ChangeState(MonsterState::Damage);
-		return;
-	}
+	DamageMove();
 
 	AttackCollision->On();
 

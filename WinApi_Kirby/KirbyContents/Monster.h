@@ -47,6 +47,7 @@ protected:
 	virtual void WalkUpdate(float _Delta);
 	void DamageUpdate(float _Delta);
 	void DeathUpdate(float _Delta);
+	void DamageMove();
 
 	virtual void DirChange();
 
@@ -55,6 +56,7 @@ protected:
 	MonsterState State = MonsterState::Max;
 	std::string CurState = "";
 	ActorDir Dir = ActorDir::Left;
+	ActorDir DeathDir = ActorDir::Left;
 	float RatioValue = 3.0f;
 	float Speed = MONSTERSPEED;
 	MonsterType Type = MonsterType::Normal;

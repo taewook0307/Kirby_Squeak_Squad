@@ -5,15 +5,9 @@
 
 void FireMonster::IdleUpdate(float _Delta)
 {
-	static float IdleTimer = 0.0f;
+	DamageMove();
 
-	if (true == BodyCollision->Collision(CollisionOrder::Attack, Col, CollisionType::Rect, CollisionType::Rect)
-		|| true == BodyCollision->Collision(CollisionOrder::SpecialAttack, Col, CollisionType::Rect, CollisionType::Rect)
-		|| true == BodyCollision->Collision(CollisionOrder::Inhale, Col, CollisionType::Rect, CollisionType::Rect))
-	{
-		ChangeState(MonsterState::Damage);
-		return;
-	}
+	static float IdleTimer = 0.0f;
 
 	if (Dir == ActorDir::Left)
 	{
@@ -46,13 +40,7 @@ void FireMonster::IdleUpdate(float _Delta)
 
 void FireMonster::WalkUpdate(float _Delta)
 {
-	if (true == BodyCollision->Collision(CollisionOrder::Attack, Col, CollisionType::Rect, CollisionType::Rect)
-		|| true == BodyCollision->Collision(CollisionOrder::SpecialAttack, Col, CollisionType::Rect, CollisionType::Rect)
-		|| true == BodyCollision->Collision(CollisionOrder::Inhale, Col, CollisionType::Rect, CollisionType::Rect))
-	{
-		ChangeState(MonsterState::Damage);
-		return;
-	}
+	DamageMove();
 	
 	static float WalkTimer = 0.0f;
 
@@ -113,13 +101,7 @@ void FireMonster::WalkUpdate(float _Delta)
 
 void FireMonster::AttackUpdate(float _Delta)
 {
-	if (true == BodyCollision->Collision(CollisionOrder::Attack, Col, CollisionType::Rect, CollisionType::Rect)
-		|| true == BodyCollision->Collision(CollisionOrder::SpecialAttack, Col, CollisionType::Rect, CollisionType::Rect)
-		|| true == BodyCollision->Collision(CollisionOrder::Inhale, Col, CollisionType::Rect, CollisionType::Rect))
-	{
-		ChangeState(MonsterState::Damage);
-		return;
-	}
+	DamageMove();
 
 	AttackCollision->On();
 

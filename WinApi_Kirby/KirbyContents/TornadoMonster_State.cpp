@@ -5,13 +5,7 @@
 
 void TornadoMonster::IdleUpdate(float _Delta)
 {
-	if (true == BodyCollision->Collision(CollisionOrder::Attack, Col, CollisionType::Rect, CollisionType::Rect)
-		|| true == BodyCollision->Collision(CollisionOrder::SpecialAttack, Col, CollisionType::Rect, CollisionType::Rect)
-		|| true == BodyCollision->Collision(CollisionOrder::Inhale, Col, CollisionType::Rect, CollisionType::Rect))
-	{
-		ChangeState(MonsterState::Damage);
-		return;
-	}
+	DamageMove();
 
 	if (true == MainRenderer->IsAnimationEnd())
 	{
@@ -23,13 +17,7 @@ void TornadoMonster::IdleUpdate(float _Delta)
 
 void TornadoMonster::WalkUpdate(float _Delta)
 {
-	if (true == BodyCollision->Collision(CollisionOrder::Attack, Col, CollisionType::Rect, CollisionType::Rect)
-		|| true == BodyCollision->Collision(CollisionOrder::SpecialAttack, Col, CollisionType::Rect, CollisionType::Rect)
-		|| true == BodyCollision->Collision(CollisionOrder::Inhale, Col, CollisionType::Rect, CollisionType::Rect))
-	{
-		ChangeState(MonsterState::Damage);
-		return;
-	}
+	DamageMove();
 	
 	static float WalkTimer = 0.0f;
 
@@ -75,13 +63,7 @@ void TornadoMonster::WalkUpdate(float _Delta)
 
 void TornadoMonster::AttackUpdate(float _Delta)
 {
-	if (true == BodyCollision->Collision(CollisionOrder::Attack, Col, CollisionType::Rect, CollisionType::Rect)
-		|| true == BodyCollision->Collision(CollisionOrder::SpecialAttack, Col, CollisionType::Rect, CollisionType::Rect)
-		|| true == BodyCollision->Collision(CollisionOrder::Inhale, Col, CollisionType::Rect, CollisionType::Rect))
-	{
-		ChangeState(MonsterState::Damage);
-		return;
-	}
+	DamageMove();
 
 	AttackCollision->On();
 

@@ -6,13 +6,7 @@ void SparkMonster::IdleUpdate(float _Delta)
 {
 	static float IdleTimer = 0.0f;
 
-	if (true == BodyCollision->Collision(CollisionOrder::Attack, Col, CollisionType::Rect, CollisionType::Rect)
-		|| true == BodyCollision->Collision(CollisionOrder::SpecialAttack, Col, CollisionType::Rect, CollisionType::Rect)
-		|| true == BodyCollision->Collision(CollisionOrder::Inhale, Col, CollisionType::Rect, CollisionType::Rect))
-	{
-		ChangeState(MonsterState::Damage);
-		return;
-	}
+	DamageMove();
 
 	if (IdleTimer > 1.0f)
 	{
@@ -25,6 +19,8 @@ void SparkMonster::IdleUpdate(float _Delta)
 
 void SparkMonster::WalkUpdate(float _Delta)
 {
+	DamageMove();
+
 	unsigned int Color = GetGroundColor(EMPTYCOLOR);
 
 	if (Color == EMPTYCOLOR || Color == DOORCOLOR)
@@ -45,14 +41,6 @@ void SparkMonster::WalkUpdate(float _Delta)
 
 	AddPos(MovePos);
 
-	if (true == BodyCollision->Collision(CollisionOrder::Attack, Col, CollisionType::Rect, CollisionType::Rect)
-		|| true == BodyCollision->Collision(CollisionOrder::SpecialAttack, Col, CollisionType::Rect, CollisionType::Rect)
-		|| true == BodyCollision->Collision(CollisionOrder::Inhale, Col, CollisionType::Rect, CollisionType::Rect))
-	{
-		ChangeState(MonsterState::Damage);
-		return;
-	}
-
 	if(Color != EMPTYCOLOR && Color != DOORCOLOR)
 	{	
 		GravityReset();
@@ -63,13 +51,7 @@ void SparkMonster::WalkUpdate(float _Delta)
 
 void SparkMonster::AttackUpdate(float _Delta)
 {
-	if (true == BodyCollision->Collision(CollisionOrder::Attack, Col, CollisionType::Rect, CollisionType::Rect)
-		|| true == BodyCollision->Collision(CollisionOrder::SpecialAttack, Col, CollisionType::Rect, CollisionType::Rect)
-		|| true == BodyCollision->Collision(CollisionOrder::Inhale, Col, CollisionType::Rect, CollisionType::Rect))
-	{
-		ChangeState(MonsterState::Damage);
-		return;
-	}
+	DamageMove();
 
 	AttackCollision->On();
 
