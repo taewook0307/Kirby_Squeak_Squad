@@ -24,8 +24,8 @@ void SparkKirby::Start()
 
 		FilePath.MoveChild("Resources\\Kirby\\SparkKirby\\");
 
-		ResourcesManager::GetInst().CreateSpriteSheet(FilePath.PlusFilePath("Right_SparkKirby.Bmp"), 10, 17);
-		ResourcesManager::GetInst().CreateSpriteSheet(FilePath.PlusFilePath("Left_SparkKirby.Bmp"), 10, 17);
+		ResourcesManager::GetInst().CreateSpriteSheet(FilePath.PlusFilePath("Right_SparkKirby.Bmp"), 10, 18);
+		ResourcesManager::GetInst().CreateSpriteSheet(FilePath.PlusFilePath("Left_SparkKirby.Bmp"), 10, 18);
 	}
 
 	{

@@ -62,6 +62,8 @@ void FormKirby::StateUpdate(float _Delta)
 		return AttackToIdleUpdate(_Delta);
 	case KirbyState::Change:
 		return ChangeUpdate(_Delta);
+	case KirbyState::Death:
+		return DeathUpdate(_Delta);
 	default:
 		break;
 	}
@@ -147,6 +149,9 @@ void FormKirby::ChangeState(KirbyState _State)
 			break;
 		case KirbyState::Change:
 			ChangeStart();
+			break;
+		case KirbyState::Death:
+			DeathStart();
 			break;
 		default:
 			break;

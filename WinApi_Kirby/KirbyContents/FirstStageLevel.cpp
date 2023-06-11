@@ -108,6 +108,18 @@ void FirstStageLevel::Update(float _Delta)
 		LevelPlayer->SetGroundBitMap("FirstStageBitMap.Bmp");
 	}
 
+	if (0 < GetPlayerLife() && true == LevelPlayer->GetDeathCheck())
+	{
+		int Check = GetPlayerLife();
+		MinusPlayerLife();
+		float4 WinScale = GameEngineWindow::MainWindow.GetScale();
+		SavePos = { LevelPlayer->GetPos().X, WinScale.Half().Half().Y };
+		LevelPlayer->Death();
+		LevelPlayer = CreateActor<Kirby>(RenderOrder::Play);
+		LevelPlayer->SetPos(SavePos);
+		LevelPlayer->SetGroundBitMap("FirstStageBitMap.Bmp");
+	}
+
 	if (true == LevelPlayer->GetMapChangeAnimationEnd())
 	{
 		GameEngineCore::ChangeLevel("SecondStageLevel");

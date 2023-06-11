@@ -24,8 +24,8 @@ void FireKirby::Start()
 
 		FilePath.MoveChild("Resources\\Kirby\\FireKirby\\");
 
-		ResourcesManager::GetInst().CreateSpriteSheet(FilePath.PlusFilePath("Right_FireKirby.Bmp"), 10, 18);
-		ResourcesManager::GetInst().CreateSpriteSheet(FilePath.PlusFilePath("Left_FireKirby.Bmp"), 10, 18);
+		ResourcesManager::GetInst().CreateSpriteSheet(FilePath.PlusFilePath("Right_FireKirby.Bmp"), 10, 20);
+		ResourcesManager::GetInst().CreateSpriteSheet(FilePath.PlusFilePath("Left_FireKirby.Bmp"), 10, 20);
 	}
 
 	{

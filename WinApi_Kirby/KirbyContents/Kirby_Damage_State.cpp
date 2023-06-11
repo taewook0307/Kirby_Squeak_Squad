@@ -125,7 +125,7 @@ void Kirby::DeathUpdate(float _Delta)
 
 	if (WinScale.Y < GetPos().Y)
 	{
-		Death();
+		DeathCheck = true;
 		return;
 	}
 }

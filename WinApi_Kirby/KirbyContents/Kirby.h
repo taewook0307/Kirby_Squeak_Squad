@@ -59,6 +59,11 @@ public:
 		return Att;
 	}
 
+	inline bool GetDeathCheck() const
+	{
+		return DeathCheck;
+	}
+
 protected:
 	virtual void StateUpdate(float _Delta);
 	virtual void ChangeState(KirbyState _State);
@@ -166,6 +171,8 @@ protected:
 
 	int Hp = BASEHP;
 	int Att = BASEATT;
+
+	bool DeathCheck = false;
 private:
 	GameEngineCollision* InhaleCollision = nullptr;
 	MonsterType KeepType = MonsterType::Max;

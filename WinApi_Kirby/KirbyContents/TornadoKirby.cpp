@@ -24,8 +24,8 @@ void TornadoKirby::Start()
 
 		FilePath.MoveChild("Resources\\Kirby\\TornadoKirby\\");
 
-		ResourcesManager::GetInst().CreateSpriteSheet(FilePath.PlusFilePath("Right_TornadoKirby.Bmp"), 10, 19);
-		ResourcesManager::GetInst().CreateSpriteSheet(FilePath.PlusFilePath("Left_TornadoKirby.Bmp"), 10, 19);
+		ResourcesManager::GetInst().CreateSpriteSheet(FilePath.PlusFilePath("Right_TornadoKirby.Bmp"), 10, 20);
+		ResourcesManager::GetInst().CreateSpriteSheet(FilePath.PlusFilePath("Left_TornadoKirby.Bmp"), 10, 20);
 	}
 
 	{
