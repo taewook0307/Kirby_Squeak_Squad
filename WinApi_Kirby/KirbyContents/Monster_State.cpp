@@ -14,6 +14,11 @@ void Monster::WalkStart()
 	ChangeAnimationState("Walk");
 }
 
+void Monster::InhaleStart()
+{
+	ChangeAnimationState("Inhale");
+}
+
 void Monster::DamageStart()
 {
 	ChangeAnimationState("Damage");
@@ -95,8 +100,19 @@ void Monster::WalkUpdate(float _Delta)
 	MoveTimer += _Delta;
 }
 
+void Monster::InhaleUpdate(float _Delta)
+{
+	if (false == BodyCollision->Collision(CollisionOrder::Inhale, Col, CollisionType::Rect, CollisionType::Rect))
+	{
+		ChangeState(MonsterState::Idle);
+		return;
+	}
+}
+
 void Monster::DamageUpdate(float _Delta)
 {
+	BodyCollision->Off();
+
 	static float DamageTimer = 0.0f;
 
 	float4 MovePos = float4::ZERO;
@@ -134,7 +150,7 @@ void Monster::DamageMove()
 {
 	if (true == BodyCollision->Collision(CollisionOrder::Inhale, Col, CollisionType::Rect, CollisionType::Rect))
 	{
-		ChangeState(MonsterState::Damage);
+		ChangeState(MonsterState::Inhale);
 		return;
 	}
 

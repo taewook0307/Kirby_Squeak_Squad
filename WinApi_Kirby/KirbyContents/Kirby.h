@@ -105,7 +105,7 @@ protected:
 	void IdleUpdate(float _Delta);
 	void DownUpdate(float _Delta);
 	void SlideUpdate(float _Delta);
-	void JumpUpdate(float _Delta);
+	virtual void JumpUpdate(float _Delta);
 	virtual void JumpToDropUpdate(float _Delta);
 	void JumpToLandUpdate(float _Delta);
 	void WalkUpdate(float _Delta);
@@ -116,7 +116,7 @@ protected:
 	void FlyUpdate(float _Delta);
 	void BreatheOutLandUpdate(float _Delta);
 	void BreatheOutUpdate(float _Delta);
-	void DropUpdate(float _Delta);
+	virtual void DropUpdate(float _Delta);
 	void FlyToLandUpdate(float _Delta);
 	void FlyToTurnUpUpdate(float _Delta);
 	void FlyToTurnLandUpdate(float _Delta);

@@ -7,6 +7,39 @@
 #include <GameEngineCore/GameEngineLevel.h>
 #include <GameEngineCore/GameEngineCamera.h>
 
+void TornadoKirby::JumpUpdate(float _Delta)
+{
+	Kirby::JumpUpdate(_Delta);
+
+	if (true == GameEngineInput::IsPress('C'))
+	{
+		ChangeState(KirbyState::Attack);
+		return;
+	}
+}
+
+void TornadoKirby::JumpToDropUpdate(float _Delta)
+{
+	Kirby::JumpToDropUpdate(_Delta);
+
+	if (true == GameEngineInput::IsPress('C'))
+	{
+		ChangeState(KirbyState::Attack);
+		return;
+	}
+}
+
+void TornadoKirby::DropUpdate(float _Delta)
+{
+	Kirby::DropUpdate(_Delta);
+
+	if (true == GameEngineInput::IsPress('C'))
+	{
+		ChangeState(KirbyState::Attack);
+		return;
+	}
+}
+
 void TornadoKirby::AttackUpdate(float _Delta)
 {
 	DirCheck();

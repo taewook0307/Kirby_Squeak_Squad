@@ -43,6 +43,7 @@ enum class MonsterState
 	Idle,
 	Walk,
 	Attack,
+	Inhale,
 	Damage,
 	Death,
 	Max

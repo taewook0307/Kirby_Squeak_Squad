@@ -35,12 +35,14 @@ void TornadoMonster::Start()
 		MainRenderer->CreateAnimation("Right_Tornado_Monster_Idle", "Right_TornadoEnermy.Bmp", 0, 7, 0.2f, false);
 		MainRenderer->CreateAnimation("Right_Tornado_Monster_Walk", "Right_TornadoEnermy.Bmp", 8, 9, 0.2f, true);
 		MainRenderer->CreateAnimation("Right_Tornado_Monster_Attack", "Right_TornadoEnermy.Bmp", 10, 12, 0.1f, true);
+		MainRenderer->CreateAnimation("Right_Tornado_Monster_Inhale", "Right_TornadoEnermy.Bmp", 13, 13, 0.3f, false);
 		MainRenderer->CreateAnimation("Right_Tornado_Monster_Damage", "Right_TornadoEnermy.Bmp", 13, 13, 0.3f, false);
 		MainRenderer->CreateAnimation("Right_Tornado_Monster_Death", "Right_TornadoEnermy.Bmp", 14, 21, 0.1f, false);
 
 		MainRenderer->CreateAnimation("Left_Tornado_Monster_Idle", "Left_TornadoEnermy.Bmp", 0, 7, 0.2f, false);
 		MainRenderer->CreateAnimation("Left_Tornado_Monster_Walk", "Left_TornadoEnermy.Bmp", 8, 9, 0.2f, true);
 		MainRenderer->CreateAnimation("Left_Tornado_Monster_Attack", "Left_TornadoEnermy.Bmp", 10, 12, 0.1f, true);
+		MainRenderer->CreateAnimation("Left_Tornado_Monster_Inhale", "Left_TornadoEnermy.Bmp", 13, 14, 0.3f, false);
 		MainRenderer->CreateAnimation("Left_Tornado_Monster_Damage", "Left_TornadoEnermy.Bmp", 13, 14, 0.3f, false);
 		MainRenderer->CreateAnimation("Left_Tornado_Monster_Death", "Left_TornadoEnermy.Bmp", 14, 21, 0.1f, false);
 

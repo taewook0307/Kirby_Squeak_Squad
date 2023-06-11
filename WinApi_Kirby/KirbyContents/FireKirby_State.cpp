@@ -7,9 +7,31 @@
 #include <GameEngineCore/GameEngineLevel.h>
 #include <GameEngineCore/GameEngineCamera.h>
 
+void FireKirby::JumpUpdate(float _Delta)
+{
+	Kirby::JumpUpdate(_Delta);
+
+	if (true == GameEngineInput::IsPress('C'))
+	{
+		ChangeState(KirbyState::Attack);
+		return;
+	}
+}
+
 void FireKirby::JumpToDropUpdate(float _Delta)
 {
 	Kirby::JumpToDropUpdate(_Delta);
+
+	if (true == GameEngineInput::IsPress('C'))
+	{
+		ChangeState(KirbyState::Attack);
+		return;
+	}
+}
+
+void FireKirby::DropUpdate(float _Delta)
+{
+	Kirby::DropUpdate(_Delta);
 
 	if (true == GameEngineInput::IsPress('C'))
 	{

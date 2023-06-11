@@ -18,6 +18,8 @@ void AttackMonster::StateUpdate(float _Delta)
 		return WalkUpdate(_Delta);
 	case MonsterState::Attack:
 		return AttackUpdate(_Delta);
+	case MonsterState::Inhale:
+		return InhaleUpdate(_Delta);
 	case MonsterState::Damage:
 		return DamageUpdate(_Delta);
 	case MonsterState::Death:
@@ -41,6 +43,9 @@ void AttackMonster::ChangeState(MonsterState _State)
 			break;
 		case MonsterState::Attack:
 			AttackStart();
+			break;
+		case MonsterState::Inhale:
+			InhaleStart();
 			break;
 		case MonsterState::Damage:
 			DamageStart();

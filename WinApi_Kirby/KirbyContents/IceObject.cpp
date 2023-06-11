@@ -89,6 +89,7 @@ void IceObject::Update(float _Delta)
 	else
 	{
 		MovePos = float4::ZERO;
+		Color = EMPTYCOLOR;
 	}
 
 	if (false == CollideMonsterCheck && true == CollidePlayerCheck && (EMPTYCOLOR == Color || DOORCOLOR == Color))

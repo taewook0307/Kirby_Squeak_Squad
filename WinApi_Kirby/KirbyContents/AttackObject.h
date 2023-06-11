@@ -1,15 +1,15 @@
 #pragma once
 
+#include "BaseActor.h"
 #include "ActorEnum.h"
 
 #include <vector>
-#include <GameEngineCore/GameEngineActor.h>
 
 #define BASESPEED 500.0f
 #define STARCOLLISIONSCALE { 70.0f, 70.0f }
 #define STARCOLLISIONPOS { 0.0f, -40.0f }
 
-class AttackObject : public GameEngineActor
+class AttackObject : public BaseActor
 {
 	friend class Kirby;
 public:

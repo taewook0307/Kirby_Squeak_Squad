@@ -35,12 +35,14 @@ void SparkMonster::Start()
 		MainRenderer->CreateAnimation("Right_Spark_Monster_Idle", "Right_SparkEnermy.Bmp", 0, 0, 0.1f, false);
 		MainRenderer->CreateAnimation("Right_Spark_Monster_Walk", "Right_SparkEnermy.Bmp", 1, 3, 0.3f, false);
 		MainRenderer->CreateAnimation("Right_Spark_Monster_Attack", "Right_SparkEnermy.Bmp", 4, 16, 0.2f, false);
+		MainRenderer->CreateAnimation("Right_Spark_Monster_Inhale", "Right_SparkEnermy.Bmp", 17, 17, 0.2f, false);
 		MainRenderer->CreateAnimation("Right_Spark_Monster_Damage", "Right_SparkEnermy.Bmp", 17, 17, 0.2f, false);
 		MainRenderer->CreateAnimation("Right_Spark_Monster_Death", "Right_SparkEnermy.Bmp", 18, 25, 0.1f, false);
 
 		MainRenderer->CreateAnimation("Left_Spark_Monster_Idle", "Left_SparkEnermy.Bmp", 0, 0, 0.1f, false);
 		MainRenderer->CreateAnimation("Left_Spark_Monster_Walk", "Left_SparkEnermy.Bmp", 1, 3, 0.3f, false);
 		MainRenderer->CreateAnimation("Left_Spark_Monster_Attack", "Left_SparkEnermy.Bmp", 4, 16, 0.2f, false);
+		MainRenderer->CreateAnimation("Left_Spark_Monster_Inhale", "Left_SparkEnermy.Bmp", 17, 17, 0.2f, false);
 		MainRenderer->CreateAnimation("Left_Spark_Monster_Damage", "Left_SparkEnermy.Bmp", 17, 17, 0.2f, false);
 		MainRenderer->CreateAnimation("Left_Spark_Monster_Death", "Left_SparkEnermy.Bmp", 18, 25, 0.1f, false);
 

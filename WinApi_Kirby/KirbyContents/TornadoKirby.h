@@ -18,6 +18,9 @@ public:
 protected:
 	void ChangeAnimationState(const std::string& _StateName) override;
 
+	void JumpUpdate(float _Delta) override;
+	void JumpToDropUpdate(float _Delta) override;
+	void DropUpdate(float _Delta) override;
 	void AttackUpdate(float _Delta) override;
 	void AttackToIdleUpdate(float _Delta) override;
 private:

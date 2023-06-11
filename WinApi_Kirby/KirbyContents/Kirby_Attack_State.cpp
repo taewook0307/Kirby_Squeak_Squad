@@ -111,6 +111,7 @@ void Kirby::AttackToIdleUpdate(float _Delta)
 		StarAttack = GetLevel()->CreateActor<AttackObject>(RenderOrder::Play);
 		StarAttack->SetPos(GetPos());
 		StarAttack->SetDir(Dir);
+		StarAttack->SetGroundBitMap(GetGroundBitMap());
 	}
 
 	if (MainRenderer->IsAnimationEnd())
