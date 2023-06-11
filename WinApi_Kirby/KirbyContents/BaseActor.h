@@ -4,8 +4,8 @@
 #include <GameEngineCore/GameEngineCollision.h>
 
 #define BASEHP 200
-#define BASEATT 50
-#define MONSTERATT 30
+#define BASEATT 70
+#define MONSTERATT 50
 
 #define GRAVITYPOWER 700.0f
 #define EMPTYCOLOR RGB(255,255,255)

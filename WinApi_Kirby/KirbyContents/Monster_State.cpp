@@ -111,29 +111,41 @@ void Monster::WalkUpdate(float _Delta)
 
 void Monster::DamageUpdate(float _Delta)
 {
+	static float DamageTimer = 0.0f;
+
 	if (true == BodyCollision->Collision(CollisionOrder::SpecialAttack, Col, CollisionType::Rect, CollisionType::Rect))
 	{
-		if (true == MainRenderer->IsAnimationEnd())
-		{
-			ChangeState(MonsterState::Death);
-			return;
-		}
+		ChangeState(MonsterState::Death);
+		return;
 	}
-
 	else if (true == BodyCollision->Collision(CollisionOrder::Attack, Col, CollisionType::Rect, CollisionType::Rect))
 	{
-		if (true == MainRenderer->IsAnimationEnd())
+		DamageTimer += _Delta;
+		if (3.0f < DamageTimer)
 		{
+			DamageTimer = 0.0f;
 			ChangeState(MonsterState::Death);
 			return;
 		}
 	}
-
-	//if (false == BodyCollision->Collision(CollisionOrder::Inhale, Col, CollisionType::Rect, CollisionType::Rect))
-	//{
-	//	ChangeState(MonsterState::Idle);
-	//	return;
-	//}
+	else if (true == BodyCollision->Collision(CollisionOrder::Inhale, Col, CollisionType::Rect, CollisionType::Rect))
+	{
+		DamageTimer = 3.0f;
+	}
+	else if (false == BodyCollision->Collision(CollisionOrder::Inhale, Col, CollisionType::Rect, CollisionType::Rect))
+	{
+		DamageTimer = 0.0f;
+		ChangeState(MonsterState::Idle);
+		return;
+	}
+	else
+	{
+		if (3.0f >= DamageTimer)
+		{
+			ChangeState(MonsterState::Idle);
+			return;
+		}
+	}
 }
 
 void Monster::DeathUpdate(float _Delta)
