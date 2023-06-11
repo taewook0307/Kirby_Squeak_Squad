@@ -72,6 +72,9 @@
     <ClInclude Include="BaseActor.h">
       <Filter>Global</Filter>
     </ClInclude>
+    <ClInclude Include="IceObject.h">
+      <Filter>Player\Form\Ice</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TitleLevel.cpp">
@@ -188,6 +191,9 @@
     </ClCompile>
     <ClCompile Include="Kirby_Damage_State.cpp">
       <Filter>Player</Filter>
+    </ClCompile>
+    <ClCompile Include="IceObject.cpp">
+      <Filter>Player\Form\Ice</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

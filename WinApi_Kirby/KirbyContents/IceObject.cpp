@@ -1,4 +1,4 @@
-﻿#include "AttackObject.h"
+﻿#include "IceObject.h"
 #include "Monster.h"
 #include "KirbyGameEnum.h"
 
@@ -7,17 +7,17 @@
 #include <GameEngineCore/GameEngineCollision.h>
 #include <GameEngineCore/GameEngineCore.h>
 
-AttackObject::AttackObject()
+IceObject::IceObject()
 {
 }
 
-AttackObject::~AttackObject()
+IceObject::~IceObject()
 {
 }
 
-void AttackObject::Start()
+void IceObject::Start()
 {
-	if (ResourcesManager::GetInst().FindSprite("Star.Bmp") == nullptr)
+	if (ResourcesManager::GetInst().FindSprite("Ice.Bmp") == nullptr)
 	{
 		GameEnginePath FilePath;
 		FilePath.SetCurrentPath();
@@ -25,18 +25,18 @@ void AttackObject::Start()
 
 		FilePath.MoveChild("Resources\\Kirby\\Normal\\");
 
-		ResourcesManager::GetInst().CreateSpriteSheet(FilePath.PlusFilePath("Star.Bmp"), 5, 3);
+		ResourcesManager::GetInst().CreateSpriteSheet(FilePath.PlusFilePath("Ice.Bmp"), 5, 2);
 	}
 
 	{
 		MainRenderer = CreateRenderer(RenderOrder::Play);
 
-		MainRenderer->CreateAnimation("Star_Idle", "Star.Bmp", 0, 7, 0.1f, true);
-		MainRenderer->CreateAnimation("Star_Death", "Star.Bmp", 8, 11, 0.1f, false);
+		MainRenderer->CreateAnimation("Ice_Idle", "Ice.Bmp", 0, 0, 0.1f, false);
+		MainRenderer->CreateAnimation("Ice_Death", "Ice.Bmp", 2, 6, 0.1f, false);
 		MainRenderer->SetRenderScaleToTexture();
 		MainRenderer->SetScaleRatio(RatioValue);
 
-		MainRenderer->ChangeAnimation("Star_Idle");
+		MainRenderer->ChangeAnimation("Ice_Idle");
 	}
 
 	{
@@ -47,17 +47,25 @@ void AttackObject::Start()
 	}
 }
 
-void AttackObject::Update(float _Delta)
+void IceObject::Update(float _Delta)
 {
 	float4 MovePos = float4::ZERO;
 
-	if (Dir == ActorDir::Left)
+	if (true == AttackCollision->Collision(CollisionOrder::Body, IceCol, CollisionType::Rect, CollisionType::Rect))
 	{
-		MovePos = float4::LEFT * _Delta * Speed;
-	}
-	else
-	{
-		MovePos = float4::RIGHT * _Delta * Speed;
+		GameEngineCollision* PlayerCollision = IceCol[IceCol.size() - 1];
+		GameEngineActor* CurPlayer = PlayerCollision->GetActor();
+
+		float4 DirPos = GetPos() - CurPlayer->GetPos();
+
+		if (0.0f < DirPos.X)
+		{
+			MovePos = float4::LEFT * Speed * _Delta;
+		}
+		else
+		{
+			MovePos = float4::RIGHT * Speed * _Delta;
+		}
 	}
 
 	if (false == CollisionCheck)
@@ -67,9 +75,9 @@ void AttackObject::Update(float _Delta)
 
 	if (1.0f < GetLiveTime() || true == AttackCollision->Collision(CollisionOrder::MonsterBody, StarCol, CollisionType::Rect, CollisionType::Rect))
 	{
-		// CollisionCheck = true;
+		CollisionCheck = true;
 
-		MainRenderer->ChangeAnimation("Star_Death");
+		MainRenderer->ChangeAnimation("Ice_Death");
 
 		if (true == MainRenderer->IsAnimationEnd())
 		{
@@ -77,4 +85,5 @@ void AttackObject::Update(float _Delta)
 			return;
 		}
 	}
+
 }

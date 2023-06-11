@@ -32,6 +32,8 @@ void IceKirby::AttackUpdate(float _Delta)
 		GameEngineActor* MonsterPtr = MonsterCollision->GetActor();
 
 		FrozenMonsterPos = MonsterPtr->GetPos();
+
+		MonsterPtr->Death();
 	}
 
 	if (true == GameEngineInput::IsUp('C'))
