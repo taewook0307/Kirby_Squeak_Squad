@@ -118,15 +118,20 @@ void Monster::DamageUpdate(float _Delta)
 	static float DamageTimer = 0.0f;
 
 	float4 MovePos = float4::ZERO;
+	float4 CheckPos = float4::ZERO;
 
 	if (ActorDir::Left == DeathDir)
 	{
 		MovePos = float4::LEFT * Speed * _Delta;
+		CheckPos = LEFTCHECKPOS;
 	}
 	else
 	{
 		MovePos = float4::RIGHT * Speed * _Delta;
+		CheckPos = RIGHTCHECKPOS;
 	}
+
+	unsigned int Color = GetGroundColor(EMPTYCOLOR, CheckPos);
 
 	if (DamageTimer > 1.0f)
 	{
@@ -135,7 +140,16 @@ void Monster::DamageUpdate(float _Delta)
 		return;
 	}
 
-	AddPos(MovePos);
+	if (EMPTYCOLOR == Color || DOORCOLOR == Color)
+	{
+		AddPos(MovePos);
+	}
+	else
+	{
+		ChangeState(MonsterState::Death);
+		return;
+	}
+	
 	DamageTimer += _Delta;
 }
 
