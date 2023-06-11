@@ -99,7 +99,7 @@ void SparkKirby::Start()
 		BodyCollision->SetCollisionScale(BODYCOLLISIONSCALE);
 		BodyCollision->SetCollisionType(CollisionType::Rect);
 
-		AttackCollision = CreateCollision(CollisionOrder::SpecialAttack);
+		AttackCollision = CreateCollision(CollisionOrder::Attack);
 		AttackCollision->SetCollisionPos(BODYCOLLISIONPOS);
 		AttackCollision->SetCollisionScale(SPARKATTACKCOLLISIONSCALE);
 		AttackCollision->SetCollisionType(CollisionType::Rect);

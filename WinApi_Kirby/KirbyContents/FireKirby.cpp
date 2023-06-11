@@ -99,7 +99,7 @@ void FireKirby::Start()
 		BodyCollision->SetCollisionScale(BODYCOLLISIONSCALE);
 		BodyCollision->SetCollisionType(CollisionType::Rect);
 
-		AttackCollision = CreateCollision(CollisionOrder::SpecialAttack);
+		AttackCollision = CreateCollision(CollisionOrder::Attack);
 		if (Dir == ActorDir::Left)
 		{
 			AttackCollision->SetCollisionPos(LEFTATTACKCOLLISIONPOS);

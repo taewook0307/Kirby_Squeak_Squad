@@ -99,7 +99,7 @@ void TornadoKirby::Start()
 		BodyCollision->SetCollisionScale(BODYCOLLISIONSCALE);
 		BodyCollision->SetCollisionType(CollisionType::Rect);
 
-		AttackCollision = CreateCollision(CollisionOrder::SpecialAttack);
+		AttackCollision = CreateCollision(CollisionOrder::Attack);
 		AttackCollision->SetCollisionPos(BODYCOLLISIONPOS);
 		AttackCollision->SetCollisionScale(BODYCOLLISIONSCALE);
 		AttackCollision->SetCollisionType(CollisionType::Rect);

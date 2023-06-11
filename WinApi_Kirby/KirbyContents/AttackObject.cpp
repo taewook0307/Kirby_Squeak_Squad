@@ -40,7 +40,7 @@ void AttackObject::Start()
 	}
 
 	{
-		AttackCollision = CreateCollision(CollisionOrder::SpecialAttack);
+		AttackCollision = CreateCollision(CollisionOrder::Attack);
 		AttackCollision->SetCollisionPos(STARCOLLISIONPOS);
 		AttackCollision->SetCollisionScale(STARCOLLISIONSCALE);
 		AttackCollision->SetCollisionType(CollisionType::Rect);
