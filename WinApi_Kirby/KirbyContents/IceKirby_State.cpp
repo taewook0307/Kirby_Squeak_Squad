@@ -1,5 +1,7 @@
 #include "IceKirby.h"
 #include "Monster.h"
+#include "IceObject.h"
+#include "KirbyGameEnum.h"
 
 #include <GameEngineBase/GameEngineTime.h>
 #include <GameEnginePlatform/GameEngineInput.h>
@@ -34,6 +36,10 @@ void IceKirby::AttackUpdate(float _Delta)
 		FrozenMonsterPos = MonsterPtr->GetPos();
 
 		MonsterPtr->Death();
+
+		IceObject* IceAttack = GetLevel()->CreateActor<IceObject>(RenderOrder::Play);
+		IceAttack->SetPos(FrozenMonsterPos);
+		IceAttack->SetGroundBitMap(GetGroundBitMap());
 	}
 
 	if (true == GameEngineInput::IsUp('C'))

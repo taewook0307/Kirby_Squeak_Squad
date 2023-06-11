@@ -34,6 +34,7 @@ private:
 	Monster* LevelFireMonster = nullptr;
 	Monster* LevelTornadoMonster = nullptr;
 	Monster* LevelSparkMonster = nullptr;
+	Monster* LevelIceMonster = nullptr;
 	Ground* FirstStage = nullptr;
 	std::list<Monster*> AllLevelMonster;
 };

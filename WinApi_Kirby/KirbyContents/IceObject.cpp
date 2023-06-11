@@ -23,7 +23,7 @@ void IceObject::Start()
 		FilePath.SetCurrentPath();
 		FilePath.MoveParentToExistsChild("Resources");
 
-		FilePath.MoveChild("Resources\\Kirby\\Normal\\");
+		FilePath.MoveChild("Resources\\Kirby\\IceKirby\\");
 
 		ResourcesManager::GetInst().CreateSpriteSheet(FilePath.PlusFilePath("Ice.Bmp"), 5, 2);
 	}
@@ -51,32 +51,52 @@ void IceObject::Update(float _Delta)
 {
 	float4 MovePos = float4::ZERO;
 
+	unsigned int Color = EMPTYCOLOR;
+
 	if (true == AttackCollision->Collision(CollisionOrder::Body, IceCol, CollisionType::Rect, CollisionType::Rect))
 	{
+		CollidePlayerCheck = true;
+
 		GameEngineCollision* PlayerCollision = IceCol[IceCol.size() - 1];
 		GameEngineActor* CurPlayer = PlayerCollision->GetActor();
 
 		float4 DirPos = GetPos() - CurPlayer->GetPos();
 
-		if (0.0f < DirPos.X)
+		if (0.0f > DirPos.X)
 		{
-			MovePos = float4::LEFT * Speed * _Delta;
+			Dir = ActorDir::Left;
 		}
 		else
 		{
-			MovePos = float4::RIGHT * Speed * _Delta;
+			Dir = ActorDir::Right;
 		}
 	}
 
-	if (false == CollisionCheck)
+	if (true == CollidePlayerCheck && ActorDir::Left == Dir)
+	{
+		MovePos = float4::LEFT * Speed * _Delta;
+		float4 CheckPos = LEFTCHECKPOS;
+
+		Color = GetGroundColor(EMPTYCOLOR, CheckPos);
+	}
+	else if (true == CollidePlayerCheck && ActorDir::Right == Dir)
+	{
+		MovePos = float4::RIGHT * Speed * _Delta;
+		float4 CheckPos = RIGHTCHECKPOS;
+
+		Color = GetGroundColor(EMPTYCOLOR, CheckPos);
+	}
+	else
+	{
+		MovePos = float4::ZERO;
+	}
+
+	if (false == CollideMonsterCheck && true == CollidePlayerCheck && (EMPTYCOLOR == Color || DOORCOLOR == Color))
 	{
 		AddPos(MovePos);
 	}
-
-	if (1.0f < GetLiveTime() || true == AttackCollision->Collision(CollisionOrder::MonsterBody, IceCol, CollisionType::Rect, CollisionType::Rect))
+	else if (EMPTYCOLOR != Color && DOORCOLOR != Color)
 	{
-		CollisionCheck = true;
-
 		MainRenderer->ChangeAnimation("Ice_Death");
 
 		if (true == MainRenderer->IsAnimationEnd())
@@ -86,4 +106,16 @@ void IceObject::Update(float _Delta)
 		}
 	}
 
+	if (7.0f < GetLiveTime() || true == AttackCollision->Collision(CollisionOrder::MonsterBody, IceCol, CollisionType::Rect, CollisionType::Rect))
+	{
+		CollideMonsterCheck = true;
+
+		MainRenderer->ChangeAnimation("Ice_Death");
+
+		if (true == MainRenderer->IsAnimationEnd())
+		{
+			Death();
+			return;
+		}
+	}
 }

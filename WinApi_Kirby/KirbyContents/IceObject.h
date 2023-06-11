@@ -1,15 +1,15 @@
 #pragma once
 
+#include "BaseActor.h"
 #include "ActorEnum.h"
 
 #include <vector>
-#include <GameEngineCore/GameEngineActor.h>
 
 #define BASESPEED 500.0f
 #define STARCOLLISIONSCALE { 70.0f, 70.0f }
 #define STARCOLLISIONPOS { 0.0f, -40.0f }
 
-class IceObject : public GameEngineActor
+class IceObject : public BaseActor
 {
 public:
 	// constrcuter destructer
@@ -28,12 +28,15 @@ public:
 protected:
 
 private:
+	ActorDir Dir = ActorDir::Left;
 	float Speed = BASESPEED;
 	float RatioValue = 4.0f;
+	float Timer = 0.0f;
 
 	std::vector<GameEngineCollision*> IceCol;
 
-	bool CollisionCheck = false;
+	bool CollideMonsterCheck = false;
+	bool CollidePlayerCheck = false;
 
 	void Start() override;
 	void Update(float _Delta) override;

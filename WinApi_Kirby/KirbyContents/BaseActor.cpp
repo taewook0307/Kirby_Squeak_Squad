@@ -48,6 +48,11 @@ void BaseActor::SetGroundBitMap(const std::string& _GroundBitMap)
 
 }
 
+void BaseActor::SetGroundBitMap(GameEngineWindowTexture* _BitMap)
+{
+	GroundBitMap = _BitMap;
+}
+
 int BaseActor::GetGroundColor(unsigned int _DefaultColor, float4 _Pos)
 {
 	if (nullptr == GroundBitMap)

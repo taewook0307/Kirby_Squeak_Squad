@@ -65,6 +65,8 @@ public:
 
 	void SetGroundBitMap(const std::string& _GroundBitMap);
 
+	void SetGroundBitMap(GameEngineWindowTexture* _BitMap);
+
 	int GetGroundColor(unsigned int _DefaultColor, float4 _Pos = float4::ZERO);
 
 	GameEngineWindowTexture* GetGroundBitMap() const

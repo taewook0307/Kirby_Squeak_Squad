@@ -50,14 +50,17 @@ void AttackObject::Start()
 void AttackObject::Update(float _Delta)
 {
 	float4 MovePos = float4::ZERO;
+	float4 CheckPos = float4::ZERO;
 
 	if (Dir == ActorDir::Left)
 	{
 		MovePos = float4::LEFT * _Delta * Speed;
+		CheckPos = LEFTCHECKPOS;
 	}
 	else
 	{
 		MovePos = float4::RIGHT * _Delta * Speed;
+		CheckPos = RIGHTCHECKPOS;
 	}
 
 	if (false == CollisionCheck)

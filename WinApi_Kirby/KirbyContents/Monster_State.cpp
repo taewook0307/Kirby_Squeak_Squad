@@ -159,10 +159,4 @@ void Monster::DamageMove()
 			return;
 		}
 	}
-
-	if (true == BodyCollision->Collision(CollisionOrder::SpecialAttack, Col, CollisionType::Rect, CollisionType::Rect))
-	{
-		Death();
-		return;
-	}
 }

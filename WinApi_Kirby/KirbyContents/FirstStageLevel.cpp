@@ -39,13 +39,15 @@ void FirstStageLevel::Start()
 	LevelPlayer = CreateActor<Kirby>(RenderOrder::Play);
 	LevelPlayer->MapChangeAnimationEndReset();
 
-	LevelMonster = CreateActor<FireMonster>(RenderOrder::Play);
+	LevelMonster = CreateActor<IceMonster>(RenderOrder::Play);
 
 	LevelFireMonster = CreateActor<Monster>(RenderOrder::Play);
 
 	LevelTornadoMonster = CreateActor<IceMonster>(RenderOrder::Play);
 
 	LevelSparkMonster = CreateActor<SparkMonster>(RenderOrder::Play);
+
+	LevelIceMonster = CreateActor<IceMonster>(RenderOrder::Play);
 }
 
 void FirstStageLevel::Update(float _Delta)
@@ -167,5 +169,8 @@ void FirstStageLevel::LevelStart(GameEngineLevel* _PrevLevel)
 
 		LevelSparkMonster->SetPos({ 5100.0f, 660.0f });
 		LevelSparkMonster->SetGroundBitMap("FirstStageBitMap.Bmp");
+
+		LevelIceMonster->SetPos({ 5800.0f, 660.0f });
+		LevelIceMonster->SetGroundBitMap("FirstStageBitMap.Bmp");
 	}
 }
