@@ -37,6 +37,11 @@ void Kirby::AttackReadyUpdate(float _Delta)
 		ChangeState(KirbyState::Attack);
 		return;
 	}
+	if (true == GameEngineInput::IsUp('C'))
+	{
+		ChangeState(KirbyState::Idle);
+		return;
+	}
 }
 
 void Kirby::AttackUpdate(float _Delta)
