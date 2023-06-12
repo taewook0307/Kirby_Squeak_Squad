@@ -57,6 +57,8 @@ protected:
 
 	GameEngineCollision* SearchCollision = nullptr;
 private:
+	float Speed = 100.0f;
+
 	void Start() override;
 	void Update(float _Delta) override;
 };

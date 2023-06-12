@@ -31,11 +31,11 @@ void BossMonster::Start()
 	{
 		MainRenderer = CreateRenderer(RenderOrder::Boss);
 
-		MainRenderer->CreateAnimation("Right_Boss_Idle", "Right_Boss.Bmp", 0, 3, 0.1f, true);
-		MainRenderer->CreateAnimation("Right_Boss_Walk", "Right_Boss.Bmp", 4, 7, 0.1f, true);
-		MainRenderer->CreateAnimation("Right_Boss_JumpStart", "Right_Boss.Bmp", 8, 8, 0.1f, false);
+		MainRenderer->CreateAnimation("Right_Boss_Idle", "Right_Boss.Bmp", 0, 3, 0.3f, true);
+		MainRenderer->CreateAnimation("Right_Boss_Walk", "Right_Boss.Bmp", 4, 7, 0.2f, true);
+		MainRenderer->CreateAnimation("Right_Boss_JumpReady", "Right_Boss.Bmp", 8, 8, 0.1f, false);
 		MainRenderer->CreateAnimation("Right_Boss_Jump", "Right_Boss.Bmp", 9, 9, 0.1f, false);
-		MainRenderer->CreateAnimation("Right_Boss_Drop", "Right_Boss.Bmp", 10, 11, 0.1f, false);
+		MainRenderer->CreateAnimation("Right_Boss_Drop", "Right_Boss.Bmp", 11, 11, 0.1f, false);
 		MainRenderer->CreateAnimation("Right_Boss_Search", "Right_Boss.Bmp", 12, 13, 0.1f, false);
 		MainRenderer->CreateAnimation("Right_Boss_AttackSumon", "Right_Boss.Bmp", 14, 16, 0.1f, false);
 		MainRenderer->CreateAnimation("Right_Boss_Attack", "Right_Boss.Bmp", 17, 18, 0.1f, false);
@@ -43,17 +43,17 @@ void BossMonster::Start()
 		MainRenderer->CreateAnimation("Right_Boss_Damage", "Right_Boss.Bmp", 29, 29, 0.1f, false);
 		MainRenderer->CreateAnimation("Right_Boss_Death", "Right_Boss.Bmp", 30, 32, 0.1f, false);
 
-		MainRenderer->CreateAnimation("Left_Boss_Idle", "Left_Boss.Bmp", 0, 3, 0.1f, true);
-		MainRenderer->CreateAnimation("Left_Boss_Walk", "Left_Boss.Bmp", 4, 7, 0.1f, true);
-		MainRenderer->CreateAnimation("Left_Boss_JumpStart", "Left_Boss.Bmp", 8, 8, 0.1f, false);
+		MainRenderer->CreateAnimation("Left_Boss_Idle", "Left_Boss.Bmp", 0, 3, 0.4f, true);
+		MainRenderer->CreateAnimation("Left_Boss_Walk", "Left_Boss.Bmp", 4, 7, 0.3f, true);
+		MainRenderer->CreateAnimation("Left_Boss_JumpReady", "Left_Boss.Bmp", 8, 8, 0.3f, false);
 		MainRenderer->CreateAnimation("Left_Boss_Jump", "Left_Boss.Bmp", 9, 9, 0.1f, false);
-		MainRenderer->CreateAnimation("Left_Boss_Drop", "Left_Boss.Bmp", 10, 11, 0.1f, false);
-		MainRenderer->CreateAnimation("Left_Boss_Search", "Left_Boss.Bmp", 12, 13, 0.1f, false);
-		MainRenderer->CreateAnimation("Left_Boss_AttackSumon", "Left_Boss.Bmp", 14, 16, 0.1f, false);
-		MainRenderer->CreateAnimation("Left_Boss_Attack", "Left_Boss.Bmp", 17, 18, 0.1f, false);
-		MainRenderer->CreateAnimation("Left_Boss_MonsterSummon", "Left_Boss.Bmp", 19, 28, 0.1f, false);
-		MainRenderer->CreateAnimation("Left_Boss_Damage", "Left_Boss.Bmp", 29, 29, 0.1f, false);
-		MainRenderer->CreateAnimation("Left_Boss_Death", "Left_Boss.Bmp", 30, 32, 0.1f, false);
+		MainRenderer->CreateAnimation("Left_Boss_Drop", "Left_Boss.Bmp", 10, 10, 0.2f, false);
+		MainRenderer->CreateAnimation("Left_Boss_Search", "Left_Boss.Bmp", 11, 12, 0.1f, false);
+		MainRenderer->CreateAnimation("Left_Boss_AttackSumon", "Left_Boss.Bmp", 13, 15, 0.1f, false);
+		MainRenderer->CreateAnimation("Left_Boss_Attack", "Left_Boss.Bmp", 16, 17, 0.1f, false);
+		MainRenderer->CreateAnimation("Left_Boss_MonsterSummon", "Left_Boss.Bmp", 18, 27, 0.1f, false);
+		MainRenderer->CreateAnimation("Left_Boss_Damage", "Left_Boss.Bmp", 28, 28, 0.1f, false);
+		MainRenderer->CreateAnimation("Left_Boss_Death", "Left_Boss.Bmp", 29, 31, 0.1f, false);
 	
 		MainRenderer->SetRenderScaleToTexture();
 		MainRenderer->SetScaleRatio(RatioValue);
