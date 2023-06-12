@@ -64,6 +64,8 @@ void BossMonster::Start()
 
 		SearchCollision = CreateCollision(CollisionOrder::BossSearch);
 	}
+
+	ChangeState(BossState::Idle);
 }
 
 void BossMonster::Update(float _Delta)
