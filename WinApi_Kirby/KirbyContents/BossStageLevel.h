@@ -3,6 +3,7 @@
 #include <GameEngineCore/GameEngineLevel.h>
 
 class Ground;
+class BossMonster;
 class BossStageLevel : public GameEngineLevel
 {
 public:
@@ -21,6 +22,10 @@ protected:
 private:
 	Ground* BossStage = nullptr;
 
+	BossMonster* Boss = nullptr;
+
 	void Start() override;
 	void Update(float _Delta) override;
+
+	void LevelStart(GameEngineLevel* _PrevLevel) override;
 };

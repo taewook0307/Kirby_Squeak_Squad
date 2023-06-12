@@ -108,7 +108,7 @@ void BossMonster::ChangeState(BossState _State)
 {
 	if (_State != State)
 	{
-		switch (State)
+		switch (_State)
 		{
 		case BossState::Idle:
 			IdleStart();

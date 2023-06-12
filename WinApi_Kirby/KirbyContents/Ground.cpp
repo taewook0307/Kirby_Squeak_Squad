@@ -38,6 +38,7 @@ void Ground::GroundInit(const std::string& _PathName, const std::string& _BitMap
 		MainSprite = ResourcesManager::GetInst().CreateSpriteFolder(PathName, FolderPath.PlusFilePath(PathName));
 	}
 
+	if (ResourcesManager::GetInst().FindSprite(_BitMapFIleName) == nullptr)
 	{
 		GameEnginePath FilePath;
 

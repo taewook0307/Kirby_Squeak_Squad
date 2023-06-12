@@ -41,6 +41,10 @@ void Monster::IdleUpdate(float _Delta)
 	{
 		Gravity(_Delta);
 	}
+	else
+	{
+		GravityReset();
+	}
 
 	static float IdleTimer = 0.0f;
 
