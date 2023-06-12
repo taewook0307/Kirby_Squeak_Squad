@@ -75,6 +75,9 @@
     <ClInclude Include="IceObject.h">
       <Filter>Player\Form\Ice</Filter>
     </ClInclude>
+    <ClInclude Include="BossMonster.h">
+      <Filter>Monster\Boss</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TitleLevel.cpp">
@@ -195,6 +198,18 @@
     <ClCompile Include="IceObject.cpp">
       <Filter>Player\Form\Ice</Filter>
     </ClCompile>
+    <ClCompile Include="BossMonster.cpp">
+      <Filter>Monster\Boss</Filter>
+    </ClCompile>
+    <ClCompile Include="Boss_Base_State.cpp">
+      <Filter>Monster\Boss</Filter>
+    </ClCompile>
+    <ClCompile Include="Boss_Jump_State.cpp">
+      <Filter>Monster\Boss</Filter>
+    </ClCompile>
+    <ClCompile Include="Boss_Attack_State.cpp">
+      <Filter>Monster\Boss</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Level">
@@ -238,6 +253,9 @@
     </Filter>
     <Filter Include="Player\Form\Tornado">
       <UniqueIdentifier>{6f7f04db-c411-492f-9300-9e77ace68e8a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Monster\Boss">
+      <UniqueIdentifier>{cfc6ce35-4a2a-47d7-84a3-89ab85e95901}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
