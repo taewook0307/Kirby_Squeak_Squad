@@ -46,10 +46,12 @@ protected:
 
 	void DirChange();
 
-	std::string CurState = "";
-	ActorDir Dir = ActorDir::Left;
 	float RatioValue = 3.0f;
+	ActorDir Dir = ActorDir::Left;
+	std::string CurState = "";
 	MonsterType Type = MonsterType::Boss;
+
+	GameEngineCollision* SearchCollision = nullptr;
 private:
 	void Start() override;
 	void Update(float _Delta) override;

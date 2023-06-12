@@ -38,4 +38,10 @@ void BossMonster::Start()
 		MainRenderer->SetRenderScaleToTexture();
 		MainRenderer->SetScaleRatio(RatioValue);
 	}
+
+	{
+		BodyCollision = CreateCollision(CollisionOrder::BossBody);
+
+		SearchCollision = CreateCollision(CollisionOrder::BossSearch)
+	}
 }
