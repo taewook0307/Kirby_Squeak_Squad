@@ -27,9 +27,9 @@ protected:
 	void JumpStart();
 	void DropStart();
 	void SearchStart();
-	void AttackMoveStart();
+	void AttackSumonStart();
 	void AttackStart();
-	void SummonStart();
+	void MonsterSummonStart();
 	void DamageStart();
 	void DeathStart();
 
@@ -38,9 +38,9 @@ protected:
 	void JumpUpdate(float _Delta);
 	void DropUpdate(float _Delta);
 	void SearchUpdate(float _Delta);
-	void AttackMoveUpdate(float _Delta);
+	void AttackSumonUpdate(float _Delta);
 	void AttackUpdate(float _Delta);
-	void SummonUpdate(float _Delta);
+	void MonsterSummonUpdate(float _Delta);
 	void DamageUpdate(float _Delta);
 	void DeathUpdate(float _Delta);
 

@@ -67,9 +67,9 @@ enum class BossMonsterState
 	Jump,
 	Drop,
 	Search,
-	AttackMove,
+	AttackSumon,
 	Attack,
-	Summon,
+	MonsterSummon,
 	Damage,
 	Death
 };
