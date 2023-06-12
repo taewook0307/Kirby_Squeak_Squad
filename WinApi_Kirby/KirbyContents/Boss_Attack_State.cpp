@@ -2,22 +2,22 @@
 
 void BossMonster::SearchStart()
 {
-
+	ChangeAnimationState("Search");
 }
 
 void BossMonster::AttackSummonStart()
 {
-
+	ChangeAnimationState("AttackSummon");
 }
 
 void BossMonster::AttackStart()
 {
-
+	ChangeAnimationState("Attack");
 }
 
 void BossMonster::MonsterSummonStart()
 {
-
+	ChangeAnimationState("MonsterSummon");
 }
 
 void BossMonster::SearchUpdate(float _Delta)

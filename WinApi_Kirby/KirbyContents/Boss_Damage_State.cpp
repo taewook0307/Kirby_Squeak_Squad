@@ -2,12 +2,12 @@
 
 void BossMonster::DamageStart()
 {
-
+	ChangeAnimationState("Damage");
 }
 
 void BossMonster::DeathStart()
 {
-
+	ChangeAnimationState("Death");
 }
 
 void BossMonster::DamageUpdate(float _Delta)
