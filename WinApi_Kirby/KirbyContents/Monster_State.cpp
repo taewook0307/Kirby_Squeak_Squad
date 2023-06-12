@@ -91,6 +91,13 @@ void Monster::WalkUpdate(float _Delta)
 		}
 	}
 
+	if (true == BodyCollision->Collision(CollisionOrder::Body, Col, CollisionType::Rect, CollisionType::Rect))
+	{
+		DirChange();
+		ChangeState(MonsterState::Idle);
+		return;
+	}
+
 	// 이동하지 않을 시 대기 상태 이동
 	if (MoveTimer >= 5.0f)
 	{
