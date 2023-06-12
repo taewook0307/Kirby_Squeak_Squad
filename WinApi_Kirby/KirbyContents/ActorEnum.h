@@ -38,6 +38,17 @@ enum class KirbyState
 	Max
 };
 
+enum class MonsterType
+{
+	Normal,
+	Ice,
+	Fire,
+	Tornado,
+	Spark,
+	Boss,
+	Max
+};
+
 enum class MonsterState
 {
 	Idle,
@@ -49,14 +60,18 @@ enum class MonsterState
 	Max
 };
 
-enum class MonsterType
+enum class BossMonsterState
 {
-	Normal,
-	Ice,
-	Fire,
-	Tornado,
-	Spark,
-	Max
+	Idle,
+	Walk,
+	Jump,
+	Drop,
+	Search,
+	AttackMove,
+	Attack,
+	Summon,
+	Damage,
+	Death
 };
 
 enum class CollisionOrder

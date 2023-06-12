@@ -5,7 +5,6 @@
 
 #include <string>
 #include <vector>
-#include <GameEngineCore/GameEngineCollision.h>
 
 #define MONSTERSPEED 150.0f
 #define MONSTERBODYCOLLISONPOS { 0.0f, -30.0f }
