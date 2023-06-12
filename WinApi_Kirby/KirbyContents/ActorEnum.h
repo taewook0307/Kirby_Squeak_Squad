@@ -60,18 +60,20 @@ enum class MonsterState
 	Max
 };
 
-enum class BossMonsterState
+enum class BossState
 {
 	Idle,
 	Walk,
+	JumpReady,
 	Jump,
 	Drop,
 	Search,
-	AttackSumon,
+	AttackSummon,
 	Attack,
 	MonsterSummon,
 	Damage,
-	Death
+	Death,
+	Max
 };
 
 enum class CollisionOrder

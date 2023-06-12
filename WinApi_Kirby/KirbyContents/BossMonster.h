@@ -20,14 +20,15 @@ public:
 
 protected:
 	void StateUpdate(float _Delta);
-	void ChangeState(MonsterState _State);
+	void ChangeState(BossState _State);
 
 	void IdleStart();
 	void WalkStart();
+	void JumpReadyStart();
 	void JumpStart();
 	void DropStart();
 	void SearchStart();
-	void AttackSumonStart();
+	void AttackSummonStart();
 	void AttackStart();
 	void MonsterSummonStart();
 	void DamageStart();
@@ -35,19 +36,22 @@ protected:
 
 	void IdleUpdate(float _Delta);
 	void WalkUpdate(float _Delta);
+	void JumpReadyUpdate(float _Delta);
 	void JumpUpdate(float _Delta);
 	void DropUpdate(float _Delta);
 	void SearchUpdate(float _Delta);
-	void AttackSumonUpdate(float _Delta);
+	void AttackSummonUpdate(float _Delta);
 	void AttackUpdate(float _Delta);
 	void MonsterSummonUpdate(float _Delta);
 	void DamageUpdate(float _Delta);
 	void DeathUpdate(float _Delta);
 
 	void DirChange();
+	void ChangeAnimationState(const std::string& _StateName);
 
 	float RatioValue = 3.0f;
 	ActorDir Dir = ActorDir::Left;
+	BossState State = BossState::Max;
 	std::string CurState = "";
 	MonsterType Type = MonsterType::Boss;
 
