@@ -62,7 +62,7 @@ void BackGround::BackGroundInit(const std::string& _FileName, const std::string&
 	}
 }
 
-void BackGround::BackGroundAnimationInit(const std::string& _FolderName, const std::string& _GroundFileName /* = "" */)
+void BackGround::BackGroundAnimationFolderInit(const std::string& _FolderName, const std::string& _GroundFileName /* = "" */, float Inter /*= 0.5f*/)
 {
 	{
 		GameEnginePath FolderPath;
@@ -82,7 +82,7 @@ void BackGround::BackGroundAnimationInit(const std::string& _FolderName, const s
 
 	{
 		MainRenderer = CreateRenderer(RenderOrder::BackGround);
-		MainRenderer->CreateAnimation(_FolderName, _FolderName, -1, -1, 0.5f, true);
+		MainRenderer->CreateAnimation(_FolderName, _FolderName, -1, -1, Inter, true);
 		MainRenderer->ChangeAnimation(_FolderName);
 		MainRenderer->SetRenderPos(Scale.Half());
 		MainRenderer->SetRenderScale(Scale);

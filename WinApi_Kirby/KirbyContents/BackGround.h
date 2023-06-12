@@ -20,7 +20,7 @@ public:
 	BackGround& operator=(BackGround&& _Other) noexcept = delete;
 
 	void BackGroundInit(const std::string& _FileName, const std::string& _MapFileName = "");
-	void BackGroundAnimationInit(const std::string& _FolderName, const std::string& _MapFileName = "");
+	void BackGroundAnimationFolderInit(const std::string& _FolderName, const std::string& _MapFileName = "", float Inter = 0.5f);
 
 protected:
 

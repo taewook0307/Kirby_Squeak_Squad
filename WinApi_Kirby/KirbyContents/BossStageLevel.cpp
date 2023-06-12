@@ -1,5 +1,5 @@
 ﻿#include "BossStageLevel.h"
-#include "BackGround.h"
+#include "Ground.h"
 #include "KirbyGameEnum.h"
 
 #include <GameEnginePlatform/GameEngineInput.h>
@@ -15,8 +15,8 @@ BossStageLevel::~BossStageLevel()
 
 void BossStageLevel::Start()
 {
-	BackGround* Back = CreateActor<BackGround>(RenderOrder::BackGround);
-	Back->BackGroundInit("BossStage_1.bmp");
+	BossStage = CreateActor<Ground>(RenderOrder::Map);
+	BossStage->GroundInit("BossStage", "BossStageBitMap.Bmp");
 }
 
 void BossStageLevel::Update(float _Delta)
@@ -24,5 +24,10 @@ void BossStageLevel::Update(float _Delta)
 	if (true == GameEngineInput::IsDown('P'))
 	{
 		GameEngineCore::ChangeLevel("EndingLevel");
+	}
+
+	if (true == GameEngineInput::IsDown('J'))
+	{
+		BossStage->SwitchRender();
 	}
 }
