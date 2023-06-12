@@ -83,6 +83,9 @@ enum class CollisionOrder
 	MonsterBody,
 	MonsterAttack,
 	MonsterSearch,
+	BossBody,
+	BossAttack,
+	BossSearch,
 	Max
 };
 

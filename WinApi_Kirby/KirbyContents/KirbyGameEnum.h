@@ -11,6 +11,7 @@ enum class RenderOrder
 	BackGround,
 	Map,
 	Play,
+	Boss,
 	Monster,
 	PlayUI
 };

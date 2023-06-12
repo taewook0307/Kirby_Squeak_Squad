@@ -48,6 +48,8 @@ protected:
 
 	std::string CurState = "";
 	ActorDir Dir = ActorDir::Left;
+	float RatioValue = 3.0f;
+	MonsterType Type = MonsterType::Boss;
 private:
 	void Start() override;
 	void Update(float _Delta) override;
