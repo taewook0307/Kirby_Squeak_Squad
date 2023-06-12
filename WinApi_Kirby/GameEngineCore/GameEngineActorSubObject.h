@@ -20,6 +20,7 @@ public:
 	GameEngineActorSubObject& operator=(GameEngineActorSubObject&& _Other) noexcept = delete;
 
 	bool IsDeath() override;
+	bool IsUpdate() override;
 
 	GameEngineActor* GetActor() 
 	{
