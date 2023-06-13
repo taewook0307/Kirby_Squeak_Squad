@@ -8,6 +8,7 @@ void BossMonster::MonsterSummonReadyStart()
 void BossMonster::MonsterSummonJumpStart()
 {
 	ChangeAnimationState("MonsterSummonJump");
+	SetGravityVector(float4::UP * 700.0f);
 }
 
 void BossMonster::MonsterSummonDropStart()
@@ -22,7 +23,15 @@ void BossMonster::MonsterSummonStart()
 
 void BossMonster::MonsterSummonReadyUpdate(float _Delta)
 {
+	static float ShoutingTimer = 0.0f;
 
+	if (ShoutingTimer > 2.0f)
+	{
+		ChangeState(BossState::MonsterSummonJump);
+		return;
+	}
+
+	ShoutingTimer += _Delta;
 }
 
 void BossMonster::MonsterSummonJumpUpdate(float _Delta)

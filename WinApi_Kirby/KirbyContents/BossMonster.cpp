@@ -93,12 +93,18 @@ void BossMonster::StateUpdate(float _Delta)
 		return JumpUpdate(_Delta);
 	case BossState::Drop:
 		return DropUpdate(_Delta);
-	case BossState::Search:
-		return SearchUpdate(_Delta);
-	case BossState::AttackSummon:
-		return AttackSummonUpdate(_Delta);
+	case BossState::AttackReady:
+		return AttackReadyUpdate(_Delta);
 	case BossState::Attack:
 		return AttackUpdate(_Delta);
+	case BossState::AttackToIdle:
+		return AttackToIdleUpdate(_Delta);
+	case BossState::MonsterSummonReady:
+		return MonsterSummonReadyUpdate(_Delta);
+	case BossState::MonsterSummonJump:
+		return MonsterSummonJumpUpdate(_Delta);
+	case BossState::MonsterSummonDrop:
+		return MonsterSummonDropUpdate(_Delta);
 	case BossState::MonsterSummon:
 		return MonsterSummonUpdate(_Delta);
 	case BossState::Damage:
@@ -131,14 +137,23 @@ void BossMonster::ChangeState(BossState _State)
 		case BossState::Drop:
 			DropStart();
 			break;
-		case BossState::Search:
-			SearchStart();
-			break;
-		case BossState::AttackSummon:
-			AttackSummonStart();
+		case BossState::AttackReady:
+			AttackReadyStart();
 			break;
 		case BossState::Attack:
 			AttackStart();
+			break;
+		case BossState::AttackToIdle:
+			AttackToIdleStart();
+			break;
+		case BossState::MonsterSummonReady:
+			MonsterSummonReadyStart();
+			break;
+		case BossState::MonsterSummonJump:
+			MonsterSummonJumpStart();
+			break;
+		case BossState::MonsterSummonDrop:
+			MonsterSummonDropStart();
 			break;
 		case BossState::MonsterSummon:
 			MonsterSummonStart();

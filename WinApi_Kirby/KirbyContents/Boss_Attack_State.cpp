@@ -15,7 +15,7 @@ void BossMonster::AttackToIdleStart()
 	ChangeAnimationState("AttackToIdle");
 }
 
-void BossMonster::AttackReady(float _Delta)
+void BossMonster::AttackReadyUpdate(float _Delta)
 {
 
 }
@@ -25,7 +25,7 @@ void BossMonster::AttackUpdate(float _Delta)
 
 }
 
-void BossMonster::AttackToIdle(float _Delta)
+void BossMonster::AttackToIdleUpdate(float _Delta)
 {
 
 }

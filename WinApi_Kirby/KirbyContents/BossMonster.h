@@ -42,9 +42,9 @@ protected:
 	void JumpReadyUpdate(float _Delta);
 	void JumpUpdate(float _Delta);
 	void DropUpdate(float _Delta);
-	void AttackReady(float _Delta);
+	void AttackReadyUpdate(float _Delta);
 	void AttackUpdate(float _Delta);
-	void AttackToIdle(float _Delta);
+	void AttackToIdleUpdate(float _Delta);
 	void MonsterSummonReadyUpdate(float _Delta);
 	void MonsterSummonJumpUpdate(float _Delta);
 	void MonsterSummonDropUpdate(float _Delta);
