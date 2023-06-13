@@ -5,7 +5,6 @@
 
 #include <vector>
 
-#define BASESPEED 500.0f
 #define STARCOLLISIONSCALE { 70.0f, 70.0f }
 #define STARCOLLISIONPOS { 0.0f, -40.0f }
 
@@ -35,7 +34,7 @@ protected:
 
 private:
 	ActorDir Dir = ActorDir::Right;
-	float Speed = BASESPEED;
+	float Speed = 500.0f;
 	float RatioValue = 4.0f;
 
 	std::vector<GameEngineCollision*> StarCol;

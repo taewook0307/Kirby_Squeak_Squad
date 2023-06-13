@@ -78,6 +78,9 @@
     <ClInclude Include="BossMonster.h">
       <Filter>Monster\Boss</Filter>
     </ClInclude>
+    <ClInclude Include="BossAttackObject.h">
+      <Filter>Monster\Boss</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TitleLevel.cpp">
@@ -214,6 +217,9 @@
       <Filter>Monster\Boss</Filter>
     </ClCompile>
     <ClCompile Include="Boss_Summon_State.cpp">
+      <Filter>Monster\Boss</Filter>
+    </ClCompile>
+    <ClCompile Include="BossAttackObject.cpp">
       <Filter>Monster\Boss</Filter>
     </ClCompile>
   </ItemGroup>
