@@ -34,6 +34,11 @@ void BossStageLevel::Update(float _Delta)
 	{
 		BossStage->SwitchRender();
 	}
+
+	if (true == GameEngineInput::IsDown('H'))
+	{
+		CollisionDebugRenderSwitch();
+	}
 }
 
 void BossStageLevel::LevelStart(GameEngineLevel* _PrevLevel)
