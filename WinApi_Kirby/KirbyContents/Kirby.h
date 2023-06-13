@@ -70,6 +70,12 @@ public:
 		return;
 	}
 
+	void ClearForm()
+	{
+		ChangeState(KirbyState::Change);
+		return;
+	}
+
 protected:
 	virtual void StateUpdate(float _Delta);
 	virtual void ChangeState(KirbyState _State);
