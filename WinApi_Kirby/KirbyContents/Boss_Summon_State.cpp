@@ -25,15 +25,11 @@ void BossMonster::MonsterSummonStart()
 
 void BossMonster::MonsterSummonReadyUpdate(float _Delta)
 {
-	static float ShoutingTimer = 0.0f;
-
-	if (ShoutingTimer > 2.0f)
+	if (true == MainRenderer->IsAnimationEnd())
 	{
 		ChangeState(BossState::MonsterSummonJump);
 		return;
 	}
-
-	ShoutingTimer += _Delta;
 }
 
 void BossMonster::MonsterSummonJumpUpdate(float _Delta)

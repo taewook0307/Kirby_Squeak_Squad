@@ -40,7 +40,7 @@ void BossMonster::Start()
 		MainRenderer->CreateAnimation("Right_Boss_Drop", "Right_Boss.Bmp", 10, 10, 0.2f, false);
 		MainRenderer->CreateAnimation("Right_Boss_AttackReady", "Right_Boss.Bmp", 11, 12, 0.1f, true);
 		MainRenderer->CreateAnimation("Right_Boss_Attack", "Right_Boss.Bmp", 15, 19, 0.2f, false);
-		MainRenderer->CreateAnimation("Right_Boss_AttackToIdle", "Right_Boss.Bmp", 20, 20, 0.1f, false);
+		MainRenderer->CreateAnimation("Right_Boss_AttackToIdle", "Right_Boss.Bmp", 20, 20, 0.3f, false);
 		MainRenderer->CreateAnimation("Right_Boss_MonsterSummonReady", "Right_Boss.Bmp", 21, 23, 0.3f, false);
 		MainRenderer->CreateAnimation("Right_Boss_MonsterSummonJump", "Right_Boss.Bmp", 24, 26, 0.2f, false);
 		MainRenderer->CreateAnimation("Right_Boss_MonsterSummonDrop", "Right_Boss.Bmp", 27, 28, 0.2f, false);
@@ -53,11 +53,10 @@ void BossMonster::Start()
 		MainRenderer->CreateAnimation("Left_Boss_JumpReady", "Left_Boss.Bmp", 8, 8, 0.3f, false);
 		MainRenderer->CreateAnimation("Left_Boss_Jump", "Left_Boss.Bmp", 9, 9, 0.1f, false);
 		MainRenderer->CreateAnimation("Left_Boss_Drop", "Left_Boss.Bmp", 10, 10, 0.2f, false);
-		MainRenderer->CreateAnimation("Left_Boss_AttackReady", "Left_Boss.Bmp", 11, 12, 0.1f, true);
+		MainRenderer->CreateAnimation("Left_Boss_AttackReady", "Left_Boss.Bmp", 11, 14, 0.1f, true);
 		MainRenderer->CreateAnimation("Left_Boss_Attack", "Left_Boss.Bmp", 15, 19, 0.2f, false);
-		MainRenderer->CreateAnimation("Left_Boss_AttackToIdle", "Left_Boss.Bmp", 20, 20, 0.1f, false);
+		MainRenderer->CreateAnimation("Left_Boss_AttackToIdle", "Left_Boss.Bmp", 20, 20, 0.3f, false);
 		MainRenderer->CreateAnimation("Left_Boss_MonsterSummonReady", "Left_Boss.Bmp", 21, 23, 0.3f, false);
-		MainRenderer->FindAnimation("Left_Boss_MonsterSummonReady")->Inters[2] = 0.05f;
 		MainRenderer->CreateAnimation("Left_Boss_MonsterSummonJump", "Left_Boss.Bmp", 24, 26, 0.2f, false);
 		MainRenderer->CreateAnimation("Left_Boss_MonsterSummonDrop", "Left_Boss.Bmp", 27, 28, 0.2f, false);
 		MainRenderer->CreateAnimation("Left_Boss_MonsterSummon", "Left_Boss.Bmp", 29, 36, 0.2f, false);

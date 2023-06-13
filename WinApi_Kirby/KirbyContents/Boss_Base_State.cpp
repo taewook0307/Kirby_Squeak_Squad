@@ -29,7 +29,7 @@ void BossMonster::IdleUpdate(float _Delta)
 
 	if (true == GameEngineInput::IsPress(VK_SPACE))
 	{
-		ChangeState(BossState::MonsterSummonReady);
+		ChangeState(BossState::AttackReady);
 		return;
 	}
 }
