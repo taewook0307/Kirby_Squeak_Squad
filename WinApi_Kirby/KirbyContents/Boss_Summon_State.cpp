@@ -1,6 +1,10 @@
 #include "BossMonster.h"
+#include "Monster.h"
+#include "KirbyGameEnum.h"
 
+#include <GameEnginePlatform/GameEngineWindow.h>
 #include <GameEngineCore/GameEngineRenderer.h>
+#include <GameEngineCore/GameEngineLevel.h>
 
 void BossMonster::MonsterSummonReadyStart()
 {
@@ -70,11 +74,13 @@ void BossMonster::MonsterSummonDropUpdate(float _Delta)
 
 void BossMonster::MonsterSummonUpdate(float _Delta)
 {
-	// 몬스터 소환 기능 추가 필요
-
-
 	if (true == MainRenderer->IsAnimationEnd())
 	{
+		float4 WinScale = GameEngineWindow::MainWindow.GetScale();
+		Monster* SummonMonster = GetLevel()->CreateActor<Monster>(RenderOrder::Monster);
+		SummonMonster->SetPos({ WinScale.Half().Half().X, 100.0f });
+		SummonMonster->SetGroundBitMap(GetGroundBitMap());
+
 		ChangeState(BossState::Idle);
 		return;
 	}
