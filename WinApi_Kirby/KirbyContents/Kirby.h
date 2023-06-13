@@ -64,6 +64,12 @@ public:
 		return DeathCheck;
 	}
 
+	void ChangeLevelStart()
+	{
+		ChangeState(KirbyState::Drop);
+		return;
+	}
+
 protected:
 	virtual void StateUpdate(float _Delta);
 	virtual void ChangeState(KirbyState _State);

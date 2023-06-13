@@ -53,26 +53,31 @@ void BossStageLevel::LevelStart(GameEngineLevel* _PrevLevel)
 	{
 		LevelPlayer = CreateActor<Kirby>(RenderOrder::Play);
 		LevelPlayer->MapChangeAnimationEndReset();
+		LevelPlayer->ChangeLevelStart();
 	}
 	else if (GetLevelPlayerForm() == MonsterType::Fire)
 	{
 		LevelPlayer = CreateActor<FireKirby>(RenderOrder::Play);
 		LevelPlayer->MapChangeAnimationEndReset();
+		LevelPlayer->ChangeLevelStart();
 	}
 	else if (GetLevelPlayerForm() == MonsterType::Ice)
 	{
 		LevelPlayer = CreateActor<IceKirby>(RenderOrder::Play);
 		LevelPlayer->MapChangeAnimationEndReset();
+		LevelPlayer->ChangeLevelStart();
 	}
 	else if (GetLevelPlayerForm() == MonsterType::Spark)
 	{
 		LevelPlayer = CreateActor<SparkKirby>(RenderOrder::Play);
 		LevelPlayer->MapChangeAnimationEndReset();
+		LevelPlayer->ChangeLevelStart();
 	}
 	else if (GetLevelPlayerForm() == MonsterType::Tornado)
 	{
 		LevelPlayer = CreateActor<TornadoKirby>(RenderOrder::Play);
 		LevelPlayer->MapChangeAnimationEndReset();
+		LevelPlayer->ChangeLevelStart();
 	}
 
 	if (nullptr == LevelPlayer)
