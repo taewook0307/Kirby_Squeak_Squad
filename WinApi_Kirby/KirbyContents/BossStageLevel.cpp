@@ -1,11 +1,17 @@
 ﻿#include "BossStageLevel.h"
 #include "Ground.h"
+#include "Kirby.h"
+#include "IceKirby.h"
+#include "FireKirby.h"
+#include "SparkKirby.h"
+#include "TornadoKirby.h"
 #include "BossMonster.h"
 #include "KirbyGameEnum.h"
 
 #include <GameEnginePlatform/GameEngineWindow.h>
 #include <GameEnginePlatform/GameEngineInput.h>
 #include <GameEngineCore/GameEngineCore.h>
+#include <GameEngineCore/GameEngineCamera.h>
 
 BossStageLevel::BossStageLevel()
 {
@@ -43,6 +49,38 @@ void BossStageLevel::Update(float _Delta)
 
 void BossStageLevel::LevelStart(GameEngineLevel* _PrevLevel)
 {
+	if (GetLevelPlayerForm() == MonsterType::Normal)
+	{
+		LevelPlayer = CreateActor<Kirby>(RenderOrder::Play);
+		LevelPlayer->MapChangeAnimationEndReset();
+	}
+	else if (GetLevelPlayerForm() == MonsterType::Fire)
+	{
+		LevelPlayer = CreateActor<FireKirby>(RenderOrder::Play);
+		LevelPlayer->MapChangeAnimationEndReset();
+	}
+	else if (GetLevelPlayerForm() == MonsterType::Ice)
+	{
+		LevelPlayer = CreateActor<IceKirby>(RenderOrder::Play);
+		LevelPlayer->MapChangeAnimationEndReset();
+	}
+	else if (GetLevelPlayerForm() == MonsterType::Spark)
+	{
+		LevelPlayer = CreateActor<SparkKirby>(RenderOrder::Play);
+		LevelPlayer->MapChangeAnimationEndReset();
+	}
+	else if (GetLevelPlayerForm() == MonsterType::Tornado)
+	{
+		LevelPlayer = CreateActor<TornadoKirby>(RenderOrder::Play);
+		LevelPlayer->MapChangeAnimationEndReset();
+	}
+
+	if (nullptr == LevelPlayer)
+	{
+		MsgBoxAssert("플레이어를 세팅하지 못했습니다.");
+		return;
+	}
+
 	if (nullptr == Boss)
 	{
 		MsgBoxAssert("보스 몬스터가 생성되지 않았습니다.");
@@ -51,6 +89,11 @@ void BossStageLevel::LevelStart(GameEngineLevel* _PrevLevel)
 
 	{
 		float4 WinScale = GameEngineWindow::MainWindow.GetScale();
+		LevelPlayer->SetPos({ WinScale.Half().Half().X, WinScale.Half().Half().Y });
+		LevelPlayer->SetGroundBitMap("BossStageBitMap.Bmp");
+
+		GetMainCamera()->SetPos(float4::ZERO);
+
 		Boss->SetPos({ WinScale.Half().X + WinScale.Half().Half().X, WinScale.Half().Half().Y });
 		Boss->SetGroundBitMap("BossStageBitMap.Bmp");
 	}

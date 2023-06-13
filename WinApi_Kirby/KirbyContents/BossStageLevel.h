@@ -1,10 +1,11 @@
 #pragma once
 
-#include <GameEngineCore/GameEngineLevel.h>
+#include "SubLevel.h"
 
 class Ground;
+class Kirby;
 class BossMonster;
-class BossStageLevel : public GameEngineLevel
+class BossStageLevel : public SubLevel
 {
 public:
 	// constrcuter destructer
@@ -22,6 +23,7 @@ protected:
 private:
 	Ground* BossStage = nullptr;
 
+	Kirby* LevelPlayer = nullptr;
 	BossMonster* Boss = nullptr;
 
 	void Start() override;

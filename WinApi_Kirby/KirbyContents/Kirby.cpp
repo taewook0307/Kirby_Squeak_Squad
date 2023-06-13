@@ -459,7 +459,7 @@ void Kirby::CameraMove(float4 _MovePos)
 	}
 
 	// 카메라가 맵 오른쪽 밖으로 이동할 경우
-	if (CameraPos.X + WinScale.X >= BitMapScale.X)
+	if (CameraPos.X + WinScale.X > BitMapScale.X)
 	{
 		return;
 	}
