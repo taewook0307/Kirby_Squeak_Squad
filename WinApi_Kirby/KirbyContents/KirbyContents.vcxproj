@@ -162,6 +162,7 @@
     <ClCompile Include="Boss_Base_State.cpp" />
     <ClCompile Include="Boss_Damage_State.cpp" />
     <ClCompile Include="Boss_Jump_State.cpp" />
+    <ClCompile Include="Boss_Summon_State.cpp" />
     <ClCompile Include="EndingLevel.cpp">
       <SubType>
       </SubType>

@@ -46,4 +46,17 @@ void BossMonster::WalkUpdate(float _Delta)
 	{
 		GravityReset();
 	}
+
+	float4 MovePos = float4::ZERO;
+
+	if (ActorDir::Left == Dir)
+	{
+		MovePos = float4::LEFT * Speed * _Delta;
+	}
+	else
+	{
+		MovePos = float4::RIGHT * Speed * _Delta;
+	}
+
+	AddPos(MovePos);
 }

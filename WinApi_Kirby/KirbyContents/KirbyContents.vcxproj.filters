@@ -213,6 +213,9 @@
     <ClCompile Include="Boss_Damage_State.cpp">
       <Filter>Monster\Boss</Filter>
     </ClCompile>
+    <ClCompile Include="Boss_Summon_State.cpp">
+      <Filter>Monster\Boss</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Level">

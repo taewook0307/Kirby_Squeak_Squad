@@ -1,15 +1,8 @@
 #include "BossMonster.h"
 
-#include <GameEngineCore/GameEngineRenderer.h>
-
-void BossMonster::SearchStart()
+void BossMonster::AttackReadyStart()
 {
-	ChangeAnimationState("Search");
-}
-
-void BossMonster::AttackSummonStart()
-{
-	ChangeAnimationState("AttackSummon");
+	ChangeAnimationState("AttackReady");
 }
 
 void BossMonster::AttackStart()
@@ -17,43 +10,22 @@ void BossMonster::AttackStart()
 	ChangeAnimationState("Attack");
 }
 
-void BossMonster::MonsterSummonStart()
+void BossMonster::AttackToIdleStart()
 {
-	ChangeAnimationState("MonsterSummon");
+	ChangeAnimationState("AttackToIdle");
 }
 
-void BossMonster::SearchUpdate(float _Delta)
+void BossMonster::AttackReady(float _Delta)
 {
-	if (true == MainRenderer->IsAnimationEnd())
-	{
-		ChangeState(BossState::AttackSummon);
-		return;
-	}
-}
 
-void BossMonster::AttackSummonUpdate(float _Delta)
-{
-	if (true == MainRenderer->IsAnimationEnd())
-	{
-		ChangeState(BossState::Attack);
-		return;
-	}
 }
 
 void BossMonster::AttackUpdate(float _Delta)
 {
-	if (true == MainRenderer->IsAnimationEnd())
-	{
-		ChangeState(BossState::Idle);
-		return;
-	}
+
 }
 
-void BossMonster::MonsterSummonUpdate(float _Delta)
+void BossMonster::AttackToIdle(float _Delta)
 {
-	if (true == MainRenderer->IsAnimationEnd())
-	{
-		ChangeState(BossState::Idle);
-		return;
-	}
+
 }
