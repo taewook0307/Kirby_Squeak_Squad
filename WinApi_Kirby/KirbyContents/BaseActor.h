@@ -80,11 +80,17 @@ public:
 	{
 		return BodyCollision;
 	}
-
+	
 protected:
+	void IsCheckPosPointChange()
+	{
+		IsCheckPosPoint = !IsCheckPosPoint;
+	}
+
 	GameEngineCollision* BodyCollision = nullptr;
 	GameEngineRenderer* MainRenderer = nullptr;
 
+	bool IsCheckPosPoint = false;
 private:
 	GameEngineWindowTexture* GroundBitMap = nullptr;
 

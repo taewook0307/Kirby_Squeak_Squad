@@ -144,11 +144,6 @@ protected:
 
 	void KirbyGravity(float _Delta);
 
-	void IsCheckPosPointChange()
-	{
-		IsCheckPosPoint = !IsCheckPosPoint;
-	}
-
 	KirbyState State = KirbyState::Max;
 	ActorDir Dir = ActorDir::Right;
 	std::string CurState = "";
@@ -159,8 +154,6 @@ protected:
 	float FlyPower = FLYPOWER;
 
 	std::vector<GameEngineCollision*> Col;
-
-	bool IsCheckPosPoint = false;
 
 	bool MapChangeAnimationEnd = false;
 

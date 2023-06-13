@@ -2,6 +2,8 @@
 #include "KirbyGameEnum.h"
 
 #include <GameEngineBase/GameEnginePath.h>
+#include <GameEnginePlatform/GameEngineWindow.h>
+#include <GameEnginePlatform/GameEngineInput.h>
 #include <GameEngineCore/ResourcesManager.h>
 #include <GameEngineCore/GameEngineRenderer.h>
 #include <GameEngineCore/GameEngineCollision.h>
@@ -55,6 +57,7 @@ void BossMonster::Start()
 		MainRenderer->CreateAnimation("Left_Boss_Attack", "Left_Boss.Bmp", 15, 19, 0.2f, false);
 		MainRenderer->CreateAnimation("Left_Boss_AttackToIdle", "Left_Boss.Bmp", 20, 20, 0.1f, false);
 		MainRenderer->CreateAnimation("Left_Boss_MonsterSummonReady", "Left_Boss.Bmp", 21, 23, 0.3f, false);
+		MainRenderer->FindAnimation("Left_Boss_MonsterSummonReady")->Inters[2] = 0.05f;
 		MainRenderer->CreateAnimation("Left_Boss_MonsterSummonJump", "Left_Boss.Bmp", 24, 26, 0.2f, false);
 		MainRenderer->CreateAnimation("Left_Boss_MonsterSummonDrop", "Left_Boss.Bmp", 27, 28, 0.2f, false);
 		MainRenderer->CreateAnimation("Left_Boss_MonsterSummon", "Left_Boss.Bmp", 29, 36, 0.2f, false);
@@ -77,6 +80,11 @@ void BossMonster::Start()
 void BossMonster::Update(float _Delta)
 {
 	StateUpdate(_Delta);
+
+	if (true == GameEngineInput::IsDown('J'))
+	{
+		IsCheckPosPointChange();
+	}
 }
 
 void BossMonster::StateUpdate(float _Delta)
@@ -213,4 +221,18 @@ void BossMonster::ChangeAnimationState(const std::string& _StateName)
 	CurState = _StateName;
 
 	MainRenderer->ChangeAnimation(AnimationName);
+}
+
+void BossMonster::Render(float _Delta)
+{
+	HDC dc = GameEngineWindow::MainWindow.GetBackBuffer()->GetImageDC();
+
+	CollisionData Data;
+
+	if (true == IsCheckPosPoint)
+	{
+		Data.Pos = GetPos();
+		Data.Scale = { 5, 5 };
+		Rectangle(dc, Data.iLeft(), Data.iTop(), Data.iRight(), Data.iBot());
+	}
 }
