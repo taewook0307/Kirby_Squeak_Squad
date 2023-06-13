@@ -4,6 +4,17 @@
 // 설명 :
 class GameEngineMath
 {
+public:
+	static const float PI;
+	static const float PI2;
+
+	static const float D2R;
+	static const float R2D;
+
+	// 3.14 => 180도
+	// float R = 3.14;
+	// float Result = R * (180.0f / 3.14);
+
 };
 
 class float4
@@ -202,16 +213,51 @@ public:
 
 
 public:
-	float PI = 3.141592f;
-
-	inline float4 GetUnitVectorFromAngle(const float _Degree)
+	inline float GetVectorToDeg(const float4& _Vector)
 	{
-		float Angle = _Degree * (PI / 180.0f);
 
-		float Base = static_cast<float>(cos(Angle));
-		float Height = static_cast<float>(sin(Angle));
 
-		return float4{ Base , Height };
+
+		return 0.0f;
+	}
+
+	inline float GetVectorToRad(const float4& _Vector)
+	{
+		float4 CalVector = _Vector;
+		CalVector.Normalize();
+		// acos함수는 이녀석이 180도를 넘어가게 되면 
+		// 똑같은 값을 리턴하기 시작합니다.
+		float Rad = acosf(CalVector.X);
+
+		//if (_Vector.Y < 0)
+		//{
+
+		//}
+
+		// 2         => 1;                 
+		// 
+		// CalVector.X = > cosf(각도);
+		// CalVector.Y = > sinf(각도);
+		return 0.0f;
+	}
+
+	// GetUnitVectorFromDeg(45)
+
+	inline float4 GetUnitVectorFromDeg(const float _Degree)
+	{
+		// 90 => 1.57
+		return GetUnitVectorFromRad(_Degree * GameEngineMath::D2R);
+	}
+
+	//                                       90.0f
+	inline float4 GetUnitVectorFromRad(const float _Rad)
+	{
+		// cosf(_Rad)반지름의 길이 1일때의 cosf값이 구해집니다.
+		// sinf(_Rad)반지름의 길이 1일때의 sinf값이 구해집니다.
+		// => 빗변의 길이가 1일때의 결과가 나온다.
+
+		// 1.57
+		return { cosf(_Rad) , sinf(_Rad) };
 	}
 };
 

@@ -3,24 +3,27 @@
 
 GameEngineRandom GameEngineRandom::MainRandom;
 
-GameEngineRandom::GameEngineRandom() 
+GameEngineRandom::GameEngineRandom()
 {
-	Seed = (int)time(nullptr);
-	srand(Seed);
 }
 
 GameEngineRandom::GameEngineRandom(int _Seed)
 {
-	Seed = _Seed;
-	srand(Seed);
 }
 
 int GameEngineRandom::RandomInt(int _Min, int _Max)
 {
-	return (rand() % (_Max + 1 - _Min)) + _Min;
+	std::uniform_int_distribution<int> RandomCreator(_Min, _Max);
+	return RandomCreator(MtGen);
 }
 
-GameEngineRandom::~GameEngineRandom() 
+float GameEngineRandom::RandomFloat(float _Min, float _Max)
+{
+	std::uniform_real_distribution<float> RandomCreator(_Min, _Max);
+	return RandomCreator(MtGen);
+}
+
+GameEngineRandom::~GameEngineRandom()
 {
 }
 
