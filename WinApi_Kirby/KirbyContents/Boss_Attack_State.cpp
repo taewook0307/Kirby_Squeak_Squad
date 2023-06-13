@@ -1,6 +1,9 @@
 #include "BossMonster.h"
+#include "BossAttackObject.h"
+#include "KirbyGameEnum.h"
 
 #include <GameEngineCore/GameEngineRenderer.h>
+#include <GameEngineCore/GameEngineLevel.h>
 
 void BossMonster::AttackReadyStart()
 {
@@ -35,6 +38,10 @@ void BossMonster::AttackUpdate(float _Delta)
 {
 	if (true == MainRenderer->IsAnimationEnd())
 	{
+		BossAttackObject* SummonAttacker = GetLevel()->CreateActor<BossAttackObject>(RenderOrder::Boss);
+		SummonAttacker->SetPos(GetPos());
+		SummonAttacker->SetGroundBitMap(GetGroundBitMap());
+
 		ChangeState(BossState::AttackToIdle);
 		return;
 	}

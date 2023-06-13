@@ -18,6 +18,15 @@
 class AttackObject;
 class Kirby : public BaseActor
 {
+private:
+	static Kirby* MainKirby;
+
+public:
+	static Kirby* GetMainKirby()
+	{
+		return MainKirby;
+	}
+
 public:
 	// constrcuter destructer
 	Kirby();
@@ -178,6 +187,8 @@ protected:
 	int Att = BASEATT;
 
 	bool DeathCheck = false;
+
+	void LevelStart() override;
 private:
 	GameEngineCollision* InhaleCollision = nullptr;
 	MonsterType KeepType = MonsterType::Max;

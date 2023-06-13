@@ -1,6 +1,6 @@
 #pragma once
 
-#include "BaseActor.h"
+#include "Monster.h"
 #include "ActorEnum.h"
 
 #include <vector>
@@ -8,7 +8,7 @@
 #define BOSSATTACKCOLLISIONSCALE { 70.0f, 70.0f }
 #define BOSSATTACKCOLLISIONPOS { 0.0f, -40.0f }
 
-class BossAttackObject : public BaseActor
+class BossAttackObject : public Monster
 {
 	friend class BossMonster;
 public:
@@ -27,8 +27,10 @@ public:
 protected:
 
 private:
-	float Speed = 150.0f;
+	float Speed = 300.0f;
 	float RatioValue = 4.0f;
+
+	std::vector<GameEngineCollision*> BossAttackCol;
 
 	void Start() override;
 	void Update(float _Delta) override;

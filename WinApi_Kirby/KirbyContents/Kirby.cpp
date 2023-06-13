@@ -11,6 +11,8 @@
 #include <GameEngineCore/GameEngineSprite.h>
 #include <GameEngineCore/GameEngineCollision.h>
 
+Kirby* Kirby::MainKirby = nullptr;
+
 Kirby::Kirby()
 {
 }
@@ -471,4 +473,9 @@ void Kirby::CameraMove(float4 _MovePos)
 	}
 
 	GetLevel()->GetMainCamera()->AddPos({ _MovePos.X, 0.0f });
+}
+
+void Kirby::LevelStart()
+{
+	MainKirby = this;
 }

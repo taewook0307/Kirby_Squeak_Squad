@@ -38,11 +38,11 @@ void Kirby::DamageUpdate(float _Delta)
 	float4 CheckPos = float4::ZERO;
 	GameEngineCollision* CurMonsterCollision = Col[Col.size() - 1];
 	GameEngineActor* CurMonster = CurMonsterCollision->GetActor();
-	Monster* ColMonster = dynamic_cast<Monster*>(CurMonster);
-	int MonsterAtt = ColMonster->GetMonsterAtt();
-	float4 DirPos = GetPos() - CurMonster->GetPos();
+	// Monster* ColMonster = dynamic_cast<Monster*>(CurMonster);
+	// int MonsterAtt = ColMonster->GetMonsterAtt();
+	//float4 DirPos = GetPos() - CurMonster->GetPos();
 	unsigned int Color = 0;
-	unsigned int XColor = 0;
+	//unsigned int XColor = 0;
 
 	if (FlyPos.Y < 0)
 	{
@@ -60,7 +60,7 @@ void Kirby::DamageUpdate(float _Delta)
 		AddPos(FlyPos);
 	}
 
-	if (DirPos.X > 0.0f)
+	/*if (DirPos.X > 0.0f)
 	{
 		MovePos = { Speed * _Delta, 0.0f };
 		XCheckPos = RIGHTBOTCHECKPOS;
@@ -77,7 +77,7 @@ void Kirby::DamageUpdate(float _Delta)
 	{
 		AddPos(MovePos);
 		CameraMove(MovePos);
-	}
+	}*/
 
 	FlyPower -= 25.0f;
 
@@ -85,7 +85,7 @@ void Kirby::DamageUpdate(float _Delta)
 		|| true == MainRenderer->IsAnimationEnd() && DOORCOLOR != Color)
 	{
 		FlyPower = BASEPOWER;
-		Damage(MonsterAtt);
+		// Damage(MonsterAtt);
 
 		if (Hp < 0)
 		{
