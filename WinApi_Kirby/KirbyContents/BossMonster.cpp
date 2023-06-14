@@ -69,8 +69,10 @@ void BossMonster::Start()
 
 	{
 		BodyCollision = CreateCollision(CollisionOrder::BossBody);
-
-		SearchCollision = CreateCollision(CollisionOrder::BossSearch);
+		BodyCollision->SetCollisionPos(BOSSBODYCOLLISIONPOS);
+		BodyCollision->SetCollisionScale(BOSSBODYCOLLISIONSCALE);
+		BodyCollision->SetCollisionType(CollisionType::Rect);
+		// SearchCollision = CreateCollision(CollisionOrder::BossSearch);
 	}
 
 	ChangeState(BossState::Idle);

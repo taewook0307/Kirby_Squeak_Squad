@@ -5,6 +5,9 @@
 
 #include <string>
 
+#define BOSSBODYCOLLISIONPOS { 0.0f, -120.0f }
+#define BOSSBODYCOLLISIONSCALE { 230.0f, 230.0f }
+
 class BossMonster : public BaseActor
 {
 public:
