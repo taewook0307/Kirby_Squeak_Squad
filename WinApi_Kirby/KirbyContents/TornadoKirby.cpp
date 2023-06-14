@@ -29,7 +29,7 @@ void TornadoKirby::Start()
 	}
 
 	{
-		MainRenderer = CreateRenderer(RenderOrder::Monster);
+		MainRenderer = CreateRenderer(RenderOrder::Play);
 
 		MainRenderer->CreateAnimation("Right_Tornado_Idle", "Right_TornadoKirby.Bmp", 0, 7, 0.125f, true);
 		MainRenderer->CreateAnimation("Right_Tornado_Down", "Right_TornadoKirby.Bmp", 8, 15, 0.125f, true);

@@ -28,7 +28,7 @@ void BossAttackObject::Start()
 	}
 
 	{
-		MainRenderer = CreateRenderer(RenderOrder::Play);
+		MainRenderer = CreateRenderer(RenderOrder::Monster);
 
 		MainRenderer->CreateAnimation("BossAttack_Idle", "Star.Bmp", 0, 7, 0.1f, true);
 		MainRenderer->CreateAnimation("BossAttack_Death", "Star.Bmp", 8, 11, 0.1f, false);

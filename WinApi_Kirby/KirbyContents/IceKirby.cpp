@@ -29,7 +29,7 @@ void IceKirby::Start()
 	}
 
 	{
-		MainRenderer = CreateRenderer(RenderOrder::Monster);
+		MainRenderer = CreateRenderer(RenderOrder::Play);
 
 		MainRenderer->CreateAnimation("Right_Ice_Idle", "Right_IceKirby.Bmp", 0, 1, 0.5f, true);
 		MainRenderer->CreateAnimation("Right_Ice_Down", "Right_IceKirby.Bmp", 2, 3, 0.5f, true);
