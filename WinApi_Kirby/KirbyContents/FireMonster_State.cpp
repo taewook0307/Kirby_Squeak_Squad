@@ -5,7 +5,7 @@
 
 void FireMonster::IdleUpdate(float _Delta)
 {
-	DamageMove();
+	DamageStateMove();
 
 	BodyCollision->On();
 
@@ -42,7 +42,7 @@ void FireMonster::IdleUpdate(float _Delta)
 
 void FireMonster::WalkUpdate(float _Delta)
 {
-	DamageMove();
+	DamageStateMove();
 	
 	static float WalkTimer = 0.0f;
 
@@ -103,7 +103,7 @@ void FireMonster::WalkUpdate(float _Delta)
 
 void FireMonster::AttackUpdate(float _Delta)
 {
-	DamageMove();
+	DamageStateMove();
 
 	AttackCollision->On();
 

@@ -6,7 +6,7 @@ void SparkMonster::IdleUpdate(float _Delta)
 {
 	static float IdleTimer = 0.0f;
 
-	DamageMove();
+	DamageStateMove();
 
 	BodyCollision->On();
 
@@ -21,7 +21,7 @@ void SparkMonster::IdleUpdate(float _Delta)
 
 void SparkMonster::WalkUpdate(float _Delta)
 {
-	DamageMove();
+	DamageStateMove();
 
 	unsigned int Color = GetGroundColor(EMPTYCOLOR);
 
@@ -53,7 +53,7 @@ void SparkMonster::WalkUpdate(float _Delta)
 
 void SparkMonster::AttackUpdate(float _Delta)
 {
-	DamageMove();
+	DamageStateMove();
 
 	AttackCollision->On();
 

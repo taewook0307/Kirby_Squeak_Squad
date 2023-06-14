@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Monster.h"
+#include "BaseActor.h"
 #include "ActorEnum.h"
 
 #include <vector>
@@ -8,7 +8,7 @@
 #define BOSSATTACKCOLLISIONSCALE { 70.0f, 70.0f }
 #define BOSSATTACKCOLLISIONPOS { 0.0f, -40.0f }
 
-class BossAttackObject : public Monster
+class BossAttackObject : public BaseActor
 {
 	friend class BossMonster;
 public:

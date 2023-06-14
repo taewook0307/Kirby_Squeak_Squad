@@ -5,7 +5,7 @@
 
 void IceMonster::IdleUpdate(float _Delta)
 {
-	DamageMove();
+	DamageStateMove();
 
 	BodyCollision->On();
 
@@ -39,7 +39,7 @@ void IceMonster::IdleUpdate(float _Delta)
 
 void IceMonster::WalkUpdate(float _Delta)
 {
-	DamageMove();
+	DamageStateMove();
 
 	float4 MovePos = float4::ZERO;
 
@@ -70,7 +70,7 @@ void IceMonster::WalkUpdate(float _Delta)
 
 void IceMonster::AttackUpdate(float _Delta)
 {
-	DamageMove();
+	DamageStateMove();
 
 	AttackCollision->On();
 

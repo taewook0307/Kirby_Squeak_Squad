@@ -31,7 +31,7 @@ void Monster::DeathStart()
 
 void Monster::IdleUpdate(float _Delta)
 {
-	DamageMove();
+	DamageStateMove();
 
 	BodyCollision->On();
 
@@ -60,7 +60,7 @@ void Monster::IdleUpdate(float _Delta)
 
 void Monster::WalkUpdate(float _Delta)
 {
-	DamageMove();
+	DamageStateMove();
 
 	static float MoveTimer = 0.0f;
 
@@ -133,12 +133,12 @@ void Monster::DamageUpdate(float _Delta)
 
 	if (ActorDir::Left == DeathDir)
 	{
-		MovePos = float4::LEFT * Speed * _Delta;
+		MovePos = float4::LEFT * Speed * 0.5f * _Delta;
 		CheckPos = LEFTCHECKPOS;
 	}
 	else
 	{
-		MovePos = float4::RIGHT * Speed * _Delta;
+		MovePos = float4::RIGHT * Speed * 0.5f * _Delta;
 		CheckPos = RIGHTCHECKPOS;
 	}
 
@@ -173,7 +173,7 @@ void Monster::DeathUpdate(float _Delta)
 	}
 }
 
-void Monster::DamageMove()
+void Monster::DamageStateMove()
 {
 	if (true == BodyCollision->Collision(CollisionOrder::Inhale, Col, CollisionType::Rect, CollisionType::Rect))
 	{

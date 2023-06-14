@@ -5,7 +5,7 @@
 
 void TornadoMonster::IdleUpdate(float _Delta)
 {
-	DamageMove();
+	DamageStateMove();
 
 	BodyCollision->On();
 
@@ -19,7 +19,7 @@ void TornadoMonster::IdleUpdate(float _Delta)
 
 void TornadoMonster::WalkUpdate(float _Delta)
 {
-	DamageMove();
+	DamageStateMove();
 	
 	static float WalkTimer = 0.0f;
 
@@ -65,7 +65,7 @@ void TornadoMonster::WalkUpdate(float _Delta)
 
 void TornadoMonster::AttackUpdate(float _Delta)
 {
-	DamageMove();
+	DamageStateMove();
 
 	AttackCollision->On();
 

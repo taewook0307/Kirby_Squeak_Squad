@@ -49,7 +49,7 @@ protected:
 	void DamageUpdate(float _Delta);
 	void DeathUpdate(float _Delta);
 
-	void DamageMove();
+	void DamageStateMove();
 
 	virtual void DirChange();
 
@@ -64,8 +64,8 @@ protected:
 	MonsterType Type = MonsterType::Normal;
 	std::vector<GameEngineCollision*> Col;
 
-	int Att = MONSTERATT;
 private:
+	int Att = MONSTERATT;
 	void Start() override;
 	void Update(float _Delta) override;
 };

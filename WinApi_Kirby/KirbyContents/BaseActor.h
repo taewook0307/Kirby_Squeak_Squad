@@ -82,7 +82,22 @@ public:
 	}
 	
 protected:
-	void IsCheckPosPointChange()
+	inline int GetHp() const
+	{
+		return Hp;
+	}
+
+	inline int GetAtt() const
+	{
+		return Att;
+	}
+
+	inline void Damage(int _Value)
+	{
+		Hp -= Att;
+	}
+
+	inline void IsCheckPosPointChange()
 	{
 		IsCheckPosPoint = !IsCheckPosPoint;
 	}
@@ -91,7 +106,11 @@ protected:
 	GameEngineRenderer* MainRenderer = nullptr;
 
 	bool IsCheckPosPoint = false;
+
 private:
+	int Hp = BASEHP;
+	int Att = BASEATT;
+
 	GameEngineWindowTexture* GroundBitMap = nullptr;
 
 	bool IsGravity = true;
