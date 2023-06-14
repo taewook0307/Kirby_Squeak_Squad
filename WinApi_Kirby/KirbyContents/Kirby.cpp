@@ -121,12 +121,12 @@ void Kirby::Start()
 		BodyCollision->SetCollisionScale(BODYCOLLISIONSCALE);
 		BodyCollision->SetCollisionType(CollisionType::Rect);
 
-		InhaleCollision = CreateCollision(CollisionOrder::Inhale);
-		InhaleCollision->SetCollisionScale(INHALECOLLSIONSCALE);
-		InhaleCollision->SetCollisionType(CollisionType::Rect);
+		AttackCollision = CreateCollision(CollisionOrder::Inhale);
+		AttackCollision->SetCollisionScale(INHALECOLLSIONSCALE);
+		AttackCollision->SetCollisionType(CollisionType::Rect);
 	}
 
-	InhaleCollision->Off();
+	AttackCollision->Off();
 	ChangeState(KirbyState::Idle);
 }
 
@@ -167,7 +167,6 @@ void Kirby::Update(float _Delta)
 
 	StateUpdate(_Delta);
 
-	Col.reserve(Col.size() + 1);
 	if (true == BodyCollision->Collision(CollisionOrder::MonsterBody, Col, CollisionType::Rect, CollisionType::Rect)
 		|| true == BodyCollision->Collision(CollisionOrder::MonsterAttack, Col, CollisionType::Rect, CollisionType::Rect)
 		|| true == BodyCollision->Collision(CollisionOrder::BossBody, Col, CollisionType::Rect, CollisionType::Rect)
@@ -183,6 +182,8 @@ void Kirby::Update(float _Delta)
 		{
 			Dir = ActorDir::Left;
 		}
+
+		AttackCollision->Off();
 		ChangeState(KirbyState::Damage);
 		return;
 	}

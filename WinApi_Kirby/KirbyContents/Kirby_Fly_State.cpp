@@ -54,7 +54,7 @@ void Kirby::BreatheUpdate(float _Delta)
 
 	if (EMPTYCOLOR == Color || DOORCOLOR == Color)
 	{
-		Gravity(_Delta);
+		FlyGravity(_Delta);
 	}
 	else
 	{
@@ -256,6 +256,28 @@ void Kirby::FlyToTurnUpUpdate(float _Delta)
 		ChangeState(KirbyState::FlyToTurnLand);
 		return;
 	}
+
+	float4 MovePos = float4::ZERO;
+	float4 CheckPos = float4::ZERO;
+
+	if (true == GameEngineInput::IsPress('A'))
+	{
+		MovePos = float4::LEFT * Speed * 0.5f * _Delta;
+		CheckPos = LEFTCHECKPOS;
+	}
+	if (true == GameEngineInput::IsPress('D'))
+	{
+		MovePos = float4::RIGHT * Speed * 0.5f * _Delta;
+		CheckPos = RIGHTCHECKPOS;
+	}
+
+	unsigned int XColor = GetGroundColor(EMPTYCOLOR, CheckPos);
+
+	if (EMPTYCOLOR == XColor || DOORCOLOR == XColor)
+	{
+		AddPos(MovePos);
+		CameraMove(MovePos);
+	}
 }
 
 // 아래 방향으로 낙하
@@ -272,6 +294,28 @@ void Kirby::FlyToTurnLandUpdate(float _Delta)
 		GravityReset();
 		ChangeState(KirbyState::FlyToLand);
 		return;
+	}
+
+	float4 MovePos = float4::ZERO;
+	float4 CheckPos = float4::ZERO;
+
+	if (true == GameEngineInput::IsPress('A'))
+	{
+		MovePos = float4::LEFT * Speed * 0.5f * _Delta;
+		CheckPos = LEFTCHECKPOS;
+	}
+	if (true == GameEngineInput::IsPress('D'))
+	{
+		MovePos = float4::RIGHT * Speed * 0.5f * _Delta;
+		CheckPos = RIGHTCHECKPOS;
+	}
+
+	unsigned int XColor = GetGroundColor(EMPTYCOLOR, CheckPos);
+
+	if (EMPTYCOLOR == XColor || DOORCOLOR == XColor)
+	{
+		AddPos(MovePos);
+		CameraMove(MovePos);
 	}
 }
 

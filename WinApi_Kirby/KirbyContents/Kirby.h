@@ -203,8 +203,10 @@ protected:
 	float CheckInputDTimer = FASTINPUTTIMERVALUE;
 
 	void LevelStart() override;
+
+	GameEngineCollision* AttackCollision = nullptr;
 private:
-	GameEngineCollision* InhaleCollision = nullptr;
+
 	MonsterType KeepType = MonsterType::Max;
 	AttackObject* StarAttack = nullptr;
 

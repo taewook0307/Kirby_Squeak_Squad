@@ -17,10 +17,10 @@ public:
 	FormKirby& operator=(FormKirby&& _Other) noexcept = delete;
 
 protected:
-	GameEngineCollision* AttackCollision = nullptr;
 
 	void StateUpdate(float _Delta) override;
 	void ChangeState(KirbyState _State) override;
+
 private:
 };
 

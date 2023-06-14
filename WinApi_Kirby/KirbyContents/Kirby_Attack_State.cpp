@@ -93,8 +93,11 @@ void Kirby::AttackUpdate(float _Delta)
 
 		KeepMonster->AddPos(DirPos *= Power * _Delta);
 
-		Power += 50.0f;
-
+		if (Power < 500.0f)
+		{
+			Power += 50.0f;
+		}
+		
 		if (static_cast<float>(fabs(KeepMonster->GetPos().X - GetPos().X)) < 20.0f)
 		{
 			if (KeepMonster != nullptr)
