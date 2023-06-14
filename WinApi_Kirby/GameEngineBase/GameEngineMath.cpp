@@ -12,5 +12,5 @@ const float GameEngineMath::PI = 3.141592653589793238462643383279502884197169399
 const float GameEngineMath::PI2 = PI * 2.0f;
 
 // 라디안이 디그리
-const float R2D = 180.0f / GameEngineMath::PI;
-const float D2R = GameEngineMath::PI / 180.0f;
+const float GameEngineMath::R2D = 180.0f / GameEngineMath::PI;
+const float GameEngineMath::D2R = GameEngineMath::PI / 180.0f;
