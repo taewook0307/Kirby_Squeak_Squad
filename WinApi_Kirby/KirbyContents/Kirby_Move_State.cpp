@@ -237,7 +237,7 @@ void Kirby::StopUpdate(float _Delta)
 
 	unsigned int Color = GetGroundColor(EMPTYCOLOR, CheckPos);
 
-	Speed *= 0.9f;
+	Speed *= 0.8f;
 
 	if (EMPTYCOLOR == Color || DOORCOLOR == Color)
 	{	
