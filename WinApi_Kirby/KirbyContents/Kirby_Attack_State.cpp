@@ -62,7 +62,6 @@ void Kirby::AttackUpdate(float _Delta)
 	float4 MonsterPos = float4::ZERO;
 	float4 DirPos = float4::ZERO;
 	GameEngineActor* MonsterPtr = nullptr;
-	float Power = 0.0f;
 
 	// 공격 충돌체 생성
 	if (true == GameEngineInput::IsPress('C'))
@@ -82,7 +81,7 @@ void Kirby::AttackUpdate(float _Delta)
 	{
 		BodyCollision->Off();
 
-		Power = 5.0f;
+		static float Power = 30.0f;
 
 		GameEngineCollision* MonsterCollision = Col[Col.size() - 1];
 		MonsterPtr = MonsterCollision->GetActor();
@@ -92,10 +91,10 @@ void Kirby::AttackUpdate(float _Delta)
 		MonsterPos = KeepMonster->GetPos();
 		DirPos = (GetPos() - MonsterPos).NormalizeReturn();
 
-		Power *= 300.0f * _Delta;
-
 		KeepMonster->AddPos(DirPos *= Power * _Delta);
-		
+
+		Power += 50.0f;
+
 		if (static_cast<float>(fabs(KeepMonster->GetPos().X - GetPos().X)) < 20.0f)
 		{
 			if (KeepMonster != nullptr)
@@ -113,7 +112,7 @@ void Kirby::AttackUpdate(float _Delta)
 	{
 		BodyCollision->Off();
 
-		Power = 300.0f;
+		static float Power = 30.0f;
 		GameEngineCollision* BossAttackCollision = Col[Col.size() - 1];
 		GameEngineActor* BossAttack = BossAttackCollision->GetActor();
 
@@ -122,7 +121,7 @@ void Kirby::AttackUpdate(float _Delta)
 
 		BossAttack->AddPos(DirPos *= Power * _Delta);
 
-		Power *= 300.0f * _Delta;
+		Power += 50.0f;
 
 		if (static_cast<float>(fabs(BossAttack->GetPos().X - GetPos().X)) < 20.0f)
 		{
