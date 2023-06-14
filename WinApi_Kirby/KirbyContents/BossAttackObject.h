@@ -31,6 +31,7 @@ private:
 	float RatioValue = 4.0f;
 	bool Move = true;
 	bool AttackSuccess = false;
+	bool TimeDone = false;
 
 	std::vector<GameEngineCollision*> BossAttackCol;
 

@@ -2,6 +2,7 @@
 #include "KirbyGameEnum.h"
 #include "AttackObject.h"
 #include "Monster.h"
+#include "BossAttackObject.h"
 
 #include <math.h>
 #include <GameEnginePlatform/GameEngineInput.h>
@@ -91,9 +92,9 @@ void Kirby::AttackUpdate(float _Delta)
 		MonsterPos = KeepMonster->GetPos();
 		DirPos = (GetPos() - MonsterPos).NormalizeReturn();
 
-		Power *= 3.0f;
+		Power *= 300.0f * _Delta;
 
-		KeepMonster->AddPos(DirPos *= Power);
+		KeepMonster->AddPos(DirPos *= Power * _Delta);
 		
 		if (static_cast<float>(fabs(KeepMonster->GetPos().X - GetPos().X)) < 20.0f)
 		{
@@ -101,6 +102,34 @@ void Kirby::AttackUpdate(float _Delta)
 			{
 				KeepMonster->Death();
 				KeepMonster = nullptr;
+			}
+			InhaleCollision->Off();
+			ChangeState(KirbyState::Keep);
+			return;
+		}
+	}
+
+	if (true == InhaleCollision->Collision(CollisionOrder::BossAttackBody, Col, CollisionType::Rect, CollisionType::Rect))
+	{
+		BodyCollision->Off();
+
+		Power = 300.0f;
+		GameEngineCollision* BossAttackCollision = Col[Col.size() - 1];
+		GameEngineActor* BossAttack = BossAttackCollision->GetActor();
+
+		KeepType = MonsterType::Normal;
+		DirPos = (GetPos() - BossAttack->GetPos()).NormalizeReturn();
+
+		BossAttack->AddPos(DirPos *= Power * _Delta);
+
+		Power *= 300.0f * _Delta;
+
+		if (static_cast<float>(fabs(BossAttack->GetPos().X - GetPos().X)) < 20.0f)
+		{
+			if (BossAttack != nullptr)
+			{
+				BossAttack->Death();
+				BossAttack = nullptr;
 			}
 			InhaleCollision->Off();
 			ChangeState(KirbyState::Keep);

@@ -31,7 +31,6 @@ void BossAttackObject::Start()
 		MainRenderer = CreateRenderer(RenderOrder::Play);
 
 		MainRenderer->CreateAnimation("BossAttack_Idle", "Star.Bmp", 0, 7, 0.1f, true);
-		MainRenderer->CreateAnimation("BossAttack_Inhale", "Star.Bmp", 0, 7, 0.1f, true);
 		MainRenderer->CreateAnimation("BossAttack_Death", "Star.Bmp", 8, 11, 0.1f, false);
 		MainRenderer->SetRenderScaleToTexture();
 		MainRenderer->SetScaleRatio(RatioValue);
@@ -69,15 +68,17 @@ void BossAttackObject::Update(float _Delta)
 		MainRenderer->ChangeAnimation("BossAttack_Death");
 		AttackSuccess = true;
 	}
+	else if (3.0f < GetLiveTime())
+	{
+		Move = false;
+		MainRenderer->ChangeAnimation("BossAttack_Death");
+		TimeDone = true;
+	}
 
-	if (true == AttackSuccess && true == MainRenderer->IsAnimationEnd())
+	if (true == AttackSuccess && true == MainRenderer->IsAnimationEnd()
+		|| true == TimeDone && true == MainRenderer->IsAnimationEnd())
 	{
 		Death();
 		return;
-	}
-
-	if (true == BodyCollision->Collision(CollisionOrder::Inhale, BossAttackCol, CollisionType::Rect, CollisionType::Rect))
-	{
-		AttackCollision->Off();
 	}
 }
