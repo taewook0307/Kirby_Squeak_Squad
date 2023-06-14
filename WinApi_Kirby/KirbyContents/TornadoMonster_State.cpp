@@ -78,6 +78,7 @@ void TornadoMonster::AttackUpdate(float _Delta)
 	else
 	{
 		AttackCollision->Off();
+		DirChange();
 		ChangeState(MonsterState::Idle);
 		return;
 	}

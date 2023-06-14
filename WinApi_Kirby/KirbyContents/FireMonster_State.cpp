@@ -104,6 +104,7 @@ void FireMonster::AttackUpdate(float _Delta)
 	if (true == MainRenderer->IsAnimationEnd())
 	{
 		AttackCollision->Off();
+		DirChange();
 		ChangeState(MonsterState::Idle);
 		return;
 	}
