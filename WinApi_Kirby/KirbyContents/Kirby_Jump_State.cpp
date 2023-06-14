@@ -31,7 +31,6 @@ void Kirby::JumpUpdate(float _Delta)
 	}
 	else
 	{
-		GravityReset();
 		ChangeState(KirbyState::JumpToDrop);
 		return;
 	}
