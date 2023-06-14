@@ -196,8 +196,11 @@ protected:
 	static float NoDamageTimer;
 
 	// 빠르게 두 번 입력을 확인하기 위한 변수
-	bool FastInput = false;
-	float FastInputTimer = FASTINPUTTIMERVALUE;
+	bool CheckInputA = false;
+	float CheckInputATimer = FASTINPUTTIMERVALUE;
+
+	bool CheckInputD = false;
+	float CheckInputDTimer = FASTINPUTTIMERVALUE;
 
 	void LevelStart() override;
 private:

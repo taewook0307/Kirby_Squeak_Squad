@@ -143,15 +143,26 @@ void Kirby::Update(float _Delta)
 		NoDamageTimer = NODAMAGETIMERVALUE;
 	}
 
-	if (true == FastInput)
+	if (true == CheckInputA)
 	{
-		FastInputTimer -= _Delta;
+		CheckInputATimer -= _Delta;
 	}
 
-	if (FastInputTimer < 0.0f)
+	if (CheckInputATimer < 0.0f)
 	{
-		FastInput = false;
-		FastInputTimer = FASTINPUTTIMERVALUE;
+		CheckInputA = false;
+		CheckInputATimer = FASTINPUTTIMERVALUE;
+	}
+
+	if (true == CheckInputD)
+	{
+		CheckInputDTimer -= _Delta;
+	}
+
+	if (CheckInputDTimer < 0.0f)
+	{
+		CheckInputD = false;
+		CheckInputDTimer = FASTINPUTTIMERVALUE;
 	}
 
 	StateUpdate(_Delta);
@@ -176,11 +187,18 @@ void Kirby::Update(float _Delta)
 		return;
 	}
 
-	if (true == FastInput && FastInputTimer > 0.0f && GameEngineInput::IsPress('A')
-		|| true == FastInput && FastInputTimer > 0.0f && GameEngineInput::IsPress('D'))
+	if (true == CheckInputA && CheckInputATimer > 0.0f && GameEngineInput::IsPress('A'))
 	{
-		FastInput = false;
-		FastInputTimer = FASTINPUTTIMERVALUE;
+		CheckInputA = false;
+		CheckInputATimer = FASTINPUTTIMERVALUE;
+		ChangeState(KirbyState::Run);
+		return;
+	}
+
+	if (true == CheckInputD && CheckInputDTimer > 0.0f && GameEngineInput::IsPress('D'))
+	{
+		CheckInputD = false;
+		CheckInputDTimer = FASTINPUTTIMERVALUE;
 		ChangeState(KirbyState::Run);
 		return;
 	}
