@@ -8,6 +8,7 @@
 
 #define BASEPOWER 300.0f
 #define FLYPOWER 300.0f
+#define NODAMAGETIMERVALUE 5.0f
 
 #define BODYCOLLISIONPOS { 0.0f, -30.0f }
 #define BODYCOLLISIONSCALE { 70.0f, 70.0f }
@@ -187,6 +188,9 @@ protected:
 	int Att = BASEATT;
 
 	bool DeathCheck = false;
+
+	bool NoDamage = false;
+	static float NoDamageTimer;
 
 	void LevelStart() override;
 private:

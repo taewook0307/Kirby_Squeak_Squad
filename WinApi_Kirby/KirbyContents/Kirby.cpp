@@ -12,7 +12,7 @@
 #include <GameEngineCore/GameEngineCollision.h>
 
 Kirby* Kirby::MainKirby = nullptr;
-
+float Kirby::NoDamageTimer = NODAMAGETIMERVALUE;
 Kirby::Kirby()
 {
 }
@@ -132,6 +132,17 @@ void Kirby::Start()
 
 void Kirby::Update(float _Delta)
 {
+	if (true == NoDamage)
+	{
+		NoDamageTimer -= _Delta;
+	}
+
+	if (NoDamageTimer < 0.0f)
+	{
+		NoDamage = false;
+		NoDamageTimer = NODAMAGETIMERVALUE;
+	}
+
 	StateUpdate(_Delta);
 
 	Col.reserve(Col.size() + 1);
@@ -152,6 +163,15 @@ void Kirby::Update(float _Delta)
 		}
 		ChangeState(KirbyState::Damage);
 		return;
+	}
+
+	if (false == NoDamage)
+	{
+		BodyCollision->On();
+	}
+	else
+	{
+		BodyCollision->Off();
 	}
 
 	// Debug 용

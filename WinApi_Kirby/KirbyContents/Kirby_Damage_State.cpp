@@ -30,7 +30,7 @@ void Kirby::DeathStart()
 
 void Kirby::DamageUpdate(float _Delta)
 {
-	BodyCollision->Off();
+	NoDamage = true;
 
 	unsigned int Color = GetGroundColor(EMPTYCOLOR, TOPCHECKPOS);
 

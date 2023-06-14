@@ -49,8 +49,6 @@ void Kirby::ChangeStart()
 
 void Kirby::IdleUpdate(float _Delta)
 {
-	BodyCollision->On();
-
 	DirCheck();
 
 	KirbyGravity(_Delta);
