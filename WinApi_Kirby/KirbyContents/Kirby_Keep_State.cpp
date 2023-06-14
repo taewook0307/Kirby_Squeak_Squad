@@ -58,7 +58,7 @@ void Kirby::KeepIdleUpdate(float _Delta)
 		return;
 	}
 
-	if (true == GameEngineInput::IsDown('X') && KeepType == MonsterType::Normal)
+	if (true == GameEngineInput::IsDown('C') && KeepType == MonsterType::Normal)
 	{
 		ChangeState(KirbyState::AttackToIdle);
 		return;

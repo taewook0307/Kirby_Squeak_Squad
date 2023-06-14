@@ -34,7 +34,7 @@ void SecondStageLevel::Start()
 
 void SecondStageLevel::Update(float _Delta)
 {
-	if (true == GameEngineInput::IsDown('X')
+	if (true == GameEngineInput::IsDown('C')
 		&& LevelPlayer->GetKirbyState() == KirbyState::KeepIdle
 		&& LevelPlayer->GetKeepType() == MonsterType::Ice)
 	{
@@ -46,7 +46,7 @@ void SecondStageLevel::Update(float _Delta)
 		LevelPlayer->SetGroundBitMap("FirstStageBitMap.Bmp");
 	}
 
-	if (true == GameEngineInput::IsDown('X')
+	if (true == GameEngineInput::IsDown('C')
 		&& LevelPlayer->GetKirbyState() == KirbyState::KeepIdle
 		&& LevelPlayer->GetKeepType() == MonsterType::Spark)
 	{
@@ -58,7 +58,7 @@ void SecondStageLevel::Update(float _Delta)
 		LevelPlayer->SetGroundBitMap("FirstStageBitMap.Bmp");
 	}
 
-	if (true == GameEngineInput::IsDown('X')
+	if (true == GameEngineInput::IsDown('C')
 		&& LevelPlayer->GetKirbyState() == KirbyState::KeepIdle
 		&& LevelPlayer->GetKeepType() == MonsterType::Fire)
 	{
@@ -70,7 +70,7 @@ void SecondStageLevel::Update(float _Delta)
 		LevelPlayer->SetGroundBitMap("FirstStageBitMap.Bmp");
 	}
 
-	if (true == GameEngineInput::IsDown('X')
+	if (true == GameEngineInput::IsDown('C')
 		&& LevelPlayer->GetKirbyState() == KirbyState::KeepIdle
 		&& LevelPlayer->GetKeepType() == MonsterType::Tornado)
 	{

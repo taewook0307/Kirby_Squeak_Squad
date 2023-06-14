@@ -54,7 +54,7 @@ void FirstStageLevel::Update(float _Delta)
 {
 	// --------------------------------------------------------------------------------------------------------------
 	// 폼체인지 부분
-	if (true == GameEngineInput::IsDown('X')
+	if (true == GameEngineInput::IsDown('C')
 		&& LevelPlayer->GetKirbyState() == KirbyState::KeepIdle
 		&& LevelPlayer->GetKeepType() == MonsterType::Ice)
 	{
@@ -66,7 +66,7 @@ void FirstStageLevel::Update(float _Delta)
 		LevelPlayer->SetGroundBitMap("FirstStageBitMap.Bmp");
 	}
 
-	if (true == GameEngineInput::IsDown('X')
+	if (true == GameEngineInput::IsDown('C')
 		&& LevelPlayer->GetKirbyState() == KirbyState::KeepIdle
 		&& LevelPlayer->GetKeepType() == MonsterType::Spark)
 	{
@@ -78,7 +78,7 @@ void FirstStageLevel::Update(float _Delta)
 		LevelPlayer->SetGroundBitMap("FirstStageBitMap.Bmp");
 	}
 
-	if (true == GameEngineInput::IsDown('X')
+	if (true == GameEngineInput::IsDown('C')
 		&& LevelPlayer->GetKirbyState() == KirbyState::KeepIdle
 		&& LevelPlayer->GetKeepType() == MonsterType::Fire)
 	{
@@ -90,7 +90,7 @@ void FirstStageLevel::Update(float _Delta)
 		LevelPlayer->SetGroundBitMap("FirstStageBitMap.Bmp");
 	}
 
-	if (true == GameEngineInput::IsDown('X')
+	if (true == GameEngineInput::IsDown('C')
 		&& LevelPlayer->GetKirbyState() == KirbyState::KeepIdle
 		&& LevelPlayer->GetKeepType() == MonsterType::Tornado)
 	{
