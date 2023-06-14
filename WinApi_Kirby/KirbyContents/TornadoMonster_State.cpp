@@ -5,8 +5,6 @@
 
 void TornadoMonster::IdleUpdate(float _Delta)
 {
-	DamageStateMove();
-
 	BodyCollision->On();
 
 	if (true == MainRenderer->IsAnimationEnd())
@@ -19,8 +17,6 @@ void TornadoMonster::IdleUpdate(float _Delta)
 
 void TornadoMonster::WalkUpdate(float _Delta)
 {
-	DamageStateMove();
-	
 	static float WalkTimer = 0.0f;
 
 	float4 MovePos = float4::ZERO;
@@ -65,8 +61,6 @@ void TornadoMonster::WalkUpdate(float _Delta)
 
 void TornadoMonster::AttackUpdate(float _Delta)
 {
-	DamageStateMove();
-
 	AttackCollision->On();
 
 	float AttackSpeed = 5.0f;

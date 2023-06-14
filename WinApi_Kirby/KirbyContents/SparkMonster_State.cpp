@@ -6,8 +6,6 @@ void SparkMonster::IdleUpdate(float _Delta)
 {
 	static float IdleTimer = 0.0f;
 
-	DamageStateMove();
-
 	BodyCollision->On();
 
 	if (IdleTimer > 1.0f)
@@ -21,8 +19,6 @@ void SparkMonster::IdleUpdate(float _Delta)
 
 void SparkMonster::WalkUpdate(float _Delta)
 {
-	DamageStateMove();
-
 	unsigned int Color = GetGroundColor(EMPTYCOLOR);
 
 	if (Color == EMPTYCOLOR || Color == DOORCOLOR)
@@ -53,8 +49,6 @@ void SparkMonster::WalkUpdate(float _Delta)
 
 void SparkMonster::AttackUpdate(float _Delta)
 {
-	DamageStateMove();
-
 	AttackCollision->On();
 
 	if (true == BodyCollision->Collision(CollisionOrder::Attack, Col, CollisionType::Rect, CollisionType::Rect)

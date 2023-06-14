@@ -5,8 +5,6 @@
 
 void IceMonster::IdleUpdate(float _Delta)
 {
-	DamageStateMove();
-
 	BodyCollision->On();
 
 	static float IdleTimer = 0.0f;
@@ -39,8 +37,6 @@ void IceMonster::IdleUpdate(float _Delta)
 
 void IceMonster::WalkUpdate(float _Delta)
 {
-	DamageStateMove();
-
 	float4 MovePos = float4::ZERO;
 
 	if (true == SearchCollision->Collision(CollisionOrder::Body, Col, CollisionType::Rect, CollisionType::Rect))
@@ -70,8 +66,6 @@ void IceMonster::WalkUpdate(float _Delta)
 
 void IceMonster::AttackUpdate(float _Delta)
 {
-	DamageStateMove();
-
 	AttackCollision->On();
 
 	if (true == MainRenderer->IsAnimationEnd())

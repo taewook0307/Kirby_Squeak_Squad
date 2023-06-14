@@ -31,8 +31,6 @@ void Monster::DeathStart()
 
 void Monster::IdleUpdate(float _Delta)
 {
-	DamageStateMove();
-
 	BodyCollision->On();
 
 	unsigned int Color = GetGroundColor(EMPTYCOLOR);
@@ -60,8 +58,6 @@ void Monster::IdleUpdate(float _Delta)
 
 void Monster::WalkUpdate(float _Delta)
 {
-	DamageStateMove();
-
 	static float MoveTimer = 0.0f;
 
 	float4 MovePos = float4::ZERO;

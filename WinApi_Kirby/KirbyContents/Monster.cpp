@@ -60,6 +60,7 @@ void Monster::Start()
 void Monster::Update(float _Delta)
 {
 	StateUpdate(_Delta);
+	DamageStateMove();
 }
 
 void Monster::StateUpdate(float _Delta)

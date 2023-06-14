@@ -5,8 +5,6 @@
 
 void FireMonster::IdleUpdate(float _Delta)
 {
-	DamageStateMove();
-
 	BodyCollision->On();
 
 	static float IdleTimer = 0.0f;
@@ -42,8 +40,6 @@ void FireMonster::IdleUpdate(float _Delta)
 
 void FireMonster::WalkUpdate(float _Delta)
 {
-	DamageStateMove();
-	
 	static float WalkTimer = 0.0f;
 
 	float4 MovePos = float4::ZERO;
@@ -103,8 +99,6 @@ void FireMonster::WalkUpdate(float _Delta)
 
 void FireMonster::AttackUpdate(float _Delta)
 {
-	DamageStateMove();
-
 	AttackCollision->On();
 
 	if (true == MainRenderer->IsAnimationEnd())
