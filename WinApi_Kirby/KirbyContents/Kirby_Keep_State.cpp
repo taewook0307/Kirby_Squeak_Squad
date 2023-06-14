@@ -231,34 +231,6 @@ void Kirby::KeepJumpToDropUpdate(float _Delta)
 				CameraMove(MovePos);
 			}
 		}
-
-		if (true == GameEngineInput::IsPress('Q') && Dir == ActorDir::Left)
-		{
-			MovePos = { -RunSpeed * _Delta, 0.0f };
-			CheckPos = LEFTBOTCHECKPOS;
-
-			unsigned int Color = GetGroundColor(EMPTYCOLOR, CheckPos);
-
-			if (EMPTYCOLOR == Color || DOORCOLOR == Color)
-			{
-				AddPos(MovePos);
-				CameraMove(MovePos);
-			}
-		}
-
-		if (true == GameEngineInput::IsPress('E') && Dir == ActorDir::Right)
-		{
-			MovePos = { RunSpeed * _Delta, 0.0f };
-			CheckPos = RIGHTBOTCHECKPOS;
-
-			unsigned int Color = GetGroundColor(EMPTYCOLOR, CheckPos);
-
-			if (EMPTYCOLOR == Color || DOORCOLOR == Color)
-			{
-				AddPos(MovePos);
-				CameraMove(MovePos);
-			}
-		}
 	}
 	else
 	{

@@ -66,34 +66,6 @@ void Kirby::JumpUpdate(float _Delta)
 		}
 	}
 
-	if (true == GameEngineInput::IsPress('Q') && Dir == ActorDir::Left)
-	{
-		MovePos = { -RunSpeed * _Delta, 0.0f };
-		CheckPos = LEFTCHECKPOS;
-
-		unsigned int Color = GetGroundColor(EMPTYCOLOR, CheckPos);
-
-		if (EMPTYCOLOR == Color || DOORCOLOR == Color)
-		{
-			AddPos(MovePos);
-			CameraMove(MovePos);
-		}
-	}
-
-	if (true == GameEngineInput::IsPress('E') && Dir == ActorDir::Right)
-	{
-		MovePos = { RunSpeed * _Delta, 0.0f };
-		CheckPos = RIGHTCHECKPOS;
-
-		unsigned int Color = GetGroundColor(EMPTYCOLOR, CheckPos);
-
-		if (EMPTYCOLOR == Color || DOORCOLOR == Color)
-		{
-			AddPos(MovePos);
-			CameraMove(MovePos);
-		}
-	}
-
 	if (true == GameEngineInput::IsDown(VK_SPACE))
 	{
 		ChangeState(KirbyState::Breathe);
@@ -139,34 +111,6 @@ void Kirby::JumpToDropUpdate(float _Delta)
 		if (true == GameEngineInput::IsPress('D') && Dir == ActorDir::Right)
 		{
 			MovePos = { Speed * _Delta, 0.0f };
-			CheckPos = RIGHTBOTCHECKPOS;
-
-			unsigned int Color = GetGroundColor(EMPTYCOLOR, CheckPos);
-
-			if (EMPTYCOLOR == Color || DOORCOLOR == Color)
-			{
-				AddPos(MovePos);
-				CameraMove(MovePos);
-			}
-		}
-
-		if (true == GameEngineInput::IsPress('Q') && Dir == ActorDir::Left)
-		{
-			MovePos = { -RunSpeed * _Delta, 0.0f };
-			CheckPos = LEFTBOTCHECKPOS;
-
-			unsigned int Color = GetGroundColor(EMPTYCOLOR, CheckPos);
-
-			if (EMPTYCOLOR == Color || DOORCOLOR == Color)
-			{
-				AddPos(MovePos);
-				CameraMove(MovePos);
-			}
-		}
-
-		if (true == GameEngineInput::IsPress('E') && Dir == ActorDir::Right)
-		{
-			MovePos = { RunSpeed * _Delta, 0.0f };
 			CheckPos = RIGHTBOTCHECKPOS;
 
 			unsigned int Color = GetGroundColor(EMPTYCOLOR, CheckPos);

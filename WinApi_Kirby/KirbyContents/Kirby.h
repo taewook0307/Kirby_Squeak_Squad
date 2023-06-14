@@ -9,6 +9,7 @@
 #define BASEPOWER 300.0f
 #define FLYPOWER 300.0f
 #define NODAMAGETIMERVALUE 5.0f
+#define FASTINPUTTIMERVALUE 1.0f
 
 #define BODYCOLLISIONPOS { 0.0f, -30.0f }
 #define BODYCOLLISIONSCALE { 70.0f, 70.0f }
@@ -187,10 +188,16 @@ protected:
 	int Hp = BASEHP;
 	int Att = BASEATT;
 
+	// LevelPlayer를 Death시키기 위해 확인하는 변수
 	bool DeathCheck = false;
 
+	// 데미지를 입었을 경우 일정 시간동안 무적을 하기위한 변수
 	bool NoDamage = false;
 	static float NoDamageTimer;
+
+	// 빠르게 두 번 입력을 확인하기 위한 변수
+	bool FastInput = false;
+	float FastInputTimer = FASTINPUTTIMERVALUE;
 
 	void LevelStart() override;
 private:

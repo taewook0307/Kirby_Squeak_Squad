@@ -143,6 +143,17 @@ void Kirby::Update(float _Delta)
 		NoDamageTimer = NODAMAGETIMERVALUE;
 	}
 
+	if (true == FastInput)
+	{
+		FastInputTimer -= _Delta;
+	}
+
+	if (FastInputTimer < 0.0f)
+	{
+		FastInput = false;
+		FastInputTimer = FASTINPUTTIMERVALUE;
+	}
+
 	StateUpdate(_Delta);
 
 	Col.reserve(Col.size() + 1);
@@ -162,6 +173,15 @@ void Kirby::Update(float _Delta)
 			Dir = ActorDir::Left;
 		}
 		ChangeState(KirbyState::Damage);
+		return;
+	}
+
+	if (true == FastInput && FastInputTimer > 0.0f && GameEngineInput::IsPress('A')
+		|| true == FastInput && FastInputTimer > 0.0f && GameEngineInput::IsPress('D'))
+	{
+		FastInput = false;
+		FastInputTimer = FASTINPUTTIMERVALUE;
+		ChangeState(KirbyState::Run);
 		return;
 	}
 

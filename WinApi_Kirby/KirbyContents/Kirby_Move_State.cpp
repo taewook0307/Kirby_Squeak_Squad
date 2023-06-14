@@ -140,15 +140,6 @@ void Kirby::WalkUpdate(float _Delta)
 		return;
 	}
 
-	// 달리기 상태 이동
-	if (true == GameEngineInput::IsDown('E')
-		|| true == GameEngineInput::IsDown('Q'))
-	{
-		DirCheck();
-		ChangeState(KirbyState::Run);
-		return;
-	}
-
 	if (true == GameEngineInput::IsDown('C'))
 	{
 		ChangeState(KirbyState::AttackReady);
@@ -158,6 +149,7 @@ void Kirby::WalkUpdate(float _Delta)
 	// 이동하지 않을 시 대기 상태 이동
 	if (MovePos == float4::ZERO)
 	{
+		FastInput = true;
 		ChangeState(KirbyState::Idle);
 		return;
 	}
@@ -173,14 +165,14 @@ void Kirby::RunUpdate(float _Delta)
 	float4 CheckPos = float4::ZERO;
 
 	// 왼쪽 이동
-	if (true == GameEngineInput::IsPress('Q') && Dir == ActorDir::Left)
+	if (true == GameEngineInput::IsPress('A') && Dir == ActorDir::Left)
 	{
 		MovePos = { -RunSpeed * _Delta, 0.0f };
 		CheckPos = LEFTCHECKPOS;
 	}
 
 	// 오른쪽 이동
-	if (true == GameEngineInput::IsPress('E') && Dir == ActorDir::Right)
+	if (true == GameEngineInput::IsPress('D') && Dir == ActorDir::Right)
 	{
 		MovePos = { RunSpeed * _Delta, 0.0f };
 		CheckPos = RIGHTCHECKPOS;
@@ -214,7 +206,6 @@ void Kirby::RunUpdate(float _Delta)
 	// 이동하지 않을 시 대기 상태 이동
 	if (MovePos == float4::ZERO)
 	{
-		DirCheck();
 		ChangeState(KirbyState::Stop);
 		return;
 	}
@@ -246,7 +237,7 @@ void Kirby::StopUpdate(float _Delta)
 
 	unsigned int Color = GetGroundColor(EMPTYCOLOR, CheckPos);
 
-	Speed *= 0.8f;
+	Speed *= 0.9f;
 
 	if (EMPTYCOLOR == Color || DOORCOLOR == Color)
 	{	

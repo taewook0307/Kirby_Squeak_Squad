@@ -81,15 +81,6 @@ void Kirby::IdleUpdate(float _Delta)
 		return;
 	}
 
-	// 달리기 상태 이동
-	if (true == GameEngineInput::IsDown('E') && Color != EMPTYCOLOR
-		|| true == GameEngineInput::IsDown('Q') && Color != EMPTYCOLOR)
-	{
-		DirCheck();
-		ChangeState(KirbyState::Run);
-		return;
-	}
-
 	if (true == GameEngineInput::IsDown('C') && Color != EMPTYCOLOR)
 	{
 		DirCheck();
