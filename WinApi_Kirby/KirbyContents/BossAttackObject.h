@@ -29,6 +29,8 @@ protected:
 private:
 	float Speed = 300.0f;
 	float RatioValue = 4.0f;
+	bool Move = true;
+	bool AttackSuccess = false;
 
 	std::vector<GameEngineCollision*> BossAttackCol;
 

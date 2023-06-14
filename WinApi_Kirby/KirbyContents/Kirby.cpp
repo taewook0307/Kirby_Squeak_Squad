@@ -140,7 +140,16 @@ void Kirby::Update(float _Delta)
 		|| true == BodyCollision->Collision(CollisionOrder::BossBody, Col, CollisionType::Rect, CollisionType::Rect)
 		|| true == BodyCollision->Collision(CollisionOrder::BossAttack, Col, CollisionType::Rect, CollisionType::Rect))
 	{
-		float4 Pos = Col[Col.size() - 1]->GetActorPivotPos();
+		float4 Pos = Col[Col.size() - 1]->GetActor()->GetPos();
+		float4 DirPos = GetPos() - Pos;
+		if (DirPos.X < 0.0f)
+		{
+			Dir = ActorDir::Right;
+		}
+		else
+		{
+			Dir = ActorDir::Left;
+		}
 		ChangeState(KirbyState::Damage);
 		return;
 	}

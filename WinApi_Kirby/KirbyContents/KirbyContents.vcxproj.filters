@@ -79,7 +79,7 @@
       <Filter>Monster\Boss</Filter>
     </ClInclude>
     <ClInclude Include="BossAttackObject.h">
-      <Filter>Monster\Boss</Filter>
+      <Filter>Monster\Boss\BossAttackObject</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -220,7 +220,7 @@
       <Filter>Monster\Boss</Filter>
     </ClCompile>
     <ClCompile Include="BossAttackObject.cpp">
-      <Filter>Monster\Boss</Filter>
+      <Filter>Monster\Boss\BossAttackObject</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -268,6 +268,9 @@
     </Filter>
     <Filter Include="Monster\Boss">
       <UniqueIdentifier>{cfc6ce35-4a2a-47d7-84a3-89ab85e95901}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Monster\Boss\BossAttackObject">
+      <UniqueIdentifier>{95eda64c-b811-454b-bc5d-150a8160c7f4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

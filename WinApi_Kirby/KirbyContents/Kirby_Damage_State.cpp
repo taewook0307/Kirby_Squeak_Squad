@@ -14,6 +14,7 @@
 void Kirby::DamageStart()
 {
 	ChangeAnimationState("Damage");
+	SetGravityVector(float4::UP * JumpPower * 0.5f);
 }
 
 void Kirby::DamageLandStart()
@@ -30,71 +31,50 @@ void Kirby::DeathStart()
 void Kirby::DamageUpdate(float _Delta)
 {
 	BodyCollision->Off();
-	GravityReset();
 
-	float4 FlyPos = float4::UP * FlyPower * 0.5f * _Delta;
-	float4 MovePos = float4::ZERO;
-	float4 XCheckPos = float4::ZERO;
-	float4 CheckPos = float4::ZERO;
-	GameEngineCollision* CurMonsterCollision = Col[Col.size() - 1];
-	GameEngineActor* CurMonster = CurMonsterCollision->GetActor();
-	// Monster* ColMonster = dynamic_cast<Monster*>(CurMonster);
-	// int MonsterAtt = ColMonster->GetMonsterAtt();
-	//float4 DirPos = GetPos() - CurMonster->GetPos();
-	unsigned int Color = 0;
-	//unsigned int XColor = 0;
-
-	if (FlyPos.Y < 0)
-	{
-		CheckPos = TOPCHECKPOS;
-		Color = GetGroundColor(EMPTYCOLOR, CheckPos);
-	}
-	else
-	{
-		Color = GetGroundColor(EMPTYCOLOR);
-	}
-
+	unsigned int Color = GetGroundColor(EMPTYCOLOR, TOPCHECKPOS);
 
 	if (EMPTYCOLOR == Color || DOORCOLOR == Color)
 	{
-		AddPos(FlyPos);
-	}
-
-	/*if (DirPos.X > 0.0f)
-	{
-		MovePos = { Speed * _Delta, 0.0f };
-		XCheckPos = RIGHTBOTCHECKPOS;
-		XColor = GetGroundColor(EMPTYCOLOR, XCheckPos);
+		Gravity(_Delta);
 	}
 	else
 	{
-		MovePos = { -Speed * _Delta, 0.0f };
-		XCheckPos = LEFTBOTCHECKPOS;
-		XColor = GetGroundColor(EMPTYCOLOR, XCheckPos);
+		GravityReset();
 	}
+
+	if (GetGravityVector().Y > 0.0f)
+	{
+		GravityReset();
+		ChangeState(KirbyState::DamageLand);
+		return;
+	}
+
+	float4 MovePos = float4::ZERO;
+	float4 CheckPos = float4::ZERO;
+
+	GameEngineCollision* CurCollision = Col[Col.size() - 1];
+	GameEngineActor* CollisionMaster = CurCollision->GetActor();
+	static float4 CollisionMasterPos = CollisionMaster->GetPos();
+	static float4 DamageDirPos = GetPos() - CollisionMasterPos;
+
+	if (DamageDirPos.X < 0.0f)
+	{
+		MovePos = float4::LEFT * Speed * 0.5f * _Delta;
+		CheckPos = LEFTBOTCHECKPOS;
+	}
+	else
+	{
+		MovePos = float4::RIGHT * Speed * 0.5f * _Delta;
+		CheckPos = RIGHTBOTCHECKPOS;
+	}
+
+	unsigned int XColor = GetGroundColor(EMPTYCOLOR, CheckPos);
 
 	if (XColor == EMPTYCOLOR || XColor == DOORCOLOR)
 	{
 		AddPos(MovePos);
 		CameraMove(MovePos);
-	}*/
-
-	FlyPower -= 25.0f;
-
-	if (true == MainRenderer->IsAnimationEnd() && EMPTYCOLOR != Color
-		|| true == MainRenderer->IsAnimationEnd() && DOORCOLOR != Color)
-	{
-		FlyPower = BASEPOWER;
-		// Damage(MonsterAtt);
-
-		if (Hp < 0)
-		{
-			ChangeState(KirbyState::Death);
-			return;
-		}
-
-		ChangeState(KirbyState::DamageLand);
-		return;
 	}
 }
 
@@ -112,6 +92,28 @@ void Kirby::DamageLandUpdate(float _Delta)
 		GravityReset();
 		ChangeState(KirbyState::Idle);
 		return;
+	}
+
+	float4 MovePos = float4::ZERO;
+	float4 CheckPos = float4::ZERO;
+
+	if (Dir == ActorDir::Right)
+	{
+		MovePos = float4::LEFT * Speed * 0.5f * _Delta;
+		CheckPos = LEFTBOTCHECKPOS;
+	}
+	else
+	{
+		MovePos = float4::RIGHT * Speed * 0.5f * _Delta;
+		CheckPos = RIGHTBOTCHECKPOS;
+	}
+
+	unsigned int XColor = GetGroundColor(EMPTYCOLOR, CheckPos);
+
+	if (XColor == EMPTYCOLOR || XColor == DOORCOLOR)
+	{
+		AddPos(MovePos);
+		CameraMove(MovePos);
 	}
 }
 
