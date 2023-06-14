@@ -94,6 +94,13 @@ void Kirby::JumpUpdate(float _Delta)
 		}
 	}
 
+	if (true == GameEngineInput::IsDown(VK_SPACE))
+	{
+		ChangeState(KirbyState::Breathe);
+		return;
+	}
+
+
 	if (GetGravityVector().Y > 0.0f)
 	{
 		GravityReset();

@@ -7,6 +7,7 @@
 void Kirby::BreatheStart()
 {
 	ChangeAnimationState("Breathe");
+	SetGravityVector(float4::UP * FlyPower * 0.8f);
 }
 
 void Kirby::FlyStart()
@@ -49,6 +50,17 @@ void Kirby::FlyToTurnLandStart()
 // 공기 들이마시는 상태
 void Kirby::BreatheUpdate(float _Delta)
 {
+	unsigned int Color = GetGroundColor(EMPTYCOLOR);
+
+	if (EMPTYCOLOR == Color || DOORCOLOR == Color)
+	{
+		Gravity(_Delta);
+	}
+	else
+	{
+		GravityReset();
+	}
+
 	if (true == MainRenderer->IsAnimationEnd())
 	{
 		ChangeState(KirbyState::Fly);
@@ -104,12 +116,12 @@ void Kirby::FlyUpdate(float _Delta)
 		}
 	}
 
-	if (true == GameEngineInput::IsPress('F'))
+	if (true == GameEngineInput::IsPress(VK_SPACE))
 	{
 		SetGravityVector(float4::UP * FlyPower);
 	}
 
-	if (true == GameEngineInput::IsPress(VK_SPACE))
+	if (true == GameEngineInput::IsPress('C'))
 	{
 		ChangeState(KirbyState::BreatheOut);
 		return;

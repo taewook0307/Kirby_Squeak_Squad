@@ -90,13 +90,6 @@ void Kirby::IdleUpdate(float _Delta)
 		return;
 	}
 
-	if (true == GameEngineInput::IsPress('F') && Color != EMPTYCOLOR)
-	{
-		DirCheck();
-		ChangeState(KirbyState::Breathe);
-		return;
-	}
-
 	if (true == GameEngineInput::IsDown('C') && Color != EMPTYCOLOR)
 	{
 		DirCheck();

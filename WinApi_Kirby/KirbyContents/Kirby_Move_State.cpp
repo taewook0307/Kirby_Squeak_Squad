@@ -149,6 +149,12 @@ void Kirby::WalkUpdate(float _Delta)
 		return;
 	}
 
+	if (true == GameEngineInput::IsDown('C'))
+	{
+		ChangeState(KirbyState::AttackReady);
+		return;
+	}
+
 	// 이동하지 않을 시 대기 상태 이동
 	if (MovePos == float4::ZERO)
 	{
