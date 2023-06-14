@@ -92,7 +92,7 @@ void Kirby::Start()
 		MainRenderer->CreateAnimation("Left_BreatheOutLand", "Left_Kirby.Bmp", 73, 74, 0.1f, false);
 		MainRenderer->CreateAnimation("Left_BreatheOut", "Left_Kirby.Bmp", 73, 74, 0.2f, false);
 		MainRenderer->CreateAnimation("Left_Drop", "Left_Kirby.Bmp", 75, 76, 0.2f, false);
-		MainRenderer->CreateAnimation("Left_FlyToLand", "Left_Kirby.Bmp", 88, 90, 0.3f, true);
+		MainRenderer->CreateAnimation("Left_FlyToLand", "Left_Kirby.Bmp", 90, 90, 0.3f, true);
 		MainRenderer->CreateAnimation("Left_FlyToTurnUp", "Left_Kirby.Bmp", 77, 87, 0.05f, false);
 		MainRenderer->CreateAnimation("Left_FlyToTurnLand", "Left_Kirby.Bmp", 88, 89, 0.1f, true);
 		MainRenderer->CreateAnimation("Left_LevelMove", "Left_Kirby.Bmp", 91, 94, 0.1f, false);

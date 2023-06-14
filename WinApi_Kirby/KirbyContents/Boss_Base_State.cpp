@@ -24,14 +24,6 @@ void BossMonster::IdleUpdate(float _Delta)
 	{
 		GravityReset();
 	}
-
-
-
-	if (true == GameEngineInput::IsPress(VK_SPACE))
-	{
-		ChangeState(BossState::AttackReady);
-		return;
-	}
 }
 
 void BossMonster::WalkUpdate(float _Delta)
