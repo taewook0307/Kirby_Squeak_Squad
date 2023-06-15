@@ -68,9 +68,10 @@ void BossAttackObject::Update(float _Delta)
 		MainRenderer->ChangeAnimation("BossAttack_Death");
 		AttackSuccess = true;
 	}
-	else if (3.0f < GetLiveTime())
+	else if (3.0f < GetLiveTime() && false == BodyCollision->Collision(CollisionOrder::Inhale, BossAttackCol, CollisionType::Rect, CollisionType::Rect))
 	{
 		Move = false;
+		BodyCollision->Off();
 		MainRenderer->ChangeAnimation("BossAttack_Death");
 		TimeDone = true;
 	}

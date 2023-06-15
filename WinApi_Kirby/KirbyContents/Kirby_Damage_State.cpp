@@ -32,7 +32,7 @@ void Kirby::DamageUpdate(float _Delta)
 {
 	NoDamage = true;
 
-	unsigned int Color = GetGroundColor(EMPTYCOLOR, TOPCHECKPOS);
+	unsigned int Color = GetGroundColor(EMPTYCOLOR);
 
 	if (EMPTYCOLOR == Color || DOORCOLOR == Color)
 	{

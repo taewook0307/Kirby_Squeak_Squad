@@ -4,9 +4,14 @@
 #include "ActorEnum.h"
 
 #include <string>
+#include <vector>
 
 #define BOSSBODYCOLLISIONPOS { 0.0f, -120.0f }
 #define BOSSBODYCOLLISIONSCALE { 230.0f, 230.0f }
+
+#define LEFTSEARCHCOLLISIONPOS { -220.0f, -120.0f }
+#define RIGHTSEARCHCOLLISIONPOS { 220.0f, -120.0f }
+#define SEARCHCOLLISIONSCALE { 180.0f, 230.0f }
 
 class BossMonster : public BaseActor
 {
@@ -67,6 +72,8 @@ protected:
 	GameEngineCollision* SearchCollision = nullptr;
 private:
 	float Speed = 100.0f;
+
+	std::vector<GameEngineCollision*> BossCol;
 
 	void Start() override;
 	void Update(float _Delta) override;

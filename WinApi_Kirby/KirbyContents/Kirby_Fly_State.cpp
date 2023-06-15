@@ -260,12 +260,12 @@ void Kirby::FlyToTurnUpUpdate(float _Delta)
 	float4 MovePos = float4::ZERO;
 	float4 CheckPos = float4::ZERO;
 
-	if (true == GameEngineInput::IsPress('A'))
+	if (true == GameEngineInput::IsPress('A') && ActorDir::Left == Dir)
 	{
 		MovePos = float4::LEFT * Speed * 0.5f * _Delta;
 		CheckPos = LEFTCHECKPOS;
 	}
-	if (true == GameEngineInput::IsPress('D'))
+	if (true == GameEngineInput::IsPress('D') && ActorDir::Right == Dir)
 	{
 		MovePos = float4::RIGHT * Speed * 0.5f * _Delta;
 		CheckPos = RIGHTCHECKPOS;
@@ -299,12 +299,12 @@ void Kirby::FlyToTurnLandUpdate(float _Delta)
 	float4 MovePos = float4::ZERO;
 	float4 CheckPos = float4::ZERO;
 
-	if (true == GameEngineInput::IsPress('A'))
+	if (true == GameEngineInput::IsPress('A') && ActorDir::Left == Dir)
 	{
 		MovePos = float4::LEFT * Speed * 0.5f * _Delta;
 		CheckPos = LEFTCHECKPOS;
 	}
-	if (true == GameEngineInput::IsPress('D'))
+	if (true == GameEngineInput::IsPress('D') && ActorDir::Right == Dir)
 	{
 		MovePos = float4::RIGHT * Speed * 0.5f * _Delta;
 		CheckPos = RIGHTCHECKPOS;

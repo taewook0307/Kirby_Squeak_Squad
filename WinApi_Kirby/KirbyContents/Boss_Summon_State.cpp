@@ -29,6 +29,17 @@ void BossMonster::MonsterSummonStart()
 
 void BossMonster::MonsterSummonReadyUpdate(float _Delta)
 {
+	unsigned int Color = GetGroundColor(EMPTYCOLOR);
+
+	if (EMPTYCOLOR == Color)
+	{
+		Gravity(_Delta);
+	}
+	else
+	{
+		GravityReset();
+	}
+
 	if (true == MainRenderer->IsAnimationEnd())
 	{
 		ChangeState(BossState::MonsterSummonJump);
@@ -74,6 +85,17 @@ void BossMonster::MonsterSummonDropUpdate(float _Delta)
 
 void BossMonster::MonsterSummonUpdate(float _Delta)
 {
+	unsigned int Color = GetGroundColor(EMPTYCOLOR);
+
+	if (EMPTYCOLOR == Color)
+	{
+		Gravity(_Delta);
+	}
+	else
+	{
+		GravityReset();
+	}
+
 	if (true == MainRenderer->IsAnimationEnd())
 	{
 		float4 WinScale = GameEngineWindow::MainWindow.GetScale();

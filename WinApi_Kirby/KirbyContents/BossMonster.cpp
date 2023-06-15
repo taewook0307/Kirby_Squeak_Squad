@@ -1,6 +1,8 @@
 ﻿#include "BossMonster.h"
+#include "Kirby.h"
 #include "KirbyGameEnum.h"
 
+#include <GameEngineBase/GameEngineRandom.h>
 #include <GameEngineBase/GameEnginePath.h>
 #include <GameEnginePlatform/GameEngineWindow.h>
 #include <GameEnginePlatform/GameEngineInput.h>
@@ -72,7 +74,18 @@ void BossMonster::Start()
 		BodyCollision->SetCollisionPos(BOSSBODYCOLLISIONPOS);
 		BodyCollision->SetCollisionScale(BOSSBODYCOLLISIONSCALE);
 		BodyCollision->SetCollisionType(CollisionType::Rect);
-		// SearchCollision = CreateCollision(CollisionOrder::BossSearch);
+		
+		SearchCollision = CreateCollision(CollisionOrder::BossSearch);
+		if (Dir == ActorDir::Left)
+		{
+			SearchCollision->SetCollisionPos(LEFTSEARCHCOLLISIONPOS);
+		}
+		else
+		{
+			SearchCollision->SetCollisionPos(RIGHTSEARCHCOLLISIONPOS);
+		}
+		SearchCollision->SetCollisionScale(SEARCHCOLLISIONSCALE);
+		SearchCollision->SetCollisionType(CollisionType::Rect);
 	}
 
 	ChangeState(BossState::Idle);
@@ -81,6 +94,13 @@ void BossMonster::Start()
 void BossMonster::Update(float _Delta)
 {
 	StateUpdate(_Delta);
+
+	if (true == BodyCollision->Collision(CollisionOrder::Attack, BossCol, CollisionType::Rect, CollisionType::Rect)
+		|| true == BodyCollision->Collision(CollisionOrder::SpecialAttack, BossCol, CollisionType::Rect, CollisionType::Rect))
+	{
+		ChangeState(BossState::Damage);
+		return;
+	}
 
 	if (true == GameEngineInput::IsDown('J'))
 	{
@@ -182,21 +202,19 @@ void BossMonster::ChangeState(BossState _State)
 
 void BossMonster::DirChange()
 {
-	ActorDir CheckDir = Dir;
+	float4 KirbyPos = Kirby::GetMainKirby()->GetPos();
+	float4 BossPos = GetPos();
 
-	if (Dir == ActorDir::Left)
+	if (KirbyPos.X < BossPos.X)
 	{
-		CheckDir = ActorDir::Right;
+		Dir = ActorDir::Left;
+		SearchCollision->SetCollisionPos(LEFTSEARCHCOLLISIONPOS);
+		ChangeAnimationState(CurState);
 	}
-
-	if (Dir == ActorDir::Right)
+	else
 	{
-		CheckDir = ActorDir::Left;
-	}
-
-	if (CheckDir != Dir)
-	{
-		Dir = CheckDir;
+		Dir = ActorDir::Right;
+		SearchCollision->SetCollisionPos(RIGHTSEARCHCOLLISIONPOS);
 		ChangeAnimationState(CurState);
 	}
 }

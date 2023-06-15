@@ -22,6 +22,17 @@ void BossMonster::AttackToIdleStart()
 
 void BossMonster::AttackReadyUpdate(float _Delta)
 {
+	unsigned int Color = GetGroundColor(EMPTYCOLOR);
+
+	if (EMPTYCOLOR == Color)
+	{
+		Gravity(_Delta);
+	}
+	else
+	{
+		GravityReset();
+	}
+
 	static float ShoutingTimer = 0.0f;
 
 	if (ShoutingTimer > 2.0f)
@@ -36,6 +47,17 @@ void BossMonster::AttackReadyUpdate(float _Delta)
 
 void BossMonster::AttackUpdate(float _Delta)
 {
+	unsigned int Color = GetGroundColor(EMPTYCOLOR);
+
+	if (EMPTYCOLOR == Color)
+	{
+		Gravity(_Delta);
+	}
+	else
+	{
+		GravityReset();
+	}
+
 	if (true == MainRenderer->IsAnimationEnd())
 	{
 		BossAttackObject* SummonAttacker = GetLevel()->CreateActor<BossAttackObject>(RenderOrder::Boss);
@@ -49,6 +71,17 @@ void BossMonster::AttackUpdate(float _Delta)
 
 void BossMonster::AttackToIdleUpdate(float _Delta)
 {
+	unsigned int Color = GetGroundColor(EMPTYCOLOR);
+
+	if (EMPTYCOLOR == Color)
+	{
+		Gravity(_Delta);
+	}
+	else
+	{
+		GravityReset();
+	}
+
 	if (true == MainRenderer->IsAnimationEnd())
 	{
 		ChangeState(BossState::Idle);
