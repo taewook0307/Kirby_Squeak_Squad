@@ -103,7 +103,6 @@ protected:
 	void StopToIdleStart();
 	void BreatheStart();
 	void FlyStart();
-	void BreatheOutLandStart();
 	void BreatheOutStart();
 	void DropStart();
 	void FlyToLandStart();
@@ -137,7 +136,6 @@ protected:
 	void StopToIdleUpdate(float _Delta);
 	void BreatheUpdate(float _Delta);
 	void FlyUpdate(float _Delta);
-	void BreatheOutLandUpdate(float _Delta);
 	void BreatheOutUpdate(float _Delta);
 	virtual void DropUpdate(float _Delta);
 	void FlyToLandUpdate(float _Delta);

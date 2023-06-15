@@ -36,8 +36,6 @@ void FormKirby::StateUpdate(float _Delta)
 		return BreatheUpdate(_Delta);
 	case KirbyState::Fly:
 		return FlyUpdate(_Delta);
-	case KirbyState::BreatheOutLand:
-		return BreatheOutLandUpdate(_Delta);
 	case KirbyState::BreatheOut:
 		return BreatheOutUpdate(_Delta);
 	case KirbyState::Drop:
@@ -110,9 +108,6 @@ void FormKirby::ChangeState(KirbyState _State)
 			break;
 		case KirbyState::Fly:
 			FlyStart();
-			break;
-		case KirbyState::BreatheOutLand:
-			BreatheOutLandStart();
 			break;
 		case KirbyState::BreatheOut:
 			BreatheOutStart();

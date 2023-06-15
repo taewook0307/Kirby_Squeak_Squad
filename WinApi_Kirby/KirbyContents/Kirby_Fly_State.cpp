@@ -16,11 +16,6 @@ void Kirby::FlyStart()
 	SetGravityVector(float4::UP * FlyPower);
 }
 
-void Kirby::BreatheOutLandStart()
-{
-	ChangeAnimationState("BreatheOutLand");
-}
-
 void Kirby::BreatheOutStart()
 {
 	ChangeAnimationState("BreatheOut");
@@ -74,12 +69,22 @@ void Kirby::FlyUpdate(float _Delta)
 	DirCheck();
 
 	unsigned int TopColor = GetGroundColor(EMPTYCOLOR, TOPCHECKPOS);
+	unsigned int BotColor = GetGroundColor(EMPTYCOLOR, float4::DOWN);
 
-	if (EMPTYCOLOR == TopColor || DOORCOLOR == TopColor)
+	if (EMPTYCOLOR != BotColor && DOORCOLOR != BotColor)
+	{
+		GravityReset();
+
+		if (true == GameEngineInput::IsDown(VK_SPACE))
+		{
+			AddPos(float4::UP * FlyPower * _Delta);
+		}
+	}
+	else if (EMPTYCOLOR == TopColor || DOORCOLOR == TopColor)
 	{
 		FlyGravity(_Delta);
 	}
-	else
+	else if(EMPTYCOLOR != TopColor && DOORCOLOR != TopColor)
 	{
 		SetGravityVector(float4::DOWN);
 		FlyGravity(_Delta);
@@ -124,30 +129,6 @@ void Kirby::FlyUpdate(float _Delta)
 	if (true == GameEngineInput::IsPress('C'))
 	{
 		ChangeState(KirbyState::BreatheOut);
-		return;
-	}
-
-	unsigned int BotColor = GetGroundColor(EMPTYCOLOR);
-
-	if (EMPTYCOLOR != BotColor && DOORCOLOR != BotColor)
-	{
-		ChangeState(KirbyState::BreatheOutLand);
-		return;
-	}
-}
-
-// 낙하 상태를 거치지 않고 착지한 상태
-void Kirby::BreatheOutLandUpdate(float _Delta)
-{
-	if (true == MainRenderer->IsAnimationEnd())
-	{
-		if (true == GameEngineInput::IsPress('A') || true == GameEngineInput::IsPress('D'))
-		{
-			ChangeState(KirbyState::Walk);
-			return;
-		}
-
-		ChangeState(KirbyState::Idle);
 		return;
 	}
 }
