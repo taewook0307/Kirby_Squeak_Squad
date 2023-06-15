@@ -32,7 +32,7 @@ void BossMonster::IdleUpdate(float _Delta)
 
 	if (IdleTimer > 2.0f)
 	{
-		int StateNumber = GameEngineRandom::MainRandom.RandomInt(0, 1);
+		int StateNumber = GameEngineRandom::MainRandom.RandomInt(0, 3);
 
 		IdleTimer = 0.0f;
 
@@ -41,20 +41,12 @@ void BossMonster::IdleUpdate(float _Delta)
 			ChangeState(BossState::JumpReady);
 			return;
 		}
-		else
+		else if (StateNumber == 1)
 		{
 			ChangeState(BossState::Walk);
 			return;
 		}
-	}
-
-	if (true == SearchCollision->Collision(CollisionOrder::Body, BossCol, CollisionType::Rect, CollisionType::Rect))
-	{
-		int AttackStateNumber = GameEngineRandom::MainRandom.RandomInt(0, 1);
-
-		IdleTimer = 0.0f;
-
-		if (AttackStateNumber == 0)
+		else if (StateNumber == 2)
 		{
 			ChangeState(BossState::AttackReady);
 			return;
@@ -77,24 +69,6 @@ void BossMonster::WalkUpdate(float _Delta)
 	{
 		ChangeState(BossState::Idle);
 		return;
-	}
-
-	if (true == SearchCollision->Collision(CollisionOrder::Body, BossCol, CollisionType::Rect, CollisionType::Rect))
-	{
-		int AttackStateNumber = GameEngineRandom::MainRandom.RandomInt(0, 1);
-
-		WalkTimer = 0.0f;
-
-		if (AttackStateNumber == 0)
-		{
-			ChangeState(BossState::AttackReady);
-			return;
-		}
-		else
-		{
-			ChangeState(BossState::MonsterSummonReady);
-			return;
-		}
 	}
 
 	unsigned int Color = GetGroundColor(EMPTYCOLOR);

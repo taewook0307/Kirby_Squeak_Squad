@@ -251,7 +251,7 @@ void Kirby::FlyToTurnUpUpdate(float _Delta)
 		FlyGravity(_Delta);
 	}
 
-	if (GetGravityVector().Y > 0.0f)
+	if (GetGravityVector().Y >= 0.0f)
 	{
 		ChangeState(KirbyState::FlyToTurnLand);
 		return;

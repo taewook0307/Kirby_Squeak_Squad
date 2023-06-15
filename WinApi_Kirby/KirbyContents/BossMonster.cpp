@@ -74,18 +74,6 @@ void BossMonster::Start()
 		BodyCollision->SetCollisionPos(BOSSBODYCOLLISIONPOS);
 		BodyCollision->SetCollisionScale(BOSSBODYCOLLISIONSCALE);
 		BodyCollision->SetCollisionType(CollisionType::Rect);
-		
-		SearchCollision = CreateCollision(CollisionOrder::BossSearch);
-		if (Dir == ActorDir::Left)
-		{
-			SearchCollision->SetCollisionPos(LEFTSEARCHCOLLISIONPOS);
-		}
-		else
-		{
-			SearchCollision->SetCollisionPos(RIGHTSEARCHCOLLISIONPOS);
-		}
-		SearchCollision->SetCollisionScale(SEARCHCOLLISIONSCALE);
-		SearchCollision->SetCollisionType(CollisionType::Rect);
 	}
 
 	ChangeState(BossState::Idle);
@@ -93,12 +81,38 @@ void BossMonster::Start()
 
 void BossMonster::Update(float _Delta)
 {
+	if (true == NoDamage)
+	{
+		NoDamageTimer -= _Delta;
+	}
+
+	if (NoDamageTimer < 0.0f)
+	{
+		NoDamage = false;
+		NoDamageTimer = NODAMAGETIMERVALUE;
+	}
+
+	if (true == NoDamage)
+	{
+		BodyCollision->Off();
+	}
+	else
+	{
+		BodyCollision->On();
+	}
+
 	StateUpdate(_Delta);
 
 	if (true == BodyCollision->Collision(CollisionOrder::Attack, BossCol, CollisionType::Rect, CollisionType::Rect)
 		|| true == BodyCollision->Collision(CollisionOrder::SpecialAttack, BossCol, CollisionType::Rect, CollisionType::Rect))
 	{
 		ChangeState(BossState::Damage);
+		return;
+	}
+
+	if (true == BodyCollision->Collision(CollisionOrder::Body, BossCol, CollisionType::Rect, CollisionType::Rect))
+	{
+		ChangeState(BossState::Idle);
 		return;
 	}
 
@@ -208,13 +222,11 @@ void BossMonster::DirChange()
 	if (KirbyPos.X < BossPos.X)
 	{
 		Dir = ActorDir::Left;
-		SearchCollision->SetCollisionPos(LEFTSEARCHCOLLISIONPOS);
 		ChangeAnimationState(CurState);
 	}
 	else
 	{
 		Dir = ActorDir::Right;
-		SearchCollision->SetCollisionPos(RIGHTSEARCHCOLLISIONPOS);
 		ChangeAnimationState(CurState);
 	}
 }

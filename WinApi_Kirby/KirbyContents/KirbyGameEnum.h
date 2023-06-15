@@ -10,8 +10,8 @@ enum class RenderOrder
 {
 	BackGround,
 	Map,
-	Play,
 	Boss,
+	Play,
 	Monster,
 	PlayUI
 };

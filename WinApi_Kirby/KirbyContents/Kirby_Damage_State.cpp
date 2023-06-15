@@ -32,6 +32,8 @@ void Kirby::DamageUpdate(float _Delta)
 {
 	NoDamage = true;
 
+	BodyCollision->Off();
+
 	unsigned int Color = GetGroundColor(EMPTYCOLOR);
 
 	if (EMPTYCOLOR == Color || DOORCOLOR == Color)
@@ -43,7 +45,7 @@ void Kirby::DamageUpdate(float _Delta)
 		GravityReset();
 	}
 
-	if (GetGravityVector().Y > 0.0f)
+	if (GetGravityVector().Y >= 0.0f)
 	{
 		GravityReset();
 		ChangeState(KirbyState::DamageLand);

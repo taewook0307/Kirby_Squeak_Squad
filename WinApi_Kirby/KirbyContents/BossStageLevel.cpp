@@ -27,6 +27,10 @@ void BossStageLevel::Start()
 	BossStage->GroundInit("BossStage", "BossStageBitMap.Bmp");
 
 	Boss = CreateActor<BossMonster>(RenderOrder::Boss);
+
+	LevelPlayer = CreateActor<TornadoKirby>(RenderOrder::Play);
+	LevelPlayer->MapChangeAnimationEndReset();
+	LevelPlayer->ChangeLevelStart();
 }
 
 void BossStageLevel::Update(float _Delta)
@@ -49,7 +53,7 @@ void BossStageLevel::Update(float _Delta)
 
 void BossStageLevel::LevelStart(GameEngineLevel* _PrevLevel)
 {
-	if (GetLevelPlayerForm() == MonsterType::Normal)
+	/*if (GetLevelPlayerForm() == MonsterType::Normal)
 	{
 		LevelPlayer = CreateActor<Kirby>(RenderOrder::Play);
 		LevelPlayer->MapChangeAnimationEndReset();
@@ -78,7 +82,7 @@ void BossStageLevel::LevelStart(GameEngineLevel* _PrevLevel)
 		LevelPlayer = CreateActor<TornadoKirby>(RenderOrder::Play);
 		LevelPlayer->MapChangeAnimationEndReset();
 		LevelPlayer->ChangeLevelStart();
-	}
+	}*/
 
 	if (nullptr == LevelPlayer)
 	{
