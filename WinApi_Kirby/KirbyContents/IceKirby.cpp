@@ -44,7 +44,6 @@ void IceKirby::Start()
 		MainRenderer->CreateAnimation("Right_Ice_StopToIdle", "Right_IceKirby.Bmp", 46, 47, 0.2f, false);
 		MainRenderer->CreateAnimation("Right_Ice_Breathe", "Right_IceKirby.Bmp", 48, 53, 0.2f, false);
 		MainRenderer->CreateAnimation("Right_Ice_Fly", "Right_IceKirby.Bmp", 54, 71, 0.2f, true);
-		MainRenderer->CreateAnimation("Right_Ice_BreatheOutLand", "Right_IceKirby.Bmp", 72, 73, 0.1f, false);
 		MainRenderer->CreateAnimation("Right_Ice_BreatheOut", "Right_IceKirby.Bmp", 72, 73, 0.2f, true);
 		MainRenderer->CreateAnimation("Right_Ice_Drop", "Right_IceKirby.Bmp", 74, 75, 0.1f, true);
 		MainRenderer->CreateAnimation("Right_Ice_FlyToLand", "Right_IceKirby.Bmp", 89, 89, 0.3f, true);
@@ -73,7 +72,6 @@ void IceKirby::Start()
 		MainRenderer->CreateAnimation("Left_Ice_StopToIdle", "Left_IceKirby.Bmp", 46, 47, 0.2f, false);
 		MainRenderer->CreateAnimation("Left_Ice_Breathe", "Left_IceKirby.Bmp", 48, 53, 0.2f, false);
 		MainRenderer->CreateAnimation("Left_Ice_Fly", "Left_IceKirby.Bmp", 54, 71, 0.2f, true);
-		MainRenderer->CreateAnimation("Left_Ice_BreatheOutLand", "Left_IceKirby.Bmp", 72, 73, 0.1f, false);
 		MainRenderer->CreateAnimation("Left_Ice_BreatheOut", "Left_IceKirby.Bmp", 72, 73, 0.2f, true);
 		MainRenderer->CreateAnimation("Left_Ice_Drop", "Left_IceKirby.Bmp", 74, 75, 0.1f, true);
 		MainRenderer->CreateAnimation("Left_Ice_FlyToLand", "Left_IceKirby.Bmp", 89, 89, 0.3f, true);
