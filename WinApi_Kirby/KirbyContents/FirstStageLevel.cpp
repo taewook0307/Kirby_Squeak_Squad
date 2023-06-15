@@ -163,7 +163,7 @@ void FirstStageLevel::LevelStart(GameEngineLevel* _PrevLevel)
 		LevelMonster->SetPos({ 1000.0f, 735.0f });
 		LevelMonster->SetGroundBitMap("FirstStageBitMap.Bmp");
 
-		LevelFireMonster->SetPos({ 2100.0f, 735.0f });
+		LevelFireMonster->SetPos({ 2650.0f, 735.0f });
 		LevelFireMonster->SetGroundBitMap("FirstStageBitMap.Bmp");
 
 		LevelTornadoMonster->SetPos({ 7000.0f, 660.0f });

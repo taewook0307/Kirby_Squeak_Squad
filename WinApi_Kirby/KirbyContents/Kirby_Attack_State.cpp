@@ -49,12 +49,12 @@ void Kirby::AttackUpdate(float _Delta)
 {
 	DirCheck();
 
-	InhaleCollision->On();
+	AttackCollision->On();
 
 	// 공격 충돌체 제거
 	if (true == GameEngineInput::IsUp('C'))
 	{
-		InhaleCollision->Off();
+		AttackCollision->Off();
 		ChangeState(KirbyState::Idle);
 		return;
 	}
@@ -68,16 +68,16 @@ void Kirby::AttackUpdate(float _Delta)
 	{
 		if (ActorDir::Left == Dir)
 		{
-			InhaleCollision->SetCollisionPos(LEFTINHALECOLLSIONSCALE);
+			AttackCollision->SetCollisionPos(LEFTINHALECOLLSIONSCALE);
 		}
 
 		else
 		{
-			InhaleCollision->SetCollisionPos(RIGHTINHALECOLLSIONSCALE);
+			AttackCollision->SetCollisionPos(RIGHTINHALECOLLSIONSCALE);
 		}
 	}
 
-	if (true == InhaleCollision->Collision(CollisionOrder::MonsterBody, Col, CollisionType::Rect, CollisionType::Rect))
+	if (true == AttackCollision->Collision(CollisionOrder::MonsterBody, Col, CollisionType::Rect, CollisionType::Rect))
 	{
 		BodyCollision->Off();
 
@@ -105,13 +105,13 @@ void Kirby::AttackUpdate(float _Delta)
 				KeepMonster->Death();
 				KeepMonster = nullptr;
 			}
-			InhaleCollision->Off();
+			AttackCollision->Off();
 			ChangeState(KirbyState::Keep);
 			return;
 		}
 	}
 
-	if (true == InhaleCollision->Collision(CollisionOrder::BossAttackBody, Col, CollisionType::Rect, CollisionType::Rect))
+	if (true == AttackCollision->Collision(CollisionOrder::BossAttackBody, Col, CollisionType::Rect, CollisionType::Rect))
 	{
 		BodyCollision->Off();
 
@@ -133,7 +133,7 @@ void Kirby::AttackUpdate(float _Delta)
 				BossAttack->Death();
 				BossAttack = nullptr;
 			}
-			InhaleCollision->Off();
+			AttackCollision->Off();
 			ChangeState(KirbyState::Keep);
 			return;
 		}
