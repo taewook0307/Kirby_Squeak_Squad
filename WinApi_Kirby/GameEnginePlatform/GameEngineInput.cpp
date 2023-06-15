@@ -119,6 +119,9 @@ void GameEngineInput::InputInit()
 		AllKeys[i] = GameEngineKey(i);
 	}
 
+	AllKeys['-'] = GameEngineKey(VK_OEM_MINUS);
+	AllKeys['='] = GameEngineKey(VK_OEM_PLUS);
+	// AllKeys['='] = GameEngineKey('=');
 }
 
 

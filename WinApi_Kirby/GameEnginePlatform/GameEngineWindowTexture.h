@@ -46,6 +46,12 @@ public:
 
 	void TransCopy(GameEngineWindowTexture* _CopyTexture, const float4& _Pos, const float4& _Scale, const float4& _OtherPos, const float4& _OtherScale, int _TransColor = RGB(255, 0, 255));
 
+	// 반투명용 카피
+	// void AlphaCopy(GameEngineWindowTexture* _CopyTexture, const float4& _Pos, const float4& _Scale, const float4& _OtherPos, const float4& _OtherScale);
+
+	// 회전용 카피
+	void PlgCopy(GameEngineWindowTexture* _CopyTexture, const float4& _Pos, const float4& _Scale, const float4& _OtherPos, const float4& _OtherScale, float _Angle);
+
 	unsigned int GetColor(unsigned int _DefaultColor, float4 _Pos);
 
 	void FillTexture(unsigned int _Color);
