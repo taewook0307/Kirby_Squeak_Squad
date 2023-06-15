@@ -82,8 +82,7 @@ void AttackObject::Update(float _Delta)
 		}
 	}
 
-	if (1.0f < GetLiveTime()
-		|| true == AttackCollision->Collision(CollisionOrder::MonsterBody, StarCol, CollisionType::Rect, CollisionType::Rect)
+	if (true == AttackCollision->Collision(CollisionOrder::MonsterBody, StarCol, CollisionType::Rect, CollisionType::Rect)
 		|| true == AttackCollision->Collision(CollisionOrder::BossBody, StarCol, CollisionType::Rect, CollisionType::Rect))
 	{
 		CollisionCheck = true;
@@ -95,5 +94,11 @@ void AttackObject::Update(float _Delta)
 			Death();
 			return;
 		}
+	}
+
+	if (1.0f < GetLiveTime())
+	{
+		Death();
+		return;
 	}
 }

@@ -62,7 +62,8 @@ void BossAttackObject::Update(float _Delta)
 		AddPos(Dir * Speed * _Delta);
 	}
 
-	if (true == AttackCollision->Collision(CollisionOrder::Body, BossAttackCol, CollisionType::Rect, CollisionType::Rect))
+	if (true == AttackCollision->Collision(CollisionOrder::Body, BossAttackCol, CollisionType::Rect, CollisionType::Rect)
+		&& false == BodyCollision->Collision(CollisionOrder::Inhale, BossAttackCol, CollisionType::Rect, CollisionType::Rect))
 	{
 		Move = false;
 		MainRenderer->ChangeAnimation("BossAttack_Death");
@@ -70,10 +71,8 @@ void BossAttackObject::Update(float _Delta)
 	}
 	else if (3.0f < GetLiveTime() && false == BodyCollision->Collision(CollisionOrder::Inhale, BossAttackCol, CollisionType::Rect, CollisionType::Rect))
 	{
-		Move = false;
-		BodyCollision->Off();
-		MainRenderer->ChangeAnimation("BossAttack_Death");
-		TimeDone = true;
+		Death();
+		return;
 	}
 
 	if (true == AttackSuccess && true == MainRenderer->IsAnimationEnd()
