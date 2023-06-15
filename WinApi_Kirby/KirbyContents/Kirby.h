@@ -9,7 +9,7 @@
 #define BASEPOWER 300.0f
 #define FLYPOWER 300.0f
 #define NODAMAGETIMERVALUE 5.0f
-#define FASTINPUTTIMERVALUE 1.0f
+#define CHECKINPUTTIMERVALUE 0.2f
 
 #define BODYCOLLISIONPOS { 0.0f, -30.0f }
 #define BODYCOLLISIONSCALE { 70.0f, 70.0f }
@@ -197,10 +197,10 @@ protected:
 
 	// 빠르게 두 번 입력을 확인하기 위한 변수
 	bool CheckInputA = false;
-	float CheckInputATimer = FASTINPUTTIMERVALUE;
+	float CheckInputATimer = CHECKINPUTTIMERVALUE;
 
 	bool CheckInputD = false;
-	float CheckInputDTimer = FASTINPUTTIMERVALUE;
+	float CheckInputDTimer = CHECKINPUTTIMERVALUE;
 
 	void LevelStart() override;
 

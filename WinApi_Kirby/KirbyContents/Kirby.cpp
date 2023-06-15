@@ -151,7 +151,7 @@ void Kirby::Update(float _Delta)
 	if (CheckInputATimer < 0.0f)
 	{
 		CheckInputA = false;
-		CheckInputATimer = FASTINPUTTIMERVALUE;
+		CheckInputATimer = CHECKINPUTTIMERVALUE;
 	}
 
 	if (true == CheckInputD)
@@ -162,7 +162,7 @@ void Kirby::Update(float _Delta)
 	if (CheckInputDTimer < 0.0f)
 	{
 		CheckInputD = false;
-		CheckInputDTimer = FASTINPUTTIMERVALUE;
+		CheckInputDTimer = CHECKINPUTTIMERVALUE;
 	}
 
 	StateUpdate(_Delta);
@@ -191,7 +191,7 @@ void Kirby::Update(float _Delta)
 	if (true == CheckInputA && CheckInputATimer > 0.0f && GameEngineInput::IsPress('A'))
 	{
 		CheckInputA = false;
-		CheckInputATimer = FASTINPUTTIMERVALUE;
+		CheckInputATimer = CHECKINPUTTIMERVALUE;
 		ChangeState(KirbyState::Run);
 		return;
 	}
@@ -199,7 +199,7 @@ void Kirby::Update(float _Delta)
 	if (true == CheckInputD && CheckInputDTimer > 0.0f && GameEngineInput::IsPress('D'))
 	{
 		CheckInputD = false;
-		CheckInputDTimer = FASTINPUTTIMERVALUE;
+		CheckInputDTimer = CHECKINPUTTIMERVALUE;
 		ChangeState(KirbyState::Run);
 		return;
 	}

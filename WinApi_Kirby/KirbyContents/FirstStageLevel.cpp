@@ -172,7 +172,7 @@ void FirstStageLevel::LevelStart(GameEngineLevel* _PrevLevel)
 		LevelSparkMonster->SetPos({ 5100.0f, 660.0f });
 		LevelSparkMonster->SetGroundBitMap("FirstStageBitMap.Bmp");
 
-		LevelIceMonster->SetPos({ 5800.0f, 660.0f });
+		LevelIceMonster->SetPos({ 5700.0f, 660.0f });
 		LevelIceMonster->SetGroundBitMap("FirstStageBitMap.Bmp");
 	}
 }
