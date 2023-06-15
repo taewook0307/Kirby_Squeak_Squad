@@ -180,6 +180,13 @@ void Kirby::DropUpdate(float _Delta)
 		else
 		{
 			DropTimer = 0.0f;
+
+			if (true == GameEngineInput::IsPress('A') || true == GameEngineInput::IsPress('D'))
+			{
+				ChangeState(KirbyState::Walk);
+				return;
+			}
+
 			ChangeState(KirbyState::FlyToLand);
 			return;
 		}
@@ -273,6 +280,13 @@ void Kirby::FlyToTurnLandUpdate(float _Delta)
 	else
 	{
 		GravityReset();
+
+		if (true == GameEngineInput::IsPress('A') || true == GameEngineInput::IsPress('D'))
+		{
+			ChangeState(KirbyState::Walk);
+			return;
+		}
+
 		ChangeState(KirbyState::FlyToLand);
 		return;
 	}
@@ -305,12 +319,6 @@ void Kirby::FlyToLandUpdate(float _Delta)
 {
 	if (true == MainRenderer->IsAnimationEnd())
 	{
-		if (true == GameEngineInput::IsPress('A') || true == GameEngineInput::IsPress('D'))
-		{
-			ChangeState(KirbyState::Walk);
-			return;
-		}
-
 		ChangeState(KirbyState::Idle);
 		return;
 	}
