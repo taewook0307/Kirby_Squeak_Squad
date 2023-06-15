@@ -156,8 +156,20 @@ void Kirby::AttackToIdleUpdate(float _Delta)
 	if (MainRenderer->IsAnimationEnd())
 	{
 		StarAttack = nullptr;
-		ChangeState(KirbyState::Idle);
-		return;
+
+		unsigned int Color = GetGroundColor(EMPTYCOLOR);
+
+		if (EMPTYCOLOR == Color || DOORCOLOR == Color)
+		{
+			GravityReset();
+			ChangeState(KirbyState::Drop);
+			return;
+		}
+		else
+		{
+			ChangeState(KirbyState::Idle);
+			return;
+		}
 	}
 }
 

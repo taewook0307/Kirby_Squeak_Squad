@@ -36,9 +36,6 @@ void FirstStageLevel::Start()
 	BackGround* Back = CreateActor<BackGround>(RenderOrder::BackGround);
 	Back->BackGroundInit("FirstStageLevel.Bmp", "FirstStageBitMap.Bmp");
 
-	LevelPlayer = CreateActor<Kirby>(RenderOrder::Play);
-	LevelPlayer->MapChangeAnimationEndReset();
-
 	LevelMonster = CreateActor<Monster>(RenderOrder::Play);
 
 	LevelFireMonster = CreateActor<FireMonster>(RenderOrder::Play);
@@ -147,6 +144,44 @@ void FirstStageLevel::Update(float _Delta)
 
 void FirstStageLevel::LevelStart(GameEngineLevel* _PrevLevel)
 {
+	if (GetLevelPlayerForm() == MonsterType::Normal)
+	{
+		LevelPlayer = CreateActor<Kirby>(RenderOrder::Play);
+		LevelPlayer->MapChangeAnimationEndReset();
+		LevelPlayer->ChangeLevelStart();
+
+	}
+	else if (GetLevelPlayerForm() == MonsterType::Fire)
+	{
+		LevelPlayer = CreateActor<FireKirby>(RenderOrder::Play);
+		LevelPlayer->MapChangeAnimationEndReset();
+		LevelPlayer->ChangeLevelStart();
+	}
+	else if (GetLevelPlayerForm() == MonsterType::Ice)
+	{
+		LevelPlayer = CreateActor<IceKirby>(RenderOrder::Play);
+		LevelPlayer->MapChangeAnimationEndReset();
+		LevelPlayer->ChangeLevelStart();
+	}
+	else if (GetLevelPlayerForm() == MonsterType::Spark)
+	{
+		LevelPlayer = CreateActor<SparkKirby>(RenderOrder::Play);
+		LevelPlayer->MapChangeAnimationEndReset();
+		LevelPlayer->ChangeLevelStart();
+	}
+	else if (GetLevelPlayerForm() == MonsterType::Tornado)
+	{
+		LevelPlayer = CreateActor<TornadoKirby>(RenderOrder::Play);
+		LevelPlayer->MapChangeAnimationEndReset();
+		LevelPlayer->ChangeLevelStart();
+	}
+
+	float4 WinScale = GameEngineWindow::MainWindow.GetScale();
+	LevelPlayer->SetPos({ WinScale.Half().Half().X, WinScale.Half().Half().Y });
+	LevelPlayer->SetGroundBitMap("FirstStageBitMap.Bmp");
+
+	GetMainCamera()->SetPos(float4::ZERO);
+
 	if (nullptr == LevelPlayer)
 	{
 		MsgBoxAssert("플레이어를 세팅해주지 않았습니다");
@@ -154,12 +189,6 @@ void FirstStageLevel::LevelStart(GameEngineLevel* _PrevLevel)
 	}
 
 	{
-		float4 WinScale = GameEngineWindow::MainWindow.GetScale();
-		LevelPlayer->SetPos({ WinScale.Half().Half().X, WinScale.Half().Half().Y });
-		LevelPlayer->SetGroundBitMap("FirstStageBitMap.Bmp");
-
-		GetMainCamera()->SetPos(float4::ZERO);
-
 		LevelMonster->SetPos({ 1000.0f, 735.0f });
 		LevelMonster->SetGroundBitMap("FirstStageBitMap.Bmp");
 

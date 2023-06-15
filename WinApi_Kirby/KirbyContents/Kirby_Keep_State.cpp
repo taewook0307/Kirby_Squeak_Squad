@@ -99,6 +99,12 @@ void Kirby::KeepWalkUpdate(float _Delta)
 		}
 	}
 
+	if (true == GameEngineInput::IsDown('C') && KeepType == MonsterType::Normal)
+	{
+		ChangeState(KirbyState::AttackToIdle);
+		return;
+	}
+
 	if (MovePos == float4::ZERO)
 	{
 		ChangeState(KirbyState::KeepIdle);
@@ -155,32 +161,10 @@ void Kirby::KeepJumpUpdate(float _Delta)
 		}
 	}
 
-	if (true == GameEngineInput::IsPress('Q') && Dir == ActorDir::Left)
+	if (true == GameEngineInput::IsDown('C') && KeepType == MonsterType::Normal)
 	{
-		MovePos = { -RunSpeed * _Delta, 0.0f };
-		CheckPos = LEFTCHECKPOS;
-
-		unsigned int Color = GetGroundColor(EMPTYCOLOR, CheckPos);
-
-		if (EMPTYCOLOR == Color || DOORCOLOR == Color)
-		{
-			AddPos(MovePos);
-			CameraMove(MovePos);
-		}
-	}
-
-	if (true == GameEngineInput::IsPress('E') && Dir == ActorDir::Right)
-	{
-		MovePos = { RunSpeed * _Delta, 0.0f };
-		CheckPos = RIGHTCHECKPOS;
-
-		unsigned int Color = GetGroundColor(EMPTYCOLOR, CheckPos);
-
-		if (EMPTYCOLOR == Color || DOORCOLOR == Color)
-		{
-			AddPos(MovePos);
-			CameraMove(MovePos);
-		}
+		ChangeState(KirbyState::AttackToIdle);
+		return;
 	}
 
 	if (GetGravityVector().Y > 0.0f || GetPos().Y < 100.0f)
@@ -230,6 +214,12 @@ void Kirby::KeepJumpToDropUpdate(float _Delta)
 				AddPos(MovePos);
 				CameraMove(MovePos);
 			}
+		}
+
+		if (true == GameEngineInput::IsDown('C') && KeepType == MonsterType::Normal)
+		{
+			ChangeState(KirbyState::AttackToIdle);
+			return;
 		}
 	}
 	else
