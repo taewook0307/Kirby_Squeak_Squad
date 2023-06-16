@@ -75,7 +75,13 @@ protected:
 
 	bool NoDamage = false;
 	float NoDamageTimer = BOSSNODAMAGETIMERVALUE;
+
+	void Damage()
+	{
+		BossHp -= 50;
+	}
 private:
+	int BossHp = 500;
 	float Speed = 100.0f;
 
 	std::vector<GameEngineCollision*> BossCol;

@@ -141,6 +141,15 @@ void Kirby::Update(float _Delta)
 		NoDamageTimer = NODAMAGETIMERVALUE;
 	}
 
+	if (false == NoDamage)
+	{
+		BodyCollision->On();
+	}
+	else
+	{
+		BodyCollision->Off();
+	}
+
 	if (true == CheckInputA)
 	{
 		CheckInputATimer -= _Delta;
@@ -166,8 +175,26 @@ void Kirby::Update(float _Delta)
 	StateUpdate(_Delta);
 
 	if (true == BodyCollision->Collision(CollisionOrder::MonsterBody, Col, CollisionType::Rect, CollisionType::Rect)
-		|| true == BodyCollision->Collision(CollisionOrder::MonsterAttack, Col, CollisionType::Rect, CollisionType::Rect)
-		|| true == BodyCollision->Collision(CollisionOrder::BossBody, Col, CollisionType::Rect, CollisionType::Rect)
+		|| true == BodyCollision->Collision(CollisionOrder::MonsterAttack, Col, CollisionType::Rect, CollisionType::Rect))
+	{
+		float4 Pos = Col[Col.size() - 1]->GetActor()->GetPos();
+		float4 DirPos = GetPos() - Pos;
+		if (DirPos.X < 0.0f)
+		{
+			Dir = ActorDir::Right;
+		}
+		else
+		{
+			Dir = ActorDir::Left;
+		}
+
+		AttackCollision->Off();
+		DamageFromMonster();
+		ChangeState(KirbyState::Damage);
+		return;
+	}
+
+	if (true == BodyCollision->Collision(CollisionOrder::BossBody, Col, CollisionType::Rect, CollisionType::Rect)
 		|| true == BodyCollision->Collision(CollisionOrder::BossAttack, Col, CollisionType::Rect, CollisionType::Rect))
 	{
 		float4 Pos = Col[Col.size() - 1]->GetActor()->GetPos();
@@ -182,6 +209,7 @@ void Kirby::Update(float _Delta)
 		}
 
 		AttackCollision->Off();
+		DamageFromBoss();
 		ChangeState(KirbyState::Damage);
 		return;
 	}
@@ -200,15 +228,6 @@ void Kirby::Update(float _Delta)
 		CheckInputDTimer = CHECKINPUTTIMERVALUE;
 		ChangeState(KirbyState::Run);
 		return;
-	}
-
-	if (false == NoDamage)
-	{
-		BodyCollision->On();
-	}
-	else
-	{
-		BodyCollision->Off();
 	}
 
 	// Debug 용
@@ -237,10 +256,10 @@ void Kirby::Render(float _Delta)
 	FrameText += std::to_string(1.0f / _Delta);
 	TextOutA(dc, 2, 60, FrameText.c_str(), static_cast<int>(FrameText.size()));
 
-	//std::string HpText = "";
-	//HpText += "Hp : ";
-	//HpText += std::to_string(Hp);
-	//TextOutA(dc, 2, 90, HpText.c_str(), static_cast<int>(HpText.size()));
+	std::string HpText = "";
+	HpText += "Hp : ";
+	HpText += std::to_string(KirbyHp);
+	TextOutA(dc, 2, 90, HpText.c_str(), static_cast<int>(HpText.size()));
 
 	CollisionData Data;
 

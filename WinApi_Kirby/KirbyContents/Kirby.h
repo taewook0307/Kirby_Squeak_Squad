@@ -159,12 +159,24 @@ protected:
 	void KirbyGravity(float _Delta);
 
 protected:
+	void DamageFromMonster()
+	{
+		++Count;
+		KirbyHp -= 20;
+	}
+
+	void DamageFromBoss()
+	{
+		KirbyHp -= 40;
+	}
+
 	float RatioValue = 4.0f;
 	KirbyState State = KirbyState::Max;
 	std::string CurState = "";
 
 	ActorDir Dir = ActorDir::Right;
 
+	int KirbyHp = 200;
 	float Speed = BASEPOWER;
 	float RunSpeed = Speed * 1.5f;
 	float JumpPower = GRAVITYPOWER;
@@ -193,6 +205,7 @@ protected:
 
 	GameEngineCollision* AttackCollision = nullptr;
 private:
+	int Count = 0;
 
 	MonsterType KeepType = MonsterType::Max;
 	AttackObject* StarAttack = nullptr;

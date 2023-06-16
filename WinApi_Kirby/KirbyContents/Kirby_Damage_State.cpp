@@ -13,6 +13,7 @@
 
 void Kirby::DamageStart()
 {
+	NoDamage = true;
 	ChangeAnimationState("Damage");
 	SetGravityVector(float4::UP * JumpPower * 0.5f);
 }
@@ -30,9 +31,13 @@ void Kirby::DeathStart()
 
 void Kirby::DamageUpdate(float _Delta)
 {
-	NoDamage = true;
-
 	Gravity(_Delta);
+
+	if (KirbyHp <= 0)
+	{
+		ChangeState(KirbyState::Death);
+		return;
+	}
 
 	float4 MovePos = float4::ZERO;
 	float4 CheckPos = float4::ZERO;

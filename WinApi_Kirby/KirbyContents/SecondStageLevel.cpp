@@ -43,7 +43,7 @@ void SecondStageLevel::Update(float _Delta)
 		LevelPlayer->Death();
 		LevelPlayer = CreateActor<IceKirby>(RenderOrder::Play);
 		LevelPlayer->SetPos(SavePos);
-		LevelPlayer->SetGroundBitMap("FirstStageBitMap.Bmp");
+		LevelPlayer->SetGroundBitMap("SecondStageBitMap.Bmp");
 	}
 
 	if (true == GameEngineInput::IsDown('C')
@@ -55,7 +55,7 @@ void SecondStageLevel::Update(float _Delta)
 		LevelPlayer->Death();
 		LevelPlayer = CreateActor<SparkKirby>(RenderOrder::Play);
 		LevelPlayer->SetPos(SavePos);
-		LevelPlayer->SetGroundBitMap("FirstStageBitMap.Bmp");
+		LevelPlayer->SetGroundBitMap("SecondStageBitMap.Bmp");
 	}
 
 	if (true == GameEngineInput::IsDown('C')
@@ -67,7 +67,7 @@ void SecondStageLevel::Update(float _Delta)
 		LevelPlayer->Death();
 		LevelPlayer = CreateActor<FireKirby>(RenderOrder::Play);
 		LevelPlayer->SetPos(SavePos);
-		LevelPlayer->SetGroundBitMap("FirstStageBitMap.Bmp");
+		LevelPlayer->SetGroundBitMap("SecondStageBitMap.Bmp");
 	}
 
 	if (true == GameEngineInput::IsDown('C')
@@ -79,7 +79,7 @@ void SecondStageLevel::Update(float _Delta)
 		LevelPlayer->Death();
 		LevelPlayer = CreateActor<TornadoKirby>(RenderOrder::Play);
 		LevelPlayer->SetPos(SavePos);
-		LevelPlayer->SetGroundBitMap("FirstStageBitMap.Bmp");
+		LevelPlayer->SetGroundBitMap("SecondStageBitMap.Bmp");
 	}
 
 	if (GetLevelPlayerForm() != MonsterType::Normal && true == GameEngineInput::IsDown('Z'))
@@ -89,8 +89,21 @@ void SecondStageLevel::Update(float _Delta)
 		LevelPlayer->Death();
 		LevelPlayer = CreateActor<Kirby>(RenderOrder::Play);
 		LevelPlayer->SetPos(SavePos);
-		LevelPlayer->SetGroundBitMap("FirstStageBitMap.Bmp");
+		LevelPlayer->SetGroundBitMap("SecondStageBitMap.Bmp");
 		LevelPlayer->ClearForm();
+	}
+
+	// 플레이어 데스 부분
+	if (0 < GetPlayerLife() && true == LevelPlayer->GetDeathCheck())
+	{
+		int Check = GetPlayerLife();
+		MinusPlayerLife();
+		float4 WinScale = GameEngineWindow::MainWindow.GetScale();
+		SavePos = { LevelPlayer->GetPos().X, WinScale.Half().Half().Y };
+		LevelPlayer->Death();
+		LevelPlayer = CreateActor<Kirby>(RenderOrder::Play);
+		LevelPlayer->SetPos(SavePos);
+		LevelPlayer->SetGroundBitMap("SecondStageBitMap.Bmp");
 	}
 
 	if (true == LevelPlayer->GetMapChangeAnimationEnd())

@@ -106,11 +106,16 @@ void BossMonster::Update(float _Delta)
 	if (true == BodyCollision->Collision(CollisionOrder::Attack, BossCol, CollisionType::Rect, CollisionType::Rect)
 		|| true == BodyCollision->Collision(CollisionOrder::SpecialAttack, BossCol, CollisionType::Rect, CollisionType::Rect))
 	{
+		Damage();
 		ChangeState(BossState::Damage);
 		return;
 	}
 
-	if (true == BodyCollision->Collision(CollisionOrder::Body, BossCol, CollisionType::Rect, CollisionType::Rect))
+	if (true == BodyCollision->Collision(CollisionOrder::Body, BossCol, CollisionType::Rect, CollisionType::Rect)
+		&& true == MainRenderer->IsAnimation("Left_Boss_Idle")
+		&& true == MainRenderer->IsAnimation("Righdt_Boss_Idle")
+		&& true == MainRenderer->IsAnimation("Left_Boss_Walk")
+		&& true == MainRenderer->IsAnimation("Right_Boss_Walk"))
 	{
 		ChangeState(BossState::Idle);
 		return;
@@ -266,4 +271,9 @@ void BossMonster::Render(float _Delta)
 		Data.Scale = { 5, 5 };
 		Rectangle(dc, Data.iLeft(), Data.iTop(), Data.iRight(), Data.iBot());
 	}
+
+	std::string HpText = "";
+	HpText += "Hp : ";
+	HpText += std::to_string(BossHp);
+	TextOutA(dc, 2, 120, HpText.c_str(), static_cast<int>(HpText.size()));
 }
