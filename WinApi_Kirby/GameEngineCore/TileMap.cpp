@@ -1,11 +1,11 @@
 #include "TileMap.h"
 #include "GameEngineRenderer.h"
 
-TileMap::TileMap() 
+TileMap::TileMap()
 {
 }
 
-TileMap::~TileMap() 
+TileMap::~TileMap()
 {
 }
 
@@ -110,4 +110,28 @@ void TileMap::SetTile(int X, int Y, int _Index, float4 _TilePos, bool _IsImageSi
 	else {
 		Tiles[Y][X]->SetRenderScaleToTexture();
 	}
+}
+
+void TileMap::DeathTile(float4 _Pos)
+{
+	float4 Index = PosToIndex(_Pos);
+
+	DeathTile(Index.iX(), Index.iY());
+}
+
+void TileMap::DeathTile(int X, int Y)
+{
+	if (true == IsOver(X, Y))
+	{
+		return;
+	}
+
+	if (nullptr == Tiles[Y][X])
+	{
+		return;
+	}
+
+	Tiles[Y][X]->Death();
+	Tiles[Y][X] = nullptr;
+
 }
