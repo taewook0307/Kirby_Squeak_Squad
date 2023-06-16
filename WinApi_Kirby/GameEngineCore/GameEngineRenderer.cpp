@@ -155,6 +155,7 @@ void GameEngineRenderer::Render(float _DeltaTime)
 		Sprite = CurAnimation->Sprite;
 		const GameEngineSprite::Sprite& SpriteInfo = Sprite->GetSprite(Frame);
 		Texture = SpriteInfo.BaseTexture;
+		MaskTexture = SpriteInfo.MaskTexture;
 		SetCopyPos(SpriteInfo.RenderPos);
 		SetCopyScale(SpriteInfo.RenderScale);
 
@@ -171,7 +172,14 @@ void GameEngineRenderer::Render(float _DeltaTime)
 
 	GameEngineWindowTexture* BackBuffer = GameEngineWindow::MainWindow.GetBackBuffer();
 
-	BackBuffer->TransCopy(Texture, GetActor()->GetPos() + RenderPos - Camera->GetPos(), RenderScale, CopyPos, CopyScale);
+	if (0 == Angle)
+	{
+		BackBuffer->TransCopy(Texture, GetActor()->GetPos() + RenderPos - Camera->GetPos(), RenderScale, CopyPos, CopyScale);
+	}
+	else
+	{
+		BackBuffer->PlgCopy(Texture, MaskTexture, GetActor()->GetPos() + RenderPos - Camera->GetPos(), RenderScale, CopyPos, CopyScale, Angle);
+	}
 
 }
 
@@ -343,6 +351,11 @@ void GameEngineRenderer::UICameraSetting()
 
 void GameEngineRenderer::Start()
 {
+}
+
+void GameEngineRenderer::SetAngle(float _Angle)
+{
+	Angle = _Angle;
 }
 
 void GameEngineRenderer::SetOrder(int _Order)

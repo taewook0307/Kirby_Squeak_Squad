@@ -8,10 +8,11 @@
 class GameEngineSprite
 {
 public:
-	class Sprite 
+	class Sprite
 	{
 	public:
 		GameEngineWindowTexture* BaseTexture = nullptr;
+		GameEngineWindowTexture* MaskTexture = nullptr;
 		float4 RenderPos = float4::ZERO;
 		float4 RenderScale = float4::ZERO;
 	};
@@ -33,16 +34,16 @@ public:
 
 	const Sprite& GetSprite(size_t _Index);
 
-	size_t GetSpriteCount() 
+	size_t GetSpriteCount()
 	{
 		return AllSprite.size();
 	}
 
+	void SetMaskTexture(const std::string& _MaskName);
+
 protected:
 
 private:
-
 	std::vector<Sprite> AllSprite;
-	
 };
 
