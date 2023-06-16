@@ -32,9 +32,9 @@ void BossMonster::IdleUpdate(float _Delta)
 
 	if (IdleTimer > 2.0f)
 	{
-		//int StateNumber = GameEngineRandom::MainRandom.RandomInt(0, 3);
+		// int StateNumber = GameEngineRandom::MainRandom.RandomInt(0, 3);
 
-		int StateNumber = 2;
+		int StateNumber = 3;
 
 		IdleTimer = 0.0f;
 

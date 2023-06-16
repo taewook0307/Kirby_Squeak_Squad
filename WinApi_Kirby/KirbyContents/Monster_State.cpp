@@ -46,7 +46,7 @@ void Monster::IdleUpdate(float _Delta)
 
 	static float IdleTimer = 0.0f;
 
-	if (IdleTimer > 3.0f)
+	if (IdleTimer > 3.0f && EMPTYCOLOR != Color && DOORCOLOR != Color)
 	{
 		IdleTimer = 0.0f;
 		ChangeState(MonsterState::Walk);
