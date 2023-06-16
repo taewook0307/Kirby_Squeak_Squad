@@ -2,8 +2,9 @@
 
 #include "SubLevel.h"
 
-class Kirby;
 class Ground;
+class Kirby;
+class Monster;
 class SecondStageLevel : public SubLevel
 {
 public:
@@ -27,5 +28,6 @@ private:
 	
 	Ground* SecondStage = nullptr;
 	Kirby* LevelPlayer = nullptr;
+	Monster* LevelMonster = nullptr;
 	float4 SavePos = float4::ZERO;
 };

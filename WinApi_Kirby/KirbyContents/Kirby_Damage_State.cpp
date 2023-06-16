@@ -127,6 +127,8 @@ void Kirby::DeathUpdate(float _Delta)
 {
 	Gravity(_Delta);
 
+	BodyCollision->Off();
+	
 	float4 WinScale = GameEngineWindow::MainWindow.GetScale();
 
 	float4 ReStartPos = GetPos();

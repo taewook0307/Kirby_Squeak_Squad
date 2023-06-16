@@ -6,6 +6,7 @@
 #include "IceKirby.h"
 #include "FireKirby.h"
 #include "TornadoKirby.h"
+#include "FireMonster.h"
 #include "KirbyGameEnum.h"
 
 #include <GameEnginePlatform/GameEngineWindow.h>
@@ -30,6 +31,7 @@ void SecondStageLevel::Start()
 	BackGround* Back = CreateActor<BackGround>(RenderOrder::BackGround);
 	Back->BackGroundInit("SecondStageLevel.Bmp", "SecondStageBitMap.Bmp");
 
+	LevelMonster = CreateActor<FireMonster>(RenderOrder::Play);
 }
 
 void SecondStageLevel::Update(float _Delta)
@@ -167,4 +169,7 @@ void SecondStageLevel::LevelStart(GameEngineLevel* _PrevLevel)
 	LevelPlayer->SetGroundBitMap("SecondStageBitMap.Bmp");
 
 	GetMainCamera()->SetPos(float4::ZERO);
+
+	LevelMonster->SetPos({ 2550.0f, 740.0f });
+	LevelMonster->SetGroundBitMap("FirstStageBitMap.Bmp");
 }

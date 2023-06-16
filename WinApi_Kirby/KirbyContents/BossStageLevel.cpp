@@ -31,6 +31,18 @@ void BossStageLevel::Start()
 
 void BossStageLevel::Update(float _Delta)
 {
+	// 플레이어 데스 부분
+	if (0 < GetPlayerLife() && true == LevelPlayer->GetDeathCheck())
+	{
+		int Check = GetPlayerLife();
+		MinusPlayerLife();
+		float4 WinScale = GameEngineWindow::MainWindow.GetScale();
+		LevelPlayer->Death();
+		LevelPlayer = CreateActor<Kirby>(RenderOrder::Play);
+		LevelPlayer->SetPos({ WinScale.Half().Half().X, WinScale.Half().Half().Y });
+		LevelPlayer->SetGroundBitMap("BossStageBitMap.Bmp");
+	}
+
 	if (true == GameEngineInput::IsDown('P'))
 	{
 		GameEngineCore::ChangeLevel("EndingLevel");
@@ -101,17 +113,5 @@ void BossStageLevel::LevelStart(GameEngineLevel* _PrevLevel)
 
 		Boss->SetPos({ WinScale.Half().X + WinScale.Half().Half().X, WinScale.Half().Half().Y });
 		Boss->SetGroundBitMap("BossStageBitMap.Bmp");
-	}
-
-	// 플레이어 데스 부분
-	if (0 < GetPlayerLife() && true == LevelPlayer->GetDeathCheck())
-	{
-		int Check = GetPlayerLife();
-		MinusPlayerLife();
-		float4 WinScale = GameEngineWindow::MainWindow.GetScale();
-		LevelPlayer->Death();
-		LevelPlayer = CreateActor<Kirby>(RenderOrder::Play);
-		LevelPlayer->SetPos({ WinScale.Half().Half().X, WinScale.Half().Half().Y });
-		LevelPlayer->SetGroundBitMap("BossStageBitMap.Bmp");
 	}
 }
