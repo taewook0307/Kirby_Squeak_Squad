@@ -51,7 +51,7 @@ void Kirby::AttackUpdate(float _Delta)
 
 	AttackCollision->On();
 
-	// 공격 충돌체 제거
+	// 흡수 충돌체 제거
 	if (true == GameEngineInput::IsUp('C'))
 	{
 		AttackCollision->Off();
@@ -63,7 +63,7 @@ void Kirby::AttackUpdate(float _Delta)
 	float4 DirPos = float4::ZERO;
 	GameEngineActor* MonsterPtr = nullptr;
 
-	// 공격 충돌체 생성
+	// 흠수 충돌체 생성
 	if (true == GameEngineInput::IsPress('C'))
 	{
 		if (ActorDir::Left == Dir)

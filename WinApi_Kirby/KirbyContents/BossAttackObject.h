@@ -24,6 +24,7 @@ public:
 
 	class GameEngineRenderer* MainRenderer;
 	class GameEngineCollision* AttackCollision;
+
 protected:
 
 private:

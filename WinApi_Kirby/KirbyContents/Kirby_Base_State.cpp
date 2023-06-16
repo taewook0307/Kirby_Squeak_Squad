@@ -55,7 +55,7 @@ void Kirby::IdleUpdate(float _Delta)
 
 	unsigned int Color = GetGroundColor(EMPTYCOLOR);
 
-	// 걷기 상태 이동
+	// 걷기 상태 전환
 	if (true == GameEngineInput::IsDown('A') && Color != EMPTYCOLOR
 		|| true == GameEngineInput::IsDown('D') && Color != EMPTYCOLOR)
 	{
@@ -64,7 +64,7 @@ void Kirby::IdleUpdate(float _Delta)
 		return;
 	}
 
-	// 웅크리기 상태 이동
+	// 웅크리기 상태 전환
 	if (true == GameEngineInput::IsDown('S') && Color != EMPTYCOLOR
 		|| true == GameEngineInput::IsPress('S') && Color != EMPTYCOLOR)
 	{
@@ -73,7 +73,7 @@ void Kirby::IdleUpdate(float _Delta)
 		return;
 	}
 
-	// 점프 상태 이동
+	// 점프 상태 전환
 	if (true == GameEngineInput::IsDown(VK_SPACE) && Color != EMPTYCOLOR)
 	{
 		DirCheck();
@@ -81,6 +81,7 @@ void Kirby::IdleUpdate(float _Delta)
 		return;
 	}
 
+	// 공격 상태 전환
 	if (true == GameEngineInput::IsDown('C') && Color != EMPTYCOLOR)
 	{
 		DirCheck();
@@ -88,6 +89,7 @@ void Kirby::IdleUpdate(float _Delta)
 		return;
 	}
 
+	// 다음 스테이지 넘어가기 상태 전환
 	{
 		unsigned int Color = GetGroundColor(EMPTYCOLOR, TOPCHECKPOS);
 
@@ -140,6 +142,12 @@ void Kirby::ChangeUpdate(float _Delta)
 {
 	if (true == MainRenderer->IsAnimationEnd())
 	{
+		if (true == GameEngineInput::IsPress('A') || true == GameEngineInput::IsPress('D'))
+		{
+			ChangeState(KirbyState::Walk);
+			return;
+		}
+
 		ChangeState(KirbyState::Idle);
 		return;
 	}

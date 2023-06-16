@@ -89,7 +89,7 @@ void BossMonster::Update(float _Delta)
 	if (NoDamageTimer < 0.0f)
 	{
 		NoDamage = false;
-		NoDamageTimer = NODAMAGETIMERVALUE;
+		NoDamageTimer = BOSSNODAMAGETIMERVALUE;
 	}
 
 	if (true == NoDamage)

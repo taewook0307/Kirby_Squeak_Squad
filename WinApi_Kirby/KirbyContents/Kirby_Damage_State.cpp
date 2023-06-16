@@ -32,39 +32,26 @@ void Kirby::DamageUpdate(float _Delta)
 {
 	NoDamage = true;
 
-	unsigned int Color = GetGroundColor(EMPTYCOLOR, TOPCHECKPOS);
-
-	if (EMPTYCOLOR == Color || DOORCOLOR == Color)
-	{
-		Gravity(_Delta);
-	}
-	else
-	{
-		GravityReset();
-	}
-
-	if (GetGravityVector().Y >= 0.0f)
-	{
-		GravityReset();
-		ChangeState(KirbyState::DamageLand);
-		return;
-	}
+	Gravity(_Delta);
 
 	float4 MovePos = float4::ZERO;
 	float4 CheckPos = float4::ZERO;
 
 	GameEngineCollision* CurCollision = Col[Col.size() - 1];
 	GameEngineActor* CollisionMaster = CurCollision->GetActor();
+
 	static float4 CollisionMasterPos = CollisionMaster->GetPos();
 	static float4 DamageDirPos = GetPos() - CollisionMasterPos;
 
 	if (DamageDirPos.X < 0.0f)
 	{
+		Dir = ActorDir::Right;
 		MovePos = float4::LEFT * Speed * 0.5f * _Delta;
 		CheckPos = LEFTBOTCHECKPOS;
 	}
 	else
 	{
+		Dir = ActorDir::Left;
 		MovePos = float4::RIGHT * Speed * 0.5f * _Delta;
 		CheckPos = RIGHTBOTCHECKPOS;
 	}
@@ -75,6 +62,13 @@ void Kirby::DamageUpdate(float _Delta)
 	{
 		AddPos(MovePos);
 		CameraMove(MovePos);
+	}
+
+	if (GetGravityVector().Y >= 0.0f)
+	{
+		GravityReset();
+		ChangeState(KirbyState::DamageLand);
+		return;
 	}
 }
 
@@ -90,6 +84,13 @@ void Kirby::DamageLandUpdate(float _Delta)
 	if (true == MainRenderer->IsAnimationEnd() && EMPTYCOLOR != Color)
 	{
 		GravityReset();
+
+		if (true == GameEngineInput::IsPress('A') || true == GameEngineInput::IsPress('D'))
+		{
+			ChangeState(KirbyState::Walk);
+			return;
+		}
+
 		ChangeState(KirbyState::Idle);
 		return;
 	}

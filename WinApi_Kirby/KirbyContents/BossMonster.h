@@ -13,7 +13,7 @@
 #define RIGHTSEARCHCOLLISIONPOS { 220.0f, -120.0f }
 #define SEARCHCOLLISIONSCALE { 180.0f, 230.0f }
 
-#define NODAMAGETIMERVALUE 1.5f
+#define BOSSNODAMAGETIMERVALUE 1.5f
 
 class BossMonster : public BaseActor
 {
@@ -74,7 +74,7 @@ protected:
 	GameEngineCollision* SearchCollision = nullptr;
 
 	bool NoDamage = false;
-	float NoDamageTimer = NODAMAGETIMERVALUE;
+	float NoDamageTimer = BOSSNODAMAGETIMERVALUE;
 private:
 	float Speed = 100.0f;
 

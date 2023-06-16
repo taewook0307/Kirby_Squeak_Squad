@@ -1,5 +1,5 @@
 ﻿#include "AttackObject.h"
-#include "Monster.h"
+#include "BossMonster.h"
 #include "KirbyGameEnum.h"
 
 #include <GameEngineCore/ResourcesManager.h>

@@ -237,10 +237,10 @@ void Kirby::Render(float _Delta)
 	FrameText += std::to_string(1.0f / _Delta);
 	TextOutA(dc, 2, 60, FrameText.c_str(), static_cast<int>(FrameText.size()));
 
-	std::string HpText = "";
-	HpText += "Hp : ";
-	HpText += std::to_string(Hp);
-	TextOutA(dc, 2, 90, HpText.c_str(), static_cast<int>(HpText.size()));
+	//std::string HpText = "";
+	//HpText += "Hp : ";
+	//HpText += std::to_string(Hp);
+	//TextOutA(dc, 2, 90, HpText.c_str(), static_cast<int>(HpText.size()));
 
 	CollisionData Data;
 

@@ -28,11 +28,6 @@ public:
 		return Type;
 	}
 
-	inline int GetMonsterAtt() const
-	{
-		return Att;
-	}
-
 protected:
 	virtual void StateUpdate(float _Delta);
 	virtual void ChangeState(MonsterState _State);
@@ -65,7 +60,6 @@ protected:
 	std::vector<GameEngineCollision*> Col;
 
 private:
-	int Att = MONSTERATT;
 	void Start() override;
 	void Update(float _Delta) override;
 };

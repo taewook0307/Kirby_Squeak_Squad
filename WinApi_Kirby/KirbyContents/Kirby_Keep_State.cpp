@@ -17,7 +17,7 @@ void Kirby::KeepWalkStart()
 void Kirby::KeepJumpStart()
 {
 	ChangeAnimationState("KeepJump");
-	SetGravityVector(float4::UP * JumpPower * 0.7f);
+	SetGravityVector(float4::UP * JumpPower * 0.8f);
 }
 
 void Kirby::KeepJumpToDropStart()
@@ -108,12 +108,6 @@ void Kirby::KeepWalkUpdate(float _Delta)
 	if (MovePos == float4::ZERO)
 	{
 		ChangeState(KirbyState::KeepIdle);
-		return;
-	}
-
-	if (true == GameEngineInput::IsDown('X'))
-	{
-		ChangeState(KirbyState::Attack);
 		return;
 	}
 

@@ -7,7 +7,7 @@
 #include <vector>
 
 #define BASEPOWER 300.0f
-#define FLYPOWER 300.0f
+#define FLYPOWER 400.0f
 #define NODAMAGETIMERVALUE 5.0f
 #define CHECKINPUTTIMERVALUE 0.2f
 
@@ -20,6 +20,7 @@
 class AttackObject;
 class Kirby : public BaseActor
 {
+	friend class AttackObject;
 private:
 	static Kirby* MainKirby;
 
@@ -58,16 +59,6 @@ public:
 	void MapChangeAnimationEndReset()
 	{
 		MapChangeAnimationEnd = false;
-	}
-
-	inline int GetHp() const
-	{
-		return Hp;
-	}
-
-	inline int GetAtt() const
-	{
-		return Att;
 	}
 
 	inline bool GetDeathCheck() const
@@ -157,6 +148,8 @@ protected:
 	void ChangeUpdate(float _Delta);
 	void DeathUpdate(float _Delta);
 
+	void LevelStart() override;
+
 	virtual void DirCheck();
 
 	virtual void ChangeAnimationState(const std::string& _StateName);
@@ -165,10 +158,13 @@ protected:
 
 	void KirbyGravity(float _Delta);
 
-	KirbyState State = KirbyState::Max;
-	ActorDir Dir = ActorDir::Right;
-	std::string CurState = "";
+protected:
 	float RatioValue = 4.0f;
+	KirbyState State = KirbyState::Max;
+	std::string CurState = "";
+
+	ActorDir Dir = ActorDir::Right;
+
 	float Speed = BASEPOWER;
 	float RunSpeed = Speed * 1.5f;
 	float JumpPower = GRAVITYPOWER;
@@ -178,13 +174,8 @@ protected:
 
 	bool MapChangeAnimationEnd = false;
 
-	void Damage(int _Value)
-	{
-		Hp -= _Value;
-	}
-
-	int Hp = BASEHP;
-	int Att = BASEATT;
+	float4 DropStartPos = float4::ZERO;
+	float4 LandPos = float4::ZERO;
 
 	// LevelPlayer를 Death시키기 위해 확인하는 변수
 	bool DeathCheck = false;
@@ -199,8 +190,6 @@ protected:
 
 	bool CheckInputD = false;
 	float CheckInputDTimer = CHECKINPUTTIMERVALUE;
-
-	void LevelStart() override;
 
 	GameEngineCollision* AttackCollision = nullptr;
 private:

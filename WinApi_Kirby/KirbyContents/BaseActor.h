@@ -4,8 +4,10 @@
 #include <GameEngineCore/GameEngineCollision.h>
 
 #define BASEHP 200
-#define BASEATT 70
-#define MONSTERATT 50
+#define BASEATT 50
+#define BOSSHP 500
+#define BOSSATT 40
+#define MONSTERATT 20
 
 #define GRAVITYPOWER 700.0f
 #define EMPTYCOLOR RGB(255,255,255)
@@ -82,20 +84,6 @@ public:
 	}
 	
 protected:
-	inline int GetHp() const
-	{
-		return Hp;
-	}
-
-	inline int GetAtt() const
-	{
-		return Att;
-	}
-
-	inline void Damage(int _Value)
-	{
-		Hp -= Att;
-	}
 
 	inline void IsCheckPosPointChange()
 	{
@@ -108,9 +96,6 @@ protected:
 	bool IsCheckPosPoint = false;
 
 private:
-	int Hp = BASEHP;
-	int Att = BASEATT;
-
 	GameEngineWindowTexture* GroundBitMap = nullptr;
 
 	bool IsGravity = true;

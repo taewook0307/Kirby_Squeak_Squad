@@ -24,6 +24,7 @@ void Kirby::BreatheOutStart()
 void Kirby::DropStart()
 {
 	ChangeAnimationState("Drop");
+	DropStartPos = GetPos();
 }
 
 void Kirby::FlyToLandStart()
@@ -34,7 +35,7 @@ void Kirby::FlyToLandStart()
 void Kirby::FlyToTurnUpStart()
 {
 	ChangeAnimationState("FlyToTurnUp");
-	SetGravityVector(float4::UP * FlyPower * 0.8f);
+	SetGravityVector(float4::UP * FlyPower);
 }
 
 void Kirby::FlyToTurnLandStart()
@@ -69,7 +70,7 @@ void Kirby::FlyUpdate(float _Delta)
 	DirCheck();
 
 	unsigned int TopColor = GetGroundColor(EMPTYCOLOR, TOPCHECKPOS);
-	unsigned int BotColor = GetGroundColor(EMPTYCOLOR, float4::DOWN);
+	unsigned int BotColor = GetGroundColor(EMPTYCOLOR, float4::UP);
 
 	if (EMPTYCOLOR != BotColor && DOORCOLOR != BotColor)
 	{
@@ -84,7 +85,7 @@ void Kirby::FlyUpdate(float _Delta)
 	{
 		FlyGravity(_Delta);
 	}
-	else if(EMPTYCOLOR != TopColor && DOORCOLOR != TopColor)
+	else if (EMPTYCOLOR != TopColor && DOORCOLOR != TopColor)
 	{
 		SetGravityVector(float4::DOWN);
 		FlyGravity(_Delta);
@@ -140,7 +141,7 @@ void Kirby::BreatheOutUpdate(float _Delta)
 
 	if (EMPTYCOLOR == Color || DOORCOLOR == Color)
 	{
-		FlyGravity(_Delta);
+		Gravity(_Delta);
 	}
 	else
 	{
@@ -159,28 +160,29 @@ void Kirby::DropUpdate(float _Delta)
 {
 	DirCheck();
 
-	static float DropTimer = 0.0f;
 	unsigned int Color = GetGroundColor(EMPTYCOLOR);
 
 	if (EMPTYCOLOR == Color || DOORCOLOR == Color)
 	{
-		FlyGravity(_Delta);
-		DropTimer += 2.0f;
+		Gravity(_Delta);
 	}
 
 	if (EMPTYCOLOR != Color && DOORCOLOR != Color)
 	{
+		LandPos = GetPos();
+
 		GravityReset();
-		if (DropTimer > 2.0f)
+
+		float DropDistance = static_cast<float>(fabs(DropStartPos.Y - LandPos.Y));
+
+		if (DropDistance > 400.0f)
 		{
-			DropTimer = 0.0f;
+			GravityReset();
 			ChangeState(KirbyState::FlyToTurnUp);
 			return;
 		}
 		else
 		{
-			DropTimer = 0.0f;
-
 			if (true == GameEngineInput::IsPress('A') || true == GameEngineInput::IsPress('D'))
 			{
 				ChangeState(KirbyState::Walk);
@@ -231,12 +233,12 @@ void Kirby::FlyToTurnUpUpdate(float _Delta)
 
 	if (EMPTYCOLOR == TopColor || DOORCOLOR == TopColor)
 	{
-		FlyGravity(_Delta);
+		Gravity(_Delta);
 	}
 	else
 	{
 		SetGravityVector(float4::DOWN);
-		FlyGravity(_Delta);
+		Gravity(_Delta);
 	}
 
 	if (GetGravityVector().Y >= 0.0f)
@@ -275,7 +277,7 @@ void Kirby::FlyToTurnLandUpdate(float _Delta)
 
 	if (EMPTYCOLOR == Color || DOORCOLOR == Color)
 	{
-		FlyGravity(_Delta);
+		Gravity(_Delta);
 	}
 	else
 	{
