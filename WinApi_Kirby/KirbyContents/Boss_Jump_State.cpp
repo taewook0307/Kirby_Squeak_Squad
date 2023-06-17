@@ -10,7 +10,7 @@ void BossMonster::JumpReadyStart()
 void BossMonster::JumpStart()
 {
 	ChangeAnimationState("Jump");
-	SetGravityVector(float4::UP * 700.0f);
+	SetGravityVector(float4::UP * BossJumpPower);
 }
 
 void BossMonster::DropStart()

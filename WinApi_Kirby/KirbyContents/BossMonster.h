@@ -45,6 +45,7 @@ protected:
 	void MonsterSummonDropStart();
 	void MonsterSummonStart();
 	void DamageStart();
+	void DeathJumpStart();
 	void DeathStart();
 
 	void IdleUpdate(float _Delta);
@@ -60,6 +61,7 @@ protected:
 	void MonsterSummonDropUpdate(float _Delta);
 	void MonsterSummonUpdate(float _Delta);
 	void DamageUpdate(float _Delta);
+	void DeathJumpUpdate(float _Delta);
 	void DeathUpdate(float _Delta);
 
 	void DirChange();
@@ -73,16 +75,18 @@ protected:
 
 	GameEngineCollision* SearchCollision = nullptr;
 
+	bool BossDeath = false;
 	bool NoDamage = false;
 	float NoDamageTimer = BOSSNODAMAGETIMERVALUE;
 
 	void Damage()
 	{
-		BossHp -= 50;
+		BossHp -= 500;
 	}
 private:
 	int BossHp = 500;
 	float Speed = 100.0f;
+	float BossJumpPower = 700.0f;
 
 	std::vector<GameEngineCollision*> BossCol;
 

@@ -49,7 +49,8 @@ void BossMonster::Start()
 		MainRenderer->CreateAnimation("Right_Boss_MonsterSummonDrop", "Right_Boss.Bmp", 35, 35, 0.2f, false);
 		MainRenderer->CreateAnimation("Right_Boss_MonsterSummon", "Right_Boss.Bmp", 36, 43, 0.2f, false);
 		MainRenderer->CreateAnimation("Right_Boss_Damage", "Right_Boss.Bmp", 44, 44, 0.2f, false);
-		MainRenderer->CreateAnimation("Right_Boss_Death", "Right_Boss.Bmp", 45, 47, 0.2f, false);
+		MainRenderer->CreateAnimation("Right_Boss_DeathJump", "Right_Boss.Bmp", 44, 45, 0.3f, false);
+		MainRenderer->CreateAnimation("Right_Boss_Death", "Right_Boss.Bmp", 46, 47, 0.2f, true);
 
 		MainRenderer->CreateAnimation("Left_Boss_Idle", "Left_Boss.Bmp", 0, 3, 0.4f, true);
 		MainRenderer->CreateAnimation("Left_Boss_Walk", "Left_Boss.Bmp", 4, 7, 0.3f, true);
@@ -65,7 +66,8 @@ void BossMonster::Start()
 		MainRenderer->CreateAnimation("Left_Boss_MonsterSummonDrop", "Left_Boss.Bmp", 35, 35, 0.2f, false);
 		MainRenderer->CreateAnimation("Left_Boss_MonsterSummon", "Left_Boss.Bmp", 36, 43, 0.2f, false);
 		MainRenderer->CreateAnimation("Left_Boss_Damage", "Left_Boss.Bmp", 44, 44, 0.2f, false);
-		MainRenderer->CreateAnimation("Left_Boss_Death", "Left_Boss.Bmp", 45, 47, 0.2f, false);
+		MainRenderer->CreateAnimation("Left_Boss_DeathJump", "Left_Boss.Bmp", 44, 45, 0.3f, false);
+		MainRenderer->CreateAnimation("Left_Boss_Death", "Left_Boss.Bmp", 46, 47, 0.2f, true);
 	
 		MainRenderer->SetRenderScaleToTexture();
 		MainRenderer->SetScaleRatio(RatioValue);
@@ -94,13 +96,17 @@ void BossMonster::Update(float _Delta)
 		NoDamageTimer = BOSSNODAMAGETIMERVALUE;
 	}
 
-	if (true == NoDamage)
+	if (true == NoDamage && false == BossDeath)
 	{
 		BodyCollision->Off();
 	}
-	else
+	else if (false == NoDamage && false == BossDeath)
 	{
 		BodyCollision->On();
+	}
+	else
+	{
+		BodyCollision->Off();
 	}
 
 	StateUpdate(_Delta);
@@ -159,6 +165,8 @@ void BossMonster::StateUpdate(float _Delta)
 		return MonsterSummonUpdate(_Delta);
 	case BossState::Damage:
 		return DamageUpdate(_Delta);
+	case BossState::DeathJump:
+		return DeathJumpUpdate(_Delta);
 	case BossState::Death:
 		return DeathUpdate(_Delta);
 	default:
@@ -210,6 +218,9 @@ void BossMonster::ChangeState(BossState _State)
 			break;
 		case BossState::Damage:
 			DamageStart();
+			break;
+		case BossState::DeathJump:
+			DeathJumpStart();
 			break;
 		case BossState::Death:
 			DeathStart();
