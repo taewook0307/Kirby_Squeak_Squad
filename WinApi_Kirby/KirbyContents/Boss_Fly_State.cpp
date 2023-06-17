@@ -1,7 +1,10 @@
 #include "BossMonster.h"
+#include "BossAttackObject.h"
 #include "Kirby.h"
+#include "KirbyGameEnum.h"
 
 #include <GameEngineCore/GameEngineRenderer.h>
+#include <GameEngineCore/GameEngineLevel.h>
 
 void BossMonster::FlyReadyStart()
 {
@@ -90,6 +93,17 @@ void BossMonster::FlyDropUpdate(float _Delta)
 	else
 	{
 		GravityReset();
+
+		BossAttackObject* LeftObject = GetLevel()->CreateActor<BossAttackObject>(RenderOrder::Monster);
+		LeftObject->SetPos(GetPos() + float4::LEFT * 180.0f);
+		LeftObject->MoveOff();
+		LeftObject->SetGroundBitMap(GetGroundBitMap());
+
+		BossAttackObject* RightObject = GetLevel()->CreateActor<BossAttackObject>(RenderOrder::Monster);
+		RightObject->SetPos(GetPos() + float4::RIGHT * 180.0f);
+		RightObject->MoveOff();
+		RightObject->SetGroundBitMap(GetGroundBitMap());
+
 		ChangeState(BossState::Idle);
 		return;
 	}

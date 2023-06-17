@@ -25,6 +25,11 @@ public:
 	class GameEngineRenderer* MainRenderer;
 	class GameEngineCollision* AttackCollision;
 
+	void MoveOff()
+	{
+		Move = false;
+	}
+
 protected:
 
 private:
