@@ -10,6 +10,11 @@ void BossMonster::AttackReadyStart()
 	ChangeAnimationState("AttackReady");
 }
 
+void BossMonster::AttackRunStart()
+{
+	ChangeAnimationState("AttackRun");
+}
+
 void BossMonster::AttackStart()
 {
 	ChangeAnimationState("Attack");
@@ -43,6 +48,11 @@ void BossMonster::AttackReadyUpdate(float _Delta)
 	}
 
 	ShoutingTimer += _Delta;
+}
+
+void BossMonster::AttackRunUpdate(float _Delta)
+{
+
 }
 
 void BossMonster::AttackUpdate(float _Delta)

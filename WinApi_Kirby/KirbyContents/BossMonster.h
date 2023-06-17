@@ -38,8 +38,13 @@ protected:
 	void JumpStart();
 	void DropStart();
 	void AttackReadyStart();
+	void AttackRunStart();
 	void AttackStart();
 	void AttackToIdleStart();
+	void FlyReadyStart();
+	void FlyUpStart();
+	void FlyStart();
+	void FlyDropStart();
 	void MonsterSummonReadyStart();
 	void MonsterSummonJumpStart();
 	void MonsterSummonDropStart();
@@ -54,8 +59,13 @@ protected:
 	void JumpUpdate(float _Delta);
 	void DropUpdate(float _Delta);
 	void AttackReadyUpdate(float _Delta);
+	void AttackRunUpdate(float _Delta);
 	void AttackUpdate(float _Delta);
 	void AttackToIdleUpdate(float _Delta);
+	void FlyReadyUpdate(float _Delta);
+	void FlyUpUpdate(float _Delta);
+	void FlyUpdate(float _Delta);
+	void FlyDropUpdate(float _Delta);
 	void MonsterSummonReadyUpdate(float _Delta);
 	void MonsterSummonJumpUpdate(float _Delta);
 	void MonsterSummonDropUpdate(float _Delta);

@@ -44,6 +44,10 @@ void BossMonster::Start()
 		MainRenderer->CreateAnimation("Right_Boss_AttackRun", "Right_Boss.Bmp", 15, 18, 0.1f, true);
 		MainRenderer->CreateAnimation("Right_Boss_Attack", "Right_Boss.Bmp", 19, 23, 0.2f, false);
 		MainRenderer->CreateAnimation("Right_Boss_AttackToIdle", "Right_Boss.Bmp", 24, 24, 0.3f, false);
+		MainRenderer->CreateAnimation("Right_Boss_FlyReady", "Right_Boss.Bmp", 25, 26, 0.3f, false);
+		MainRenderer->CreateAnimation("Right_Boss_FlyUp", "Right_Boss.Bmp", 27, 27, 0.3f, false);
+		MainRenderer->CreateAnimation("Right_Boss_Fly", "Right_Boss.Bmp", 28, 29, 0.3f, true);
+		MainRenderer->CreateAnimation("Right_Boss_FlyDrop", "Right_Boss.Bmp", 30, 30, 0.3f, false);
 		MainRenderer->CreateAnimation("Right_Boss_MonsterSummonReady", "Right_Boss.Bmp", 31, 33, 0.3f, false);
 		MainRenderer->CreateAnimation("Right_Boss_MonsterSummonJump", "Right_Boss.Bmp", 34, 34, 0.2f, false);
 		MainRenderer->CreateAnimation("Right_Boss_MonsterSummonDrop", "Right_Boss.Bmp", 35, 35, 0.2f, false);
@@ -61,6 +65,10 @@ void BossMonster::Start()
 		MainRenderer->CreateAnimation("Left_Boss_AttackRun", "Left_Boss.Bmp", 15, 18, 0.1f, true);
 		MainRenderer->CreateAnimation("Left_Boss_Attack", "Left_Boss.Bmp", 19, 23, 0.2f, false);
 		MainRenderer->CreateAnimation("Left_Boss_AttackToIdle", "Left_Boss.Bmp", 24, 24, 0.3f, false);
+		MainRenderer->CreateAnimation("Left_Boss_FlyReady", "Left_Boss.Bmp", 25, 26, 0.3f, false);
+		MainRenderer->CreateAnimation("Left_Boss_FlyUp", "Left_Boss.Bmp", 27, 27, 0.3f, false);
+		MainRenderer->CreateAnimation("Left_Boss_Fly", "Left_Boss.Bmp", 28, 29, 0.3f, true);
+		MainRenderer->CreateAnimation("Left_Boss_FlyDrop", "Left_Boss.Bmp", 30, 30, 0.3f, false);
 		MainRenderer->CreateAnimation("Left_Boss_MonsterSummonReady", "Left_Boss.Bmp", 31, 33, 0.3f, false);
 		MainRenderer->CreateAnimation("Left_Boss_MonsterSummonJump", "Left_Boss.Bmp", 34, 34, 0.2f, false);
 		MainRenderer->CreateAnimation("Left_Boss_MonsterSummonDrop", "Left_Boss.Bmp", 35, 35, 0.2f, false);
@@ -151,10 +159,20 @@ void BossMonster::StateUpdate(float _Delta)
 		return DropUpdate(_Delta);
 	case BossState::AttackReady:
 		return AttackReadyUpdate(_Delta);
+	case BossState::AttackRun:
+		return AttackRunUpdate(_Delta);
 	case BossState::Attack:
 		return AttackUpdate(_Delta);
 	case BossState::AttackToIdle:
 		return AttackToIdleUpdate(_Delta);
+	case BossState::FlyReady:
+		return FlyReadyUpdate(_Delta);
+	case BossState::FlyUp:
+		return FlyUpUpdate(_Delta);
+	case BossState::Fly:
+		return FlyUpdate(_Delta);
+	case BossState::FlyDrop:
+		return FlyDropUpdate(_Delta);
 	case BossState::MonsterSummonReady:
 		return MonsterSummonReadyUpdate(_Delta);
 	case BossState::MonsterSummonJump:
@@ -198,11 +216,26 @@ void BossMonster::ChangeState(BossState _State)
 		case BossState::AttackReady:
 			AttackReadyStart();
 			break;
+		case BossState::AttackRun:
+			AttackRunStart();
+			break;
 		case BossState::Attack:
 			AttackStart();
 			break;
 		case BossState::AttackToIdle:
 			AttackToIdleStart();
+			break;
+		case BossState::FlyReady:
+			FlyReadyStart();
+			break;
+		case BossState::FlyUp:
+			FlyUpStart();
+			break;
+		case BossState::Fly:
+			FlyStart();
+			break;
+		case BossState::FlyDrop:
+			FlyDropStart();
 			break;
 		case BossState::MonsterSummonReady:
 			MonsterSummonReadyStart();

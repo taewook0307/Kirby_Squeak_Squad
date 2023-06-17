@@ -53,6 +53,11 @@ void BossMonster::IdleUpdate(float _Delta)
 			ChangeState(BossState::AttackReady);
 			return;
 		}
+		else if (StateNumber == 3)
+		{
+			ChangeState(BossState::FlyReady);
+			return;
+		}
 		else
 		{
 			ChangeState(BossState::MonsterSummonReady);
