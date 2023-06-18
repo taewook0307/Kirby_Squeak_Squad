@@ -94,7 +94,6 @@ protected:
 	GameEngineRenderer* MainRenderer = nullptr;
 
 	bool IsCheckPosPoint = false;
-
 private:
 	GameEngineWindowTexture* GroundBitMap = nullptr;
 
