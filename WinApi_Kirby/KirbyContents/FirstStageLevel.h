@@ -31,7 +31,6 @@ private:
 
 	Kirby* LevelPlayer = nullptr;
 	float4 SavePos = float4::ZERO;
-	GameEngineRenderer* FormUI = nullptr;
 
 	Monster* LevelMonster = nullptr;
 	Monster* LevelFireMonster = nullptr;
