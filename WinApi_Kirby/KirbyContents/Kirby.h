@@ -176,7 +176,7 @@ protected:
 
 	ActorDir Dir = ActorDir::Right;
 
-	int KirbyHp = 200;
+	static int KirbyHp;
 	float Speed = BASEPOWER;
 	float RunSpeed = Speed * 1.5f;
 	float JumpPower = GRAVITYPOWER;

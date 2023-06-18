@@ -42,6 +42,12 @@ void Kirby::SlideUpdate(float _Delta)
 
 	static float SlideTimer = 0.0f;
 
+	if (true == GameEngineInput::IsDown(VK_SPACE))
+	{
+		ChangeState(KirbyState::Jump);
+		return;
+	}
+
 	// 왼쪽으로 슬라이딩
 	if (Dir == ActorDir::Left && SlideTimer <= 1.0f)
 	{
@@ -87,6 +93,13 @@ void Kirby::SlideUpdate(float _Delta)
 	if (true == MainRenderer->IsAnimationEnd())
 	{
 		SlideTimer = 0.0f;
+
+		if (true == GameEngineInput::IsPress('A') || true == GameEngineInput::IsPress('D'))
+		{
+			ChangeState(KirbyState::Walk);
+			return;
+		}
+
 		ChangeState(KirbyState::Idle);
 		return;
 	}
