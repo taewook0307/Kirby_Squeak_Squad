@@ -1,11 +1,21 @@
 ﻿#include "SubLevel.h"
+#include "KirbyUI.h"
+#include "KirbyGameEnum.h"
+
+#include <GameEnginePlatform/GameEngineWindow.h>
+#include <GameEngineCore/GameEngineActor.h>
 
 MonsterType SubLevel::LevelPlayerForm = MonsterType::Normal;
+KirbyUI* SubLevel::LevelPlayerUI;
 
 int SubLevel::PlayerLifeCount = 3;
 
 SubLevel::SubLevel()
 {
+	float4 WinScale = GameEngineWindow::MainWindow.GetScale();
+
+	LevelPlayerUI = CreateActor<KirbyUI>(RenderOrder::PlayUI);
+	LevelPlayerUI->SetPos(WinScale.Half());
 }
 
 SubLevel::~SubLevel()

@@ -4,6 +4,7 @@
 
 #include <GameEngineCore/GameEngineLevel.h>
 
+class KirbyUI;
 class SubLevel : public GameEngineLevel
 {
 public:
@@ -29,4 +30,6 @@ protected:
 	static void MinusPlayerLife();
 private:
 	static MonsterType LevelPlayerForm;
+
+	static KirbyUI* LevelPlayerUI;
 };

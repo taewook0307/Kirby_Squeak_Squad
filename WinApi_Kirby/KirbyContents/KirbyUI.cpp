@@ -2,6 +2,7 @@
 #include "Kirby.h"
 #include "KirbyGameEnum.h"
 
+#include <GameEnginePlatform/GameEngineWindow.h>
 #include <GameEngineCore/ResourcesManager.h>
 #include <GameEngineCore/GameEngineRenderer.h>
 
@@ -28,9 +29,4 @@ void KirbyUI::Start()
 
 	FormUI = CreateUIRenderer("Normal_Icon.Bmp", RenderOrder::PlayUI);
 	FormUI->SetRenderPos(float4::ZERO);
-}
-
-void KirbyUI::Update(float _Delta)
-{
-
 }
