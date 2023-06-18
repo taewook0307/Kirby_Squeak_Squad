@@ -17,7 +17,12 @@ public:
 	KirbyUI& operator=(KirbyUI&& _Other) noexcept = delete;
 
 protected:
+	inline void IsCheckPosPointChange()
+	{
+		IsCheckPosPoint = !IsCheckPosPoint;
+	}
 
+	bool IsCheckPosPoint = false;
 private:
 	GameEngineRenderer* FormUI = nullptr;
 	GameEngineRenderer* HpBar = nullptr;
@@ -25,5 +30,7 @@ private:
 	GameEngineRenderer* LifeCount = nullptr;
 
 	void Start() override;
+	void Update(float _Delta) override;
+	void Render(float _Delta) override;
 };
 

@@ -15,7 +15,7 @@ SubLevel::SubLevel()
 	float4 WinScale = GameEngineWindow::MainWindow.GetScale();
 
 	LevelPlayerUI = CreateActor<KirbyUI>(RenderOrder::PlayUI);
-	LevelPlayerUI->SetPos(WinScale.Half());
+	LevelPlayerUI->SetPos({ 100.0f, WinScale.Y - 100.0f });
 }
 
 SubLevel::~SubLevel()
