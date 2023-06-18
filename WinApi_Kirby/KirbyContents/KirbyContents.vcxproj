@@ -103,6 +103,10 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="KirbyGameEnum.h" />
+    <ClInclude Include="KirbyUI.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="Monster.h">
       <SubType>
       </SubType>
@@ -217,6 +221,10 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="KirbyCore.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="KirbyUI.cpp">
       <SubType>
       </SubType>
     </ClCompile>

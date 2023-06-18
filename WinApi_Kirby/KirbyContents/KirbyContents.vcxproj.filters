@@ -81,6 +81,9 @@
     <ClInclude Include="BossAttackObject.h">
       <Filter>Monster\Boss\BossAttackObject</Filter>
     </ClInclude>
+    <ClInclude Include="KirbyUI.h">
+      <Filter>Global</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TitleLevel.cpp">
@@ -224,6 +227,9 @@
     </ClCompile>
     <ClCompile Include="Boss_Fly_State.cpp">
       <Filter>Monster\Boss</Filter>
+    </ClCompile>
+    <ClCompile Include="KirbyUI.cpp">
+      <Filter>Global</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

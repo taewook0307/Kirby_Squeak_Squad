@@ -2,8 +2,8 @@
 #include "Ground.h"
 #include "KirbyGameEnum.h"
 
-#include <GameEngineCore/ResourcesManager.h>
 #include <GameEnginePlatform/GameEngineWindow.h>
+#include <GameEngineCore/ResourcesManager.h>
 #include <GameEngineCore/GameEngineRenderer.h>
 
 #pragma comment(lib, "msimg32.lib")

@@ -7,6 +7,7 @@
 class Ground;
 class Kirby;
 class Monster;
+class GameEngineRenderer;
 class FirstStageLevel : public SubLevel
 {
 public:
@@ -30,6 +31,8 @@ private:
 
 	Kirby* LevelPlayer = nullptr;
 	float4 SavePos = float4::ZERO;
+	GameEngineRenderer* FormUI = nullptr;
+
 	Monster* LevelMonster = nullptr;
 	Monster* LevelFireMonster = nullptr;
 	Monster* LevelTornadoMonster = nullptr;

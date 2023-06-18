@@ -182,6 +182,7 @@ protected:
 	float JumpPower = GRAVITYPOWER;
 	float FlyPower = FLYPOWER;
 
+	GameEngineCollision* AttackCollision = nullptr;
 	std::vector<GameEngineCollision*> Col;
 
 	bool MapChangeAnimationEnd = false;
@@ -202,8 +203,6 @@ protected:
 
 	bool CheckInputD = false;
 	float CheckInputDTimer = CHECKINPUTTIMERVALUE;
-
-	GameEngineCollision* AttackCollision = nullptr;
 private:
 	int Count = 0;
 

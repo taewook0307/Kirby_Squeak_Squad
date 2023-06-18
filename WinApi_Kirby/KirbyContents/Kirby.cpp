@@ -115,6 +115,7 @@ void Kirby::Start()
 		MainRenderer->SetRenderScaleToTexture();
 		MainRenderer->SetScaleRatio(RatioValue);
 	}
+
 	{
 		BodyCollision = CreateCollision(CollisionOrder::Body);
 		BodyCollision->SetCollisionPos(BODYCOLLISIONPOS);

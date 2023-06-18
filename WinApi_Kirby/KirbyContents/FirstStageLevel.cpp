@@ -18,6 +18,7 @@
 #include <GameEnginePlatform/GameEngineSound.h>
 #include <GameEngineCore/GameEngineCore.h>
 #include <GameEngineCore/GameEngineCamera.h>
+#include <GameEngineCore/ResourcesManager.h>
 
 FirstStageLevel::FirstStageLevel()
 {
