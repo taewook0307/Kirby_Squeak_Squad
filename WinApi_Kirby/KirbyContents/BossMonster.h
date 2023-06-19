@@ -91,10 +91,10 @@ protected:
 
 	void Damage()
 	{
-		BossHp -= 500;
+		BossHp -= 30;
 	}
 private:
-	int BossHp = 500;
+	int BossHp = 150;
 	float Speed = 100.0f;
 	float BossJumpPower = 700.0f;
 
