@@ -2,6 +2,11 @@
 
 #include "BaseActor.h"
 
+#define LIFEITEMPOS { 0.0f, 0.0f }
+#define LIFEITEMSCALE { 50.0f, 50.0f }
+#define LIFEITEMCOLLISIONPOS { 0.0f, 0.0f }
+#define LIFEITEMCOLLISIONSCALE { 50.0f, 50.0f }
+
 class GameEngineRenderer;
 class GameEngineCollision;
 class LifeCountPlusItem : public BaseActor
@@ -20,4 +25,6 @@ public:
 protected:
 
 private:
+	void Start();
+	void Update(float _Delta);
 };

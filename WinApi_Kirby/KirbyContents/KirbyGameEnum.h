@@ -13,5 +13,6 @@ enum class RenderOrder
 	Boss,
 	Play,
 	Monster,
+	Item,
 	PlayUI
 };

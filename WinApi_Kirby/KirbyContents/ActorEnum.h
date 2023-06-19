@@ -91,6 +91,7 @@ enum class CollisionOrder
 	Inhale,
 	Attack,
 	SpecialAttack,
+	ItemBody,
 	MonsterBody,
 	MonsterAttack,
 	MonsterSearch,

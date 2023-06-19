@@ -2,6 +2,11 @@
 
 #include "BaseActor.h"
 
+#define HEALITEMPOS { 0.0f, 0.0f }
+#define HEALITEMSCALE { 50.0f, 50.0f }
+#define HEALITEMCOLLISIONPOS { 0.0f, 0.0f }
+#define HEALITEMCOLLISIONSCALE { 50.0f, 50.0f }
+
 class GameEngineRenderer;
 class GameEngineCollision;
 class HealItem : public BaseActor
@@ -20,4 +25,8 @@ public:
 protected:
 
 private:
+	int HealValue = 0;
+
+	void Start();
+	void Update(float _Delta);
 };
