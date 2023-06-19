@@ -58,6 +58,10 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="EndingItem.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="EndingLevel.h">
       <SubType>
       </SubType>
@@ -79,6 +83,10 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="Ground.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="HealItem.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -104,6 +112,10 @@
     </ClInclude>
     <ClInclude Include="KirbyGameEnum.h" />
     <ClInclude Include="KirbyUI.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="LifeCountPlusItem.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -176,6 +188,10 @@
     <ClCompile Include="Boss_Fly_State.cpp" />
     <ClCompile Include="Boss_Jump_State.cpp" />
     <ClCompile Include="Boss_Summon_State.cpp" />
+    <ClCompile Include="EndingItem.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="EndingLevel.cpp">
       <SubType>
       </SubType>
@@ -199,6 +215,10 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="Ground.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="HealItem.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -235,6 +255,10 @@
     <ClCompile Include="Kirby_Jump_State.cpp" />
     <ClCompile Include="Kirby_Keep_State.cpp" />
     <ClCompile Include="Kirby_Move_State.cpp" />
+    <ClCompile Include="LifeCountPlusItem.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="Monster.cpp">
       <SubType>
       </SubType>

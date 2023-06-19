@@ -84,6 +84,15 @@
     <ClInclude Include="KirbyUI.h">
       <Filter>UI</Filter>
     </ClInclude>
+    <ClInclude Include="LifeCountPlusItem.h">
+      <Filter>Item</Filter>
+    </ClInclude>
+    <ClInclude Include="HealItem.h">
+      <Filter>Item</Filter>
+    </ClInclude>
+    <ClInclude Include="EndingItem.h">
+      <Filter>Item</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TitleLevel.cpp">
@@ -231,6 +240,15 @@
     <ClCompile Include="KirbyUI.cpp">
       <Filter>UI</Filter>
     </ClCompile>
+    <ClCompile Include="LifeCountPlusItem.cpp">
+      <Filter>Item</Filter>
+    </ClCompile>
+    <ClCompile Include="HealItem.cpp">
+      <Filter>Item</Filter>
+    </ClCompile>
+    <ClCompile Include="EndingItem.cpp">
+      <Filter>Item</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Level">
@@ -283,6 +301,9 @@
     </Filter>
     <Filter Include="UI">
       <UniqueIdentifier>{9161a2a7-a2c4-4a3f-b388-cda68cb8917f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Item">
+      <UniqueIdentifier>{1b0b8138-c62d-4b62-8108-c722a7e5f52e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
