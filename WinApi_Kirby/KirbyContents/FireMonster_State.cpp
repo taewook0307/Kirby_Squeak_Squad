@@ -50,14 +50,14 @@ void FireMonster::WalkUpdate(float _Delta)
 	{
 		SearchCollision->SetCollisionPos(LEFTSEARCHCOLLISIONPOS);
 		AttackCollision->SetCollisionPos(LEFTSEARCHCOLLISIONPOS);
-		MovePos = float4::LEFT * MovePower;
+		MovePos = float4::LEFT * MovePower * _Delta;
 		CheckPos = LEFTCHECKPOS;
 	}
 	else
 	{
 		SearchCollision->SetCollisionPos(RIGHTTSEARCHCOLLISIONPOS);
 		AttackCollision->SetCollisionPos(RIGHTTSEARCHCOLLISIONPOS);
-		MovePos = float4::RIGHT * MovePower;
+		MovePos = float4::RIGHT * MovePower * _Delta;
 		CheckPos = RIGHTCHECKPOS;
 	}
 
