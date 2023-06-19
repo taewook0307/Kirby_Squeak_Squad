@@ -34,7 +34,7 @@ public:
 	}
 
 
-	float4 GetPos() 
+	float4 GetPos()
 	{
 		return Pos;
 	}
@@ -86,7 +86,7 @@ public:
 
 	GameEngineCollision* CreateCollision(int _Order = 0);
 
-	GameEngineLevel* GetLevel() 
+	GameEngineLevel* GetLevel()
 	{
 		return Level;
 	}
@@ -122,5 +122,6 @@ private:
 	std::list<GameEngineCollision*> AllCollision;
 
 	void ActorRelease();
+	void SubObjectUpdate(float _DeltaTime);
 };
 

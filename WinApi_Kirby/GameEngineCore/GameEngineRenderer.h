@@ -66,7 +66,7 @@ public:
 		return CameraTypeValue;
 	}
 
-
+	void SetAlpha(unsigned char _Alpha);
 
 	void SetAngle(float _Angle);
 
@@ -98,6 +98,7 @@ private:
 	std::string Text;
 
 	float Angle = 0.0f;
+	unsigned char Alpha = 255;
 
 	void TextRender(float _DeltaTime);
 
@@ -142,6 +143,8 @@ public:
 
 	void MainCameraSetting();
 	void UICameraSetting();
+
+	void Update(float _Delta) override;
 
 	size_t GetCurFrame()
 	{

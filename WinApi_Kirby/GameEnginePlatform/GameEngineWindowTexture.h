@@ -52,6 +52,8 @@ public:
 	// 회전용 카피
 	void PlgCopy(GameEngineWindowTexture* _CopyTexture, GameEngineWindowTexture* _MaskTexture, const float4& _Pos, const float4& _Scale, const float4& _OtherPos, const float4& _OtherScale, float _Angle);
 
+	void AlphaCopy(GameEngineWindowTexture* _CopyTexture, const float4& _Pos, const float4& _Scale, const float4& _OtherPos, const float4& _OtherScale, unsigned char _Alpha);
+
 	unsigned int GetColor(unsigned int _DefaultColor, float4 _Pos);
 
 	void FillTexture(unsigned int _Color);

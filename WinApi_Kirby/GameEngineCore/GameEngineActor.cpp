@@ -5,11 +5,11 @@
 #include "GameEngineCamera.h"
 #include <GameEngineBase/GameEngineDebug.h>
 
-GameEngineActor::GameEngineActor() 
+GameEngineActor::GameEngineActor()
 {
 }
 
-GameEngineActor::~GameEngineActor() 
+GameEngineActor::~GameEngineActor()
 {
 	for (GameEngineRenderer* Render : AllRenderer)
 	{
@@ -55,7 +55,7 @@ void GameEngineActor::ActorRelease()
 	}
 }
 
-GameEngineRenderer* GameEngineActor::CreateRenderer(const std::string& _ImageName, int _Order) 
+GameEngineRenderer* GameEngineActor::CreateRenderer(const std::string& _ImageName, int _Order)
 {
 	GameEngineRenderer* NewRenderer = new GameEngineRenderer();
 
@@ -100,4 +100,21 @@ GameEngineCollision* GameEngineActor::CreateCollision(int _Order/* = 0*/)
 	AllCollision.push_back(NewCollision);
 
 	return NewCollision;
+}
+
+void GameEngineActor::SubObjectUpdate(float _DeltaTime)
+{
+	std::list<GameEngineRenderer*>::iterator ObjectStartIter = AllRenderer.begin();
+	std::list<GameEngineRenderer*>::iterator ObjectEndIter = AllRenderer.end();
+
+	for (; ObjectStartIter != ObjectEndIter; ++ObjectStartIter)
+	{
+		GameEngineRenderer* Renderer = *ObjectStartIter;
+		if (false == Renderer->IsUpdate())
+		{
+			continue;
+		}
+
+		Renderer->Update(_DeltaTime);
+	}
 }
