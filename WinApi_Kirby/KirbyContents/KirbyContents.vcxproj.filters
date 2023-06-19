@@ -82,7 +82,7 @@
       <Filter>Monster\Boss\BossAttackObject</Filter>
     </ClInclude>
     <ClInclude Include="KirbyUI.h">
-      <Filter>Global</Filter>
+      <Filter>UI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -229,7 +229,7 @@
       <Filter>Monster\Boss</Filter>
     </ClCompile>
     <ClCompile Include="KirbyUI.cpp">
-      <Filter>Global</Filter>
+      <Filter>UI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -280,6 +280,9 @@
     </Filter>
     <Filter Include="Monster\Boss\BossAttackObject">
       <UniqueIdentifier>{95eda64c-b811-454b-bc5d-150a8160c7f4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI">
+      <UniqueIdentifier>{9161a2a7-a2c4-4a3f-b388-cda68cb8917f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

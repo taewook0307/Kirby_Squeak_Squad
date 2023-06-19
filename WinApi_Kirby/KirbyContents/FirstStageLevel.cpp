@@ -37,7 +37,7 @@ void FirstStageLevel::Start()
 	BackGround* Back = CreateActor<BackGround>(RenderOrder::BackGround);
 	Back->BackGroundInit("FirstStageLevel.Bmp", "FirstStageBitMap.Bmp");
 
-	LevelMonster = CreateActor<Monster>(RenderOrder::Play);
+	LevelMonster = CreateActor<FireMonster>(RenderOrder::Play);
 
 	LevelFireMonster = CreateActor<FireMonster>(RenderOrder::Play);
 

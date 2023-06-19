@@ -78,6 +78,10 @@ public:
 		return;
 	}
 
+	static int GetKirbyHp()
+	{
+		return KirbyHp;
+	}
 protected:
 	virtual void StateUpdate(float _Delta);
 	virtual void ChangeState(KirbyState _State);

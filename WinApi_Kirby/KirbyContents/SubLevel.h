@@ -20,10 +20,9 @@ public:
 
 	static int GetPlayerLife();
 
+	static MonsterType& GetLevelPlayerForm();
 protected:
 	static void SetLevelPlayerForm(const MonsterType& _Value);
-
-	static MonsterType& GetLevelPlayerForm();
 
 	static int PlayerLifeCount;
 

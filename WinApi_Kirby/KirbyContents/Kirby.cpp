@@ -17,6 +17,7 @@ float Kirby::NoDamageTimer = NODAMAGETIMERVALUE;
 
 Kirby::Kirby()
 {
+	NoDamage = true;
 }
 
 Kirby::~Kirby()
