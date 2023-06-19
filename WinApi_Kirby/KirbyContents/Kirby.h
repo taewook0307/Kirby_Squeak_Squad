@@ -159,8 +159,6 @@ protected:
 	void ChangeUpdate(float _Delta);
 	void DeathUpdate(float _Delta);
 
-	void LevelStart() override;
-
 	virtual void DirCheck();
 
 	virtual void ChangeAnimationState(const std::string& _StateName);

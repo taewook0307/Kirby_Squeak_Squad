@@ -18,6 +18,7 @@ float Kirby::NoDamageTimer = NODAMAGETIMERVALUE;
 Kirby::Kirby()
 {
 	NoDamage = true;
+	MainKirby = this;
 }
 
 Kirby::~Kirby()
@@ -557,9 +558,4 @@ void Kirby::CameraMove(float4 _MovePos)
 	}
 
 	GetLevel()->GetMainCamera()->AddPos({ _MovePos.X, 0.0f });
-}
-
-void Kirby::LevelStart()
-{
-	MainKirby = this;
 }
