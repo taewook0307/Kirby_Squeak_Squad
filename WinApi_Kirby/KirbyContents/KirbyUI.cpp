@@ -431,26 +431,6 @@ void KirbyUI::Update(float _Delta)
 	}
 }
 
-void KirbyUI::Render(float _Delta)
-{
-	float4 WinScale = GameEngineWindow::MainWindow.GetScale();
-
-	HDC dc = GameEngineWindow::MainWindow.GetBackBuffer()->GetImageDC();
-
-	CollisionData Data;
-
-	if (true == IsCheckPosPoint)
-	{
-		Data.Pos = { 100.0f, 100.0f };
-		Data.Scale = { 120, 100 };
-		Rectangle(dc, Data.iLeft(), Data.iTop(), Data.iRight(), Data.iBot());
-
-		Data.Pos = { WinScale.Half().X, WinScale.Half().Y + WinScale.Half().Half().Y };
-		Data.Scale = { 5, 5 };
-		Rectangle(dc, Data.iLeft(), Data.iTop(), Data.iRight(), Data.iBot());
-	}
-}
-
 void KirbyUI::LevelStart()
 {
 	LifeIcon = CreateUIRenderer("Life_Icon.Bmp", RenderOrder::PlayUI);
