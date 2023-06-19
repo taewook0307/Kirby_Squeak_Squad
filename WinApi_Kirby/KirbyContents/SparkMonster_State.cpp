@@ -26,15 +26,15 @@ void SparkMonster::WalkUpdate(float _Delta)
 		Gravity(_Delta);
 	}
 
-	float4 MovePos = float4::UP * 15.0f * _Delta;
+	float4 MovePos = float4::UP * Speed * _Delta;
 
 	if (Dir == ActorDir::Left)
 	{
-		MovePos += float4::LEFT * 5.0f * _Delta;
+		MovePos += float4::LEFT * Speed * _Delta;
 	}
 	else
 	{
-		MovePos += float4::RIGHT * 5.0f * _Delta;
+		MovePos += float4::RIGHT * Speed * _Delta;
 	}
 
 	AddPos(MovePos);

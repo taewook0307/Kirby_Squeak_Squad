@@ -45,7 +45,7 @@ void IceMonster::WalkUpdate(float _Delta)
 		GameEngineActor* Player = PlayerBodyCollision->GetActor();
 		float4 PlayerPos = Player->GetPos();
 		float4 MonsterPos = GetPos();
-		float4 MovePos = (PlayerPos - MonsterPos).NormalizeReturn() * _Delta;
+		float4 MovePos = (PlayerPos - MonsterPos).NormalizeReturn() * Speed * _Delta;
 
 		AddPos(MovePos);
 

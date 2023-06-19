@@ -21,18 +21,17 @@ void TornadoMonster::WalkUpdate(float _Delta)
 
 	float4 MovePos = float4::ZERO;
 	float4 CheckPos = float4::ZERO;
-	float MovePower = 3.0f;
 
 	if (Dir == ActorDir::Left)
 	{
 		SearchCollision->SetCollisionPos(LEFTSEARCHCOLLISIONPOS);
-		MovePos = float4::LEFT * MovePower * _Delta;
+		MovePos = float4::LEFT * Speed * _Delta;
 		CheckPos = LEFTCHECKPOS;
 	}
 	else
 	{
 		SearchCollision->SetCollisionPos(RIGHTTSEARCHCOLLISIONPOS);
-		MovePos = float4::RIGHT * MovePower * _Delta;
+		MovePos = float4::RIGHT * Speed * _Delta;
 		CheckPos = RIGHTCHECKPOS;
 	}
 
