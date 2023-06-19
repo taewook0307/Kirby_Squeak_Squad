@@ -23,10 +23,10 @@ BossStageLevel::~BossStageLevel()
 
 void BossStageLevel::Start()
 {
-	BossStage = CreateActor<Ground>(RenderOrder::Map);
+	BossStage = CreateActor<Ground>(UpdateOrder::PlayUI);
 	BossStage->GroundInit("BossStage", "BossStageBitMap.Bmp");
 
-	Boss = CreateActor<BossMonster>(RenderOrder::Boss);
+	Boss = CreateActor<BossMonster>(UpdateOrder::Monster);
 }
 
 void BossStageLevel::Update(float _Delta)
@@ -38,7 +38,7 @@ void BossStageLevel::Update(float _Delta)
 		MinusPlayerLife();
 		float4 WinScale = GameEngineWindow::MainWindow.GetScale();
 		LevelPlayer->Death();
-		LevelPlayer = CreateActor<Kirby>(RenderOrder::Play);
+		LevelPlayer = CreateActor<Kirby>(UpdateOrder::Player);
 		LevelPlayer->SetPos({ WinScale.Half().Half().X, WinScale.Half().Half().Y });
 		LevelPlayer->SetGroundBitMap("BossStageBitMap.Bmp");
 		LevelPlayer->HpReset();
@@ -64,31 +64,31 @@ void BossStageLevel::LevelStart(GameEngineLevel* _PrevLevel)
 {
 	if (GetLevelPlayerForm() == MonsterType::Normal)
 	{
-		LevelPlayer = CreateActor<Kirby>(RenderOrder::Play);
+		LevelPlayer = CreateActor<Kirby>(UpdateOrder::Player);
 		LevelPlayer->MapChangeAnimationEndReset();
 		LevelPlayer->ChangeLevelStart();
 	}
 	else if (GetLevelPlayerForm() == MonsterType::Fire)
 	{
-		LevelPlayer = CreateActor<FireKirby>(RenderOrder::Play);
+		LevelPlayer = CreateActor<FireKirby>(UpdateOrder::Player);
 		LevelPlayer->MapChangeAnimationEndReset();
 		LevelPlayer->ChangeLevelStart();
 	}
 	else if (GetLevelPlayerForm() == MonsterType::Ice)
 	{
-		LevelPlayer = CreateActor<IceKirby>(RenderOrder::Play);
+		LevelPlayer = CreateActor<IceKirby>(UpdateOrder::Player);
 		LevelPlayer->MapChangeAnimationEndReset();
 		LevelPlayer->ChangeLevelStart();
 	}
 	else if (GetLevelPlayerForm() == MonsterType::Spark)
 	{
-		LevelPlayer = CreateActor<SparkKirby>(RenderOrder::Play);
+		LevelPlayer = CreateActor<SparkKirby>(UpdateOrder::Player);
 		LevelPlayer->MapChangeAnimationEndReset();
 		LevelPlayer->ChangeLevelStart();
 	}
 	else if (GetLevelPlayerForm() == MonsterType::Tornado)
 	{
-		LevelPlayer = CreateActor<TornadoKirby>(RenderOrder::Play);
+		LevelPlayer = CreateActor<TornadoKirby>(UpdateOrder::Player);
 		LevelPlayer->MapChangeAnimationEndReset();
 		LevelPlayer->ChangeLevelStart();
 	}

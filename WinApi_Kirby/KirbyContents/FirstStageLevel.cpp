@@ -31,21 +31,21 @@ FirstStageLevel::~FirstStageLevel()
 
 void FirstStageLevel::Start()
 {
-	FirstStage = CreateActor<Ground>(RenderOrder::Map);
+	FirstStage = CreateActor<Ground>(UpdateOrder::Player);
 	FirstStage->GroundInit("FirstStage", "FirstStageBitMap.Bmp");
 
-	BackGround* Back = CreateActor<BackGround>(RenderOrder::BackGround);
+	BackGround* Back = CreateActor<BackGround>(UpdateOrder::PlayUI);
 	Back->BackGroundInit("FirstStageLevel.Bmp", "FirstStageBitMap.Bmp");
 
-	LevelMonster = CreateActor<FireMonster>(RenderOrder::Play);
+	LevelMonster = CreateActor<FireMonster>(UpdateOrder::Monster);
 
-	LevelFireMonster = CreateActor<FireMonster>(RenderOrder::Play);
+	LevelFireMonster = CreateActor<FireMonster>(UpdateOrder::Monster);
 
-	LevelTornadoMonster = CreateActor<TornadoMonster>(RenderOrder::Play);
+	LevelTornadoMonster = CreateActor<TornadoMonster>(UpdateOrder::Monster);
 
-	LevelSparkMonster = CreateActor<SparkMonster>(RenderOrder::Play);
+	LevelSparkMonster = CreateActor<SparkMonster>(UpdateOrder::Monster);
 
-	LevelIceMonster = CreateActor<IceMonster>(RenderOrder::Play);
+	LevelIceMonster = CreateActor<IceMonster>(UpdateOrder::Monster);
 }
 
 void FirstStageLevel::Update(float _Delta)
@@ -59,7 +59,7 @@ void FirstStageLevel::Update(float _Delta)
 		SetLevelPlayerForm(MonsterType::Ice);
 		SavePos = LevelPlayer->GetPos();
 		LevelPlayer->Death();
-		LevelPlayer = CreateActor<IceKirby>(RenderOrder::Play);
+		LevelPlayer = CreateActor<IceKirby>(UpdateOrder::Player);
 		LevelPlayer->SetPos(SavePos);
 		LevelPlayer->SetGroundBitMap("FirstStageBitMap.Bmp");
 	}
@@ -71,7 +71,7 @@ void FirstStageLevel::Update(float _Delta)
 		SetLevelPlayerForm(MonsterType::Spark);
 		SavePos = LevelPlayer->GetPos();
 		LevelPlayer->Death();
-		LevelPlayer = CreateActor<SparkKirby>(RenderOrder::Play);
+		LevelPlayer = CreateActor<SparkKirby>(UpdateOrder::Player);
 		LevelPlayer->SetPos(SavePos);
 		LevelPlayer->SetGroundBitMap("FirstStageBitMap.Bmp");
 	}
@@ -83,7 +83,7 @@ void FirstStageLevel::Update(float _Delta)
 		SetLevelPlayerForm(MonsterType::Fire);
 		SavePos = LevelPlayer->GetPos();
 		LevelPlayer->Death();
-		LevelPlayer = CreateActor<FireKirby>(RenderOrder::Play);
+		LevelPlayer = CreateActor<FireKirby>(UpdateOrder::Player);
 		LevelPlayer->SetPos(SavePos);
 		LevelPlayer->SetGroundBitMap("FirstStageBitMap.Bmp");
 	}
@@ -95,7 +95,7 @@ void FirstStageLevel::Update(float _Delta)
 		SetLevelPlayerForm(MonsterType::Tornado);
 		SavePos = LevelPlayer->GetPos();
 		LevelPlayer->Death();
-		LevelPlayer = CreateActor<TornadoKirby>(RenderOrder::Play);
+		LevelPlayer = CreateActor<TornadoKirby>(UpdateOrder::Player);
 		LevelPlayer->SetPos(SavePos);
 		LevelPlayer->SetGroundBitMap("FirstStageBitMap.Bmp");
 	}
@@ -105,7 +105,7 @@ void FirstStageLevel::Update(float _Delta)
 		SetLevelPlayerForm(MonsterType::Normal);
 		SavePos = LevelPlayer->GetPos();
 		LevelPlayer->Death();
-		LevelPlayer = CreateActor<Kirby>(RenderOrder::Play);
+		LevelPlayer = CreateActor<Kirby>(UpdateOrder::Player);
 		LevelPlayer->SetPos(SavePos);
 		LevelPlayer->SetGroundBitMap("FirstStageBitMap.Bmp");
 		LevelPlayer->ClearForm();
@@ -120,7 +120,7 @@ void FirstStageLevel::Update(float _Delta)
 		float4 WinScale = GameEngineWindow::MainWindow.GetScale();
 		SavePos = { LevelPlayer->GetPos().X, WinScale.Half().Half().Y };
 		LevelPlayer->Death();
-		LevelPlayer = CreateActor<Kirby>(RenderOrder::Play);
+		LevelPlayer = CreateActor<Kirby>(UpdateOrder::Player);
 		LevelPlayer->SetPos(SavePos);
 		LevelPlayer->SetGroundBitMap("FirstStageBitMap.Bmp");
 		LevelPlayer->HpReset();
@@ -148,32 +148,32 @@ void FirstStageLevel::LevelStart(GameEngineLevel* _PrevLevel)
 {
 	if (GetLevelPlayerForm() == MonsterType::Normal)
 	{
-		LevelPlayer = CreateActor<Kirby>(RenderOrder::Play);
+		LevelPlayer = CreateActor<Kirby>(UpdateOrder::Player);
 		LevelPlayer->MapChangeAnimationEndReset();
 		LevelPlayer->ChangeLevelStart();
 
 	}
 	else if (GetLevelPlayerForm() == MonsterType::Fire)
 	{
-		LevelPlayer = CreateActor<FireKirby>(RenderOrder::Play);
+		LevelPlayer = CreateActor<FireKirby>(UpdateOrder::Player);
 		LevelPlayer->MapChangeAnimationEndReset();
 		LevelPlayer->ChangeLevelStart();
 	}
 	else if (GetLevelPlayerForm() == MonsterType::Ice)
 	{
-		LevelPlayer = CreateActor<IceKirby>(RenderOrder::Play);
+		LevelPlayer = CreateActor<IceKirby>(UpdateOrder::Player);
 		LevelPlayer->MapChangeAnimationEndReset();
 		LevelPlayer->ChangeLevelStart();
 	}
 	else if (GetLevelPlayerForm() == MonsterType::Spark)
 	{
-		LevelPlayer = CreateActor<SparkKirby>(RenderOrder::Play);
+		LevelPlayer = CreateActor<SparkKirby>(UpdateOrder::Player);
 		LevelPlayer->MapChangeAnimationEndReset();
 		LevelPlayer->ChangeLevelStart();
 	}
 	else if (GetLevelPlayerForm() == MonsterType::Tornado)
 	{
-		LevelPlayer = CreateActor<TornadoKirby>(RenderOrder::Play);
+		LevelPlayer = CreateActor<TornadoKirby>(UpdateOrder::Player);
 		LevelPlayer->MapChangeAnimationEndReset();
 		LevelPlayer->ChangeLevelStart();
 	}

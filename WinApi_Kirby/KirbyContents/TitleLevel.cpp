@@ -15,7 +15,7 @@ TitleLevel::~TitleLevel()
 
 void TitleLevel::Start()
 {
-	BackGround* TitleBack = CreateActor<BackGround>(RenderOrder::BackGround);
+	BackGround* TitleBack = CreateActor<BackGround>(UpdateOrder::PlayUI);
 	TitleBack->BackGroundAnimationFolderInit("TitleLevel");
 }
 
