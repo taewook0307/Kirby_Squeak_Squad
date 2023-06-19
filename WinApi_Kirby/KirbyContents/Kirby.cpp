@@ -12,7 +12,7 @@
 #include <GameEngineCore/GameEngineCollision.h>
 
 Kirby* Kirby::MainKirby = nullptr;
-int Kirby::KirbyHp = 140;
+int Kirby::KirbyHp = HPVALUE;
 float Kirby::NoDamageTimer = NODAMAGETIMERVALUE;
 
 Kirby::Kirby()

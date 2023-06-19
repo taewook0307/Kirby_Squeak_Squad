@@ -2,7 +2,7 @@
 
 #include <GameEngineCore/GameEngineActor.h>
 
-#define FORMUIPOS float4::ZERO
+#define FORMUIPOS { 0.0f, 20.0f }
 #define FORMUISCALE { 120.0f, 100.0f }
 
 #define HPBARPOS { 200.0f, 50.0f }

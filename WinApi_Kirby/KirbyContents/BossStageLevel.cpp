@@ -41,6 +41,7 @@ void BossStageLevel::Update(float _Delta)
 		LevelPlayer = CreateActor<Kirby>(RenderOrder::Play);
 		LevelPlayer->SetPos({ WinScale.Half().Half().X, WinScale.Half().Half().Y });
 		LevelPlayer->SetGroundBitMap("BossStageBitMap.Bmp");
+		LevelPlayer->HpReset();
 	}
 
 	if (true == GameEngineInput::IsDown('P'))

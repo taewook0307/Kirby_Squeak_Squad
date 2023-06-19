@@ -106,6 +106,7 @@ void SecondStageLevel::Update(float _Delta)
 		LevelPlayer = CreateActor<Kirby>(RenderOrder::Play);
 		LevelPlayer->SetPos(SavePos);
 		LevelPlayer->SetGroundBitMap("SecondStageBitMap.Bmp");
+		LevelPlayer->HpReset();
 	}
 
 	if (true == LevelPlayer->GetMapChangeAnimationEnd())

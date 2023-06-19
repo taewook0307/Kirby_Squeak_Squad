@@ -6,6 +6,7 @@
 #include <string>
 #include <vector>
 
+#define HPVALUE 140
 #define BASEPOWER 300.0f
 #define FLYPOWER 400.0f
 #define NODAMAGETIMERVALUE 5.0f
@@ -82,6 +83,12 @@ public:
 	{
 		return KirbyHp;
 	}
+
+	static void HpReset()
+	{
+		KirbyHp = HPVALUE;
+	}
+
 protected:
 	virtual void StateUpdate(float _Delta);
 	virtual void ChangeState(KirbyState _State);

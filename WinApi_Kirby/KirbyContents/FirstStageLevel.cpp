@@ -123,6 +123,7 @@ void FirstStageLevel::Update(float _Delta)
 		LevelPlayer = CreateActor<Kirby>(RenderOrder::Play);
 		LevelPlayer->SetPos(SavePos);
 		LevelPlayer->SetGroundBitMap("FirstStageBitMap.Bmp");
+		LevelPlayer->HpReset();
 	}
 
 	// 맵 이동
