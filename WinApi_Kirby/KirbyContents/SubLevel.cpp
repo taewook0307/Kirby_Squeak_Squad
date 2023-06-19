@@ -41,3 +41,8 @@ void SubLevel::MinusPlayerLife()
 {
 	--PlayerLifeCount;
 }
+
+void SubLevel::PlusPlayerLife()
+{
+	++PlayerLifeCount;
+}

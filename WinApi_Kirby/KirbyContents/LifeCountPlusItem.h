@@ -2,6 +2,8 @@
 
 #include "BaseActor.h"
 
+#include <vector>
+
 #define LIFEITEMPOS { 0.0f, 0.0f }
 #define LIFEITEMSCALE { 50.0f, 50.0f }
 #define LIFEITEMCOLLISIONPOS { 0.0f, 0.0f }
@@ -25,6 +27,8 @@ public:
 protected:
 
 private:
+	std::vector<GameEngineCollision*> LifeItemCol;
+
 	void Start();
 	void Update(float _Delta);
 };

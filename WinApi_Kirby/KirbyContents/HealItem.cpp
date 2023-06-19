@@ -1,4 +1,5 @@
 ﻿#include "HealItem.h"
+#include "Kirby.h"
 #include "KirbyGameEnum.h"
 #include "ActorEnum.h"
 
@@ -41,9 +42,36 @@ void HealItem::Start()
 	}
 
 	int ItemNum = GameEngineRandom::MainRandom.RandomInt(1, 4);
-	// std::string HealItemName = "Heal_Item_" + ItemNum + ".Bmp";
-
-	MainRenderer = CreateRenderer("Heal_Item_1.Bmp", RenderOrder::Item);
+	
+	switch (ItemNum)
+	{
+	case 1:
+	{
+		MainRenderer = CreateRenderer("Heal_Item_1.Bmp", RenderOrder::Item);
+		HealValue = 10;
+		break;
+	}
+	case 2:
+	{
+		MainRenderer = CreateRenderer("Heal_Item_2.Bmp", RenderOrder::Item);
+		HealValue = 10;
+		break;
+	}
+	case 3:
+	{
+		MainRenderer = CreateRenderer("Heal_Item_3.Bmp", RenderOrder::Item);
+		HealValue = 20;
+		break;
+	}
+	case 4:
+	{
+		MainRenderer = CreateRenderer("Heal_Item_4.Bmp", RenderOrder::Item);
+		HealValue = 40;
+		break;
+	}
+	default:
+		break;
+	}
 	MainRenderer->SetRenderPos(HEALITEMPOS);
 	MainRenderer->SetRenderScale(HEALITEMSCALE);
 
@@ -54,5 +82,17 @@ void HealItem::Start()
 
 void HealItem::Update(float _Delta)
 {
+	if (true == BodyCollision->Collision(CollisionOrder::Body, HealItemCol, CollisionType::Rect, CollisionType::Rect))
+	{
+		int PlayerHp = Kirby::GetMainKirby()->GetKirbyHp();
+		int HealHp = PlayerHp + HealValue;
+		if (HealHp > 160)
+		{
+			Kirby::GetMainKirby()->HpReset();
+		}
+		Kirby::GetMainKirby()->SetKirbyHp(HealHp);
 
+		Death();
+		return;
+	}
 }

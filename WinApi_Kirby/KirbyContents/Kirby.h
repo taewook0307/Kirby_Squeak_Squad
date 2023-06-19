@@ -89,6 +89,11 @@ public:
 		KirbyHp = HPVALUE;
 	}
 
+	static void SetKirbyHp(int _Value)
+	{
+		KirbyHp = _Value;
+	}
+
 protected:
 	virtual void StateUpdate(float _Delta);
 	virtual void ChangeState(KirbyState _State);

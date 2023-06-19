@@ -2,6 +2,8 @@
 
 #include "BaseActor.h"
 
+#include <vector>
+
 #define HEALITEMPOS { 0.0f, 0.0f }
 #define HEALITEMSCALE { 50.0f, 50.0f }
 #define HEALITEMCOLLISIONPOS { 0.0f, 0.0f }
@@ -26,6 +28,7 @@ protected:
 
 private:
 	int HealValue = 0;
+	std::vector<GameEngineCollision*> HealItemCol;
 
 	void Start();
 	void Update(float _Delta);

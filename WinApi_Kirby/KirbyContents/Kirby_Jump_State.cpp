@@ -72,7 +72,6 @@ void Kirby::JumpUpdate(float _Delta)
 		return;
 	}
 
-
 	if (GetGravityVector().Y >= 0.0f)
 	{
 		GravityReset();
@@ -84,6 +83,12 @@ void Kirby::JumpUpdate(float _Delta)
 void Kirby::JumpToDropUpdate(float _Delta)
 {
 	DirCheck();
+
+	if (true == GameEngineInput::IsDown(VK_SPACE))
+	{
+		ChangeState(KirbyState::Breathe);
+		return;
+	}
 
 	unsigned int Color = GetGroundColor(EMPTYCOLOR);
 

@@ -4,6 +4,7 @@ enum class UpdateOrder
 {
 	PlayUI,
 	Player,
+	Item,
 	Monster
 };
 

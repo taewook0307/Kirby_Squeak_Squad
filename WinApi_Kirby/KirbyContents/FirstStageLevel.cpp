@@ -11,6 +11,8 @@
 #include "IceMonster.h"
 #include "SparkMonster.h"
 #include "TornadoMonster.h"
+#include "LifeCountPlusItem.h"
+#include "HealItem.h"
 #include "KirbyGameEnum.h"
 
 #include <GameEnginePlatform/GameEngineWindow.h>
@@ -46,6 +48,10 @@ void FirstStageLevel::Start()
 	LevelSparkMonster = CreateActor<SparkMonster>(UpdateOrder::Monster);
 
 	LevelIceMonster = CreateActor<IceMonster>(UpdateOrder::Monster);
+
+	LevelLifeItem = CreateActor<LifeCountPlusItem>(UpdateOrder::Item);
+	LevelLifeItem->SetPos({ 2170.0f, 735.0f });
+	LevelLifeItem->SetGroundBitMap("FirstStageBitMap.Bmp");
 }
 
 void FirstStageLevel::Update(float _Delta)

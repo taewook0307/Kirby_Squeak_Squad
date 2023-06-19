@@ -7,6 +7,8 @@
 class Ground;
 class Kirby;
 class Monster;
+class LifeCountPlusItem;
+class HealItem;
 class GameEngineRenderer;
 class FirstStageLevel : public SubLevel
 {
@@ -37,6 +39,9 @@ private:
 	Monster* LevelTornadoMonster = nullptr;
 	Monster* LevelSparkMonster = nullptr;
 	Monster* LevelIceMonster = nullptr;
+
+	LifeCountPlusItem* LevelLifeItem = nullptr;
+
 	Ground* FirstStage = nullptr;
 	std::list<Monster*> AllLevelMonster;
 };

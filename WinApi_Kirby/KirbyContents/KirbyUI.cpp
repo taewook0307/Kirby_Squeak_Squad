@@ -65,6 +65,18 @@ void KirbyUI::Start()
 	{
 		ResourcesManager::GetInst().TextureLoad(FilePath.PlusFilePath("LifeCount_3.Bmp"));
 	}
+	if (ResourcesManager::GetInst().FindTexture("LifeCount_4.Bmp") == nullptr)
+	{
+		ResourcesManager::GetInst().TextureLoad(FilePath.PlusFilePath("LifeCount_4.Bmp"));
+	}
+	if (ResourcesManager::GetInst().FindTexture("LifeCount_5.Bmp") == nullptr)
+	{
+		ResourcesManager::GetInst().TextureLoad(FilePath.PlusFilePath("LifeCount_5.Bmp"));
+	}
+	if (ResourcesManager::GetInst().FindTexture("LifeCount_6.Bmp") == nullptr)
+	{
+		ResourcesManager::GetInst().TextureLoad(FilePath.PlusFilePath("LifeCount_6.Bmp"));
+	}
 
 	FilePath.MoveParentToExistsChild("UI");
 	FilePath.MoveChild("UI\\");
@@ -421,6 +433,39 @@ void KirbyUI::Update(float _Delta)
 			LifeCount->Death();
 		}
 		LifeCount = CreateUIRenderer("LifeCount_3.Bmp", RenderOrder::PlayUI);
+		LifeCount->SetRenderPos(LIFECOUNTPOS);
+		LifeCount->SetRenderScale(LIFECOUNTSCALE);
+	}
+
+	if (4 == SubLevel::GetPlayerLife())
+	{
+		if (LifeCount != nullptr)
+		{
+			LifeCount->Death();
+		}
+		LifeCount = CreateUIRenderer("LifeCount_4.Bmp", RenderOrder::PlayUI);
+		LifeCount->SetRenderPos(LIFECOUNTPOS);
+		LifeCount->SetRenderScale(LIFECOUNTSCALE);
+	}
+
+	if (5 == SubLevel::GetPlayerLife())
+	{
+		if (LifeCount != nullptr)
+		{
+			LifeCount->Death();
+		}
+		LifeCount = CreateUIRenderer("LifeCount_5.Bmp", RenderOrder::PlayUI);
+		LifeCount->SetRenderPos(LIFECOUNTPOS);
+		LifeCount->SetRenderScale(LIFECOUNTSCALE);
+	}
+
+	if (6 == SubLevel::GetPlayerLife())
+	{
+		if (LifeCount != nullptr)
+		{
+			LifeCount->Death();
+		}
+		LifeCount = CreateUIRenderer("LifeCount_6.Bmp", RenderOrder::PlayUI);
 		LifeCount->SetRenderPos(LIFECOUNTPOS);
 		LifeCount->SetRenderScale(LIFECOUNTSCALE);
 	}

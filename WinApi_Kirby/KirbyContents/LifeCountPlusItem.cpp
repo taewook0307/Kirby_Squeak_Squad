@@ -1,5 +1,6 @@
 ﻿#include "LifeCountPlusItem.h"
 #include "KirbyGameEnum.h"
+#include "SubLevel.h"
 #include "ActorEnum.h"
 
 #include <GameEngineCore/ResourcesManager.h>
@@ -37,5 +38,10 @@ void LifeCountPlusItem::Start()
 
 void LifeCountPlusItem::Update(float _Delta)
 {
-
+	if (true == BodyCollision->Collision(CollisionOrder::Body, LifeItemCol, CollisionType::Rect, CollisionType::Rect))
+	{
+		SubLevel::PlusPlayerLife();
+		Death();
+		return;
+	}
 }

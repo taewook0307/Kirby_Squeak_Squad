@@ -2,6 +2,8 @@
 
 #include "BaseActor.h"
 
+#include <vector>
+
 #define ENDINGITEMPOS { 0.0f, 0.0f }
 #define ENDINGITEMSCALE { 50.0f, 50.0f }
 #define ENDINGITEMCOLLISIONPOS { 0.0f, 0.0f }
@@ -25,6 +27,8 @@ public:
 protected:
 
 private:
+	std::vector<GameEngineCollision*> EndingItemCol;
+
 	void Start();
 	void Update(float _Delta);
 };
