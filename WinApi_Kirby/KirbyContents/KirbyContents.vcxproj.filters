@@ -93,6 +93,9 @@
     <ClInclude Include="EndingItem.h">
       <Filter>Item</Filter>
     </ClInclude>
+    <ClInclude Include="BossUI.h">
+      <Filter>UI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TitleLevel.cpp">
@@ -248,6 +251,9 @@
     </ClCompile>
     <ClCompile Include="EndingItem.cpp">
       <Filter>Item</Filter>
+    </ClCompile>
+    <ClCompile Include="BossUI.cpp">
+      <Filter>UI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -17,6 +17,14 @@
 
 class BossMonster : public BaseActor
 {
+private:
+	static BossMonster* MainBoss;
+
+public:
+	static BossMonster* GetMainBoss()
+	{
+		return MainBoss;
+	}
 public:
 	// constrcuter destructer
 	BossMonster();
@@ -27,6 +35,11 @@ public:
 	BossMonster(BossMonster&& _Other) noexcept = delete;
 	BossMonster& operator=(const BossMonster& _Other) = delete;
 	BossMonster& operator=(BossMonster&& _Other) noexcept = delete;
+
+	inline int GetBossHp() const
+	{
+		return BossHp;
+	}
 
 protected:
 	void StateUpdate(float _Delta);
@@ -93,8 +106,13 @@ protected:
 	{
 		BossHp -= 30;
 	}
+
+	void BossHpReset()
+	{
+		BossHp = 140;
+	}
 private:
-	int BossHp = 150;
+	int BossHp = 140;
 	float Speed = 100.0f;
 	float BossJumpPower = 700.0f;
 

@@ -10,8 +10,11 @@
 #include <GameEngineCore/GameEngineRenderer.h>
 #include <GameEngineCore/GameEngineCollision.h>
 
+BossMonster* BossMonster::MainBoss;
+
 BossMonster::BossMonster()
 {
+	MainBoss = this;
 }
 
 BossMonster::~BossMonster()
