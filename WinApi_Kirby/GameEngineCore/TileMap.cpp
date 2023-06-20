@@ -112,31 +112,6 @@ void TileMap::SetTile(int X, int Y, int _Index, float4 _TilePos, bool _IsImageSi
 	}
 }
 
-void TileMap::DeathTile(float4 _Pos)
-{
-	float4 Index = PosToIndex(_Pos);
-
-	DeathTile(Index.iX(), Index.iY());
-}
-
-void TileMap::DeathTile(int X, int Y)
-{
-	if (true == IsOver(X, Y))
-	{
-		return;
-	}
-
-	if (nullptr == Tiles[Y][X])
-	{
-		return;
-	}
-
-	Tiles[Y][X]->Death();
-	Tiles[Y][X] = nullptr;
-
-}
-
-
 bool TileMap::MoveTile(int X1, int Y1, int X2, int Y2, float4 _TilePos)
 {
 	if (nullptr == Tiles[Y1][X1])

@@ -155,7 +155,6 @@ void Kirby::WalkUpdate(float _Delta)
 				MovePos.Y += 1;
 			}
 		}
-
 	}
 
 	// 이동 방향 앞에 장애물 여부 확인 후 이동
@@ -229,6 +228,41 @@ void Kirby::RunUpdate(float _Delta)
 	{
 		MovePos = { RunSpeed * _Delta, 0.0f };
 		CheckPos = RIGHTCHECKPOS;
+	}
+
+	if (EMPTYCOLOR == GetGroundColor(EMPTYCOLOR, MovePos))
+	{
+		float4 XPos = float4::ZERO;
+		float4 Dir = MovePos.X <= 0.0f ? float4::RIGHT : float4::LEFT;
+
+		while (RGB(0, 0, 0) != GetGroundColor(EMPTYCOLOR, MovePos + XPos))
+		{
+			XPos += Dir;
+
+			if (abs(XPos.X) > 50.0f)
+			{
+				break;
+			}
+		}
+
+		float4 YPos = float4::ZERO;
+		while (RGB(0, 0, 0) != GetGroundColor(EMPTYCOLOR, MovePos + YPos))
+		{
+			YPos.Y += 1;
+
+			if (YPos.Y > 60.0f)
+			{
+				break;
+			}
+		}
+
+		if (abs(XPos.X) >= YPos.Y)
+		{
+			while (RGB(0, 0, 0) != GetGroundColor(EMPTYCOLOR, MovePos))
+			{
+				MovePos.Y += 1;
+			}
+		}
 	}
 
 	// 이동 방향 앞에 장애물 여부 확인 후 이동
