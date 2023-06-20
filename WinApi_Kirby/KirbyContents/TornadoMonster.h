@@ -37,6 +37,8 @@ protected:
 
 	MonsterType Type = MonsterType::Tornado;
 private:
+	float WalkTimer = 2.0f;
+
 	void Start() override;
 };
 

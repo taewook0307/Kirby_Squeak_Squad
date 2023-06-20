@@ -17,14 +17,12 @@ void TornadoMonster::IdleUpdate(float _Delta)
 
 void TornadoMonster::WalkUpdate(float _Delta)
 {
-	static float WalkTimer = 0.0f;
-
 	float4 MovePos = float4::ZERO;
 	float4 CheckPos = float4::ZERO;
 
-	if (WalkTimer > 2.0f)
+	if (WalkTimer < 0.0f)
 	{
-		WalkTimer = 0.0f;
+		WalkTimer = 2.0f;
 		ChangeState(MonsterState::Idle);
 		return;
 	}
@@ -50,7 +48,7 @@ void TornadoMonster::WalkUpdate(float _Delta)
 	}
 	else
 	{
-		WalkTimer = 0.0f;
+		WalkTimer = 2.0f;
 		ChangeState(MonsterState::Idle);
 		return;
 	}
@@ -61,14 +59,14 @@ void TornadoMonster::WalkUpdate(float _Delta)
 		return;
 	}
 
-	WalkTimer += _Delta;
+	WalkTimer -= _Delta;
 }
 
 void TornadoMonster::AttackUpdate(float _Delta)
 {
 	AttackCollision->On();
 
-	float AttackSpeed = 5.0f;
+	float AttackSpeed = 250.0f;
 
 	if (true == SearchCollision->Collision(CollisionOrder::Body, Col, CollisionType::Rect, CollisionType::Rect))
 	{
@@ -78,7 +76,7 @@ void TornadoMonster::AttackUpdate(float _Delta)
 		float4 MonsterPos = GetPos();
 		float4 MovePos = (PlayerPos - MonsterPos).NormalizeReturn();
 
-		AddPos(MovePos * AttackSpeed);
+		AddPos(MovePos * AttackSpeed * _Delta);
 	}
 	else
 	{

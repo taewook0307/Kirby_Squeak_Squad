@@ -478,11 +478,11 @@ void Kirby::DirCheck()
 {
 	ActorDir CheckDir = Dir;
 
-	if (true == GameEngineInput::IsDown('A') || true == GameEngineInput::IsDown('Q'))
+	if (true == GameEngineInput::IsDown('A') || true == GameEngineInput::IsPress('A'))
 	{
 		CheckDir = ActorDir::Left;
 	}
-	if (true == GameEngineInput::IsDown('D') || true == GameEngineInput::IsDown('E'))
+	if (true == GameEngineInput::IsDown('D') || true == GameEngineInput::IsPress('D'))
 	{
 		CheckDir = ActorDir::Right;
 	}
