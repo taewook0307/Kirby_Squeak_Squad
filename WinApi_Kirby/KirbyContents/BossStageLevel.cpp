@@ -42,6 +42,7 @@ void BossStageLevel::Update(float _Delta)
 		LevelPlayer->HpReset();
 		MinusPlayerLife();
 		LevelPlayer->Death();
+		Boss->Death();
 		GameEngineCore::ChangeLevel("BossStageLevel");
 	}
 
