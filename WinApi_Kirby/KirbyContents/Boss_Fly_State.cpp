@@ -70,6 +70,11 @@ void BossMonster::FlyUpdate(float _Delta)
 	{
 		AddPos(MovePos);
 	}
+	else
+	{
+		ChangeState(BossState::FlyDrop);
+		return;
+	}
 
 	float KirbyPosX = Kirby::GetMainKirby()->GetPos().X;
 	float PosX = GetPos().X;
