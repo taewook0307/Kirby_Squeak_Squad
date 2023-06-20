@@ -52,8 +52,8 @@ void FireKirby::Start()
 		MainRenderer->CreateAnimation("Right_Fire_Damage", "Right_FireKirby.Bmp", 130, 132, 0.1f, false);
 		MainRenderer->CreateAnimation("Right_Fire_DamageLand", "Right_FireKirby.Bmp", 133, 136, 0.1f, false);
 		MainRenderer->CreateAnimation("Right_Fire_AttackReady", "Right_FireKirby.Bmp", 137, 142, 0.01f, false);
-		MainRenderer->CreateAnimation("Right_Fire_Attack", "Right_FireKirby.Bmp", 143, 156, 0.1f, true);
-		MainRenderer->CreateAnimation("Right_Fire_AttackToIdle", "Right_FireKirby.Bmp", 157, 162, 0.1f, false);
+		MainRenderer->CreateAnimation("Right_Fire_Attack", "Right_FireKirby.Bmp", 143, 156, 0.05f, true);
+		MainRenderer->CreateAnimation("Right_Fire_AttackToIdle", "Right_FireKirby.Bmp", 157, 162, 0.01f, false);
 		MainRenderer->CreateAnimation("Right_Fire_Change", "Right_FireKirby.Bmp", 163, 177, 0.05f, false);
 		MainRenderer->FindAnimation("Right_Fire_Change")->Inters[7] = 0.3f;
 		MainRenderer->CreateAnimation("Right_Fire_Death", "Right_FireKirby.Bmp", 178, 193, 0.1f, true);
@@ -79,8 +79,8 @@ void FireKirby::Start()
 		MainRenderer->CreateAnimation("Left_Fire_Damage", "Left_FireKirby.Bmp", 130, 132, 0.1f, false);
 		MainRenderer->CreateAnimation("Left_Fire_DamageLand", "Left_FireKirby.Bmp", 133, 136, 0.1f, false);
 		MainRenderer->CreateAnimation("Left_Fire_AttackReady", "Left_FireKirby.Bmp", 137, 142, 0.01f, false);
-		MainRenderer->CreateAnimation("Left_Fire_Attack", "Left_FireKirby.Bmp", 143, 156, 0.1f, true);
-		MainRenderer->CreateAnimation("Left_Fire_AttackToIdle", "Left_FireKirby.Bmp", 157, 162, 0.1f, false);
+		MainRenderer->CreateAnimation("Left_Fire_Attack", "Left_FireKirby.Bmp", 143, 156, 0.05f, true);
+		MainRenderer->CreateAnimation("Left_Fire_AttackToIdle", "Left_FireKirby.Bmp", 157, 162, 0.01f, false);
 		MainRenderer->CreateAnimation("Left_Fire_Change", "Left_FireKirby.Bmp", 163, 177, 0.05f, false);
 		MainRenderer->FindAnimation("Left_Fire_Change")->Inters[7] = 0.3f;
 		MainRenderer->CreateAnimation("Left_Fire_Death", "Left_FireKirby.Bmp", 178, 193, 0.1f, true);

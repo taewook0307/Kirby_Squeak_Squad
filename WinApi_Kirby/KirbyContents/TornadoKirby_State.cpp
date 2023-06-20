@@ -102,6 +102,13 @@ void TornadoKirby::AttackToIdleUpdate(float _Delta)
 		else
 		{
 			GravityReset();
+
+			if (true == GameEngineInput::IsPress('A') || true == GameEngineInput::IsPress('D'))
+			{
+				ChangeState(KirbyState::Walk);
+				return;
+			}
+
 			ChangeState(KirbyState::Idle);
 			return;
 		}

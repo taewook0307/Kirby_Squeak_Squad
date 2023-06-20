@@ -39,9 +39,9 @@ void FirstStageLevel::Start()
 	BackGround* Back = CreateActor<BackGround>(UpdateOrder::PlayUI);
 	Back->BackGroundInit("FirstStageLevel.Bmp", "FirstStageBitMap.Bmp");
 
-	LevelMonster = CreateActor<FireMonster>(UpdateOrder::Monster);
+	LevelMonster = CreateActor<TornadoMonster>(UpdateOrder::Monster);
 
-	LevelFireMonster = CreateActor<FireMonster>(UpdateOrder::Monster);
+	//LevelFireMonster = CreateActor<FireMonster>(UpdateOrder::Monster);
 
 	LevelTornadoMonster = CreateActor<TornadoMonster>(UpdateOrder::Monster);
 
@@ -200,8 +200,8 @@ void FirstStageLevel::LevelStart(GameEngineLevel* _PrevLevel)
 		LevelMonster->SetPos({ 1000.0f, 735.0f });
 		LevelMonster->SetGroundBitMap("FirstStageBitMap.Bmp");
 
-		LevelFireMonster->SetPos({ 1000.0f, 735.0f });
-		LevelFireMonster->SetGroundBitMap("FirstStageBitMap.Bmp");
+		/*LevelFireMonster->SetPos({ 1000.0f, 735.0f });
+		LevelFireMonster->SetGroundBitMap("FirstStageBitMap.Bmp");*/
 
 		LevelTornadoMonster->SetPos({ 7000.0f, 660.0f });
 		LevelTornadoMonster->SetGroundBitMap("FirstStageBitMap.Bmp");

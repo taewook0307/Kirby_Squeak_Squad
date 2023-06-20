@@ -97,6 +97,13 @@ void SparkKirby::AttackUpdate(float _Delta)
 	if (true == GameEngineInput::IsUp('C'))
 	{
 		AttackCollision->Off();
+
+		if (true == GameEngineInput::IsPress('A') || true == GameEngineInput::IsPress('D'))
+		{
+			ChangeState(KirbyState::Walk);
+			return;
+		}
+
 		ChangeState(KirbyState::AttackToIdle);
 		return;
 	}
