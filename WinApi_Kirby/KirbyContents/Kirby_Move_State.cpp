@@ -32,9 +32,7 @@ void Kirby::SlideUpdate(float _Delta)
 
 	float4 MovePos = float4::ZERO;
 	float4 CheckPos = float4::ZERO;
-	float CopySpeed = Speed / 1.5f;
-
-	static float SlideTimer = 0.0f;
+	float CopySpeed = Speed;
 
 	if (true == GameEngineInput::IsDown(VK_SPACE))
 	{
@@ -43,50 +41,32 @@ void Kirby::SlideUpdate(float _Delta)
 	}
 
 	// 왼쪽으로 슬라이딩
-	if (Dir == ActorDir::Left && SlideTimer <= 1.0f)
+	if (Dir == ActorDir::Left)
 	{
 		MovePos = { -CopySpeed * _Delta, 0.0f };
 		CheckPos = LEFTCHECKPOS;
-
-		unsigned int Color = GetGroundColor(EMPTYCOLOR, CheckPos);
-
-		if (EMPTYCOLOR == Color || DOORCOLOR == Color)
-		{
-			AddPos(MovePos);
-			CameraMove(MovePos);
-		}
-		SlideTimer += _Delta;
-		return;
 	}
 
 	// 오른쪽으로 슬라이딩
-	if (Dir == ActorDir::Right && SlideTimer <= 1.0f)
+	if (Dir == ActorDir::Right)
 	{
 		MovePos = { CopySpeed * _Delta, 0.0f };
 		CheckPos = RIGHTCHECKPOS;
-
-		unsigned int Color = GetGroundColor(EMPTYCOLOR, CheckPos);
-
-		if (EMPTYCOLOR == Color || DOORCOLOR == Color)
-		{
-			AddPos(MovePos);
-			CameraMove(MovePos);
-		}
-
-		SlideTimer += _Delta;
-		return;
 	}
 
-	// 슬라이딩 정지 애니메이션
-	if (SlideTimer <= 1.2f || SlideTimer >= 1.0f)
+	unsigned int Color = GetGroundColor(EMPTYCOLOR, CheckPos);
+
+	if (EMPTYCOLOR == Color || DOORCOLOR == Color)
 	{
-		SlideTimer += _Delta;
+		AddPos(MovePos);
+		CameraMove(MovePos);
 	}
 
-	// 슬라이딩 정지 후 대기 상태 전환
-	if (true == MainRenderer->IsAnimationEnd())
+	Speed -= 250.0f * _Delta;
+
+	if (CopySpeed < 10.0f)
 	{
-		SlideTimer = 0.0f;
+		Speed = BASEPOWER;
 
 		if (true == GameEngineInput::IsPress('A') || true == GameEngineInput::IsPress('D'))
 		{
@@ -298,7 +278,7 @@ void Kirby::RunUpdate(float _Delta)
 	}
 
 	// 이동하지 않을 시 대기 상태 이동
-	if (MovePos == float4::ZERO)
+	if (MovePos.X == 0.0f)
 	{
 		ChangeState(KirbyState::Stop);
 		return;
@@ -328,6 +308,41 @@ void Kirby::StopUpdate(float _Delta)
 	}
 
 	OppositePos = MovePos * -0.1f;
+
+	if (EMPTYCOLOR == GetGroundColor(EMPTYCOLOR, MovePos))
+	{
+		float4 XPos = float4::ZERO;
+		float4 Dir = MovePos.X <= 0.0f ? float4::RIGHT : float4::LEFT;
+
+		while (RGB(0, 0, 0) != GetGroundColor(EMPTYCOLOR, MovePos + XPos))
+		{
+			XPos += Dir;
+
+			if (abs(XPos.X) > 50.0f)
+			{
+				break;
+			}
+		}
+
+		float4 YPos = float4::ZERO;
+		while (RGB(0, 0, 0) != GetGroundColor(EMPTYCOLOR, MovePos + YPos))
+		{
+			YPos.Y += 1;
+
+			if (YPos.Y > 60.0f)
+			{
+				break;
+			}
+		}
+
+		if (abs(XPos.X) >= YPos.Y)
+		{
+			while (RGB(0, 0, 0) != GetGroundColor(EMPTYCOLOR, MovePos))
+			{
+				MovePos.Y += 1;
+			}
+		}
+	}
 
 	unsigned int Color = GetGroundColor(EMPTYCOLOR, CheckPos);
 
