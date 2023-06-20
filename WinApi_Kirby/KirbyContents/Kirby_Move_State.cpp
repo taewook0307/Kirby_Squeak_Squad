@@ -135,6 +135,14 @@ void Kirby::WalkUpdate(float _Delta)
 				MovePos.Y += 1;
 			}
 		}
+
+		else
+		{
+			AddPos(MovePos);
+			CameraMove(MovePos);
+			ChangeState(KirbyState::Drop);
+			return;
+		}
 	}
 
 	// 이동 방향 앞에 장애물 여부 확인 후 이동
@@ -242,6 +250,14 @@ void Kirby::RunUpdate(float _Delta)
 			{
 				MovePos.Y += 1;
 			}
+		}
+
+		else
+		{
+			AddPos(MovePos);
+			CameraMove(MovePos);
+			ChangeState(KirbyState::Drop);
+			return;
 		}
 	}
 

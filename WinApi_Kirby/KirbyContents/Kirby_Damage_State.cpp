@@ -86,7 +86,8 @@ void Kirby::DamageLandUpdate(float _Delta)
 		Gravity(_Delta);
 	}
 
-	if (true == MainRenderer->IsAnimationEnd() && EMPTYCOLOR != Color)
+	if (true == MainRenderer->IsAnimationEnd() && EMPTYCOLOR != Color
+		|| true == MainRenderer->IsAnimationEnd() && DOORCOLOR != Color)
 	{
 		GravityReset();
 
