@@ -144,7 +144,13 @@ void GameEngineRenderer::Update(float _Delta)
 			CurAnimation->CurInter
 				= CurAnimation->Inters[CurAnimation->CurFrame];
 		}
+	}
+}
 
+void GameEngineRenderer::Render(float _DeltaTime)
+{
+	if (nullptr != CurAnimation)
+	{
 		size_t Frame = CurAnimation->Frames[CurAnimation->CurFrame];
 
 		Sprite = CurAnimation->Sprite;
@@ -159,10 +165,8 @@ void GameEngineRenderer::Update(float _Delta)
 			SetRenderScale(SpriteInfo.RenderScale * ScaleRatio);
 		}
 	}
-}
 
-void GameEngineRenderer::Render(float _DeltaTime)
-{
+
 	if ("" != Text)
 	{
 		TextRender(_DeltaTime);
