@@ -46,6 +46,7 @@ private:
 
 	void LevelStart() override;
 
+	void KirbyFormUIUpdate(const std::string& _ImageName);
 	void KirbyHpBarImageUpdate(const std::string& _ImageName);
 	void KirbyLifeCountImageUpdate(const std::string& _ImageName);
 };

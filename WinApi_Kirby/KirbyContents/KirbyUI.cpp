@@ -159,54 +159,23 @@ void KirbyUI::Update(float _Delta)
 	// FormUI
 	if (MonsterType::Fire == SubLevel::GetLevelPlayerForm())
 	{
-		if (FormUI != nullptr)
-		{
-			FormUI->Death();
-		}
-		FormUI = CreateUIRenderer("Fire_Icon.Bmp", RenderOrder::PlayUI);
-		FormUI->SetRenderPos(FORMUIPOS);
-		FormUI->SetRenderScale(FORMUISCALE);
+		KirbyFormUIUpdate("Fire_Icon.Bmp");
 	}
 	if (MonsterType::Ice == SubLevel::GetLevelPlayerForm())
 	{
-		if (FormUI != nullptr)
-		{
-			FormUI->Death();
-		}
-		FormUI = CreateUIRenderer("Ice_Icon.Bmp", RenderOrder::PlayUI);
-		FormUI->SetRenderPos(FORMUIPOS);
-		FormUI->SetRenderScale(FORMUISCALE);
+		KirbyFormUIUpdate("Ice_Icon.Bmp");
 	}
 	if (MonsterType::Tornado == SubLevel::GetLevelPlayerForm())
 	{
-		if (FormUI != nullptr)
-		{
-			FormUI->Death();
-		}
-		FormUI = CreateUIRenderer("Tornado_Icon.Bmp", RenderOrder::PlayUI);
-		FormUI->SetRenderPos(FORMUIPOS);
-		FormUI->SetRenderScale(FORMUISCALE);
+		KirbyFormUIUpdate("Tornado_Icon.Bmp");
 	}
 	if (MonsterType::Spark == SubLevel::GetLevelPlayerForm())
 	{
-		if (FormUI != nullptr)
-		{
-			FormUI->Death();
-		}
-		FormUI = CreateUIRenderer("Spark_Icon.Bmp", RenderOrder::PlayUI);
-		FormUI->SetRenderPos(FORMUIPOS);
-		FormUI->SetRenderScale(FORMUISCALE);
+		KirbyFormUIUpdate("Spark_Icon.Bmp");
 	}
 	if (MonsterType::Normal == SubLevel::GetLevelPlayerForm())
 	{
-		if (FormUI != nullptr)
-		{
-			FormUI->Death();
-		}
-		
-		FormUI = CreateUIRenderer("Normal_Icon.Bmp", RenderOrder::PlayUI);
-		FormUI->SetRenderPos(FORMUIPOS);
-		FormUI->SetRenderScale(FORMUISCALE);
+		KirbyFormUIUpdate("Normal_Icon.Bmp");
 	}
 
 	//------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -337,11 +306,28 @@ void KirbyUI::LevelStart()
 	LifeIcon->SetRenderScale(LIFEICONSCALE);
 }
 
+void KirbyUI::KirbyFormUIUpdate(const std::string& _ImageName)
+{
+	if (nullptr == ResourcesManager::GetInst().FindTexture(_ImageName))
+	{
+		MsgBoxAssert("커비 Form을 나타내는 이미지가 없습니다.");
+		return;
+	}
+	if (FormUI != nullptr)
+	{
+		FormUI->Death();
+	}
+
+	FormUI = CreateUIRenderer(_ImageName, RenderOrder::PlayUI);
+	FormUI->SetRenderPos(FORMUIPOS);
+	FormUI->SetRenderScale(FORMUISCALE);
+}
+
 void KirbyUI::KirbyHpBarImageUpdate(const std::string& _ImageName)
 {
 	if (nullptr == ResourcesManager::GetInst().FindTexture(_ImageName))
 	{
-		MsgBoxAssert("커비 LifeCount 수를 나타내는 이미지가 없습니다.");
+		MsgBoxAssert("커비 Hp를 나타내는 이미지가 없습니다.");
 		return;
 	}
 	if (HpBar != nullptr)
