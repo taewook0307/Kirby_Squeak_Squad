@@ -167,6 +167,12 @@ void Kirby::AttackToIdleUpdate(float _Delta)
 		}
 		else
 		{
+			if (true == GameEngineInput::IsPress('A') || true == GameEngineInput::IsPress('D'))
+			{
+				ChangeState(KirbyState::Walk);
+				return;
+			}
+
 			ChangeState(KirbyState::Idle);
 			return;
 		}

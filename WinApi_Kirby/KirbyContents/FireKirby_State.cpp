@@ -44,6 +44,21 @@ void FireKirby::AttackUpdate(float _Delta)
 {
 	DirCheck();
 
+	if (true == GameEngineInput::IsPress('C'))
+	{
+		if (ActorDir::Left == Dir)
+		{
+			AttackCollision->SetCollisionPos(LEFTATTACKCOLLISIONPOS);
+			AttackCollision->On();
+		}
+
+		else
+		{
+			AttackCollision->SetCollisionPos(RIGHTTATTACKCOLLISIONPOS);
+			AttackCollision->On();
+		}
+	}
+
 	unsigned int Color = GetGroundColor(EMPTYCOLOR);
 
 	if (EMPTYCOLOR == Color || DOORCOLOR == Color)
@@ -83,6 +98,12 @@ void FireKirby::AttackUpdate(float _Delta)
 
 		if (true == GameEngineInput::IsUp('C'))
 		{
+			if (true == GameEngineInput::IsPress('A') || true == GameEngineInput::IsPress('D'))
+			{
+				ChangeState(KirbyState::Walk);
+				return;
+			}
+
 			ChangeState(KirbyState::JumpToDrop);
 			return;
 		}
@@ -90,21 +111,6 @@ void FireKirby::AttackUpdate(float _Delta)
 	else
 	{
 		GravityReset();
-	}
-
-	if (true == GameEngineInput::IsPress('C'))
-	{
-		if (ActorDir::Left == Dir)
-		{
-			AttackCollision->SetCollisionPos(LEFTATTACKCOLLISIONPOS);
-			AttackCollision->On();
-		}
-
-		else
-		{
-			AttackCollision->SetCollisionPos(RIGHTTATTACKCOLLISIONPOS);
-			AttackCollision->On();
-		}
 	}
 
 	if (true == GameEngineInput::IsUp('C'))

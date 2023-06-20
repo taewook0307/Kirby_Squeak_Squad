@@ -147,6 +147,7 @@ void Kirby::WalkUpdate(float _Delta)
 		return;
 	}
 
+	// 공격 상태 이동
 	if (true == GameEngineInput::IsDown('C'))
 	{
 		ChangeState(KirbyState::AttackReady);
@@ -216,6 +217,13 @@ void Kirby::RunUpdate(float _Delta)
 	if (true == GameEngineInput::IsDown(VK_SPACE))
 	{
 		ChangeState(KirbyState::Jump);
+		return;
+	}
+
+	// 공격 상태 이동
+	if (true == GameEngineInput::IsDown('C'))
+	{
+		ChangeState(KirbyState::AttackReady);
 		return;
 	}
 
