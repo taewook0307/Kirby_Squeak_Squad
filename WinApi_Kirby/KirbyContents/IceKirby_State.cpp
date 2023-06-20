@@ -118,7 +118,7 @@ void IceKirby::AttackUpdate(float _Delta)
 
 		MonsterPtr->Death();
 
-		IceObject* IceAttack = GetLevel()->CreateActor<IceObject>(UpdateOrder::Item);
+		IceObject* IceAttack = GetLevel()->CreateActor<IceObject>(UpdateOrder::SummonObject);
 		IceAttack->SetPos(FrozenMonsterPos);
 		IceAttack->SetGroundBitMap(GetGroundBitMap());
 	}

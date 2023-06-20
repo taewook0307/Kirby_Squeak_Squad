@@ -107,16 +107,23 @@ void IceObject::Update(float _Delta)
 		}
 	}
 
-	if (7.0f < GetLiveTime() || true == AttackCollision->Collision(CollisionOrder::MonsterBody, IceCol, CollisionType::Rect, CollisionType::Rect))
+	if (true == AttackCollision->Collision(CollisionOrder::MonsterBody, IceCol, CollisionType::Rect, CollisionType::Rect)
+		|| true == AttackCollision->Collision(CollisionOrder::BossBody, IceCol, CollisionType::Rect, CollisionType::Rect))
 	{
 		CollideMonsterCheck = true;
 
 		MainRenderer->ChangeAnimation("Ice_Death");
+	}
 
-		if (true == MainRenderer->IsAnimationEnd())
-		{
-			Death();
-			return;
-		}
+	if (true == MainRenderer->IsAnimationEnd() && true == CollideMonsterCheck)
+	{
+		Death();
+		return;
+	}
+
+	if (7.0f < GetLiveTime())
+	{
+		Death();
+		return;
 	}
 }
