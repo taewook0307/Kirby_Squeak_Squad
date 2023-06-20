@@ -87,6 +87,29 @@ void Kirby::FlyUpdate(float _Delta)
 		FlyGravity(_Delta);
 	}
 
+	float4 MovePos = float4::ZERO;
+	float4 CheckPos = float4::ZERO;
+
+	if (true == GameEngineInput::IsPress('A'))
+	{
+		MovePos = float4::LEFT * Speed * _Delta;
+		CheckPos = LEFTCHECKPOS;
+	}
+	
+	if (true == GameEngineInput::IsPress('D'))
+	{
+		MovePos = float4::RIGHT * Speed * _Delta;
+		CheckPos = RIGHTCHECKPOS;
+	}
+
+	unsigned int XColor = GetGroundColor(EMPTYCOLOR, CheckPos);
+
+	if (EMPTYCOLOR == XColor || DOORCOLOR == XColor)
+	{
+		AddPos(MovePos);
+		CameraMove(MovePos);
+	}
+
 	if (true == GameEngineInput::IsDown(VK_SPACE))
 	{
 		SetGravityVector(float4::UP * FlyPower);

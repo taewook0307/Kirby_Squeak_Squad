@@ -25,8 +25,6 @@ void BossStageLevel::Start()
 {
 	BossStage = CreateActor<Ground>(UpdateOrder::PlayUI);
 	BossStage->GroundInit("BossStage", "BossStageBitMap.Bmp");
-
-	Boss = CreateActor<BossMonster>(UpdateOrder::Monster);
 }
 
 void BossStageLevel::Update(float _Delta)
@@ -34,14 +32,11 @@ void BossStageLevel::Update(float _Delta)
 	// 플레이어 데스 부분
 	if (0 < GetPlayerLife() && true == LevelPlayer->GetDeathCheck())
 	{
-		int Check = GetPlayerLife();
-		MinusPlayerLife();
-		float4 WinScale = GameEngineWindow::MainWindow.GetScale();
-		LevelPlayer->Death();
-		LevelPlayer = CreateActor<Kirby>(UpdateOrder::Player);
-		LevelPlayer->SetPos({ WinScale.Half().Half().X, WinScale.Half().Half().Y });
-		LevelPlayer->SetGroundBitMap("BossStageBitMap.Bmp");
+		SetLevelPlayerForm(MonsterType::Normal);
 		LevelPlayer->HpReset();
+		MinusPlayerLife();
+		LevelPlayer->Death();
+		GameEngineCore::ChangeLevel("BossStageLevel");
 	}
 
 	if (true == GameEngineInput::IsDown('P'))
@@ -93,6 +88,16 @@ void BossStageLevel::LevelStart(GameEngineLevel* _PrevLevel)
 		LevelPlayer->ChangeLevelStart();
 	}
 
+	float4 WinScale = GameEngineWindow::MainWindow.GetScale();
+	LevelPlayer->SetPos({ WinScale.Half().Half().X, WinScale.Half().Half().Y });
+	LevelPlayer->SetGroundBitMap("BossStageBitMap.Bmp");
+
+	GetMainCamera()->SetPos(float4::ZERO);
+
+	Boss = CreateActor<BossMonster>(UpdateOrder::Monster);
+	Boss->SetPos({ WinScale.Half().X + WinScale.Half().Half().X, WinScale.Half().Half().Y });
+	Boss->SetGroundBitMap("BossStageBitMap.Bmp");
+
 	if (nullptr == LevelPlayer)
 	{
 		MsgBoxAssert("플레이어를 세팅하지 못했습니다.");
@@ -103,16 +108,5 @@ void BossStageLevel::LevelStart(GameEngineLevel* _PrevLevel)
 	{
 		MsgBoxAssert("보스 몬스터가 생성되지 않았습니다.");
 		return;
-	}
-
-	{
-		float4 WinScale = GameEngineWindow::MainWindow.GetScale();
-		LevelPlayer->SetPos({ WinScale.Half().Half().X, WinScale.Half().Half().Y });
-		LevelPlayer->SetGroundBitMap("BossStageBitMap.Bmp");
-
-		GetMainCamera()->SetPos(float4::ZERO);
-
-		Boss->SetPos({ WinScale.Half().X + WinScale.Half().Half().X, WinScale.Half().Half().Y });
-		Boss->SetGroundBitMap("BossStageBitMap.Bmp");
 	}
 }

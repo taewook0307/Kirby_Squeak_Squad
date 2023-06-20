@@ -121,15 +121,11 @@ void FirstStageLevel::Update(float _Delta)
 	// 플레이어 데스 부분
 	if (0 < GetPlayerLife() && true == LevelPlayer->GetDeathCheck())
 	{
-		int Check = GetPlayerLife();
-		MinusPlayerLife();
-		float4 WinScale = GameEngineWindow::MainWindow.GetScale();
-		SavePos = { LevelPlayer->GetPos().X, WinScale.Half().Half().Y };
-		LevelPlayer->Death();
-		LevelPlayer = CreateActor<Kirby>(UpdateOrder::Player);
-		LevelPlayer->SetPos(SavePos);
-		LevelPlayer->SetGroundBitMap("FirstStageBitMap.Bmp");
+		SetLevelPlayerForm(MonsterType::Normal);
 		LevelPlayer->HpReset();
+		MinusPlayerLife();
+		LevelPlayer->Death();
+		GameEngineCore::ChangeLevel("FirstStageLevel");
 	}
 
 	// 맵 이동
