@@ -125,6 +125,12 @@ void Kirby::DropUpdate(float _Delta)
 {
 	DirCheck();
 
+	if (true == GameEngineInput::IsDown(VK_SPACE))
+	{
+		ChangeState(KirbyState::Breathe);
+		return;
+	}
+
 	unsigned int Color = GetGroundColor(EMPTYCOLOR);
 
 	if (EMPTYCOLOR == Color || DOORCOLOR == Color)

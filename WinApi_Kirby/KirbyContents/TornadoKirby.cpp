@@ -52,9 +52,9 @@ void TornadoKirby::Start()
 		MainRenderer->CreateAnimation("Right_Tornado_Damage", "Right_TornadoKirby.Bmp", 129, 131, 0.1f, false);
 		MainRenderer->CreateAnimation("Right_Tornado_DamageLand", "Right_TornadoKirby.Bmp", 132, 135, 0.1f, false);
 		MainRenderer->CreateAnimation("Right_Tornado_AttackReady", "Right_TornadoKirby.Bmp", 136, 147, 0.01f, false);
-		MainRenderer->CreateAnimation("Right_Tornado_Attack", "Right_TornadoKirby.Bmp", 148, 155, 0.01f, true);
+		MainRenderer->CreateAnimation("Right_Tornado_Attack", "Right_TornadoKirby.Bmp", 148, 155, 0.05f, true);
 		MainRenderer->CreateAnimation("Right_Tornado_AttackToIdle", "Right_TornadoKirby.Bmp", 156, 168, 0.01f, false);
-		MainRenderer->CreateAnimation("Right_Tornado_Change", "Right_TornadoKirby.Bmp", 169, 183, 0.1f, false);
+		MainRenderer->CreateAnimation("Right_Tornado_Change", "Right_TornadoKirby.Bmp", 169, 183, 0.05f, false);
 		MainRenderer->FindAnimation("Right_Tornado_Change")->Inters[7] = 0.3f;
 		MainRenderer->CreateAnimation("Right_Tornado_Death", "Right_TornadoKirby.Bmp", 184, 199, 0.1f, true);
 
@@ -79,9 +79,9 @@ void TornadoKirby::Start()
 		MainRenderer->CreateAnimation("Left_Tornado_Damage", "Left_TornadoKirby.Bmp", 129, 131, 0.1f, false);
 		MainRenderer->CreateAnimation("Left_Tornado_DamageLand", "Left_TornadoKirby.Bmp", 132, 135, 0.1f, false);
 		MainRenderer->CreateAnimation("Left_Tornado_AttackReady", "Left_TornadoKirby.Bmp", 136, 147, 0.01f, false);
-		MainRenderer->CreateAnimation("Left_Tornado_Attack", "Left_TornadoKirby.Bmp", 148, 155, 0.01f, true);
+		MainRenderer->CreateAnimation("Left_Tornado_Attack", "Left_TornadoKirby.Bmp", 148, 155, 0.05f, true);
 		MainRenderer->CreateAnimation("Left_Tornado_AttackToIdle", "Left_TornadoKirby.Bmp", 156, 168, 0.01f, false);
-		MainRenderer->CreateAnimation("Left_Tornado_Change", "Left_TornadoKirby.Bmp", 169, 183, 0.1f, false);
+		MainRenderer->CreateAnimation("Left_Tornado_Change", "Left_TornadoKirby.Bmp", 169, 183, 0.05f, false);
 		MainRenderer->FindAnimation("Left_Tornado_Change")->Inters[7] = 0.3f;
 		MainRenderer->CreateAnimation("Left_Tornado_Death", "Left_TornadoKirby.Bmp", 184, 199, 0.1f, true);
 
