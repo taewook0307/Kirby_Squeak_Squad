@@ -34,7 +34,17 @@ void BaseActor::FlyGravity(float _Delta)
 
 	GravityVector += float4::DOWN * GravityAcceleration * 0.5f * _Delta;
 
-	AddPos(GravityVector * _Delta);
+	float4 BaseActorPos = GetPos();
+	float4 MovePos = BaseActorPos + GravityVector * _Delta;
+
+	if (MovePos.Y >= 100.0f)
+	{
+		AddPos(GravityVector * _Delta);
+	}
+	else
+	{
+		GravityReset();
+	}
 }
 
 void BaseActor::SetGroundBitMap(const std::string& _GroundBitMap)

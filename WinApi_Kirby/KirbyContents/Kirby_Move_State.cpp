@@ -26,12 +26,6 @@ void Kirby::StopStart()
 	ChangeAnimationState("Stop");
 }
 
-void Kirby::StopToIdleStart()
-{
-	ChangeAnimationState("StopToIdle");
-}
-
-
 void Kirby::SlideUpdate(float _Delta)
 {
 	KirbyGravity(_Delta);
@@ -269,17 +263,15 @@ void Kirby::StopUpdate(float _Delta)
 
 	if (true == MainRenderer->IsAnimationEnd())
 	{
-		DirCheck();
 		Speed = BASEPOWER;
-		ChangeState(KirbyState::StopToIdle);
-		return;
-	}
-}
+		DirCheck();
 
-void Kirby::StopToIdleUpdate(float _Delta)
-{
-	if (true == MainRenderer->IsAnimationEnd())
-	{
+		if (true == GameEngineInput::IsPress('A') || true == GameEngineInput::IsPress('D'))
+		{
+			ChangeState(KirbyState::Walk);
+			return;
+		}
+
 		ChangeState(KirbyState::Idle);
 		return;
 	}

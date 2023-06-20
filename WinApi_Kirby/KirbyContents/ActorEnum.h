@@ -11,7 +11,6 @@ enum class KirbyState
 	Walk,
 	Run,
 	Stop,
-	StopToIdle,
 	Breathe,
 	BreatheOutLand,
 	BreatheOut,

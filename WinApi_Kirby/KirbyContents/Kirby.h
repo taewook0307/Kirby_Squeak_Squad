@@ -107,7 +107,6 @@ protected:
 	void WalkStart();
 	void RunStart();
 	void StopStart();
-	void StopToIdleStart();
 	void BreatheStart();
 	void FlyStart();
 	void BreatheOutStart();
@@ -140,7 +139,6 @@ protected:
 	void WalkUpdate(float _Delta);
 	void RunUpdate(float _Delta);
 	void StopUpdate(float _Delta);
-	void StopToIdleUpdate(float _Delta);
 	void BreatheUpdate(float _Delta);
 	void FlyUpdate(float _Delta);
 	void BreatheOutUpdate(float _Delta);

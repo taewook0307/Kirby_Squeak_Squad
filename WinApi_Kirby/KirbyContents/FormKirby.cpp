@@ -30,8 +30,6 @@ void FormKirby::StateUpdate(float _Delta)
 		return RunUpdate(_Delta);
 	case KirbyState::Stop:
 		return StopUpdate(_Delta);
-	case KirbyState::StopToIdle:
-		return StopToIdleUpdate(_Delta);
 	case KirbyState::Breathe:
 		return BreatheUpdate(_Delta);
 	case KirbyState::Fly:
@@ -99,9 +97,6 @@ void FormKirby::ChangeState(KirbyState _State)
 			break;
 		case KirbyState::Stop:
 			StopStart();
-			break;
-		case KirbyState::StopToIdle:
-			StopToIdleStart();
 			break;
 		case KirbyState::Breathe:
 			BreatheStart();

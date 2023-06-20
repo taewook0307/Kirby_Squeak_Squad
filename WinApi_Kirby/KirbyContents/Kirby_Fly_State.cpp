@@ -7,11 +7,11 @@
 void Kirby::BreatheStart()
 {
 	ChangeAnimationState("Breathe");
-	SetGravityVector(float4::UP * FlyPower * 0.8f);
+	SetGravityVector(float4::UP * FlyPower * 0.5f);
 }
 
 void Kirby::FlyStart()
-{
+{	
 	ChangeAnimationState("Fly");
 	SetGravityVector(float4::UP * FlyPower);
 }
@@ -69,60 +69,25 @@ void Kirby::FlyUpdate(float _Delta)
 {
 	DirCheck();
 
-	unsigned int TopColor = GetGroundColor(EMPTYCOLOR, TOPCHECKPOS);
-	unsigned int BotColor = GetGroundColor(EMPTYCOLOR, float4::UP);
+	unsigned int Color = GetGroundColor(EMPTYCOLOR);
 
-	if (EMPTYCOLOR != BotColor && DOORCOLOR != BotColor)
+	if (GetGravityVector().Y > 0.0f)
 	{
-		GravityReset();
-
-		if (true == GameEngineInput::IsDown(VK_SPACE))
+		if (EMPTYCOLOR == Color || DOORCOLOR == Color)
 		{
-			AddPos(float4::UP * FlyPower * _Delta);
+			FlyGravity(_Delta);
+		}
+		else
+		{
+			GravityReset();
 		}
 	}
-	else if (EMPTYCOLOR == TopColor || DOORCOLOR == TopColor)
+	else
 	{
 		FlyGravity(_Delta);
 	}
-	else if (EMPTYCOLOR != TopColor && DOORCOLOR != TopColor)
-	{
-		SetGravityVector(float4::DOWN);
-		FlyGravity(_Delta);
-	}
 
-	float4 MovePos = float4::ZERO;
-	float4 CheckPos = float4::ZERO;
-
-	if (true == GameEngineInput::IsPress('A') && Dir == ActorDir::Left)
-	{
-		MovePos = { -Speed * _Delta, 0.0f };
-		CheckPos = LEFTCHECKPOS;
-
-		unsigned int Color = GetGroundColor(EMPTYCOLOR, CheckPos);
-
-		if (EMPTYCOLOR == Color || DOORCOLOR == Color)
-		{
-			AddPos(MovePos);
-			CameraMove(MovePos);
-		}
-	}
-
-	if (true == GameEngineInput::IsPress('D') && Dir == ActorDir::Right)
-	{
-		MovePos = { Speed * _Delta, 0.0f };
-		CheckPos = RIGHTCHECKPOS;
-
-		unsigned int Color = GetGroundColor(EMPTYCOLOR, CheckPos);
-
-		if (EMPTYCOLOR == Color || DOORCOLOR == Color)
-		{
-			AddPos(MovePos);
-			CameraMove(MovePos);
-		}
-	}
-
-	if (true == GameEngineInput::IsPress(VK_SPACE))
+	if (true == GameEngineInput::IsDown(VK_SPACE))
 	{
 		SetGravityVector(float4::UP * FlyPower);
 	}
@@ -229,6 +194,8 @@ void Kirby::DropUpdate(float _Delta)
 // 바닥에 부딪힌 후 턴하면서 살짝 위로 올라가는 상태
 void Kirby::FlyToTurnUpUpdate(float _Delta)
 {
+	DirCheck();
+
 	unsigned int TopColor = GetGroundColor(EMPTYCOLOR, TOPCHECKPOS);
 
 	if (EMPTYCOLOR == TopColor || DOORCOLOR == TopColor)
@@ -273,6 +240,8 @@ void Kirby::FlyToTurnUpUpdate(float _Delta)
 // 아래 방향으로 낙하
 void Kirby::FlyToTurnLandUpdate(float _Delta)
 {
+	DirCheck();
+
 	unsigned int Color = GetGroundColor(EMPTYCOLOR);
 
 	if (EMPTYCOLOR == Color || DOORCOLOR == Color)

@@ -54,7 +54,6 @@ void Kirby::Start()
 		MainRenderer->CreateAnimation("Right_Walk", "Right_Kirby.Bmp", 24, 33, 0.05f, true);
 		MainRenderer->CreateAnimation("Right_Run", "Right_Kirby.Bmp", 34, 41, 0.05f, true);
 		MainRenderer->CreateAnimation("Right_Stop", "Right_Kirby.Bmp", 42, 45, 0.1f, true);
-		MainRenderer->CreateAnimation("Right_StopToIdle", "Right_Kirby.Bmp", 46, 47, 0.2f, false);
 		MainRenderer->CreateAnimation("Right_Breathe", "Right_Kirby.Bmp", 48, 54, 0.1f, false);
 		MainRenderer->CreateAnimation("Right_Fly", "Right_Kirby.Bmp", 55, 72, 0.2f, true);
 		MainRenderer->CreateAnimation("Right_BreatheOut", "Right_Kirby.Bmp", 73, 74, 0.2f, false);
@@ -89,7 +88,6 @@ void Kirby::Start()
 		MainRenderer->CreateAnimation("Left_Walk", "Left_Kirby.Bmp", 24, 33, 0.05f, true);
 		MainRenderer->CreateAnimation("Left_Run", "Left_Kirby.Bmp", 34, 41, 0.05f, true);
 		MainRenderer->CreateAnimation("Left_Stop", "Left_Kirby.Bmp", 42, 45, 0.1f, true);
-		MainRenderer->CreateAnimation("Left_StopToIdle", "Left_Kirby.Bmp", 46, 47, 0.2f, false);
 		MainRenderer->CreateAnimation("Left_Breathe", "Left_Kirby.Bmp", 48, 54, 0.1f, false);
 		MainRenderer->CreateAnimation("Left_Fly", "Left_Kirby.Bmp", 55, 72, 0.2f, true);
 		MainRenderer->CreateAnimation("Left_BreatheOut", "Left_Kirby.Bmp", 73, 74, 0.2f, false);
@@ -326,8 +324,6 @@ void Kirby::StateUpdate(float _Delta)
 		return RunUpdate(_Delta);
 	case KirbyState::Stop:
 		return StopUpdate(_Delta);
-	case KirbyState::StopToIdle:
-		return StopToIdleUpdate(_Delta);
 	case KirbyState::Breathe:
 		return BreatheUpdate(_Delta);
 	case KirbyState::Fly:
@@ -407,9 +403,6 @@ void Kirby::ChangeState(KirbyState _State)
 			break;
 		case KirbyState::Stop:
 			StopStart();
-			break;
-		case KirbyState::StopToIdle:
-			StopToIdleStart();
 			break;
 		case KirbyState::Breathe:
 			BreatheStart();
