@@ -2,12 +2,17 @@
 #include <GameEngineBase/GameEngineDebug.h>
 #include "GameEngineActor.h"
 
-GameEngineCamera::GameEngineCamera() 
+GameEngineCamera::GameEngineCamera()
 {
 }
 
-GameEngineCamera::~GameEngineCamera() 
+GameEngineCamera::~GameEngineCamera()
 {
+}
+
+bool YSortFunction(GameEngineRenderer* _Left, GameEngineRenderer* _Right)
+{
+	return _Left->GetActorYPivot() < _Right->GetActorYPivot();
 }
 
 void GameEngineCamera::Render(float _Delta)
@@ -26,6 +31,20 @@ void GameEngineCamera::Render(float _Delta)
 		std::list<GameEngineRenderer*>::iterator RenderStartIter = List.begin();
 		std::list<GameEngineRenderer*>::iterator RenderEndIter = List.end();
 
+		// A C D F
+		// 157 2011
+		// C F A D 
+		// 7 111520
+		// 0 번 그룹 ysort 해야해?
+		if (true == GetYSort(GroupStartIter->first))
+		{
+			// 포인터의 값으로 sort를 합니다
+			// 내부에 있는 값을 비교합니다.
+			// 그냥 하면 포인터의 크기로 합니다.
+			// 포인터는 뭐다? => 8바이트 정수
+			// List.sort();
+			List.sort(YSortFunction);
+		}
 
 		for (; RenderStartIter != RenderEndIter; ++RenderStartIter)
 		{

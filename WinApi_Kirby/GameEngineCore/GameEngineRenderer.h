@@ -59,6 +59,10 @@ public:
 		ScaleRatio = _Scale;
 	}
 
+	void SetYPivot(float _Pivot)
+	{
+		YPivot = _Pivot;
+	}
 
 
 	CameraType GetCameraType()
@@ -78,6 +82,8 @@ public:
 
 	void SetOrder(int _Order) override;
 
+	float GetActorYPivot();
+
 protected:
 	void Start() override;
 
@@ -96,6 +102,8 @@ private:
 	float4 CopyScale;
 	CameraType CameraTypeValue = CameraType::MAIN;
 	std::string Text;
+
+	float YPivot = 0.0f;
 
 	float Angle = 0.0f;
 	unsigned char Alpha = 255;

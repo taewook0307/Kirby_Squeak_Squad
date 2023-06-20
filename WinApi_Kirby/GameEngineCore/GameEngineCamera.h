@@ -27,7 +27,7 @@ public:
 		return Pos;
 	}
 
-	void SetPos(const float4& _Value) 
+	void SetPos(const float4& _Value)
 	{
 		Pos = _Value;
 	}
@@ -37,12 +37,41 @@ public:
 		Pos += _Value;
 	}
 
+	template<typename EnumType>
+	void SetYSort(EnumType _Order, bool _Sort)
+	{
+		SetYSort(static_cast<int>(_Order), _Sort);
+	}
+
+	void SetYSort(int _Order, bool _Sort)
+	{
+		YSort[_Order] = _Sort;
+	}
+
+	template<typename EnumType>
+	bool GetYSort(EnumType _Order)
+	{
+		return GetYSort(static_cast<int>(_Order));
+	}
+
+	bool GetYSort(int _Order)
+	{
+		if (YSort.end() == YSort.find(_Order))
+		{
+			YSort[_Order] = false;
+		}
+
+		return YSort[_Order];
+	}
+
 protected:
 
 private:
 	float4 Pos = float4::ZERO;
 
 	std::map<int, std::list<GameEngineRenderer*>> Renderers;
+
+	std::map<int, bool> YSort;
 
 	void PushRenderer(GameEngineRenderer* _Renderer, int _Order);
 

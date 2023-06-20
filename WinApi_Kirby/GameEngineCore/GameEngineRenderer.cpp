@@ -392,3 +392,10 @@ void GameEngineRenderer::SetOrder(int _Order)
 	NextRenders.push_back(this);
 
 }
+
+float GameEngineRenderer::GetActorYPivot()
+{
+	float4 ActorPos = GetActor()->GetPos() + RenderPos;
+
+	return ActorPos.Y + YPivot;
+}

@@ -25,15 +25,11 @@ public:
 
 	// ChangeTile(int X1, int Y1, int X2, int Y2);
 
-	// GameEngineRenderer* MoveTile(int X1, int Y1, int X2, int Y2);
+	bool MoveTile(int X1, int Y1, int X2, int Y2, float4 _TilePos);
 
 	void SetTile(int X, int Y, int _Index, float4 _TilePos = float4::ZERO, bool _IsImageSize = false);
 
 	void SetTile(float4 _Pos, int _Index, float4 _TilePos = float4::ZERO, bool _IsImageSize = false);
-
-	void DeathTile(float4 _Pos);
-
-	void DeathTile(int X, int Y);
 
 	bool IsOver(int X, int Y);
 

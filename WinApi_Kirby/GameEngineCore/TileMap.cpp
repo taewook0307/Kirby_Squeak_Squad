@@ -135,3 +135,30 @@ void TileMap::DeathTile(int X, int Y)
 	Tiles[Y][X] = nullptr;
 
 }
+
+
+bool TileMap::MoveTile(int X1, int Y1, int X2, int Y2, float4 _TilePos)
+{
+	if (nullptr == Tiles[Y1][X1])
+	{
+		return false;
+	}
+
+	if (nullptr != Tiles[Y2][X2])
+	{
+		return false;
+	}
+
+	GameEngineRenderer* Tile = Tiles[Y1][X1];
+	Tiles[Y1][X1] = nullptr;
+
+	Tiles[Y2][X2] = Tile;
+	Tile->SetRenderPos(IndexToPos(X2, Y2) + TileSize.Half() + _TilePos);
+	return true;
+
+	//Tiles[Y][X]->SetRenderPos(IndexToPos(X1, Y1) + TileSize.Half() + _TilePos);
+
+	//Tiles[Y1][X1];
+	//Tiles[Y2][X2];
+
+}
