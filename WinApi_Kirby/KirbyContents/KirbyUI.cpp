@@ -164,6 +164,8 @@ void KirbyUI::Update(float _Delta)
 			FormUI->Death();
 		}
 		FormUI = CreateUIRenderer("Fire_Icon.Bmp", RenderOrder::PlayUI);
+		FormUI->SetRenderPos(FORMUIPOS);
+		FormUI->SetRenderScale(FORMUISCALE);
 	}
 	if (MonsterType::Ice == SubLevel::GetLevelPlayerForm())
 	{
@@ -172,6 +174,8 @@ void KirbyUI::Update(float _Delta)
 			FormUI->Death();
 		}
 		FormUI = CreateUIRenderer("Ice_Icon.Bmp", RenderOrder::PlayUI);
+		FormUI->SetRenderPos(FORMUIPOS);
+		FormUI->SetRenderScale(FORMUISCALE);
 	}
 	if (MonsterType::Tornado == SubLevel::GetLevelPlayerForm())
 	{
@@ -180,6 +184,8 @@ void KirbyUI::Update(float _Delta)
 			FormUI->Death();
 		}
 		FormUI = CreateUIRenderer("Tornado_Icon.Bmp", RenderOrder::PlayUI);
+		FormUI->SetRenderPos(FORMUIPOS);
+		FormUI->SetRenderScale(FORMUISCALE);
 	}
 	if (MonsterType::Spark == SubLevel::GetLevelPlayerForm())
 	{
@@ -188,6 +194,8 @@ void KirbyUI::Update(float _Delta)
 			FormUI->Death();
 		}
 		FormUI = CreateUIRenderer("Spark_Icon.Bmp", RenderOrder::PlayUI);
+		FormUI->SetRenderPos(FORMUIPOS);
+		FormUI->SetRenderScale(FORMUISCALE);
 	}
 	if (MonsterType::Normal == SubLevel::GetLevelPlayerForm())
 	{
@@ -197,235 +205,129 @@ void KirbyUI::Update(float _Delta)
 		}
 		
 		FormUI = CreateUIRenderer("Normal_Icon.Bmp", RenderOrder::PlayUI);
+		FormUI->SetRenderPos(FORMUIPOS);
+		FormUI->SetRenderScale(FORMUISCALE);
 	}
-	FormUI->SetRenderPos(FORMUIPOS);
-	FormUI->SetRenderScale(FORMUISCALE);
 
 	//------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	// HpBar
 	if (140 == Kirby::GetMainKirby()->GetKirbyHp())
 	{
-		if (HpBar != nullptr)
-		{
-			HpBar->Death();
-		}
-
-		HpBar = CreateUIRenderer("HpBar_140.Bmp", RenderOrder::PlayUI);
+		KirbyHpBarImageUpdate("HpBar_140.Bmp");
 	}
 
 	if (130 == Kirby::GetMainKirby()->GetKirbyHp())
 	{
-		if (HpBar != nullptr)
-		{
-			HpBar->Death();
-		}
-
-		HpBar = CreateUIRenderer("HpBar_130.Bmp", RenderOrder::PlayUI);
+		KirbyHpBarImageUpdate("HpBar_130.Bmp");
 	}
 
 	if (120 == Kirby::GetMainKirby()->GetKirbyHp())
 	{
-		if (HpBar != nullptr)
-		{
-			HpBar->Death();
-		}
-
-		HpBar = CreateUIRenderer("HpBar_120.Bmp", RenderOrder::PlayUI);
+		KirbyHpBarImageUpdate("HpBar_120.Bmp");
 	}
 
 	if (110 == Kirby::GetMainKirby()->GetKirbyHp())
 	{
-		if (HpBar != nullptr)
-		{
-			HpBar->Death();
-		}
-
-		HpBar = CreateUIRenderer("HpBar_110.Bmp", RenderOrder::PlayUI);
+		KirbyHpBarImageUpdate("HpBar_110.Bmp");
 	}
 
 	if (100 == Kirby::GetMainKirby()->GetKirbyHp())
 	{
-		if (HpBar != nullptr)
-		{
-			HpBar->Death();
-		}
-
-		HpBar = CreateUIRenderer("HpBar_100.Bmp", RenderOrder::PlayUI);
+		KirbyHpBarImageUpdate("HpBar_100.Bmp");
 	}
 
 	if (90 == Kirby::GetMainKirby()->GetKirbyHp())
 	{
-		if (HpBar != nullptr)
-		{
-			HpBar->Death();
-		}
-
-		HpBar = CreateUIRenderer("HpBar_90.Bmp", RenderOrder::PlayUI);
+		KirbyHpBarImageUpdate("HpBar_90.Bmp");
 	}
 
 	if (80 == Kirby::GetMainKirby()->GetKirbyHp())
 	{
-		if (HpBar != nullptr)
-		{
-			HpBar->Death();
-		}
-
-		HpBar = CreateUIRenderer("HpBar_80.Bmp", RenderOrder::PlayUI);
+		KirbyHpBarImageUpdate("HpBar_80.Bmp");
 	}
 
 	if (70 == Kirby::GetMainKirby()->GetKirbyHp())
 	{
-		if (HpBar != nullptr)
-		{
-			HpBar->Death();
-		}
-
-		HpBar = CreateUIRenderer("HpBar_70.Bmp", RenderOrder::PlayUI);
+		KirbyHpBarImageUpdate("HpBar_70.Bmp");
 	}
 
 	if (60 == Kirby::GetMainKirby()->GetKirbyHp())
 	{
-		if (HpBar != nullptr)
-		{
-			HpBar->Death();
-		}
-
-		HpBar = CreateUIRenderer("HpBar_60.Bmp", RenderOrder::PlayUI);
+		KirbyHpBarImageUpdate("HpBar_60.Bmp");
 	}
 
 	if (50 == Kirby::GetMainKirby()->GetKirbyHp())
 	{
-		if (HpBar != nullptr)
-		{
-			HpBar->Death();
-		}
-
-		HpBar = CreateUIRenderer("HpBar_50.Bmp", RenderOrder::PlayUI);
+		KirbyHpBarImageUpdate("HpBar_50.Bmp");
 	}
 
 	if (40 == Kirby::GetMainKirby()->GetKirbyHp())
 	{
-		if (HpBar != nullptr)
-		{
-			HpBar->Death();
-		}
-
-		HpBar = CreateUIRenderer("HpBar_40.Bmp", RenderOrder::PlayUI);
+		KirbyHpBarImageUpdate("HpBar_40.Bmp");
 	}
 
 	if (30 == Kirby::GetMainKirby()->GetKirbyHp())
 	{
-		if (HpBar != nullptr)
-		{
-			HpBar->Death();
-		}
-
-		HpBar = CreateUIRenderer("HpBar_30.Bmp", RenderOrder::PlayUI);
+		KirbyHpBarImageUpdate("HpBar_30.Bmp");
 	}
 
 	if (20 == Kirby::GetMainKirby()->GetKirbyHp())
 	{
-		if (HpBar != nullptr)
-		{
-			HpBar->Death();
-		}
-
-		HpBar = CreateUIRenderer("HpBar_20.Bmp", RenderOrder::PlayUI);
+		KirbyHpBarImageUpdate("HpBar_20.Bmp");
 	}
 
 	if (10 == Kirby::GetMainKirby()->GetKirbyHp())
 	{
-		if (HpBar != nullptr)
-		{
-			HpBar->Death();
-		}
-
-		HpBar = CreateUIRenderer("HpBar_10.Bmp", RenderOrder::PlayUI);
+		KirbyHpBarImageUpdate("HpBar_10.Bmp");
 	}
 
 	if (0 == Kirby::GetMainKirby()->GetKirbyHp())
 	{
-		if (HpBar != nullptr)
-		{
-			HpBar->Death();
-		}
-
-		HpBar = CreateUIRenderer("HpBar_0.Bmp", RenderOrder::PlayUI);
+		KirbyHpBarImageUpdate("HpBar_0.Bmp");
 	}
-	HpBar->SetRenderPos(HPBARPOS);
-	HpBar->SetRenderScale(HPBARSCALE);
+	
 
 	//------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	// LifeCount
 	if (0 == SubLevel::GetPlayerLife())
 	{
-		if (LifeCount != nullptr)
-		{
-			LifeCount->Death();
-		}
-		LifeCount = CreateUIRenderer("LifeCount_0.Bmp", RenderOrder::PlayUI);
+		KirbyLifeCountImageUpdate("LifeCount_0.Bmp");
 	}
 
 	if (1 == SubLevel::GetPlayerLife())
 	{
-		if (LifeCount != nullptr)
-		{
-			LifeCount->Death();
-		}
-		LifeCount = CreateUIRenderer("LifeCount_1.Bmp", RenderOrder::PlayUI);
+		KirbyLifeCountImageUpdate("LifeCount_1.Bmp");
 	}
 
 	if (2 == SubLevel::GetPlayerLife())
 	{
-		if (LifeCount != nullptr)
-		{
-			LifeCount->Death();
-		}
-		LifeCount = CreateUIRenderer("LifeCount_2.Bmp", RenderOrder::PlayUI);
+		KirbyLifeCountImageUpdate("LifeCount_2.Bmp");
 	}
 
 	if (3 == SubLevel::GetPlayerLife())
 	{
-		if (LifeCount != nullptr)
-		{
-			LifeCount->Death();
-		}
-		LifeCount = CreateUIRenderer("LifeCount_3.Bmp", RenderOrder::PlayUI);
+		KirbyLifeCountImageUpdate("LifeCount_3.Bmp");
 	}
 
 	if (4 == SubLevel::GetPlayerLife())
 	{
-		if (LifeCount != nullptr)
-		{
-			LifeCount->Death();
-		}
-		LifeCount = CreateUIRenderer("LifeCount_4.Bmp", RenderOrder::PlayUI);
+		KirbyLifeCountImageUpdate("LifeCount_4.Bmp");
 	}
 
 	if (5 == SubLevel::GetPlayerLife())
 	{
-		if (LifeCount != nullptr)
-		{
-			LifeCount->Death();
-		}
-		LifeCount = CreateUIRenderer("LifeCount_5.Bmp", RenderOrder::PlayUI);
+		KirbyLifeCountImageUpdate("LifeCount_5.Bmp");
 	}
 
 	if (6 == SubLevel::GetPlayerLife())
 	{
-		if (LifeCount != nullptr)
-		{
-			LifeCount->Death();
-		}
-		LifeCount = CreateUIRenderer("LifeCount_6.Bmp", RenderOrder::PlayUI);
+		KirbyLifeCountImageUpdate("LifeCount_6.Bmp");
 	}
 
 	if (true == GameEngineInput::IsDown('J'))
 	{
 		IsCheckPosPointChange();
 	}
-	LifeCount->SetRenderPos(LIFECOUNTPOS);
-	LifeCount->SetRenderScale(LIFECOUNTSCALE);
 }
 
 void KirbyUI::LevelStart()
@@ -433,4 +335,37 @@ void KirbyUI::LevelStart()
 	LifeIcon = CreateUIRenderer("Life_Icon.Bmp", RenderOrder::PlayUI);
 	LifeIcon->SetRenderPos(LIFEICONPOS);
 	LifeIcon->SetRenderScale(LIFEICONSCALE);
+}
+
+void KirbyUI::KirbyHpBarImageUpdate(const std::string& _ImageName)
+{
+	if (nullptr == ResourcesManager::GetInst().FindTexture(_ImageName))
+	{
+		MsgBoxAssert("커비 LifeCount 수를 나타내는 이미지가 없습니다.");
+		return;
+	}
+	if (HpBar != nullptr)
+	{
+		HpBar->Death();
+	}
+
+	HpBar = CreateUIRenderer(_ImageName, RenderOrder::PlayUI);
+	HpBar->SetRenderPos(HPBARPOS);
+	HpBar->SetRenderScale(HPBARSCALE);
+}
+
+void KirbyUI::KirbyLifeCountImageUpdate(const std::string& _ImageName)
+{
+	if (nullptr == ResourcesManager::GetInst().FindTexture(_ImageName))
+	{
+		MsgBoxAssert("커비 LifeCount 수를 나타내는 이미지가 없습니다.");
+		return;
+	}
+	if (nullptr != LifeCount)
+	{
+		LifeCount->Death();
+	}
+	LifeCount = CreateUIRenderer(_ImageName, RenderOrder::PlayUI);
+	LifeCount->SetRenderPos(LIFECOUNTPOS);
+	LifeCount->SetRenderScale(LIFECOUNTSCALE);
 }

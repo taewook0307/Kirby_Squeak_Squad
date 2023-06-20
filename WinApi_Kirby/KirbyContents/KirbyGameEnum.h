@@ -5,7 +5,8 @@ enum class UpdateOrder
 	PlayUI,
 	Player,
 	Item,
-	Monster
+	Monster,
+	SummonObject
 };
 
 enum class RenderOrder

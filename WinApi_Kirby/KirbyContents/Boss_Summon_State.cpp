@@ -99,7 +99,7 @@ void BossMonster::MonsterSummonUpdate(float _Delta)
 	if (true == MainRenderer->IsAnimationEnd())
 	{
 		float4 WinScale = GameEngineWindow::MainWindow.GetScale();
-		Monster* SummonMonster = GetLevel()->CreateActor<Monster>(RenderOrder::Monster);
+		Monster* SummonMonster = GetLevel()->CreateActor<Monster>(UpdateOrder::SummonObject);
 		SummonMonster->SetPos({ WinScale.Half().Half().X, 100.0f });
 		SummonMonster->SetGroundBitMap(GetGroundBitMap());
 

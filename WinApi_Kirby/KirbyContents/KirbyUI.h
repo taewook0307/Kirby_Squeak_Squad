@@ -45,5 +45,8 @@ private:
 	void Update(float _Delta) override;
 
 	void LevelStart() override;
+
+	void KirbyHpBarImageUpdate(const std::string& _ImageName);
+	void KirbyLifeCountImageUpdate(const std::string& _ImageName);
 };
 

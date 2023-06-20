@@ -90,153 +90,94 @@ void BossUI::Update(float _Delta)
 {
 	if (140 == BossMonster::GetMainBoss()->GetBossHp())
 	{
-		if (BossHpBar != nullptr)
-		{
-			BossHpBar->Death();
-		}
-
-		BossHpBar = CreateUIRenderer("MonsterLifeBar_140.Bmp", RenderOrder::PlayUI);
+		BossHpBarImageUpdate("MonsterLifeBar_140.Bmp");
 	}
 
 	if (130 == BossMonster::GetMainBoss()->GetBossHp())
 	{
-		if (BossHpBar != nullptr)
-		{
-			BossHpBar->Death();
-		}
-
-		BossHpBar = CreateUIRenderer("MonsterLifeBar_130.Bmp", RenderOrder::PlayUI);
+		BossHpBarImageUpdate("MonsterLifeBar_130.Bmp");
 	}
 
 	if (120 == BossMonster::GetMainBoss()->GetBossHp())
 	{
-		if (BossHpBar != nullptr)
-		{
-			BossHpBar->Death();
-		}
-
-		BossHpBar = CreateUIRenderer("MonsterLifeBar_120.Bmp", RenderOrder::PlayUI);
+		BossHpBarImageUpdate("MonsterLifeBar_120.Bmp");
 	}
 
 	if (110 == BossMonster::GetMainBoss()->GetBossHp())
 	{
-		if (BossHpBar != nullptr)
-		{
-			BossHpBar->Death();
-		}
-
-		BossHpBar = CreateUIRenderer("MonsterLifeBar_110.Bmp", RenderOrder::PlayUI);
+		BossHpBarImageUpdate("MonsterLifeBar_110.Bmp");
 	}
 
 	if (100 == BossMonster::GetMainBoss()->GetBossHp())
 	{
-		if (BossHpBar != nullptr)
-		{
-			BossHpBar->Death();
-		}
-
-		BossHpBar = CreateUIRenderer("MonsterLifeBar_100.Bmp", RenderOrder::PlayUI);
+		BossHpBarImageUpdate("MonsterLifeBar_100.Bmp");
 	}
 
 	if (90 == BossMonster::GetMainBoss()->GetBossHp())
 	{
-		if (BossHpBar != nullptr)
-		{
-			BossHpBar->Death();
-		}
-
-		BossHpBar = CreateUIRenderer("MonsterLifeBar_90.Bmp", RenderOrder::PlayUI);
+		BossHpBarImageUpdate("MonsterLifeBar_90.Bmp");
 	}
 
 	if (80 == BossMonster::GetMainBoss()->GetBossHp())
 	{
-		if (BossHpBar != nullptr)
-		{
-			BossHpBar->Death();
-		}
-
-		BossHpBar = CreateUIRenderer("MonsterLifeBar_80.Bmp", RenderOrder::PlayUI);
+		BossHpBarImageUpdate("MonsterLifeBar_80.Bmp");
 	}
 
 	if (70 == BossMonster::GetMainBoss()->GetBossHp())
 	{
-		if (BossHpBar != nullptr)
-		{
-			BossHpBar->Death();
-		}
-
-		BossHpBar = CreateUIRenderer("MonsterLifeBar_70.Bmp", RenderOrder::PlayUI);
+		BossHpBarImageUpdate("MonsterLifeBar_70.Bmp");
 	}
 
 	if (60 == BossMonster::GetMainBoss()->GetBossHp())
 	{
-		if (BossHpBar != nullptr)
-		{
-			BossHpBar->Death();
-		}
-
-		BossHpBar = CreateUIRenderer("MonsterLifeBar_60.Bmp", RenderOrder::PlayUI);
+		BossHpBarImageUpdate("MonsterLifeBar_60.Bmp");
 	}
 
 	if (50 == BossMonster::GetMainBoss()->GetBossHp())
 	{
-		if (BossHpBar != nullptr)
-		{
-			BossHpBar->Death();
-		}
-
-		BossHpBar = CreateUIRenderer("MonsterLifeBar_50.Bmp", RenderOrder::PlayUI);
+		BossHpBarImageUpdate("MonsterLifeBar_50.Bmp");
 	}
 
 	if (40 == BossMonster::GetMainBoss()->GetBossHp())
 	{
-		if (BossHpBar != nullptr)
-		{
-			BossHpBar->Death();
-		}
-
-		BossHpBar = CreateUIRenderer("MonsterLifeBar_40.Bmp", RenderOrder::PlayUI);
+		BossHpBarImageUpdate("MonsterLifeBar_40.Bmp");
 	}
 
 	if (30 == BossMonster::GetMainBoss()->GetBossHp())
 	{
-		if (BossHpBar != nullptr)
-		{
-			BossHpBar->Death();
-		}
-
-		BossHpBar = CreateUIRenderer("MonsterLifeBar_30.Bmp", RenderOrder::PlayUI);
+		BossHpBarImageUpdate("MonsterLifeBar_30.Bmp");
 	}
 
 	if (20 == BossMonster::GetMainBoss()->GetBossHp())
 	{
-		if (BossHpBar != nullptr)
-		{
-			BossHpBar->Death();
-		}
-
-		BossHpBar = CreateUIRenderer("MonsterLifeBar_20.Bmp", RenderOrder::PlayUI);
+		BossHpBarImageUpdate("MonsterLifeBar_20.Bmp");
 	}
 
 	if (10 == BossMonster::GetMainBoss()->GetBossHp())
 	{
-		if (BossHpBar != nullptr)
-		{
-			BossHpBar->Death();
-		}
-
-		BossHpBar = CreateUIRenderer("MonsterLifeBar_10.Bmp", RenderOrder::PlayUI);
+		BossHpBarImageUpdate("MonsterLifeBar_10.Bmp");
 	}
 
-	if (0 == BossMonster::GetMainBoss()->GetBossHp())
+	if (0 >= BossMonster::GetMainBoss()->GetBossHp())
 	{
-		if (BossHpBar != nullptr)
-		{
-			BossHpBar->Death();
-		}
-
-		BossHpBar = CreateUIRenderer("MonsterLifeBar_0.Bmp", RenderOrder::PlayUI);
+		BossHpBarImageUpdate("MonsterLifeBar_0.Bmp");
 	}
+}
+
+void BossUI::BossHpBarImageUpdate(const std::string& _ImageName)
+{
+	if (nullptr == ResourcesManager::GetInst().FindTexture(_ImageName))
+	{
+		MsgBoxAssert("몬스터 HPBar가 제대로 로드되지 않았습니다.");
+		return;
+	}
+
+	if (nullptr != BossHpBar)
+	{
+		BossHpBar->Death();
+	}
+
+	BossHpBar = CreateUIRenderer(_ImageName, RenderOrder::PlayUI);
 	BossHpBar->SetRenderPos(BOSSHPBARPOS);
 	BossHpBar->SetRenderScale(BOSSHPBARSCALE);
 }

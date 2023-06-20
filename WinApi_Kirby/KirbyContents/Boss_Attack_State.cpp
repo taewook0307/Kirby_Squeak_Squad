@@ -112,7 +112,7 @@ void BossMonster::AttackUpdate(float _Delta)
 
 	if (true == MainRenderer->IsAnimationEnd())
 	{
-		BossAttackObject* SummonAttacker = GetLevel()->CreateActor<BossAttackObject>(RenderOrder::Boss);
+		BossAttackObject* SummonAttacker = GetLevel()->CreateActor<BossAttackObject>(UpdateOrder::SummonObject);
 		SummonAttacker->SetPos(GetPos());
 		SummonAttacker->SetGroundBitMap(GetGroundBitMap());
 

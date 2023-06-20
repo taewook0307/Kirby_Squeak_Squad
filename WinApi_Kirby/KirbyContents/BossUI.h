@@ -2,7 +2,9 @@
 
 #include <GameEngineCore/GameEngineActor.h>
 
-#define BOSSHPBARPOS { 200.0f, 50.0f }
+#include <string>
+
+#define BOSSHPBARPOS { -50.0f, 50.0f }
 #define BOSSHPBARSCALE { 200.0f, 30.0f }
 
 class GameEngineRenderer;
@@ -26,4 +28,5 @@ private:
 
 	void Start() override;
 	void Update(float _Delta) override;
+	void BossHpBarImageUpdate(const std::string& _ImageName);
 };

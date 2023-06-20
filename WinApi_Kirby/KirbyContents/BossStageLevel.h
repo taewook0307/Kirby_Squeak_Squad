@@ -5,6 +5,7 @@
 class Ground;
 class Kirby;
 class BossMonster;
+class BossUI;
 class BossStageLevel : public SubLevel
 {
 public:
@@ -24,7 +25,9 @@ private:
 	Ground* BossStage = nullptr;
 
 	Kirby* LevelPlayer = nullptr;
+
 	BossMonster* Boss = nullptr;
+	BossUI* BossUIObject = nullptr;
 
 	void Start() override;
 	void Update(float _Delta) override;

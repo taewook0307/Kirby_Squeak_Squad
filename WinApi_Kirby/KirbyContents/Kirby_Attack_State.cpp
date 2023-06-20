@@ -147,7 +147,7 @@ void Kirby::AttackToIdleUpdate(float _Delta)
 {
 	if (StarAttack == nullptr && KeepType == MonsterType::Normal)
 	{
-		StarAttack = GetLevel()->CreateActor<AttackObject>(RenderOrder::Play);
+		StarAttack = GetLevel()->CreateActor<AttackObject>(UpdateOrder::SummonObject);
 		StarAttack->SetPos(GetPos());
 		StarAttack->SetDir(Dir);
 		StarAttack->SetGroundBitMap(GetGroundBitMap());
