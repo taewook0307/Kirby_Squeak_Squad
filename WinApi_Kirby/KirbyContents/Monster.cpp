@@ -2,6 +2,8 @@
 #include "KirbyGameEnum.h"
 
 #include <GameEngineBase/GameEnginePath.h>
+#include <GameEnginePlatform/GameEngineWindow.h>
+#include <GameEnginePlatform/GameEngineInput.h>
 #include <GameEngineCore/ResourcesManager.h>
 #include <GameEngineCore/GameEngineRenderer.h>
 #include <GameEngineCore/GameEngineCollision.h>
@@ -61,6 +63,54 @@ void Monster::Update(float _Delta)
 {
 	StateUpdate(_Delta);
 	DamageStateMove();
+
+	// Debug 용
+	if (true == GameEngineInput::IsDown('J'))
+	{
+		IsCheckPosPointChange();
+	}
+}
+
+void Monster::Render(float _Delta)
+{
+	HDC dc = GameEngineWindow::MainWindow.GetBackBuffer()->GetImageDC();
+
+	CollisionData Data;
+
+	if (true == IsCheckPosPoint)
+	{
+		Data.Pos = ActorCameraPos();
+		Data.Scale = { 5, 5 };
+		Rectangle(dc, Data.iLeft(), Data.iTop(), Data.iRight(), Data.iBot());
+
+		Data.Pos = ActorCameraPos() + float4 TOPCHECKPOS;
+		Data.Scale = { 5, 5 };
+		Rectangle(dc, Data.iLeft(), Data.iTop(), Data.iRight(), Data.iBot());
+
+		Data.Pos = ActorCameraPos() + float4 LEFTTOPCHECKPOS;
+		Data.Scale = { 5, 5 };
+		Rectangle(dc, Data.iLeft(), Data.iTop(), Data.iRight(), Data.iBot());
+
+		Data.Pos = ActorCameraPos() + float4 RIGHTTOPCHECKPOS;
+		Data.Scale = { 5, 5 };
+		Rectangle(dc, Data.iLeft(), Data.iTop(), Data.iRight(), Data.iBot());
+
+		Data.Pos = ActorCameraPos() + float4 LEFTCHECKPOS;
+		Data.Scale = { 5, 5 };
+		Rectangle(dc, Data.iLeft(), Data.iTop(), Data.iRight(), Data.iBot());
+
+		Data.Pos = ActorCameraPos() + float4 RIGHTCHECKPOS;
+		Data.Scale = { 5, 5 };
+		Rectangle(dc, Data.iLeft(), Data.iTop(), Data.iRight(), Data.iBot());
+
+		Data.Pos = ActorCameraPos() + float4 LEFTBOTCHECKPOS;
+		Data.Scale = { 5, 5 };
+		Rectangle(dc, Data.iLeft(), Data.iTop(), Data.iRight(), Data.iBot());
+
+		Data.Pos = ActorCameraPos() + float4 RIGHTBOTCHECKPOS;
+		Data.Scale = { 5, 5 };
+		Rectangle(dc, Data.iLeft(), Data.iTop(), Data.iRight(), Data.iBot());
+	}
 }
 
 void Monster::StateUpdate(float _Delta)

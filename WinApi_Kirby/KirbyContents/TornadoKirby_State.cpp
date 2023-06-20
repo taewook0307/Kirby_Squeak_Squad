@@ -7,6 +7,12 @@
 #include <GameEngineCore/GameEngineLevel.h>
 #include <GameEngineCore/GameEngineCamera.h>
 
+void TornadoKirby::AttackReadyStart()
+{
+	Kirby::AttackReadyStart();
+	AddPos(float4::UP);
+}
+
 void TornadoKirby::JumpUpdate(float _Delta)
 {
 	Kirby::JumpUpdate(_Delta);
@@ -97,6 +103,27 @@ void TornadoKirby::AttackToIdleUpdate(float _Delta)
 		if (EMPTYCOLOR == Color || DOORCOLOR == Color)
 		{
 			Gravity(_Delta);
+
+			float4 MovePos = float4::ZERO;
+			float4 CheckPos = float4::ZERO;
+
+			if (true == GameEngineInput::IsPress('A') && Dir == ActorDir::Left)
+			{
+				MovePos = float4::LEFT * Speed * _Delta;
+				CheckPos = LEFTBOTCHECKPOS;
+			}
+			else if (true == GameEngineInput::IsPress('D') && Dir == ActorDir::Right)
+			{
+				MovePos = float4::RIGHT * Speed * _Delta;
+				CheckPos = RIGHTBOTCHECKPOS;
+			}
+
+			unsigned int Color = GetGroundColor(EMPTYCOLOR, CheckPos);
+
+			if (EMPTYCOLOR == Color || DOORCOLOR == Color)
+			{
+				AddPos(MovePos);
+			}
 		}
 
 		else

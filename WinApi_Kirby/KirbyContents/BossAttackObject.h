@@ -8,6 +8,7 @@
 #define BOSSATTACKCOLLISIONSCALE { 70.0f, 70.0f }
 #define BOSSATTACKCOLLISIONPOS { 0.0f, -40.0f }
 
+class GameEngineCollision;
 class BossAttackObject : public BaseActor
 {
 	friend class BossMonster;
@@ -22,9 +23,6 @@ public:
 	BossAttackObject& operator=(const BossAttackObject& _Other) = delete;
 	BossAttackObject& operator=(BossAttackObject&& _Other) noexcept = delete;
 
-	class GameEngineRenderer* MainRenderer;
-	class GameEngineCollision* AttackCollision;
-
 	void MoveOff()
 	{
 		Move = false;
@@ -38,6 +36,8 @@ private:
 	bool Move = true;
 	bool AttackSuccess = false;
 	bool TimeDone = false;
+
+	GameEngineCollision* AttackCollision = nullptr;
 
 	std::vector<GameEngineCollision*> BossAttackCol;
 

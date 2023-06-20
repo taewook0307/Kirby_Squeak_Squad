@@ -3,6 +3,7 @@
 #include "KirbyGameEnum.h"
 
 #include <GameEngineBase/GameEnginePath.h>
+#include <GameEnginePlatform/GameEngineWindow.h>
 #include <GameEngineCore/GameEngineRenderer.h>
 #include <GameEngineCore/GameEngineCollision.h>
 #include <GameEngineCore/ResourcesManager.h>

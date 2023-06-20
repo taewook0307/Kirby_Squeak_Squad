@@ -117,7 +117,7 @@ protected:
 	void LevelMoveStart();
 	void DamageStart();
 	void DamageLandStart();
-	void AttackReadyStart();
+	virtual void AttackReadyStart();
 	void AttackStart();
 	void AttackToIdleStart();
 	void KeepStart();

@@ -22,6 +22,13 @@ void TornadoMonster::WalkUpdate(float _Delta)
 	float4 MovePos = float4::ZERO;
 	float4 CheckPos = float4::ZERO;
 
+	if (WalkTimer > 2.0f)
+	{
+		WalkTimer = 0.0f;
+		ChangeState(MonsterState::Idle);
+		return;
+	}
+
 	if (Dir == ActorDir::Left)
 	{
 		SearchCollision->SetCollisionPos(LEFTSEARCHCOLLISIONPOS);
@@ -41,17 +48,16 @@ void TornadoMonster::WalkUpdate(float _Delta)
 	{
 		AddPos(MovePos);
 	}
+	else
+	{
+		WalkTimer = 0.0f;
+		ChangeState(MonsterState::Idle);
+		return;
+	}
 
 	if (true == SearchCollision->Collision(CollisionOrder::Body, Col, CollisionType::Rect, CollisionType::Rect))
 	{
 		ChangeState(MonsterState::Attack);
-		return;
-	}
-
-	if (WalkTimer > 2.0f)
-	{
-		WalkTimer = 0.0f;
-		ChangeState(MonsterState::Idle);
 		return;
 	}
 
@@ -77,7 +83,6 @@ void TornadoMonster::AttackUpdate(float _Delta)
 	else
 	{
 		AttackCollision->Off();
-		DirChange();
 		ChangeState(MonsterState::Idle);
 		return;
 	}
