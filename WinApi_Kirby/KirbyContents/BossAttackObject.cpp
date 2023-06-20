@@ -2,6 +2,7 @@
 #include "Kirby.h"
 #include "KirbyGameEnum.h"
 
+#include <math.h>
 #include <GameEngineCore/ResourcesManager.h>
 #include <GameEngineCore/GameEngineRenderer.h>
 #include <GameEngineCore/GameEngineCollision.h>
@@ -54,6 +55,11 @@ void BossAttackObject::Start()
 void BossAttackObject::Update(float _Delta)
 {
 	float4 Dir = Kirby::GetMainKirby()->GetPos() - GetPos();
+	if (10.0f > static_cast<float>(fabs(Dir.Size())))
+	{
+		Death();
+		return;
+	}
 
 	Dir.Normalize();
 

@@ -250,7 +250,7 @@ void KirbyUI::Update(float _Delta)
 		KirbyHpBarImageUpdate("HpBar_10.Bmp");
 	}
 
-	if (0 == Kirby::GetMainKirby()->GetKirbyHp())
+	if (0 >= Kirby::GetMainKirby()->GetKirbyHp())
 	{
 		KirbyHpBarImageUpdate("HpBar_0.Bmp");
 	}
