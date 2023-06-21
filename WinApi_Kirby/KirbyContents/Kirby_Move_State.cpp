@@ -6,6 +6,96 @@
 #include <GameEngineCore/GameEngineLevel.h>
 #include <GameEngineCore/GameEngineCamera.h>
 
+void Kirby::InclineCheck(float4& _MovePos)
+{
+	if (EMPTYCOLOR == GetGroundColor(EMPTYCOLOR, _MovePos))
+	{
+		float4 XPos = float4::ZERO;
+		float4 Dir = _MovePos.X <= 0.0f ? float4::RIGHT : float4::LEFT;
+
+		while (RGB(0, 0, 0) != GetGroundColor(EMPTYCOLOR, _MovePos + XPos))
+		{
+			XPos += Dir;
+
+			if (abs(XPos.X) > 50.0f)
+			{
+				break;
+			}
+		}
+
+		float4 YPos = float4::ZERO;
+		while (RGB(0, 0, 0) != GetGroundColor(EMPTYCOLOR, _MovePos + YPos))
+		{
+			YPos.Y += 1;
+
+			if (YPos.Y > 60.0f)
+			{
+				break;
+			}
+		}
+
+		if (abs(XPos.X) >= YPos.Y)
+		{
+			while (RGB(0, 0, 0) != GetGroundColor(EMPTYCOLOR, _MovePos))
+			{
+				_MovePos.Y += 1;
+			}
+		}
+
+		else
+		{
+			AddPos(_MovePos);
+			CameraMove(_MovePos);
+			ChangeState(KirbyState::Drop);
+			return;
+		}
+	}
+}
+
+void Kirby::InclineUpCheck(float4& _MovePos)
+{
+	float4 CheckPos = _MovePos + float4::UP;
+
+	if (FLOORCOLOR == GetGroundColor(EMPTYCOLOR, CheckPos))
+	{
+		float4 XPos = float4::ZERO;
+		float4 Dir = _MovePos.X <= 0.0f ? float4::RIGHT : float4::LEFT;
+
+		while (FLOORCOLOR != GetGroundColor(EMPTYCOLOR, CheckPos + XPos))
+		{
+			XPos += Dir;
+
+			if (abs(XPos.X) > 50.0f)
+			{
+				break;
+			}
+		}
+
+		float4 YPos = float4::ZERO;
+		while (FLOORCOLOR != GetGroundColor(EMPTYCOLOR, CheckPos + YPos))
+		{
+			YPos.Y += 1;
+
+			if (YPos.Y > 60.0f)
+			{
+				break;
+			}
+		}
+
+		if (abs(XPos.X) >= YPos.Y)
+		{
+			while (FLOORCOLOR != GetGroundColor(EMPTYCOLOR, CheckPos))
+			{
+				_MovePos.Y -= 1;
+			}
+		}
+		else
+		{
+			int a = 0;
+		}
+	}
+}
+
 void Kirby::SlideStart()
 {
 	ChangeAnimationState("Slide");
@@ -54,48 +144,7 @@ void Kirby::SlideUpdate(float _Delta)
 		CheckPos = RIGHTCHECKPOS;
 	}
 
-	if (EMPTYCOLOR == GetGroundColor(EMPTYCOLOR, MovePos))
-	{
-		float4 XPos = float4::ZERO;
-		float4 Dir = MovePos.X <= 0.0f ? float4::RIGHT : float4::LEFT;
-
-		while (RGB(0, 0, 0) != GetGroundColor(EMPTYCOLOR, MovePos + XPos))
-		{
-			XPos += Dir;
-
-			if (abs(XPos.X) > 50.0f)
-			{
-				break;
-			}
-		}
-
-		float4 YPos = float4::ZERO;
-		while (RGB(0, 0, 0) != GetGroundColor(EMPTYCOLOR, MovePos + YPos))
-		{
-			YPos.Y += 1;
-
-			if (YPos.Y > 60.0f)
-			{
-				break;
-			}
-		}
-
-		if (abs(XPos.X) >= YPos.Y)
-		{
-			while (RGB(0, 0, 0) != GetGroundColor(EMPTYCOLOR, MovePos))
-			{
-				MovePos.Y += 1;
-			}
-		}
-
-		else
-		{
-			AddPos(MovePos);
-			CameraMove(MovePos);
-			ChangeState(KirbyState::Drop);
-			return;
-		}
-	}
+	InclineCheck(MovePos);
 
 	unsigned int Color = GetGroundColor(EMPTYCOLOR, CheckPos);
 
@@ -145,48 +194,8 @@ void Kirby::WalkUpdate(float _Delta)
 		CheckPos = RIGHTCHECKPOS;
 	}
 
-	if (EMPTYCOLOR == GetGroundColor(EMPTYCOLOR, MovePos))
-	{
-		float4 XPos = float4::ZERO;
-		float4 Dir = MovePos.X <= 0.0f ? float4::RIGHT : float4::LEFT;
-
-		while (RGB(0, 0, 0) != GetGroundColor(EMPTYCOLOR, MovePos + XPos))
-		{
-			XPos += Dir;
-
-			if (abs(XPos.X) > 50.0f)
-			{
-				break;
-			}
-		}
-
-		float4 YPos = float4::ZERO;
-		while (RGB(0, 0, 0) != GetGroundColor(EMPTYCOLOR, MovePos + YPos))
-		{
-			YPos.Y += 1;
-
-			if (YPos.Y > 60.0f)
-			{
-				break;
-			}
-		}
-
-		if (abs(XPos.X) >= YPos.Y)
-		{
-			while (RGB(0, 0, 0) != GetGroundColor(EMPTYCOLOR, MovePos))
-			{
-				MovePos.Y += 1;
-			}
-		}
-
-		else
-		{
-			AddPos(MovePos);
-			CameraMove(MovePos);
-			ChangeState(KirbyState::Drop);
-			return;
-		}
-	}
+	InclineCheck(MovePos);
+	//InclineUpCheck(MovePos);
 
 	// 이동 방향 앞에 장애물 여부 확인 후 이동
 	{
@@ -261,48 +270,7 @@ void Kirby::RunUpdate(float _Delta)
 		CheckPos = RIGHTCHECKPOS;
 	}
 
-	if (EMPTYCOLOR == GetGroundColor(EMPTYCOLOR, MovePos))
-	{
-		float4 XPos = float4::ZERO;
-		float4 Dir = MovePos.X <= 0.0f ? float4::RIGHT : float4::LEFT;
-
-		while (RGB(0, 0, 0) != GetGroundColor(EMPTYCOLOR, MovePos + XPos))
-		{
-			XPos += Dir;
-
-			if (abs(XPos.X) > 50.0f)
-			{
-				break;
-			}
-		}
-
-		float4 YPos = float4::ZERO;
-		while (RGB(0, 0, 0) != GetGroundColor(EMPTYCOLOR, MovePos + YPos))
-		{
-			YPos.Y += 1;
-
-			if (YPos.Y > 60.0f)
-			{
-				break;
-			}
-		}
-
-		if (abs(XPos.X) >= YPos.Y)
-		{
-			while (RGB(0, 0, 0) != GetGroundColor(EMPTYCOLOR, MovePos))
-			{
-				MovePos.Y += 1;
-			}
-		}
-
-		else
-		{
-			AddPos(MovePos);
-			CameraMove(MovePos);
-			ChangeState(KirbyState::Drop);
-			return;
-		}
-	}
+	InclineCheck(MovePos);
 
 	// 이동 방향 앞에 장애물 여부 확인 후 이동
 	{
