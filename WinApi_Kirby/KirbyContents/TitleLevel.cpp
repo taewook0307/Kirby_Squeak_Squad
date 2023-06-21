@@ -21,7 +21,8 @@ void TitleLevel::Start()
 
 void TitleLevel::Update(float _Delta)
 {
-	if (true == GameEngineInput::IsDown(VK_RETURN))
+	if (true == GameEngineInput::IsDown(VK_RETURN)
+		|| true == GameEngineInput::IsDown(VK_SPACE))
 	{
 		GameEngineCore::ChangeLevel("FirstStageLevel");
 	}

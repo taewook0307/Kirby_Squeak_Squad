@@ -17,5 +17,6 @@ enum class RenderOrder
 	Play,
 	Monster,
 	Item,
-	PlayUI
+	PlayUI,
+	Fade
 };

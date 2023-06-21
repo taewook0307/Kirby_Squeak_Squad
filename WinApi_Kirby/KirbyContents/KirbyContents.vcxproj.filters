@@ -96,8 +96,11 @@
     <ClInclude Include="BossUI.h">
       <Filter>UI</Filter>
     </ClInclude>
-    <ClInclude Include="FadeObject.h">
-      <Filter>Global</Filter>
+    <ClInclude Include="FadeOutObject.h">
+      <Filter>Global\Fade</Filter>
+    </ClInclude>
+    <ClInclude Include="FadeInObject.h">
+      <Filter>Global\Fade</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -258,8 +261,11 @@
     <ClCompile Include="BossUI.cpp">
       <Filter>UI</Filter>
     </ClCompile>
-    <ClCompile Include="FadeObject.cpp">
-      <Filter>Global</Filter>
+    <ClCompile Include="FadeOutObject.cpp">
+      <Filter>Global\Fade</Filter>
+    </ClCompile>
+    <ClCompile Include="FadeInObject.cpp">
+      <Filter>Global\Fade</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -316,6 +322,9 @@
     </Filter>
     <Filter Include="Item">
       <UniqueIdentifier>{1b0b8138-c62d-4b62-8108-c722a7e5f52e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Global\Fade">
+      <UniqueIdentifier>{17c1fdbc-33e6-411f-a2da-7d7b315354ec}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
