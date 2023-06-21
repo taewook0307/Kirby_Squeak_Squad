@@ -30,6 +30,8 @@ private:
 
 	void LevelStart(GameEngineLevel* _PrevLevel) override;
 
+	void FormChange();
+
 	Kirby* LevelPlayer = nullptr;
 	float4 SavePos = float4::ZERO;
 

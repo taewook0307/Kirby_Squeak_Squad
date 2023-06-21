@@ -1,5 +1,6 @@
 #include "Kirby.h"
 
+#include <GameEngineBase/GameEngineTime.h>
 #include <GameEnginePlatform/GameEngineInput.h>
 #include <GameEngineCore/GameEngineCore.h>
 #include <GameEngineCore/GameEngineRenderer.h>
@@ -144,6 +145,7 @@ void Kirby::ChangeUpdate(float _Delta)
 {
 	if (true == MainRenderer->IsAnimationEnd())
 	{
+		GameEngineTime::MainTimer.SetAllTimeScale(1.0f);
 		if (true == GameEngineInput::IsPress('A') || true == GameEngineInput::IsPress('D'))
 		{
 			ChangeState(KirbyState::Walk);

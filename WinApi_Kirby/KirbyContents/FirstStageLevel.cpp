@@ -15,6 +15,7 @@
 #include "HealItem.h"
 #include "KirbyGameEnum.h"
 
+#include <GameEngineBase/GameEngineTime.h>
 #include <GameEnginePlatform/GameEngineWindow.h>
 #include <GameEnginePlatform/GameEngineInput.h>
 #include <GameEnginePlatform/GameEngineSound.h>
@@ -60,6 +61,8 @@ void FirstStageLevel::Update(float _Delta)
 		&& LevelPlayer->GetKirbyState() == KirbyState::KeepIdle
 		&& LevelPlayer->GetKeepType() == MonsterType::Ice)
 	{
+		GameEngineTime::MainTimer.SetAllTimeScale(0.0f);
+		GameEngineTime::MainTimer.SetTimeScale(UpdateOrder::Player, 1.0f);
 		SetLevelPlayerForm(MonsterType::Ice);
 		SavePos = LevelPlayer->GetPos();
 		LevelPlayer->Death();
@@ -72,6 +75,8 @@ void FirstStageLevel::Update(float _Delta)
 		&& LevelPlayer->GetKirbyState() == KirbyState::KeepIdle
 		&& LevelPlayer->GetKeepType() == MonsterType::Spark)
 	{
+		GameEngineTime::MainTimer.SetAllTimeScale(0.0f);
+		GameEngineTime::MainTimer.SetTimeScale(UpdateOrder::Player, 1.0f);
 		SetLevelPlayerForm(MonsterType::Spark);
 		SavePos = LevelPlayer->GetPos();
 		LevelPlayer->Death();
@@ -84,6 +89,8 @@ void FirstStageLevel::Update(float _Delta)
 		&& LevelPlayer->GetKirbyState() == KirbyState::KeepIdle
 		&& LevelPlayer->GetKeepType() == MonsterType::Fire)
 	{
+		GameEngineTime::MainTimer.SetAllTimeScale(0.0f);
+		GameEngineTime::MainTimer.SetTimeScale(UpdateOrder::Player, 1.0f);
 		SetLevelPlayerForm(MonsterType::Fire);
 		SavePos = LevelPlayer->GetPos();
 		LevelPlayer->Death();
@@ -96,6 +103,8 @@ void FirstStageLevel::Update(float _Delta)
 		&& LevelPlayer->GetKirbyState() == KirbyState::KeepIdle
 		&& LevelPlayer->GetKeepType() == MonsterType::Tornado)
 	{
+		GameEngineTime::MainTimer.SetAllTimeScale(0.0f);
+		GameEngineTime::MainTimer.SetTimeScale(UpdateOrder::Player, 1.0f);
 		SetLevelPlayerForm(MonsterType::Tornado);
 		SavePos = LevelPlayer->GetPos();
 		LevelPlayer->Death();
