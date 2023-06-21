@@ -99,12 +99,12 @@ void BossMonster::FlyDropUpdate(float _Delta)
 	{
 		GravityReset();
 
-		BossAttackObject* LeftObject = GetLevel()->CreateActor<BossAttackObject>(UpdateOrder::SummonObject);
+		BossAttackObject* LeftObject = GetLevel()->CreateActor<BossAttackObject>(UpdateOrder::Monster);
 		LeftObject->SetPos(GetPos() + float4::LEFT * 180.0f);
 		LeftObject->MoveOff();
 		LeftObject->SetGroundBitMap(GetGroundBitMap());
 
-		BossAttackObject* RightObject = GetLevel()->CreateActor<BossAttackObject>(UpdateOrder::SummonObject);
+		BossAttackObject* RightObject = GetLevel()->CreateActor<BossAttackObject>(UpdateOrder::Monster);
 		RightObject->SetPos(GetPos() + float4::RIGHT * 180.0f);
 		RightObject->MoveOff();
 		RightObject->SetGroundBitMap(GetGroundBitMap());

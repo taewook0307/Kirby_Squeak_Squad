@@ -129,7 +129,7 @@ void Kirby::AttackUpdate(float _Delta)
 			Power += 50.0f;
 		}
 
-		if (static_cast<float>(fabs(BossAttack->GetPos().X - GetPos().X)) < 20.0f)
+		if (static_cast<float>(fabs(BossAttack->GetPos().X - GetPos().X)) < 30.0f)
 		{
 			if (BossAttack != nullptr)
 			{
@@ -147,7 +147,7 @@ void Kirby::AttackToIdleUpdate(float _Delta)
 {
 	if (StarAttack == nullptr && KeepType == MonsterType::Normal)
 	{
-		StarAttack = GetLevel()->CreateActor<AttackObject>(UpdateOrder::SummonObject);
+		StarAttack = GetLevel()->CreateActor<AttackObject>(UpdateOrder::PlayerObject);
 		StarAttack->SetPos(GetPos());
 		StarAttack->SetDir(Dir);
 		StarAttack->SetGroundBitMap(GetGroundBitMap());

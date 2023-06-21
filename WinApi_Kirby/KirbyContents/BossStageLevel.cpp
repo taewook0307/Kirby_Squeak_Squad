@@ -35,6 +35,17 @@ void BossStageLevel::Start()
 
 void BossStageLevel::Update(float _Delta)
 {
+	if (GetLevelPlayerForm() != MonsterType::Normal && true == GameEngineInput::IsDown('Z'))
+	{
+		SetLevelPlayerForm(MonsterType::Normal);
+		SavePos = LevelPlayer->GetPos();
+		LevelPlayer->Death();
+		LevelPlayer = CreateActor<Kirby>(UpdateOrder::Player);
+		LevelPlayer->SetPos(SavePos);
+		LevelPlayer->SetGroundBitMap("BossStageBitMap.Bmp");
+		LevelPlayer->ClearForm();
+	}
+
 	// 플레이어 데스 부분
 	if (0 < GetPlayerLife() && true == LevelPlayer->GetDeathCheck())
 	{

@@ -41,15 +41,13 @@ void FirstStageLevel::Start()
 
 	LevelMonster = CreateActor<Monster>(UpdateOrder::Monster);
 
-	LevelFireMonster = CreateActor<IceMonster>(UpdateOrder::Monster);
-
 	LevelTornadoMonster = CreateActor<TornadoMonster>(UpdateOrder::Monster);
 
 	LevelSparkMonster = CreateActor<SparkMonster>(UpdateOrder::Monster);
 
 	LevelIceMonster = CreateActor<IceMonster>(UpdateOrder::Monster);
 
-	LevelLifeItem = CreateActor<LifeCountPlusItem>(UpdateOrder::Item);
+	LevelLifeItem = CreateActor<LifeCountPlusItem>(UpdateOrder::PlayerObject);
 	LevelLifeItem->SetPos({ 2170.0f, 735.0f });
 	LevelLifeItem->SetGroundBitMap("FirstStageBitMap.Bmp");
 }
@@ -193,11 +191,8 @@ void FirstStageLevel::LevelStart(GameEngineLevel* _PrevLevel)
 	}
 
 	{
-		LevelMonster->SetPos({ 1000.0f, 735.0f });
+		LevelMonster->SetPos({ 2500.0f, 735.0f });
 		LevelMonster->SetGroundBitMap("FirstStageBitMap.Bmp");
-
-		LevelFireMonster->SetPos({ 2000.0f, 735.0f });
-		LevelFireMonster->SetGroundBitMap("FirstStageBitMap.Bmp");
 
 		LevelTornadoMonster->SetPos({ 7000.0f, 660.0f });
 		LevelTornadoMonster->SetGroundBitMap("FirstStageBitMap.Bmp");

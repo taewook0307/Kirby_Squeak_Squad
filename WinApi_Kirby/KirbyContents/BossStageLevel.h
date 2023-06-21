@@ -25,6 +25,7 @@ private:
 	Ground* BossStage = nullptr;
 
 	Kirby* LevelPlayer = nullptr;
+	float4 SavePos = float4::ZERO;
 
 	BossMonster* Boss = nullptr;
 	BossUI* BossUIObject = nullptr;

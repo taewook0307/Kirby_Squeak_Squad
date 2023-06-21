@@ -5,6 +5,7 @@
 class Ground;
 class Kirby;
 class Monster;
+class HealItem;
 class SecondStageLevel : public SubLevel
 {
 public:
@@ -30,4 +31,6 @@ private:
 	Kirby* LevelPlayer = nullptr;
 	Monster* LevelMonster = nullptr;
 	float4 SavePos = float4::ZERO;
+
+	HealItem* LevelHealItem = nullptr;
 };

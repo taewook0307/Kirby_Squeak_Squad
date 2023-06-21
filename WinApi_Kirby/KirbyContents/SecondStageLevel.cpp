@@ -7,6 +7,7 @@
 #include "FireKirby.h"
 #include "TornadoKirby.h"
 #include "FireMonster.h"
+#include "HealItem.h"
 #include "KirbyGameEnum.h"
 
 #include <GameEnginePlatform/GameEngineWindow.h>
@@ -32,6 +33,8 @@ void SecondStageLevel::Start()
 	Back->BackGroundInit("SecondStageLevel.Bmp", "SecondStageBitMap.Bmp");
 
 	LevelMonster = CreateActor<FireMonster>(UpdateOrder::Monster);
+
+	LevelHealItem = CreateActor<HealItem>(UpdateOrder::PlayerObject);
 }
 
 void SecondStageLevel::Update(float _Delta)
@@ -167,5 +170,8 @@ void SecondStageLevel::LevelStart(GameEngineLevel* _PrevLevel)
 	GetMainCamera()->SetPos(float4::ZERO);
 
 	LevelMonster->SetPos({ 2550.0f, 740.0f });
-	LevelMonster->SetGroundBitMap("FirstStageBitMap.Bmp");
+	LevelMonster->SetGroundBitMap("SecondStageBitMap.Bmp");
+
+	LevelHealItem->SetPos({ 4145.0f, 654.0f });
+	LevelHealItem->SetGroundBitMap("SecondStageBitMap.Bmp");
 }
