@@ -108,7 +108,7 @@ void BossMonster::DeathUpdate(float _Delta)
 	if (EndingTimer < 0.0f)
 	{
 		EndingCheck = true;
-		EndingCheck = 3.0f;
+		EndingTimer = 3.0f;
 	}
 
 	if (true == EndingCheck && false == EndingItemCreate)

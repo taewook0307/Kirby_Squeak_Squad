@@ -57,11 +57,6 @@ void BossStageLevel::Update(float _Delta)
 		GameEngineCore::ChangeLevel("BossStageLevel");
 	}
 
-	if (true == GameEngineInput::IsDown('P'))
-	{
-		GameEngineCore::ChangeLevel("EndingLevel");
-	}
-
 	if (true == GameEngineInput::IsDown('J'))
 	{
 		BossStage->SwitchRender();
