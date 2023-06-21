@@ -7,7 +7,7 @@
 #define GRAVITYPOWER 700.0f
 #define EMPTYCOLOR RGB(255,255,255)
 #define DOORCOLOR RGB(0,0,255)
-#define SLOPECOLOR RGB(0,255,0)
+#define FLOORCOLOR RGB(0,0,0)
 
 #define TOPCHECKPOS { 0.0f, -80.0f }
 #define LEFTTOPCHECKPOS { -40.0f , -80.0f }

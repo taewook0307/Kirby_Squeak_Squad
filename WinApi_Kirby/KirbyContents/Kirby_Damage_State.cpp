@@ -86,16 +86,9 @@ void Kirby::DamageLandUpdate(float _Delta)
 		Gravity(_Delta);
 	}
 
-	if (true == MainRenderer->IsAnimationEnd() && EMPTYCOLOR != Color
-		|| true == MainRenderer->IsAnimationEnd() && DOORCOLOR != Color)
+	else if (true == MainRenderer->IsAnimationEnd() && FLOORCOLOR == Color)
 	{
 		GravityReset();
-
-		if (true == GameEngineInput::IsPress('A') || true == GameEngineInput::IsPress('D'))
-		{
-			ChangeState(KirbyState::Walk);
-			return;
-		}
 
 		ChangeState(KirbyState::Idle);
 		return;

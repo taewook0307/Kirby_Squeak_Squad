@@ -30,6 +30,7 @@ private:
 	Ground* SecondStage = nullptr;
 	Kirby* LevelPlayer = nullptr;
 	Monster* LevelMonster = nullptr;
+	Monster* CheetMonster = nullptr;
 	float4 SavePos = float4::ZERO;
 
 	HealItem* LevelHealItem = nullptr;

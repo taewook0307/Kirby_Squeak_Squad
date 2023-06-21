@@ -57,7 +57,9 @@ void Kirby::IdleUpdate(float _Delta)
 
 	// 걷기 상태 전환
 	if (true == GameEngineInput::IsDown('A') && Color != EMPTYCOLOR
-		|| true == GameEngineInput::IsDown('D') && Color != EMPTYCOLOR)
+		|| true == GameEngineInput::IsDown('D') && Color != EMPTYCOLOR
+		|| true == GameEngineInput::IsPress('A') && Color != EMPTYCOLOR
+		|| true == GameEngineInput::IsPress('D') && Color != EMPTYCOLOR)
 	{
 		DirCheck();
 		ChangeState(KirbyState::Walk);
