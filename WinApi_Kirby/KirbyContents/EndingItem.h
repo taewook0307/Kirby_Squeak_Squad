@@ -5,9 +5,9 @@
 #include <vector>
 
 #define ENDINGITEMPOS { 0.0f, 0.0f }
-#define ENDINGITEMSCALE { 50.0f, 50.0f }
-#define ENDINGITEMCOLLISIONPOS { 0.0f, 0.0f }
-#define ENDINGITEMCOLLISIONSCALE { 50.0f, 50.0f }
+#define ENDINGITEMSCALE { 500.0f, 500.0f }
+#define ENDINGITEMCOLLISIONPOS { 0.0f, -50.0f }
+#define ENDINGITEMCOLLISIONSCALE { 90.0f, 90.0f }
 
 class GameEngineRenderer;
 class GameEngineCollision;

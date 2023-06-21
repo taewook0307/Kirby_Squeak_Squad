@@ -1,4 +1,8 @@
 #include "BossMonster.h"
+#include "EndingItem.h"
+#include "KirbyGameEnum.h"
+
+#include<GameEngineCore/GameEngineLevel.h>
 
 void BossMonster::DamageStart()
 {
@@ -86,5 +90,32 @@ void BossMonster::DeathUpdate(float _Delta)
 	else
 	{
 		GravityReset();
+
+		if (false == EndingCheck)
+		{
+			EndingTimer -= _Delta;
+		}
+	}
+
+	unsigned int UpColor = GetGroundColor(EMPTYCOLOR, float4::UP);
+
+	while (EMPTYCOLOR != UpColor)
+	{
+		AddPos(float4::UP);
+		UpColor = GetGroundColor(EMPTYCOLOR, float4::UP);
+	}
+
+	if (EndingTimer < 0.0f)
+	{
+		EndingCheck = true;
+		EndingCheck = 3.0f;
+	}
+
+	if (true == EndingCheck && false == EndingItemCreate)
+	{
+		EndingItem* EndingBox = GetLevel()->CreateActor<EndingItem>(UpdateOrder::PlayerObject);
+		EndingBox->SetPos({ WinScale.Half().X, 100.0f });
+		EndingBox->SetGroundBitMap(GetGroundBitMap());
+		EndingItemCreate = true;
 	}
 }

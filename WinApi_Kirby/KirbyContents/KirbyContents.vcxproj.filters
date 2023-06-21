@@ -96,6 +96,9 @@
     <ClInclude Include="BossUI.h">
       <Filter>UI</Filter>
     </ClInclude>
+    <ClInclude Include="FadeObject.h">
+      <Filter>Global</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TitleLevel.cpp">
@@ -254,6 +257,9 @@
     </ClCompile>
     <ClCompile Include="BossUI.cpp">
       <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="FadeObject.cpp">
+      <Filter>Global</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -2,6 +2,7 @@
 #include "KirbyGameEnum.h"
 #include "ActorEnum.h"
 
+#include <GameEngineCore/GameEngineCore.h>
 #include <GameEngineCore/ResourcesManager.h>
 #include <GameEngineCore/GameEngineRenderer.h>
 
@@ -37,5 +38,30 @@ void EndingItem::Start()
 
 void EndingItem::Update(float _Delta)
 {
+	unsigned int Color = GetGroundColor(EMPTYCOLOR);
 
+	if (EMPTYCOLOR == Color)
+	{
+		Gravity(_Delta);
+	}
+	else
+	{
+		GravityReset();
+	}
+	unsigned int UpColor = GetGroundColor(EMPTYCOLOR, float4::UP);
+
+	while (EMPTYCOLOR != UpColor)
+	{
+		AddPos(float4::UP);
+		UpColor = GetGroundColor(EMPTYCOLOR, float4::UP);
+	}
+
+	if (true == BodyCollision->Collision(CollisionOrder::Body, EndingItemCol, CollisionType::Rect, CollisionType::Rect))
+	{
+		Death();
+
+		GameEngineCore::ChangeLevel("EndingLevel");
+
+		return;
+	}
 }

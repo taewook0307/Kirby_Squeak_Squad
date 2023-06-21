@@ -1,5 +1,6 @@
 #pragma once
 
+#include <GameEnginePlatform/GameEngineWindow.h>
 #include <GameEngineCore/GameEngineActor.h>
 #include <GameEngineCore/GameEngineCollision.h>
 
@@ -88,6 +89,9 @@ protected:
 	GameEngineRenderer* MainRenderer = nullptr;
 
 	bool IsCheckPosPoint = false;
+
+	float4 WinScale = GameEngineWindow::MainWindow.GetScale();
+
 private:
 	GameEngineWindowTexture* GroundBitMap = nullptr;
 

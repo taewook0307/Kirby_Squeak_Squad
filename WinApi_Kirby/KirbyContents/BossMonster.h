@@ -104,7 +104,7 @@ protected:
 
 	void Damage()
 	{
-		BossHp -= 30;
+		BossHp -= 140;
 	}
 
 	void BossHpReset()
@@ -115,6 +115,10 @@ private:
 	int BossHp = 140;
 	float Speed = 100.0f;
 	float BossJumpPower = 700.0f;
+
+	float EndingTimer = 3.0f;
+	bool EndingItemCreate = false;
+	bool EndingCheck = false;
 
 	std::vector<GameEngineCollision*> BossCol;
 
