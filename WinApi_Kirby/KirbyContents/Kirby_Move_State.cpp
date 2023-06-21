@@ -13,7 +13,7 @@ void Kirby::InclineCheck(float4& _MovePos)
 		float4 XPos = float4::ZERO;
 		float4 Dir = _MovePos.X <= 0.0f ? float4::RIGHT : float4::LEFT;
 
-		while (RGB(0, 0, 0) != GetGroundColor(EMPTYCOLOR, _MovePos + XPos))
+		while (FLOORCOLOR != GetGroundColor(EMPTYCOLOR, _MovePos + XPos))
 		{
 			XPos += Dir;
 
@@ -24,7 +24,7 @@ void Kirby::InclineCheck(float4& _MovePos)
 		}
 
 		float4 YPos = float4::ZERO;
-		while (RGB(0, 0, 0) != GetGroundColor(EMPTYCOLOR, _MovePos + YPos))
+		while (FLOORCOLOR != GetGroundColor(EMPTYCOLOR, _MovePos + YPos))
 		{
 			YPos.Y += 1;
 
@@ -36,62 +36,17 @@ void Kirby::InclineCheck(float4& _MovePos)
 
 		if (abs(XPos.X) >= YPos.Y)
 		{
-			while (RGB(0, 0, 0) != GetGroundColor(EMPTYCOLOR, _MovePos))
+			while (FLOORCOLOR != GetGroundColor(EMPTYCOLOR, _MovePos))
 			{
 				_MovePos.Y += 1;
 			}
 		}
-
 		else
 		{
 			AddPos(_MovePos);
 			CameraMove(_MovePos);
 			ChangeState(KirbyState::Drop);
 			return;
-		}
-	}
-}
-
-void Kirby::InclineUpCheck(float4& _MovePos)
-{
-	float4 CheckPos = _MovePos + float4::UP;
-
-	if (FLOORCOLOR == GetGroundColor(EMPTYCOLOR, CheckPos))
-	{
-		float4 XPos = float4::ZERO;
-		float4 Dir = _MovePos.X <= 0.0f ? float4::RIGHT : float4::LEFT;
-
-		while (FLOORCOLOR != GetGroundColor(EMPTYCOLOR, CheckPos + XPos))
-		{
-			XPos += Dir;
-
-			if (abs(XPos.X) > 50.0f)
-			{
-				break;
-			}
-		}
-
-		float4 YPos = float4::ZERO;
-		while (FLOORCOLOR != GetGroundColor(EMPTYCOLOR, CheckPos + YPos))
-		{
-			YPos.Y += 1;
-
-			if (YPos.Y > 60.0f)
-			{
-				break;
-			}
-		}
-
-		if (abs(XPos.X) >= YPos.Y)
-		{
-			while (FLOORCOLOR != GetGroundColor(EMPTYCOLOR, CheckPos))
-			{
-				_MovePos.Y -= 1;
-			}
-		}
-		else
-		{
-			int a = 0;
 		}
 	}
 }
@@ -195,7 +150,6 @@ void Kirby::WalkUpdate(float _Delta)
 	}
 
 	InclineCheck(MovePos);
-	//InclineUpCheck(MovePos);
 
 	// 이동 방향 앞에 장애물 여부 확인 후 이동
 	{

@@ -171,8 +171,6 @@ protected:
 	void KirbyGravity(float _Delta);
 
 	void InclineCheck(float4& _MovePos);
-
-	void InclineUpCheck(float4& _MovePos);
 protected:
 	void DamageFromMonster()
 	{

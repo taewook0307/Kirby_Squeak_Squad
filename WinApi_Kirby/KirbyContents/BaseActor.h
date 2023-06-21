@@ -10,12 +10,12 @@
 #define FLOORCOLOR RGB(0,0,0)
 
 #define TOPCHECKPOS { 0.0f, -80.0f }
-#define LEFTTOPCHECKPOS { -40.0f , -80.0f }
-#define RIGHTTOPCHECKPOS { 40.0f , -80.0f }
-#define LEFTCHECKPOS { -40.0f , -40.0f }
-#define RIGHTCHECKPOS { 40.0f , -40.0f }
-#define LEFTBOTCHECKPOS { -40.0f , 0.0f }
-#define RIGHTBOTCHECKPOS { 40.0f , 0.0f }
+#define LEFTTOPCHECKPOS { -30.0f , -80.0f }
+#define RIGHTTOPCHECKPOS { 30.0f , -80.0f }
+#define LEFTCHECKPOS { -30.0f , -40.0f }
+#define RIGHTCHECKPOS { 30.0f , -40.0f }
+#define LEFTBOTCHECKPOS { -30.0f , 0.0f }
+#define RIGHTBOTCHECKPOS { 30.0f , 0.0f }
 
 class GameEngineWindowTexture;
 class BaseActor : public GameEngineActor
