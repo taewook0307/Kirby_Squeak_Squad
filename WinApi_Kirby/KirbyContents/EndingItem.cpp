@@ -59,9 +59,7 @@ void EndingItem::Update(float _Delta)
 	if (true == BodyCollision->Collision(CollisionOrder::Body, EndingItemCol, CollisionType::Rect, CollisionType::Rect))
 	{
 		Death();
-
 		GameEngineCore::ChangeLevel("EndingLevel");
-
 		return;
 	}
 }

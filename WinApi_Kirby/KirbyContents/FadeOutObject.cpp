@@ -39,5 +39,10 @@ void FadeOutObject::Start()
 
 void FadeOutObject::Update(float _Delta)
 {
-
+	AlphaValue += _Delta * FadeSpeed;
+	if (255.0f < AlphaValue)
+	{
+		FadeEffectEnd = true;
+	}
+	MainRenderer->SetAlpha(static_cast<unsigned char>(AlphaValue));
 }

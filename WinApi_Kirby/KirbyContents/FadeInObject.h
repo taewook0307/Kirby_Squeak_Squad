@@ -15,6 +15,16 @@ public:
 	FadeInObject& operator=(const FadeInObject& _Other) = delete;
 	FadeInObject& operator=(FadeInObject&& _Other) noexcept = delete;
 
+	inline void SetFadeSpeed(float _Value)
+	{
+		FadeSpeed = _Value;
+	}
+
+	inline void FadeSpeedReset()
+	{
+		FadeSpeed = 100.0f;
+	}
+
 protected:
 
 private:

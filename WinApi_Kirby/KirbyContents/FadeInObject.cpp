@@ -39,5 +39,11 @@ void FadeInObject::Start()
 
 void FadeInObject::Update(float _Delta)
 {
-
+	AlphaValue -= _Delta * FadeSpeed;
+	if (0.0f >= AlphaValue)
+	{
+		Death();
+		return;
+	}
+	MainRenderer->SetAlpha(static_cast<unsigned char>(AlphaValue));
 }
