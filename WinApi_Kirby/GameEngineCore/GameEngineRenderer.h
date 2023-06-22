@@ -78,6 +78,8 @@ public:
 
 	void SetTexture(const std::string& _Name);
 
+	void SetMaskTexture(const std::string& _Name);
+
 	void SetRenderScaleToTexture();
 
 	void SetOrder(int _Order) override;
