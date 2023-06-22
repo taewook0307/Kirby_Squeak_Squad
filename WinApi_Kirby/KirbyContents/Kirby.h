@@ -127,7 +127,7 @@ protected:
 	void KeepJumpToDropStart();
 	void KeepJumpToLandStart();
 	void KeepDamageStart();
-	void ChangeStart();
+	virtual void ChangeStart();
 	void DeathStart();
 
 	void IdleUpdate(float _Delta);
@@ -159,7 +159,7 @@ protected:
 	void KeepJumpToDropUpdate(float _Delta);
 	void KeepJumpToLandUpdate(float _Delta);
 	void KeepDamageUpdate(float _Delta);
-	void ChangeUpdate(float _Delta);
+	virtual void ChangeUpdate(float _Delta);
 	void DeathUpdate(float _Delta);
 
 	virtual void DirCheck();
@@ -216,8 +216,6 @@ protected:
 
 	bool CheckInputD = false;
 	float CheckInputDTimer = CHECKINPUTTIMERVALUE;
-
-	class TranslucentBlock* ChangeBackGround = nullptr;
 private:
 	int Count = 0;
 

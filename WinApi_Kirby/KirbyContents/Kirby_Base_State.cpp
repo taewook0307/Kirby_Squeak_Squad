@@ -49,7 +49,6 @@ void Kirby::LevelMoveStart()
 void Kirby::ChangeStart()
 {
 	ChangeAnimationState("Change");
-	ChangeBackGround = GetLevel()->CreateActor<TranslucentBlock>(UpdateOrder::PlayUI);
 }
 
 void Kirby::IdleUpdate(float _Delta)
@@ -152,12 +151,10 @@ void Kirby::ChangeUpdate(float _Delta)
 		GameEngineTime::MainTimer.SetAllTimeScale(1.0f);
 		if (true == GameEngineInput::IsPress('A') || true == GameEngineInput::IsPress('D'))
 		{
-			ChangeBackGround->Death();
 			ChangeState(KirbyState::Walk);
 			return;
 		}
 
-		ChangeBackGround->Death();
 		ChangeState(KirbyState::Idle);
 		return;
 	}

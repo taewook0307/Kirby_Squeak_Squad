@@ -3,6 +3,8 @@
 
 #include <GameEngineBase/GameEnginePath.h>
 #include <GameEnginePlatform/GameEngineWindow.h>
+#include <GameEngineCore/GameEngineLevel.h>
+#include <GameEngineCore/GameEngineCamera.h>
 #include <GameEngineCore/ResourcesManager.h>
 #include <GameEngineCore/GameEngineRenderer.h>
 
@@ -28,9 +30,8 @@ void TranslucentBlock::Start()
 
 	float4 WinScale = GameEngineWindow::MainWindow.GetScale();
 
-	MainRenderer = CreateUIRenderer(RenderOrder::Fade);
-	MainRenderer->SetTexture("FadeObject.bmp");
-	MainRenderer->SetRenderPos(WinScale.Half());
+	MainRenderer = CreateRenderer("FadeObject.bmp", RenderOrder::MapEffect);
+	MainRenderer->SetRenderPos(GetLevel()->GetMainCamera()->GetPos() + WinScale.Half());
 	MainRenderer->SetRenderScale(WinScale);
-	MainRenderer->SetAlpha(static_cast<unsigned char>(50));
+	MainRenderer->SetAlpha(static_cast<unsigned char>(150));
 }

@@ -17,10 +17,13 @@ public:
 	FormKirby& operator=(FormKirby&& _Other) noexcept = delete;
 
 protected:
-
 	void StateUpdate(float _Delta) override;
 	void ChangeState(KirbyState _State) override;
 
+	void ChangeStart() override;
+	void ChangeUpdate(float _Delta) override;
+
 private:
+	class TranslucentBlock* ChangeBackGround = nullptr;
 };
 

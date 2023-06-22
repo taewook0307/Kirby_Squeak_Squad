@@ -5,14 +5,14 @@ enum class UpdateOrder
 	PlayUI,
 	Player,
 	PlayerObject,
-	Monster,
-	SummonObject
+	Monster
 };
 
 enum class RenderOrder
 {
 	BackGround,
 	Map,
+	MapEffect,
 	Boss,
 	Play,
 	Monster,

@@ -1,4 +1,11 @@
 ﻿#include "FormKirby.h"
+#include "TranslucentBlock.h"
+#include "KirbyGameEnum.h"
+
+#include <GameEngineBase/GameEngineTime.h>
+#include <GameEnginePlatform/GameEngineInput.h>
+#include <GameEngineCore/GameEngineLevel.h>
+#include <GameEngineCore/GameEngineRenderer.h>
 
 FormKirby::FormKirby()
 {
@@ -148,4 +155,28 @@ void FormKirby::ChangeState(KirbyState _State)
 		}
 	}
 	State = _State;
+}
+
+void FormKirby::ChangeStart()
+{
+	ChangeAnimationState("Change");
+	ChangeBackGround = GetLevel()->CreateActor<TranslucentBlock>(UpdateOrder::PlayUI);
+}
+
+void FormKirby::ChangeUpdate(float _Delta)
+{
+	if (true == MainRenderer->IsAnimationEnd())
+	{
+		GameEngineTime::MainTimer.SetAllTimeScale(1.0f);
+		if (true == GameEngineInput::IsPress('A') || true == GameEngineInput::IsPress('D'))
+		{
+			ChangeBackGround->Death();
+			ChangeState(KirbyState::Walk);
+			return;
+		}
+
+		ChangeBackGround->Death();
+		ChangeState(KirbyState::Idle);
+		return;
+	}
 }
