@@ -7,6 +7,7 @@
 #include "TornadoKirby.h"
 #include "BossMonster.h"
 #include "BossUI.h"
+#include "TranslucentBlock.h"
 #include "KirbyGameEnum.h"
 
 #include <GameEnginePlatform/GameEngineWindow.h>
@@ -81,24 +82,40 @@ void BossStageLevel::LevelStart(GameEngineLevel* _PrevLevel)
 		LevelPlayer = CreateActor<FireKirby>(UpdateOrder::Player);
 		LevelPlayer->MapChangeAnimationEndReset();
 		LevelPlayer->ChangeLevelStart();
+		if (nullptr != LevelPlayer->GetChangeBackGroundEffect())
+		{
+			LevelPlayer->GetChangeBackGroundEffect()->Death();
+		}
 	}
 	else if (GetLevelPlayerForm() == MonsterType::Ice)
 	{
 		LevelPlayer = CreateActor<IceKirby>(UpdateOrder::Player);
 		LevelPlayer->MapChangeAnimationEndReset();
 		LevelPlayer->ChangeLevelStart();
+		if (nullptr != LevelPlayer->GetChangeBackGroundEffect())
+		{
+			LevelPlayer->GetChangeBackGroundEffect()->Death();
+		}
 	}
 	else if (GetLevelPlayerForm() == MonsterType::Spark)
 	{
 		LevelPlayer = CreateActor<SparkKirby>(UpdateOrder::Player);
 		LevelPlayer->MapChangeAnimationEndReset();
 		LevelPlayer->ChangeLevelStart();
+		if (nullptr != LevelPlayer->GetChangeBackGroundEffect())
+		{
+			LevelPlayer->GetChangeBackGroundEffect()->Death();
+		}
 	}
 	else if (GetLevelPlayerForm() == MonsterType::Tornado)
 	{
 		LevelPlayer = CreateActor<TornadoKirby>(UpdateOrder::Player);
 		LevelPlayer->MapChangeAnimationEndReset();
 		LevelPlayer->ChangeLevelStart();
+		if (nullptr != LevelPlayer->GetChangeBackGroundEffect())
+		{
+			LevelPlayer->GetChangeBackGroundEffect()->Death();
+		}
 	}
 
 	float4 WinScale = GameEngineWindow::MainWindow.GetScale();

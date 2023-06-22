@@ -9,6 +9,7 @@
 #include "Monster.h"
 #include "TornadoMonster.h"
 #include "HealItem.h"
+#include "TranslucentBlock.h"
 #include "KirbyGameEnum.h"
 
 #include <GameEngineBase/GameEngineTime.h>
@@ -149,24 +150,40 @@ void SecondStageLevel::LevelStart(GameEngineLevel* _PrevLevel)
 		LevelPlayer = CreateActor<FireKirby>(UpdateOrder::Player);
 		LevelPlayer->MapChangeAnimationEndReset();
 		LevelPlayer->ChangeLevelStart();
+		if (nullptr != LevelPlayer->GetChangeBackGroundEffect())
+		{
+			LevelPlayer->GetChangeBackGroundEffect()->Death();
+		}
 	}
 	else if (GetLevelPlayerForm() == MonsterType::Ice)
 	{
 		LevelPlayer = CreateActor<IceKirby>(UpdateOrder::Player);
 		LevelPlayer->MapChangeAnimationEndReset();
 		LevelPlayer->ChangeLevelStart();
+		if (nullptr != LevelPlayer->GetChangeBackGroundEffect())
+		{
+			LevelPlayer->GetChangeBackGroundEffect()->Death();
+		}
 	}
 	else if (GetLevelPlayerForm() == MonsterType::Spark)
 	{
 		LevelPlayer = CreateActor<SparkKirby>(UpdateOrder::Player);
 		LevelPlayer->MapChangeAnimationEndReset();
 		LevelPlayer->ChangeLevelStart();
+		if (nullptr != LevelPlayer->GetChangeBackGroundEffect())
+		{
+			LevelPlayer->GetChangeBackGroundEffect()->Death();
+		}
 	}
 	else if (GetLevelPlayerForm() == MonsterType::Tornado)
 	{
 		LevelPlayer = CreateActor<TornadoKirby>(UpdateOrder::Player);
 		LevelPlayer->MapChangeAnimationEndReset();
 		LevelPlayer->ChangeLevelStart();
+		if (nullptr != LevelPlayer->GetChangeBackGroundEffect())
+		{
+			LevelPlayer->GetChangeBackGroundEffect()->Death();
+		}
 	}
 
 	if (nullptr == LevelPlayer)
@@ -187,6 +204,6 @@ void SecondStageLevel::LevelStart(GameEngineLevel* _PrevLevel)
 	CheetMonster->SetPos({ 5270.0f, 592.0f });
 	CheetMonster->SetGroundBitMap("SecondStageBitMap.Bmp");
 
-	LevelHealItem->SetPos({ 4145.0f, 592.0f });
+	LevelHealItem->SetPos({ 3300.0f, 520.0f });
 	LevelHealItem->SetGroundBitMap("SecondStageBitMap.Bmp");
 }

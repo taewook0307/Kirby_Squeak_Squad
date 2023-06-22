@@ -24,6 +24,5 @@ protected:
 	void ChangeUpdate(float _Delta) override;
 
 private:
-	class TranslucentBlock* ChangeBackGround = nullptr;
 };
 

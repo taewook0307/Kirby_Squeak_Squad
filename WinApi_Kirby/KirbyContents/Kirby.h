@@ -19,6 +19,7 @@
 #define INHALECOLLSIONSCALE { 200.0f, 80.0f }
 
 class AttackObject;
+class TranslucentBlock;
 class Kirby : public BaseActor
 {
 	friend class AttackObject;
@@ -92,6 +93,11 @@ public:
 	static void SetKirbyHp(int _Value)
 	{
 		KirbyHp = _Value;
+	}
+
+	TranslucentBlock* GetChangeBackGroundEffect()
+	{
+		return ChangeBackGroundEffect;
 	}
 
 protected:
@@ -172,6 +178,7 @@ protected:
 
 	void InclineCheck(float4& _MovePos);
 
+	TranslucentBlock* ChangeBackGroundEffect = nullptr;
 protected:
 	void DamageFromMonster()
 	{

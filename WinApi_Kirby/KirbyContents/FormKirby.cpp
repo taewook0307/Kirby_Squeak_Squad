@@ -160,7 +160,7 @@ void FormKirby::ChangeState(KirbyState _State)
 void FormKirby::ChangeStart()
 {
 	ChangeAnimationState("Change");
-	ChangeBackGround = GetLevel()->CreateActor<TranslucentBlock>(UpdateOrder::PlayUI);
+	ChangeBackGroundEffect = GetLevel()->CreateActor<TranslucentBlock>(UpdateOrder::PlayUI);
 }
 
 void FormKirby::ChangeUpdate(float _Delta)
@@ -170,12 +170,12 @@ void FormKirby::ChangeUpdate(float _Delta)
 		GameEngineTime::MainTimer.SetAllTimeScale(1.0f);
 		if (true == GameEngineInput::IsPress('A') || true == GameEngineInput::IsPress('D'))
 		{
-			ChangeBackGround->Death();
+			ChangeBackGroundEffect->Death();
 			ChangeState(KirbyState::Walk);
 			return;
 		}
 
-		ChangeBackGround->Death();
+		ChangeBackGroundEffect->Death();
 		ChangeState(KirbyState::Idle);
 		return;
 	}
