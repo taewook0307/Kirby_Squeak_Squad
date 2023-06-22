@@ -36,10 +36,6 @@ private:
 	float4 SavePos = float4::ZERO;
 
 	Monster* LevelMonster = nullptr;
-	Monster* LevelFireMonster = nullptr;
-	Monster* LevelTornadoMonster = nullptr;
-	Monster* LevelSparkMonster = nullptr;
-	Monster* LevelIceMonster = nullptr;
 
 	LifeCountPlusItem* LevelLifeItem = nullptr;
 

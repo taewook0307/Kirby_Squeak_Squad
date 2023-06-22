@@ -533,7 +533,7 @@ void Kirby::CameraMove(float4 _MovePos)
 	}
 
 	// 커비의 위치가 비트맵의 왼쪽 끝부분일 경우
-	if (GetPos().X <= WinScale.Half().Half().X)
+	if (GetPos().X <= WinScale.Half().X)
 	{
 		return;
 	}
@@ -545,7 +545,7 @@ void Kirby::CameraMove(float4 _MovePos)
 	}
 
 	// 커비의 위치가 비트맵의 끝부분일 경우
-	if (GetPos().X <= BitMapScale.X && GetPos().X >= BitMapScale.X - WinScale.Half().Half().X - WinScale.Half().X)
+	if (GetPos().X <= BitMapScale.X && GetPos().X >= BitMapScale.X - WinScale.Half().X)
 	{
 		return;
 	}

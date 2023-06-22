@@ -171,6 +171,7 @@ protected:
 	void KirbyGravity(float _Delta);
 
 	void InclineCheck(float4& _MovePos);
+
 protected:
 	void DamageFromMonster()
 	{
@@ -216,6 +217,7 @@ protected:
 
 	bool CheckInputD = false;
 	float CheckInputDTimer = CHECKINPUTTIMERVALUE;
+
 private:
 	int Count = 0;
 

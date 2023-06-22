@@ -40,17 +40,7 @@ void FirstStageLevel::Start()
 	BackGround* Back = CreateActor<BackGround>(UpdateOrder::PlayUI);
 	Back->BackGroundInit("FirstStageLevel.Bmp", "FirstStageBitMap.Bmp");
 
-	LevelMonster = CreateActor<SparkMonster>(UpdateOrder::Monster);
-
-	LevelTornadoMonster = CreateActor<TornadoMonster>(UpdateOrder::Monster);
-
-	LevelSparkMonster = CreateActor<SparkMonster>(UpdateOrder::Monster);
-
-	LevelIceMonster = CreateActor<IceMonster>(UpdateOrder::Monster);
-
-	LevelLifeItem = CreateActor<LifeCountPlusItem>(UpdateOrder::PlayerObject);
-	LevelLifeItem->SetPos({ 2170.0f, 735.0f });
-	LevelLifeItem->SetGroundBitMap("FirstStageBitMap.Bmp");
+	LevelMonster = CreateActor<TornadoMonster>(UpdateOrder::Monster);
 }
 
 void FirstStageLevel::Update(float _Delta)
@@ -160,7 +150,6 @@ void FirstStageLevel::LevelStart(GameEngineLevel* _PrevLevel)
 		LevelPlayer = CreateActor<Kirby>(UpdateOrder::Player);
 		LevelPlayer->MapChangeAnimationEndReset();
 		LevelPlayer->ChangeLevelStart();
-
 	}
 	else if (GetLevelPlayerForm() == MonsterType::Fire)
 	{
@@ -200,16 +189,7 @@ void FirstStageLevel::LevelStart(GameEngineLevel* _PrevLevel)
 	}
 
 	{
-		LevelMonster->SetPos({ 2500.0f, 590.0f });
+		LevelMonster->SetPos({ 2000.0f, 592.0f });
 		LevelMonster->SetGroundBitMap("FirstStageBitMap.Bmp");
-
-		LevelTornadoMonster->SetPos({ 7000.0f, 660.0f });
-		LevelTornadoMonster->SetGroundBitMap("FirstStageBitMap.Bmp");
-
-		LevelSparkMonster->SetPos({ 5100.0f, 660.0f });
-		LevelSparkMonster->SetGroundBitMap("FirstStageBitMap.Bmp");
-
-		LevelIceMonster->SetPos({ 5700.0f, 660.0f });
-		LevelIceMonster->SetGroundBitMap("FirstStageBitMap.Bmp");
 	}
 }
