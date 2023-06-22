@@ -154,6 +154,12 @@ void Kirby::DropUpdate(float _Delta)
 		return;
 	}
 
+	if (true == GameEngineInput::IsPress('C'))
+	{
+		ChangeState(KirbyState::AttackReady);
+		return;
+	}
+
 	unsigned int Color = GetGroundColor(EMPTYCOLOR);
 
 	if (EMPTYCOLOR == Color || DOORCOLOR == Color)

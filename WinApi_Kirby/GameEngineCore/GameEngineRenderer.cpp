@@ -30,6 +30,7 @@ void GameEngineRenderer::SetSprite(const std::string& _Name, size_t _Index/* = 0
 	const GameEngineSprite::Sprite& SpriteInfo = Sprite->GetSprite(_Index);
 
 	Texture = SpriteInfo.BaseTexture;
+	MaskTexture = SpriteInfo.MaskTexture;
 
 	SetCopyPos(SpriteInfo.RenderPos);
 	SetCopyScale(SpriteInfo.RenderScale);

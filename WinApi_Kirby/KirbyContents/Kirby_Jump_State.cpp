@@ -73,6 +73,13 @@ void Kirby::JumpUpdate(float _Delta)
 		return;
 	}
 
+	if (true == GameEngineInput::IsPress('C'))
+	{
+		GravityReset();
+		ChangeState(KirbyState::AttackReady);
+		return;
+	}
+
 	if (GetGravityVector().Y >= 0.0f)
 	{
 		GravityReset();
@@ -88,6 +95,12 @@ void Kirby::JumpToDropUpdate(float _Delta)
 	if (true == GameEngineInput::IsDown(VK_SPACE))
 	{
 		ChangeState(KirbyState::Breathe);
+		return;
+	}
+
+	if (true == GameEngineInput::IsPress('C'))
+	{
+		ChangeState(KirbyState::AttackReady);
 		return;
 	}
 

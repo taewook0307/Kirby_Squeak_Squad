@@ -33,6 +33,17 @@ void Kirby::KeepStart()
 
 void Kirby::AttackReadyUpdate(float _Delta)
 {
+	unsigned int Color = GetGroundColor(EMPTYCOLOR);
+
+	if (EMPTYCOLOR == Color || DOORCOLOR == Color)
+	{
+		KirbyGravity(_Delta);
+	}
+	else
+	{
+		GravityReset();
+	}
+
 	if (MainRenderer->IsAnimationEnd())
 	{
 		ChangeState(KirbyState::Attack);
@@ -50,6 +61,17 @@ void Kirby::AttackUpdate(float _Delta)
 	DirCheck();
 
 	AttackCollision->On();
+
+	unsigned int Color = GetGroundColor(EMPTYCOLOR);
+
+	if (EMPTYCOLOR == Color || DOORCOLOR == Color)
+	{
+		KirbyGravity(_Delta);
+	}
+	else
+	{
+		GravityReset();
+	}
 
 	// 흡수 충돌체 제거
 	if (true == GameEngineInput::IsUp('C'))
