@@ -86,7 +86,7 @@ void HealItem::Update(float _Delta)
 	{
 		int PlayerHp = Kirby::GetMainKirby()->GetKirbyHp();
 		int HealHp = PlayerHp + HealValue;
-		if (HealHp > 140)
+		if (HealHp > 120)
 		{
 			Kirby::GetMainKirby()->HpReset();
 		}

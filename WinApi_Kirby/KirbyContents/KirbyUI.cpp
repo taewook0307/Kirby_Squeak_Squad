@@ -141,14 +141,6 @@ void KirbyUI::Start()
 	{
 		ResourcesManager::GetInst().TextureLoad(FilePath.PlusFilePath("HpBar_120.Bmp"));
 	}
-	if (ResourcesManager::GetInst().FindTexture("HpBar_130.Bmp") == nullptr)
-	{
-		ResourcesManager::GetInst().TextureLoad(FilePath.PlusFilePath("HpBar_130.Bmp"));
-	}
-	if (ResourcesManager::GetInst().FindTexture("HpBar_140.Bmp") == nullptr)
-	{
-		ResourcesManager::GetInst().TextureLoad(FilePath.PlusFilePath("HpBar_140.Bmp"));
-	}
 }
 
 void KirbyUI::Update(float _Delta)
@@ -180,16 +172,6 @@ void KirbyUI::Update(float _Delta)
 
 	//------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	// HpBar
-	if (140 == Kirby::GetMainKirby()->GetKirbyHp())
-	{
-		KirbyHpBarImageUpdate("HpBar_140.Bmp");
-	}
-
-	if (130 == Kirby::GetMainKirby()->GetKirbyHp())
-	{
-		KirbyHpBarImageUpdate("HpBar_130.Bmp");
-	}
-
 	if (120 == Kirby::GetMainKirby()->GetKirbyHp())
 	{
 		KirbyHpBarImageUpdate("HpBar_120.Bmp");
@@ -254,7 +236,6 @@ void KirbyUI::Update(float _Delta)
 	{
 		KirbyHpBarImageUpdate("HpBar_0.Bmp");
 	}
-	
 
 	//------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	// LifeCount

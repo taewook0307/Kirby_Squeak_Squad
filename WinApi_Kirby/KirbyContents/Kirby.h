@@ -6,7 +6,7 @@
 #include <string>
 #include <vector>
 
-#define HPVALUE 140
+#define HPVALUE 120
 #define BASEPOWER 300.0f
 #define FLYPOWER 400.0f
 #define NODAMAGETIMERVALUE 3.0f
