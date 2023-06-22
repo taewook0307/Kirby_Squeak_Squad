@@ -57,22 +57,22 @@ void TornadoKirby::AttackUpdate(float _Delta)
 
 	if (true == GameEngineInput::IsPress('A') && Dir == ActorDir::Left)
 	{
-		MovePos += { -Speed * _Delta, 0.0f };
+		MovePos += { -Speed * SPEEDUPVALUE * _Delta, 0.0f };
 	}
 
 	if (true == GameEngineInput::IsPress('D') && Dir == ActorDir::Right)
 	{
-		MovePos += { Speed * _Delta, 0.0f };
+		MovePos += { Speed * SPEEDUPVALUE * _Delta, 0.0f };
 	}
 
 	if (true == GameEngineInput::IsPress('W'))
 	{
-		MovePos += { 0.0f, -Speed * _Delta };
+		MovePos += { 0.0f, -Speed * SPEEDUPVALUE * _Delta };
 	}
 
 	if (true == GameEngineInput::IsPress('S'))
 	{
-		MovePos += { 0.0f, Speed * _Delta };
+		MovePos += { 0.0f, Speed * SPEEDUPVALUE * _Delta };
 	}
 	
 	float4 CheckPos = GetPos() + MovePos;

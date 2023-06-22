@@ -2,17 +2,17 @@
 
 #include <GameEngineCore/GameEngineActor.h>
 
-#define FORMUIPOS { 0.0f, 20.0f }
-#define FORMUISCALE { 120.0f, 100.0f }
+#define FORMUIPOS { 65.0f, -60.0f }
+#define FORMUISCALE { 140.0f, 120.0f }
 
-#define HPBARPOS { 200.0f, 50.0f }
-#define HPBARSCALE { 200.0f, 30.0f }
+#define HPBARPOS { 300.0f, -30.0f }
+#define HPBARSCALE { 300.0f, 50.0f }
 
-#define LIFECOUNTPOS { 200.0f, 0.0f }
-#define LIFECOUNTSCALE { 50.0f, 40.0f }
+#define LIFECOUNTPOS { 275.0f, -90.0f }
+#define LIFECOUNTSCALE { 70.0f, 50.0f }
 
-#define LIFEICONPOS { 150.0f, 0.0f }
-#define LIFEICONSCALE { 50.0f, 40.0f }
+#define LIFEICONPOS { 200.0f, -90.0f }
+#define LIFEICONSCALE { 70.0f, 50.0f }
 
 class GameEngineRenderer;
 class KirbyUI : public GameEngineActor
