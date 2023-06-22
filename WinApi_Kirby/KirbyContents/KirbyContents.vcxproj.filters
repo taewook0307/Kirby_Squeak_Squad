@@ -102,6 +102,9 @@
     <ClInclude Include="FadeInObject.h">
       <Filter>Global\Fade</Filter>
     </ClInclude>
+    <ClInclude Include="TranslucentBlock.h">
+      <Filter>Player\Form</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TitleLevel.cpp">
@@ -266,6 +269,9 @@
     </ClCompile>
     <ClCompile Include="FadeInObject.cpp">
       <Filter>Global\Fade</Filter>
+    </ClCompile>
+    <ClCompile Include="TranslucentBlock.cpp">
+      <Filter>Player\Form</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

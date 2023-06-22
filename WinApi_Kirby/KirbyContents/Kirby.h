@@ -216,6 +216,8 @@ protected:
 
 	bool CheckInputD = false;
 	float CheckInputDTimer = CHECKINPUTTIMERVALUE;
+
+	class TranslucentBlock* ChangeBackGround = nullptr;
 private:
 	int Count = 0;
 

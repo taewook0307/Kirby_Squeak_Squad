@@ -40,7 +40,7 @@ void FirstStageLevel::Start()
 	BackGround* Back = CreateActor<BackGround>(UpdateOrder::PlayUI);
 	Back->BackGroundInit("FirstStageLevel.Bmp", "FirstStageBitMap.Bmp");
 
-	LevelMonster = CreateActor<Monster>(UpdateOrder::Monster);
+	LevelMonster = CreateActor<SparkMonster>(UpdateOrder::Monster);
 
 	LevelTornadoMonster = CreateActor<TornadoMonster>(UpdateOrder::Monster);
 
