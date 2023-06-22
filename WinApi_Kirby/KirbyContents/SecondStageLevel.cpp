@@ -54,7 +54,7 @@ void SecondStageLevel::Update(float _Delta)
 
 	if (true == LevelPlayer->GetMapChangeAnimationEnd())
 	{
-		GameEngineCore::ChangeLevel("BossStageLevel");
+		GameEngineCore::ChangeLevel("BossEntranceLevel");
 	}
 
 	if (true == GameEngineInput::IsDown('J'))

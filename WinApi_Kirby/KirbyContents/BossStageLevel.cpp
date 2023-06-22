@@ -3,7 +3,6 @@
 #include "Kirby.h"
 #include "BossMonster.h"
 #include "BossUI.h"
-#include "TranslucentBlock.h"
 #include "KirbyGameEnum.h"
 
 #include <GameEnginePlatform/GameEngineWindow.h>
@@ -23,8 +22,8 @@ void BossStageLevel::Start()
 {
 	float4 WinScale = GameEngineWindow::MainWindow.GetScale();
 
-	BossStage = CreateActor<Ground>(UpdateOrder::PlayUI);
-	BossStage->GroundInit("BossStage", "BossStageBitMap.Bmp");
+	Stage = CreateActor<Ground>(UpdateOrder::PlayUI);
+	Stage->GroundInit("BossStage", "BossStageBitMap.Bmp");
 
 	BossUIObject = CreateActor<BossUI>(UpdateOrder::PlayUI);
 	BossUIObject->SetPos({ WinScale.X - 100.0f, WinScale.Y - 100.0f });
@@ -56,7 +55,7 @@ void BossStageLevel::Update(float _Delta)
 
 	if (true == GameEngineInput::IsDown('J'))
 	{
-		BossStage->SwitchRender();
+		Stage->SwitchRender();
 	}
 
 	if (true == GameEngineInput::IsDown('H'))

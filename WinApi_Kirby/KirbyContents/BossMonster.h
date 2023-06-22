@@ -104,7 +104,7 @@ protected:
 
 	void Damage()
 	{
-		BossHp -= 40;
+		BossHp -= 140;
 	}
 
 	void BossHpReset()

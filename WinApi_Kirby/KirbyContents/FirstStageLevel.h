@@ -3,8 +3,6 @@
 
 #include <list>
 
-class Ground;
-class Kirby;
 class Monster;
 class LifeCountPlusItem;
 class HealItem;

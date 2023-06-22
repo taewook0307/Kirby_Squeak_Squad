@@ -2,8 +2,6 @@
 
 #include "SubLevel.h"
 
-class Ground;
-class Kirby;
 class Monster;
 class HealItem;
 class SecondStageLevel : public SubLevel

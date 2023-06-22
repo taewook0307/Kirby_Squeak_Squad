@@ -2,8 +2,6 @@
 
 #include "SubLevel.h"
 
-class Ground;
-class Kirby;
 class BossMonster;
 class BossUI;
 class BossStageLevel : public SubLevel
@@ -22,8 +20,6 @@ public:
 protected:
 
 private:
-	Ground* BossStage = nullptr;
-
 	BossMonster* Boss = nullptr;
 	BossUI* BossUIObject = nullptr;
 
