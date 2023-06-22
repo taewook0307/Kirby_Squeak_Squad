@@ -2,7 +2,7 @@
 
 #include "FormKirby.h"
 
-#define SPEEDUPVALUE 1.8f
+#define SPEEDUPVALUE 1.5f
 
 class TornadoKirby : public FormKirby
 {

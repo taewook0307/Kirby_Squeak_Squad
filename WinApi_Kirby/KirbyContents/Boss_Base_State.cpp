@@ -30,7 +30,7 @@ void BossMonster::IdleUpdate(float _Delta)
 		GravityReset();
 	}
 
-	if (IdleTimer > 2.0f)
+	if (IdleTimer > 2.0f && FLOORCOLOR == Color)
 	{
 		int StateNumber = GameEngineRandom::MainRandom.RandomInt(1, 4);
 

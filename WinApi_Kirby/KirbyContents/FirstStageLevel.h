@@ -30,15 +30,9 @@ private:
 
 	void LevelStart(GameEngineLevel* _PrevLevel) override;
 
-	void FormChange();
-
-	Kirby* LevelPlayer = nullptr;
-	float4 SavePos = float4::ZERO;
-
 	Monster* LevelMonster = nullptr;
 
 	LifeCountPlusItem* LevelLifeItem = nullptr;
 
-	Ground* FirstStage = nullptr;
 	std::list<Monster*> AllLevelMonster;
 };

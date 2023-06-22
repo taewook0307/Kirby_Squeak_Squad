@@ -113,8 +113,8 @@ protected:
 	}
 private:
 	int BossHp = 140;
-	float Speed = 100.0f;
-	float BossJumpPower = 700.0f;
+	float Speed = 150.0f;
+	float BossJumpPower = GRAVITYPOWER;
 
 	float EndingTimer = 3.0f;
 	bool EndingItemCreate = false;

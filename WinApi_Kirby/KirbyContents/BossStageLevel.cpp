@@ -1,10 +1,6 @@
 ﻿#include "BossStageLevel.h"
 #include "Ground.h"
 #include "Kirby.h"
-#include "IceKirby.h"
-#include "FireKirby.h"
-#include "SparkKirby.h"
-#include "TornadoKirby.h"
 #include "BossMonster.h"
 #include "BossUI.h"
 #include "TranslucentBlock.h"
@@ -71,52 +67,7 @@ void BossStageLevel::Update(float _Delta)
 
 void BossStageLevel::LevelStart(GameEngineLevel* _PrevLevel)
 {
-	if (GetLevelPlayerForm() == MonsterType::Normal)
-	{
-		LevelPlayer = CreateActor<Kirby>(UpdateOrder::Player);
-		LevelPlayer->MapChangeAnimationEndReset();
-		LevelPlayer->ChangeLevelStart();
-	}
-	else if (GetLevelPlayerForm() == MonsterType::Fire)
-	{
-		LevelPlayer = CreateActor<FireKirby>(UpdateOrder::Player);
-		LevelPlayer->MapChangeAnimationEndReset();
-		LevelPlayer->ChangeLevelStart();
-		if (nullptr != LevelPlayer->GetChangeBackGroundEffect())
-		{
-			LevelPlayer->GetChangeBackGroundEffect()->Death();
-		}
-	}
-	else if (GetLevelPlayerForm() == MonsterType::Ice)
-	{
-		LevelPlayer = CreateActor<IceKirby>(UpdateOrder::Player);
-		LevelPlayer->MapChangeAnimationEndReset();
-		LevelPlayer->ChangeLevelStart();
-		if (nullptr != LevelPlayer->GetChangeBackGroundEffect())
-		{
-			LevelPlayer->GetChangeBackGroundEffect()->Death();
-		}
-	}
-	else if (GetLevelPlayerForm() == MonsterType::Spark)
-	{
-		LevelPlayer = CreateActor<SparkKirby>(UpdateOrder::Player);
-		LevelPlayer->MapChangeAnimationEndReset();
-		LevelPlayer->ChangeLevelStart();
-		if (nullptr != LevelPlayer->GetChangeBackGroundEffect())
-		{
-			LevelPlayer->GetChangeBackGroundEffect()->Death();
-		}
-	}
-	else if (GetLevelPlayerForm() == MonsterType::Tornado)
-	{
-		LevelPlayer = CreateActor<TornadoKirby>(UpdateOrder::Player);
-		LevelPlayer->MapChangeAnimationEndReset();
-		LevelPlayer->ChangeLevelStart();
-		if (nullptr != LevelPlayer->GetChangeBackGroundEffect())
-		{
-			LevelPlayer->GetChangeBackGroundEffect()->Death();
-		}
-	}
+	SubLevel::LevelStart(_PrevLevel);
 
 	float4 WinScale = GameEngineWindow::MainWindow.GetScale();
 	LevelPlayer->SetPos({ WinScale.Half().Half().X, WinScale.Half().Half().Y });

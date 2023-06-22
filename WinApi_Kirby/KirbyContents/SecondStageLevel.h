@@ -26,12 +26,9 @@ private:
 	void Update(float _Delta) override;
 
 	void LevelStart(GameEngineLevel* _PrevLevel) override;
-	
-	Ground* SecondStage = nullptr;
-	Kirby* LevelPlayer = nullptr;
+
 	Monster* LevelMonster = nullptr;
 	Monster* CheetMonster = nullptr;
-	float4 SavePos = float4::ZERO;
 
 	HealItem* LevelHealItem = nullptr;
 };

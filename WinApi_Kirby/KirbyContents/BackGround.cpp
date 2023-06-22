@@ -39,7 +39,7 @@ void BackGround::BackGroundInit(const std::string& _FileName, const std::string&
 
 	if (_GroundFileName == "")
 	{
-		Scale = GameEngineWindow::MainWindow.GetScale();
+		Scale = MainTexture->GetScale();
 	}
 
 	else if (true == ResourcesManager::GetInst().IsLoadTexture(_GroundFileName) && _GroundFileName != "")

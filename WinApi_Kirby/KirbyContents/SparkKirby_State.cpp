@@ -45,6 +45,7 @@ void SparkKirby::AttackUpdate(float _Delta)
 	DirCheck();
 
 	AttackCollision->On();
+	BodyCollision->Off();
 
 	unsigned int Color = GetGroundColor(EMPTYCOLOR);
 
@@ -85,7 +86,10 @@ void SparkKirby::AttackUpdate(float _Delta)
 
 		if (true == GameEngineInput::IsUp('C'))
 		{
-			ChangeState(KirbyState::JumpToDrop);
+			AttackCollision->Off();
+			BodyCollision->On();
+
+			ChangeState(KirbyState::Drop);
 			return;
 		}
 	}
@@ -97,6 +101,7 @@ void SparkKirby::AttackUpdate(float _Delta)
 	if (true == GameEngineInput::IsUp('C'))
 	{
 		AttackCollision->Off();
+		BodyCollision->On();
 
 		if (true == GameEngineInput::IsPress('A') || true == GameEngineInput::IsPress('D'))
 		{

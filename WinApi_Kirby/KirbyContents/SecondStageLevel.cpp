@@ -2,10 +2,6 @@
 #include "BackGround.h"
 #include "Ground.h"
 #include "Kirby.h"
-#include "SparkKirby.h"
-#include "IceKirby.h"
-#include "FireKirby.h"
-#include "TornadoKirby.h"
 #include "Monster.h"
 #include "TornadoMonster.h"
 #include "HealItem.h"
@@ -29,11 +25,11 @@ SecondStageLevel::~SecondStageLevel()
 
 void SecondStageLevel::Start()
 {
-	SecondStage = CreateActor<Ground>(UpdateOrder::Player);
-	SecondStage->GroundInit("SecondStage", "SecondStageBitMap.Bmp");
+	Stage = CreateActor<Ground>(UpdateOrder::Player);
+	Stage->GroundInit("SecondStage", "SecondStageBitMap.Bmp");
 
 	BackGround* Back = CreateActor<BackGround>(UpdateOrder::PlayUI);
-	Back->BackGroundInit("SecondStageLevel.Bmp", "SecondStageBitMap.Bmp");
+	Back->BackGroundInit("SecondStageLevel.Bmp");
 
 	LevelMonster = CreateActor<Monster>(UpdateOrder::Monster);
 
@@ -44,72 +40,7 @@ void SecondStageLevel::Start()
 
 void SecondStageLevel::Update(float _Delta)
 {
-	if (true == GameEngineInput::IsDown('C')
-		&& LevelPlayer->GetKirbyState() == KirbyState::KeepIdle
-		&& LevelPlayer->GetKeepType() == MonsterType::Ice)
-	{
-		GameEngineTime::MainTimer.SetAllTimeScale(0.0f);
-		GameEngineTime::MainTimer.SetTimeScale(UpdateOrder::Player, 1.0f);
-		SetLevelPlayerForm(MonsterType::Ice);
-		SavePos = LevelPlayer->GetPos();
-		LevelPlayer->Death();
-		LevelPlayer = CreateActor<IceKirby>(UpdateOrder::Player);
-		LevelPlayer->SetPos(SavePos);
-		LevelPlayer->SetGroundBitMap("SecondStageBitMap.Bmp");
-	}
-
-	if (true == GameEngineInput::IsDown('C')
-		&& LevelPlayer->GetKirbyState() == KirbyState::KeepIdle
-		&& LevelPlayer->GetKeepType() == MonsterType::Spark)
-	{
-		GameEngineTime::MainTimer.SetAllTimeScale(0.0f);
-		GameEngineTime::MainTimer.SetTimeScale(UpdateOrder::Player, 1.0f);
-		SetLevelPlayerForm(MonsterType::Spark);
-		SavePos = LevelPlayer->GetPos();
-		LevelPlayer->Death();
-		LevelPlayer = CreateActor<SparkKirby>(UpdateOrder::Player);
-		LevelPlayer->SetPos(SavePos);
-		LevelPlayer->SetGroundBitMap("SecondStageBitMap.Bmp");
-	}
-
-	if (true == GameEngineInput::IsDown('C')
-		&& LevelPlayer->GetKirbyState() == KirbyState::KeepIdle
-		&& LevelPlayer->GetKeepType() == MonsterType::Fire)
-	{
-		GameEngineTime::MainTimer.SetAllTimeScale(0.0f);
-		GameEngineTime::MainTimer.SetTimeScale(UpdateOrder::Player, 1.0f);
-		SetLevelPlayerForm(MonsterType::Fire);
-		SavePos = LevelPlayer->GetPos();
-		LevelPlayer->Death();
-		LevelPlayer = CreateActor<FireKirby>(UpdateOrder::Player);
-		LevelPlayer->SetPos(SavePos);
-		LevelPlayer->SetGroundBitMap("SecondStageBitMap.Bmp");
-	}
-
-	if (true == GameEngineInput::IsDown('C')
-		&& LevelPlayer->GetKirbyState() == KirbyState::KeepIdle
-		&& LevelPlayer->GetKeepType() == MonsterType::Tornado)
-	{
-		GameEngineTime::MainTimer.SetAllTimeScale(0.0f);
-		GameEngineTime::MainTimer.SetTimeScale(UpdateOrder::Player, 1.0f);
-		SetLevelPlayerForm(MonsterType::Tornado);
-		SavePos = LevelPlayer->GetPos();
-		LevelPlayer->Death();
-		LevelPlayer = CreateActor<TornadoKirby>(UpdateOrder::Player);
-		LevelPlayer->SetPos(SavePos);
-		LevelPlayer->SetGroundBitMap("SecondStageBitMap.Bmp");
-	}
-
-	if (GetLevelPlayerForm() != MonsterType::Normal && true == GameEngineInput::IsDown('Z'))
-	{
-		SetLevelPlayerForm(MonsterType::Normal);
-		SavePos = LevelPlayer->GetPos();
-		LevelPlayer->Death();
-		LevelPlayer = CreateActor<Kirby>(UpdateOrder::Player);
-		LevelPlayer->SetPos(SavePos);
-		LevelPlayer->SetGroundBitMap("SecondStageBitMap.Bmp");
-		LevelPlayer->ClearForm();
-	}
+	FormChange("SecondStageBitMap.Bmp");
 
 	// 플레이어 데스 부분
 	if (0 < GetPlayerLife() && true == LevelPlayer->GetDeathCheck())
@@ -128,7 +59,7 @@ void SecondStageLevel::Update(float _Delta)
 
 	if (true == GameEngineInput::IsDown('J'))
 	{
-		SecondStage->SwitchRender();
+		Stage->SwitchRender();
 	}
 
 	if (true == GameEngineInput::IsDown('H'))
@@ -139,58 +70,7 @@ void SecondStageLevel::Update(float _Delta)
 
 void SecondStageLevel::LevelStart(GameEngineLevel* _PrevLevel)
 {
-	if (GetLevelPlayerForm() == MonsterType::Normal)
-	{
-		LevelPlayer = CreateActor<Kirby>(UpdateOrder::Player);
-		LevelPlayer->MapChangeAnimationEndReset();
-		LevelPlayer->ChangeLevelStart();
-	}
-	else if (GetLevelPlayerForm() == MonsterType::Fire)
-	{
-		LevelPlayer = CreateActor<FireKirby>(UpdateOrder::Player);
-		LevelPlayer->MapChangeAnimationEndReset();
-		LevelPlayer->ChangeLevelStart();
-		if (nullptr != LevelPlayer->GetChangeBackGroundEffect())
-		{
-			LevelPlayer->GetChangeBackGroundEffect()->Death();
-		}
-	}
-	else if (GetLevelPlayerForm() == MonsterType::Ice)
-	{
-		LevelPlayer = CreateActor<IceKirby>(UpdateOrder::Player);
-		LevelPlayer->MapChangeAnimationEndReset();
-		LevelPlayer->ChangeLevelStart();
-		if (nullptr != LevelPlayer->GetChangeBackGroundEffect())
-		{
-			LevelPlayer->GetChangeBackGroundEffect()->Death();
-		}
-	}
-	else if (GetLevelPlayerForm() == MonsterType::Spark)
-	{
-		LevelPlayer = CreateActor<SparkKirby>(UpdateOrder::Player);
-		LevelPlayer->MapChangeAnimationEndReset();
-		LevelPlayer->ChangeLevelStart();
-		if (nullptr != LevelPlayer->GetChangeBackGroundEffect())
-		{
-			LevelPlayer->GetChangeBackGroundEffect()->Death();
-		}
-	}
-	else if (GetLevelPlayerForm() == MonsterType::Tornado)
-	{
-		LevelPlayer = CreateActor<TornadoKirby>(UpdateOrder::Player);
-		LevelPlayer->MapChangeAnimationEndReset();
-		LevelPlayer->ChangeLevelStart();
-		if (nullptr != LevelPlayer->GetChangeBackGroundEffect())
-		{
-			LevelPlayer->GetChangeBackGroundEffect()->Death();
-		}
-	}
-
-	if (nullptr == LevelPlayer)
-	{
-		MsgBoxAssert("플레이어를 세팅하지 못했습니다.");
-		return;
-	}
+	SubLevel::LevelStart(_PrevLevel);
 
 	float4 WinScale = GameEngineWindow::MainWindow.GetScale();
 	LevelPlayer->SetPos({ WinScale.Half().Half().X, WinScale.Half().Half().Y });

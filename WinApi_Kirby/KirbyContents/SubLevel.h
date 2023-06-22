@@ -4,6 +4,9 @@
 
 #include <GameEngineCore/GameEngineLevel.h>
 
+class Ground;
+class Kirby;
+class GameEngineRenderer;
 class KirbyUI;
 class SubLevel : public GameEngineLevel
 {
@@ -21,7 +24,7 @@ public:
 	static int GetPlayerLife();
 
 	static MonsterType& GetLevelPlayerForm();
-	
+
 	static void PlusPlayerLife();
 
 protected:
@@ -30,6 +33,14 @@ protected:
 	static int PlayerLifeCount;
 
 	static void MinusPlayerLife();
+
+	void LevelStart(GameEngineLevel* _PrevLevel) override;
+
+	void FormChange(const std::string& _BitMapFileName);
+
+	Kirby* LevelPlayer = nullptr;
+	float4 SavePos = float4::ZERO;
+	Ground* Stage = nullptr;
 
 private:
 	static MonsterType LevelPlayerForm;
