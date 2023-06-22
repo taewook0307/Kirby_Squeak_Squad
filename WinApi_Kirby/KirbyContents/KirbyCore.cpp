@@ -18,7 +18,7 @@ KirbyCore::~KirbyCore()
 
 void KirbyCore::Start()
 {
-	GameEngineWindow::MainWindow.SetPosAndScale({ 100, 100 }, { 1280, 960 });
+	GameEngineWindow::MainWindow.SetPosAndScale({ 100, 100 }, { 1024, 768 });
 	
 	GameEngineCore::CreateLevel<TitleLevel>("TitleLevel");
 	GameEngineCore::CreateLevel<FirstStageLevel>("FirstStageLevel");

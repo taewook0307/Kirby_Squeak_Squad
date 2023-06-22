@@ -181,12 +181,12 @@ void SecondStageLevel::LevelStart(GameEngineLevel* _PrevLevel)
 
 	GetMainCamera()->SetPos(float4::ZERO);
 
-	LevelMonster->SetPos({ 2550.0f, 740.0f });
+	LevelMonster->SetPos({ 2550.0f, 592.0f });
 	LevelMonster->SetGroundBitMap("SecondStageBitMap.Bmp");
 
-	CheetMonster->SetPos({ 5270.0f, 730.0f });
+	CheetMonster->SetPos({ 5270.0f, 592.0f });
 	CheetMonster->SetGroundBitMap("SecondStageBitMap.Bmp");
 
-	LevelHealItem->SetPos({ 4145.0f, 654.0f });
+	LevelHealItem->SetPos({ 4145.0f, 592.0f });
 	LevelHealItem->SetGroundBitMap("SecondStageBitMap.Bmp");
 }

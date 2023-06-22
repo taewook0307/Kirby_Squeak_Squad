@@ -28,6 +28,8 @@ public:
 protected:
 
 private:
+	float RatioValue = 4.0f;
+
 	std::string PathName = "";
 	std::string DebugBitMapName = "";
 

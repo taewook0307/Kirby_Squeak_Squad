@@ -90,7 +90,7 @@ protected:
 	void DirChange();
 	void ChangeAnimationState(const std::string& _StateName);
 
-	float RatioValue = 5.0f;
+	float RatioValue = 4.0f;
 	ActorDir Dir = ActorDir::Left;
 	BossState State = BossState::Max;
 	std::string CurState = "";

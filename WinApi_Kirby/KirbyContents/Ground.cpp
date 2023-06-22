@@ -56,9 +56,9 @@ void Ground::GroundInit(const std::string& _PathName, const std::string& _BitMap
 		MainRenderer->CreateAnimation(PathName + "Idle", PathName);
 		MainRenderer->ChangeAnimation(PathName + "Idle");
 		MainRenderer->SetRenderScaleToTexture();
-		MainRenderer->SetScaleRatio(5.0f);
+		MainRenderer->SetScaleRatio(RatioValue);
 
-		MainRenderer->SetRenderPos((MainSprite->GetSprite(0).BaseTexture->GetScale() *= 5.0f).Half());
+		MainRenderer->SetRenderPos((MainSprite->GetSprite(0).BaseTexture->GetScale() *= RatioValue).Half());
 	}
 
 	{
