@@ -108,6 +108,9 @@
     <ClInclude Include="BossEntranceLevel.h">
       <Filter>Level</Filter>
     </ClInclude>
+    <ClInclude Include="Obstacle.h">
+      <Filter>Level</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TitleLevel.cpp">
@@ -277,6 +280,9 @@
       <Filter>Player\Form</Filter>
     </ClCompile>
     <ClCompile Include="BossEntranceLevel.cpp">
+      <Filter>Level</Filter>
+    </ClCompile>
+    <ClCompile Include="Obstacle.cpp">
       <Filter>Level</Filter>
     </ClCompile>
   </ItemGroup>
