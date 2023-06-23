@@ -36,3 +36,8 @@ void BackGround::Start()
 	MainRenderer->SetRenderPos(Scale.Half());
 	MainRenderer->SetRenderScale(Scale);
 }
+
+void BackGround::Update(float _Delta)
+{
+	SetPos(MainBackGround->GetPos());
+}

@@ -1,8 +1,10 @@
 #pragma once
 #include <string>
+#include <GameEnginePlatform/GameEngineWindowTexture.h>
 #include <GameEngineCore/GameEngineActor.h>
 
 class GameEngineRenderer;
+class GameEngineWindowTexture;
 class BackGround : public GameEngineActor
 {
 public:
@@ -21,13 +23,19 @@ public:
 		return MainBackGround;
 	}
 
+	float4 GetMainTextureScale() const
+	{
+		return MainTexture->GetScale();
+	}
+
 protected:
 
 private:
 	static BackGround* MainBackGround;
 
-	class GameEngineRenderer* MainRenderer = nullptr;
-	class GameEngineWindowTexture* MainTexture = nullptr;
+	GameEngineRenderer* MainRenderer = nullptr;
+	GameEngineWindowTexture* MainTexture = nullptr;
 
 	void Start() override;
+	void Update(float _Delta) override;
 };

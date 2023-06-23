@@ -1,4 +1,5 @@
 ﻿#include "Kirby.h"
+#include "BackGround.h"
 #include "KirbyGameEnum.h"
 
 #include <GameEngineBase/GameEnginePath.h>
@@ -528,6 +529,9 @@ void Kirby::CameraMove(float4 _MovePos)
 	float4 WinScale = GameEngineWindow::MainWindow.GetScale();
 	float4 BitMapScale = GetGroundBitMap()->GetScale();
 	float4 MovePos = _MovePos;
+	float4 BackGroundScale = BackGround::GetMainBackGround()->GetMainTextureScale();
+
+	float BackGroundMoveRatio = BitMapScale.X / BackGroundScale.X;
 
 	CameraPos += MovePos;
 
@@ -556,4 +560,5 @@ void Kirby::CameraMove(float4 _MovePos)
 	}
 
 	GetLevel()->GetMainCamera()->AddPos({ _MovePos.X, 0.0f });
+	BackGround::GetMainBackGround()->AddPos({ _MovePos.X * BackGroundMoveRatio, 0.0f });
 }
