@@ -34,6 +34,11 @@ void Kirby::InclineCheck(float4& _MovePos)
 			}
 		}
 
+		if (true == BodyCollision->Collision(CollisionOrder::FloorObstacle, Col, CollisionType::Rect, CollisionType::Rect))
+		{
+			return;
+		}
+
 		if (abs(XPos.X) >= YPos.Y)
 		{
 			while (FLOORCOLOR != GetGroundColor(EMPTYCOLOR, _MovePos))
@@ -43,6 +48,7 @@ void Kirby::InclineCheck(float4& _MovePos)
 		}
 		else
 		{
+			SlideCollision->Off();
 			AddPos(_MovePos);
 			CameraMove(_MovePos);
 			ChangeState(KirbyState::Drop);

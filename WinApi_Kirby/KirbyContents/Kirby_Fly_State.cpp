@@ -52,7 +52,7 @@ void Kirby::BreatheUpdate(float _Delta)
 	{
 		FlyGravity(_Delta);
 	}
-	else
+	else if (FLOORCOLOR == Color || true == BodyCollision->Collision(CollisionOrder::FloorObstacle, Col, CollisionType::Rect, CollisionType::Rect))
 	{
 		GravityReset();
 	}
@@ -83,7 +83,7 @@ void Kirby::FlyUpdate(float _Delta)
 
 			unsigned int CheckColor = GetGroundColor(EMPTYCOLOR, float4::UP);
 
-			while (CheckColor != EMPTYCOLOR && CheckColor != DOORCOLOR)
+			while (FLOORCOLOR == CheckColor)
 			{
 				CheckColor = GetGroundColor(EMPTYCOLOR, float4::UP);
 				AddPos(float4::UP);
@@ -135,16 +135,7 @@ void Kirby::FlyUpdate(float _Delta)
 // 공중에서 낙하하기 위해 공기를 내뱉는 상태
 void Kirby::BreatheOutUpdate(float _Delta)
 {
-	unsigned int Color = GetGroundColor(EMPTYCOLOR);
-
-	if (EMPTYCOLOR == Color || DOORCOLOR == Color)
-	{
-		Gravity(_Delta);
-	}
-	else
-	{
-		GravityReset();
-	}
+	KirbyGravity(_Delta);
 
 	if (true == MainRenderer->IsAnimationEnd())
 	{
@@ -157,6 +148,8 @@ void Kirby::BreatheOutUpdate(float _Delta)
 void Kirby::DropUpdate(float _Delta)
 {
 	DirCheck();
+
+	KirbyGravity(_Delta);
 
 	if (true == GameEngineInput::IsDown(VK_SPACE))
 	{
@@ -172,16 +165,9 @@ void Kirby::DropUpdate(float _Delta)
 
 	unsigned int Color = GetGroundColor(EMPTYCOLOR);
 
-	if (EMPTYCOLOR == Color || DOORCOLOR == Color)
-	{
-		Gravity(_Delta);
-	}
-
-	if (EMPTYCOLOR != Color && DOORCOLOR != Color)
+	if (FLOORCOLOR == Color || true == BodyCollision->Collision(CollisionOrder::FloorObstacle, Col, CollisionType::Rect, CollisionType::Rect))
 	{
 		LandPos = GetPos();
-
-		GravityReset();
 
 		float DropDistance = static_cast<float>(fabs(DropStartPos.Y - LandPos.Y));
 
@@ -289,7 +275,7 @@ void Kirby::FlyToTurnLandUpdate(float _Delta)
 	{
 		Gravity(_Delta);
 	}
-	else
+	else if(FLOORCOLOR == Color || true == BodyCollision->Collision(CollisionOrder::FloorObstacle, Col, CollisionType::Rect, CollisionType::Rect))
 	{
 		GravityReset();
 
