@@ -1,5 +1,4 @@
 ﻿#include "EndingLevel.h"
-#include "BackGround.h"
 #include "KirbyGameEnum.h"
 
 #include <GameEnginePlatform/GameEngineWindow.h>
@@ -16,8 +15,7 @@ EndingLevel::~EndingLevel()
 
 void EndingLevel::Start()
 {
-	BackGround* Back = CreateActor<BackGround>(RenderOrder::BackGround);
-	Back->BackGroundInit("EndingLevel.bmp");
+	
 }
 
 void EndingLevel::Update(float _Delta)

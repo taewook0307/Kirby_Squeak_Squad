@@ -111,6 +111,9 @@
     <ClInclude Include="Obstacle.h">
       <Filter>Level</Filter>
     </ClInclude>
+    <ClInclude Include="CutScene.h">
+      <Filter>Global</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TitleLevel.cpp">
@@ -284,6 +287,9 @@
     </ClCompile>
     <ClCompile Include="Obstacle.cpp">
       <Filter>Level</Filter>
+    </ClCompile>
+    <ClCompile Include="CutScene.cpp">
+      <Filter>Global</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

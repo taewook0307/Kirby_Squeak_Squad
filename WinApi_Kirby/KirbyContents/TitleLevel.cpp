@@ -1,10 +1,12 @@
 ﻿#include "TitleLevel.h"
-#include "BackGround.h"
+#include "CutScene.h"
 #include "FadeInObject.h"
 #include "FadeOutObject.h"
 #include "KirbyGameEnum.h"
 
 #include <GameEnginePlatform/GameEngineInput.h>
+#include <GameEngineCore/GameEngineSprite.h>
+#include <GameEngineCore/GameEngineRenderer.h>
 #include <GameEngineCore/GameEngineCore.h>
 
 TitleLevel::TitleLevel()
@@ -17,8 +19,8 @@ TitleLevel::~TitleLevel()
 
 void TitleLevel::Start()
 {
-	BackGround* TitleBack = CreateActor<BackGround>(UpdateOrder::PlayUI);
-	TitleBack->BackGroundAnimationFolderInit("TitleLevel");
+	CutScene* TitleCutScene = CreateActor<CutScene>(UpdateOrder::PlayUI);
+	TitleCutScene->CutSceneAnimationInit("TitleLevel");
 
 	FadeInObject* CheckFade = CreateActor< FadeInObject>(UpdateOrder::PlayUI);
 }

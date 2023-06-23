@@ -1,5 +1,4 @@
 ﻿#include "SecondStageLevel.h"
-#include "BackGround.h"
 #include "Ground.h"
 #include "Kirby.h"
 #include "Monster.h"
@@ -28,9 +27,6 @@ void SecondStageLevel::Start()
 {
 	Stage = CreateActor<Ground>(UpdateOrder::Player);
 	Stage->GroundInit("SecondStage", "SecondStageBitMap.Bmp");
-
-	BackGround* Back = CreateActor<BackGround>(UpdateOrder::PlayUI);
-	Back->BackGroundInit("SecondStageLevel.Bmp");
 
 	LevelMonster = CreateActor<Monster>(UpdateOrder::Monster);
 
