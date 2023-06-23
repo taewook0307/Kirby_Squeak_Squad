@@ -29,6 +29,10 @@ void BackGround::Start()
 
 		MainTexture = ResourcesManager::GetInst().TextureLoad(BackGroundPath.PlusFilePath("MainBackGround.Bmp"));
 	}
+	else
+	{
+		MainTexture = ResourcesManager::GetInst().FindTexture("MainBackGround.Bmp");
+	}
 
 	float4 Scale = MainTexture->GetScale();
 

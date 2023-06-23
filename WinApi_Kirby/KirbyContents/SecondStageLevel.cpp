@@ -1,4 +1,5 @@
 ﻿#include "SecondStageLevel.h"
+#include "BackGround.h"
 #include "Ground.h"
 #include "Kirby.h"
 #include "Monster.h"
@@ -71,6 +72,8 @@ void SecondStageLevel::Update(float _Delta)
 
 void SecondStageLevel::LevelStart(GameEngineLevel* _PrevLevel)
 {
+	Back = CreateActor<BackGround>(UpdateOrder::PlayUI);
+
 	SubLevel::LevelStart(_PrevLevel);
 
 	float4 WinScale = GameEngineWindow::MainWindow.GetScale();

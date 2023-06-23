@@ -30,8 +30,6 @@ FirstStageLevel::~FirstStageLevel()
 
 void FirstStageLevel::Start()
 {
-	Back = CreateActor<BackGround>(UpdateOrder::PlayUI);
-
 	Stage = CreateActor<Ground>(UpdateOrder::Player);
 	Stage->GroundInit("FirstStage", "FirstStageBitMap.Bmp");
 
@@ -72,6 +70,8 @@ void FirstStageLevel::Update(float _Delta)
 
 void FirstStageLevel::LevelStart(GameEngineLevel* _PrevLevel)
 {
+	Back = CreateActor<BackGround>(UpdateOrder::PlayUI);
+
 	SubLevel::LevelStart(_PrevLevel);
 
 	float4 WinScale = GameEngineWindow::MainWindow.GetScale();
