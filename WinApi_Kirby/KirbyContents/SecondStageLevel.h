@@ -4,6 +4,7 @@
 
 class Monster;
 class HealItem;
+class Obstacle;
 class SecondStageLevel : public SubLevel
 {
 public:
@@ -29,4 +30,7 @@ private:
 	Monster* CheetMonster = nullptr;
 
 	HealItem* LevelHealItem = nullptr;
+
+	Obstacle* LevelObstacle = nullptr;
+	Obstacle* LevelBiggerObstacle = nullptr;
 };

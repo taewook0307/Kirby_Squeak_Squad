@@ -5,6 +5,7 @@
 #include "Monster.h"
 #include "TornadoMonster.h"
 #include "HealItem.h"
+#include "Obstacle.h"
 #include "TranslucentBlock.h"
 #include "KirbyGameEnum.h"
 
@@ -36,6 +37,10 @@ void SecondStageLevel::Start()
 	CheetMonster = CreateActor<TornadoMonster>(UpdateOrder::Monster);
 
 	LevelHealItem = CreateActor<HealItem>(UpdateOrder::PlayerObject);
+
+	LevelObstacle = CreateActor<Obstacle>(UpdateOrder::PlayerObject);
+
+	LevelBiggerObstacle = CreateActor<Obstacle>(UpdateOrder::PlayerObject);
 }
 
 void SecondStageLevel::Update(float _Delta)
@@ -86,4 +91,11 @@ void SecondStageLevel::LevelStart(GameEngineLevel* _PrevLevel)
 
 	LevelHealItem->SetPos({ 3300.0f, 520.0f });
 	LevelHealItem->SetGroundBitMap("SecondStageBitMap.Bmp");
+
+	LevelObstacle->SetPos({ 1310.0f, 456.0f });
+	LevelObstacle->SetGroundBitMap("SecondStageBitMap.Bmp");
+
+	LevelBiggerObstacle->SetRendererRatio(2.0f);
+	LevelBiggerObstacle->SetPos({ 4740.0f, 593.0f });
+	LevelBiggerObstacle->SetGroundBitMap("SecondStageBitMap.Bmp");
 }

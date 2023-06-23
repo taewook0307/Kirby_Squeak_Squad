@@ -102,6 +102,8 @@ void Kirby::FlyUpdate(float _Delta)
 		CheckPos = RIGHTCHECKPOS;
 	}
 
+	ObstacleCheck(MovePos);
+
 	unsigned int XColor = GetGroundColor(EMPTYCOLOR, CheckPos);
 
 	if (EMPTYCOLOR == XColor || DOORCOLOR == XColor)
@@ -201,28 +203,22 @@ void Kirby::DropUpdate(float _Delta)
 	{
 		MovePos = { -Speed * _Delta, 0.0f };
 		CheckPos = LEFTCHECKPOS;
-
-		unsigned int Color = GetGroundColor(EMPTYCOLOR, CheckPos);
-
-		if (EMPTYCOLOR == Color || DOORCOLOR == Color)
-		{
-			AddPos(MovePos);
-			CameraMove(MovePos);
-		}
 	}
 
 	if (true == GameEngineInput::IsPress('D') && Dir == ActorDir::Right)
 	{
 		MovePos = { Speed * _Delta, 0.0f };
 		CheckPos = RIGHTCHECKPOS;
+	}
 
-		unsigned int Color = GetGroundColor(EMPTYCOLOR, CheckPos);
+	ObstacleCheck(MovePos);
 
-		if (EMPTYCOLOR == Color || DOORCOLOR == Color)
-		{
-			AddPos(MovePos);
-			CameraMove(MovePos);
-		}
+	unsigned int XColor = GetGroundColor(EMPTYCOLOR, CheckPos);
+
+	if (EMPTYCOLOR == XColor || DOORCOLOR == XColor)
+	{
+		AddPos(MovePos);
+		CameraMove(MovePos);
 	}
 }
 
@@ -262,6 +258,8 @@ void Kirby::FlyToTurnUpUpdate(float _Delta)
 		MovePos = float4::RIGHT * Speed * 0.5f * _Delta;
 		CheckPos = RIGHTCHECKPOS;
 	}
+
+	ObstacleCheck(MovePos);
 
 	unsigned int XColor = GetGroundColor(EMPTYCOLOR, CheckPos);
 
@@ -310,6 +308,8 @@ void Kirby::FlyToTurnLandUpdate(float _Delta)
 		MovePos = float4::RIGHT * Speed * 0.5f * _Delta;
 		CheckPos = RIGHTCHECKPOS;
 	}
+
+	ObstacleCheck(MovePos);
 
 	unsigned int XColor = GetGroundColor(EMPTYCOLOR, CheckPos);
 

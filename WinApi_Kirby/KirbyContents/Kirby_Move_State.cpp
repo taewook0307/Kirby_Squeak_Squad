@@ -51,6 +51,30 @@ void Kirby::InclineCheck(float4& _MovePos)
 	}
 }
 
+void Kirby::ObstacleCheck(float4& _MovePos)
+{
+	if (true == BodyCollision->Collision(CollisionOrder::Obstacle, Col, CollisionType::Rect, CollisionType::Rect))
+	{
+		_MovePos = float4::ZERO;
+
+		while (true == BodyCollision->Collision(CollisionOrder::Obstacle, Col, CollisionType::Rect, CollisionType::Rect))
+		{
+			GameEngineActor* CurObstacle = Col[Col.size() - 1]->GetActor();
+			float4 ObstaclePos = CurObstacle->GetPos();
+			float4 DirPos = GetPos() - ObstaclePos;
+
+			if (DirPos.X < 0.0f)
+			{
+				AddPos(float4::LEFT);
+			}
+			else
+			{
+				AddPos(float4::RIGHT);
+			}
+		}
+	}
+}
+
 void Kirby::SlideStart()
 {
 	ChangeAnimationState("Slide");
@@ -73,6 +97,7 @@ void Kirby::StopStart()
 
 void Kirby::SlideUpdate(float _Delta)
 {
+	SlideCollision->On();
 	KirbyGravity(_Delta);
 
 	float4 MovePos = float4::ZERO;
@@ -90,6 +115,7 @@ void Kirby::SlideUpdate(float _Delta)
 	{
 		MovePos = { -CopySpeed * _Delta, 0.0f };
 		CheckPos = LEFTCHECKPOS;
+		SlideCollision->SetCollisionPos(LEFTSLIDECOLLISIONPOS);
 	}
 
 	// 오른쪽으로 슬라이딩
@@ -97,6 +123,7 @@ void Kirby::SlideUpdate(float _Delta)
 	{
 		MovePos = { CopySpeed * _Delta, 0.0f };
 		CheckPos = RIGHTCHECKPOS;
+		SlideCollision->SetCollisionPos(RIGHTSLIDECOLLISIONPOS);
 	}
 
 	InclineCheck(MovePos);
@@ -113,6 +140,7 @@ void Kirby::SlideUpdate(float _Delta)
 
 	if (CopySpeed < 10.0f)
 	{
+		SlideCollision->Off();
 		Speed = BASEPOWER;
 
 		if (true == GameEngineInput::IsPress('A') || true == GameEngineInput::IsPress('D'))
@@ -150,6 +178,8 @@ void Kirby::WalkUpdate(float _Delta)
 	}
 
 	InclineCheck(MovePos);
+
+	ObstacleCheck(MovePos);
 
 	// 이동 방향 앞에 장애물 여부 확인 후 이동
 	{
@@ -226,6 +256,8 @@ void Kirby::RunUpdate(float _Delta)
 
 	InclineCheck(MovePos);
 
+	ObstacleCheck(MovePos);
+
 	// 이동 방향 앞에 장애물 여부 확인 후 이동
 	{
 		unsigned int Color = GetGroundColor(EMPTYCOLOR, CheckPos);
@@ -290,40 +322,8 @@ void Kirby::StopUpdate(float _Delta)
 
 	OppositePos = MovePos * -0.1f;
 
-	if (EMPTYCOLOR == GetGroundColor(EMPTYCOLOR, MovePos))
-	{
-		float4 XPos = float4::ZERO;
-		float4 Dir = MovePos.X <= 0.0f ? float4::RIGHT : float4::LEFT;
-
-		while (RGB(0, 0, 0) != GetGroundColor(EMPTYCOLOR, MovePos + XPos))
-		{
-			XPos += Dir;
-
-			if (abs(XPos.X) > 50.0f)
-			{
-				break;
-			}
-		}
-
-		float4 YPos = float4::ZERO;
-		while (RGB(0, 0, 0) != GetGroundColor(EMPTYCOLOR, MovePos + YPos))
-		{
-			YPos.Y += 1;
-
-			if (YPos.Y > 60.0f)
-			{
-				break;
-			}
-		}
-
-		if (abs(XPos.X) >= YPos.Y)
-		{
-			while (RGB(0, 0, 0) != GetGroundColor(EMPTYCOLOR, MovePos))
-			{
-				MovePos.Y += 1;
-			}
-		}
-	}
+	InclineCheck(MovePos);
+	ObstacleCheck(MovePos);
 
 	unsigned int Color = GetGroundColor(EMPTYCOLOR, CheckPos);
 

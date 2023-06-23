@@ -125,9 +125,14 @@ void Kirby::Start()
 		AttackCollision = CreateCollision(CollisionOrder::Inhale);
 		AttackCollision->SetCollisionScale(INHALECOLLSIONSCALE);
 		AttackCollision->SetCollisionType(CollisionType::Rect);
+
+		SlideCollision = CreateCollision(CollisionOrder::Attack);
+		SlideCollision->SetCollisionScale(SLIDECOLLISIONSCALE);
+		SlideCollision->SetCollisionType(CollisionType::Rect);
 	}
 
 	AttackCollision->Off();
+	SlideCollision->Off();
 	ChangeState(KirbyState::Idle);
 }
 

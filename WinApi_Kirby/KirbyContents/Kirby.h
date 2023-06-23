@@ -14,9 +14,14 @@
 
 #define BODYCOLLISIONPOS { 0.0f, -30.0f }
 #define BODYCOLLISIONSCALE { 70.0f, 70.0f }
+
 #define LEFTINHALECOLLSIONSCALE { -150.0f, -40.0f }
 #define RIGHTINHALECOLLSIONSCALE { 150.0f, -40.0f }
 #define INHALECOLLSIONSCALE { 200.0f, 80.0f }
+
+#define LEFTSLIDECOLLISIONPOS { -50.0f, -30.0f }
+#define RIGHTSLIDECOLLISIONPOS { 50.0f, -30.0f }
+#define SLIDECOLLISIONSCALE { 30.0f, 70.0f }
 
 class AttackObject;
 class TranslucentBlock;
@@ -178,6 +183,8 @@ protected:
 
 	void InclineCheck(float4& _MovePos);
 
+	void ObstacleCheck(float4& _MovePos);
+
 	TranslucentBlock* ChangeBackGroundEffect = nullptr;
 protected:
 	void DamageFromMonster()
@@ -204,6 +211,7 @@ protected:
 	float FlyPower = FLYPOWER;
 
 	GameEngineCollision* AttackCollision = nullptr;
+	GameEngineCollision* SlideCollision = nullptr;
 	std::vector<GameEngineCollision*> Col;
 
 	bool MapChangeAnimationEnd = false;

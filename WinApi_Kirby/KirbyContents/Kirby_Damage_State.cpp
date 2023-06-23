@@ -61,6 +61,8 @@ void Kirby::DamageUpdate(float _Delta)
 		CheckPos = RIGHTBOTCHECKPOS;
 	}
 
+	ObstacleCheck(MovePos);
+
 	unsigned int XColor = GetGroundColor(EMPTYCOLOR, CheckPos);
 
 	if (XColor == EMPTYCOLOR || XColor == DOORCOLOR)
