@@ -64,9 +64,22 @@ void Obstacle::Update(float _Delta)
 
 void Obstacle::SetRendererRatio(float _Value)
 {
+	ChangeRatioValue = true;
 	RatioValue = 4.0f * _Value;
 	MainRenderer->SetScaleRatio(RatioValue);
 
 	BodyCollision->SetCollisionPos(float4 OBSTACLECOLLISIONPOS * _Value);
 	BodyCollision->SetCollisionScale(float4 OBSTACLECOLLISIONSCALE * _Value);
+}
+
+void Obstacle::ChangeFloorObstacle()
+{
+	if (false == ChangeRatioValue)
+	{
+		BodyCollision->Death();
+		BodyCollision = CreateCollision(CollisionOrder::FloorObstacle);
+		BodyCollision->SetCollisionPos(OBSTACLECOLLISIONPOS);
+		BodyCollision->SetCollisionScale(OBSTACLECOLLISIONSCALE);
+		BodyCollision->SetCollisionType(CollisionType::Rect);
+	}
 }

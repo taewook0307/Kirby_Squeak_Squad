@@ -99,6 +99,7 @@ enum class CollisionOrder
 	BossAttack,
 	BossSearch,
 	Obstacle,
+	FloorObstacle,
 	Max
 };
 

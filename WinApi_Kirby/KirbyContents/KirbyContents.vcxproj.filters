@@ -108,11 +108,11 @@
     <ClInclude Include="BossEntranceLevel.h">
       <Filter>Level</Filter>
     </ClInclude>
-    <ClInclude Include="Obstacle.h">
-      <Filter>Level</Filter>
-    </ClInclude>
     <ClInclude Include="CutScene.h">
       <Filter>Global\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Obstacle.h">
+      <Filter>Level\Obstacle</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -285,11 +285,11 @@
     <ClCompile Include="BossEntranceLevel.cpp">
       <Filter>Level</Filter>
     </ClCompile>
-    <ClCompile Include="Obstacle.cpp">
-      <Filter>Level</Filter>
-    </ClCompile>
     <ClCompile Include="CutScene.cpp">
       <Filter>Global\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Obstacle.cpp">
+      <Filter>Level\Obstacle</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -349,6 +349,9 @@
     </Filter>
     <Filter Include="Global\Fade">
       <UniqueIdentifier>{17c1fdbc-33e6-411f-a2da-7d7b315354ec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Level\Obstacle">
+      <UniqueIdentifier>{8a4f2e5b-79b1-42fd-91f2-a63169e08427}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

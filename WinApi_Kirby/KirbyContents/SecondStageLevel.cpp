@@ -37,6 +37,9 @@ void SecondStageLevel::Start()
 
 	LevelObstacle = CreateActor<Obstacle>(UpdateOrder::PlayerObject);
 
+	LevelFloorObstacle1 = CreateActor<Obstacle>(UpdateOrder::PlayerObject);
+	LevelFloorObstacle1->ChangeFloorObstacle();
+
 	LevelBiggerObstacle = CreateActor<Obstacle>(UpdateOrder::PlayerObject);
 }
 
@@ -93,6 +96,9 @@ void SecondStageLevel::LevelStart(GameEngineLevel* _PrevLevel)
 
 	LevelObstacle->SetPos({ 1310.0f, 456.0f });
 	LevelObstacle->SetGroundBitMap("SecondStageBitMap.Bmp");
+
+	LevelFloorObstacle1->SetPos({ 3142.0f, 350.0f });
+	LevelFloorObstacle1->SetGroundBitMap("SecondStageBitMap.Bmp");
 
 	LevelBiggerObstacle->SetRendererRatio(2.0f);
 	LevelBiggerObstacle->SetPos({ 4740.0f, 593.0f });

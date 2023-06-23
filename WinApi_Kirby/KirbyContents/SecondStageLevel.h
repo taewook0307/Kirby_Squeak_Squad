@@ -34,5 +34,6 @@ private:
 	HealItem* LevelHealItem = nullptr;
 
 	Obstacle* LevelObstacle = nullptr;
+	Obstacle* LevelFloorObstacle1 = nullptr;
 	Obstacle* LevelBiggerObstacle = nullptr;
 };

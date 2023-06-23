@@ -28,7 +28,7 @@ void KirbyCore::Start()
 	GameEngineCore::CreateLevel<BossStageLevel>("BossStageLevel");
 	GameEngineCore::CreateLevel<EndingLevel>("EndingLevel");
 
-	GameEngineCore::ChangeLevel("FirstStageLevel");
+	GameEngineCore::ChangeLevel("SecondStageLevel");
 }
 
 void KirbyCore::Update(float _Delta)

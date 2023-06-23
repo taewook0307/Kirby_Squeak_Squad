@@ -21,14 +21,16 @@ public:
 	Obstacle& operator=(Obstacle&& _Other) noexcept = delete;
 
 	void SetRendererRatio(float _Value);
+
+	void ChangeFloorObstacle();
 protected:
 
 private:
 	float RatioValue = 4.0f;
+	bool ChangeRatioValue = false;
 	bool AttackCheck = false;
 	std::vector<GameEngineCollision*> ObsCol;
 
 	void Start() override;
 	void Update(float _Delta) override;
 };
-
