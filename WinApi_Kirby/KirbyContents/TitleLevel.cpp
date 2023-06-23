@@ -23,6 +23,18 @@ void TitleLevel::Start()
 	TitleCutScene->CutSceneAnimationInit("TitleLevel");
 
 	FadeInObject* CheckFade = CreateActor< FadeInObject>(UpdateOrder::PlayUI);
+
+	if (nullptr == TitleCutScene)
+	{
+		MsgBoxAssert("컷신이 제대로 등록되지 않았습니다.");
+		return;
+	}
+
+	if (nullptr == CheckFade)
+	{
+		MsgBoxAssert("페이드 인 효과 오브젝트가 제대로 생성되지 않았습니다.");
+		return;
+	}
 }
 
 void TitleLevel::Update(float _Delta)

@@ -112,7 +112,7 @@
       <Filter>Level</Filter>
     </ClInclude>
     <ClInclude Include="CutScene.h">
-      <Filter>Global</Filter>
+      <Filter>Global\Scene</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -289,7 +289,7 @@
       <Filter>Level</Filter>
     </ClCompile>
     <ClCompile Include="CutScene.cpp">
-      <Filter>Global</Filter>
+      <Filter>Global\Scene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -18,9 +18,6 @@ public:
 protected:
 
 private:
-	class GameEngineActor* TitleActor;
-	class GameEngineRenderer* MainRenderer;
-
 	void Start() override;
 	void Update(float _Delta) override;
 };

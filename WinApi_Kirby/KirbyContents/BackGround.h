@@ -2,10 +2,7 @@
 #include <string>
 #include <GameEngineCore/GameEngineActor.h>
 
-class GameEngineSprite;
-class GameEngineWindowTexture;
 class GameEngineRenderer;
-class Map;
 class BackGround : public GameEngineActor
 {
 public:
@@ -19,19 +16,18 @@ public:
 	BackGround& operator=(const BackGround& _Other) = delete;
 	BackGround& operator=(BackGround&& _Other) noexcept = delete;
 
-	void BackGroundInit(const std::string& _FileName, const std::string& _MapFileName = "");
-	void BackGroundAnimationFolderInit(const std::string& _FolderName, const std::string& _MapFileName = "", float Inter = 0.5f);
+	static BackGround* GetMainBackGround()
+	{
+		return MainBackGround;
+	}
 
 protected:
 
 private:
-	std::string FileName = "";
-	float4 Scale = float4::ZERO;
-	
-	GameEngineWindowTexture* MainTexture = nullptr;
-	GameEngineSprite* MainSprite = nullptr;
-	GameEngineWindowTexture* MapTexture = nullptr;
-	GameEngineRenderer* MainRenderer = nullptr;
+	static BackGround* MainBackGround;
 
-	void Update(float _Delta) override;
+	class GameEngineRenderer* MainRenderer = nullptr;
+	class GameEngineWindowTexture* MainTexture = nullptr;
+
+	void Start() override;
 };
