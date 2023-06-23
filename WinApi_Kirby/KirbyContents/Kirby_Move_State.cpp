@@ -66,10 +66,12 @@ void Kirby::ObstacleCheck(float4& _MovePos)
 			if (DirPos.X < 0.0f)
 			{
 				AddPos(float4::LEFT);
+				CameraMove(float4::LEFT);
 			}
 			else
 			{
 				AddPos(float4::RIGHT);
+				CameraMove(float4::RIGHT);
 			}
 		}
 	}
@@ -106,6 +108,9 @@ void Kirby::SlideUpdate(float _Delta)
 
 	if (true == GameEngineInput::IsDown(VK_SPACE))
 	{
+		SlideCollision->Off();
+		Speed = BASEPOWER;
+
 		ChangeState(KirbyState::Jump);
 		return;
 	}

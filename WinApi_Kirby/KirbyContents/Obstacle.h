@@ -27,7 +27,6 @@ protected:
 
 private:
 	float RatioValue = 4.0f;
-	bool ChangeRatioValue = false;
 	bool AttackCheck = false;
 	std::vector<GameEngineCollision*> ObsCol;
 

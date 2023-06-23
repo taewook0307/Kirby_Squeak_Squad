@@ -239,21 +239,6 @@ void Kirby::Update(float _Delta)
 		return;
 	}
 
-	if (true == BodyCollision->Collision(CollisionOrder::FloorObstacle, Col, CollisionType::Rect, CollisionType::Rect))
-	{
-		while (true == BodyCollision->Collision(CollisionOrder::FloorObstacle, Col, CollisionType::Rect, CollisionType::Rect))
-		{
-			GameEngineActor* CurObstacle = Col[Col.size() - 1]->GetActor();
-			float4 ObstaclePos = CurObstacle->GetPos();
-			float4 DirPos = GetPos() - ObstaclePos;
-
-			if (DirPos.Y < 0.0f)
-			{
-				AddPos(float4::UP);
-			}
-		}
-	}
-
 	// Debug 용
 	if (true == GameEngineInput::IsDown('J'))
 	{

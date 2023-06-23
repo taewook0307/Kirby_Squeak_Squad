@@ -80,6 +80,14 @@ void Kirby::FlyUpdate(float _Delta)
 		else
 		{
 			GravityReset();
+
+			unsigned int CheckColor = GetGroundColor(EMPTYCOLOR, float4::UP);
+
+			while (CheckColor != EMPTYCOLOR && CheckColor != DOORCOLOR)
+			{
+				CheckColor = GetGroundColor(EMPTYCOLOR, float4::UP);
+				AddPos(float4::UP);
+			}
 		}
 	}
 	else

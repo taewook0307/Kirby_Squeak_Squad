@@ -35,5 +35,9 @@ private:
 
 	Obstacle* LevelObstacle = nullptr;
 	Obstacle* LevelFloorObstacle1 = nullptr;
+	Obstacle* LevelFloorObstacle2 = nullptr;
+	Obstacle* LevelFloorObstacle3 = nullptr;
+	Obstacle* LevelFloorObstacle4 = nullptr;
+	Obstacle* LevelFloorObstacle5 = nullptr;
 	Obstacle* LevelBiggerObstacle = nullptr;
 };

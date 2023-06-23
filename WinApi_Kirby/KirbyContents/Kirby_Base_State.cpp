@@ -29,6 +29,23 @@ void Kirby::KirbyGravity(float _Delta)
 
 		GravityReset();
 	}
+
+	if (true == BodyCollision->Collision(CollisionOrder::FloorObstacle, Col, CollisionType::Rect, CollisionType::Rect))
+	{
+		GravityReset();
+
+		while (true == BodyCollision->Collision(CollisionOrder::FloorObstacle, Col, CollisionType::Rect, CollisionType::Rect))
+		{
+			GameEngineActor* CurObstacle = Col[Col.size() - 1]->GetActor();
+			float4 ObstaclePos = CurObstacle->GetPos();
+			float4 DirPos = GetPos() - ObstaclePos;
+
+			if (DirPos.Y < 0.0f)
+			{
+				AddPos(float4::UP);
+			}
+		}
+	}
 }
 
 void Kirby::IdleStart()

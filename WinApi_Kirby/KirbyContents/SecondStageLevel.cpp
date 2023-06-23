@@ -39,6 +39,23 @@ void SecondStageLevel::Start()
 
 	LevelFloorObstacle1 = CreateActor<Obstacle>(UpdateOrder::PlayerObject);
 	LevelFloorObstacle1->ChangeFloorObstacle();
+	LevelFloorObstacle1->SetRendererRatio(1.2f);
+
+	LevelFloorObstacle2 = CreateActor<Obstacle>(UpdateOrder::PlayerObject);
+	LevelFloorObstacle2->ChangeFloorObstacle();
+	LevelFloorObstacle2->SetRendererRatio(1.2f);
+
+	LevelFloorObstacle3 = CreateActor<Obstacle>(UpdateOrder::PlayerObject);
+	LevelFloorObstacle3->ChangeFloorObstacle();
+	LevelFloorObstacle3->SetRendererRatio(1.2f);
+
+	LevelFloorObstacle4 = CreateActor<Obstacle>(UpdateOrder::PlayerObject);
+	LevelFloorObstacle4->ChangeFloorObstacle();
+	LevelFloorObstacle4->SetRendererRatio(1.2f);
+
+	LevelFloorObstacle5 = CreateActor<Obstacle>(UpdateOrder::PlayerObject);
+	LevelFloorObstacle5->ChangeFloorObstacle();
+	LevelFloorObstacle5->SetRendererRatio(1.2f);
 
 	LevelBiggerObstacle = CreateActor<Obstacle>(UpdateOrder::PlayerObject);
 }
@@ -97,8 +114,20 @@ void SecondStageLevel::LevelStart(GameEngineLevel* _PrevLevel)
 	LevelObstacle->SetPos({ 1310.0f, 456.0f });
 	LevelObstacle->SetGroundBitMap("SecondStageBitMap.Bmp");
 
-	LevelFloorObstacle1->SetPos({ 3142.0f, 350.0f });
+	LevelFloorObstacle1->SetPos({ 3160.0f, 400.0f });
 	LevelFloorObstacle1->SetGroundBitMap("SecondStageBitMap.Bmp");
+
+	LevelFloorObstacle2->SetPos({ 3230.0f, 400.0f });
+	LevelFloorObstacle2->SetGroundBitMap("SecondStageBitMap.Bmp");
+
+	LevelFloorObstacle3->SetPos({ 3300.0f, 400.0f });
+	LevelFloorObstacle3->SetGroundBitMap("SecondStageBitMap.Bmp");
+
+	LevelFloorObstacle4->SetPos({ 3370.0f, 400.0f });
+	LevelFloorObstacle4->SetGroundBitMap("SecondStageBitMap.Bmp");
+
+	LevelFloorObstacle5->SetPos({ 3440.0f, 400.0f });
+	LevelFloorObstacle5->SetGroundBitMap("SecondStageBitMap.Bmp");
 
 	LevelBiggerObstacle->SetRendererRatio(2.0f);
 	LevelBiggerObstacle->SetPos({ 4740.0f, 593.0f });
