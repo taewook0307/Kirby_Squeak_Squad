@@ -6,6 +6,7 @@
 
 #include <math.h>
 #include <GameEnginePlatform/GameEngineInput.h>
+#include <GameEnginePlatform/GameEngineSound.h>
 #include <GameEngineCore/GameEngineRenderer.h>
 #include <GameEngineCore/GameEngineLevel.h>
 #include <GameEngineCore/GameEngineActor.h>
@@ -14,6 +15,7 @@
 void Kirby::AttackReadyStart()
 {
 	ChangeAnimationState("AttackReady");
+	GameEngineSound::SoundPlay("Inhale.wav");
 }
 
 void Kirby::AttackStart()
@@ -24,15 +26,18 @@ void Kirby::AttackStart()
 void Kirby::AttackToIdleStart()
 {
 	ChangeAnimationState("AttackToIdle");
+	GameEngineSound::SoundPlay("Attack.wav");
 }
 
 void Kirby::KeepStart()
 {
 	ChangeAnimationState("Keep");
+	GameEngineSound::SoundPlay("Keep.wav");
 }
 
 void Kirby::AttackReadyUpdate(float _Delta)
 {
+	
 	unsigned int Color = GetGroundColor(EMPTYCOLOR);
 
 	if (EMPTYCOLOR == Color || DOORCOLOR == Color)

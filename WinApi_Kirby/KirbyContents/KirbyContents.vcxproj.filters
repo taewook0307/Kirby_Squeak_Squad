@@ -291,6 +291,9 @@
     <ClCompile Include="Obstacle.cpp">
       <Filter>Level\Obstacle</Filter>
     </ClCompile>
+    <ClCompile Include="Kirby_SoundEffect.cpp">
+      <Filter>Player</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Level">

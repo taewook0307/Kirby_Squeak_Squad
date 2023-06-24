@@ -1,6 +1,7 @@
 #include "Kirby.h"
 
 #include <GameEnginePlatform/GameEngineWindow.h>
+#include <GameEnginePlatform/GameEngineSound.h>
 #include <GameEnginePlatform/GameEngineInput.h>
 #include <GameEngineCore/GameEngineRenderer.h>
 
@@ -8,17 +9,20 @@ void Kirby::BreatheStart()
 {
 	ChangeAnimationState("Breathe");
 	SetGravityVector(float4::UP * FlyPower * 0.5f);
+	GameEngineSound::SoundPlay("Breathe.wav");
 }
 
 void Kirby::FlyStart()
 {	
 	ChangeAnimationState("Fly");
 	SetGravityVector(float4::UP * FlyPower);
+	GameEngineSound::SoundPlay("Fly.wav");
 }
 
 void Kirby::BreatheOutStart()
 {
 	ChangeAnimationState("BreatheOut");
+	GameEngineSound::SoundPlay("BreatheOut.wav");
 }
 
 void Kirby::DropStart()
@@ -122,6 +126,8 @@ void Kirby::FlyUpdate(float _Delta)
 
 	if (true == GameEngineInput::IsDown(VK_SPACE))
 	{
+
+		GameEngineSound::SoundPlay("Fly.wav");
 		SetGravityVector(float4::UP * FlyPower);
 	}
 

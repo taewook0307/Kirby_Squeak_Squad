@@ -4,6 +4,7 @@
 
 #include <GameEngineBase/GameEngineTime.h>
 #include <GameEnginePlatform/GameEngineInput.h>
+#include <GameEnginePlatform/GameEngineSound.h>
 #include <GameEngineCore/GameEngineLevel.h>
 #include <GameEngineCore/GameEngineRenderer.h>
 #include <GameEngineCore/GameEngineCollision.h>
@@ -50,11 +51,13 @@ void Kirby::DownStart()
 void Kirby::LevelMoveStart()
 {
 	ChangeAnimationState("LevelMove");
+	GameEngineSound::SoundPlay("Move.wav");
 }
 
 void Kirby::ChangeStart()
 {
 	ChangeAnimationState("Change");
+	GameEngineSound::SoundPlay("Change.wav");
 }
 
 void Kirby::IdleUpdate(float _Delta)

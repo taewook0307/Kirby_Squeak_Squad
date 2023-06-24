@@ -28,6 +28,7 @@ Kirby::~Kirby()
 
 void Kirby::Start()
 {
+	SoundEffectLoad();
 	IsCheckPosPoint = false;
 
 	if(ResourcesManager::GetInst().FindSprite("Right_Kirby.Bmp") == nullptr && ResourcesManager::GetInst().FindSprite("Left_Kirby.Bmp") == nullptr)

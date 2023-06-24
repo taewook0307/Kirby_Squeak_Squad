@@ -1,12 +1,14 @@
 #include "Kirby.h"
 
 #include <GameEnginePlatform/GameEngineInput.h>
+#include <GameEnginePlatform/GameEngineSound.h>
 #include <GameEngineCore/GameEngineRenderer.h>
 
 void Kirby::JumpStart()
 {
 	ChangeAnimationState("Jump");
 	SetGravityVector(float4::UP * JumpPower);
+	GameEngineSound::SoundPlay("Jump.wav");
 }
 
 void Kirby::JumpToDropStart()
@@ -144,7 +146,7 @@ void Kirby::JumpToDropUpdate(float _Delta)
 
 void Kirby::JumpToLandUpdate(float _Delta)
 {
-	if (true == MainRenderer->IsAnimationEnd())
+	if (true == MainRenderer->IsAnimationEnd() || true == BodyCollision->Collision(CollisionOrder::FloorObstacle, Col, CollisionType::Rect, CollisionType::Rect))
 	{
 		if (true == GameEngineInput::IsPress('A') || true == GameEngineInput::IsPress('D'))
 		{

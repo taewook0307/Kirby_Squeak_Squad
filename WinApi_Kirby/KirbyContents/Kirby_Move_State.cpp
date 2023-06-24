@@ -2,6 +2,7 @@
 
 #include <GameEngineBase/GameEngineTime.h>
 #include <GameEnginePlatform/GameEngineInput.h>
+#include <GameEnginePlatform/GameEngineSound.h>
 #include <GameEngineCore/GameEngineRenderer.h>
 #include <GameEngineCore/GameEngineLevel.h>
 #include <GameEngineCore/GameEngineCamera.h>
@@ -86,6 +87,7 @@ void Kirby::ObstacleCheck(float4& _MovePos)
 void Kirby::SlideStart()
 {
 	ChangeAnimationState("Slide");
+	GameEngineSound::SoundPlay("Slide.wav");
 }
 
 void Kirby::WalkStart()
@@ -96,11 +98,13 @@ void Kirby::WalkStart()
 void Kirby::RunStart()
 {
 	ChangeAnimationState("Run");
+	GameEngineSound::SoundPlay("Run.wav");
 }
 
 void Kirby::StopStart()
 {
 	ChangeAnimationState("Stop");
+	GameEngineSound::SoundPlay("Stop.wav");
 }
 
 void Kirby::SlideUpdate(float _Delta)

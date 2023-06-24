@@ -233,6 +233,8 @@ protected:
 	bool CheckInputD = false;
 	float CheckInputDTimer = CHECKINPUTTIMERVALUE;
 
+	void SoundEffectLoad();
+
 private:
 	int Count = 0;
 
