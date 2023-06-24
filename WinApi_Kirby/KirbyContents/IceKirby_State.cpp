@@ -9,11 +9,6 @@
 #include <GameEngineCore/GameEngineLevel.h>
 #include <GameEngineCore/GameEngineCamera.h>
 
-void IceKirby::AttackReadyStart()
-{
-	ChangeAnimationState("AttackReady");
-}
-
 void IceKirby::AttackStart()
 {
 	ChangeAnimationState("Attack");

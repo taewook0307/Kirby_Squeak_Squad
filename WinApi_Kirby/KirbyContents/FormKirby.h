@@ -17,6 +17,9 @@ public:
 	FormKirby& operator=(FormKirby&& _Other) noexcept = delete;
 
 protected:
+	void AttackReadyStart() override;
+	void AttackToIdleStart() override;
+
 	void StateUpdate(float _Delta) override;
 	void ChangeState(KirbyState _State) override;
 

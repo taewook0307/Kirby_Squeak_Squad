@@ -145,7 +145,7 @@ protected:
 	void DamageLandStart();
 	virtual void AttackReadyStart();
 	virtual void AttackStart();
-	void AttackToIdleStart();
+	virtual void AttackToIdleStart();
 	void KeepStart();
 	void KeepIdleStart();
 	void KeepWalkStart();

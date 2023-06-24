@@ -184,6 +184,7 @@ void SubLevel::FormChange(const std::string& _BitMapFileName)
 		SavePos = LevelPlayer->GetPos();
 		LevelPlayer->Death();
 		LevelPlayer = CreateActor<Kirby>(UpdateOrder::Player);
+		LevelPlayer->ChangeSoundOff();
 		LevelPlayer->ChangeForm();
 		LevelPlayer->SetPos(SavePos);
 		LevelPlayer->SetGroundBitMap(_BitMapFileName);

@@ -158,6 +158,17 @@ void FormKirby::ChangeState(KirbyState _State)
 	State = _State;
 }
 
+
+void FormKirby::AttackReadyStart()
+{
+	ChangeAnimationState("AttackReady");
+}
+
+void FormKirby::AttackToIdleStart()
+{
+	ChangeAnimationState("AttackToIdle");
+}
+
 void FormKirby::ChangeStart()
 {
 	ChangeAnimationState("Change");

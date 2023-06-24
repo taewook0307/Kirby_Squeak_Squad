@@ -275,7 +275,7 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="IceKirbySoundEffect.cpp" />
+    <ClCompile Include="IceKirby_SoundEffect.cpp" />
     <ClCompile Include="IceKirby_State.cpp" />
     <ClCompile Include="IceMonster.cpp">
       <SubType>

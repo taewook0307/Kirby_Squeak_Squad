@@ -294,9 +294,6 @@
     <ClCompile Include="FireKirby_SoundEffect.cpp">
       <Filter>Player\Form\Fire</Filter>
     </ClCompile>
-    <ClCompile Include="IceKirbySoundEffect.cpp">
-      <Filter>Player\Form\Ice</Filter>
-    </ClCompile>
     <ClCompile Include="IceObject.cpp">
       <Filter>Player\Form\Ice\IceObject</Filter>
     </ClCompile>
@@ -305,6 +302,9 @@
     </ClCompile>
     <ClCompile Include="TornadoKirby_SoundEffect.cpp">
       <Filter>Player\Form\Tornado</Filter>
+    </ClCompile>
+    <ClCompile Include="IceKirby_SoundEffect.cpp">
+      <Filter>Player\Form\Ice</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

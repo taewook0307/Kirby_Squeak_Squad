@@ -56,7 +56,7 @@ void Kirby::LevelMoveStart()
 
 void Kirby::ChangeStart()
 {
-	GameEngineSound::SoundPlay("Change.wav");
+	ChangeAnimationState("Change");
 }
 
 void Kirby::IdleUpdate(float _Delta)

@@ -7,11 +7,6 @@
 #include <GameEngineCore/GameEngineLevel.h>
 #include <GameEngineCore/GameEngineCamera.h>
 
-void SparkKirby::AttackReadyStart()
-{
-	ChangeAnimationState("AttackReady");
-}
-
 void SparkKirby::AttackStart()
 {
 	ChangeAnimationState("Attack");

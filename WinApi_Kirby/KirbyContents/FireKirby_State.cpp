@@ -7,11 +7,6 @@
 #include <GameEngineCore/GameEngineLevel.h>
 #include <GameEngineCore/GameEngineCamera.h>
 
-void FireKirby::AttackReadyStart()
-{
-	ChangeAnimationState("AttackReady");
-}
-
 void FireKirby::AttackStart()
 {
 	ChangeAnimationState("Attack");
