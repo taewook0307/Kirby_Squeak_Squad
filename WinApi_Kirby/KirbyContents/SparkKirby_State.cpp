@@ -7,6 +7,16 @@
 #include <GameEngineCore/GameEngineLevel.h>
 #include <GameEngineCore/GameEngineCamera.h>
 
+void SparkKirby::AttackReadyStart()
+{
+	ChangeAnimationState("AttackReady");
+}
+
+void SparkKirby::AttackStart()
+{
+	ChangeAnimationState("Attack");
+}
+
 void SparkKirby::JumpUpdate(float _Delta)
 {
 	Kirby::JumpUpdate(_Delta);
@@ -36,7 +46,7 @@ void SparkKirby::DropUpdate(float _Delta)
 	if (true == GameEngineInput::IsPress('C'))
 	{
 		ChangeState(KirbyState::Attack);
-		return;
+		return;   
 	}
 }
 

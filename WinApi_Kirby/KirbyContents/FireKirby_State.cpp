@@ -7,6 +7,16 @@
 #include <GameEngineCore/GameEngineLevel.h>
 #include <GameEngineCore/GameEngineCamera.h>
 
+void FireKirby::AttackReadyStart()
+{
+	ChangeAnimationState("AttackReady");
+}
+
+void FireKirby::AttackStart()
+{
+	ChangeAnimationState("Attack");
+}
+
 void FireKirby::JumpUpdate(float _Delta)
 {
 	Kirby::JumpUpdate(_Delta);

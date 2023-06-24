@@ -144,7 +144,7 @@ protected:
 	void DamageStart();
 	void DamageLandStart();
 	virtual void AttackReadyStart();
-	void AttackStart();
+	virtual void AttackStart();
 	void AttackToIdleStart();
 	void KeepStart();
 	void KeepIdleStart();

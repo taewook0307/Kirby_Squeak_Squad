@@ -13,6 +13,11 @@ void TornadoKirby::AttackReadyStart()
 	AddPos(float4::UP);
 }
 
+void TornadoKirby::AttackStart()
+{
+	ChangeAnimationState("Attack");
+}
+
 void TornadoKirby::JumpUpdate(float _Delta)
 {
 	Kirby::JumpUpdate(_Delta);

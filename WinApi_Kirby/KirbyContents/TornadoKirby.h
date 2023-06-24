@@ -21,6 +21,7 @@ protected:
 	void ChangeAnimationState(const std::string& _StateName) override;
 
 	void AttackReadyStart() override;
+	void AttackStart() override;
 
 	void JumpUpdate(float _Delta) override;
 	void JumpToDropUpdate(float _Delta) override;

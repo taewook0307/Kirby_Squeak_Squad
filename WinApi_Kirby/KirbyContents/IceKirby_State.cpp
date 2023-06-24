@@ -9,6 +9,16 @@
 #include <GameEngineCore/GameEngineLevel.h>
 #include <GameEngineCore/GameEngineCamera.h>
 
+void IceKirby::AttackReadyStart()
+{
+	ChangeAnimationState("AttackReady");
+}
+
+void IceKirby::AttackStart()
+{
+	ChangeAnimationState("Attack");
+}
+
 void IceKirby::JumpUpdate(float _Delta)
 {
 	Kirby::JumpUpdate(_Delta);
