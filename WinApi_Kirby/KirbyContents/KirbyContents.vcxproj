@@ -248,6 +248,7 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="FireKirby_SoundEffect.cpp" />
     <ClCompile Include="FireKirby_State.cpp" />
     <ClCompile Include="FireMonster.cpp">
       <SubType>
@@ -274,6 +275,7 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="IceKirbySoundEffect.cpp" />
     <ClCompile Include="IceKirby_State.cpp" />
     <ClCompile Include="IceMonster.cpp">
       <SubType>
@@ -325,6 +327,7 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="SparkKirby_SoundEffect.cpp" />
     <ClCompile Include="SparkKirby_State.cpp" />
     <ClCompile Include="SparkMonster.cpp">
       <SubType>
@@ -343,6 +346,7 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="TornadoKirby_SoundEffect.cpp" />
     <ClCompile Include="TornadoKirby_State.cpp" />
     <ClCompile Include="TornadoMonster.cpp">
       <SubType>

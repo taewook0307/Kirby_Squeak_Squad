@@ -72,9 +72,6 @@
     <ClInclude Include="BaseActor.h">
       <Filter>Global</Filter>
     </ClInclude>
-    <ClInclude Include="IceObject.h">
-      <Filter>Player\Form\Ice</Filter>
-    </ClInclude>
     <ClInclude Include="BossMonster.h">
       <Filter>Monster\Boss</Filter>
     </ClInclude>
@@ -113,6 +110,9 @@
     </ClInclude>
     <ClInclude Include="Obstacle.h">
       <Filter>Level\Obstacle</Filter>
+    </ClInclude>
+    <ClInclude Include="IceObject.h">
+      <Filter>Player\Form\Ice\IceObject</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -231,9 +231,6 @@
     <ClCompile Include="Kirby_Damage_State.cpp">
       <Filter>Player</Filter>
     </ClCompile>
-    <ClCompile Include="IceObject.cpp">
-      <Filter>Player\Form\Ice</Filter>
-    </ClCompile>
     <ClCompile Include="BossMonster.cpp">
       <Filter>Monster\Boss</Filter>
     </ClCompile>
@@ -293,6 +290,21 @@
     </ClCompile>
     <ClCompile Include="Kirby_SoundEffect.cpp">
       <Filter>Player</Filter>
+    </ClCompile>
+    <ClCompile Include="FireKirby_SoundEffect.cpp">
+      <Filter>Player\Form\Fire</Filter>
+    </ClCompile>
+    <ClCompile Include="IceKirbySoundEffect.cpp">
+      <Filter>Player\Form\Ice</Filter>
+    </ClCompile>
+    <ClCompile Include="IceObject.cpp">
+      <Filter>Player\Form\Ice\IceObject</Filter>
+    </ClCompile>
+    <ClCompile Include="SparkKirby_SoundEffect.cpp">
+      <Filter>Player\Form\Spark</Filter>
+    </ClCompile>
+    <ClCompile Include="TornadoKirby_SoundEffect.cpp">
+      <Filter>Player\Form\Tornado</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -355,6 +367,9 @@
     </Filter>
     <Filter Include="Level\Obstacle">
       <UniqueIdentifier>{8a4f2e5b-79b1-42fd-91f2-a63169e08427}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Player\Form\Ice\IceObject">
+      <UniqueIdentifier>{db2f313f-787a-43d3-ae75-39da17a408e4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

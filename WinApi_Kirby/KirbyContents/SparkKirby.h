@@ -27,6 +27,8 @@ protected:
 	void JumpToDropUpdate(float _Delta) override;
 	void DropUpdate(float _Delta) override;
 	void AttackUpdate(float _Delta) override;
+
+	void SoundEffectLoad() override;
 private:
 	void Start() override;
 };

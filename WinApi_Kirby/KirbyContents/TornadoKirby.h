@@ -28,6 +28,8 @@ protected:
 	void DropUpdate(float _Delta) override;
 	void AttackUpdate(float _Delta) override;
 	void AttackToIdleUpdate(float _Delta) override;
+
+	void SoundEffectLoad() override;
 private:
 	void Start() override;
 };
