@@ -5,6 +5,7 @@
 
 #include <math.h>
 #include <GameEnginePlatform/GameEngineWindow.h>
+#include <GameEnginePlatform/GameEngineSound.h>
 #include <GameEnginePlatform/GameEngineInput.h>
 #include <GameEngineCore/GameEngineRenderer.h>
 #include <GameEngineCore/GameEngineLevel.h>
@@ -15,6 +16,7 @@ void Kirby::DamageStart()
 {
 	NoDamage = true;
 	ChangeAnimationState("Damage");
+	GameEngineSound::SoundPlay("Damage.wav");
 	SetGravityVector(float4::UP * JumpPower * 0.5f);
 }
 
@@ -51,17 +53,15 @@ void Kirby::DamageUpdate(float _Delta)
 	if (DamageDirPos.X < 0.0f)
 	{
 		Dir = ActorDir::Right;
-		MovePos = float4::LEFT * Speed * 0.5f * _Delta;
+		MovePos = float4::LEFT * Speed * 0.7f * _Delta;
 		CheckPos = LEFTBOTCHECKPOS;
 	}
 	else
 	{
 		Dir = ActorDir::Left;
-		MovePos = float4::RIGHT * Speed * 0.5f * _Delta;
+		MovePos = float4::RIGHT * Speed * 0.7f * _Delta;
 		CheckPos = RIGHTBOTCHECKPOS;
 	}
-
-	ObstacleCheck(MovePos);
 
 	unsigned int XColor = GetGroundColor(EMPTYCOLOR, CheckPos);
 

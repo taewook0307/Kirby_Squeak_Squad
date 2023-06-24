@@ -33,7 +33,8 @@ void FirstStageLevel::Start()
 	Stage = CreateActor<Ground>(UpdateOrder::Player);
 	Stage->GroundInit("FirstStage", "FirstStageBitMap.Bmp");
 
-	LevelMonster = CreateActor<SparkMonster>(UpdateOrder::Monster);
+	LevelMonster1 = CreateActor<Monster>(UpdateOrder::Monster);
+	LevelMonster2 = CreateActor<SparkMonster>(UpdateOrder::Monster);
 }
 
 void FirstStageLevel::Update(float _Delta)
@@ -81,7 +82,10 @@ void FirstStageLevel::LevelStart(GameEngineLevel* _PrevLevel)
 	GetMainCamera()->SetPos(float4::ZERO);
 
 	{
-		LevelMonster->SetPos({ 2500.0f, 592.0f });
-		LevelMonster->SetGroundBitMap("FirstStageBitMap.Bmp");
+		LevelMonster1->SetPos({ 2000.0f, 592.0f });
+		LevelMonster1->SetGroundBitMap("FirstStageBitMap.Bmp");
+
+		LevelMonster2->SetPos({ 2500.0f, 592.0f });
+		LevelMonster2->SetGroundBitMap("FirstStageBitMap.Bmp");
 	}
 }

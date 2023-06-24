@@ -39,7 +39,7 @@ void Kirby::FlyToLandStart()
 void Kirby::FlyToTurnUpStart()
 {
 	ChangeAnimationState("FlyToTurnUp");
-	SetGravityVector(float4::UP * FlyPower);
+	SetGravityVector(float4::UP * JumpPower * 0.5f);
 }
 
 void Kirby::FlyToTurnLandStart()

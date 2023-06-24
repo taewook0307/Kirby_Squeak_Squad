@@ -30,9 +30,9 @@ private:
 
 	class BackGround* Back = nullptr;
 
-	Monster* LevelMonster = nullptr;
+	Monster* LevelMonster1 = nullptr;
+	Monster* LevelMonster2 = nullptr;
+	// Monster* LevelMonster = nullptr;
 
 	LifeCountPlusItem* LevelLifeItem = nullptr;
-
-	std::list<Monster*> AllLevelMonster;
 };

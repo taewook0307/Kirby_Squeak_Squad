@@ -25,6 +25,10 @@ void Kirby::SoundEffectLoad()
 	{
 		GameEngineSound::SoundLoad(SoundPath.PlusFilePath("Change.wav"));
 	}
+	if (nullptr == GameEngineSound::FindSound("Damage.wav"))
+	{
+		GameEngineSound::SoundLoad(SoundPath.PlusFilePath("Damage.wav"));
+	}
 	if (nullptr == GameEngineSound::FindSound("Fly.wav"))
 	{
 		GameEngineSound::SoundLoad(SoundPath.PlusFilePath("Fly.wav"));
