@@ -27,10 +27,6 @@ public:
 	static const float4 UP;
 	static const float4 DOWN;
 
-	// 실수는 기본적으로 == 이 거의 불가능하다. 
-	// 해도 정확하지 않는다. 실수를 처리하는 방식이 애초에 정확하지 않기 때문이다.
-	// 부동소수점 계산방식은 기본적으로 오차를 가지고 있고
-	// + - 등을 할때 여러분들의 생각과는 다른 값이 존재할 가능성이 높다. 
 	float X = 0.0f;
 	float Y = 0.0f;
 	float Z = 0.0f;
@@ -262,6 +258,18 @@ public:
 
 	// GetUnitVectorFromDeg(45)
 
+	static float4 LerpClimp(const float4& Start, const float4& _End, float _Ratio)
+	{
+
+		if (1.0f <= _Ratio)
+		{
+			_Ratio = 1.0f;
+		}
+
+		return (Start * (1.0f - _Ratio)) + (_End * _Ratio);
+	}
+
+
 	static float4 GetUnitVectorFromDeg(const float _Degree)
 	{
 		// 90 => 1.57
@@ -283,8 +291,8 @@ public:
 class GameEngineRect
 {
 public:
-	float4 Scale;
 	float4 Pos;
+	float4 Scale;
 
 public:
 	float4 CenterLeftTop()

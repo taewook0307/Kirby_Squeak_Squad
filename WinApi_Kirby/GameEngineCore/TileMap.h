@@ -27,13 +27,13 @@ public:
 
 	bool MoveTile(int X1, int Y1, int X2, int Y2, float4 _TilePos);
 
-	void SetTile(int X, int Y, int _Index, float4 _TilePos = float4::ZERO, bool _IsImageSize = false);
+	// A위치에 B위치로 가려고 하는것.
+	// 서서히 움직여서 목적지에 도달시키는 기능.
+	bool LerpTile(int X1, int Y1, int X2, int Y2, float4 _TilePos);
 
-	void SetTile(float4 _Pos, int _Index, float4 _TilePos = float4::ZERO, bool _IsImageSize = false);
+	GameEngineRenderer* SetTile(int X, int Y, int _Index, float4 _TilePos = float4::ZERO, bool _IsImageSize = false);
 
-	void DeathTile(float4 _Pos);
-
-	void DeathTile(int X, int Y);
+	GameEngineRenderer* SetTile(float4 _Pos, int _Index, float4 _TilePos = float4::ZERO, bool _IsImageSize = false);
 
 	bool IsOver(int X, int Y);
 
@@ -41,9 +41,38 @@ public:
 
 	float4 PosToIndex(float4 _Pos);
 
+	void DeathTile(float4 _Pos);
+
+	void DeathTile(int X, int Y);
+
 	void Update(float _DeltaTime) override;
 
+	float4 GetTileSize()
+	{
+		return TileSize;
+	}
+
+	bool IsLerpMove()
+	{
+		return nullptr != LerpTileRenderer;
+	}
+
+	void SetLerpSpeed(float _Speed)
+	{
+		LerpSpeed = _Speed;
+	}
+
 protected:
+	float LerpSpeed = 5.0f;
+
+	GameEngineRenderer* LerpTileRenderer;
+	// 보통 타일이나 턴제 게임에서 사용하게 된다.
+	float4 StartPos;
+	float4 EndPos;
+	float4 LerpTilePos;
+	float LerpTime = 0.0f;
+
+
 
 private:
 	int TileX = 0;

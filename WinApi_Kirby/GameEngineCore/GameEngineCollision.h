@@ -175,9 +175,16 @@ public:
 		CollisionRenderValue = false;
 	}
 
+	void IsUIOn()
+	{
+		IsUI = true;
+	}
+
 protected:
 
 private:
+	bool IsUI = false;
+
 	CollisionType ColType = CollisionType::Rect;
 
 	bool CollisionRenderValue = true;

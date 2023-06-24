@@ -348,7 +348,10 @@ void GameEngineCollision::DebugRender()
 
 	CollisionData Data = GetCollisionData();
 
-	Data.Pos -= GetActor()->GetLevel()->GetMainCamera()->GetPos();
+	if (false == IsUI)
+	{
+		Data.Pos -= GetActor()->GetLevel()->GetMainCamera()->GetPos();
+	}
 
 
 	GameEngineWindowTexture* BackBuffer = GameEngineWindow::MainWindow.GetBackBuffer();
