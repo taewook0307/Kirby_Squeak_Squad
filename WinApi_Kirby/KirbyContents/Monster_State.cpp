@@ -129,12 +129,12 @@ void Monster::DamageUpdate(float _Delta)
 
 	if (ActorDir::Left == DeathDir)
 	{
-		MovePos = float4::LEFT * Speed * 0.5f * _Delta;
+		MovePos = float4::LEFT * Speed * 0.7f * _Delta;
 		CheckPos = LEFTCHECKPOS;
 	}
 	else
 	{
-		MovePos = float4::RIGHT * Speed * 0.5f * _Delta;
+		MovePos = float4::RIGHT * Speed * 0.7f * _Delta;
 		CheckPos = RIGHTCHECKPOS;
 	}
 

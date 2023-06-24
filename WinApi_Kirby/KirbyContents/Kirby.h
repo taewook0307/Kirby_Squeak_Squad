@@ -79,6 +79,12 @@ public:
 		return;
 	}
 
+	void ChangeForm()
+	{
+		ChangeState(KirbyState::Change);
+		return;
+	}
+
 	void ClearForm()
 	{
 		ChangeState(KirbyState::Change);
@@ -105,6 +111,15 @@ public:
 		return ChangeBackGroundEffect;
 	}
 
+	void ChangeSoundOn()
+	{
+		ChangeSound = true;
+	}
+
+	void ChangeSoundOff()
+	{
+		ChangeSound = false;
+	}
 protected:
 	virtual void StateUpdate(float _Delta);
 	virtual void ChangeState(KirbyState _State);
@@ -235,6 +250,8 @@ protected:
 
 	void SoundEffectLoad();
 
+	bool AlphaCheck = false;
+	bool ChangeSound = true;
 private:
 	int Count = 0;
 

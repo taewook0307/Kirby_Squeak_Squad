@@ -3,6 +3,7 @@
 #include "KirbyGameEnum.h"
 
 #include <GameEngineBase/GameEngineTime.h>
+#include <GameEnginePlatform/GameEngineSound.h>
 #include <GameEnginePlatform/GameEngineInput.h>
 #include <GameEngineCore/GameEngineLevel.h>
 #include <GameEngineCore/GameEngineRenderer.h>
@@ -160,6 +161,10 @@ void FormKirby::ChangeState(KirbyState _State)
 void FormKirby::ChangeStart()
 {
 	ChangeAnimationState("Change");
+	if (true == ChangeSound)
+	{
+		GameEngineSound::SoundPlay("Change.wav");
+	}
 	ChangeBackGroundEffect = GetLevel()->CreateActor<TranslucentBlock>(UpdateOrder::PlayUI);
 }
 

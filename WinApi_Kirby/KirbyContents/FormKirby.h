@@ -22,7 +22,6 @@ protected:
 
 	void ChangeStart() override;
 	void ChangeUpdate(float _Delta) override;
-
 private:
 };
 

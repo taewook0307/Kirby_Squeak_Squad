@@ -99,10 +99,15 @@ void SparkKirby::Start()
 		AttackCollision->SetCollisionPos(BODYCOLLISIONPOS);
 		AttackCollision->SetCollisionScale(SPARKATTACKCOLLISIONSCALE);
 		AttackCollision->SetCollisionType(CollisionType::Rect);
+
+		SlideCollision = CreateCollision(CollisionOrder::Attack);
+		SlideCollision->SetCollisionScale(SLIDECOLLISIONSCALE);
+		SlideCollision->SetCollisionType(CollisionType::Rect);
 	}
 
 	AttackCollision->Off();
-	ChangeState(KirbyState::Change);
+	SlideCollision->Off();
+	ChangeState(KirbyState::Idle);
 }
 
 void SparkKirby::ChangeAnimationState(const std::string& _StateName)

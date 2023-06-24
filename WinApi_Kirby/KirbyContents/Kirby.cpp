@@ -143,10 +143,23 @@ void Kirby::Update(float _Delta)
 	if (true == NoDamage)
 	{
 		NoDamageTimer -= _Delta;
+
+		if (false == AlphaCheck && "Change" != CurState)
+		{
+			MainRenderer->SetAlpha(50);
+			AlphaCheck = true;
+		}
+		else if(true == AlphaCheck && "Change" != CurState)
+		{
+			MainRenderer->SetAlpha(255);
+			AlphaCheck = false;
+		}
 	}
 
 	if (NoDamageTimer < 0.0f)
 	{
+		MainRenderer->SetAlpha(255);
+		AlphaCheck = false;
 		NoDamage = false;
 		NoDamageTimer = NODAMAGETIMERVALUE;
 	}

@@ -128,6 +128,7 @@ void SubLevel::FormChange(const std::string& _BitMapFileName)
 		SavePos = LevelPlayer->GetPos();
 		LevelPlayer->Death();
 		LevelPlayer = CreateActor<IceKirby>(UpdateOrder::Player);
+		LevelPlayer->ChangeForm();
 		LevelPlayer->SetPos(SavePos);
 		LevelPlayer->SetGroundBitMap(_BitMapFileName);
 	}
@@ -142,6 +143,7 @@ void SubLevel::FormChange(const std::string& _BitMapFileName)
 		SavePos = LevelPlayer->GetPos();
 		LevelPlayer->Death();
 		LevelPlayer = CreateActor<SparkKirby>(UpdateOrder::Player);
+		LevelPlayer->ChangeForm();
 		LevelPlayer->SetPos(SavePos);
 		LevelPlayer->SetGroundBitMap(_BitMapFileName);
 	}
@@ -156,6 +158,7 @@ void SubLevel::FormChange(const std::string& _BitMapFileName)
 		SavePos = LevelPlayer->GetPos();
 		LevelPlayer->Death();
 		LevelPlayer = CreateActor<FireKirby>(UpdateOrder::Player);
+		LevelPlayer->ChangeForm();
 		LevelPlayer->SetPos(SavePos);
 		LevelPlayer->SetGroundBitMap(_BitMapFileName);
 	}
@@ -170,6 +173,7 @@ void SubLevel::FormChange(const std::string& _BitMapFileName)
 		SavePos = LevelPlayer->GetPos();
 		LevelPlayer->Death();
 		LevelPlayer = CreateActor<TornadoKirby>(UpdateOrder::Player);
+		LevelPlayer->ChangeForm();
 		LevelPlayer->SetPos(SavePos);
 		LevelPlayer->SetGroundBitMap(_BitMapFileName);
 	}
@@ -180,6 +184,7 @@ void SubLevel::FormChange(const std::string& _BitMapFileName)
 		SavePos = LevelPlayer->GetPos();
 		LevelPlayer->Death();
 		LevelPlayer = CreateActor<Kirby>(UpdateOrder::Player);
+		LevelPlayer->ChangeForm();
 		LevelPlayer->SetPos(SavePos);
 		LevelPlayer->SetGroundBitMap(_BitMapFileName);
 		LevelPlayer->ClearForm();

@@ -4,7 +4,7 @@
 #include <GameEngineCore/GameEngineActor.h>
 #include <GameEngineCore/GameEngineCollision.h>
 
-#define GRAVITYPOWER 500.0f
+#define GRAVITYPOWER 1100.0f
 #define EMPTYCOLOR RGB(255,255,255)
 #define DOORCOLOR RGB(0,0,255)
 #define FLOORCOLOR RGB(0,0,0)

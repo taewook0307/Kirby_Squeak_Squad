@@ -20,7 +20,7 @@ void BaseActor::Gravity(float _Delta)
 		return;
 	}
 
-	GravityVector += float4::DOWN * GravityAcceleration * _Delta;
+	GravityVector += float4::DOWN * GravityAcceleration * 2.0f * _Delta;
 
 	AddPos(GravityVector * _Delta);
 }

@@ -106,10 +106,15 @@ void IceKirby::Start()
 		}
 		AttackCollision->SetCollisionScale(ICEATTACKCOLLISIONSCALE);
 		AttackCollision->SetCollisionType(CollisionType::Rect);
+
+		SlideCollision = CreateCollision(CollisionOrder::Attack);
+		SlideCollision->SetCollisionScale(SLIDECOLLISIONSCALE);
+		SlideCollision->SetCollisionType(CollisionType::Rect);
 	}
 
 	AttackCollision->Off();
-	ChangeState(KirbyState::Change);
+	SlideCollision->Off();
+	ChangeState(KirbyState::Idle);
 }
 
 void IceKirby::ChangeAnimationState(const std::string& _StateName)
