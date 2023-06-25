@@ -1,6 +1,13 @@
 #include "SparkMonster.h"
 
+#include <GameEnginePlatform/GameEngineSound.h>
 #include <GameEngineCore/GameEngineRenderer.h>
+
+void SparkMonster::AttackStart()
+{
+	GameEngineSound::SoundPlay("Spark.wav");
+	ChangeAnimationState("Attack");
+}
 
 void SparkMonster::IdleUpdate(float _Delta)
 {

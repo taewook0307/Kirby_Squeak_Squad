@@ -17,6 +17,8 @@ FireMonster::~FireMonster()
 
 void FireMonster::Start()
 {
+	SoundEffectLoad();
+
 	if (ResourcesManager::GetInst().FindSprite("Right_FireEnermy.Bmp") == nullptr && ResourcesManager::GetInst().FindSprite("Left_FireEnermy.Bmp") == nullptr)
 	{
 		GameEnginePath FilePath;

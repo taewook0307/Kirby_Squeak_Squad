@@ -50,16 +50,15 @@ void SparkKirby::DropUpdate(float _Delta)
 void SparkKirby::AttackUpdate(float _Delta)
 {
 	DirCheck();
+	KirbyGravity(_Delta);
 
 	AttackCollision->On();
 	BodyCollision->Off();
 
-	unsigned int Color = GetGroundColor(EMPTYCOLOR);
+ 	unsigned int Color = GetGroundColor(EMPTYCOLOR);
 
 	if (EMPTYCOLOR == Color || DOORCOLOR == Color)
 	{
-		Gravity(_Delta);
-
 		float4 MovePos = float4::ZERO;
 		float4 CheckPos = float4::ZERO;
 
@@ -67,28 +66,20 @@ void SparkKirby::AttackUpdate(float _Delta)
 		{
 			MovePos = { -Speed * _Delta, 0.0f };
 			CheckPos = LEFTBOTCHECKPOS;
-
-			unsigned int Color = GetGroundColor(EMPTYCOLOR, CheckPos);
-
-			if (EMPTYCOLOR == Color || DOORCOLOR == Color)
-			{
-				AddPos(MovePos);
-				CameraMove(MovePos);
-			}
 		}
 
 		if (true == GameEngineInput::IsPress('D') && Dir == ActorDir::Right)
 		{
 			MovePos = { Speed * _Delta, 0.0f };
 			CheckPos = RIGHTBOTCHECKPOS;
+		}
 
-			unsigned int Color = GetGroundColor(EMPTYCOLOR, CheckPos);
+		unsigned int Color = GetGroundColor(EMPTYCOLOR, CheckPos);
 
-			if (EMPTYCOLOR == Color || DOORCOLOR == Color)
-			{
-				AddPos(MovePos);
-				CameraMove(MovePos);
-			}
+		if (EMPTYCOLOR == Color || DOORCOLOR == Color)
+		{
+			AddPos(MovePos);
+			CameraMove(MovePos);
 		}
 
 		if (true == GameEngineInput::IsUp('C'))
@@ -102,21 +93,19 @@ void SparkKirby::AttackUpdate(float _Delta)
 	}
 	else
 	{
-		GravityReset();
-	}
-
-	if (true == GameEngineInput::IsUp('C'))
-	{
-		AttackCollision->Off();
-		BodyCollision->On();
-
-		if (true == GameEngineInput::IsPress('A') || true == GameEngineInput::IsPress('D'))
+		if (true == GameEngineInput::IsUp('C'))
 		{
-			ChangeState(KirbyState::Walk);
+			AttackCollision->Off();
+			BodyCollision->On();
+
+			if (true == GameEngineInput::IsPress('A') || true == GameEngineInput::IsPress('D'))
+			{
+				ChangeState(KirbyState::Walk);
+				return;
+			}
+
+			ChangeState(KirbyState::AttackToIdle);
 			return;
 		}
-
-		ChangeState(KirbyState::AttackToIdle);
-		return;
 	}
 }

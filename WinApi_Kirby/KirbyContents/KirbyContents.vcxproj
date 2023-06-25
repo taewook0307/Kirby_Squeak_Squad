@@ -254,6 +254,7 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="FIreMonster_SoundEffect.cpp" />
     <ClCompile Include="FireMonster_State.cpp" />
     <ClCompile Include="FirstStageLevel.cpp">
       <SubType>
@@ -281,6 +282,7 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="IceMonster_SoundEffect.cpp" />
     <ClCompile Include="IceMonster_State.cpp" />
     <ClCompile Include="IceObject.cpp">
       <SubType>
@@ -314,6 +316,7 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="Monster_SoundEffect.cpp" />
     <ClCompile Include="Monster_State.cpp" />
     <ClCompile Include="Obstacle.cpp">
       <SubType>
@@ -333,6 +336,7 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="SparkMonster_SoundEffect.cpp" />
     <ClCompile Include="SparkMonster_State.cpp" />
     <ClCompile Include="SubLevel.cpp">
       <SubType>
@@ -352,6 +356,7 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="TornadoMonster_SoundEffect.cpp" />
     <ClCompile Include="TornadoMonster_State.cpp" />
     <ClCompile Include="TranslucentBlock.cpp">
       <SubType>

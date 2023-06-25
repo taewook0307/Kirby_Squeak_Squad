@@ -1,7 +1,14 @@
 #include "IceMonster.h"
 
 #include <math.h>
+#include <GameEnginePlatform/GameEngineSound.h>
 #include <GameEngineCore/GameEngineRenderer.h>
+
+void IceMonster::AttackStart()
+{
+	GameEngineSound::SoundPlay("Spark.wav");
+	ChangeAnimationState("Attack");
+}
 
 void IceMonster::IdleUpdate(float _Delta)
 {

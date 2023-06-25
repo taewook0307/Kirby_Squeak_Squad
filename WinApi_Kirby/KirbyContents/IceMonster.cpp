@@ -17,6 +17,8 @@ IceMonster::~IceMonster()
 
 void IceMonster::Start()
 {
+	SoundEffectLoad();
+
 	if (ResourcesManager::GetInst().FindSprite("Right_IceEnermy.Bmp") == nullptr && ResourcesManager::GetInst().FindSprite("Left_IceEnermy.Bmp") == nullptr)
 	{
 		GameEnginePath FilePath;

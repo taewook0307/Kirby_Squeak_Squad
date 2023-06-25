@@ -1,7 +1,14 @@
 #include "TornadoMonster.h"
 
 #include <math.h>
+#include <GameEnginePlatform/GameEngineSound.h>
 #include <GameEngineCore/GameEngineRenderer.h>
+
+void TornadoMonster::AttackStart()
+{
+	GameEngineSound::SoundPlay("Tornado.wav");
+	ChangeAnimationState("Attack");
+}
 
 void TornadoMonster::IdleUpdate(float _Delta)
 {

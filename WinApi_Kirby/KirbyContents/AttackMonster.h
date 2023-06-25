@@ -18,7 +18,7 @@ public:
 protected:
 	void StateUpdate(float _Delta);
 	void ChangeState(MonsterState _State);
-	void AttackStart();
+	virtual void AttackStart();
 
 	virtual void AttackUpdate(float _Delta);
 

@@ -2,6 +2,7 @@
 
 #include <GameEnginePlatform/GameEngineWindow.h>
 #include <GameEnginePlatform/GameEngineInput.h>
+#include <GameEnginePlatform/GameEngineSound.h>
 #include <GameEngineCore/GameEngineRenderer.h>
 
 void Monster::IdleStart()
@@ -21,11 +22,13 @@ void Monster::InhaleStart()
 
 void Monster::DamageStart()
 {
+	GameEngineSound::SoundPlay("Damage.wav");
 	ChangeAnimationState("Damage");
 }
 
 void Monster::DeathStart()
 {
+	GameEngineSound::SoundPlay("MonsterDeath.wav");
 	ChangeAnimationState("Death");
 }
 

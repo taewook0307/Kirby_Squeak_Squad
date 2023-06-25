@@ -50,6 +50,8 @@ protected:
 
 	virtual void ChangeAnimationState(const std::string& _StateName);
 
+	virtual void SoundEffectLoad();
+
 	MonsterState State = MonsterState::Max;
 	std::string CurState = "";
 	ActorDir Dir = ActorDir::Left;

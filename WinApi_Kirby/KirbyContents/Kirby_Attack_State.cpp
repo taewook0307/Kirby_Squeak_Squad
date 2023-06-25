@@ -37,7 +37,8 @@ void Kirby::KeepStart()
 
 void Kirby::AttackReadyUpdate(float _Delta)
 {
-	
+	KirbyGravity(_Delta);
+
 	unsigned int Color = GetGroundColor(EMPTYCOLOR);
 
 	if (EMPTYCOLOR == Color || DOORCOLOR == Color)
@@ -64,6 +65,7 @@ void Kirby::AttackReadyUpdate(float _Delta)
 void Kirby::AttackUpdate(float _Delta)
 {
 	DirCheck();
+	KirbyGravity(_Delta);
 
 	AttackCollision->On();
 
@@ -172,6 +174,8 @@ void Kirby::AttackUpdate(float _Delta)
 
 void Kirby::AttackToIdleUpdate(float _Delta)
 {
+	KirbyGravity(_Delta);
+
 	if (StarAttack == nullptr && KeepType == MonsterType::Normal)
 	{
 		StarAttack = GetLevel()->CreateActor<AttackObject>(UpdateOrder::PlayerObject);

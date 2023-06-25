@@ -2,6 +2,13 @@
 
 #include <math.h>
 #include <GameEngineCore/GameEngineRenderer.h>
+#include <GameEnginePlatform/GameEngineSound.h>
+
+void FireMonster::AttackStart()
+{
+	GameEngineSound::SoundPlay("Fire.wav");
+	ChangeAnimationState("Attack");
+}
 
 void FireMonster::IdleUpdate(float _Delta)
 {

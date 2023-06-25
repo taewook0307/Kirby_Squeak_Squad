@@ -26,6 +26,9 @@ protected:
 	GameEngineCollision* AttackCollision = nullptr;
 
 	void ChangeAnimationState(const std::string& _StateName) override;
+	void SoundEffectLoad() override;
+
+	void AttackStart() override;
 
 	void IdleUpdate(float _Delta) override;
 	void WalkUpdate(float _Delta) override;

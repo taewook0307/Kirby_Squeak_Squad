@@ -25,16 +25,16 @@
       <Filter>Monster</Filter>
     </ClInclude>
     <ClInclude Include="FireMonster.h">
-      <Filter>Monster\Fire</Filter>
+      <Filter>Monster\AttackMonster\Fire</Filter>
     </ClInclude>
     <ClInclude Include="IceMonster.h">
-      <Filter>Monster\Ice</Filter>
+      <Filter>Monster\AttackMonster\Ice</Filter>
     </ClInclude>
     <ClInclude Include="SparkMonster.h">
-      <Filter>Monster\Spark</Filter>
+      <Filter>Monster\AttackMonster\Spark</Filter>
     </ClInclude>
     <ClInclude Include="TornadoMonster.h">
-      <Filter>Monster\Tornado</Filter>
+      <Filter>Monster\AttackMonster\Tornado</Filter>
     </ClInclude>
     <ClInclude Include="FireKirby.h">
       <Filter>Player\Form\Fire</Filter>
@@ -65,9 +65,6 @@
     </ClInclude>
     <ClInclude Include="AttackObject.h">
       <Filter>Player</Filter>
-    </ClInclude>
-    <ClInclude Include="AttackMonster.h">
-      <Filter>Monster</Filter>
     </ClInclude>
     <ClInclude Include="BaseActor.h">
       <Filter>Global</Filter>
@@ -114,6 +111,9 @@
     <ClInclude Include="IceObject.h">
       <Filter>Player\Form\Ice\IceObject</Filter>
     </ClInclude>
+    <ClInclude Include="AttackMonster.h">
+      <Filter>Monster\AttackMonster</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TitleLevel.cpp">
@@ -139,22 +139,22 @@
       <Filter>Monster</Filter>
     </ClCompile>
     <ClCompile Include="FireMonster.cpp">
-      <Filter>Monster\Fire</Filter>
+      <Filter>Monster\AttackMonster\Fire</Filter>
     </ClCompile>
     <ClCompile Include="IceMonster.cpp">
-      <Filter>Monster\Ice</Filter>
+      <Filter>Monster\AttackMonster\Ice</Filter>
     </ClCompile>
     <ClCompile Include="SparkMonster.cpp">
-      <Filter>Monster\Spark</Filter>
+      <Filter>Monster\AttackMonster\Spark</Filter>
     </ClCompile>
     <ClCompile Include="SparkMonster_State.cpp">
-      <Filter>Monster\Spark</Filter>
+      <Filter>Monster\AttackMonster\Spark</Filter>
     </ClCompile>
     <ClCompile Include="TornadoMonster.cpp">
-      <Filter>Monster\Tornado</Filter>
+      <Filter>Monster\AttackMonster\Tornado</Filter>
     </ClCompile>
     <ClCompile Include="IceMonster_State.cpp">
-      <Filter>Monster\Ice</Filter>
+      <Filter>Monster\AttackMonster\Ice</Filter>
     </ClCompile>
     <ClCompile Include="FireKirby.cpp">
       <Filter>Player\Form\Fire</Filter>
@@ -181,7 +181,7 @@
       <Filter>Player\Form\Tornado</Filter>
     </ClCompile>
     <ClCompile Include="TornadoMonster_State.cpp">
-      <Filter>Monster\Tornado</Filter>
+      <Filter>Monster\AttackMonster\Tornado</Filter>
     </ClCompile>
     <ClCompile Include="Kirby.cpp">
       <Filter>Player</Filter>
@@ -205,7 +205,7 @@
       <Filter>Player</Filter>
     </ClCompile>
     <ClCompile Include="FireMonster_State.cpp">
-      <Filter>Monster\Fire</Filter>
+      <Filter>Monster\AttackMonster\Fire</Filter>
     </ClCompile>
     <ClCompile Include="BackGround.cpp">
       <Filter>Global\Scene</Filter>
@@ -221,9 +221,6 @@
     </ClCompile>
     <ClCompile Include="AttackObject.cpp">
       <Filter>Player</Filter>
-    </ClCompile>
-    <ClCompile Include="AttackMonster.cpp">
-      <Filter>Monster</Filter>
     </ClCompile>
     <ClCompile Include="BaseActor.cpp">
       <Filter>Global</Filter>
@@ -306,6 +303,24 @@
     <ClCompile Include="IceKirby_SoundEffect.cpp">
       <Filter>Player\Form\Ice</Filter>
     </ClCompile>
+    <ClCompile Include="AttackMonster.cpp">
+      <Filter>Monster\AttackMonster</Filter>
+    </ClCompile>
+    <ClCompile Include="Monster_SoundEffect.cpp">
+      <Filter>Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="FIreMonster_SoundEffect.cpp">
+      <Filter>Monster\AttackMonster\Fire</Filter>
+    </ClCompile>
+    <ClCompile Include="IceMonster_SoundEffect.cpp">
+      <Filter>Monster\AttackMonster\Ice</Filter>
+    </ClCompile>
+    <ClCompile Include="SparkMonster_SoundEffect.cpp">
+      <Filter>Monster\AttackMonster\Spark</Filter>
+    </ClCompile>
+    <ClCompile Include="TornadoMonster_SoundEffect.cpp">
+      <Filter>Monster\AttackMonster\Tornado</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Level">
@@ -316,18 +331,6 @@
     </Filter>
     <Filter Include="Monster">
       <UniqueIdentifier>{6cfa2133-0f4c-4c27-b86d-213a1eb99fa8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Monster\Spark">
-      <UniqueIdentifier>{94a2439e-a381-419d-acd8-c340bc198d2b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Monster\Ice">
-      <UniqueIdentifier>{f6190281-a3e9-4212-b545-9391b2e774b4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Monster\Fire">
-      <UniqueIdentifier>{e6083353-6da0-4677-84d4-80063aa50f90}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Monster\Tornado">
-      <UniqueIdentifier>{b8c47b16-cb58-490f-8de0-92cfd25a8fe5}</UniqueIdentifier>
     </Filter>
     <Filter Include="Global\Scene">
       <UniqueIdentifier>{3b8927b1-9155-45ce-84dd-9b0df5b5626c}</UniqueIdentifier>
@@ -370,6 +373,21 @@
     </Filter>
     <Filter Include="Player\Form\Ice\IceObject">
       <UniqueIdentifier>{db2f313f-787a-43d3-ae75-39da17a408e4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Monster\AttackMonster">
+      <UniqueIdentifier>{584ba599-2a73-4855-8fa6-212a60629513}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Monster\AttackMonster\Spark">
+      <UniqueIdentifier>{94a2439e-a381-419d-acd8-c340bc198d2b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Monster\AttackMonster\Tornado">
+      <UniqueIdentifier>{b8c47b16-cb58-490f-8de0-92cfd25a8fe5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Monster\AttackMonster\Ice">
+      <UniqueIdentifier>{f6190281-a3e9-4212-b545-9391b2e774b4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Monster\AttackMonster\Fire">
+      <UniqueIdentifier>{e6083353-6da0-4677-84d4-80063aa50f90}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

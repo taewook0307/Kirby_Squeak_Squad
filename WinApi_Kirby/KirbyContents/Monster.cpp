@@ -18,6 +18,8 @@ Monster::~Monster()
 
 void Monster::Start()
 {
+	SoundEffectLoad();
+
 	if (ResourcesManager::GetInst().FindSprite("Right_NormalEnermy.Bmp") == nullptr && ResourcesManager::GetInst().FindSprite("Left_NormalEnermy.Bmp") == nullptr)
 	{
 		GameEnginePath FilePath;
