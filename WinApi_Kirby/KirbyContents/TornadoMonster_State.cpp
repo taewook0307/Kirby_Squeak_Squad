@@ -91,8 +91,24 @@ void TornadoMonster::AttackUpdate(float _Delta)
 		float4 PlayerPos = Player->GetPos();
 		float4 MonsterPos = GetPos();
 		float4 MovePos = (PlayerPos - MonsterPos).NormalizeReturn();
+		float4 CheckPos = float4::ZERO;
 
-		AddPos(MovePos * AttackSpeed * _Delta);
+		if (MovePos.X < 0.0f)
+		{
+			CheckPos = LEFTCHECKPOS;
+		}
+		else
+		{
+			CheckPos = RIGHTCHECKPOS;
+		}
+
+		unsigned int Color = GetGroundColor(EMPTYCOLOR, CheckPos);
+
+		if (EMPTYCOLOR == Color && false == BodyCollision->Collision(CollisionOrder::Obstacle, Col, CollisionType::Rect, CollisionType::Rect)
+			|| DOORCOLOR == Color && false == BodyCollision->Collision(CollisionOrder::Obstacle, Col, CollisionType::Rect, CollisionType::Rect))
+		{
+			AddPos(MovePos * AttackSpeed * _Delta);
+		}
 	}
 	else
 	{

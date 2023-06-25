@@ -78,7 +78,8 @@ void FireMonster::WalkUpdate(float _Delta)
 
 	unsigned int Color = GetGroundColor(EMPTYCOLOR, CheckPos);
 
-	if (Color == EMPTYCOLOR || Color == DOORCOLOR)
+	if (EMPTYCOLOR == Color && false == BodyCollision->Collision(CollisionOrder::Obstacle, Col, CollisionType::Rect, CollisionType::Rect)
+		|| DOORCOLOR == Color && false == BodyCollision->Collision(CollisionOrder::Obstacle, Col, CollisionType::Rect, CollisionType::Rect))
 	{
 		AddPos(MovePos);
 	}
@@ -91,14 +92,18 @@ void FireMonster::WalkUpdate(float _Delta)
 		float4 MonsterPos = GetPos();
 		MovePos = (PlayerPos - MonsterPos).NormalizeReturn();
 
-		AddPos(MovePos);
-
-		float Distance = static_cast<float>(fabs((PlayerPos - MonsterPos).X));
-
-		if (Distance < ATTACKDISTANCE)
+		if (EMPTYCOLOR == Color && false == BodyCollision->Collision(CollisionOrder::Obstacle, Col, CollisionType::Rect, CollisionType::Rect)
+			|| DOORCOLOR == Color && false == BodyCollision->Collision(CollisionOrder::Obstacle, Col, CollisionType::Rect, CollisionType::Rect))
 		{
-			ChangeState(MonsterState::Attack);
-			return;
+			AddPos(MovePos);
+
+			float Distance = static_cast<float>(fabs((PlayerPos - MonsterPos).X));
+
+			if (Distance < ATTACKDISTANCE)
+			{
+				ChangeState(MonsterState::Attack);
+				return;
+			}
 		}
 	}
 
