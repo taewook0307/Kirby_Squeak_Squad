@@ -45,7 +45,7 @@ public:
 		this->IsDeathValue = true;
 	}
 
-	virtual bool IsUpdate() 
+	virtual bool IsUpdate()
 	{
 		return true == IsUpdateValue && false == IsDeathValue;
 	}
@@ -71,26 +71,38 @@ public:
 		Order = _Order;
 	}
 
-	float GetLiveTime() 
+	float GetLiveTime()
 	{
 		return LiveTime;
 	}
 
-	void ResetLiveTime() 
+	void ResetLiveTime()
 	{
 		LiveTime = 0.0f;
+	}
+
+	void SetName(std::string _Name)
+	{
+		Name = _Name;
+	}
+
+	std::string GetName()
+	{
+		Name;
 	}
 
 protected:
 
 
 private:
+	std::string Name;
+
 	float LiveTime = 0.0f;
 	int Order = 0;
 	bool IsUpdateValue = true; // 이걸 false로 만들면 됩니다.
 	bool IsDeathValue = false; // 아예 메모리에서 날려버리고 싶어.
 
-	void AddLiveTime(float _DeltaTime) 
+	void AddLiveTime(float _DeltaTime)
 	{
 		LiveTime += _DeltaTime;
 	}
