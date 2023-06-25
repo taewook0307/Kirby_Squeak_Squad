@@ -3,10 +3,19 @@
 #include <math.h>
 #include <GameEngineCore/GameEngineRenderer.h>
 #include <GameEnginePlatform/GameEngineSound.h>
+#include <GameEngineCore/GameEngineLevel.h>
+#include <GameEngineCore/GameEngineCamera.h>
 
 void FireMonster::AttackStart()
 {
-	GameEngineSound::SoundPlay("Fire.wav");
+	float4 CameraPos = GetLevel()->GetMainCamera()->GetPos();
+	if (GetPos().X > CameraPos.X
+		&& GetPos().Y > CameraPos.Y
+		&& GetPos().X <= CameraPos.X + WinScale.X
+		&& GetPos().Y <= CameraPos.Y + WinScale.Y)
+	{
+		GameEngineSound::SoundPlay("Fire.wav");
+	}
 	ChangeAnimationState("Attack");
 }
 
