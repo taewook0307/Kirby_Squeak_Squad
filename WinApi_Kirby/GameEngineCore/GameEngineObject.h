@@ -1,7 +1,9 @@
 #pragma once
+#include <string>
 
 // 설명 : 모든 기본적인 행동을 제안하는 클래스
 // 제안하는 클래스
+
 class GameEngineObject
 {
 	friend class GameEngineLevel;
@@ -81,14 +83,14 @@ public:
 		LiveTime = 0.0f;
 	}
 
-	void SetName(std::string _Name)
+	void SetName(const std::string& _Name)
 	{
 		Name = _Name;
 	}
 
 	std::string GetName()
 	{
-		Name;
+		return Name;
 	}
 
 protected:
