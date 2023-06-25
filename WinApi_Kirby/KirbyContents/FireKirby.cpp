@@ -16,6 +16,7 @@ FireKirby::~FireKirby()
 
 void FireKirby::Start()
 {
+	SoundEffectLoad();
 	if (ResourcesManager::GetInst().FindSprite("Right_FireKirby.Bmp") == nullptr && ResourcesManager::GetInst().FindSprite("Left_FireKirby.Bmp") == nullptr)
 	{
 		GameEnginePath FilePath;

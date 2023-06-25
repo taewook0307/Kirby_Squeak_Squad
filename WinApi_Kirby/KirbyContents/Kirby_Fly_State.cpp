@@ -40,6 +40,7 @@ void Kirby::FlyToTurnUpStart()
 {
 	ChangeAnimationState("FlyToTurnUp");
 	SetGravityVector(float4::UP * JumpPower * 0.5f);
+	GameEngineSound::SoundPlay("Drop.wav");
 }
 
 void Kirby::FlyToTurnLandStart()

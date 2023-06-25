@@ -3,6 +3,7 @@
 
 #include <GameEngineBase/GameEngineTime.h>
 #include <GameEnginePlatform/GameEngineInput.h>
+#include <GameEnginePlatform/GameEngineSound.h>
 #include <GameEngineCore/GameEngineRenderer.h>
 #include <GameEngineCore/GameEngineLevel.h>
 #include <GameEngineCore/GameEngineCamera.h>
@@ -11,11 +12,13 @@ void TornadoKirby::AttackReadyStart()
 {
 	Kirby::AttackReadyStart();
 	AddPos(float4::UP);
+	GameEngineSound::SoundPlay("TornadoStart.wav");
 }
 
 void TornadoKirby::AttackStart()
 {
 	ChangeAnimationState("Attack");
+	GameEngineSound::SoundPlay("Tornado.wav");
 }
 
 void TornadoKirby::JumpUpdate(float _Delta)

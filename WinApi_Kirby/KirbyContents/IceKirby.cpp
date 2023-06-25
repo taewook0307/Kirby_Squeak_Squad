@@ -16,6 +16,7 @@ IceKirby::~IceKirby()
 
 void IceKirby::Start()
 {
+	SoundEffectLoad();
 	if (ResourcesManager::GetInst().FindSprite("Right_IceKirby.Bmp") == nullptr && ResourcesManager::GetInst().FindSprite("Left_IceKirby.Bmp") == nullptr)
 	{
 		GameEnginePath FilePath;

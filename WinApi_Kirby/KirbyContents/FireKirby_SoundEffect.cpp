@@ -9,6 +9,10 @@ void FireKirby::SoundEffectLoad()
 	SoundPath.MoveParentToExistsChild("Resources");
 	SoundPath.MoveChild("Resources\\SoundEffects\\");
 
+	if (nullptr == GameEngineSound::FindSound("Attack.wav"))
+	{
+		GameEngineSound::SoundLoad(SoundPath.PlusFilePath("Attack.wav"));
+	}
 	if (nullptr == GameEngineSound::FindSound("Breathe.wav"))
 	{
 		GameEngineSound::SoundLoad(SoundPath.PlusFilePath("Breathe.wav"));
@@ -25,9 +29,17 @@ void FireKirby::SoundEffectLoad()
 	{
 		GameEngineSound::SoundLoad(SoundPath.PlusFilePath("Damage.wav"));
 	}
+	if (nullptr == GameEngineSound::FindSound("Drop.wav"))
+	{
+		GameEngineSound::SoundLoad(SoundPath.PlusFilePath("Drop.wav"));
+	}
 	if (nullptr == GameEngineSound::FindSound("Fly.wav"))
 	{
 		GameEngineSound::SoundLoad(SoundPath.PlusFilePath("Fly.wav"));
+	}
+	if (nullptr == GameEngineSound::FindSound("Inhale.wav"))
+	{
+		GameEngineSound::SoundLoad(SoundPath.PlusFilePath("Inhale.wav"));
 	}
 	if (nullptr == GameEngineSound::FindSound("Jump.wav"))
 	{
@@ -45,12 +57,16 @@ void FireKirby::SoundEffectLoad()
 	{
 		GameEngineSound::SoundLoad(SoundPath.PlusFilePath("Run.wav"));
 	}
+	if (nullptr == GameEngineSound::FindSound("Slide.wav"))
+	{
+		GameEngineSound::SoundLoad(SoundPath.PlusFilePath("Slide.wav"));
+	}
 	if (nullptr == GameEngineSound::FindSound("Stop.wav"))
 	{
 		GameEngineSound::SoundLoad(SoundPath.PlusFilePath("Stop.wav"));
 	}
-	if (nullptr == GameEngineSound::FindSound("Slide.wav"))
+	if (nullptr == GameEngineSound::FindSound("Fire.wav"))
 	{
-		GameEngineSound::SoundLoad(SoundPath.PlusFilePath("Slide.wav"));
+		GameEngineSound::SoundLoad(SoundPath.PlusFilePath("Fire.wav"));
 	}
 }

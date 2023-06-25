@@ -16,6 +16,7 @@ TornadoKirby::~TornadoKirby()
 
 void TornadoKirby::Start()
 {
+	SoundEffectLoad();
 	if (ResourcesManager::GetInst().FindSprite("Right_TornadoKirby.Bmp") == nullptr && ResourcesManager::GetInst().FindSprite("Left_TornadoKirby.Bmp") == nullptr)
 	{
 		GameEnginePath FilePath;

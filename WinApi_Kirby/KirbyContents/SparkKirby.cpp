@@ -16,6 +16,7 @@ SparkKirby::~SparkKirby()
 
 void SparkKirby::Start()
 {
+	SoundEffectLoad();
 	if (ResourcesManager::GetInst().FindSprite("Right_SparkKirby.Bmp") == nullptr && ResourcesManager::GetInst().FindSprite("Left_SparkKirby.Bmp") == nullptr)
 	{
 		GameEnginePath FilePath;

@@ -3,6 +3,7 @@
 
 #include <GameEngineBase/GameEngineTime.h>
 #include <GameEnginePlatform/GameEngineInput.h>
+#include <GameEnginePlatform/GameEngineSound.h>
 #include <GameEngineCore/GameEngineRenderer.h>
 #include <GameEngineCore/GameEngineLevel.h>
 #include <GameEngineCore/GameEngineCamera.h>
@@ -10,6 +11,7 @@
 void SparkKirby::AttackStart()
 {
 	ChangeAnimationState("Attack");
+	GameEngineSound::SoundPlay("Spark.wav");
 }
 
 void SparkKirby::JumpUpdate(float _Delta)
