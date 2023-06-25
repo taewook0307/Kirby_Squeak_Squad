@@ -321,6 +321,9 @@
     <ClCompile Include="TornadoMonster_SoundEffect.cpp">
       <Filter>Monster\AttackMonster\Tornado</Filter>
     </ClCompile>
+    <ClCompile Include="Boss_SoundEffect.cpp">
+      <Filter>Monster\Boss</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Level">

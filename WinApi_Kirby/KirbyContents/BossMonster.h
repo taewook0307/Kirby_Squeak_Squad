@@ -111,6 +111,8 @@ protected:
 	{
 		BossHp = 140;
 	}
+
+	void SoundEffectLoad() override;
 private:
 	int BossHp = 140;
 	float Speed = 150.0f;

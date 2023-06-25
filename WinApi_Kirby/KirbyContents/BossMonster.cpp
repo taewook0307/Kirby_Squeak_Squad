@@ -23,6 +23,8 @@ BossMonster::~BossMonster()
 
 void BossMonster::Start()
 {
+	SoundEffectLoad();
+
 	if (ResourcesManager::GetInst().FindSprite("Right_Boss.Bmp") == nullptr && ResourcesManager::GetInst().FindSprite("Left_Boss.Bmp") == nullptr)
 	{
 		GameEnginePath FilePath;

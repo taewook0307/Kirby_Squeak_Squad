@@ -248,7 +248,7 @@ protected:
 	bool CheckInputD = false;
 	float CheckInputDTimer = CHECKINPUTTIMERVALUE;
 
-	virtual void SoundEffectLoad();
+	void SoundEffectLoad() override;
 
 	bool AlphaCheck = false;
 	bool ChangeSound = true;

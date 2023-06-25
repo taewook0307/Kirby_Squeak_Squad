@@ -77,3 +77,5 @@ float4 BaseActor::ActorCameraPos()
 {
 	return GetPos() - GetLevel()->GetMainCamera()->GetPos();
 }
+
+void BaseActor::SoundEffectLoad() {}

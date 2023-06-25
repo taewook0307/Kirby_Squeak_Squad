@@ -223,6 +223,7 @@
     <ClCompile Include="Boss_Damage_State.cpp" />
     <ClCompile Include="Boss_Fly_State.cpp" />
     <ClCompile Include="Boss_Jump_State.cpp" />
+    <ClCompile Include="Boss_SoundEffect.cpp" />
     <ClCompile Include="Boss_Summon_State.cpp" />
     <ClCompile Include="CutScene.cpp">
       <SubType>

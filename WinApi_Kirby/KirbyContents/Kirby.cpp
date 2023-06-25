@@ -543,7 +543,16 @@ void Kirby::CameraMove(float4 _MovePos)
 	float4 WinScale = GameEngineWindow::MainWindow.GetScale();
 	float4 BitMapScale = GetGroundBitMap()->GetScale();
 	float4 MovePos = _MovePos;
-	float4 BackGroundScale = BackGround::GetMainBackGround()->GetMainTextureScale();
+	float4 BackGroundScale = float4::ZERO;
+
+	if (nullptr != BackGround::GetMainBackGround())
+	{
+		BackGroundScale = BackGround::GetMainBackGround()->GetMainTextureScale();
+	}
+	else
+	{
+		BackGroundScale = WinScale;
+	}
 
 	float CameraMoveMax = BitMapScale.X - WinScale.X;
 	float BackGroundMoveMax = BitMapScale.X - BackGroundScale.X;

@@ -92,6 +92,7 @@ protected:
 
 	float4 WinScale = GameEngineWindow::MainWindow.GetScale();
 
+	virtual void SoundEffectLoad();
 private:
 	GameEngineWindowTexture* GroundBitMap = nullptr;
 

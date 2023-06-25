@@ -3,11 +3,13 @@
 #include "KirbyGameEnum.h"
 
 #include <GameEnginePlatform/GameEngineWindow.h>
+#include <GameEnginePlatform/GameEngineSound.h>
 #include <GameEngineCore/GameEngineRenderer.h>
 #include <GameEngineCore/GameEngineLevel.h>
 
 void BossMonster::MonsterSummonReadyStart()
 {
+	GameEngineSound::SoundPlay("BossShout.wav");
 	ChangeAnimationState("MonsterSummonReady");
 }
 
@@ -98,6 +100,7 @@ void BossMonster::MonsterSummonUpdate(float _Delta)
 
 	if (true == MainRenderer->IsAnimationEnd())
 	{
+		GameEngineSound::SoundPlay("BossAttack.wav");
 		float4 WinScale = GameEngineWindow::MainWindow.GetScale();
 		Monster* SummonMonster = GetLevel()->CreateActor<Monster>(UpdateOrder::Monster);
 		SummonMonster->SetPos({ WinScale.Half().Half().X, 100.0f });

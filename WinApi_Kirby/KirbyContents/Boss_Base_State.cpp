@@ -2,6 +2,7 @@
 
 #include <GameEngineBase/GameEngineRandom.h>
 #include <GameEnginePlatform/GameEngineInput.h>
+#include <GameEnginePlatform/GameEngineSound.h>
 
 void BossMonster::IdleStart()
 {
@@ -104,6 +105,7 @@ void BossMonster::WalkUpdate(float _Delta)
 
 	if (EMPTYCOLOR == XColor)
 	{
+		GameEngineSound::SoundPlay("BossWalk.wav");
 		AddPos(MovePos);
 	}
 	

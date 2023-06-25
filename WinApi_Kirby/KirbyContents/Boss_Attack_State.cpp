@@ -4,11 +4,13 @@
 #include "KirbyGameEnum.h"
 
 #include <GameEnginePlatform/GameEngineWindow.h>
+#include <GameEnginePlatform/GameEngineSound.h>
 #include <GameEngineCore/GameEngineRenderer.h>
 #include <GameEngineCore/GameEngineLevel.h>
 
 void BossMonster::AttackReadyStart()
 {
+	GameEngineSound::SoundPlay("BossShout.wav");
 	ChangeAnimationState("AttackReady");
 }
 
@@ -112,6 +114,7 @@ void BossMonster::AttackUpdate(float _Delta)
 
 	if (true == MainRenderer->IsAnimationEnd())
 	{
+		GameEngineSound::SoundPlay("BossAttack.wav");
 		BossAttackObject* SummonAttacker = GetLevel()->CreateActor<BossAttackObject>(UpdateOrder::Monster);
 		SummonAttacker->SetPos(GetPos());
 		SummonAttacker->SetGroundBitMap(GetGroundBitMap());

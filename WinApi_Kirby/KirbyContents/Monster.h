@@ -50,7 +50,7 @@ protected:
 
 	virtual void ChangeAnimationState(const std::string& _StateName);
 
-	virtual void SoundEffectLoad();
+	void SoundEffectLoad() override;
 
 	MonsterState State = MonsterState::Max;
 	std::string CurState = "";
