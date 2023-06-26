@@ -4,6 +4,16 @@
 #include <vector>
 #include "GameEngineActor.h"
 
+class LerpTileInfo
+{
+public:
+	GameEngineRenderer* LerpTileRenderer;
+	// 보통 타일이나 턴제 게임에서 사용하게 된다.
+	float4 StartPos;
+	float4 EndPos;
+	float4 LerpTilePos;
+};
+
 // 설명 :
 class GameEngineSprite;
 class TileMap : public GameEngineActor
@@ -54,7 +64,9 @@ public:
 
 	bool IsLerpMove()
 	{
-		return nullptr != LerpTileRenderer;
+
+		return LerpInfos.size() != 0;
+		// return nullptr != LerpTileRenderer;
 	}
 
 	void SetLerpSpeed(float _Speed)
@@ -65,13 +77,14 @@ public:
 protected:
 	float LerpSpeed = 5.0f;
 
-	GameEngineRenderer* LerpTileRenderer;
-	// 보통 타일이나 턴제 게임에서 사용하게 된다.
-	float4 StartPos;
-	float4 EndPos;
-	float4 LerpTilePos;
+	//GameEngineRenderer* LerpTileRenderer;
+	//// 보통 타일이나 턴제 게임에서 사용하게 된다.
+	//float4 StartPos;
+	//float4 EndPos;
+	//float4 LerpTilePos;
 	float LerpTime = 0.0f;
 
+	std::vector<LerpTileInfo> LerpInfos;
 
 
 private:
@@ -81,5 +94,7 @@ private:
 	float4 TileSize;
 	std::string Sprite;
 	std::vector<std::vector<class GameEngineRenderer*>> Tiles;
+
+	bool IsLerpRenderer(GameEngineRenderer* _Renderer);
 };
 

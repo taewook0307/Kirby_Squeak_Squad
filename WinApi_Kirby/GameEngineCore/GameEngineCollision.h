@@ -5,6 +5,10 @@
 #include <map>
 #include <vector>
 
+// Value 없는 맵.
+// 데이터를 저장할 생각이 없다.
+#include <set>
+
 enum class CollisionType
 {
 	Point, // 점
@@ -110,6 +114,28 @@ public:
 	// std::vector<GameEngineCollision*>& _Result 충돌한 애들 여기에 담아줘.
 
 	template<typename EnumType>
+	bool CollisionCallBack(
+		EnumType _Order,
+		CollisionType _ThisType = CollisionType::CirCle,
+		CollisionType _OtherType = CollisionType::CirCle,
+		void(*Enter)(GameEngineCollision* _this, GameEngineCollision* _Other) = nullptr,
+		void(*Stay)(GameEngineCollision* _this, GameEngineCollision* _Other) = nullptr,
+		void(*Exit)(GameEngineCollision* _this, GameEngineCollision* _Other) = nullptr
+	)
+	{
+		return CollisionCallBack(static_cast<int>(_Order), _ThisType, _OtherType, Enter, Stay, Exit);
+	}
+
+	bool CollisionCallBack(
+		int _Order,
+		CollisionType _ThisType = CollisionType::CirCle,
+		CollisionType _OtherType = CollisionType::CirCle,
+		void(*Enter)(GameEngineCollision* _this, GameEngineCollision* _Other) = nullptr,
+		void(*Stay)(GameEngineCollision* _this, GameEngineCollision* _Other) = nullptr,
+		void(*Exit)(GameEngineCollision* _this, GameEngineCollision* _Other) = nullptr
+	);
+
+	template<typename EnumType>
 	bool Collision(EnumType _Order, std::vector<GameEngineCollision*>& _Result
 		, CollisionType _ThisType = CollisionType::CirCle
 		, CollisionType _OtherType = CollisionType::CirCle)
@@ -183,6 +209,10 @@ public:
 protected:
 
 private:
+	// 내가 어떤 애랑 처음충돌했다.
+	// ??? 어떻게 체크할수 있을까?
+	std::set<GameEngineCollision*> ColSet;
+
 	bool IsUI = false;
 
 	CollisionType ColType = CollisionType::Rect;

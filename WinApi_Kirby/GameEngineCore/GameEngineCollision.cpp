@@ -440,3 +440,83 @@ bool GameEngineCollision::CollisionNext(const float4& _NextPos, int _Order, std:
 
 	return Check;
 }
+
+bool GameEngineCollision::CollisionCallBack(
+	int _Order,
+	CollisionType _ThisType,
+	CollisionType _OtherType,
+	void(*Enter)(GameEngineCollision* _this, GameEngineCollision* _Other),
+	void(*Stay)(GameEngineCollision* _this, GameEngineCollision* _Other),
+	void(*Exit)(GameEngineCollision* _this, GameEngineCollision* _Other)
+)
+{
+	if (false == IsUpdate())
+	{
+		return false;
+	}
+
+	std::list<GameEngineCollision*>& OtherCollision = GetActor()->GetLevel()->AllCollision[_Order];
+
+	if (0 == OtherCollision.size())
+	{
+		return false;
+	}
+
+	bool Check = false;
+
+	for (GameEngineCollision* Collision : OtherCollision)
+	{
+		if (nullptr == Collision)
+		{
+			MsgBoxAssert("존재하지 않는 콜리전이 있습니다.");
+			return false;
+		}
+
+		if (false == Collision->IsUpdate())
+		{
+			continue;
+		}
+
+		// 도대체 어느순간에 콜리전은 레벨에 들어가는가?
+		// 언제 관리되는가?
+		// 어떻게 꺼내오는가 ?
+		// Level 
+
+		// 상대랑 나랑 충돌을 해보는 것.
+		if (true == CollisonCheck(Collision, _ThisType, _OtherType))
+		{
+			// 내가 애 안에 들고 있어?
+			if (ColSet.end() == ColSet.find(Collision))
+			{
+				// 없어 => 처음이네.
+				ColSet.insert(Collision);
+				if (nullptr != Enter)
+				{
+					Enter(this, Collision);
+				}
+			}
+			else
+			{
+				if (nullptr != Stay)
+				{
+					Stay(this, Collision);
+				}
+			}
+
+			Check = true;
+		}
+		else
+		{
+			if (ColSet.end() != ColSet.find(Collision))
+			{
+				ColSet.erase(Collision);
+				if (nullptr != Exit)
+				{
+					Exit(this, Collision);
+				}
+			}
+		}
+	}
+
+	return Check;
+}

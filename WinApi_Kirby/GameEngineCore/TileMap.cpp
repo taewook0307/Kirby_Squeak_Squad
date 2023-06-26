@@ -13,23 +13,31 @@ void TileMap::Update(float _DeltaTime)
 {
 	SetPos(float4::ZERO);
 
-	if (nullptr == LerpTileRenderer)
+	if (false == IsLerpMove())
 	{
 		return;
 	}
 
 	// Lerp는 Start에서 end까지 정확하게 1초만에 도달하게 해줘.
 	LerpTime += _DeltaTime * LerpSpeed;
-	float4 Pos = float4::LerpClimp(StartPos, EndPos, LerpTime);
-	LerpTileRenderer->SetRenderPos(Pos);
+
+	for (size_t i = 0; i < LerpInfos.size(); i++)
+	{
+		GameEngineRenderer* LerpTileRenderer = LerpInfos[i].LerpTileRenderer;
+		float4 Pos = float4::LerpClimp(LerpInfos[i].StartPos, LerpInfos[i].EndPos, LerpTime);
+		LerpTileRenderer->SetRenderPos(Pos);
+	}
 
 	if (1 <= LerpTime)
 	{
-		float4 Pos = PosToIndex(EndPos - TileSize.Half() - LerpTilePos);
-
-		Tiles[Pos.iY()][Pos.iX()] = LerpTileRenderer;
-
-		LerpTileRenderer = nullptr;
+		for (size_t i = 0; i < LerpInfos.size(); i++)
+		{
+			GameEngineRenderer* LerpTileRenderer = LerpInfos[i].LerpTileRenderer;
+			float4 Pos = PosToIndex(LerpInfos[i].EndPos - TileSize.Half() - LerpInfos[i].LerpTilePos);
+			Tiles[Pos.iY()][Pos.iX()] = LerpTileRenderer;
+		}
+		LerpInfos.clear();
+		// LerpTileRenderer = nullptr;
 	}
 }
 
@@ -155,12 +163,12 @@ bool TileMap::MoveTile(int X1, int Y1, int X2, int Y2, float4 _TilePos)
 
 bool TileMap::LerpTile(int X1, int Y1, int X2, int Y2, float4 _TilePos)
 {
-	if (nullptr != LerpTileRenderer)
+	if (nullptr == Tiles[Y1][X1])
 	{
 		return false;
 	}
 
-	if (nullptr == Tiles[Y1][X1])
+	if (true == IsLerpRenderer(Tiles[Y1][X1]))
 	{
 		return false;
 	}
@@ -180,14 +188,26 @@ bool TileMap::LerpTile(int X1, int Y1, int X2, int Y2, float4 _TilePos)
 
 	// 여기서는 이동하는게 아니라
 	// 서서히 움직일 준비를 하는 함수.
-	LerpTileRenderer = Tiles[Y1][X1];
+	// LerpTileRenderer = Tiles[Y1][X1];
+	LerpTileInfo NewInfo;
+	NewInfo.LerpTileRenderer = Tiles[Y1][X1];
+	NewInfo.LerpTilePos = _TilePos;
+	NewInfo.StartPos = IndexToPos(X1, Y1) + TileSize.Half() + _TilePos;
+	NewInfo.EndPos = IndexToPos(X2, Y2) + TileSize.Half() + _TilePos;
+
 	Tiles[Y1][X1] = nullptr;
 	Tiles[Y2][X2] = nullptr;
-	LerpTilePos = _TilePos;
 
-	StartPos = IndexToPos(X1, Y1) + TileSize.Half() + _TilePos;
-	EndPos = IndexToPos(X2, Y2) + TileSize.Half() + _TilePos;
+
+	//LerpTilePos = _TilePos;
+	//StartPos = IndexToPos(X1, Y1) + TileSize.Half() + _TilePos;
+	//EndPos = IndexToPos(X2, Y2) + TileSize.Half() + _TilePos;
+	//LerpTime = 0.0f;
+
+
 	LerpTime = 0.0f;
+
+	LerpInfos.push_back(NewInfo);
 
 	return true;
 }
@@ -215,4 +235,18 @@ void TileMap::DeathTile(int X, int Y)
 	Tiles[Y][X]->Death();
 	Tiles[Y][X] = nullptr;
 
+}
+
+
+bool TileMap::IsLerpRenderer(GameEngineRenderer* _Renderer)
+{
+	for (size_t i = 0; i < LerpInfos.size(); i++)
+	{
+		if (LerpInfos[i].LerpTileRenderer == _Renderer)
+		{
+			return true;
+		}
+	}
+
+	return false;
 }
