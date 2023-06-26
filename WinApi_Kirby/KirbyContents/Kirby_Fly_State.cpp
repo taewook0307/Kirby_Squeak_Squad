@@ -189,7 +189,7 @@ void Kirby::DropUpdate(float _Delta)
 
 		float DropDistance = static_cast<float>(fabs(DropStartPos.Y - LandPos.Y));
 
-		if (DropDistance > 400.0f)
+		if (DropDistance > 280.0f)
 		{
 			GravityReset();
 			ChangeState(KirbyState::FlyToTurnUp);

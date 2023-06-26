@@ -2,12 +2,14 @@
 #include "EndingItem.h"
 #include "KirbyGameEnum.h"
 
+#include <GameEnginePlatform/GameEngineSound.h>
 #include<GameEngineCore/GameEngineLevel.h>
 
 void BossMonster::DamageStart()
 {
 	NoDamage = true;
 	ChangeAnimationState("Damage");
+	GameEngineSound::SoundPlay("Damage.wav");
 }
 
 void BossMonster::DeathJumpStart()

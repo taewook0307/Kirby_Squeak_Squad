@@ -3,6 +3,7 @@
 #include <GameEngineBase/GameEngineRandom.h>
 #include <GameEnginePlatform/GameEngineInput.h>
 #include <GameEnginePlatform/GameEngineSound.h>
+#include <GameEngineCore/GameEngineRenderer.h>
 
 void BossMonster::IdleStart()
 {
@@ -97,10 +98,23 @@ void BossMonster::IdleUpdate(float _Delta)
 
 void BossMonster::WalkUpdate(float _Delta)
 {
+	static size_t PrevCurFrameValue = 0;
+	size_t CurFrameValue = MainRenderer->GetCurFrame();
+
+	if (CurFrameValue != PrevCurFrameValue)
+	{
+		if (0 == CurFrameValue % 2)
+		{
+			PrevCurFrameValue = CurFrameValue;
+			GameEngineSound::SoundPlay("BossWalk.wav");
+		}
+	}
+
 	static float WalkTimer = 0.0f;
 
 	if (2.0f < WalkTimer)
 	{
+		WalkTimer = 0.0f;
 		ChangeState(BossState::Idle);
 		return;
 	}
