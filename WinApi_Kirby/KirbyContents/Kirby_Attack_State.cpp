@@ -14,8 +14,8 @@
 
 void Kirby::AttackReadyStart()
 {
-	ChangeAnimationState("AttackReady");
 	GameEngineSound::SoundPlay("Inhale.wav");
+	ChangeAnimationState("AttackReady");
 }
 
 void Kirby::AttackStart()

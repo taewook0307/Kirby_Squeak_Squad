@@ -74,6 +74,18 @@ void Kirby::FlyUpdate(float _Delta)
 {
 	DirCheck();
 
+	static size_t PrevCurFrameValue = 0;
+	size_t CurFrameValue = MainRenderer->GetCurFrame();
+
+	if (CurFrameValue != PrevCurFrameValue)
+	{
+		if (0 == CurFrameValue % 6)
+		{
+			PrevCurFrameValue = CurFrameValue;
+			GameEngineSound::SoundPlay("Fly.wav");
+		}
+	}
+
 	unsigned int Color = GetGroundColor(EMPTYCOLOR);
 
 	if (GetGravityVector().Y > 0.0f)
@@ -127,8 +139,7 @@ void Kirby::FlyUpdate(float _Delta)
 
 	if (true == GameEngineInput::IsDown(VK_SPACE))
 	{
-
-		GameEngineSound::SoundPlay("Fly.wav");
+		// GameEngineSound::SoundPlay("Fly.wav");
 		SetGravityVector(float4::UP * FlyPower);
 	}
 
