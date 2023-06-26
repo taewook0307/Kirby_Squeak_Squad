@@ -14,6 +14,7 @@ void BossMonster::DamageStart()
 
 void BossMonster::DeathJumpStart()
 {
+	GameEngineSound::SoundPlay("BossDeath.wav");
 	ChangeAnimationState("DeathJump");
 	SetGravityVector(float4::UP * BossJumpPower * 0.5f);
 }

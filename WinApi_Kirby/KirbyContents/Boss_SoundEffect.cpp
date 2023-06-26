@@ -29,4 +29,8 @@ void BossMonster::SoundEffectLoad()
 	{
 		GameEngineSound::SoundLoad(SoundPath.PlusFilePath("Damage.wav"));
 	}
+	if (nullptr == GameEngineSound::FindSound("BossDeath.wav"))
+	{
+		GameEngineSound::SoundLoad(SoundPath.PlusFilePath("BossDeath.wav"));
+	}
 }
