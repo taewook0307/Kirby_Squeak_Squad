@@ -6,7 +6,6 @@
 
 #include <math.h>
 #include <GameEnginePlatform/GameEngineInput.h>
-#include <GameEnginePlatform/GameEngineSound.h>
 #include <GameEngineCore/GameEngineRenderer.h>
 #include <GameEngineCore/GameEngineLevel.h>
 #include <GameEngineCore/GameEngineActor.h>
@@ -14,13 +13,13 @@
 
 void Kirby::AttackReadyStart()
 {
-	GameEngineSound::SoundPlay("Inhale.wav");
 	ChangeAnimationState("AttackReady");
 }
 
 void Kirby::AttackStart()
 {
 	ChangeAnimationState("Attack");
+	AttackSound = GameEngineSound::SoundPlay("Inhale.wav", 100);
 }
 
 void Kirby::AttackToIdleStart()
@@ -53,6 +52,10 @@ void Kirby::AttackReadyUpdate(float _Delta)
 
 void Kirby::AttackUpdate(float _Delta)
 {
+	if (true == GameEngineInput::IsUp('C'))
+	{
+		AttackSound.Stop();
+	}
 	DirCheck();
 	KirbyGravity(_Delta);
 	AttackCollision->On();
@@ -112,6 +115,7 @@ void Kirby::AttackUpdate(float _Delta)
 				KeepMonster = nullptr;
 			}
 			AttackCollision->Off();
+			AttackSound.Stop();
 			ChangeState(KirbyState::Keep);
 			return;
 		}
@@ -143,6 +147,7 @@ void Kirby::AttackUpdate(float _Delta)
 				BossAttack = nullptr;
 			}
 			AttackCollision->Off();
+			AttackSound.Stop();
 			ChangeState(KirbyState::Keep);
 			return;
 		}

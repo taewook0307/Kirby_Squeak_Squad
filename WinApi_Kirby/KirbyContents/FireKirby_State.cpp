@@ -3,7 +3,6 @@
 
 #include <GameEngineBase/GameEngineTime.h>
 #include <GameEnginePlatform/GameEngineInput.h>
-#include <GameEnginePlatform/GameEngineSound.h>
 #include <GameEngineCore/GameEngineRenderer.h>
 #include <GameEngineCore/GameEngineLevel.h>
 #include <GameEngineCore/GameEngineCamera.h>
@@ -11,7 +10,7 @@
 void FireKirby::AttackStart()
 {
 	ChangeAnimationState("Attack");
-	GameEngineSound::SoundPlay("Fire.wav");
+	AttackSound = GameEngineSound::SoundPlay("Fire.wav", 100);
 }
 
 void FireKirby::JumpUpdate(float _Delta)
@@ -105,6 +104,8 @@ void FireKirby::AttackUpdate(float _Delta)
 
 		if (true == GameEngineInput::IsUp('C'))
 		{
+			AttackSound.Stop();
+
 			if (true == GameEngineInput::IsPress('A') || true == GameEngineInput::IsPress('D'))
 			{
 				ChangeState(KirbyState::Walk);
@@ -123,6 +124,7 @@ void FireKirby::AttackUpdate(float _Delta)
 	if (true == GameEngineInput::IsUp('C'))
 	{
 		AttackCollision->Off();
+		AttackSound.Stop();
 		ChangeState(KirbyState::AttackToIdle);
 		return;
 	}

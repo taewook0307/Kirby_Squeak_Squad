@@ -1,7 +1,5 @@
 #include "TornadoKirby.h"
 
-#include <GameEnginePlatform/GameEngineSound.h>
-
 void TornadoKirby::SoundEffectLoad()
 {
 	GameEnginePath SoundPath;

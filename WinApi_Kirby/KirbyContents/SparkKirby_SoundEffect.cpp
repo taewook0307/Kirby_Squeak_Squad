@@ -1,7 +1,5 @@
 #include "SparkKirby.h"
 
-#include <GameEnginePlatform/GameEngineSound.h>
-
 void SparkKirby::SoundEffectLoad()
 {
 	GameEnginePath SoundPath;

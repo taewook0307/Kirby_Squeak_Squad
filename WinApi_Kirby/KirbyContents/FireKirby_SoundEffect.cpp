@@ -1,7 +1,5 @@
 #include "FireKirby.h"
 
-#include <GameEnginePlatform/GameEngineSound.h>
-
 void FireKirby::SoundEffectLoad()
 {
 	GameEnginePath SoundPath;

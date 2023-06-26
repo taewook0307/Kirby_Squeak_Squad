@@ -3,7 +3,6 @@
 
 #include <GameEngineBase/GameEngineTime.h>
 #include <GameEnginePlatform/GameEngineInput.h>
-#include <GameEnginePlatform/GameEngineSound.h>
 #include <GameEngineCore/GameEngineRenderer.h>
 #include <GameEngineCore/GameEngineLevel.h>
 #include <GameEngineCore/GameEngineCamera.h>
@@ -18,7 +17,7 @@ void TornadoKirby::AttackReadyStart()
 void TornadoKirby::AttackStart()
 {
 	ChangeAnimationState("Attack");
-	GameEngineSound::SoundPlay("Tornado.wav");
+	AttackSound = GameEngineSound::SoundPlay("Tornado.wav", 100);
 }
 
 void TornadoKirby::JumpUpdate(float _Delta)
@@ -97,6 +96,7 @@ void TornadoKirby::AttackUpdate(float _Delta)
 	{
 		AttackCollision->Off();
 		BodyCollision->On();
+		AttackSound.Stop();
 		ChangeState(KirbyState::AttackToIdle);
 		return;
 	}

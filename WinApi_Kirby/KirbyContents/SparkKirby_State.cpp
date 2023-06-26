@@ -3,7 +3,6 @@
 
 #include <GameEngineBase/GameEngineTime.h>
 #include <GameEnginePlatform/GameEngineInput.h>
-#include <GameEnginePlatform/GameEngineSound.h>
 #include <GameEngineCore/GameEngineRenderer.h>
 #include <GameEngineCore/GameEngineLevel.h>
 #include <GameEngineCore/GameEngineCamera.h>
@@ -11,7 +10,7 @@
 void SparkKirby::AttackStart()
 {
 	ChangeAnimationState("Attack");
-	GameEngineSound::SoundPlay("Spark.wav");
+	AttackSound = GameEngineSound::SoundPlay("Spark.wav", 100);
 	GameEngineSound::SoundPlay("Spark_2.wav");
 }
 
@@ -87,7 +86,7 @@ void SparkKirby::AttackUpdate(float _Delta)
 		{
 			AttackCollision->Off();
 			BodyCollision->On();
-
+			AttackSound.Stop();
 			ChangeState(KirbyState::Drop);
 			return;
 		}
@@ -98,6 +97,7 @@ void SparkKirby::AttackUpdate(float _Delta)
 		{
 			AttackCollision->Off();
 			BodyCollision->On();
+			AttackSound.Stop();
 
 			if (true == GameEngineInput::IsPress('A') || true == GameEngineInput::IsPress('D'))
 			{

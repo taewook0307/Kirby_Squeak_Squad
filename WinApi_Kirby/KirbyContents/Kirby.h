@@ -5,6 +5,7 @@
 
 #include <string>
 #include <vector>
+#include <GameEnginePlatform/GameEngineSound.h>
 
 #define HPVALUE 120
 #define BASEPOWER 300.0f
@@ -252,6 +253,7 @@ protected:
 
 	bool AlphaCheck = false;
 	bool ChangeSound = true;
+	GameEngineSoundPlayer AttackSound;
 private:
 	int Count = 0;
 

@@ -1,7 +1,5 @@
 #include "IceKirby.h"
 
-#include <GameEnginePlatform/GameEngineSound.h>
-
 void IceKirby::SoundEffectLoad()
 {
 	GameEnginePath SoundPath;

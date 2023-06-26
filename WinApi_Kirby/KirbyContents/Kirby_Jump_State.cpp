@@ -1,7 +1,6 @@
 #include "Kirby.h"
 
 #include <GameEnginePlatform/GameEngineInput.h>
-#include <GameEnginePlatform/GameEngineSound.h>
 #include <GameEngineCore/GameEngineRenderer.h>
 
 void Kirby::JumpStart()

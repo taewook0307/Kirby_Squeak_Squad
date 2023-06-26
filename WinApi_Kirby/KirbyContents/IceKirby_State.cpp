@@ -5,7 +5,6 @@
 
 #include <GameEngineBase/GameEngineTime.h>
 #include <GameEnginePlatform/GameEngineInput.h>
-#include <GameEnginePlatform/GameEngineSound.h>
 #include <GameEngineCore/GameEngineRenderer.h>
 #include <GameEngineCore/GameEngineLevel.h>
 #include <GameEngineCore/GameEngineCamera.h>
@@ -13,7 +12,7 @@
 void IceKirby::AttackStart()
 {
 	ChangeAnimationState("Attack");
-	GameEngineSound::SoundPlay("Ice.wav");
+	AttackSound = GameEngineSound::SoundPlay("Ice.wav", 100);
 }
 
 void IceKirby::JumpUpdate(float _Delta)
@@ -92,6 +91,7 @@ void IceKirby::AttackUpdate(float _Delta)
 
 		if (true == GameEngineInput::IsUp('C'))
 		{
+			AttackSound.Stop();
 			ChangeState(KirbyState::JumpToDrop);
 			return;
 		}
@@ -133,6 +133,7 @@ void IceKirby::AttackUpdate(float _Delta)
 	if (true == GameEngineInput::IsUp('C'))
 	{
 		AttackCollision->Off();
+		AttackSound.Stop();
 
 		if (true == GameEngineInput::IsPress('A') || true == GameEngineInput::IsPress('D'))
 		{

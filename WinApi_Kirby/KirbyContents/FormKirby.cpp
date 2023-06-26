@@ -3,7 +3,6 @@
 #include "KirbyGameEnum.h"
 
 #include <GameEngineBase/GameEngineTime.h>
-#include <GameEnginePlatform/GameEngineSound.h>
 #include <GameEnginePlatform/GameEngineInput.h>
 #include <GameEngineCore/GameEngineLevel.h>
 #include <GameEngineCore/GameEngineRenderer.h>

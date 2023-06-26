@@ -1,7 +1,5 @@
 #include "Kirby.h"
 
-#include <GameEnginePlatform/GameEngineSound.h>
-
 void Kirby::SoundEffectLoad()
 {
 	GameEnginePath SoundPath;

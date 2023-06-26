@@ -1,7 +1,6 @@
 #include "Kirby.h"
 
 #include <GameEnginePlatform/GameEngineWindow.h>
-#include <GameEnginePlatform/GameEngineSound.h>
 #include <GameEnginePlatform/GameEngineInput.h>
 #include <GameEngineCore/GameEngineRenderer.h>
 
