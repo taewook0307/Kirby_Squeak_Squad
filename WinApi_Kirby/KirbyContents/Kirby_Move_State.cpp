@@ -199,7 +199,8 @@ void Kirby::WalkUpdate(float _Delta)
 	{
 		unsigned int Color = GetGroundColor(EMPTYCOLOR, CheckPos);
 
-		if (EMPTYCOLOR == Color || DOORCOLOR == Color)
+		if (EMPTYCOLOR == Color && false == BodyCollision->Collision(CollisionOrder::Obstacle, Col, CollisionType::Rect, CollisionType::Rect)
+			|| DOORCOLOR == Color && false == BodyCollision->Collision(CollisionOrder::Obstacle, Col, CollisionType::Rect, CollisionType::Rect))
 		{
 			AddPos(MovePos);
 			CameraMove(MovePos);
@@ -276,7 +277,8 @@ void Kirby::RunUpdate(float _Delta)
 	{
 		unsigned int Color = GetGroundColor(EMPTYCOLOR, CheckPos);
 
-		if (EMPTYCOLOR == Color || DOORCOLOR == Color)
+		if (EMPTYCOLOR == Color && false == BodyCollision->Collision(CollisionOrder::Obstacle, Col, CollisionType::Rect, CollisionType::Rect)
+			|| DOORCOLOR == Color && false == BodyCollision->Collision(CollisionOrder::Obstacle, Col, CollisionType::Rect, CollisionType::Rect))
 		{
 			AddPos(MovePos);
 			CameraMove(MovePos);
@@ -337,14 +339,15 @@ void Kirby::StopUpdate(float _Delta)
 	InclineCheck(MovePos);
 	ObstacleCheck(MovePos);
 
+	float4 StopPos = MovePos + OppositePos;
+
 	unsigned int Color = GetGroundColor(EMPTYCOLOR, CheckPos);
 
-	Speed *= 0.8f;
-
-	if (EMPTYCOLOR == Color || DOORCOLOR == Color)
+	if (EMPTYCOLOR == Color && false == BodyCollision->Collision(CollisionOrder::Obstacle, Col, CollisionType::Rect, CollisionType::Rect)
+		|| DOORCOLOR == Color && false == BodyCollision->Collision(CollisionOrder::Obstacle, Col, CollisionType::Rect, CollisionType::Rect))
 	{	
-		AddPos(MovePos += OppositePos);
-		CameraMove(MovePos += OppositePos);
+		AddPos(StopPos);
+		CameraMove(StopPos);
 	}
 
 	if (Speed < 1.0f)
@@ -361,4 +364,6 @@ void Kirby::StopUpdate(float _Delta)
 		ChangeState(KirbyState::Idle);
 		return;
 	}
+
+	Speed *= 0.8f;
 }

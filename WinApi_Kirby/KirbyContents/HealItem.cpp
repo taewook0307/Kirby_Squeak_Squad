@@ -94,7 +94,7 @@ void HealItem::Update(float _Delta)
 		{
 			Kirby::GetMainKirby()->SetKirbyHp(HealHp);
 		}
-
+		GameEngineSound::SoundPlay("Heal.wav");
 		Death();
 		return;
 	}

@@ -5,7 +5,7 @@
 #include <vector>
 
 #define HEALITEMPOS { 0.0f, 0.0f }
-#define HEALITEMSCALE { 50.0f, 50.0f }
+#define HEALITEMSCALE { 100.0f, 100.0f }
 #define HEALITEMCOLLISIONPOS { 0.0f, 0.0f }
 #define HEALITEMCOLLISIONSCALE { 50.0f, 50.0f }
 

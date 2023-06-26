@@ -67,4 +67,12 @@ void Kirby::SoundEffectLoad()
 	{
 		GameEngineSound::SoundLoad(SoundPath.PlusFilePath("NormalChange.wav"));
 	}
+	if (nullptr == GameEngineSound::FindSound("Heal.wav"))
+	{
+		GameEngineSound::SoundLoad(SoundPath.PlusFilePath("Heal.wav"));
+	}
+	if (nullptr == GameEngineSound::FindSound("Life.wav"))
+	{
+		GameEngineSound::SoundLoad(SoundPath.PlusFilePath("Life.wav"));
+	}
 }

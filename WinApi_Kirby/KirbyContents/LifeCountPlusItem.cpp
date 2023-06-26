@@ -3,6 +3,7 @@
 #include "SubLevel.h"
 #include "ActorEnum.h"
 
+#include <GameEnginePlatform/GameEngineSound.h>
 #include <GameEngineCore/ResourcesManager.h>
 #include <GameEngineCore/GameEngineRenderer.h>
 
@@ -41,6 +42,7 @@ void LifeCountPlusItem::Update(float _Delta)
 	if (true == BodyCollision->Collision(CollisionOrder::Body, LifeItemCol, CollisionType::Rect, CollisionType::Rect))
 	{
 		SubLevel::PlusPlayerLife();
+		GameEngineSound::SoundPlay("Life");
 		Death();
 		return;
 	}
