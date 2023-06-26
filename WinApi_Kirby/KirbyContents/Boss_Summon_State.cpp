@@ -26,6 +26,7 @@ void BossMonster::MonsterSummonDropStart()
 
 void BossMonster::MonsterSummonStart()
 {
+	GameEngineSound::SoundPlay("BossAttack.wav");
 	ChangeAnimationState("MonsterSummon");
 }
 
@@ -100,7 +101,6 @@ void BossMonster::MonsterSummonUpdate(float _Delta)
 
 	if (true == MainRenderer->IsAnimationEnd())
 	{
-		GameEngineSound::SoundPlay("BossAttack.wav");
 		float4 WinScale = GameEngineWindow::MainWindow.GetScale();
 		Monster* SummonMonster = GetLevel()->CreateActor<Monster>(UpdateOrder::Monster);
 		SummonMonster->SetPos({ WinScale.Half().Half().X, 100.0f });

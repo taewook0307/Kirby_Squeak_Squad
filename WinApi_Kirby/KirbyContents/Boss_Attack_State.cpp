@@ -21,6 +21,7 @@ void BossMonster::AttackRunStart()
 
 void BossMonster::AttackStart()
 {
+	GameEngineSound::SoundPlay("BossAttack.wav");
 	ChangeAnimationState("Attack");
 }
 
@@ -114,7 +115,6 @@ void BossMonster::AttackUpdate(float _Delta)
 
 	if (true == MainRenderer->IsAnimationEnd())
 	{
-		GameEngineSound::SoundPlay("BossAttack.wav");
 		BossAttackObject* SummonAttacker = GetLevel()->CreateActor<BossAttackObject>(UpdateOrder::Monster);
 		SummonAttacker->SetPos(GetPos());
 		SummonAttacker->SetGroundBitMap(GetGroundBitMap());

@@ -104,7 +104,7 @@ protected:
 
 	void Damage()
 	{
-		BossHp -= 140;
+		BossHp -= 40;
 	}
 
 	void BossHpReset()
@@ -113,6 +113,12 @@ protected:
 	}
 
 	void SoundEffectLoad() override;
+
+	// 패턴 동작 On/Off
+	void ManualSwitch()
+	{
+		Manual = !Manual;
+	}
 private:
 	int BossHp = 140;
 	float Speed = 150.0f;
@@ -127,4 +133,7 @@ private:
 	void Start() override;
 	void Update(float _Delta) override;
 	void Render(float _Delta) override;
+
+	// 패턴 수동 작동
+	bool Manual = false;
 };

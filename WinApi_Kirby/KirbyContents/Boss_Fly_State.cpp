@@ -93,7 +93,7 @@ void BossMonster::FlyDropUpdate(float _Delta)
 
 	if (EMPTYCOLOR == Color)
 	{
-		Gravity(_Delta);
+		FlyGravity(_Delta);
 	}
 	else
 	{

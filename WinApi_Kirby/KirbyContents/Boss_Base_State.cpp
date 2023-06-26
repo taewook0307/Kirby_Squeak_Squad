@@ -33,13 +33,41 @@ void BossMonster::IdleUpdate(float _Delta)
 
 	if (IdleTimer > 2.0f && FLOORCOLOR == Color)
 	{
-		int StateNumber = GameEngineRandom::MainRandom.RandomInt(1, 4);
+		int StateNumber = 0;
+
+		if (true == Manual)
+		{
+			if (true == GameEngineInput::IsPress(VK_F1))
+			{
+				StateNumber = 1;
+			}
+			else if (true == GameEngineInput::IsPress(VK_F2))
+			{
+				StateNumber = 2;
+			}
+			else if (true == GameEngineInput::IsPress(VK_F3))
+			{
+				StateNumber = 3;
+			}
+			else if (true == GameEngineInput::IsPress(VK_F4))
+			{
+				StateNumber = 4;
+			}
+			else
+			{
+				StateNumber = 0;
+			}
+		}
+		else
+		{
+			StateNumber = GameEngineRandom::MainRandom.RandomInt(1, 4);
+		}
 
 		IdleTimer = 0.0f;
 
 		if (StateNumber == 0)
 		{
-			ChangeState(BossState::JumpReady);
+			ChangeState(BossState::Idle);
 			return;
 		}
 		else if (StateNumber == 1)
@@ -105,8 +133,13 @@ void BossMonster::WalkUpdate(float _Delta)
 
 	if (EMPTYCOLOR == XColor)
 	{
-		GameEngineSound::SoundPlay("BossWalk.wav");
 		AddPos(MovePos);
+	}
+	else
+	{
+		WalkTimer = 0.0f;
+		ChangeState(BossState::Idle);
+		return;
 	}
 	
 	WalkTimer += _Delta;

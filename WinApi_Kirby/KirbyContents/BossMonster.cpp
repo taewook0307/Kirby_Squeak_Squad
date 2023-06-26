@@ -146,6 +146,11 @@ void BossMonster::Update(float _Delta)
 	{
 		IsCheckPosPointChange();
 	}
+
+	if (true == GameEngineInput::IsDown(VK_SHIFT))
+	{
+		ManualSwitch();
+	}
 }
 
 void BossMonster::StateUpdate(float _Delta)
