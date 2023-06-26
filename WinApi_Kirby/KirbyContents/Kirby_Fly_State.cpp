@@ -79,7 +79,7 @@ void Kirby::FlyUpdate(float _Delta)
 
 	if (CurFrameValue != PrevCurFrameValue)
 	{
-		if (0 == CurFrameValue % 6)
+		if (0 == CurFrameValue % 9)
 		{
 			PrevCurFrameValue = CurFrameValue;
 			GameEngineSound::SoundPlay("Fly.wav");

@@ -69,4 +69,8 @@ void SparkKirby::SoundEffectLoad()
 	{
 		GameEngineSound::SoundLoad(SoundPath.PlusFilePath("Spark.wav"));
 	}
+	if (nullptr == GameEngineSound::FindSound("Spark_2.wav"))
+	{
+		GameEngineSound::SoundLoad(SoundPath.PlusFilePath("Spark_2.wav"));
+	}
 }

@@ -12,6 +12,7 @@ void SparkKirby::AttackStart()
 {
 	ChangeAnimationState("Attack");
 	GameEngineSound::SoundPlay("Spark.wav");
+	GameEngineSound::SoundPlay("Spark_2.wav");
 }
 
 void SparkKirby::JumpUpdate(float _Delta)

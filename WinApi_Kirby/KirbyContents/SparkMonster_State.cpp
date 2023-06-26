@@ -7,6 +7,15 @@
 
 void SparkMonster::WalkStart()
 {
+	float4 CameraPos = GetLevel()->GetMainCamera()->GetPos();
+	if (GetPos().X > CameraPos.X
+		&& GetPos().Y > CameraPos.Y
+		&& GetPos().X <= CameraPos.X + WinScale.X
+		&& GetPos().Y <= CameraPos.Y + WinScale.Y)
+	{
+		GameEngineSound::SoundPlay("Jump.wav");
+	}
+
 	SetGravityVector(float4::UP * Speed * 3.0f);
 	ChangeAnimationState("Walk");
 }
