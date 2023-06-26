@@ -320,8 +320,6 @@ void Kirby::StopUpdate(float _Delta)
 	float4 OppositePos = float4::ZERO;
 	float4 CheckPos = float4::ZERO;
 
-	float RunSpeed = Speed * 2.0f;
-
 	if (ActorDir::Left == Dir)
 	{
 		MovePos = { -RunSpeed * _Delta, 0.0f };
@@ -334,7 +332,7 @@ void Kirby::StopUpdate(float _Delta)
 		CheckPos = RIGHTCHECKPOS;
 	}
 
-	OppositePos = MovePos * -0.1f;
+	OppositePos = MovePos * -0.5f;
 
 	InclineCheck(MovePos);
 	ObstacleCheck(MovePos);
@@ -349,7 +347,7 @@ void Kirby::StopUpdate(float _Delta)
 		CameraMove(MovePos += OppositePos);
 	}
 
-	if (true == MainRenderer->IsAnimationEnd())
+	if (Speed < 1.0f)
 	{
 		Speed = BASEPOWER;
 		DirCheck();

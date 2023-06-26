@@ -222,7 +222,7 @@ protected:
 
 	static int KirbyHp;
 	float Speed = BASEPOWER;
-	float RunSpeed = Speed * 1.5f;
+	float RunSpeed = Speed * 2.0f;
 	float JumpPower = GRAVITYPOWER;
 	float FlyPower = FLYPOWER;
 
