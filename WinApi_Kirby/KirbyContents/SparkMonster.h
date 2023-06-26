@@ -28,6 +28,7 @@ protected:
 	void ChangeAnimationState(const std::string& _StateName) override;
 	void SoundEffectLoad() override;
 
+	void WalkStart() override;
 	void AttackStart() override;
 
 	void IdleUpdate(float _Delta) override;

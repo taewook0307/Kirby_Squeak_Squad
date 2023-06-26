@@ -5,6 +5,12 @@
 #include <GameEngineCore/GameEngineLevel.h>
 #include <GameEngineCore/GameEngineCamera.h>
 
+void SparkMonster::WalkStart()
+{
+	SetGravityVector(float4::UP * Speed * 3.0f);
+	ChangeAnimationState("Walk");
+}
+
 void SparkMonster::AttackStart()
 {
 	float4 CameraPos = GetLevel()->GetMainCamera()->GetPos();
@@ -35,29 +41,50 @@ void SparkMonster::IdleUpdate(float _Delta)
 
 void SparkMonster::WalkUpdate(float _Delta)
 {
-	unsigned int Color = GetGroundColor(EMPTYCOLOR);
+	unsigned int Color = 0;
 
-	if (Color == EMPTYCOLOR || Color == DOORCOLOR)
+	if (GetGravityVector().Y < 0.0f)
 	{
-		Gravity(_Delta);
-	}
-
-	float4 MovePos = float4::UP * Speed * 2.0f * _Delta;
-
-	if (Dir == ActorDir::Left)
-	{
-		MovePos += float4::LEFT * Speed * _Delta;
+		Color = GetGroundColor(EMPTYCOLOR, TOPCHECKPOS);
 	}
 	else
 	{
-		MovePos += float4::RIGHT * Speed * _Delta;
+		Color = GetGroundColor(EMPTYCOLOR);
 	}
 
-	AddPos(MovePos);
+	Gravity(_Delta);
 
-	if(Color != EMPTYCOLOR && Color != DOORCOLOR)
+	float4 MovePos = float4::ZERO;
+	float4 CheckPos = float4::ZERO;
+
+	if (Dir == ActorDir::Left)
+	{
+		MovePos += float4::LEFT * Speed * 2.0f * _Delta;
+		CheckPos = LEFTBOTCHECKPOS;
+	}
+	else
+	{
+		MovePos += float4::RIGHT * Speed * 2.0f * _Delta;
+		CheckPos = RIGHTBOTCHECKPOS;
+	}
+
+	unsigned int XColor = GetGroundColor(EMPTYCOLOR, CheckPos);
+
+	if (EMPTYCOLOR == XColor || DOORCOLOR == XColor)
+	{
+		AddPos(MovePos);
+	}
+	
+	if(FLOORCOLOR == Color)
 	{	
 		GravityReset();
+		unsigned int CheckColor = GetGroundColor(EMPTYCOLOR, float4::UP);
+
+		while (CheckColor != EMPTYCOLOR && CheckColor != DOORCOLOR)
+		{
+			CheckColor = GetGroundColor(EMPTYCOLOR, float4::UP);
+			AddPos(float4::UP);
+		}
 		ChangeState(MonsterState::Attack);
 		return;
 	}

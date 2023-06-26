@@ -6,7 +6,7 @@
 #include <string>
 #include <vector>
 
-#define MONSTERSPEED 150.0f
+#define MONSTERSPEED 250.0f
 #define MONSTERBODYCOLLISONPOS { 0.0f, -30.0f }
 #define MONSTERBODYCOLLISIONSCALE { 70.0f, 70.0f }
 
@@ -33,7 +33,7 @@ protected:
 	virtual void ChangeState(MonsterState _State);
 
 	void IdleStart();
-	void WalkStart();
+	virtual void WalkStart();
 	void InhaleStart();
 	void DamageStart();
 	void DeathStart();

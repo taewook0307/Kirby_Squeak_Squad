@@ -34,7 +34,7 @@ void FirstStageLevel::Start()
 	Stage->GroundInit("FirstStage", "FirstStageBitMap.Bmp");
 
 	LevelMonster1 = CreateActor<Monster>(UpdateOrder::Monster);
-	LevelMonster2 = CreateActor<IceMonster>(UpdateOrder::Monster);
+	LevelMonster2 = CreateActor<SparkMonster>(UpdateOrder::Monster);
 }
 
 void FirstStageLevel::Update(float _Delta)
