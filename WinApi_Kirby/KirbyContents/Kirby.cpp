@@ -213,6 +213,7 @@ void Kirby::Update(float _Delta)
 
 		AttackCollision->Off();
 		DamageFromMonster();
+		AttackSound.Stop();
 		ChangeState(KirbyState::Damage);
 		return;
 	}
@@ -233,6 +234,7 @@ void Kirby::Update(float _Delta)
 
 		AttackCollision->Off();
 		DamageFromBoss();
+		AttackSound.Stop();
 		ChangeState(KirbyState::Damage);
 		return;
 	}

@@ -68,10 +68,10 @@ void Kirby::IdleUpdate(float _Delta)
 	unsigned int Color = GetGroundColor(EMPTYCOLOR);
 
 	// 걷기 상태 전환
-	if (true == GameEngineInput::IsDown('A') && Color == FLOORCOLOR
-		|| true == GameEngineInput::IsDown('D') && Color == FLOORCOLOR
-		|| true == GameEngineInput::IsPress('A') && Color == FLOORCOLOR
-		|| true == GameEngineInput::IsPress('D') && Color == FLOORCOLOR
+	if (true == GameEngineInput::IsDown('A')
+		|| true == GameEngineInput::IsDown('D')
+		|| true == GameEngineInput::IsPress('A')
+		|| true == GameEngineInput::IsPress('D')
 		|| true == GameEngineInput::IsDown('A') && true == BodyCollision->Collision(CollisionOrder::FloorObstacle, Col, CollisionType::Rect, CollisionType::Rect)
 		|| true == GameEngineInput::IsDown('D') && true == BodyCollision->Collision(CollisionOrder::FloorObstacle, Col, CollisionType::Rect, CollisionType::Rect)
 		|| true == GameEngineInput::IsPress('A') && true == BodyCollision->Collision(CollisionOrder::FloorObstacle, Col, CollisionType::Rect, CollisionType::Rect)
@@ -83,8 +83,8 @@ void Kirby::IdleUpdate(float _Delta)
 	}
 
 	// 웅크리기 상태 전환
-	if (true == GameEngineInput::IsDown('S') && Color == FLOORCOLOR
-		|| true == GameEngineInput::IsPress('S') && Color == FLOORCOLOR
+	if (true == GameEngineInput::IsDown('S')
+		|| true == GameEngineInput::IsPress('S')
 		|| true == GameEngineInput::IsDown('S') && true == BodyCollision->Collision(CollisionOrder::FloorObstacle, Col, CollisionType::Rect, CollisionType::Rect)
 		|| true == GameEngineInput::IsPress('S') && true == BodyCollision->Collision(CollisionOrder::FloorObstacle, Col, CollisionType::Rect, CollisionType::Rect))
 	{
@@ -94,7 +94,7 @@ void Kirby::IdleUpdate(float _Delta)
 	}
 
 	// 점프 상태 전환
-	if (true == GameEngineInput::IsDown(VK_SPACE) && Color == FLOORCOLOR
+	if (true == GameEngineInput::IsDown(VK_SPACE)
 		|| true == GameEngineInput::IsDown(VK_SPACE) && true == BodyCollision->Collision(CollisionOrder::FloorObstacle, Col, CollisionType::Rect, CollisionType::Rect))
 	{
 		DirCheck();

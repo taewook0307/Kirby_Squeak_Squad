@@ -49,8 +49,6 @@ void Kirby::InclineCheck(float4& _MovePos)
 		else
 		{
 			SlideCollision->Off();
-			AddPos(_MovePos);
-			CameraMove(_MovePos);
 			ChangeState(KirbyState::Drop);
 			return;
 		}
@@ -239,7 +237,7 @@ void Kirby::WalkUpdate(float _Delta)
 	}
 
 	// 이동하지 않을 시 대기 상태 이동
-	if (MovePos == float4::ZERO)
+	if (0.0f == MovePos.X)
 	{
 		ChangeState(KirbyState::Idle);
 		return;
@@ -307,7 +305,7 @@ void Kirby::RunUpdate(float _Delta)
 	}
 
 	// 이동하지 않을 시 대기 상태 이동
-	if (MovePos.X == 0.0f)
+	if (0.0f == MovePos.X)
 	{
 		ChangeState(KirbyState::Stop);
 		return;
