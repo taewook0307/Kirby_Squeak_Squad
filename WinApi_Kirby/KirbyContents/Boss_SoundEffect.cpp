@@ -25,9 +25,17 @@ void BossMonster::SoundEffectLoad()
 	{
 		GameEngineSound::SoundLoad(SoundPath.PlusFilePath("BossWalk.wav"));
 	}
+	if (nullptr == GameEngineSound::FindSound("Fly.wav"))
+	{
+		GameEngineSound::SoundLoad(SoundPath.PlusFilePath("Fly.wav"));
+	}
 	if (nullptr == GameEngineSound::FindSound("Damage.wav"))
 	{
 		GameEngineSound::SoundLoad(SoundPath.PlusFilePath("Damage.wav"));
+	}
+	if (nullptr == GameEngineSound::FindSound("BossDrop.wav"))
+	{
+		GameEngineSound::SoundLoad(SoundPath.PlusFilePath("BossDrop.wav"));
 	}
 	if (nullptr == GameEngineSound::FindSound("BossDeath.wav"))
 	{

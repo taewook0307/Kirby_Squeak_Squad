@@ -14,6 +14,7 @@ void BossMonster::FlyReadyStart()
 void BossMonster::FlyUpStart()
 {
 	ChangeAnimationState("FlyUp");
+	GameEngineSound::SoundPlay("Jump.wav");
 	SetGravityVector(float4::UP * BossJumpPower);
 }
 
@@ -50,6 +51,21 @@ void BossMonster::FlyUpUpdate(float _Delta)
 
 void BossMonster::FlyUpdate(float _Delta)
 {
+	size_t CurFrameValue = MainRenderer->GetCurFrame();
+
+	if (1 == CurFrameValue)
+	{
+		if (FlySoundCount > 0)
+		{
+			GameEngineSound::SoundPlay("Fly.wav");
+			--FlySoundCount;
+		}
+	}
+	else
+	{
+		FlySoundCount = 1;
+	}
+
 	float4 MovePos = float4::ZERO;
 	float4 CheckPos = float4::ZERO;
 
@@ -98,6 +114,7 @@ void BossMonster::FlyDropUpdate(float _Delta)
 	else
 	{
 		GravityReset();
+		GameEngineSound::SoundPlay("BossDrop.wav");
 
 		BossAttackObject* LeftObject = GetLevel()->CreateActor<BossAttackObject>(UpdateOrder::Monster);
 		LeftObject->SetPos(GetPos() + float4::LEFT * 180.0f);
