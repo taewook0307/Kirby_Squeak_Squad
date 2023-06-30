@@ -2,6 +2,7 @@
 #include "TitleLevel.h"
 #include "FirstStageLevel.h"
 #include "SecondStageLevel.h"
+#include "ThirdStageLevel.h"
 #include "BossEntranceLevel.h"
 #include "BossStageLevel.h"
 #include "EndingLevel.h"
@@ -24,6 +25,7 @@ void KirbyCore::Start()
 	GameEngineCore::CreateLevel<TitleLevel>("TitleLevel");
 	GameEngineCore::CreateLevel<FirstStageLevel>("FirstStageLevel");
 	GameEngineCore::CreateLevel<SecondStageLevel>("SecondStageLevel");
+	GameEngineCore::CreateLevel<ThirdStageLevel>("ThirdStageLevel");
 	GameEngineCore::CreateLevel<BossEntranceLevel>("BossEntranceLevel");
 	GameEngineCore::CreateLevel<BossStageLevel>("BossStageLevel");
 	GameEngineCore::CreateLevel<EndingLevel>("EndingLevel");

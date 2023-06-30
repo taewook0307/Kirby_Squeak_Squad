@@ -114,6 +114,9 @@
     <ClInclude Include="AttackMonster.h">
       <Filter>Monster\AttackMonster</Filter>
     </ClInclude>
+    <ClInclude Include="ThirdStageLevel.h">
+      <Filter>Level</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TitleLevel.cpp">
@@ -323,6 +326,9 @@
     </ClCompile>
     <ClCompile Include="Boss_SoundEffect.cpp">
       <Filter>Monster\Boss</Filter>
+    </ClCompile>
+    <ClCompile Include="ThirdStageLevel.cpp">
+      <Filter>Level</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
