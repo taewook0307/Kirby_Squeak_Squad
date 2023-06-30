@@ -42,7 +42,7 @@ void LifeCountPlusItem::Update(float _Delta)
 	if (true == BodyCollision->Collision(CollisionOrder::Body, LifeItemCol, CollisionType::Rect, CollisionType::Rect))
 	{
 		SubLevel::PlusPlayerLife();
-		GameEngineSound::SoundPlay("Life");
+		GameEngineSound::SoundPlay("ItemGet.wav");
 		Death();
 		return;
 	}

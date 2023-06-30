@@ -28,6 +28,7 @@ protected:
 
 private:
 	std::vector<GameEngineCollision*> EndingItemCol;
+	int SoundPlayCount = 1;
 
 	void Start();
 	void Update(float _Delta);

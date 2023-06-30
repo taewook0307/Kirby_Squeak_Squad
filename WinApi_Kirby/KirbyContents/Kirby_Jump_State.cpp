@@ -130,7 +130,19 @@ void Kirby::JumpToDropUpdate(float _Delta)
 			CameraMove(MovePos);
 		}
 	}
-	else if (FLOORCOLOR == Color || true == BodyCollision->Collision(CollisionOrder::FloorObstacle, Col, CollisionType::Rect, CollisionType::Rect))
+	else
+	{
+		if (true == GameEngineInput::IsPress('A') || true == GameEngineInput::IsPress('D'))
+		{
+			ChangeState(KirbyState::Walk);
+			return;
+		}
+
+		ChangeState(KirbyState::JumpToLand);
+		return;
+	}
+
+	if (true == BodyCollision->Collision(CollisionOrder::FloorObstacle, Col, CollisionType::Rect, CollisionType::Rect))
 	{
 		if (true == GameEngineInput::IsPress('A') || true == GameEngineInput::IsPress('D'))
 		{

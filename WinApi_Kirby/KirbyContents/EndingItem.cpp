@@ -48,6 +48,11 @@ void EndingItem::Update(float _Delta)
 	else
 	{
 		GravityReset();
+		if (SoundPlayCount > 0)
+		{
+			GameEngineSound::SoundPlay("ItemDrop.wav");
+			--SoundPlayCount;
+		}
 	}
 	unsigned int UpColor = GetGroundColor(EMPTYCOLOR, float4::UP);
 

@@ -10,13 +10,27 @@
 void TornadoKirby::AttackReadyStart()
 {
 	Kirby::AttackReadyStart();
-	AddPos(float4::UP);
+	unsigned int CheckColor = GetGroundColor(EMPTYCOLOR);
+
+	while (FLOORCOLOR == CheckColor)
+	{
+		AddPos(float4::UP);
+		CheckColor = GetGroundColor(EMPTYCOLOR);
+	}
 	GameEngineSound::SoundPlay("TornadoStart.wav");
+	GameEngineSound::SoundPlay("Tornado.wav");
 }
 
 void TornadoKirby::AttackStart()
 {
 	ChangeAnimationState("Attack");
+	unsigned int CheckColor = GetGroundColor(EMPTYCOLOR);
+
+	while (FLOORCOLOR == CheckColor)
+	{
+		AddPos(float4::UP);
+		CheckColor = GetGroundColor(EMPTYCOLOR);
+	}
 	AttackSound = GameEngineSound::SoundPlay("Tornado.wav", 100);
 }
 
