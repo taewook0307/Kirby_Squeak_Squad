@@ -42,6 +42,7 @@ protected:
 	float4 SavePos = float4::ZERO;
 	Ground* Stage = nullptr;
 
+	virtual void AllMonsterDeath();
 private:
 	static MonsterType LevelPlayerForm;
 

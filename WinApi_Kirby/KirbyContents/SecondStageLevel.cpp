@@ -30,23 +30,7 @@ void SecondStageLevel::Start()
 	Stage = CreateActor<Ground>(UpdateOrder::Player);
 	Stage->GroundInit("SecondStage", "SecondStageBitMap.Bmp");
 
-	
-
-	LevelHealItem = CreateActor<HealItem>(UpdateOrder::PlayerObject);
-
-
-
-	
-
-
-
-	
-
-
-
-	
-
-	
+	LevelHealItem = CreateActor<HealItem>(UpdateOrder::PlayerObject);	
 }
 
 void SecondStageLevel::Update(float _Delta)
@@ -60,6 +44,7 @@ void SecondStageLevel::Update(float _Delta)
 		LevelPlayer->HpReset();
 		MinusPlayerLife();
 		LevelPlayer->Death();
+		AllMonsterDeath();
 		GameEngineCore::ChangeLevel("SecondStageLevel");
 	}
 
@@ -151,5 +136,29 @@ void SecondStageLevel::LevelStart(GameEngineLevel* _PrevLevel)
 		LevelBiggerObstacle->SetRendererRatio(2.0f);
 		LevelBiggerObstacle->SetPos({ 4740.0f, 593.0f });
 		LevelBiggerObstacle->SetGroundBitMap("SecondStageBitMap.Bmp");
+	}
+}
+
+void SecondStageLevel::AllMonsterDeath()
+{
+	if (LevelMonster1 != nullptr)
+	{
+		LevelMonster1->Death();
+		LevelMonster1 = nullptr;
+	}
+	if (LevelMonster2 != nullptr)
+	{
+		LevelMonster2->Death();
+		LevelMonster2 = nullptr;
+	}
+	if (LevelMonster3 != nullptr)
+	{
+		LevelMonster3->Death();
+		LevelMonster3 = nullptr;
+	}
+	if (LevelMonster4 != nullptr)
+	{
+		LevelMonster4->Death();
+		LevelMonster4 = nullptr;
 	}
 }

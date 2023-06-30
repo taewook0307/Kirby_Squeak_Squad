@@ -192,3 +192,5 @@ void SubLevel::FormChange(const std::string& _BitMapFileName)
 		LevelPlayer->ClearForm();
 	}
 }
+
+void SubLevel::AllMonsterDeath() {}

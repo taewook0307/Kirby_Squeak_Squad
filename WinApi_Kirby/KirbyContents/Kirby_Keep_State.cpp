@@ -219,6 +219,13 @@ void Kirby::KeepJumpToDropUpdate(float _Delta)
 	else
 	{
 		GravityReset();
+
+		if (true == GameEngineInput::IsPress('A') || true == GameEngineInput::IsPress('D'))
+		{
+			ChangeState(KirbyState::KeepWalk);
+			return;
+		}
+
 		ChangeState(KirbyState::KeepJumpToLand);
 		return;
 	}

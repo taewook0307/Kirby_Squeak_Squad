@@ -32,10 +32,6 @@ void FirstStageLevel::Start()
 {
 	Stage = CreateActor<Ground>(UpdateOrder::Player);
 	Stage->GroundInit("FirstStage", "FirstStageBitMap.Bmp");
-
-	LevelMonster1 = CreateActor<Monster>(UpdateOrder::Monster);
-	LevelMonster2 = CreateActor<Monster>(UpdateOrder::Monster);
-	LevelMonster3 = CreateActor<Monster>(UpdateOrder::Monster);
 }
 
 void FirstStageLevel::Update(float _Delta)
@@ -49,6 +45,7 @@ void FirstStageLevel::Update(float _Delta)
 		LevelPlayer->HpReset();
 		MinusPlayerLife();
 		LevelPlayer->Death();
+		AllMonsterDeath();
 		GameEngineCore::ChangeLevel("FirstStageLevel");
 	}
 
@@ -83,13 +80,35 @@ void FirstStageLevel::LevelStart(GameEngineLevel* _PrevLevel)
 	GetMainCamera()->SetPos(float4::ZERO);
 
 	{
+		LevelMonster1 = CreateActor<Monster>(UpdateOrder::Monster);
 		LevelMonster1->SetPos({ 2000.0f, 592.0f });
 		LevelMonster1->SetGroundBitMap("FirstStageBitMap.Bmp");
 
+		LevelMonster2 = CreateActor<Monster>(UpdateOrder::Monster);
 		LevelMonster2->SetPos({ 4100.0f, 512.0f });
 		LevelMonster2->SetGroundBitMap("FirstStageBitMap.Bmp");
 
+		LevelMonster3 = CreateActor<Monster>(UpdateOrder::Monster);
 		LevelMonster3->SetPos({ 4600.0f, 512.0f });
 		LevelMonster3->SetGroundBitMap("FirstStageBitMap.Bmp");
+	}
+}
+
+void FirstStageLevel::AllMonsterDeath()
+{
+	if (LevelMonster1 != nullptr)
+	{
+		LevelMonster1->Death();
+		LevelMonster1 = nullptr;
+	}
+	if (LevelMonster2 != nullptr)
+	{
+		LevelMonster2->Death();
+		LevelMonster2 = nullptr;
+	}
+	if (LevelMonster3 != nullptr)
+	{
+		LevelMonster3->Death();
+		LevelMonster3 = nullptr;
 	}
 }

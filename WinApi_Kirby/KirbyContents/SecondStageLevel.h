@@ -26,6 +26,8 @@ private:
 
 	void LevelStart(GameEngineLevel* _PrevLevel) override;
 
+	void AllMonsterDeath() override;
+
 	class BackGround* Back = nullptr;
 
 	Monster* LevelMonster1 = nullptr;
