@@ -317,7 +317,6 @@ void Kirby::StopUpdate(float _Delta)
 	KirbyGravity(_Delta);
 
 	float4 MovePos = float4::ZERO;
-	float4 OppositePos = float4::ZERO;
 	float4 CheckPos = float4::ZERO;
 
 	if (ActorDir::Left == Dir)
@@ -332,25 +331,23 @@ void Kirby::StopUpdate(float _Delta)
 		CheckPos = RIGHTCHECKPOS;
 	}
 
-	OppositePos = MovePos * -0.5f;
-
 	InclineCheck(MovePos);
 	ObstacleCheck(MovePos);
-
-	float4 StopPos = MovePos + OppositePos;
 
 	unsigned int Color = GetGroundColor(EMPTYCOLOR, CheckPos);
 
 	if (EMPTYCOLOR == Color && false == BodyCollision->Collision(CollisionOrder::Obstacle, Col, CollisionType::Rect, CollisionType::Rect)
 		|| DOORCOLOR == Color && false == BodyCollision->Collision(CollisionOrder::Obstacle, Col, CollisionType::Rect, CollisionType::Rect))
 	{	
-		AddPos(StopPos);
-		CameraMove(StopPos);
+		AddPos(MovePos);
+		CameraMove(MovePos);
 	}
 
-	if (Speed < 1.0f)
+	RunSpeed -= 800.0f * _Delta;
+
+	if (RunSpeed < 10.0f)
 	{
-		Speed = BASEPOWER;
+		RunSpeed = BASEPOWER * 2.0f;
 		DirCheck();
 
 		if (true == GameEngineInput::IsPress('A') || true == GameEngineInput::IsPress('D'))
@@ -362,6 +359,4 @@ void Kirby::StopUpdate(float _Delta)
 		ChangeState(KirbyState::Idle);
 		return;
 	}
-
-	Speed *= 0.8f;
 }
