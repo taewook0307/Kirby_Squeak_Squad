@@ -1,6 +1,7 @@
 ﻿#include "BossEntranceLevel.h"
 #include "Ground.h"
 #include "Kirby.h"
+#include "HealItem.h"
 #include "KirbyGameEnum.h"
 
 #include <GameEngineCore/GameEngineCore.h>
@@ -19,6 +20,9 @@ void BossEntranceLevel::Start()
 {
 	Stage = CreateActor<Ground>(UpdateOrder::PlayUI);
 	Stage->GroundInit("BossEntranceStage", "BossEntranceStageBitMap.Bmp");
+
+	HealItem1 = CreateActor<HealItem>(UpdateOrder::PlayerObject);
+	HealItem2 = CreateActor<HealItem>(UpdateOrder::PlayerObject);
 }
 
 void BossEntranceLevel::Update(float _Delta)
@@ -73,5 +77,13 @@ void BossEntranceLevel::LevelStart(GameEngineLevel* _PrevLevel)
 	{
 		MsgBoxAssert("플레이어를 세팅하지 못했습니다.");
 		return;
+	}
+
+	{
+		HealItem1->SetPos({ 290.0f, 320.0f });
+		HealItem1->SetGroundBitMap("BossEntranceStageBitMap.Bmp");
+
+		HealItem2->SetPos({ 735.0f, 320.0f });
+		HealItem2->SetGroundBitMap("BossEntranceStageBitMap.Bmp");
 	}
 }

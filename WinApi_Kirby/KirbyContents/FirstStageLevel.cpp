@@ -34,7 +34,8 @@ void FirstStageLevel::Start()
 	Stage->GroundInit("FirstStage", "FirstStageBitMap.Bmp");
 
 	LevelMonster1 = CreateActor<Monster>(UpdateOrder::Monster);
-	LevelMonster2 = CreateActor<TornadoMonster>(UpdateOrder::Monster);
+	LevelMonster2 = CreateActor<Monster>(UpdateOrder::Monster);
+	LevelMonster3 = CreateActor<Monster>(UpdateOrder::Monster);
 }
 
 void FirstStageLevel::Update(float _Delta)
@@ -85,7 +86,10 @@ void FirstStageLevel::LevelStart(GameEngineLevel* _PrevLevel)
 		LevelMonster1->SetPos({ 2000.0f, 592.0f });
 		LevelMonster1->SetGroundBitMap("FirstStageBitMap.Bmp");
 
-		LevelMonster2->SetPos({ 2500.0f, 592.0f });
+		LevelMonster2->SetPos({ 4100.0f, 512.0f });
 		LevelMonster2->SetGroundBitMap("FirstStageBitMap.Bmp");
+
+		LevelMonster3->SetPos({ 4600.0f, 512.0f });
+		LevelMonster3->SetGroundBitMap("FirstStageBitMap.Bmp");
 	}
 }

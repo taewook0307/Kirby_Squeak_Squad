@@ -5,8 +5,8 @@
 #include <vector>
 
 #define LIFEITEMPOS { 0.0f, 0.0f }
-#define LIFEITEMSCALE { 50.0f, 50.0f }
-#define LIFEITEMCOLLISIONPOS { 0.0f, 0.0f }
+#define LIFEITEMSCALE { 100.0f, 100.0f }
+#define LIFEITEMCOLLISIONPOS { 0.0f, -25.0f }
 #define LIFEITEMCOLLISIONSCALE { 50.0f, 50.0f }
 
 class GameEngineRenderer;

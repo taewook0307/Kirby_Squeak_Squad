@@ -30,7 +30,7 @@ void KirbyCore::Start()
 	GameEngineCore::CreateLevel<BossStageLevel>("BossStageLevel");
 	GameEngineCore::CreateLevel<EndingLevel>("EndingLevel");
 
-	GameEngineCore::ChangeLevel("TitleLevel");
+	GameEngineCore::ChangeLevel("BossEntranceLevel");
 }
 
 void KirbyCore::Update(float _Delta)

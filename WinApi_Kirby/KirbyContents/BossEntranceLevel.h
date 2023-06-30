@@ -2,6 +2,7 @@
 
 #include "SubLevel.h"
 
+class HealItem;
 class BossEntranceLevel : public SubLevel
 {
 public:
@@ -22,5 +23,8 @@ private:
 	void Update(float _Delta) override;
 
 	void LevelStart(GameEngineLevel* _PrevLevel) override;
+
+	HealItem* HealItem1 = nullptr;
+	HealItem* HealItem2 = nullptr;
 };
 

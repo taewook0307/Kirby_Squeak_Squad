@@ -214,6 +214,8 @@ void Kirby::Update(float _Delta)
 		AttackCollision->Off();
 		DamageFromMonster();
 		AttackSound.Stop();
+		Speed = BASEPOWER;
+		RunSpeed = BASEPOWER * 2.0f;
 		ChangeState(KirbyState::Damage);
 		return;
 	}
@@ -235,6 +237,8 @@ void Kirby::Update(float _Delta)
 		AttackCollision->Off();
 		DamageFromBoss();
 		AttackSound.Stop();
+		Speed = BASEPOWER;
+		RunSpeed = BASEPOWER * 2.0f;
 		ChangeState(KirbyState::Damage);
 		return;
 	}

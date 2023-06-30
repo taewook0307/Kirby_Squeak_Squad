@@ -3,7 +3,8 @@
 #include "Ground.h"
 #include "Kirby.h"
 #include "Monster.h"
-#include "TornadoMonster.h"
+#include "FireMonster.h"
+#include "SparkMonster.h"
 #include "HealItem.h"
 #include "Obstacle.h"
 #include "TranslucentBlock.h"
@@ -29,35 +30,23 @@ void SecondStageLevel::Start()
 	Stage = CreateActor<Ground>(UpdateOrder::Player);
 	Stage->GroundInit("SecondStage", "SecondStageBitMap.Bmp");
 
-	LevelMonster = CreateActor<Monster>(UpdateOrder::Monster);
-
-	CheetMonster = CreateActor<TornadoMonster>(UpdateOrder::Monster);
+	
 
 	LevelHealItem = CreateActor<HealItem>(UpdateOrder::PlayerObject);
 
-	LevelObstacle = CreateActor<Obstacle>(UpdateOrder::PlayerObject);
 
-	LevelFloorObstacle1 = CreateActor<Obstacle>(UpdateOrder::PlayerObject);
-	LevelFloorObstacle1->ChangeFloorObstacle();
-	LevelFloorObstacle1->SetRendererRatio(1.2f);
 
-	LevelFloorObstacle2 = CreateActor<Obstacle>(UpdateOrder::PlayerObject);
-	LevelFloorObstacle2->ChangeFloorObstacle();
-	LevelFloorObstacle2->SetRendererRatio(1.2f);
+	
 
-	LevelFloorObstacle3 = CreateActor<Obstacle>(UpdateOrder::PlayerObject);
-	LevelFloorObstacle3->ChangeFloorObstacle();
-	LevelFloorObstacle3->SetRendererRatio(1.2f);
 
-	LevelFloorObstacle4 = CreateActor<Obstacle>(UpdateOrder::PlayerObject);
-	LevelFloorObstacle4->ChangeFloorObstacle();
-	LevelFloorObstacle4->SetRendererRatio(1.2f);
 
-	LevelFloorObstacle5 = CreateActor<Obstacle>(UpdateOrder::PlayerObject);
-	LevelFloorObstacle5->ChangeFloorObstacle();
-	LevelFloorObstacle5->SetRendererRatio(1.2f);
+	
 
-	LevelBiggerObstacle = CreateActor<Obstacle>(UpdateOrder::PlayerObject);
+
+
+	
+
+	
 }
 
 void SecondStageLevel::Update(float _Delta)
@@ -102,34 +91,65 @@ void SecondStageLevel::LevelStart(GameEngineLevel* _PrevLevel)
 
 	GetMainCamera()->SetPos(float4::ZERO);
 
-	LevelMonster->SetPos({ 2550.0f, 592.0f });
-	LevelMonster->SetGroundBitMap("SecondStageBitMap.Bmp");
+	{
+		LevelMonster1 = CreateActor<FireMonster>(UpdateOrder::Monster);
+		LevelMonster1->SetPos({ 2550.0f, 592.0f });
+		LevelMonster1->SetGroundBitMap("SecondStageBitMap.Bmp");
 
-	CheetMonster->SetPos({ 5270.0f, 592.0f });
-	CheetMonster->SetGroundBitMap("SecondStageBitMap.Bmp");
+		LevelMonster2 = CreateActor<Monster>(UpdateOrder::Monster);
+		LevelMonster2->SetPos({ 2550.0f, 592.0f });
+		LevelMonster2->SetGroundBitMap("SecondStageBitMap.Bmp");
+
+		LevelMonster3 = CreateActor<SparkMonster>(UpdateOrder::Monster);
+		LevelMonster3->SetPos({ 4100.0f, 592.0f });
+		LevelMonster3->SetGroundBitMap("SecondStageBitMap.Bmp");
+
+		LevelMonster4 = CreateActor<Monster>(UpdateOrder::Monster);
+		LevelMonster4->SetPos({ 5270.0f, 592.0f });
+		LevelMonster4->SetGroundBitMap("SecondStageBitMap.Bmp");
+	}
 
 	LevelHealItem->SetPos({ 3300.0f, 520.0f });
 	LevelHealItem->SetGroundBitMap("SecondStageBitMap.Bmp");
 
-	LevelObstacle->SetPos({ 1310.0f, 456.0f });
-	LevelObstacle->SetGroundBitMap("SecondStageBitMap.Bmp");
+	{
+		LevelObstacle = CreateActor<Obstacle>(UpdateOrder::PlayerObject);
+		LevelObstacle->SetPos({ 1310.0f, 456.0f });
+		LevelObstacle->SetGroundBitMap("SecondStageBitMap.Bmp");
 
-	LevelFloorObstacle1->SetPos({ 3160.0f, 400.0f });
-	LevelFloorObstacle1->SetGroundBitMap("SecondStageBitMap.Bmp");
+		LevelFloorObstacle1 = CreateActor<Obstacle>(UpdateOrder::PlayerObject);
+		LevelFloorObstacle1->ChangeFloorObstacle();
+		LevelFloorObstacle1->SetRendererRatio(1.2f);
+		LevelFloorObstacle1->SetPos({ 3160.0f, 400.0f });
+		LevelFloorObstacle1->SetGroundBitMap("SecondStageBitMap.Bmp");
 
-	LevelFloorObstacle2->SetPos({ 3230.0f, 400.0f });
-	LevelFloorObstacle2->SetGroundBitMap("SecondStageBitMap.Bmp");
+		LevelFloorObstacle2 = CreateActor<Obstacle>(UpdateOrder::PlayerObject);
+		LevelFloorObstacle2->ChangeFloorObstacle();
+		LevelFloorObstacle2->SetRendererRatio(1.2f);
+		LevelFloorObstacle2->SetPos({ 3230.0f, 400.0f });
+		LevelFloorObstacle2->SetGroundBitMap("SecondStageBitMap.Bmp");
 
-	LevelFloorObstacle3->SetPos({ 3300.0f, 400.0f });
-	LevelFloorObstacle3->SetGroundBitMap("SecondStageBitMap.Bmp");
+		LevelFloorObstacle3 = CreateActor<Obstacle>(UpdateOrder::PlayerObject);
+		LevelFloorObstacle3->ChangeFloorObstacle();
+		LevelFloorObstacle3->SetRendererRatio(1.2f);
+		LevelFloorObstacle3->SetPos({ 3300.0f, 400.0f });
+		LevelFloorObstacle3->SetGroundBitMap("SecondStageBitMap.Bmp");
 
-	LevelFloorObstacle4->SetPos({ 3370.0f, 400.0f });
-	LevelFloorObstacle4->SetGroundBitMap("SecondStageBitMap.Bmp");
+		LevelFloorObstacle4 = CreateActor<Obstacle>(UpdateOrder::PlayerObject);
+		LevelFloorObstacle4->ChangeFloorObstacle();
+		LevelFloorObstacle4->SetRendererRatio(1.2f);
+		LevelFloorObstacle4->SetPos({ 3370.0f, 400.0f });
+		LevelFloorObstacle4->SetGroundBitMap("SecondStageBitMap.Bmp");
 
-	LevelFloorObstacle5->SetPos({ 3440.0f, 400.0f });
-	LevelFloorObstacle5->SetGroundBitMap("SecondStageBitMap.Bmp");
+		LevelFloorObstacle5 = CreateActor<Obstacle>(UpdateOrder::PlayerObject);
+		LevelFloorObstacle5->ChangeFloorObstacle();
+		LevelFloorObstacle5->SetRendererRatio(1.2f);
+		LevelFloorObstacle5->SetPos({ 3440.0f, 400.0f });
+		LevelFloorObstacle5->SetGroundBitMap("SecondStageBitMap.Bmp");
 
-	LevelBiggerObstacle->SetRendererRatio(2.0f);
-	LevelBiggerObstacle->SetPos({ 4740.0f, 593.0f });
-	LevelBiggerObstacle->SetGroundBitMap("SecondStageBitMap.Bmp");
+		LevelBiggerObstacle = CreateActor<Obstacle>(UpdateOrder::PlayerObject);
+		LevelBiggerObstacle->SetRendererRatio(2.0f);
+		LevelBiggerObstacle->SetPos({ 4740.0f, 593.0f });
+		LevelBiggerObstacle->SetGroundBitMap("SecondStageBitMap.Bmp");
+	}
 }

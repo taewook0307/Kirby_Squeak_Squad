@@ -2,6 +2,9 @@
 
 #include "SubLevel.h"
 
+class BackGround;
+class Monster;
+class LifeCountPlusItem;
 class ThirdStageLevel : public SubLevel
 {
 public:
@@ -23,5 +26,12 @@ private:
 
 	void LevelStart(GameEngineLevel* _PrevLevel) override;
 
-	class BackGround* Back = nullptr;
+	BackGround* Back = nullptr;
+
+	Monster* LevelMonster1 = nullptr;
+	Monster* LevelMonster2 = nullptr;
+	Monster* LevelMonster3 = nullptr;
+	Monster* LevelMonster4 = nullptr;
+
+	LifeCountPlusItem* LifeItem = nullptr;
 };

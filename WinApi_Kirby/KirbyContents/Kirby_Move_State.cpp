@@ -48,6 +48,8 @@ void Kirby::InclineCheck(float4& _MovePos)
 		}
 		else
 		{
+			Speed = BASEPOWER;
+			RunSpeed = BASEPOWER * 2.0f;
 			SlideCollision->Off();
 			ChangeState(KirbyState::Drop);
 			return;
