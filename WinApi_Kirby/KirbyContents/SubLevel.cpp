@@ -166,7 +166,7 @@ void SubLevel::FormChange(const std::string& _BitMapFileName)
 	if (true == GameEngineInput::IsDown('C')
 		&& LevelPlayer->GetKirbyState() == KirbyState::KeepIdle
 		&& LevelPlayer->GetKeepType() == MonsterType::Tornado
-		|| true == GameEngineInput::IsPress(VK_F8))
+		|| true == GameEngineInput::IsDown(VK_F8))
 	{
 		GameEngineTime::MainTimer.SetAllTimeScale(0.0f);
 		GameEngineTime::MainTimer.SetTimeScale(UpdateOrder::Player, 1.0f);
