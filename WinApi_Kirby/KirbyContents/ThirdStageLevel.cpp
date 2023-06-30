@@ -29,7 +29,8 @@ void ThirdStageLevel::Start()
 	LevelMonster1 = CreateActor<IceMonster>(UpdateOrder::Monster);
 	LevelMonster2 = CreateActor<Monster>(UpdateOrder::Monster);
 	LevelMonster3 = CreateActor<Monster>(UpdateOrder::Monster);
-	// LevelMonster4 = CreateActor<Monster>(UpdateOrder::Monster);
+	LevelMonster4 = CreateActor<TornadoMonster>(UpdateOrder::Monster);
+	LevelMonster5 = CreateActor<Monster>(UpdateOrder::Monster);
 }
 
 void ThirdStageLevel::Update(float _Delta)
@@ -82,6 +83,12 @@ void ThirdStageLevel::LevelStart(GameEngineLevel* _PrevLevel)
 
 		LevelMonster3->SetPos({ 3000.0f, 640.0f });
 		LevelMonster3->SetGroundBitMap("ThirdStageBitMap.Bmp");
+
+		LevelMonster4->SetPos({ 4300.0f, 650.0f });
+		LevelMonster4->SetGroundBitMap("ThirdStageBitMap.Bmp");
+
+		LevelMonster5->SetPos({ 5000.0f, 650.0f });
+		LevelMonster5->SetGroundBitMap("ThirdStageBitMap.Bmp");
 	}
 
 	{
