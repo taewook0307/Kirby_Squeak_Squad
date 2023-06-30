@@ -121,6 +121,8 @@ void GameEngineInput::InputInit()
 
 	AllKeys['-'] = GameEngineKey(VK_OEM_MINUS);
 	AllKeys['='] = GameEngineKey(VK_OEM_PLUS);
+	AllKeys[VK_OEM_4] = GameEngineKey(VK_OEM_4); // '['
+	AllKeys[VK_OEM_6] = GameEngineKey(VK_OEM_6); // ']'
 	// AllKeys['='] = GameEngineKey('=');
 }
 

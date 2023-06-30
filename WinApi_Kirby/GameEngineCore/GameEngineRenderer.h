@@ -74,6 +74,8 @@ public:
 
 	void SetAngle(float _Angle);
 
+	void AddAngle(const float _Value);
+
 	void SetSprite(const std::string& _Name, size_t _Index = 0);
 
 	void SetTexture(const std::string& _Name);
