@@ -12,6 +12,15 @@
 
 BossStageLevel::BossStageLevel()
 {
+	GameEnginePath Path;
+	Path.SetCurrentPath();
+	Path.MoveParentToExistsChild("Resources");
+	Path.MoveChild("Resources\\BGM\\");
+
+	if (nullptr == GameEngineSound::FindSound("Boss.mp3"))
+	{
+		GameEngineSound::SoundLoad(Path.PlusFilePath("Boss.mp3"));
+	}
 }
 
 BossStageLevel::~BossStageLevel()
@@ -66,6 +75,8 @@ void BossStageLevel::Update(float _Delta)
 
 void BossStageLevel::LevelStart(GameEngineLevel* _PrevLevel)
 {
+	BGM = GameEngineSound::SoundPlay("Boss.mp3");
+
 	SubLevel::LevelStart(_PrevLevel);
 
 	float4 WinScale = GameEngineWindow::MainWindow.GetScale();

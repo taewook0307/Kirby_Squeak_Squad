@@ -15,6 +15,7 @@
 
 MonsterType SubLevel::LevelPlayerForm = MonsterType::Normal;
 KirbyUI* SubLevel::LevelPlayerUI;
+GameEngineSoundPlayer SubLevel::BGM;
 
 int SubLevel::PlayerLifeCount = 3;
 

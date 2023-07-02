@@ -48,6 +48,7 @@ void ThirdStageLevel::Update(float _Delta)
 
 	if (true == GameEngineInput::IsDown('J'))
 	{
+		BGM.Stop();
 		Stage->SwitchRender();
 	}
 

@@ -4,6 +4,7 @@
 #include "FadeOutObject.h"
 #include "KirbyGameEnum.h"
 
+#include <GameEngineBase/GameEnginePath.h>
 #include <GameEnginePlatform/GameEngineInput.h>
 #include <GameEngineCore/GameEngineSprite.h>
 #include <GameEngineCore/GameEngineRenderer.h>
@@ -11,6 +12,23 @@
 
 TitleLevel::TitleLevel()
 {
+	GameEnginePath Path;
+	Path.SetCurrentPath();
+	Path.MoveParentToExistsChild("Resources");
+	Path.MoveChild("Resources\\BGM\\");
+
+	if (nullptr == GameEngineSound::FindSound("Title.mp3"))
+	{
+		GameEngineSound::SoundLoad(Path.PlusFilePath("Title.mp3"));
+	}
+
+	Path.MoveParentToExistsChild("Resources");
+	Path.MoveChild("Resources\\SoundEffects\\");
+
+	if (nullptr == GameEngineSound::FindSound("Move.wav"))
+	{
+		GameEngineSound::SoundLoad(Path.PlusFilePath("Move.wav"));
+	}
 }
 
 TitleLevel::~TitleLevel()
@@ -19,6 +37,8 @@ TitleLevel::~TitleLevel()
 
 void TitleLevel::Start()
 {
+	TitleBGM = GameEngineSound::SoundPlay("Title.mp3");
+
 	CutScene* TitleCutScene = CreateActor<CutScene>(UpdateOrder::PlayUI);
 	TitleCutScene->CutSceneAnimationInit("TitleLevel");
 
@@ -42,6 +62,8 @@ void TitleLevel::Update(float _Delta)
 	if (true == GameEngineInput::IsDown(VK_RETURN)
 		|| true == GameEngineInput::IsDown(VK_SPACE))
 	{
+		TitleBGM.Stop();
+		GameEngineSound::SoundPlay("Move.wav");
 		GameEngineCore::ChangeLevel("FirstStageLevel");
 	}
 }

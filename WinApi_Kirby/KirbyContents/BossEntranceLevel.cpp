@@ -10,6 +10,15 @@
 
 BossEntranceLevel::BossEntranceLevel()
 {
+	GameEnginePath Path;
+	Path.SetCurrentPath();
+	Path.MoveParentToExistsChild("Resources");
+	Path.MoveChild("Resources\\BGM\\");
+
+	if (nullptr == GameEngineSound::FindSound("BossReady.mp3"))
+	{
+		GameEngineSound::SoundLoad(Path.PlusFilePath("BossReady.mp3"));
+	}
 }
 
 BossEntranceLevel::~BossEntranceLevel()
@@ -49,6 +58,7 @@ void BossEntranceLevel::Update(float _Delta)
 
 	if (true == LevelPlayer->GetMapChangeAnimationEnd())
 	{
+		BGM.Stop();
 		GameEngineCore::ChangeLevel("BossStageLevel");
 	}
 
@@ -65,6 +75,7 @@ void BossEntranceLevel::Update(float _Delta)
 
 void BossEntranceLevel::LevelStart(GameEngineLevel* _PrevLevel)
 {
+	BGM = GameEngineSound::SoundPlay("BossReady.mp3");
 	SubLevel::LevelStart(_PrevLevel);
 
 	float4 WinScale = GameEngineWindow::MainWindow.GetScale();

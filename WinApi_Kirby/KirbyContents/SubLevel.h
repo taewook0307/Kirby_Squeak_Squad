@@ -2,6 +2,7 @@
 
 #include "ActorEnum.h"
 
+#include <GameEnginePlatform/GameEngineSound.h>
 #include <GameEngineCore/GameEngineLevel.h>
 
 class Ground;
@@ -27,6 +28,11 @@ public:
 
 	static void PlusPlayerLife();
 
+	static GameEngineSoundPlayer& GetBGM()
+	{
+		return BGM;
+	}
+
 protected:
 	static void SetLevelPlayerForm(const MonsterType& _Value);
 
@@ -41,6 +47,7 @@ protected:
 	Kirby* LevelPlayer = nullptr;
 	float4 SavePos = float4::ZERO;
 	Ground* Stage = nullptr;
+	static GameEngineSoundPlayer BGM;
 
 	virtual void AllMonsterDeath();
 private:

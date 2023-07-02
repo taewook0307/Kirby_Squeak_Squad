@@ -21,6 +21,15 @@
 
 FirstStageLevel::FirstStageLevel()
 {
+	GameEnginePath Path;
+	Path.SetCurrentPath();
+	Path.MoveParentToExistsChild("Resources");
+	Path.MoveChild("Resources\\BGM\\");
+
+	if (nullptr == GameEngineSound::FindSound("Play.mp3"))
+	{
+		GameEngineSound::SoundLoad(Path.PlusFilePath("Play.mp3"));
+	}
 }
 
 FirstStageLevel::~FirstStageLevel()
@@ -70,6 +79,7 @@ void FirstStageLevel::Update(float _Delta)
 void FirstStageLevel::LevelStart(GameEngineLevel* _PrevLevel)
 {
 	Back = CreateActor<BackGround>(UpdateOrder::PlayUI);
+	BGM = GameEngineSound::SoundPlay("Play.mp3");
 
 	SubLevel::LevelStart(_PrevLevel);
 

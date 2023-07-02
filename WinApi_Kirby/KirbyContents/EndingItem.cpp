@@ -1,6 +1,7 @@
 ﻿#include "EndingItem.h"
 #include "KirbyGameEnum.h"
 #include "ActorEnum.h"
+#include "SubLevel.h"
 
 #include <GameEnginePlatform/GameEngineSound.h>
 #include <GameEngineCore/GameEngineCore.h>
@@ -65,6 +66,7 @@ void EndingItem::Update(float _Delta)
 	if (true == BodyCollision->Collision(CollisionOrder::Body, EndingItemCol, CollisionType::Rect, CollisionType::Rect))
 	{
 		Death();
+		SubLevel::GetBGM().Stop();
 		GameEngineSound::SoundPlay("Move.wav");
 		GameEngineCore::ChangeLevel("EndingLevel");
 		return;
