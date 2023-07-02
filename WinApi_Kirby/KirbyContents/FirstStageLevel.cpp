@@ -95,12 +95,16 @@ void FirstStageLevel::LevelStart(GameEngineLevel* _PrevLevel)
 		LevelMonster1->SetGroundBitMap("FirstStageBitMap.Bmp");
 
 		LevelMonster2 = CreateActor<Monster>(UpdateOrder::Monster);
-		LevelMonster2->SetPos({ 4100.0f, 512.0f });
+		LevelMonster2->SetPos({ 2600.0f, 592.0f });
 		LevelMonster2->SetGroundBitMap("FirstStageBitMap.Bmp");
 
 		LevelMonster3 = CreateActor<Monster>(UpdateOrder::Monster);
-		LevelMonster3->SetPos({ 4600.0f, 512.0f });
+		LevelMonster3->SetPos({ 4100.0f, 512.0f });
 		LevelMonster3->SetGroundBitMap("FirstStageBitMap.Bmp");
+
+		LevelMonster4 = CreateActor<Monster>(UpdateOrder::Monster);
+		LevelMonster4->SetPos({ 4600.0f, 512.0f });
+		LevelMonster4->SetGroundBitMap("FirstStageBitMap.Bmp");
 	}
 }
 
@@ -120,5 +124,10 @@ void FirstStageLevel::AllMonsterDeath()
 	{
 		LevelMonster3->Death();
 		LevelMonster3 = nullptr;
+	}
+	if (LevelMonster4 != nullptr)
+	{
+		LevelMonster4->Death();
+		LevelMonster4 = nullptr;
 	}
 }
