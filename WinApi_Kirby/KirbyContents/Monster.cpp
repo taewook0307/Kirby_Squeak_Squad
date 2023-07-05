@@ -66,7 +66,7 @@ void Monster::Update(float _Delta)
 	StateUpdate(_Delta);
 	DamageStateMove();
 
-	if (true == BodyCollision->Collision(CollisionOrder::Body, Col, CollisionType::Rect, CollisionType::Rect))
+	if (true == BodyCollision->Collision(CollisionOrder::Body, Col, CollisionType::Rect, CollisionType::Rect) && CurState != "Attack")
 	{
 		ChangeState(MonsterState::Death);
 		return;
