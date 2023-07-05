@@ -17,6 +17,7 @@ public:
 	CutScene& operator=(CutScene&& _Other) noexcept = delete;
 
 	void CutSceneAnimationInit(const std::string& _FolderName, float Inter = 0.5f);
+	void CutSceneImageInit(const std::string& _FileName, const std::string& _FolderName = "");
 protected:
 
 private:

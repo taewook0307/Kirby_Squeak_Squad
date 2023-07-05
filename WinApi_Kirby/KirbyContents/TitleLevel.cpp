@@ -42,7 +42,7 @@ void TitleLevel::Start()
 	CutScene* TitleCutScene = CreateActor<CutScene>(UpdateOrder::PlayUI);
 	TitleCutScene->CutSceneAnimationInit("TitleLevel");
 
-	FadeInObject* CheckFade = CreateActor< FadeInObject>(UpdateOrder::PlayUI);
+	FadeInObject* StartFade = CreateActor< FadeInObject>(UpdateOrder::PlayUI);
 
 	if (nullptr == TitleCutScene)
 	{
@@ -50,7 +50,7 @@ void TitleLevel::Start()
 		return;
 	}
 
-	if (nullptr == CheckFade)
+	if (nullptr == StartFade)
 	{
 		MsgBoxAssert("페이드 인 효과 오브젝트가 제대로 생성되지 않았습니다.");
 		return;

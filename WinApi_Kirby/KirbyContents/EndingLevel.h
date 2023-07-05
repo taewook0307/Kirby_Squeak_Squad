@@ -2,6 +2,7 @@
 
 #include <GameEngineCore/GameEngineLevel.h>
 
+class GameEngineRenderer;
 class EndingLevel : public GameEngineLevel
 {
 public:

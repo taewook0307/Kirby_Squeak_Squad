@@ -33,3 +33,25 @@ void CutScene::CutSceneAnimationInit(const std::string& _FolderName, float Inter
 	MainRenderer->SetRenderPos(Scale.Half());
 	MainRenderer->SetRenderScale(Scale);
 }
+
+void CutScene::CutSceneImageInit(const std::string& _FileName, const std::string& _FolderName /*= ""*/)
+{
+	GameEnginePath FolderPath;
+
+	FolderPath.SetCurrentPath();
+	FolderPath.MoveParentToExistsChild("Resources");
+
+	FolderPath.MoveChild("Resources\\CutScene\\");
+
+	if (_FolderName != "")
+	{
+		FolderPath.MoveChild(_FolderName);
+	}
+
+	Scale = GameEngineWindow::MainWindow.GetScale();
+
+	MainRenderer = CreateRenderer(RenderOrder::BackGround);
+	MainRenderer->SetTexture(_FileName);
+	MainRenderer->SetRenderPos(Scale.Half());
+	MainRenderer->SetRenderScale(Scale);
+}
