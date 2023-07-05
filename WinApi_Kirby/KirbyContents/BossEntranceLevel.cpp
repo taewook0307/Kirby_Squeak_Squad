@@ -36,6 +36,8 @@ void BossEntranceLevel::Start()
 
 void BossEntranceLevel::Update(float _Delta)
 {
+	FormChange("BossEntranceStageBitMap.Bmp");
+
 	if (GetLevelPlayerForm() != MonsterType::Normal && true == GameEngineInput::IsDown('Z'))
 	{
 		SetLevelPlayerForm(MonsterType::Normal);

@@ -121,7 +121,8 @@ void SubLevel::FormChange(const std::string& _BitMapFileName)
 
 	if (true == GameEngineInput::IsDown('C')
 		&& LevelPlayer->GetKirbyState() == KirbyState::KeepIdle
-		&& LevelPlayer->GetKeepType() == MonsterType::Ice)
+		&& LevelPlayer->GetKeepType() == MonsterType::Ice
+		|| true == GameEngineInput::IsDown(VK_F5))
 	{
 		GameEngineTime::MainTimer.SetAllTimeScale(0.0f);
 		GameEngineTime::MainTimer.SetTimeScale(UpdateOrder::Player, 1.0f);
@@ -136,7 +137,8 @@ void SubLevel::FormChange(const std::string& _BitMapFileName)
 
 	if (true == GameEngineInput::IsDown('C')
 		&& LevelPlayer->GetKirbyState() == KirbyState::KeepIdle
-		&& LevelPlayer->GetKeepType() == MonsterType::Spark)
+		&& LevelPlayer->GetKeepType() == MonsterType::Spark
+		|| true == GameEngineInput::IsDown(VK_F6))
 	{
 		GameEngineTime::MainTimer.SetAllTimeScale(0.0f);
 		GameEngineTime::MainTimer.SetTimeScale(UpdateOrder::Player, 1.0f);
@@ -151,7 +153,8 @@ void SubLevel::FormChange(const std::string& _BitMapFileName)
 
 	if (true == GameEngineInput::IsDown('C')
 		&& LevelPlayer->GetKirbyState() == KirbyState::KeepIdle
-		&& LevelPlayer->GetKeepType() == MonsterType::Fire)
+		&& LevelPlayer->GetKeepType() == MonsterType::Fire
+		|| true == GameEngineInput::IsDown(VK_F7))
 	{
 		GameEngineTime::MainTimer.SetAllTimeScale(0.0f);
 		GameEngineTime::MainTimer.SetTimeScale(UpdateOrder::Player, 1.0f);

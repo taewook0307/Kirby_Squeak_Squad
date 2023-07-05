@@ -56,6 +56,11 @@ void FireMonster::IdleUpdate(float _Delta)
 
 void FireMonster::WalkUpdate(float _Delta)
 {
+	if (true == BodyCollision->Collision(CollisionOrder::Obstacle, Col, CollisionType::Rect, CollisionType::Rect))
+	{
+		DirChange();
+	}
+
 	static float WalkTimer = 0.0f;
 
 	float4 MovePos = float4::ZERO;

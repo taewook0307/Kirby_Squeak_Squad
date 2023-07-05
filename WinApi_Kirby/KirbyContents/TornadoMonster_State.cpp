@@ -33,6 +33,11 @@ void TornadoMonster::IdleUpdate(float _Delta)
 
 void TornadoMonster::WalkUpdate(float _Delta)
 {
+	if (true == BodyCollision->Collision(CollisionOrder::Obstacle, Col, CollisionType::Rect, CollisionType::Rect))
+	{
+		DirChange();
+	}
+
 	float4 MovePos = float4::ZERO;
 	float4 CheckPos = float4::ZERO;
 
