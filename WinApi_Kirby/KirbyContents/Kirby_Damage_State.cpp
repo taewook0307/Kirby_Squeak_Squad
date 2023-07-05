@@ -116,6 +116,13 @@ void Kirby::DamageLandUpdate(float _Delta)
 		AddPos(MovePos);
 		CameraMove(MovePos);
 	}
+	else
+	{
+		GravityReset();
+
+		ChangeState(KirbyState::Idle);
+		return;
+	}
 }
 
 void Kirby::DeathUpdate(float _Delta)
