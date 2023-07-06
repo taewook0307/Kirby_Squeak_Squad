@@ -1,7 +1,8 @@
 ﻿#include "EndingItem.h"
-#include "KirbyGameEnum.h"
-#include "ActorEnum.h"
 #include "SubLevel.h"
+#include "Kirby.h"
+#include "ActorEnum.h"
+#include "KirbyGameEnum.h"
 
 #include <GameEnginePlatform/GameEngineSound.h>
 #include <GameEngineCore/GameEngineCore.h>
@@ -63,7 +64,8 @@ void EndingItem::Update(float _Delta)
 		UpColor = GetGroundColor(EMPTYCOLOR, float4::UP);
 	}
 
-	if (true == BodyCollision->Collision(CollisionOrder::Body, EndingItemCol, CollisionType::Rect, CollisionType::Rect))
+	if (true == BodyCollision->Collision(CollisionOrder::Body, EndingItemCol, CollisionType::Rect, CollisionType::Rect)
+		|| static_cast<float>(fabs(GetPos().X - Kirby::GetMainKirby()->GetPos().X)) < 20.0f)
 	{
 		Death();
 		SubLevel::GetBGM().Stop();

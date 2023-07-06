@@ -1,7 +1,8 @@
 ﻿#include "LifeCountPlusItem.h"
-#include "KirbyGameEnum.h"
+#include "Kirby.h"
 #include "SubLevel.h"
 #include "ActorEnum.h"
+#include "KirbyGameEnum.h"
 
 #include <GameEnginePlatform/GameEngineSound.h>
 #include <GameEngineCore/ResourcesManager.h>
@@ -39,7 +40,8 @@ void LifeCountPlusItem::Start()
 
 void LifeCountPlusItem::Update(float _Delta)
 {
-	if (true == BodyCollision->Collision(CollisionOrder::Body, LifeItemCol, CollisionType::Rect, CollisionType::Rect))
+	if (true == BodyCollision->Collision(CollisionOrder::Body, LifeItemCol, CollisionType::Rect, CollisionType::Rect)
+		|| static_cast<float>(fabs(GetPos().X - Kirby::GetMainKirby()->GetPos().X)) < 20.0f)
 	{
 		SubLevel::PlusPlayerLife();
 		GameEngineSound::SoundPlay("ItemGet.wav");
