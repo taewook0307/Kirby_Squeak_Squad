@@ -76,7 +76,7 @@ void FirstStageLevel::Update(float _Delta)
 void FirstStageLevel::LevelStart(GameEngineLevel* _PrevLevel)
 {
 	Back = CreateActor<BackGround>(UpdateOrder::PlayUI);
-	BGM = GameEngineSound::SoundPlay("Play.mp3");
+	BGM = GameEngineSound::SoundPlay("Play.mp3", 10);
 
 	SubLevel::LevelStart(_PrevLevel);
 
