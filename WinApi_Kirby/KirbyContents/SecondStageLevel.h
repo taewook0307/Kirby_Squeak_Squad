@@ -33,7 +33,6 @@ private:
 	Monster* LevelMonster1 = nullptr;
 	Monster* LevelMonster2 = nullptr;
 	Monster* LevelMonster3 = nullptr;
-	Monster* LevelMonster4 = nullptr;
 
 	HealItem* LevelHealItem = nullptr;
 

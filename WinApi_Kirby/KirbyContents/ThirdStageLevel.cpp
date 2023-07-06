@@ -43,12 +43,12 @@ void ThirdStageLevel::Update(float _Delta)
 
 	if (true == LevelPlayer->GetMapChangeAnimationEnd())
 	{
+		BGM.Stop();
 		GameEngineCore::ChangeLevel("BossEntranceLevel");
 	}
 
 	if (true == GameEngineInput::IsDown('J'))
 	{
-		BGM.Stop();
 		Stage->SwitchRender();
 	}
 

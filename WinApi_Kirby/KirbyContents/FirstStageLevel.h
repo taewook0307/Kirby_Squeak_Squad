@@ -35,6 +35,7 @@ private:
 	Monster* LevelMonster2 = nullptr;
 	Monster* LevelMonster3 = nullptr;
 	Monster* LevelMonster4 = nullptr;
+	Monster* LevelMonster5 = nullptr;
 
 	LifeCountPlusItem* LevelLifeItem = nullptr;
 };

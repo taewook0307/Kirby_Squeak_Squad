@@ -4,9 +4,6 @@
 #include "Kirby.h"
 #include "Monster.h"
 #include "FireMonster.h"
-#include "IceMonster.h"
-#include "SparkMonster.h"
-#include "TornadoMonster.h"
 #include "LifeCountPlusItem.h"
 #include "HealItem.h"
 #include "KirbyGameEnum.h"
@@ -105,6 +102,10 @@ void FirstStageLevel::LevelStart(GameEngineLevel* _PrevLevel)
 		LevelMonster4 = CreateActor<Monster>(UpdateOrder::Monster);
 		LevelMonster4->SetPos({ 4600.0f, 512.0f });
 		LevelMonster4->SetGroundBitMap("FirstStageBitMap.Bmp");
+
+		LevelMonster5 = CreateActor<FireMonster>(UpdateOrder::Monster);
+		LevelMonster5->SetPos({ 5400.0f, 521.0f });
+		LevelMonster5->SetGroundBitMap("FirstStageBitMap.Bmp");
 	}
 }
 
@@ -129,5 +130,10 @@ void FirstStageLevel::AllMonsterDeath()
 	{
 		LevelMonster4->Death();
 		LevelMonster4 = nullptr;
+	}
+	if (LevelMonster5 != nullptr)
+	{
+		LevelMonster5->Death();
+		LevelMonster5 = nullptr;
 	}
 }
