@@ -122,7 +122,18 @@ void Kirby::KeepJumpUpdate(float _Delta)
 {
 	DirCheck();
 
-	Gravity(_Delta);
+	unsigned int Color = GetGroundColor(EMPTYCOLOR, TOPCHECKPOS);
+
+	if (EMPTYCOLOR == Color || DOORCOLOR == Color)
+	{
+		Gravity(_Delta);
+	}
+	else
+	{
+		GravityReset();
+		ChangeState(KirbyState::KeepJumpToDrop);
+		return;
+	}
 
 	float4 MovePos = float4::ZERO;
 	float4 CheckPos = float4::ZERO;
@@ -131,28 +142,22 @@ void Kirby::KeepJumpUpdate(float _Delta)
 	{
 		MovePos = { -Speed * _Delta, 0.0f };
 		CheckPos = LEFTCHECKPOS;
-
-		unsigned int Color = GetGroundColor(EMPTYCOLOR, CheckPos);
-
-		if (EMPTYCOLOR == Color || DOORCOLOR == Color)
-		{
-			AddPos(MovePos);
-			CameraMove(MovePos);
-		}
 	}
 
 	if (true == GameEngineInput::IsPress('D') && Dir == ActorDir::Right)
 	{
 		MovePos = { Speed * _Delta, 0.0f };
 		CheckPos = RIGHTCHECKPOS;
+	}
 
-		unsigned int Color = GetGroundColor(EMPTYCOLOR, CheckPos);
+	ObstacleCheck(MovePos);
 
-		if (EMPTYCOLOR == Color || DOORCOLOR == Color)
-		{
-			AddPos(MovePos);
-			CameraMove(MovePos);
-		}
+	unsigned int XColor = GetGroundColor(EMPTYCOLOR, CheckPos);
+
+	if (EMPTYCOLOR == XColor || DOORCOLOR == XColor)
+	{
+		AddPos(MovePos);
+		CameraMove(MovePos);
 	}
 
 	if (true == GameEngineInput::IsDown('C') && KeepType == MonsterType::Normal)
@@ -173,12 +178,27 @@ void Kirby::KeepJumpToDropUpdate(float _Delta)
 {
 	DirCheck();
 
+	KirbyGravity(_Delta);
+
+	/*unsigned int Color = GetGroundColor(EMPTYCOLOR);
+
+	
+
+		if (true == GameEngineInput::IsDown('C') && KeepType == MonsterType::Normal)
+		{
+			ChangeState(KirbyState::AttackToIdle);
+			return;
+		}
+	}
+	else
+	{
+		
+	}*/
+
 	unsigned int Color = GetGroundColor(EMPTYCOLOR);
 
 	if (EMPTYCOLOR == Color || DOORCOLOR == Color)
 	{
-		Gravity(_Delta);
-
 		float4 MovePos = float4::ZERO;
 		float4 CheckPos = float4::ZERO;
 
@@ -186,28 +206,22 @@ void Kirby::KeepJumpToDropUpdate(float _Delta)
 		{
 			MovePos = { -Speed * _Delta, 0.0f };
 			CheckPos = LEFTBOTCHECKPOS;
-
-			unsigned int Color = GetGroundColor(EMPTYCOLOR, CheckPos);
-
-			if (EMPTYCOLOR == Color || DOORCOLOR == Color)
-			{
-				AddPos(MovePos);
-				CameraMove(MovePos);
-			}
 		}
 
 		if (true == GameEngineInput::IsPress('D') && Dir == ActorDir::Right)
 		{
 			MovePos = { Speed * _Delta, 0.0f };
 			CheckPos = RIGHTBOTCHECKPOS;
+		}
 
-			unsigned int Color = GetGroundColor(EMPTYCOLOR, CheckPos);
+		ObstacleCheck(MovePos);
 
-			if (EMPTYCOLOR == Color || DOORCOLOR == Color)
-			{
-				AddPos(MovePos);
-				CameraMove(MovePos);
-			}
+		unsigned int Color = GetGroundColor(EMPTYCOLOR, CheckPos);
+
+		if (EMPTYCOLOR == Color || DOORCOLOR == Color)
+		{
+			AddPos(MovePos);
+			CameraMove(MovePos);
 		}
 
 		if (true == GameEngineInput::IsDown('C') && KeepType == MonsterType::Normal)
