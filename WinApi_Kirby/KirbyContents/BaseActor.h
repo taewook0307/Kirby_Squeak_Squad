@@ -85,10 +85,16 @@ protected:
 		IsCheckPosPoint = !IsCheckPosPoint;
 	}
 
+	inline void IsCheckNumberChange()
+	{
+		IsCheckNumber = !IsCheckNumber;
+	}
+
 	GameEngineCollision* BodyCollision = nullptr;
 	GameEngineRenderer* MainRenderer = nullptr;
 
 	bool IsCheckPosPoint = false;
+	bool IsCheckNumber = false;
 
 	float4 WinScale = GameEngineWindow::MainWindow.GetScale();
 

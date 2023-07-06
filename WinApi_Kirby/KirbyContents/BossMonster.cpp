@@ -146,6 +146,11 @@ void BossMonster::Update(float _Delta)
 	{
 		IsCheckPosPointChange();
 	}
+	
+	if (true == GameEngineInput::IsDown('V'))
+	{
+		IsCheckNumberChange();
+	}
 
 	if (true == GameEngineInput::IsDown(VK_SHIFT))
 	{
@@ -328,8 +333,11 @@ void BossMonster::Render(float _Delta)
 		Rectangle(dc, Data.iLeft(), Data.iTop(), Data.iRight(), Data.iBot());
 	}
 
-	std::string HpText = "";
-	HpText += "Hp : ";
-	HpText += std::to_string(BossHp);
-	TextOutA(dc, 2, 120, HpText.c_str(), static_cast<int>(HpText.size()));
+	if (true == IsCheckNumber)
+	{
+		std::string HpText = "";
+		HpText += "Boss_Hp : ";
+		HpText += std::to_string(BossHp);
+		TextOutA(dc, 2, 120, HpText.c_str(), static_cast<int>(HpText.size()));
+	}
 }
