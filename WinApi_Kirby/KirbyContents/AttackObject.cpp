@@ -83,7 +83,9 @@ void AttackObject::Update(float _Delta)
 	}
 
 	if (true == AttackCollision->Collision(CollisionOrder::MonsterBody, StarCol, CollisionType::Rect, CollisionType::Rect)
-		|| true == AttackCollision->Collision(CollisionOrder::BossBody, StarCol, CollisionType::Rect, CollisionType::Rect))
+		|| true == AttackCollision->Collision(CollisionOrder::BossBody, StarCol, CollisionType::Rect, CollisionType::Rect)
+		|| true == AttackCollision->Collision(CollisionOrder::Obstacle, StarCol, CollisionType::Rect, CollisionType::Rect)
+		|| true == AttackCollision->Collision(CollisionOrder::FloorObstacle, StarCol, CollisionType::Rect, CollisionType::Rect))
 	{
 		CollisionCheck = true;
 

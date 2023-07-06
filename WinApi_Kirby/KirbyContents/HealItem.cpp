@@ -83,7 +83,7 @@ void HealItem::Start()
 void HealItem::Update(float _Delta)
 {
 	if (true == BodyCollision->Collision(CollisionOrder::Body, HealItemCol, CollisionType::Rect, CollisionType::Rect)
-		|| static_cast<float>(fabs(GetPos().X - Kirby::GetMainKirby()->GetPos().X)) < 20.0f)
+		|| static_cast<float>(fabs((GetPos() - Kirby::GetMainKirby()->GetPos()).Size())) < 10.0f)
 	{
 		int PlayerHp = Kirby::GetMainKirby()->GetKirbyHp();
 		int HealHp = PlayerHp + HealValue;

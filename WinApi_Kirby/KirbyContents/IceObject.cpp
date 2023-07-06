@@ -108,7 +108,9 @@ void IceObject::Update(float _Delta)
 	}
 
 	if (true == AttackCollision->Collision(CollisionOrder::MonsterBody, IceCol, CollisionType::Rect, CollisionType::Rect)
-		|| true == AttackCollision->Collision(CollisionOrder::BossBody, IceCol, CollisionType::Rect, CollisionType::Rect))
+		|| true == AttackCollision->Collision(CollisionOrder::BossBody, IceCol, CollisionType::Rect, CollisionType::Rect)
+		|| true == AttackCollision->Collision(CollisionOrder::Obstacle, IceCol, CollisionType::Rect, CollisionType::Rect)
+		|| true == AttackCollision->Collision(CollisionOrder::FloorObstacle, IceCol, CollisionType::Rect, CollisionType::Rect))
 	{
 		CollideMonsterCheck = true;
 

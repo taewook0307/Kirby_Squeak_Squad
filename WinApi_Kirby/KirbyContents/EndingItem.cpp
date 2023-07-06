@@ -65,7 +65,7 @@ void EndingItem::Update(float _Delta)
 	}
 
 	if (true == BodyCollision->Collision(CollisionOrder::Body, EndingItemCol, CollisionType::Rect, CollisionType::Rect)
-		|| static_cast<float>(fabs(GetPos().X - Kirby::GetMainKirby()->GetPos().X)) < 20.0f)
+		|| static_cast<float>(fabs((GetPos() - Kirby::GetMainKirby()->GetPos()).Size())) < 10.0f)
 	{
 		Death();
 		SubLevel::GetBGM().Stop();

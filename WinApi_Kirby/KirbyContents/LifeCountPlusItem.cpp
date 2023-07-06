@@ -41,7 +41,7 @@ void LifeCountPlusItem::Start()
 void LifeCountPlusItem::Update(float _Delta)
 {
 	if (true == BodyCollision->Collision(CollisionOrder::Body, LifeItemCol, CollisionType::Rect, CollisionType::Rect)
-		|| static_cast<float>(fabs(GetPos().X - Kirby::GetMainKirby()->GetPos().X)) < 20.0f)
+		|| static_cast<float>(fabs((GetPos() - Kirby::GetMainKirby()->GetPos()).Size())) < 10.0f)
 	{
 		SubLevel::PlusPlayerLife();
 		GameEngineSound::SoundPlay("ItemGet.wav");
