@@ -125,6 +125,11 @@ void SubLevel::FormChange(const std::string& _BitMapFileName)
 		&& LevelPlayer->GetKeepType() == MonsterType::Ice
 		|| true == GameEngineInput::IsDown(VK_F5))
 	{
+		if (nullptr != LevelPlayer->GetChangeBackGroundEffect())
+		{
+			LevelPlayer->GetChangeBackGroundEffect()->Death();
+		}
+
 		GameEngineTime::MainTimer.SetAllTimeScale(0.0f);
 		GameEngineTime::MainTimer.SetTimeScale(UpdateOrder::Player, 1.0f);
 		SetLevelPlayerForm(MonsterType::Ice);
@@ -141,6 +146,11 @@ void SubLevel::FormChange(const std::string& _BitMapFileName)
 		&& LevelPlayer->GetKeepType() == MonsterType::Spark
 		|| true == GameEngineInput::IsDown(VK_F6))
 	{
+		if (nullptr != LevelPlayer->GetChangeBackGroundEffect())
+		{
+			LevelPlayer->GetChangeBackGroundEffect()->Death();
+		}
+
 		GameEngineTime::MainTimer.SetAllTimeScale(0.0f);
 		GameEngineTime::MainTimer.SetTimeScale(UpdateOrder::Player, 1.0f);
 		SetLevelPlayerForm(MonsterType::Spark);
@@ -157,6 +167,11 @@ void SubLevel::FormChange(const std::string& _BitMapFileName)
 		&& LevelPlayer->GetKeepType() == MonsterType::Fire
 		|| true == GameEngineInput::IsDown(VK_F7))
 	{
+		if (nullptr != LevelPlayer->GetChangeBackGroundEffect())
+		{
+			LevelPlayer->GetChangeBackGroundEffect()->Death();
+		}
+
 		GameEngineTime::MainTimer.SetAllTimeScale(0.0f);
 		GameEngineTime::MainTimer.SetTimeScale(UpdateOrder::Player, 1.0f);
 		SetLevelPlayerForm(MonsterType::Fire);
@@ -173,6 +188,11 @@ void SubLevel::FormChange(const std::string& _BitMapFileName)
 		&& LevelPlayer->GetKeepType() == MonsterType::Tornado
 		|| true == GameEngineInput::IsDown(VK_F8))
 	{
+		if (nullptr != LevelPlayer->GetChangeBackGroundEffect())
+		{
+			LevelPlayer->GetChangeBackGroundEffect()->Death();
+		}
+
 		GameEngineTime::MainTimer.SetAllTimeScale(0.0f);
 		GameEngineTime::MainTimer.SetTimeScale(UpdateOrder::Player, 1.0f);
 		SetLevelPlayerForm(MonsterType::Tornado);
