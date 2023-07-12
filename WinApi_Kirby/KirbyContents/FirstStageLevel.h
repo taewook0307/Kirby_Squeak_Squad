@@ -27,15 +27,8 @@ private:
 	void Update(float _Delta) override;
 
 	void LevelStart(GameEngineLevel* _PrevLevel) override;
-	void AllMonsterDeath() override;
 
 	class BackGround* Back = nullptr;
-
-	Monster* LevelMonster1 = nullptr;
-	Monster* LevelMonster2 = nullptr;
-	Monster* LevelMonster3 = nullptr;
-	Monster* LevelMonster4 = nullptr;
-	Monster* LevelMonster5 = nullptr;
 
 	LifeCountPlusItem* LevelLifeItem = nullptr;
 };

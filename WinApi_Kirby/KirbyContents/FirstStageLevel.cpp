@@ -52,6 +52,7 @@ void FirstStageLevel::Update(float _Delta)
 		MinusPlayerLife();
 		LevelPlayer->Death();
 		AllMonsterDeath();
+		BGM.Stop();
 		GameEngineCore::ChangeLevel("FirstStageLevel");
 	}
 
@@ -87,53 +88,10 @@ void FirstStageLevel::LevelStart(GameEngineLevel* _PrevLevel)
 	GetMainCamera()->SetPos(float4::ZERO);
 
 	{
-		LevelMonster1 = CreateActor<Monster>(UpdateOrder::Monster);
-		LevelMonster1->SetPos({ 2000.0f, 592.0f });
-		LevelMonster1->SetGroundBitMap("FirstStageBitMap.Bmp");
-
-		LevelMonster2 = CreateActor<Monster>(UpdateOrder::Monster);
-		LevelMonster2->SetPos({ 2600.0f, 592.0f });
-		LevelMonster2->SetGroundBitMap("FirstStageBitMap.Bmp");
-
-		LevelMonster3 = CreateActor<Monster>(UpdateOrder::Monster);
-		LevelMonster3->SetPos({ 4100.0f, 512.0f });
-		LevelMonster3->SetGroundBitMap("FirstStageBitMap.Bmp");
-
-		LevelMonster4 = CreateActor<Monster>(UpdateOrder::Monster);
-		LevelMonster4->SetPos({ 4600.0f, 512.0f });
-		LevelMonster4->SetGroundBitMap("FirstStageBitMap.Bmp");
-
-		LevelMonster5 = CreateActor<FireMonster>(UpdateOrder::Monster);
-		LevelMonster5->SetPos({ 5400.0f, 521.0f });
-		LevelMonster5->SetGroundBitMap("FirstStageBitMap.Bmp");
-	}
-}
-
-void FirstStageLevel::AllMonsterDeath()
-{
-	if (LevelMonster1 != nullptr)
-	{
-		LevelMonster1->Death();
-		LevelMonster1 = nullptr;
-	}
-	if (LevelMonster2 != nullptr)
-	{
-		LevelMonster2->Death();
-		LevelMonster2 = nullptr;
-	}
-	if (LevelMonster3 != nullptr)
-	{
-		LevelMonster3->Death();
-		LevelMonster3 = nullptr;
-	}
-	if (LevelMonster4 != nullptr)
-	{
-		LevelMonster4->Death();
-		LevelMonster4 = nullptr;
-	}
-	if (LevelMonster5 != nullptr)
-	{
-		LevelMonster5->Death();
-		LevelMonster5 = nullptr;
+		CreateMonster<Monster>({ 2000.0f, 592.0f }, "FirstStageBitMap.Bmp");
+		CreateMonster<Monster>({ 2600.0f, 592.0f }, "FirstStageBitMap.Bmp");
+		CreateMonster<Monster>({ 4100.0f, 512.0f }, "FirstStageBitMap.Bmp");
+		CreateMonster<Monster>({ 4600.0f, 512.0f }, "FirstStageBitMap.Bmp");
+		CreateMonster<FireMonster>({ 5400.0f, 521.0f }, "FirstStageBitMap.Bmp");
 	}
 }

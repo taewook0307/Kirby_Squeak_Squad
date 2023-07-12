@@ -77,17 +77,9 @@ void SecondStageLevel::LevelStart(GameEngineLevel* _PrevLevel)
 	GetMainCamera()->SetPos(float4::ZERO);
 
 	{
-		LevelMonster1 = CreateActor<Monster>(UpdateOrder::Monster);
-		LevelMonster1->SetPos({ 2550.0f, 592.0f });
-		LevelMonster1->SetGroundBitMap("SecondStageBitMap.Bmp");
-
-		LevelMonster2 = CreateActor<SparkMonster>(UpdateOrder::Monster);
-		LevelMonster2->SetPos({ 4100.0f, 592.0f });
-		LevelMonster2->SetGroundBitMap("SecondStageBitMap.Bmp");
-
-		LevelMonster3 = CreateActor<Monster>(UpdateOrder::Monster);
-		LevelMonster3->SetPos({ 5270.0f, 592.0f });
-		LevelMonster3->SetGroundBitMap("SecondStageBitMap.Bmp");
+		CreateMonster<Monster>({ 2550.0f, 592.0f }, "SecondStageBitMap.Bmp");
+		CreateMonster<SparkMonster>({ 4100.0f, 592.0f }, "SecondStageBitMap.Bmp");
+		CreateMonster<Monster>({ 5270.0f, 592.0f }, "SecondStageBitMap.Bmp");
 	}
 
 	LevelHealItem->SetPos({ 3300.0f, 520.0f });
@@ -132,24 +124,5 @@ void SecondStageLevel::LevelStart(GameEngineLevel* _PrevLevel)
 		LevelBiggerObstacle->SetRendererRatio(2.0f);
 		LevelBiggerObstacle->SetPos({ 4740.0f, 593.0f });
 		LevelBiggerObstacle->SetGroundBitMap("SecondStageBitMap.Bmp");
-	}
-}
-
-void SecondStageLevel::AllMonsterDeath()
-{
-	if (LevelMonster1 != nullptr)
-	{
-		LevelMonster1->Death();
-		LevelMonster1 = nullptr;
-	}
-	if (LevelMonster2 != nullptr)
-	{
-		LevelMonster2->Death();
-		LevelMonster2 = nullptr;
-	}
-	if (LevelMonster3 != nullptr)
-	{
-		LevelMonster3->Death();
-		LevelMonster3 = nullptr;
 	}
 }

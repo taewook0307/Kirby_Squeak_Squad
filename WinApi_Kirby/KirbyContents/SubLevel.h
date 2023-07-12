@@ -1,12 +1,16 @@
 #pragma once
 
 #include "ActorEnum.h"
+#include "KirbyGameEnum.h"
+
+#include <list>
 
 #include <GameEnginePlatform/GameEngineSound.h>
 #include <GameEngineCore/GameEngineLevel.h>
 
 class Ground;
 class Kirby;
+class Monster;
 class GameEngineRenderer;
 class KirbyUI;
 class SubLevel : public GameEngineLevel
@@ -49,7 +53,28 @@ protected:
 	Ground* Stage = nullptr;
 	static GameEngineSoundPlayer BGM;
 
-	virtual void AllMonsterDeath();
+	template<typename MonsterType>
+	void CreateMonster(const float4& _Pos, const std::string& _BitMapName)
+	{
+		MonsterType* MonsterPtr = CreateActor<MonsterType>(UpdateOrder::Monster);
+		
+
+		if (MonsterPtr != nullptr)
+		{
+			MonsterPtr->SetPos(_Pos);
+			MonsterPtr->SetGroundBitMap(_BitMapName);
+
+			AllMonster.push_back(MonsterPtr);
+		}
+		else
+		{
+			MsgBoxAssert("몬스터 생성에 실패했습니다.");
+		}
+	}
+
+	void AllMonsterDeath();
+
+	std::list<Monster*> AllMonster;
 private:
 	static MonsterType LevelPlayerForm;
 

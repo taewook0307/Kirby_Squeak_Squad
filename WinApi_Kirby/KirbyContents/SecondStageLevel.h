@@ -26,13 +26,7 @@ private:
 
 	void LevelStart(GameEngineLevel* _PrevLevel) override;
 
-	void AllMonsterDeath() override;
-
 	class BackGround* Back = nullptr;
-
-	Monster* LevelMonster1 = nullptr;
-	Monster* LevelMonster2 = nullptr;
-	Monster* LevelMonster3 = nullptr;
 
 	HealItem* LevelHealItem = nullptr;
 

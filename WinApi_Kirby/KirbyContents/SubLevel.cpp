@@ -5,6 +5,7 @@
 #include "FireKirby.h"
 #include "TornadoKirby.h"
 #include "SparkKirby.h"
+#include "Monster.h"
 #include "TranslucentBlock.h"
 #include "KirbyGameEnum.h"
 
@@ -197,4 +198,19 @@ void SubLevel::FormChange(const std::string& _BitMapFileName)
 	}
 }
 
-void SubLevel::AllMonsterDeath() {}
+void SubLevel::AllMonsterDeath()
+{
+	std::list<Monster*>::iterator FirstIter = AllMonster.begin();
+	std::list<Monster*>::iterator LastIter = AllMonster.end();
+
+	for (; FirstIter != LastIter;)
+	{
+		Monster* CurMonster = *FirstIter;
+
+		CurMonster->Death();
+
+		FirstIter = AllMonster.erase(FirstIter);
+	}
+
+	return;
+}
