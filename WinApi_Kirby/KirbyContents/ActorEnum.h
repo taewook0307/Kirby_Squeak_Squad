@@ -21,7 +21,6 @@ enum class KirbyState
 	FlyToTurnLand,
 	LevelMove,
 	Damage,
-	DamageLand,
 	AttackReady,
 	Attack,
 	AttackToIdle,

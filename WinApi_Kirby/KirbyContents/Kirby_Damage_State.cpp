@@ -19,11 +19,6 @@ void Kirby::DamageStart()
 	SetGravityVector(float4::UP * JumpPower * 0.5f);
 }
 
-void Kirby::DamageLandStart()
-{
-	ChangeAnimationState("DamageLand");
-}
-
 void Kirby::DeathStart()
 {
 	ChangeAnimationState("Death");
@@ -46,8 +41,8 @@ void Kirby::DamageUpdate(float _Delta)
 	GameEngineCollision* CurCollision = Col[Col.size() - 1];
 	GameEngineActor* CollisionMaster = CurCollision->GetActor();
 
-	static float4 CollisionMasterPos = CollisionMaster->GetPos();
-	static float4 DamageDirPos = GetPos() - CollisionMasterPos;
+	float4 CollisionMasterPos = CollisionMaster->GetPos();
+	float4 DamageDirPos = GetPos() - CollisionMasterPos;
 
 	if (DamageDirPos.X < 0.0f)
 	{
@@ -55,7 +50,7 @@ void Kirby::DamageUpdate(float _Delta)
 		MovePos = float4::LEFT * Speed * 0.7f * _Delta;
 		CheckPos = LEFTBOTCHECKPOS;
 	}
-	else
+	else if(DamageDirPos.X >= 0.0f)
 	{
 		Dir = ActorDir::Left;
 		MovePos = float4::RIGHT * Speed * 0.7f * _Delta;
@@ -70,52 +65,6 @@ void Kirby::DamageUpdate(float _Delta)
 		CameraMove(MovePos);
 	}
 
-	if (GetGravityVector().Y >= 0.0f)
-	{
-		GravityReset();
-		ChangeState(KirbyState::DamageLand);
-		return;
-	}
-}
-
-void Kirby::DamageLandUpdate(float _Delta)
-{
-	unsigned int Color = GetGroundColor(EMPTYCOLOR);
-
-	if (EMPTYCOLOR == Color || DOORCOLOR == Color)
-	{
-		Gravity(_Delta);
-	}
-
-	else if (true == MainRenderer->IsAnimationEnd() && FLOORCOLOR == Color)
-	{
-		GravityReset();
-
-		ChangeState(KirbyState::Idle);
-		return;
-	}
-
-	float4 MovePos = float4::ZERO;
-	float4 CheckPos = float4::ZERO;
-
-	if (Dir == ActorDir::Right)
-	{
-		MovePos = float4::LEFT * Speed * 0.5f * _Delta;
-		CheckPos = LEFTBOTCHECKPOS;
-	}
-	else
-	{
-		MovePos = float4::RIGHT * Speed * 0.5f * _Delta;
-		CheckPos = RIGHTBOTCHECKPOS;
-	}
-
-	unsigned int XColor = GetGroundColor(EMPTYCOLOR, CheckPos);
-
-	if (XColor == EMPTYCOLOR || XColor == DOORCOLOR)
-	{
-		AddPos(MovePos);
-		CameraMove(MovePos);
-	}
 	else
 	{
 		GravityReset();
