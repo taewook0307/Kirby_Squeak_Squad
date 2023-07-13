@@ -50,8 +50,7 @@ void FireKirby::Start()
 		MainRenderer->CreateAnimation("Right_Fire_FlyToTurnUp", "Right_FireKirby.Bmp", 110, 121, 0.05f, false);
 		MainRenderer->CreateAnimation("Right_Fire_FlyToTurnLand", "Right_FireKirby.Bmp", 122, 123, 0.05f, true);
 		MainRenderer->CreateAnimation("Right_Fire_LevelMove", "Right_FireKirby.Bmp", 125, 129, 0.1f, false);
-		MainRenderer->CreateAnimation("Right_Fire_Damage", "Right_FireKirby.Bmp", 130, 132, 0.1f, false);
-		MainRenderer->CreateAnimation("Right_Fire_DamageLand", "Right_FireKirby.Bmp", 133, 136, 0.1f, false);
+		MainRenderer->CreateAnimation("Right_Fire_Damage", "Right_FireKirby.Bmp", 130, 136, 0.1f, false);
 		MainRenderer->CreateAnimation("Right_Fire_AttackReady", "Right_FireKirby.Bmp", 137, 142, 0.01f, false);
 		MainRenderer->CreateAnimation("Right_Fire_Attack", "Right_FireKirby.Bmp", 143, 156, 0.05f, true);
 		MainRenderer->CreateAnimation("Right_Fire_AttackToIdle", "Right_FireKirby.Bmp", 157, 162, 0.01f, false);
@@ -77,8 +76,7 @@ void FireKirby::Start()
 		MainRenderer->CreateAnimation("Left_Fire_FlyToTurnUp", "Left_FireKirby.Bmp", 110, 121, 0.05f, false);
 		MainRenderer->CreateAnimation("Left_Fire_FlyToTurnLand", "Left_FireKirby.Bmp", 122, 123, 0.05f, true);
 		MainRenderer->CreateAnimation("Left_Fire_LevelMove", "Left_FireKirby.Bmp", 125, 129, 0.1f, false);
-		MainRenderer->CreateAnimation("Left_Fire_Damage", "Left_FireKirby.Bmp", 130, 132, 0.1f, false);
-		MainRenderer->CreateAnimation("Left_Fire_DamageLand", "Left_FireKirby.Bmp", 133, 136, 0.1f, false);
+		MainRenderer->CreateAnimation("Left_Fire_Damage", "Left_FireKirby.Bmp", 130, 136, 0.1f, false);
 		MainRenderer->CreateAnimation("Left_Fire_AttackReady", "Left_FireKirby.Bmp", 137, 142, 0.01f, false);
 		MainRenderer->CreateAnimation("Left_Fire_Attack", "Left_FireKirby.Bmp", 143, 156, 0.05f, true);
 		MainRenderer->CreateAnimation("Left_Fire_AttackToIdle", "Left_FireKirby.Bmp", 157, 162, 0.01f, false);

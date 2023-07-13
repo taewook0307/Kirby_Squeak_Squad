@@ -50,8 +50,7 @@ void SparkKirby::Start()
 		MainRenderer->CreateAnimation("Right_Spark_FlyToTurnUp", "Right_SparkKirby.Bmp", 110, 121, 0.05f, false);
 		MainRenderer->CreateAnimation("Right_Spark_FlyToTurnLand", "Right_SparkKirby.Bmp", 122, 123, 0.05f, true);
 		MainRenderer->CreateAnimation("Right_Spark_LevelMove", "Right_SparkKirby.Bmp", 125, 129, 0.1f, false);
-		MainRenderer->CreateAnimation("Right_Spark_Damage", "Right_SparkKirby.Bmp", 130, 132, 0.1f, false);
-		MainRenderer->CreateAnimation("Right_Spark_DamageLand", "Right_SparkKirby.Bmp", 133, 136, 0.1f, false);
+		MainRenderer->CreateAnimation("Right_Spark_Damage", "Right_SparkKirby.Bmp", 130, 136, 0.1f, false);
 		MainRenderer->CreateAnimation("Right_Spark_AttackReady", "Right_SparkKirby.Bmp", 137, 139, 0.01f, false);
 		MainRenderer->CreateAnimation("Right_Spark_Attack", "Right_SparkKirby.Bmp", 140, 143, 0.01f, true);
 		MainRenderer->CreateAnimation("Right_Spark_AttackToIdle", "Right_SparkKirby.Bmp", 144, 145, 0.01f, false);
@@ -77,8 +76,7 @@ void SparkKirby::Start()
 		MainRenderer->CreateAnimation("Left_Spark_FlyToTurnUp", "Left_SparkKirby.Bmp", 110, 121, 0.05f, false);
 		MainRenderer->CreateAnimation("Left_Spark_FlyToTurnLand", "Left_SparkKirby.Bmp", 122, 123, 0.05f, true);
 		MainRenderer->CreateAnimation("Left_Spark_LevelMove", "Left_SparkKirby.Bmp", 125, 129, 0.1f, false);
-		MainRenderer->CreateAnimation("Left_Spark_Damage", "Left_SparkKirby.Bmp", 130, 132, 0.1f, false);
-		MainRenderer->CreateAnimation("Left_Spark_DamageLand", "Left_SparkKirby.Bmp", 133, 136, 0.1f, false);
+		MainRenderer->CreateAnimation("Left_Spark_Damage", "Left_SparkKirby.Bmp", 130, 136, 0.1f, false);
 		MainRenderer->CreateAnimation("Left_Spark_AttackReady", "Left_SparkKirby.Bmp", 137, 139, 0.01f, false);
 		MainRenderer->CreateAnimation("Left_Spark_Attack", "Left_SparkKirby.Bmp", 140, 143, 0.01f, true);
 		MainRenderer->CreateAnimation("Left_Spark_AttackToIdle", "Left_SparkKirby.Bmp", 144, 145, 0.01f, false);

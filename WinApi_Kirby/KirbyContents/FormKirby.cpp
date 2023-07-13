@@ -55,8 +55,6 @@ void FormKirby::StateUpdate(float _Delta)
 		return LevelMoveUpdate(_Delta);
 	case KirbyState::Damage:
 		return DamageUpdate(_Delta);
-	case KirbyState::DamageLand:
-		return DamageLandUpdate(_Delta);
 	case KirbyState::AttackReady:
 		return AttackReadyUpdate(_Delta);
 	case KirbyState::Attack:
@@ -131,9 +129,6 @@ void FormKirby::ChangeState(KirbyState _State)
 			break;
 		case KirbyState::Damage:
 			DamageStart();
-			break;
-		case KirbyState::DamageLand:
-			DamageLandStart();
 			break;
 		case KirbyState::AttackReady:
 			AttackReadyStart();

@@ -50,8 +50,7 @@ void TornadoKirby::Start()
 		MainRenderer->CreateAnimation("Right_Tornado_FlyToTurnUp", "Right_TornadoKirby.Bmp", 110, 121, 0.05f, false);
 		MainRenderer->CreateAnimation("Right_Tornado_FlyToTurnLand", "Right_TornadoKirby.Bmp", 122, 123, 0.05f, true);
 		MainRenderer->CreateAnimation("Right_Tornado_LevelMove", "Right_TornadoKirby.Bmp", 125, 128, 0.1f, false);
-		MainRenderer->CreateAnimation("Right_Tornado_Damage", "Right_TornadoKirby.Bmp", 129, 131, 0.1f, false);
-		MainRenderer->CreateAnimation("Right_Tornado_DamageLand", "Right_TornadoKirby.Bmp", 132, 135, 0.1f, false);
+		MainRenderer->CreateAnimation("Right_Tornado_Damage", "Right_TornadoKirby.Bmp", 129, 135, 0.1f, false);
 		MainRenderer->CreateAnimation("Right_Tornado_AttackReady", "Right_TornadoKirby.Bmp", 136, 147, 0.005f, false);
 		MainRenderer->CreateAnimation("Right_Tornado_Attack", "Right_TornadoKirby.Bmp", 148, 155, 0.05f, true);
 		MainRenderer->CreateAnimation("Right_Tornado_AttackToIdle", "Right_TornadoKirby.Bmp", 156, 168, 0.005f, false);
@@ -77,8 +76,7 @@ void TornadoKirby::Start()
 		MainRenderer->CreateAnimation("Left_Tornado_FlyToTurnUp", "Left_TornadoKirby.Bmp", 110, 121, 0.05f, false);
 		MainRenderer->CreateAnimation("Left_Tornado_FlyToTurnLand", "Left_TornadoKirby.Bmp", 122, 123, 0.05f, true);
 		MainRenderer->CreateAnimation("Left_Tornado_LevelMove", "Left_TornadoKirby.Bmp", 125, 128, 0.1f, false);
-		MainRenderer->CreateAnimation("Left_Tornado_Damage", "Left_TornadoKirby.Bmp", 129, 131, 0.1f, false);
-		MainRenderer->CreateAnimation("Left_Tornado_DamageLand", "Left_TornadoKirby.Bmp", 132, 135, 0.1f, false);
+		MainRenderer->CreateAnimation("Left_Tornado_Damage", "Left_TornadoKirby.Bmp", 129, 135, 0.1f, false);
 		MainRenderer->CreateAnimation("Left_Tornado_AttackReady", "Left_TornadoKirby.Bmp", 136, 147, 0.005f, false);
 		MainRenderer->CreateAnimation("Left_Tornado_Attack", "Left_TornadoKirby.Bmp", 148, 155, 0.05f, true);
 		MainRenderer->CreateAnimation("Left_Tornado_AttackToIdle", "Left_TornadoKirby.Bmp", 156, 168, 0.005f, false);

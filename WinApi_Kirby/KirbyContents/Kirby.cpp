@@ -64,8 +64,7 @@ void Kirby::Start()
 		MainRenderer->CreateAnimation("Right_FlyToTurnUp", "Right_Kirby.Bmp", 77, 87, 0.05f, false);
 		MainRenderer->CreateAnimation("Right_FlyToTurnLand", "Right_Kirby.Bmp", 88, 89, 0.05f, true);
 		MainRenderer->CreateAnimation("Right_LevelMove", "Right_Kirby.Bmp", 91, 94, 0.1f, false);
-		MainRenderer->CreateAnimation("Right_Damage", "Right_Kirby.Bmp", 95, 97, 0.1f, false);
-		MainRenderer->CreateAnimation("Right_DamageLand", "Right_Kirby.Bmp", 98, 99, 0.1f, false);
+		MainRenderer->CreateAnimation("Right_Damage", "Right_Kirby.Bmp", 95, 99, 0.1f, false);
 		MainRenderer->CreateAnimation("Right_AttackReady", "Right_Kirby.Bmp", 100, 103, 0.05f, false);
 		MainRenderer->CreateAnimation("Right_Attack", "Right_Kirby.Bmp", 104, 105, 0.05f, true);
 		MainRenderer->CreateAnimation("Right_Keep", "Right_Kirby.Bmp", 106, 112, 0.05f, false);
@@ -98,8 +97,7 @@ void Kirby::Start()
 		MainRenderer->CreateAnimation("Left_FlyToTurnUp", "Left_Kirby.Bmp", 77, 87, 0.05f, false);
 		MainRenderer->CreateAnimation("Left_FlyToTurnLand", "Left_Kirby.Bmp", 88, 89, 0.05f, true);
 		MainRenderer->CreateAnimation("Left_LevelMove", "Left_Kirby.Bmp", 91, 94, 0.1f, false);
-		MainRenderer->CreateAnimation("Left_Damage", "Left_Kirby.Bmp", 95, 97, 0.1f, false);
-		MainRenderer->CreateAnimation("Left_DamageLand", "Left_Kirby.Bmp", 98, 99, 0.1f, false);
+		MainRenderer->CreateAnimation("Left_Damage", "Left_Kirby.Bmp", 95, 99, 0.1f, false);
 		MainRenderer->CreateAnimation("Left_AttackReady", "Left_Kirby.Bmp", 100, 103, 0.05f, false);
 		MainRenderer->CreateAnimation("Left_Attack", "Left_Kirby.Bmp", 104, 105, 0.05f, true);
 		MainRenderer->CreateAnimation("Left_Keep", "Left_Kirby.Bmp", 106, 112, 0.05f, false);
@@ -376,8 +374,6 @@ void Kirby::StateUpdate(float _Delta)
 		return LevelMoveUpdate(_Delta);
 	case KirbyState::Damage:
 		return DamageUpdate(_Delta);
-	case KirbyState::DamageLand:
-		return DamageLandUpdate(_Delta);
 	case KirbyState::AttackReady:
 		return AttackReadyUpdate(_Delta);
 	case KirbyState::Attack:
@@ -465,9 +461,6 @@ void Kirby::ChangeState(KirbyState _State)
 		case KirbyState::Damage:
 			DamageStart();
 			break;
-		case KirbyState::DamageLand:
-			DamageLandStart();
-			break;
 		case KirbyState::AttackReady:
 			AttackReadyStart();
 			break;
@@ -512,11 +505,13 @@ void Kirby::DirCheck()
 {
 	ActorDir CheckDir = Dir;
 
-	if (true == GameEngineInput::IsDown('A') || true == GameEngineInput::IsPress('A'))
+	if (true == GameEngineInput::IsDown('A') && CurState != "Damage" && CurState != "DamageLand"
+		|| true == GameEngineInput::IsPress('A') && CurState != "Damage" && CurState != "DamageLand")
 	{
 		CheckDir = ActorDir::Left;
 	}
-	if (true == GameEngineInput::IsDown('D') || true == GameEngineInput::IsPress('D'))
+	if (true == GameEngineInput::IsDown('D') && CurState != "Damage" && CurState != "DamageLand"
+		|| true == GameEngineInput::IsPress('D') && CurState != "Damage" && CurState != "DamageLand")
 	{
 		CheckDir = ActorDir::Right;
 	}

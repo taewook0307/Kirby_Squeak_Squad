@@ -143,7 +143,6 @@ protected:
 	void FlyToTurnLandStart();
 	void LevelMoveStart();
 	void DamageStart();
-	void DamageLandStart();
 	virtual void AttackReadyStart();
 	virtual void AttackStart();
 	virtual void AttackToIdleStart();
@@ -175,7 +174,6 @@ protected:
 	void FlyToTurnLandUpdate(float _Delta);
 	void LevelMoveUpdate(float _Delta);
 	void DamageUpdate(float _Delta);
-	void DamageLandUpdate(float _Delta);
 	void AttackReadyUpdate(float _Delta);
 	virtual void AttackUpdate(float _Delta);
 	virtual void AttackToIdleUpdate(float _Delta);
