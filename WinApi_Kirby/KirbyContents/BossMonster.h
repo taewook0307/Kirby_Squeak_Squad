@@ -41,6 +41,11 @@ public:
 		return BossHp;
 	}
 
+	inline bool GetEndingCheck()
+	{
+		return EndingCheck;
+	}
+
 protected:
 	void StateUpdate(float _Delta);
 	void ChangeState(BossState _State);

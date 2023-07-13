@@ -21,6 +21,11 @@ BossStageLevel::BossStageLevel()
 	{
 		GameEngineSound::SoundLoad(Path.PlusFilePath("Boss.mp3"));
 	}
+
+	if (nullptr == GameEngineSound::FindSound("BossClear.mp3"))
+	{
+		GameEngineSound::SoundLoad(Path.PlusFilePath("BossClear.mp3"));
+	}
 }
 
 BossStageLevel::~BossStageLevel()
@@ -77,7 +82,7 @@ void BossStageLevel::Update(float _Delta)
 
 void BossStageLevel::LevelStart(GameEngineLevel* _PrevLevel)
 {
-	BGM = GameEngineSound::SoundPlay("Boss.mp3");
+	BGM = GameEngineSound::SoundPlay("Boss.mp3", 10);
 
 	SubLevel::LevelStart(_PrevLevel);
 

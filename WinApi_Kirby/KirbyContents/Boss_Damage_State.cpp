@@ -1,5 +1,6 @@
 #include "BossMonster.h"
 #include "EndingItem.h"
+#include "SubLevel.h"
 #include "KirbyGameEnum.h"
 
 #include <GameEnginePlatform/GameEngineSound.h>
@@ -14,6 +15,7 @@ void BossMonster::DamageStart()
 
 void BossMonster::DeathJumpStart()
 {
+	SubLevel::GetBGM().Stop();
 	GameEngineSound::SoundPlay("BossDeath.wav");
 	ChangeAnimationState("DeathJump");
 	SetGravityVector(float4::UP * BossJumpPower * 0.5f);
@@ -21,6 +23,7 @@ void BossMonster::DeathJumpStart()
 
 void BossMonster::DeathStart()
 {
+	GameEngineSound::SoundPlay("BossClear.mp3");
 	ChangeAnimationState("Death");
 }
 
