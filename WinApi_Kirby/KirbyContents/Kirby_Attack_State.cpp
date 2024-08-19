@@ -14,6 +14,7 @@
 void Kirby::AttackReadyStart()
 {
 	ChangeAnimationState("AttackReady");
+	Col.clear();
 }
 
 void Kirby::AttackStart()
@@ -92,7 +93,7 @@ void Kirby::AttackUpdate(float _Delta)
 
 		static float Power = 30.0f;
 
-		GameEngineCollision* MonsterCollision = Col[Col.size() - 1];
+		GameEngineCollision* MonsterCollision = Col[0];
 		MonsterPtr = MonsterCollision->GetActor();
 		Monster* KeepMonster = dynamic_cast<Monster*>(MonsterPtr);
 
@@ -126,7 +127,7 @@ void Kirby::AttackUpdate(float _Delta)
 		BodyCollision->Off();
 
 		static float Power = 30.0f;
-		GameEngineCollision* BossAttackCollision = Col[Col.size() - 1];
+		GameEngineCollision* BossAttackCollision = Col[0];
 		GameEngineActor* BossAttack = BossAttackCollision->GetActor();
 
 		KeepType = MonsterType::Normal;

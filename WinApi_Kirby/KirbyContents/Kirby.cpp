@@ -20,6 +20,7 @@ Kirby::Kirby()
 {
 	NoDamage = true;
 	MainKirby = this;
+	Col.reserve(6);
 }
 
 Kirby::~Kirby()
